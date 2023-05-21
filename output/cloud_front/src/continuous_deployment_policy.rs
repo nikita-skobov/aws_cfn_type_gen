@@ -67,6 +67,7 @@ pub struct ContinuousDeploymentPolicyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrafficConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub traffic_config: Option<TrafficConfig>,
 }
 
@@ -180,6 +181,7 @@ pub struct SingleWeightConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionStickinessConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_stickiness_config: Option<SessionStickinessConfig>,
 
     ///
@@ -224,6 +226,7 @@ pub struct TrafficConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleHeaderConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub single_header_config: Option<SingleHeaderConfig>,
 
     ///
@@ -235,6 +238,7 @@ pub struct TrafficConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleWeightConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub single_weight_config: Option<SingleWeightConfig>,
 
     ///

@@ -16,6 +16,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_account_id: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_groups: Option<Vec<ColumnGroup>>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnLevelPermissionRules")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_level_permission_rules: Option<Vec<ColumnLevelPermissionRule>>,
 
     ///
@@ -51,6 +54,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_set_id: Option<String>,
 
     ///
@@ -62,6 +66,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSetUsageConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_set_usage_configuration: Option<DataSetUsageConfiguration>,
 
     ///
@@ -73,6 +78,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldFolders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_folders: Option<std::collections::HashMap<String, FieldFolder>>,
 
     ///
@@ -86,6 +92,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImportMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub import_mode: Option<DataSetImportModeEnum>,
 
     ///
@@ -97,6 +104,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngestionWaitPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ingestion_wait_policy: Option<IngestionWaitPolicy>,
 
     ///
@@ -108,6 +116,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogicalTableMap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logical_table_map: Option<std::collections::HashMap<String, LogicalTable>>,
 
     ///
@@ -123,6 +132,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -136,6 +146,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<ResourcePermission>>,
 
     ///
@@ -147,6 +158,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PhysicalTableMap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub physical_table_map: Option<std::collections::HashMap<String, PhysicalTable>>,
 
     ///
@@ -158,6 +170,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowLevelPermissionDataSet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_level_permission_data_set: Option<RowLevelPermissionDataSet>,
 
     ///
@@ -171,6 +184,7 @@ pub struct CfnDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -426,6 +440,7 @@ pub struct CastColumnTypeOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<String>,
 
     ///
@@ -524,6 +539,7 @@ pub struct ColumnDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Text")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<String>,
 }
 
@@ -571,6 +587,7 @@ pub struct ColumnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeoSpatialColumnGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub geo_spatial_column_group: Option<GeoSpatialColumnGroup>,
 }
 
@@ -604,6 +621,7 @@ pub struct ColumnLevelPermissionRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_names: Option<Vec<String>>,
 
     ///
@@ -615,6 +633,7 @@ pub struct ColumnLevelPermissionRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principals")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub principals: Option<Vec<String>>,
 }
 
@@ -644,6 +663,7 @@ pub struct ColumnTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_description: Option<ColumnDescription>,
 
     ///
@@ -657,6 +677,7 @@ pub struct ColumnTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnGeographicRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_geographic_role: Option<ColumnTagColumnGeographicRoleEnum>,
 }
 
@@ -884,6 +905,7 @@ pub struct DataSetUsageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableUseAsDirectQuerySource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_use_as_direct_query_source: Option<bool>,
 
     ///
@@ -895,6 +917,7 @@ pub struct DataSetUsageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableUseAsImportedSource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_use_as_imported_source: Option<bool>,
 }
 
@@ -924,6 +947,7 @@ pub struct FieldFolder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub columns: Option<Vec<String>>,
 
     ///
@@ -935,6 +959,7 @@ pub struct FieldFolder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 }
 
@@ -1030,6 +1055,7 @@ pub struct GeoSpatialColumnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CountryCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub country_code: Option<GeoSpatialColumnGroupCountryCodeEnum>,
 
     ///
@@ -1114,6 +1140,7 @@ pub struct IngestionWaitPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngestionWaitTimeInHours")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ingestion_wait_time_in_hours: Option<f64>,
 
     ///
@@ -1125,6 +1152,7 @@ pub struct IngestionWaitPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitForSpiceIngestion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub wait_for_spice_ingestion: Option<bool>,
 }
 
@@ -1255,6 +1283,7 @@ pub struct JoinInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LeftJoinKeyProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub left_join_key_properties: Option<JoinKeyProperties>,
 
     ///
@@ -1292,6 +1321,7 @@ pub struct JoinInstruction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RightJoinKeyProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub right_join_key_properties: Option<JoinKeyProperties>,
 
     ///
@@ -1396,6 +1426,7 @@ pub struct JoinKeyProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UniqueKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unique_key: Option<bool>,
 }
 
@@ -1442,6 +1473,7 @@ pub struct LogicalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTransforms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_transforms: Option<Vec<TransformOperation>>,
 
     ///
@@ -1511,6 +1543,7 @@ pub struct LogicalTableSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSetArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_set_arn: Option<String>,
 
     ///
@@ -1522,6 +1555,7 @@ pub struct LogicalTableSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JoinInstruction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub join_instruction: Option<JoinInstruction>,
 
     ///
@@ -1539,6 +1573,7 @@ pub struct LogicalTableSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PhysicalTableId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub physical_table_id: Option<String>,
 }
 
@@ -1594,6 +1629,7 @@ pub struct OutputColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -1609,6 +1645,7 @@ pub struct OutputColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -1622,6 +1659,7 @@ pub struct OutputColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<OutputColumnTypeEnum>,
 }
 
@@ -1712,6 +1750,7 @@ pub struct PhysicalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomSql")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_sql: Option<CustomSql>,
 
     ///
@@ -1723,6 +1762,7 @@ pub struct PhysicalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelationalTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relational_table: Option<RelationalTable>,
 
     ///
@@ -1734,6 +1774,7 @@ pub struct PhysicalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Source")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_source: Option<S3Source>,
 }
 
@@ -1814,6 +1855,7 @@ pub struct RelationalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Catalog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog: Option<String>,
 
     ///
@@ -1866,6 +1908,7 @@ pub struct RelationalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema: Option<String>,
 }
 
@@ -2074,6 +2117,7 @@ pub struct RowLevelPermissionDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_version: Option<RowLevelPermissionDataSetFormatVersionEnum>,
 
     ///
@@ -2089,6 +2133,7 @@ pub struct RowLevelPermissionDataSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<String>,
 
     ///
@@ -2200,6 +2245,7 @@ pub struct S3Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UploadSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub upload_settings: Option<UploadSettings>,
 }
 
@@ -2361,6 +2407,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CastColumnTypeOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cast_column_type_operation: Option<CastColumnTypeOperation>,
 
     ///
@@ -2372,6 +2419,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateColumnsOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub create_columns_operation: Option<CreateColumnsOperation>,
 
     ///
@@ -2383,6 +2431,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_operation: Option<FilterOperation>,
 
     ///
@@ -2394,6 +2443,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProjectOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project_operation: Option<ProjectOperation>,
 
     ///
@@ -2405,6 +2455,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RenameColumnOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rename_column_operation: Option<RenameColumnOperation>,
 
     ///
@@ -2416,6 +2467,7 @@ pub struct TransformOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagColumnOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_column_operation: Option<TagColumnOperation>,
 }
 
@@ -2469,6 +2521,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainsHeader")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contains_header: Option<bool>,
 
     ///
@@ -2484,6 +2537,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<String>,
 
     ///
@@ -2497,6 +2551,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<UploadSettingsFormatEnum>,
 
     ///
@@ -2510,6 +2565,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartFromRow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_from_row: Option<f64>,
 
     ///
@@ -2523,6 +2579,7 @@ pub struct UploadSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextQualifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_qualifier: Option<UploadSettingsTextQualifierEnum>,
 }
 

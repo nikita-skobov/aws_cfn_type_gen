@@ -10,6 +10,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alarms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarms: Option<Alarms>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationSenderEmail")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_sender_email: Option<String>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PortalAuthMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub portal_auth_mode: Option<String>,
 
     ///
@@ -62,6 +65,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortalDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub portal_description: Option<String>,
 
     ///
@@ -95,6 +99,7 @@ pub struct CfnPortal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -126,6 +131,7 @@ pub struct Alarms {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_role_arn: Option<String>,
 
     ///
@@ -137,6 +143,7 @@ pub struct Alarms {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationLambdaArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_lambda_arn: Option<String>,
 }
 

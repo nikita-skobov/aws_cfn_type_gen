@@ -10,6 +10,7 @@ pub struct CfnLocationFSxONTAP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<Protocol>,
 
     ///
@@ -61,6 +62,7 @@ pub struct CfnLocationFSxONTAP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdirectory: Option<String>,
 
     ///
@@ -74,6 +76,7 @@ pub struct CfnLocationFSxONTAP {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -179,6 +182,7 @@ pub struct NfsMountOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<NfsMountOptionsVersionEnum>,
 }
 
@@ -233,6 +237,7 @@ pub struct Protocol {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NFS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nfs: Option<NFS>,
 
     ///
@@ -244,6 +249,7 @@ pub struct Protocol {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SMB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub smb: Option<SMB>,
 }
 
@@ -281,6 +287,7 @@ pub struct SMB {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<String>,
 
     ///
@@ -394,6 +401,7 @@ pub struct SmbMountOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<SmbMountOptionsVersionEnum>,
 }
 

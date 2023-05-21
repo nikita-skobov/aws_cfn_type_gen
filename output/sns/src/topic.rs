@@ -12,6 +12,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentBasedDeduplication")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_based_deduplication: Option<bool>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataProtectionPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_protection_policy: Option<serde_json::Value>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
 
     ///
@@ -51,6 +54,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FifoTopic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fifo_topic: Option<bool>,
 
     ///
@@ -64,6 +68,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsMasterKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_master_key_id: Option<String>,
 
     ///
@@ -75,6 +80,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SignatureVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub signature_version: Option<String>,
 
     ///
@@ -88,6 +94,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subscription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription: Option<Vec<Subscription>>,
 
     ///
@@ -101,6 +108,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -116,6 +124,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TopicName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub topic_name: Option<String>,
 
     ///
@@ -127,6 +136,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TracingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tracing_config: Option<String>,
 }
 

@@ -27,6 +27,7 @@ pub struct CfnAllowList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -51,6 +52,7 @@ pub struct CfnAllowList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -84,6 +86,7 @@ pub struct Criteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regex: Option<String>,
 
     ///
@@ -95,6 +98,7 @@ pub struct Criteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3WordsList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_words_list: Option<S3WordsList>,
 }
 

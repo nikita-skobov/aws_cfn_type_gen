@@ -52,6 +52,7 @@ pub struct Schema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RegistryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub registry_name: Option<String>,
 
     ///
@@ -63,6 +64,7 @@ pub struct Schema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_arn: Option<String>,
 
     ///
@@ -74,6 +76,7 @@ pub struct Schema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_name: Option<String>,
 }
 

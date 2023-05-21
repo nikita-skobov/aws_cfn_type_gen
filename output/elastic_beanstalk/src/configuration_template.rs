@@ -27,6 +27,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_id: Option<String>,
 
     ///
@@ -49,6 +51,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub option_settings: Option<Vec<ConfigurationOptionSetting>>,
 
     ///
@@ -62,6 +65,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlatformArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform_arn: Option<String>,
 
     ///
@@ -77,6 +81,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SolutionStackName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub solution_stack_name: Option<String>,
 
     ///
@@ -94,6 +99,7 @@ pub struct CfnConfigurationTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_configuration: Option<SourceConfiguration>,
 }
 
@@ -184,6 +190,7 @@ pub struct ConfigurationOptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_name: Option<String>,
 
     ///
@@ -195,6 +202,7 @@ pub struct ConfigurationOptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 

@@ -18,6 +18,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoBranchCreationConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_branch_creation_config: Option<AutoBranchCreationConfig>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub basic_auth_config: Option<BasicAuthConfig>,
 
     ///
@@ -55,6 +58,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub build_spec: Option<String>,
 
     ///
@@ -70,6 +74,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomHeaders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_headers: Option<String>,
 
     ///
@@ -81,6 +86,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomRules")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_rules: Option<Vec<CustomRule>>,
 
     ///
@@ -96,6 +102,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -107,6 +114,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableBranchAutoDeletion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_branch_auto_deletion: Option<bool>,
 
     ///
@@ -118,6 +126,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_variables: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -133,6 +142,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IAMServiceRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iamservice_role: Option<String>,
 
     ///
@@ -169,6 +179,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OauthToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth_token: Option<String>,
 
     ///
@@ -180,6 +191,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Platform")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform: Option<String>,
 
     ///
@@ -193,6 +205,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Repository")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository: Option<String>,
 
     ///
@@ -204,6 +217,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -241,6 +255,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoBranchCreationPatterns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_branch_creation_patterns: Option<Vec<String>>,
 
     ///
@@ -252,6 +267,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub basic_auth_config: Option<BasicAuthConfig>,
 
     ///
@@ -265,6 +281,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub build_spec: Option<String>,
 
     ///
@@ -276,6 +293,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableAutoBranchCreation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_auto_branch_creation: Option<bool>,
 
     ///
@@ -287,6 +305,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableAutoBuild")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_auto_build: Option<bool>,
 
     ///
@@ -300,6 +319,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePerformanceMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_performance_mode: Option<bool>,
 
     ///
@@ -315,6 +335,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePullRequestPreview")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_pull_request_preview: Option<bool>,
 
     ///
@@ -326,6 +347,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_variables: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -337,6 +359,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Framework")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framework: Option<String>,
 
     ///
@@ -358,6 +381,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PullRequestEnvironmentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pull_request_environment_name: Option<String>,
 
     ///
@@ -369,6 +393,7 @@ pub struct AutoBranchCreationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage: Option<String>,
 }
 
@@ -402,6 +427,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableBasicAuth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_basic_auth: Option<bool>,
 
     ///
@@ -415,6 +441,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<String>,
 
     ///
@@ -428,6 +455,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<String>,
 }
 
@@ -461,6 +489,7 @@ pub struct CustomRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition: Option<String>,
 
     ///
@@ -493,6 +522,7 @@ pub struct CustomRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 
     ///

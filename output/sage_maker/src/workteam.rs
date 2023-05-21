@@ -18,6 +18,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -33,6 +34,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemberDefinitions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub member_definitions: Option<Vec<MemberDefinition>>,
 
     ///
@@ -44,6 +46,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_configuration: Option<NotificationConfiguration>,
 
     ///
@@ -55,6 +58,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     /// Property description not available.
@@ -65,6 +69,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkforceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub workforce_name: Option<String>,
 
     ///
@@ -82,6 +87,7 @@ pub struct CfnWorkteam {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkteamName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub workteam_name: Option<String>,
 }
 
@@ -211,6 +217,7 @@ pub struct MemberDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoMemberDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cognito_member_definition: Option<CognitoMemberDefinition>,
 
     ///
@@ -222,6 +229,7 @@ pub struct MemberDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OidcMemberDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oidc_member_definition: Option<OidcMemberDefinition>,
 }
 

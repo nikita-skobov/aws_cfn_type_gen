@@ -40,6 +40,7 @@ pub struct CfnVpcIngressConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -57,6 +58,7 @@ pub struct CfnVpcIngressConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcIngressConnectionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_ingress_connection_name: Option<String>,
 }
 

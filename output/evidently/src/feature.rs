@@ -14,6 +14,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultVariation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_variation: Option<String>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entity_overrides: Option<Vec<EntityOverride>>,
 
     ///
@@ -47,6 +50,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluationStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub evaluation_strategy: Option<String>,
 
     ///
@@ -88,6 +92,7 @@ pub struct CfnFeature {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -130,6 +135,7 @@ pub struct EntityOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entity_id: Option<String>,
 
     ///
@@ -141,6 +147,7 @@ pub struct EntityOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variation: Option<String>,
 }
 
@@ -214,6 +221,7 @@ pub struct VariationObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BooleanValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub boolean_value: Option<bool>,
 
     ///
@@ -225,6 +233,7 @@ pub struct VariationObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DoubleValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub double_value: Option<f64>,
 
     ///
@@ -236,6 +245,7 @@ pub struct VariationObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LongValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub long_value: Option<f64>,
 
     ///
@@ -247,6 +257,7 @@ pub struct VariationObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_value: Option<String>,
 
     ///

@@ -18,6 +18,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateAuthorityArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_authority_arn: Option<String>,
 
     ///
@@ -35,6 +36,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateTransparencyLoggingPreference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_transparency_logging_preference:
         Option<CertificateCertificateTransparencyLoggingPreferenceEnum>,
 
@@ -68,6 +70,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainValidationOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_validation_options: Option<Vec<DomainValidationOption>>,
 
     ///
@@ -81,6 +84,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubjectAlternativeNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subject_alternative_names: Option<Vec<String>>,
 
     ///
@@ -94,6 +98,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -109,6 +114,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidationMethod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validation_method: Option<CertificateValidationMethodEnum>,
 }
 
@@ -248,6 +254,7 @@ pub struct DomainValidationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_zone_id: Option<String>,
 
     ///
@@ -267,6 +274,7 @@ pub struct DomainValidationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidationDomain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validation_domain: Option<String>,
 }
 

@@ -12,6 +12,7 @@ pub struct CfnBillingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BillingGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_group_name: Option<String>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnBillingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BillingGroupProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_group_properties: Option<BillingGroupProperties>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnBillingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -67,6 +70,7 @@ pub struct BillingGroupProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BillingGroupDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_group_description: Option<String>,
 }
 

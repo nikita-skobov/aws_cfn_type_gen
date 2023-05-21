@@ -26,6 +26,7 @@ pub struct CfnPublicTypeVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 
     ///
@@ -51,6 +52,7 @@ pub struct CfnPublicTypeVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogDeliveryBucket")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_delivery_bucket: Option<String>,
 
     ///
@@ -76,6 +78,7 @@ pub struct CfnPublicTypeVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PublicVersionNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_version_number: Option<String>,
 
     ///
@@ -91,6 +94,7 @@ pub struct CfnPublicTypeVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<PublicTypeVersionTypeEnum>,
 
     ///
@@ -110,6 +114,7 @@ pub struct CfnPublicTypeVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<String>,
 }
 

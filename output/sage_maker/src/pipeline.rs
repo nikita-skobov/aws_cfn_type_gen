@@ -9,6 +9,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelismConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parallelism_configuration: Option<ParallelismConfiguration>,
 
     ///
@@ -37,6 +38,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_description: Option<String>,
 
     ///
@@ -54,6 +56,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineDisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_display_name: Option<String>,
 
     ///
@@ -101,6 +104,7 @@ pub struct CfnPipeline {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -250,6 +254,7 @@ pub struct PipelineDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineDefinitionBody")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_definition_body: Option<String>,
 
     /// Property description not available.
@@ -260,6 +265,7 @@ pub struct PipelineDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineDefinitionS3Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_definition_s3_location: Option<S3Location>,
 }
 
@@ -302,6 +308,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ETag")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub etag: Option<String>,
 
     /// Property description not available.
@@ -322,6 +329,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 

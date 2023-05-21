@@ -10,6 +10,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -56,6 +59,7 @@ pub struct CfnModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema: Option<serde_json::Value>,
 }
 

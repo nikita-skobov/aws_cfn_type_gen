@@ -10,6 +10,7 @@ pub struct CfnVdmAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashboardAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dashboard_attributes: Option<DashboardAttributes>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnVdmAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GuardianAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub guardian_attributes: Option<GuardianAttributes>,
 }
 
@@ -60,6 +62,7 @@ pub struct DashboardAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngagementMetrics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engagement_metrics: Option<String>,
 }
 
@@ -91,6 +94,7 @@ pub struct GuardianAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptimizedSharedDelivery")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub optimized_shared_delivery: Option<String>,
 }
 

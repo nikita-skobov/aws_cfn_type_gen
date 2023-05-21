@@ -10,6 +10,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AsyncInferenceConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub async_inference_config: Option<AsyncInferenceConfig>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataCaptureConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_capture_config: Option<DataCaptureConfig>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointConfigName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_config_name: Option<String>,
 
     /// Property description not available.
@@ -46,6 +49,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExplainerConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub explainer_config: Option<ExplainerConfig>,
 
     ///
@@ -67,6 +71,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -93,6 +98,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ShadowProductionVariants")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_production_variants: Option<Vec<ProductionVariant>>,
 
     ///
@@ -108,6 +114,7 @@ pub struct CfnEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -191,6 +198,7 @@ pub struct AsyncInferenceClientConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxConcurrentInvocationsPerInstance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrent_invocations_per_instance: Option<i64>,
 }
 
@@ -220,6 +228,7 @@ pub struct AsyncInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_config: Option<AsyncInferenceClientConfig>,
 
     ///
@@ -266,6 +275,7 @@ pub struct AsyncInferenceNotificationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ErrorTopic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_topic: Option<String>,
 
     /// Property description not available.
@@ -276,6 +286,7 @@ pub struct AsyncInferenceNotificationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IncludeInferenceResponseIn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_inference_response_in: Option<Vec<String>>,
 
     ///
@@ -287,6 +298,7 @@ pub struct AsyncInferenceNotificationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SuccessTopic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub success_topic: Option<String>,
 }
 
@@ -316,6 +328,7 @@ pub struct AsyncInferenceOutputConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -327,6 +340,7 @@ pub struct AsyncInferenceOutputConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotificationConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_config: Option<AsyncInferenceNotificationConfig>,
 
     /// Property description not available.
@@ -337,6 +351,7 @@ pub struct AsyncInferenceOutputConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3FailurePath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_failure_path: Option<String>,
 
     ///
@@ -348,6 +363,7 @@ pub struct AsyncInferenceOutputConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3OutputPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_output_path: Option<String>,
 }
 
@@ -383,6 +399,7 @@ pub struct CaptureContentTypeHeader {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CsvContentTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv_content_types: Option<Vec<String>>,
 
     ///
@@ -396,6 +413,7 @@ pub struct CaptureContentTypeHeader {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JsonContentTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json_content_types: Option<Vec<String>>,
 }
 
@@ -490,6 +508,7 @@ pub struct ClarifyExplainerConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableExplanations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_explanations: Option<String>,
 
     /// Property description not available.
@@ -500,6 +519,7 @@ pub struct ClarifyExplainerConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_config: Option<ClarifyInferenceConfig>,
 
     /// Property description not available.
@@ -580,6 +600,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentTemplate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_template: Option<String>,
 
     /// Property description not available.
@@ -590,6 +611,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeatureHeaders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub feature_headers: Option<Vec<ClarifyHeader>>,
 
     /// Property description not available.
@@ -600,6 +622,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeatureTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub feature_types: Option<Vec<ClarifyFeatureType>>,
 
     /// Property description not available.
@@ -610,6 +633,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeaturesAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub features_attribute: Option<String>,
 
     /// Property description not available.
@@ -620,6 +644,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LabelAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_attribute: Option<String>,
 
     /// Property description not available.
@@ -630,6 +655,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LabelHeaders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_headers: Option<Vec<ClarifyHeader>>,
 
     /// Property description not available.
@@ -640,6 +666,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LabelIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_index: Option<i64>,
 
     /// Property description not available.
@@ -650,6 +677,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxPayloadInMB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_payload_in_mb: Option<i64>,
 
     /// Property description not available.
@@ -660,6 +688,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxRecordCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_record_count: Option<i64>,
 
     /// Property description not available.
@@ -670,6 +699,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub probability_attribute: Option<String>,
 
     /// Property description not available.
@@ -680,6 +710,7 @@ pub struct ClarifyInferenceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub probability_index: Option<i64>,
 }
 
@@ -708,6 +739,7 @@ pub struct ClarifyShapBaselineConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MimeType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mime_type: Option<String>,
 
     /// Property description not available.
@@ -718,6 +750,7 @@ pub struct ClarifyShapBaselineConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ShapBaseline")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shap_baseline: Option<String>,
 
     /// Property description not available.
@@ -728,6 +761,7 @@ pub struct ClarifyShapBaselineConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ShapBaselineUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shap_baseline_uri: Option<String>,
 }
 
@@ -756,6 +790,7 @@ pub struct ClarifyShapConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfSamples")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_samples: Option<i64>,
 
     /// Property description not available.
@@ -766,6 +801,7 @@ pub struct ClarifyShapConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Seed")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub seed: Option<i64>,
 
     /// Property description not available.
@@ -786,6 +822,7 @@ pub struct ClarifyShapConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TextConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_config: Option<ClarifyTextConfig>,
 
     /// Property description not available.
@@ -796,6 +833,7 @@ pub struct ClarifyShapConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UseLogit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_logit: Option<bool>,
 }
 
@@ -869,6 +907,7 @@ pub struct DataCaptureConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CaptureContentTypeHeader")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_content_type_header: Option<CaptureContentTypeHeader>,
 
     ///
@@ -908,6 +947,7 @@ pub struct DataCaptureConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableCapture")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_capture: Option<bool>,
 
     ///
@@ -938,6 +978,7 @@ pub struct DataCaptureConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 }
 
@@ -1012,6 +1053,7 @@ pub struct ExplainerConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClarifyExplainerConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub clarify_explainer_config: Option<ClarifyExplainerConfig>,
 }
 
@@ -1047,6 +1089,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceleratorType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_type: Option<ProductionVariantAcceleratorTypeEnum>,
 
     /// Property description not available.
@@ -1057,6 +1100,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerStartupHealthCheckTimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_startup_health_check_timeout_in_seconds: Option<i64>,
 
     /// Property description not available.
@@ -1067,6 +1111,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableSSMAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_ssmaccess: Option<bool>,
 
     ///
@@ -1080,6 +1125,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialInstanceCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub initial_instance_count: Option<i64>,
 
     ///
@@ -1104,6 +1150,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<ProductionVariantInstanceTypeEnum>,
 
     /// Property description not available.
@@ -1114,6 +1161,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataDownloadTimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_data_download_timeout_in_seconds: Option<i64>,
 
     ///
@@ -1140,6 +1188,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerlessConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub serverless_config: Option<ServerlessConfig>,
 
     ///
@@ -1165,6 +1214,7 @@ pub struct ProductionVariant {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeSizeInGB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_size_in_gb: Option<i64>,
 }
 
@@ -1884,6 +1934,7 @@ pub struct ServerlessConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisionedConcurrency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_concurrency: Option<i64>,
 }
 

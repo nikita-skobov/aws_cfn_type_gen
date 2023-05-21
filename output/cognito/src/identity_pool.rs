@@ -12,6 +12,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowClassicFlow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_classic_flow: Option<bool>,
 
     ///
@@ -34,6 +35,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoEvents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cognito_events: Option<serde_json::Value>,
 
     ///
@@ -45,6 +47,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoIdentityProviders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cognito_identity_providers: Option<Vec<CognitoIdentityProvider>>,
 
     ///
@@ -56,6 +59,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CognitoStreams")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cognito_streams: Option<CognitoStreams>,
 
     ///
@@ -71,6 +75,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeveloperProviderName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub developer_provider_name: Option<String>,
 
     ///
@@ -88,6 +93,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_pool_name: Option<String>,
 
     ///
@@ -99,6 +105,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenIdConnectProviderARNs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub open_id_connect_provider_arns: Option<Vec<String>>,
 
     ///
@@ -110,6 +117,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PushSync")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub push_sync: Option<PushSync>,
 
     ///
@@ -121,6 +129,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamlProviderARNs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub saml_provider_arns: Option<Vec<String>>,
 
     ///
@@ -132,6 +141,7 @@ pub struct CfnIdentityPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedLoginProviders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_login_providers: Option<serde_json::Value>,
 }
 
@@ -169,6 +179,7 @@ pub struct CognitoIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_id: Option<String>,
 
     ///
@@ -180,6 +191,7 @@ pub struct CognitoIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProviderName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provider_name: Option<String>,
 
     ///
@@ -195,6 +207,7 @@ pub struct CognitoIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerSideTokenCheck")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_side_token_check: Option<bool>,
 }
 
@@ -224,6 +237,7 @@ pub struct CognitoStreams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -235,6 +249,7 @@ pub struct CognitoStreams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_name: Option<String>,
 
     ///
@@ -246,6 +261,7 @@ pub struct CognitoStreams {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamingStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub streaming_status: Option<String>,
 }
 
@@ -275,6 +291,7 @@ pub struct PushSync {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_arns: Option<Vec<String>>,
 
     ///
@@ -286,6 +303,7 @@ pub struct PushSync {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 }
 

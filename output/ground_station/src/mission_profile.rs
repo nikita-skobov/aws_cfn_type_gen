@@ -10,6 +10,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactPostPassDurationSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contact_post_pass_duration_seconds: Option<i64>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactPrePassDurationSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contact_pre_pass_duration_seconds: Option<i64>,
 
     ///
@@ -64,6 +66,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamsKmsKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub streams_kms_key: Option<StreamsKmsKey>,
 
     /// Property description not available.
@@ -74,6 +77,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamsKmsRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub streams_kms_role: Option<String>,
 
     ///
@@ -85,6 +89,7 @@ pub struct CfnMissionProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -129,6 +134,7 @@ pub struct DataflowEdge {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<String>,
 
     ///
@@ -140,6 +146,7 @@ pub struct DataflowEdge {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source: Option<String>,
 }
 
@@ -168,6 +175,7 @@ pub struct StreamsKmsKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsAliasArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_alias_arn: Option<String>,
 
     /// Property description not available.
@@ -178,6 +186,7 @@ pub struct StreamsKmsKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<String>,
 }
 

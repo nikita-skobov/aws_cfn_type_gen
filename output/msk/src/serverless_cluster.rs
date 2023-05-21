@@ -29,6 +29,7 @@ pub struct CfnServerlessCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     /// Property description not available.
@@ -160,6 +161,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     /// Property description not available.

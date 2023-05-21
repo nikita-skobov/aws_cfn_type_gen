@@ -16,6 +16,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeDefinitions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attribute_definitions: Option<Vec<AttributeDefinition>>,
 
     ///
@@ -35,6 +36,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BillingMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_mode: Option<TableBillingModeEnum>,
 
     ///
@@ -46,6 +48,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributorInsightsSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contributor_insights_specification: Option<ContributorInsightsSpecification>,
 
     ///
@@ -57,6 +60,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtectionEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deletion_protection_enabled: Option<bool>,
 
     ///
@@ -70,6 +74,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalSecondaryIndexes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_secondary_indexes: Option<Vec<GlobalSecondaryIndex>>,
 
     ///
@@ -83,6 +88,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImportSourceSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub import_source_specification: Option<ImportSourceSpecification>,
 
     ///
@@ -105,6 +111,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_stream_specification: Option<KinesisStreamSpecification>,
 
     ///
@@ -116,6 +123,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalSecondaryIndexes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_secondary_indexes: Option<Vec<LocalSecondaryIndex>>,
 
     ///
@@ -127,6 +135,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointInTimeRecoverySpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub point_in_time_recovery_specification: Option<PointInTimeRecoverySpecification>,
 
     ///
@@ -140,6 +149,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedThroughput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_throughput: Option<ProvisionedThroughput>,
 
     ///
@@ -151,6 +161,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "SSESpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssespecification: Option<SSESpecification>,
 
     ///
@@ -162,6 +173,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_specification: Option<StreamSpecification>,
 
     ///
@@ -175,6 +187,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableClass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_class: Option<TableTableClassEnum>,
 
     ///
@@ -194,6 +207,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_name: Option<String>,
 
     ///
@@ -207,6 +221,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -220,6 +235,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeToLiveSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_to_live_specification: Option<TimeToLiveSpecification>,
 }
 
@@ -457,6 +473,7 @@ pub struct Csv {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Delimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<String>,
 
     ///
@@ -470,6 +487,7 @@ pub struct Csv {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HeaderList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_list: Option<Vec<String>>,
 }
 
@@ -526,6 +544,7 @@ pub struct GlobalSecondaryIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributorInsightsSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contributor_insights_specification: Option<ContributorInsightsSpecification>,
 
     ///
@@ -584,6 +603,7 @@ pub struct GlobalSecondaryIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedThroughput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_throughput: Option<ProvisionedThroughput>,
 }
 
@@ -652,6 +672,7 @@ pub struct ImportSourceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InputCompressionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_compression_type: Option<ImportSourceSpecificationInputCompressionTypeEnum>,
 
     ///
@@ -676,6 +697,7 @@ pub struct ImportSourceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InputFormatOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_format_options: Option<InputFormatOptions>,
 
     ///
@@ -764,6 +786,7 @@ pub struct InputFormatOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Csv")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv: Option<Csv>,
 }
 
@@ -1029,6 +1052,7 @@ pub struct PointInTimeRecoverySpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointInTimeRecoveryEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub point_in_time_recovery_enabled: Option<bool>,
 }
 
@@ -1062,6 +1086,7 @@ pub struct Projection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NonKeyAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub non_key_attributes: Option<Vec<String>>,
 
     ///
@@ -1077,6 +1102,7 @@ pub struct Projection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProjectionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub projection_type: Option<ProjectionProjectionTypeEnum>,
 }
 
@@ -1197,6 +1223,7 @@ pub struct S3BucketSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3BucketOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_owner: Option<String>,
 
     ///
@@ -1210,6 +1237,7 @@ pub struct S3BucketSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3KeyPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_key_prefix: Option<String>,
 }
 
@@ -1257,6 +1285,7 @@ pub struct SSESpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSMasterKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kmsmaster_key_id: Option<String>,
 
     ///
@@ -1281,6 +1310,7 @@ pub struct SSESpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSEType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssetype: Option<String>,
 }
 

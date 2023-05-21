@@ -20,6 +20,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeFilters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_filters: Option<Vec<MetricStreamFilter>>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeFilters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_filters: Option<Vec<MetricStreamFilter>>,
 
     ///
@@ -57,6 +59,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeLinkedAccountsMetrics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_linked_accounts_metrics: Option<bool>,
 
     ///
@@ -70,6 +73,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -106,6 +110,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatisticsConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statistics_configurations: Option<Vec<MetricStreamStatisticsConfiguration>>,
 
     ///
@@ -119,6 +124,7 @@ pub struct CfnMetricStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -154,6 +160,7 @@ pub struct MetricStreamFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_names: Option<Vec<String>>,
 
     ///

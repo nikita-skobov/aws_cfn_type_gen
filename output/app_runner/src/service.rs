@@ -20,6 +20,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoScalingConfigurationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_scaling_configuration_arn: Option<String>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     ///
@@ -42,6 +44,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_configuration: Option<HealthCheckConfiguration>,
 
     ///
@@ -53,6 +56,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_configuration: Option<InstanceConfiguration>,
 
     ///
@@ -64,6 +68,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -75,6 +80,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObservabilityConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub observability_configuration: Option<ServiceObservabilityConfiguration>,
 
     ///
@@ -94,6 +100,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_name: Option<String>,
 
     ///
@@ -116,6 +123,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -203,6 +211,7 @@ pub struct AuthenticationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_role_arn: Option<String>,
 
     ///
@@ -220,6 +229,7 @@ pub struct AuthenticationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_arn: Option<String>,
 }
 
@@ -285,6 +295,7 @@ pub struct CodeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeConfigurationValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_configuration_values: Option<CodeConfigurationValues>,
 
     ///
@@ -352,6 +363,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildCommand")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub build_command: Option<String>,
 
     ///
@@ -371,6 +383,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<String>,
 
     ///
@@ -394,6 +407,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeEnvironmentSecrets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
 
     ///
@@ -405,6 +419,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeEnvironmentVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime_environment_variables: Option<Vec<KeyValuePair>>,
 
     ///
@@ -418,6 +433,7 @@ pub struct CodeConfigurationValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartCommand")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_command: Option<String>,
 }
 
@@ -516,6 +532,7 @@ pub struct CodeRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_configuration: Option<CodeConfiguration>,
 
     ///
@@ -620,6 +637,7 @@ pub struct EgressConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConnectorArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_connector_arn: Option<String>,
 }
 
@@ -743,6 +761,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthyThreshold")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub healthy_threshold: Option<i64>,
 
     ///
@@ -760,6 +779,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<i64>,
 
     ///
@@ -777,6 +797,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 
     ///
@@ -794,6 +815,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<HealthCheckConfigurationProtocolEnum>,
 
     ///
@@ -811,6 +833,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i64>,
 
     ///
@@ -828,6 +851,7 @@ pub struct HealthCheckConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnhealthyThreshold")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unhealthy_threshold: Option<i64>,
 }
 
@@ -963,6 +987,7 @@ pub struct ImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<String>,
 
     /// Property description not available.
@@ -973,6 +998,7 @@ pub struct ImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeEnvironmentSecrets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
 
     ///
@@ -984,6 +1010,7 @@ pub struct ImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeEnvironmentVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime_environment_variables: Option<Vec<KeyValuePair>>,
 
     ///
@@ -997,6 +1024,7 @@ pub struct ImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartCommand")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_command: Option<String>,
 }
 
@@ -1044,6 +1072,7 @@ pub struct ImageRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_configuration: Option<ImageConfiguration>,
 
     ///
@@ -1181,6 +1210,7 @@ pub struct InstanceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cpu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu: Option<String>,
 
     ///
@@ -1198,6 +1228,7 @@ pub struct InstanceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_role_arn: Option<String>,
 
     ///
@@ -1217,6 +1248,7 @@ pub struct InstanceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory: Option<String>,
 }
 
@@ -1300,6 +1332,7 @@ pub struct KeyValuePair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -1311,6 +1344,7 @@ pub struct KeyValuePair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -1340,6 +1374,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub egress_configuration: Option<EgressConfiguration>,
 
     ///
@@ -1351,6 +1386,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngressConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ingress_configuration: Option<IngressConfiguration>,
 }
 
@@ -1398,6 +1434,7 @@ pub struct ServiceObservabilityConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObservabilityConfigurationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub observability_configuration_arn: Option<String>,
 
     ///
@@ -1533,6 +1570,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_configuration: Option<AuthenticationConfiguration>,
 
     ///
@@ -1546,6 +1584,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoDeploymentsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_deployments_enabled: Option<bool>,
 
     ///
@@ -1559,6 +1598,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeRepository")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_repository: Option<CodeRepository>,
 
     ///
@@ -1572,6 +1612,7 @@ pub struct SourceConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageRepository")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_repository: Option<ImageRepository>,
 }
 

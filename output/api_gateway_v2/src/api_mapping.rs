@@ -21,6 +21,7 @@ pub struct CfnApiMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiMappingKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_mapping_key: Option<String>,
 
     ///

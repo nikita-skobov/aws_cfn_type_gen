@@ -14,6 +14,7 @@ pub struct CfnLocationFSxOpenZFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FsxFilesystemArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fsx_filesystem_arn: Option<String>,
 
     ///
@@ -57,6 +58,7 @@ pub struct CfnLocationFSxOpenZFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdirectory: Option<String>,
 
     ///
@@ -70,6 +72,7 @@ pub struct CfnLocationFSxOpenZFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -143,6 +146,7 @@ pub struct MountOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<MountOptionsVersionEnum>,
 }
 
@@ -228,6 +232,7 @@ pub struct Protocol {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NFS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nfs: Option<NFS>,
 }
 

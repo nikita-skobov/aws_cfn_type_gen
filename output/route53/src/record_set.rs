@@ -18,6 +18,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AliasTarget")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alias_target: Option<AliasTarget>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrRoutingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_routing_config: Option<CidrRoutingConfig>,
 
     ///
@@ -44,6 +46,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<String>,
 
     ///
@@ -69,6 +72,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Failover")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failover: Option<RecordSetFailoverEnum>,
 
     ///
@@ -92,6 +96,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeoLocation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub geo_location: Option<GeoLocation>,
 
     ///
@@ -133,6 +138,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_id: Option<String>,
 
     ///
@@ -148,6 +154,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_zone_id: Option<String>,
 
     ///
@@ -165,6 +172,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostedZoneName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_zone_name: Option<String>,
 
     ///
@@ -180,6 +188,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiValueAnswer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_value_answer: Option<bool>,
 
     ///
@@ -224,6 +233,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region: Option<RecordSetRegionEnum>,
 
     ///
@@ -239,6 +249,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceRecords")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_records: Option<Vec<String>>,
 
     ///
@@ -256,6 +267,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub set_identifier: Option<String>,
 
     ///
@@ -269,6 +281,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TTL")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ttl: Option<String>,
 
     ///
@@ -307,6 +320,7 @@ pub struct CfnRecordSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<i64>,
 }
 
@@ -617,6 +631,7 @@ pub struct AliasTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluateTargetHealth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub evaluate_target_health: Option<bool>,
 
     ///
@@ -740,6 +755,7 @@ impl cfn_resources::CfnResource for CidrRoutingConfig {
 pub struct GeoLocation {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset-geolocation.html#cfn-route53-recordset-geolocation-continentcode
     #[serde(rename = "ContinentCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub continent_code: Option<String>,
 
     ///
@@ -757,6 +773,7 @@ pub struct GeoLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CountryCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub country_code: Option<String>,
 
     ///
@@ -774,6 +791,7 @@ pub struct GeoLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubdivisionCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdivision_code: Option<String>,
 }
 

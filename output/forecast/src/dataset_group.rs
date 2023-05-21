@@ -14,6 +14,7 @@ pub struct CfnDatasetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_arns: Option<Vec<String>>,
 
     ///
@@ -59,6 +60,7 @@ pub struct CfnDatasetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

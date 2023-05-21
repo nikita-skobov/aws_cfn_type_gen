@@ -78,6 +78,7 @@ pub struct CloudWatchEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchEncryptionMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_encryption_mode: Option<CloudWatchEncryptionCloudWatchEncryptionModeEnum>,
 
     ///
@@ -91,6 +92,7 @@ pub struct CloudWatchEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<String>,
 }
 
@@ -137,6 +139,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchEncryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_encryption: Option<CloudWatchEncryption>,
 
     ///
@@ -148,6 +151,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobBookmarksEncryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_bookmarks_encryption: Option<JobBookmarksEncryption>,
 
     ///
@@ -159,6 +163,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Encryptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_encryptions: Option<S3Encryptions>,
 }
 
@@ -202,6 +207,7 @@ pub struct JobBookmarksEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobBookmarksEncryptionMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_bookmarks_encryption_mode: Option<JobBookmarksEncryptionJobBookmarksEncryptionModeEnum>,
 
     ///
@@ -215,6 +221,7 @@ pub struct JobBookmarksEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<String>,
 }
 
@@ -263,6 +270,7 @@ pub struct S3Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<String>,
 
     ///
@@ -276,6 +284,7 @@ pub struct S3Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3EncryptionMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_encryption_mode: Option<S3EncryptionS3EncryptionModeEnum>,
 }
 

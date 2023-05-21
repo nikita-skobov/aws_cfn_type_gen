@@ -12,6 +12,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CreateAlias")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub create_alias: Option<bool>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Edition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub edition: Option<MicrosoftADEditionEnum>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableSso")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_sso: Option<bool>,
 
     ///
@@ -77,6 +80,7 @@ pub struct CfnMicrosoftAD {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ShortName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub short_name: Option<String>,
 
     ///

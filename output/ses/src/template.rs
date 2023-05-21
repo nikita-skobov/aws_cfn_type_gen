@@ -10,6 +10,7 @@ pub struct CfnTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Template")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template: Option<Box<Template>>,
 }
 
@@ -43,6 +44,7 @@ pub struct Template {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HtmlPart")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub html_part: Option<String>,
 
     ///
@@ -65,6 +67,7 @@ pub struct Template {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TemplateName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_name: Option<String>,
 
     ///
@@ -76,6 +79,7 @@ pub struct Template {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextPart")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_part: Option<String>,
 }
 

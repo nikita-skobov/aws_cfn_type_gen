@@ -10,6 +10,7 @@ pub struct CfnDirectoryConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateBasedAuthProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_based_auth_properties: Option<CertificateBasedAuthProperties>,
 
     ///
@@ -80,6 +81,7 @@ pub struct CertificateBasedAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateAuthorityArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_authority_arn: Option<String>,
 
     ///
@@ -93,6 +95,7 @@ pub struct CertificateBasedAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<CertificateBasedAuthPropertiesStatusEnum>,
 }
 

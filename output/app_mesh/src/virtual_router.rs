@@ -33,6 +33,7 @@ pub struct CfnVirtualRouter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mesh_owner: Option<String>,
 
     ///
@@ -57,6 +58,7 @@ pub struct CfnVirtualRouter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -72,6 +74,7 @@ pub struct CfnVirtualRouter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualRouterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_router_name: Option<String>,
 }
 

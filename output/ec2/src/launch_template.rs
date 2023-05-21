@@ -33,6 +33,7 @@ pub struct CfnLaunchTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_name: Option<String>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnLaunchTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_specifications: Option<Vec<LaunchTemplateTagSpecification>>,
 
     ///
@@ -61,6 +63,7 @@ pub struct CfnLaunchTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_description: Option<String>,
 }
 
@@ -128,6 +131,7 @@ pub struct AcceleratorCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -139,6 +143,7 @@ pub struct AcceleratorCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -168,6 +173,7 @@ pub struct AcceleratorTotalMemoryMiB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -179,6 +185,7 @@ pub struct AcceleratorTotalMemoryMiB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -208,6 +215,7 @@ pub struct BaselineEbsBandwidthMbps {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -219,6 +227,7 @@ pub struct BaselineEbsBandwidthMbps {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -250,6 +259,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_name: Option<String>,
 
     ///
@@ -261,6 +271,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ebs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs: Option<Ebs>,
 
     ///
@@ -272,6 +283,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoDevice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_device: Option<String>,
 
     ///
@@ -283,6 +295,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_name: Option<String>,
 }
 
@@ -320,6 +333,7 @@ pub struct CapacityReservationSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationPreference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_reservation_preference:
         Option<CapacityReservationSpecificationCapacityReservationPreferenceEnum>,
 
@@ -332,6 +346,7 @@ pub struct CapacityReservationSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationTarget")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_reservation_target: Option<CapacityReservationTarget>,
 }
 
@@ -384,6 +399,7 @@ pub struct CapacityReservationTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_reservation_id: Option<String>,
 
     ///
@@ -395,6 +411,7 @@ pub struct CapacityReservationTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationResourceGroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_reservation_resource_group_arn: Option<String>,
 }
 
@@ -428,6 +445,7 @@ pub struct CpuOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmdSevSnp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amd_sev_snp: Option<CpuOptionsAmdSevSnpEnum>,
 
     ///
@@ -439,6 +457,7 @@ pub struct CpuOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoreCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub core_count: Option<i64>,
 
     ///
@@ -450,6 +469,7 @@ pub struct CpuOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThreadsPerCore")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threads_per_core: Option<i64>,
 }
 
@@ -500,6 +520,7 @@ pub struct CreditSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuCredits")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_credits: Option<String>,
 }
 
@@ -531,6 +552,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOnTermination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -542,6 +564,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
 
     ///
@@ -561,6 +584,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///
@@ -572,6 +596,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -583,6 +608,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
 
     ///
@@ -596,6 +622,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Throughput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throughput: Option<i64>,
 
     ///
@@ -609,6 +636,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_size: Option<i64>,
 
     ///
@@ -622,6 +650,7 @@ pub struct Ebs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_type: Option<EbsVolumeTypeEnum>,
 }
 
@@ -690,6 +719,7 @@ pub struct ElasticGpuSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -719,6 +749,7 @@ pub struct EnclaveOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -752,6 +783,7 @@ pub struct HibernationOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configured")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configured: Option<bool>,
 }
 
@@ -785,6 +817,7 @@ pub struct IamInstanceProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 
     ///
@@ -796,6 +829,7 @@ pub struct IamInstanceProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -829,6 +863,7 @@ pub struct InstanceMarketOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarketType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub market_type: Option<InstanceMarketOptionsMarketTypeEnum>,
 
     ///
@@ -840,6 +875,7 @@ pub struct InstanceMarketOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_options: Option<SpotOptions>,
 }
 
@@ -896,6 +932,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_count: Option<AcceleratorCount>,
 
     ///
@@ -911,6 +948,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorManufacturers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_manufacturers: Option<Vec<String>>,
 
     ///
@@ -926,6 +964,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_names: Option<Vec<String>>,
 
     ///
@@ -939,6 +978,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTotalMemoryMiB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_total_memory_mi_b: Option<AcceleratorTotalMemoryMiB>,
 
     ///
@@ -954,6 +994,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceleratorTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_types: Option<Vec<String>>,
 
     ///
@@ -975,6 +1016,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedInstanceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_instance_types: Option<Vec<String>>,
 
     ///
@@ -992,6 +1034,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BareMetal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bare_metal: Option<InstanceRequirementsBareMetalEnum>,
 
     ///
@@ -1005,6 +1048,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaselineEbsBandwidthMbps")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub baseline_ebs_bandwidth_mbps: Option<BaselineEbsBandwidthMbps>,
 
     ///
@@ -1022,6 +1066,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BurstablePerformance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub burstable_performance: Option<InstanceRequirementsBurstablePerformanceEnum>,
 
     ///
@@ -1039,6 +1084,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuManufacturers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_manufacturers: Option<Vec<String>>,
 
     ///
@@ -1060,6 +1106,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedInstanceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_instance_types: Option<Vec<String>>,
 
     ///
@@ -1077,6 +1124,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceGenerations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_generations: Option<Vec<String>>,
 
     ///
@@ -1094,6 +1142,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalStorage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_storage: Option<InstanceRequirementsLocalStorageEnum>,
 
     ///
@@ -1109,6 +1158,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalStorageTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_storage_types: Option<Vec<String>>,
 
     ///
@@ -1122,6 +1172,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryGiBPerVCpu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_gi_bper_vcpu: Option<MemoryGiBPerVCpu>,
 
     ///
@@ -1133,6 +1184,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryMiB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_mi_b: Option<MemoryMiB>,
 
     ///
@@ -1146,6 +1198,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkBandwidthGbps")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_bandwidth_gbps: Option<NetworkBandwidthGbps>,
 
     ///
@@ -1159,6 +1212,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_count: Option<NetworkInterfaceCount>,
 
     ///
@@ -1180,6 +1234,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnDemandMaxPricePercentageOverLowestPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -1195,6 +1250,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireHibernateSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub require_hibernate_support: Option<bool>,
 
     ///
@@ -1216,6 +1272,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotMaxPricePercentageOverLowestPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -1229,6 +1286,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalLocalStorageGB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_local_storage_gb: Option<TotalLocalStorageGB>,
 
     ///
@@ -1240,6 +1298,7 @@ pub struct InstanceRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VCpuCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vcpu_count: Option<VCpuCount>,
 }
 
@@ -1382,6 +1441,7 @@ pub struct Ipv4PrefixSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv4Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv4_prefix: Option<String>,
 }
 
@@ -1413,6 +1473,7 @@ pub struct Ipv6Add {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_address: Option<String>,
 }
 
@@ -1444,6 +1505,7 @@ pub struct Ipv6PrefixSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_prefix: Option<String>,
 }
 
@@ -1473,6 +1535,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockDeviceMappings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
 
     ///
@@ -1484,6 +1547,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityReservationSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_reservation_specification: Option<CapacityReservationSpecification>,
 
     ///
@@ -1495,6 +1559,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CpuOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_options: Option<CpuOptions>,
 
     ///
@@ -1506,6 +1571,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreditSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credit_specification: Option<CreditSpecification>,
 
     ///
@@ -1517,6 +1583,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableApiStop")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_api_stop: Option<bool>,
 
     ///
@@ -1528,6 +1595,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableApiTermination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_api_termination: Option<bool>,
 
     ///
@@ -1539,6 +1607,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EbsOptimized")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -1550,6 +1619,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticGpuSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elastic_gpu_specifications: Option<Vec<ElasticGpuSpecification>>,
 
     ///
@@ -1561,6 +1631,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticInferenceAccelerators")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elastic_inference_accelerators: Option<Vec<LaunchTemplateElasticInferenceAccelerator>>,
 
     ///
@@ -1574,6 +1645,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnclaveOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enclave_options: Option<EnclaveOptions>,
 
     ///
@@ -1585,6 +1657,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HibernationOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hibernation_options: Option<HibernationOptions>,
 
     ///
@@ -1596,6 +1669,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamInstanceProfile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_instance_profile: Option<IamInstanceProfile>,
 
     ///
@@ -1613,6 +1687,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_id: Option<String>,
 
     ///
@@ -1628,6 +1703,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceInitiatedShutdownBehavior")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_initiated_shutdown_behavior:
         Option<LaunchTemplateDataInstanceInitiatedShutdownBehaviorEnum>,
 
@@ -1640,6 +1716,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceMarketOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_market_options: Option<InstanceMarketOptions>,
 
     ///
@@ -1653,6 +1730,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceRequirements")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_requirements: Option<InstanceRequirements>,
 
     ///
@@ -1668,6 +1746,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<LaunchTemplateDataInstanceTypeEnum>,
 
     ///
@@ -1681,6 +1760,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KernelId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kernel_id: Option<String>,
 
     ///
@@ -1694,6 +1774,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_name: Option<String>,
 
     ///
@@ -1705,6 +1786,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_specifications: Option<Vec<LicenseSpecification>>,
 
     ///
@@ -1716,6 +1798,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_options: Option<MaintenanceOptions>,
 
     ///
@@ -1727,6 +1810,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetadataOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata_options: Option<MetadataOptions>,
 
     ///
@@ -1738,6 +1822,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Monitoring")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub monitoring: Option<Monitoring>,
 
     ///
@@ -1749,6 +1834,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaces")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interfaces: Option<Vec<NetworkInterface>>,
 
     ///
@@ -1760,6 +1846,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Placement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement: Option<Placement>,
 
     ///
@@ -1771,6 +1858,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateDnsNameOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_dns_name_options: Option<PrivateDnsNameOptions>,
 
     ///
@@ -1784,6 +1872,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RamDiskId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ram_disk_id: Option<String>,
 
     ///
@@ -1795,6 +1884,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -1806,6 +1896,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -1825,6 +1916,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
     ///
@@ -1838,6 +1930,7 @@ pub struct LaunchTemplateData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_data: Option<String>,
 }
 
@@ -4491,6 +4584,7 @@ pub struct LaunchTemplateElasticInferenceAccelerator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<i64>,
 
     ///
@@ -4502,6 +4596,7 @@ pub struct LaunchTemplateElasticInferenceAccelerator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -4544,6 +4639,7 @@ pub struct LaunchTemplateTagSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<LaunchTemplateTagSpecificationResourceTypeEnum>,
 
     ///
@@ -4555,6 +4651,7 @@ pub struct LaunchTemplateTagSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -4935,6 +5032,7 @@ pub struct LicenseSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseConfigurationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_configuration_arn: Option<String>,
 }
 
@@ -4966,6 +5064,7 @@ pub struct MaintenanceOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoRecovery")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_recovery: Option<MaintenanceOptionsAutoRecoveryEnum>,
 }
 
@@ -5012,6 +5111,7 @@ pub struct MemoryGiBPerVCpu {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<f64>,
 
     ///
@@ -5023,6 +5123,7 @@ pub struct MemoryGiBPerVCpu {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<f64>,
 }
 
@@ -5052,6 +5153,7 @@ pub struct MemoryMiB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -5063,6 +5165,7 @@ pub struct MemoryMiB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -5098,6 +5201,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_endpoint: Option<MetadataOptionsHttpEndpointEnum>,
 
     ///
@@ -5113,6 +5217,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpProtocolIpv6")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_protocol_ipv6: Option<MetadataOptionsHttpProtocolIpv6Enum>,
 
     ///
@@ -5128,6 +5233,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpPutResponseHopLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_put_response_hop_limit: Option<i64>,
 
     ///
@@ -5145,6 +5251,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpTokens")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_tokens: Option<MetadataOptionsHttpTokensEnum>,
 
     ///
@@ -5160,6 +5267,7 @@ pub struct MetadataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceMetadataTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_metadata_tags: Option<MetadataOptionsInstanceMetadataTagsEnum>,
 }
 
@@ -5259,6 +5367,7 @@ pub struct Monitoring {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -5288,6 +5397,7 @@ pub struct NetworkBandwidthGbps {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<f64>,
 
     ///
@@ -5299,6 +5409,7 @@ pub struct NetworkBandwidthGbps {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<f64>,
 }
 
@@ -5332,6 +5443,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociateCarrierIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub associate_carrier_ip_address: Option<bool>,
 
     ///
@@ -5343,6 +5455,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociatePublicIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub associate_public_ip_address: Option<bool>,
 
     ///
@@ -5354,6 +5467,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOnTermination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -5365,6 +5479,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -5376,6 +5491,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_index: Option<i64>,
 
     ///
@@ -5387,6 +5503,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups: Option<Vec<String>>,
 
     ///
@@ -5402,6 +5519,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InterfaceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interface_type: Option<String>,
 
     ///
@@ -5413,6 +5531,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv4PrefixCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv4_prefix_count: Option<i64>,
 
     ///
@@ -5424,6 +5543,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv4Prefixes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv4_prefixes: Option<Vec<Ipv4PrefixSpecification>>,
 
     ///
@@ -5435,6 +5555,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6AddressCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_address_count: Option<i64>,
 
     ///
@@ -5446,6 +5567,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Addresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_addresses: Option<Vec<Ipv6Add>>,
 
     ///
@@ -5457,6 +5579,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6PrefixCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_prefix_count: Option<i64>,
 
     ///
@@ -5468,6 +5591,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Prefixes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_prefixes: Option<Vec<Ipv6PrefixSpecification>>,
 
     ///
@@ -5479,6 +5603,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkCardIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_card_index: Option<i64>,
 
     ///
@@ -5490,6 +5615,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<String>,
 
     ///
@@ -5501,6 +5627,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_address: Option<String>,
 
     ///
@@ -5512,6 +5639,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_addresses: Option<Vec<PrivateIpAdd>>,
 
     ///
@@ -5523,6 +5651,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_private_ip_address_count: Option<i64>,
 
     ///
@@ -5534,6 +5663,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<String>,
 }
 
@@ -5563,6 +5693,7 @@ pub struct NetworkInterfaceCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -5574,6 +5705,7 @@ pub struct NetworkInterfaceCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -5605,6 +5737,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Affinity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub affinity: Option<String>,
 
     ///
@@ -5616,6 +5749,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -5627,6 +5761,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_id: Option<String>,
 
     ///
@@ -5638,6 +5773,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_name: Option<String>,
 
     ///
@@ -5649,6 +5785,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_id: Option<String>,
 
     ///
@@ -5660,6 +5797,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostResourceGroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_resource_group_arn: Option<String>,
 
     ///
@@ -5671,6 +5809,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partition_number: Option<i64>,
 
     ///
@@ -5682,6 +5821,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpreadDomain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spread_domain: Option<String>,
 
     ///
@@ -5695,6 +5835,7 @@ pub struct Placement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tenancy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tenancy: Option<PlacementTenancyEnum>,
 }
 
@@ -5745,6 +5886,7 @@ pub struct PrivateDnsNameOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsAAAARecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_resource_name_dns_aaaarecord: Option<bool>,
 
     ///
@@ -5756,6 +5898,7 @@ pub struct PrivateDnsNameOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableResourceNameDnsARecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_resource_name_dns_arecord: Option<bool>,
 
     ///
@@ -5769,6 +5912,7 @@ pub struct PrivateDnsNameOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostnameType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hostname_type: Option<PrivateDnsNameOptionsHostnameTypeEnum>,
 }
 
@@ -5817,6 +5961,7 @@ pub struct PrivateIpAdd {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Primary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary: Option<bool>,
 
     ///
@@ -5828,6 +5973,7 @@ pub struct PrivateIpAdd {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_address: Option<String>,
 }
 
@@ -5859,6 +6005,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockDurationMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_duration_minutes: Option<i64>,
 
     ///
@@ -5872,6 +6019,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceInterruptionBehavior")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_interruption_behavior: Option<SpotOptionsInstanceInterruptionBehaviorEnum>,
 
     ///
@@ -5885,6 +6033,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_price: Option<String>,
 
     ///
@@ -5900,6 +6049,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpotInstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_instance_type: Option<SpotOptionsSpotInstanceTypeEnum>,
 
     ///
@@ -5915,6 +6065,7 @@ pub struct SpotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidUntil")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub valid_until: Option<String>,
 }
 
@@ -6034,6 +6185,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<TagSpecificationResourceTypeEnum>,
 
     ///
@@ -6045,6 +6197,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -6423,6 +6576,7 @@ pub struct TotalLocalStorageGB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<f64>,
 
     ///
@@ -6434,6 +6588,7 @@ pub struct TotalLocalStorageGB {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<f64>,
 }
 
@@ -6463,6 +6618,7 @@ pub struct VCpuCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -6474,6 +6630,7 @@ pub struct VCpuCount {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 

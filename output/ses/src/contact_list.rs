@@ -10,6 +10,7 @@ pub struct CfnContactList {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContactListName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contact_list_name: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnContactList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnContactList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -43,6 +46,7 @@ pub struct CfnContactList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Topics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub topics: Option<Vec<Topic>>,
 }
 
@@ -127,6 +131,7 @@ pub struct Topic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///

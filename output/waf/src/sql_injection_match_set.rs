@@ -27,6 +27,7 @@ pub struct CfnSqlInjectionMatchSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlInjectionMatchTuples")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sql_injection_match_tuples: Option<Vec<SqlInjectionMatchTuple>>,
 }
 
@@ -67,6 +68,7 @@ impl cfn_resources::CfnResource for CfnSqlInjectionMatchSet {
 pub struct FieldToMatch {
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-data
     #[serde(rename = "Data")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data: Option<String>,
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-bytematchset-bytematchtuples-fieldtomatch.html#cfn-waf-sizeconstraintset-sizeconstraint-fieldtomatch-type

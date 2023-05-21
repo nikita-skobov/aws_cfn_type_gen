@@ -12,6 +12,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_string: Option<String>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_mode: Option<AuthenticationMode>,
 
     ///
@@ -49,6 +51,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoPasswordRequired")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_password_required: Option<bool>,
 
     ///
@@ -60,6 +63,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Passwords")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub passwords: Option<Vec<String>>,
 
     /// Property description not available.
@@ -70,6 +74,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -149,6 +154,7 @@ pub struct AuthenticationMode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Passwords")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub passwords: Option<Vec<String>>,
 
     ///

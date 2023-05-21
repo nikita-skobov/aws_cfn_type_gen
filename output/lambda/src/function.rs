@@ -22,6 +22,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Architectures")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub architectures: Option<Vec<String>>,
 
     ///
@@ -48,6 +49,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeSigningConfigArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_signing_config_arn: Option<String>,
 
     ///
@@ -59,6 +61,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeadLetterConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dead_letter_config: Option<DeadLetterConfig>,
 
     ///
@@ -74,6 +77,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -85,6 +89,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<Environment>,
 
     ///
@@ -96,6 +101,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EphemeralStorage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ephemeral_storage: Option<EphemeralStorage>,
 
     ///
@@ -111,6 +117,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemConfigs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_system_configs: Option<Vec<FileSystemConfig>>,
 
     ///
@@ -124,6 +131,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_name: Option<String>,
 
     ///
@@ -139,6 +147,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Handler")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub handler: Option<String>,
 
     ///
@@ -150,6 +159,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_config: Option<ImageConfig>,
 
     ///
@@ -163,6 +173,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<String>,
 
     ///
@@ -174,6 +185,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Layers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub layers: Option<Vec<String>>,
 
     ///
@@ -189,6 +201,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemorySize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_size: Option<i64>,
 
     ///
@@ -202,6 +215,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PackageType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub package_type: Option<FunctionPackageTypeEnum>,
 
     ///
@@ -215,6 +229,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReservedConcurrentExecutions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reserved_concurrent_executions: Option<i64>,
 
     ///
@@ -243,6 +258,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime: Option<FunctionRuntimeEnum>,
 
     ///
@@ -254,6 +270,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeManagementConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime_management_config: Option<RuntimeManagementConfig>,
 
     ///
@@ -265,6 +282,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapStart")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snap_start: Option<SnapStart>,
 
     ///
@@ -276,6 +294,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -289,6 +308,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i64>,
 
     ///
@@ -300,6 +320,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TracingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tracing_config: Option<TracingConfig>,
 
     ///
@@ -311,6 +332,7 @@ pub struct CfnFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
 }
 
@@ -606,6 +628,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_uri: Option<String>,
 
     ///
@@ -623,6 +646,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket: Option<String>,
 
     ///
@@ -638,6 +662,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_key: Option<String>,
 
     ///
@@ -653,6 +678,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_object_version: Option<String>,
 
     ///
@@ -668,6 +694,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ZipFile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zip_file: Option<String>,
 }
 
@@ -753,6 +780,7 @@ pub struct DeadLetterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_arn: Option<String>,
 }
 
@@ -782,6 +810,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variables: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -930,6 +959,7 @@ pub struct ImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Command")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -943,6 +973,7 @@ pub struct ImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntryPoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entry_point: Option<Vec<String>>,
 
     ///
@@ -956,6 +987,7 @@ pub struct ImageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkingDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub working_directory: Option<String>,
 }
 
@@ -1020,6 +1052,7 @@ pub struct RuntimeManagementConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime_version_arn: Option<String>,
 
     ///
@@ -1153,6 +1186,7 @@ pub struct SnapStartResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplyOn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub apply_on: Option<SnapStartResponseApplyOnEnum>,
 
     ///
@@ -1166,6 +1200,7 @@ pub struct SnapStartResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptimizationStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub optimization_status: Option<SnapStartResponseOptimizationStatusEnum>,
 }
 
@@ -1275,6 +1310,7 @@ pub struct TracingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<TracingConfigModeEnum>,
 }
 
@@ -1323,6 +1359,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -1336,6 +1373,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 

@@ -14,6 +14,7 @@ pub struct CfnDBSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CIDRIP")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidrip: Option<String>,
 
     ///
@@ -36,6 +37,7 @@ pub struct CfnDBSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_security_group_id: Option<String>,
 
     ///
@@ -47,6 +49,7 @@ pub struct CfnDBSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_security_group_name: Option<String>,
 
     ///
@@ -58,6 +61,7 @@ pub struct CfnDBSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupOwnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_security_group_owner_id: Option<String>,
 }
 

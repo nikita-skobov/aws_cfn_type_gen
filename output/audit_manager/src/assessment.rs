@@ -10,6 +10,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssessmentReportsDestination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assessment_reports_destination: Option<AssessmentReportsDestination>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_account: Option<AWSAccount>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delegations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delegations: Option<Vec<Delegation>>,
 
     ///
@@ -47,6 +50,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -64,6 +68,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FrameworkId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framework_id: Option<String>,
 
     ///
@@ -81,6 +86,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -92,6 +98,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub roles: Option<Vec<Role>>,
 
     ///
@@ -103,6 +110,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope: Option<Scope>,
 
     ///
@@ -120,6 +128,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<AssessmentStatusEnum>,
 
     ///
@@ -131,6 +140,7 @@ pub struct CfnAssessment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -238,6 +248,7 @@ pub struct AWSAccount {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "EmailAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub email_address: Option<String>,
 
     ///
@@ -255,6 +266,7 @@ pub struct AWSAccount {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Id")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 
     ///
@@ -272,6 +284,7 @@ pub struct AWSAccount {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -361,6 +374,7 @@ pub struct AWSService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_name: Option<String>,
 }
 
@@ -414,6 +428,7 @@ pub struct AssessmentReportsDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<String>,
 
     ///
@@ -427,6 +442,7 @@ pub struct AssessmentReportsDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_type: Option<AssessmentReportsDestinationDestinationTypeEnum>,
 }
 
@@ -493,6 +509,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssessmentId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assessment_id: Option<String>,
 
     ///
@@ -510,6 +527,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssessmentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assessment_name: Option<String>,
 
     ///
@@ -525,6 +543,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<String>,
 
     ///
@@ -542,6 +561,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlSetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub control_set_id: Option<String>,
 
     ///
@@ -559,6 +579,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_by: Option<String>,
 
     ///
@@ -570,6 +591,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreationTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub creation_time: Option<f64>,
 
     ///
@@ -587,6 +609,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 
     ///
@@ -598,6 +621,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastUpdated")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_updated: Option<f64>,
 
     ///
@@ -615,6 +639,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -630,6 +655,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<DelegationRoleTypeEnum>,
 
     ///
@@ -643,6 +669,7 @@ pub struct Delegation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<DelegationStatusEnum>,
 }
 
@@ -833,6 +860,7 @@ pub struct Role {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -848,6 +876,7 @@ pub struct Role {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<RoleRoleTypeEnum>,
 }
 
@@ -912,6 +941,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsAccounts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_accounts: Option<Vec<AWSAccount>>,
 
     ///
@@ -923,6 +953,7 @@ pub struct Scope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsServices")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_services: Option<Vec<AWSService>>,
 }
 

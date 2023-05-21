@@ -16,6 +16,7 @@ pub struct CfnPortfolioProductAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceptLanguage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accept_language: Option<String>,
 
     ///
@@ -67,6 +68,7 @@ pub struct CfnPortfolioProductAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePortfolioId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_portfolio_id: Option<String>,
 }
 

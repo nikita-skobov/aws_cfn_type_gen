@@ -82,6 +82,7 @@ pub struct DataLakePrincipal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLakePrincipalIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_lake_principal_identifier: Option<String>,
 }
 
@@ -123,6 +124,7 @@ pub struct DatabaseIdentifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///
@@ -134,6 +136,7 @@ pub struct DatabaseIdentifier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 }
 
@@ -163,6 +166,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateTableDefaultPermissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub create_table_default_permissions: Option<Vec<PrincipalPrivileges>>,
 
     ///
@@ -180,6 +184,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     /// Property description not available.
@@ -190,6 +195,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FederatedDatabase")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub federated_database: Option<FederatedDatabase>,
 
     ///
@@ -207,6 +213,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocationUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location_uri: Option<String>,
 
     ///
@@ -224,6 +231,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -235,6 +243,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -246,6 +255,7 @@ pub struct DatabaseInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDatabase")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_database: Option<DatabaseIdentifier>,
 }
 
@@ -336,6 +346,7 @@ pub struct FederatedDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_name: Option<String>,
 
     /// Property description not available.
@@ -346,6 +357,7 @@ pub struct FederatedDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Identifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identifier: Option<String>,
 }
 
@@ -375,6 +387,7 @@ pub struct PrincipalPrivileges {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<String>>,
 
     ///
@@ -386,6 +399,7 @@ pub struct PrincipalPrivileges {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub principal: Option<DataLakePrincipal>,
 }
 

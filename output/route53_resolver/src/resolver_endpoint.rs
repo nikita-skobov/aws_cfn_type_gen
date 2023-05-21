@@ -42,6 +42,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     /// Property description not available.
@@ -52,6 +53,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outpost_arn: Option<String>,
 
     /// Property description not available.
@@ -62,6 +64,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreferredInstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_instance_type: Option<String>,
 
     ///
@@ -75,6 +78,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResolverEndpointType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resolver_endpoint_type: Option<ResolverEndpointResolverEndpointTypeEnum>,
 
     ///
@@ -99,6 +103,7 @@ pub struct CfnResolverEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -197,6 +202,7 @@ pub struct IpAddressRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip: Option<String>,
 
     ///
@@ -212,6 +218,7 @@ pub struct IpAddressRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6: Option<String>,
 
     ///

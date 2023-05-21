@@ -12,6 +12,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateDataSourceParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alternate_data_source_parameters: Option<Vec<DataSourceParameters>>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_account_id: Option<String>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Credentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials: Option<DataSourceCredentials>,
 
     ///
@@ -51,6 +54,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataSourceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_source_id: Option<String>,
 
     ///
@@ -62,6 +66,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_source_parameters: Option<DataSourceParameters>,
 
     ///
@@ -73,6 +78,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_info: Option<DataSourceErrorInfo>,
 
     ///
@@ -88,6 +94,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -101,6 +108,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<ResourcePermission>>,
 
     ///
@@ -112,6 +120,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_properties: Option<SslProperties>,
 
     ///
@@ -125,6 +134,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -140,6 +150,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<DataSourceTypeEnum>,
 
     ///
@@ -151,6 +162,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConnectionProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_connection_properties: Option<VpcConnectionProperties>,
 }
 
@@ -479,6 +491,7 @@ pub struct AthenaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub work_group: Option<String>,
 }
 
@@ -762,6 +775,7 @@ pub struct CredentialPair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateDataSourceParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alternate_data_source_parameters: Option<Vec<DataSourceParameters>>,
 
     ///
@@ -865,6 +879,7 @@ pub struct DataSourceCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopySourceArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_source_arn: Option<String>,
 
     ///
@@ -876,6 +891,7 @@ pub struct DataSourceCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialPair")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credential_pair: Option<CredentialPair>,
 
     ///
@@ -887,6 +903,7 @@ pub struct DataSourceCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_arn: Option<String>,
 }
 
@@ -920,6 +937,7 @@ pub struct DataSourceErrorInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
 
     ///
@@ -933,6 +951,7 @@ pub struct DataSourceErrorInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<DataSourceErrorInfoTypeEnum>,
 }
 
@@ -1003,6 +1022,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmazonElasticsearchParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amazon_elasticsearch_parameters: Option<AmazonElasticsearchParameters>,
 
     ///
@@ -1014,6 +1034,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmazonOpenSearchParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amazon_open_search_parameters: Option<AmazonOpenSearchParameters>,
 
     ///
@@ -1025,6 +1046,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AthenaParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub athena_parameters: Option<AthenaParameters>,
 
     ///
@@ -1036,6 +1058,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuroraParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aurora_parameters: Option<AuroraParameters>,
 
     ///
@@ -1047,6 +1070,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuroraPostgreSqlParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aurora_postgre_sql_parameters: Option<AuroraPostgreSqlParameters>,
 
     ///
@@ -1058,6 +1082,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabricksParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub databricks_parameters: Option<DatabricksParameters>,
 
     ///
@@ -1069,6 +1094,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MariaDbParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maria_db_parameters: Option<MariaDbParameters>,
 
     ///
@@ -1080,6 +1106,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MySqlParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub my_sql_parameters: Option<MySqlParameters>,
 
     ///
@@ -1091,6 +1118,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OracleParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oracle_parameters: Option<OracleParameters>,
 
     ///
@@ -1102,6 +1130,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostgreSqlParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub postgre_sql_parameters: Option<PostgreSqlParameters>,
 
     ///
@@ -1113,6 +1142,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrestoParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub presto_parameters: Option<PrestoParameters>,
 
     ///
@@ -1124,6 +1154,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RdsParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rds_parameters: Option<RdsParameters>,
 
     ///
@@ -1135,6 +1166,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redshift_parameters: Option<RedshiftParameters>,
 
     ///
@@ -1146,6 +1178,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_parameters: Option<S3Parameters>,
 
     ///
@@ -1157,6 +1190,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnowflakeParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snowflake_parameters: Option<SnowflakeParameters>,
 
     ///
@@ -1168,6 +1202,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SparkParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spark_parameters: Option<SparkParameters>,
 
     ///
@@ -1179,6 +1214,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlServerParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sql_server_parameters: Option<SqlServerParameters>,
 
     ///
@@ -1190,6 +1226,7 @@ pub struct DataSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TeradataParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub teradata_parameters: Option<TeradataParameters>,
 }
 
@@ -2022,6 +2059,7 @@ pub struct RedshiftParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_id: Option<String>,
 
     ///
@@ -2052,6 +2090,7 @@ pub struct RedshiftParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host: Option<String>,
 
     ///
@@ -2067,6 +2106,7 @@ pub struct RedshiftParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<f64>,
 }
 
@@ -2548,6 +2588,7 @@ pub struct SslProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableSsl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_ssl: Option<bool>,
 }
 

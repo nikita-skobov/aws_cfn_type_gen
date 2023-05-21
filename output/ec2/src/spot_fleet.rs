@@ -53,6 +53,7 @@ pub struct AcceleratorCountRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -64,6 +65,7 @@ pub struct AcceleratorCountRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -93,6 +95,7 @@ pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -104,6 +107,7 @@ pub struct AcceleratorTotalMemoryMiBRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -133,6 +137,7 @@ pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -144,6 +149,7 @@ pub struct BaselineEbsBandwidthMbpsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -186,6 +192,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ebs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs: Option<EbsBlockDevice>,
 
     ///
@@ -197,6 +204,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NoDevice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_device: Option<String>,
 
     ///
@@ -212,6 +220,7 @@ pub struct BlockDeviceMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_name: Option<String>,
 }
 
@@ -312,6 +321,7 @@ pub struct EbsBlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeleteOnTermination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -329,6 +339,7 @@ pub struct EbsBlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
 
     ///
@@ -348,6 +359,7 @@ pub struct EbsBlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Iops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///
@@ -359,6 +371,7 @@ pub struct EbsBlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
 
     ///
@@ -374,6 +387,7 @@ pub struct EbsBlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_size: Option<i64>,
 
     ///
@@ -387,6 +401,7 @@ pub struct EbsBlockDevice {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_type: Option<EbsBlockDeviceVolumeTypeEnum>,
 }
 
@@ -463,6 +478,7 @@ pub struct FleetLaunchTemplateSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_id: Option<String>,
 
     ///
@@ -482,6 +498,7 @@ pub struct FleetLaunchTemplateSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_name: Option<String>,
 
     ///
@@ -571,6 +588,7 @@ pub struct IamInstanceProfileSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 }
 
@@ -629,6 +647,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssociatePublicIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub associate_public_ip_address: Option<bool>,
 
     ///
@@ -640,6 +659,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeleteOnTermination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_on_termination: Option<bool>,
 
     ///
@@ -651,6 +671,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -664,6 +685,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_index: Option<i64>,
 
     ///
@@ -675,6 +697,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Groups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups: Option<Vec<String>>,
 
     ///
@@ -686,6 +709,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6AddressCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_address_count: Option<i64>,
 
     ///
@@ -697,6 +721,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ipv6Addresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
 
     ///
@@ -710,6 +735,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<String>,
 
     ///
@@ -721,6 +747,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateIpAddresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_addresses: Option<Vec<PrivateIpAddressSpecification>>,
 
     ///
@@ -732,6 +759,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_private_ip_address_count: Option<i64>,
 
     ///
@@ -743,6 +771,7 @@ pub struct InstanceNetworkInterfaceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<String>,
 }
 
@@ -782,6 +811,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceleratorCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_count: Option<AcceleratorCountRequest>,
 
     ///
@@ -797,6 +827,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceleratorManufacturers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_manufacturers: Option<Vec<String>>,
 
     ///
@@ -812,6 +843,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceleratorNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_names: Option<Vec<String>>,
 
     ///
@@ -825,6 +857,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceleratorTotalMemoryMiB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_total_memory_mi_b: Option<AcceleratorTotalMemoryMiBRequest>,
 
     ///
@@ -840,6 +873,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AcceleratorTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accelerator_types: Option<Vec<String>>,
 
     ///
@@ -861,6 +895,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AllowedInstanceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_instance_types: Option<Vec<String>>,
 
     ///
@@ -878,6 +913,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BareMetal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bare_metal: Option<InstanceRequirementsRequestBareMetalEnum>,
 
     ///
@@ -891,6 +927,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BaselineEbsBandwidthMbps")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub baseline_ebs_bandwidth_mbps: Option<BaselineEbsBandwidthMbpsRequest>,
 
     ///
@@ -908,6 +945,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BurstablePerformance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub burstable_performance: Option<InstanceRequirementsRequestBurstablePerformanceEnum>,
 
     ///
@@ -925,6 +963,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CpuManufacturers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_manufacturers: Option<Vec<String>>,
 
     ///
@@ -946,6 +985,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExcludedInstanceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_instance_types: Option<Vec<String>>,
 
     ///
@@ -963,6 +1003,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceGenerations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_generations: Option<Vec<String>>,
 
     ///
@@ -980,6 +1021,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalStorage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_storage: Option<InstanceRequirementsRequestLocalStorageEnum>,
 
     ///
@@ -995,6 +1037,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalStorageTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_storage_types: Option<Vec<String>>,
 
     ///
@@ -1008,6 +1051,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemoryGiBPerVCpu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_gi_bper_vcpu: Option<MemoryGiBPerVCpuRequest>,
 
     ///
@@ -1019,6 +1063,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemoryMiB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_mi_b: Option<MemoryMiBRequest>,
 
     ///
@@ -1032,6 +1077,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkBandwidthGbps")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_bandwidth_gbps: Option<NetworkBandwidthGbpsRequest>,
 
     ///
@@ -1045,6 +1091,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_count: Option<NetworkInterfaceCountRequest>,
 
     ///
@@ -1066,6 +1113,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OnDemandMaxPricePercentageOverLowestPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -1081,6 +1129,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RequireHibernateSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub require_hibernate_support: Option<bool>,
 
     ///
@@ -1102,6 +1151,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpotMaxPricePercentageOverLowestPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_max_price_percentage_over_lowest_price: Option<i64>,
 
     ///
@@ -1115,6 +1165,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TotalLocalStorageGB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_local_storage_gb: Option<TotalLocalStorageGBRequest>,
 
     ///
@@ -1126,6 +1177,7 @@ pub struct InstanceRequirementsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VCpuCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vcpu_count: Option<VCpuCountRangeRequest>,
 }
 
@@ -1266,6 +1318,7 @@ pub struct LaunchTemplateConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_specification: Option<FleetLaunchTemplateSpecification>,
 
     ///
@@ -1277,6 +1330,7 @@ pub struct LaunchTemplateConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Overrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overrides: Option<Vec<LaunchTemplateOverrides>>,
 }
 
@@ -1310,6 +1364,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -1323,6 +1378,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceRequirements")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_requirements: Option<InstanceRequirementsRequest>,
 
     ///
@@ -1336,6 +1392,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<LaunchTemplateOverridesInstanceTypeEnum>,
 
     ///
@@ -1353,6 +1410,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Priority")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<f64>,
 
     ///
@@ -1366,6 +1424,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpotPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_price: Option<String>,
 
     ///
@@ -1377,6 +1436,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<String>,
 
     ///
@@ -1388,6 +1448,7 @@ pub struct LaunchTemplateOverrides {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WeightedCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weighted_capacity: Option<f64>,
 }
 
@@ -3970,6 +4031,7 @@ pub struct LoadBalancersConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClassicLoadBalancersConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub classic_load_balancers_config: Option<ClassicLoadBalancersConfig>,
 
     ///
@@ -3981,6 +4043,7 @@ pub struct LoadBalancersConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetGroupsConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_groups_config: Option<TargetGroupsConfig>,
 }
 
@@ -4018,6 +4081,7 @@ pub struct MemoryGiBPerVCpuRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<f64>,
 
     ///
@@ -4029,6 +4093,7 @@ pub struct MemoryGiBPerVCpuRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<f64>,
 }
 
@@ -4058,6 +4123,7 @@ pub struct MemoryMiBRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -4069,6 +4135,7 @@ pub struct MemoryMiBRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -4100,6 +4167,7 @@ pub struct NetworkBandwidthGbpsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<f64>,
 
     ///
@@ -4111,6 +4179,7 @@ pub struct NetworkBandwidthGbpsRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<f64>,
 }
 
@@ -4140,6 +4209,7 @@ pub struct NetworkInterfaceCountRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -4151,6 +4221,7 @@ pub struct NetworkInterfaceCountRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 
@@ -4180,6 +4251,7 @@ pub struct PrivateIpAddressSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Primary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary: Option<bool>,
 
     ///
@@ -4226,6 +4298,7 @@ pub struct SpotCapacityRebalance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReplacementStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replacement_strategy: Option<SpotCapacityRebalanceReplacementStrategyEnum>,
 
     ///
@@ -4243,6 +4316,7 @@ pub struct SpotCapacityRebalance {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TerminationDelay")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub termination_delay: Option<i64>,
 }
 
@@ -4289,6 +4363,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BlockDeviceMappings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
 
     ///
@@ -4302,6 +4377,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsOptimized")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -4313,6 +4389,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IamInstanceProfile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_instance_profile: Option<IamInstanceProfileSpecification>,
 
     ///
@@ -4337,6 +4414,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceRequirements")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_requirements: Option<InstanceRequirementsRequest>,
 
     ///
@@ -4350,6 +4428,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<SpotFleetLaunchSpecificationInstanceTypeEnum>,
 
     ///
@@ -4361,6 +4440,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KernelId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kernel_id: Option<String>,
 
     ///
@@ -4372,6 +4452,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_name: Option<String>,
 
     ///
@@ -4383,6 +4464,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Monitoring")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub monitoring: Option<SpotFleetMonitoring>,
 
     ///
@@ -4396,6 +4478,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaces")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interfaces: Option<Vec<InstanceNetworkInterfaceSpecification>>,
 
     ///
@@ -4407,6 +4490,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Placement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement: Option<SpotPlacement>,
 
     ///
@@ -4418,6 +4502,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RamdiskId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ramdisk_id: Option<String>,
 
     ///
@@ -4429,6 +4514,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<GroupIdentifier>>,
 
     ///
@@ -4442,6 +4528,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpotPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_price: Option<String>,
 
     ///
@@ -4453,6 +4540,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<String>,
 
     ///
@@ -4464,6 +4552,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_specifications: Option<Vec<SpotFleetTagSpecification>>,
 
     ///
@@ -4475,6 +4564,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_data: Option<String>,
 
     ///
@@ -4488,6 +4578,7 @@ pub struct SpotFleetLaunchSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WeightedCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weighted_capacity: Option<f64>,
 }
 
@@ -7084,6 +7175,7 @@ pub struct SpotFleetMonitoring {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -7121,6 +7213,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AllocationStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_strategy: Option<SpotFleetRequestConfigDataAllocationStrategyEnum>,
 
     ///
@@ -7132,6 +7225,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Context")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub context: Option<String>,
 
     ///
@@ -7147,6 +7241,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcessCapacityTerminationPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excess_capacity_termination_policy:
         Option<SpotFleetRequestConfigDataExcessCapacityTerminationPolicyEnum>,
 
@@ -7172,6 +7267,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceInterruptionBehavior")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_interruption_behavior:
         Option<SpotFleetRequestConfigDataInstanceInterruptionBehaviorEnum>,
 
@@ -7186,6 +7282,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstancePoolsToUseCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_pools_to_use_count: Option<i64>,
 
     ///
@@ -7197,6 +7294,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_specifications: Option<Vec<SpotFleetLaunchSpecification>>,
 
     ///
@@ -7208,6 +7306,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LaunchTemplateConfigs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_configs: Option<Vec<LaunchTemplateConfig>>,
 
     ///
@@ -7221,6 +7320,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancersConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancers_config: Option<LoadBalancersConfig>,
 
     ///
@@ -7234,6 +7334,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OnDemandAllocationStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_allocation_strategy:
         Option<SpotFleetRequestConfigDataOnDemandAllocationStrategyEnum>,
 
@@ -7246,6 +7347,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OnDemandMaxTotalPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_max_total_price: Option<String>,
 
     ///
@@ -7257,6 +7359,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OnDemandTargetCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_demand_target_capacity: Option<i64>,
 
     ///
@@ -7268,6 +7371,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReplaceUnhealthyInstances")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replace_unhealthy_instances: Option<bool>,
 
     ///
@@ -7279,6 +7383,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpotMaintenanceStrategies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_maintenance_strategies: Option<SpotMaintenanceStrategies>,
 
     ///
@@ -7290,6 +7395,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpotMaxTotalPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_max_total_price: Option<String>,
 
     ///
@@ -7303,6 +7409,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpotPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_price: Option<String>,
 
     ///
@@ -7314,6 +7421,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_specifications: Option<Vec<SpotFleetTagSpecification>>,
 
     ///
@@ -7340,6 +7448,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetCapacityUnitType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_capacity_unit_type: Option<SpotFleetRequestConfigDataTargetCapacityUnitTypeEnum>,
 
     ///
@@ -7351,6 +7460,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TerminateInstancesWithExpiration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub terminate_instances_with_expiration: Option<bool>,
 
     ///
@@ -7364,6 +7474,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<SpotFleetRequestConfigDataTypeEnum>,
 
     ///
@@ -7375,6 +7486,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidFrom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub valid_from: Option<String>,
 
     ///
@@ -7386,6 +7498,7 @@ pub struct SpotFleetRequestConfigData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidUntil")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub valid_until: Option<String>,
 }
 
@@ -7551,6 +7664,7 @@ pub struct SpotFleetTagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<SpotFleetTagSpecificationResourceTypeEnum>,
 
     ///
@@ -7562,6 +7676,7 @@ pub struct SpotFleetTagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -7940,6 +8055,7 @@ pub struct SpotMaintenanceStrategies {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CapacityRebalance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_rebalance: Option<SpotCapacityRebalance>,
 }
 
@@ -7975,6 +8091,7 @@ pub struct SpotPlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -7986,6 +8103,7 @@ pub struct SpotPlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_name: Option<String>,
 
     ///
@@ -7999,6 +8117,7 @@ pub struct SpotPlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tenancy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tenancy: Option<SpotPlacementTenancyEnum>,
 }
 
@@ -8162,6 +8281,7 @@ pub struct TotalLocalStorageGBRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<f64>,
 
     ///
@@ -8173,6 +8293,7 @@ pub struct TotalLocalStorageGBRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<f64>,
 }
 
@@ -8202,6 +8323,7 @@ pub struct VCpuCountRangeRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<i64>,
 
     ///
@@ -8213,6 +8335,7 @@ pub struct VCpuCountRangeRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<i64>,
 }
 

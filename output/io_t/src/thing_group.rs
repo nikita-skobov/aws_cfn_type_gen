@@ -14,6 +14,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParentGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parent_group_name: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string: Option<String>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -49,6 +52,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_group_name: Option<String>,
 
     ///
@@ -60,6 +64,7 @@ pub struct CfnThingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThingGroupProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_group_properties: Option<ThingGroupProperties>,
 }
 
@@ -95,6 +100,7 @@ pub struct AttributePayload {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -168,6 +174,7 @@ pub struct ThingGroupProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributePayload")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attribute_payload: Option<AttributePayload>,
 
     ///
@@ -179,6 +186,7 @@ pub struct ThingGroupProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThingGroupDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_group_description: Option<String>,
 }
 

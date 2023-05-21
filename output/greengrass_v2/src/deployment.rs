@@ -18,6 +18,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Components")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub components: Option<std::collections::HashMap<String, ComponentDeploymentSpecification>>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_name: Option<String>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentPolicies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_policies: Option<DeploymentPolicies>,
 
     ///
@@ -51,6 +54,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IotJobConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_job_configuration: Option<DeploymentIoTJobConfiguration>,
 
     ///
@@ -62,6 +66,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParentTargetArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parent_target_arn: Option<String>,
 
     ///
@@ -77,6 +82,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -125,6 +131,7 @@ pub struct ComponentConfigurationUpdate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Merge")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub merge: Option<String>,
 
     ///
@@ -136,6 +143,7 @@ pub struct ComponentConfigurationUpdate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Reset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reset: Option<Vec<String>>,
 }
 
@@ -165,6 +173,7 @@ pub struct ComponentDeploymentSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_version: Option<String>,
 
     ///
@@ -176,6 +185,7 @@ pub struct ComponentDeploymentSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationUpdate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_update: Option<ComponentConfigurationUpdate>,
 
     ///
@@ -187,6 +197,7 @@ pub struct ComponentDeploymentSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RunWith")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub run_with: Option<ComponentRunWith>,
 }
 
@@ -224,6 +235,7 @@ pub struct ComponentRunWith {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PosixUser")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub posix_user: Option<String>,
 
     ///
@@ -237,6 +249,7 @@ pub struct ComponentRunWith {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SystemResourceLimits")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub system_resource_limits: Option<SystemResourceLimits>,
 
     ///
@@ -250,6 +263,7 @@ pub struct ComponentRunWith {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WindowsUser")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub windows_user: Option<String>,
 }
 
@@ -289,6 +303,7 @@ pub struct DeploymentComponentUpdatePolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Action")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<String>,
 
     ///
@@ -302,6 +317,7 @@ pub struct DeploymentComponentUpdatePolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_seconds: Option<i64>,
 }
 
@@ -333,6 +349,7 @@ pub struct DeploymentConfigurationValidationPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_seconds: Option<i64>,
 }
 
@@ -362,6 +379,7 @@ pub struct DeploymentIoTJobConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AbortConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub abort_config: Option<IoTJobAbortConfig>,
 
     ///
@@ -373,6 +391,7 @@ pub struct DeploymentIoTJobConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobExecutionsRolloutConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_executions_rollout_config: Option<IoTJobExecutionsRolloutConfig>,
 
     ///
@@ -384,6 +403,7 @@ pub struct DeploymentIoTJobConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_config: Option<IoTJobTimeoutConfig>,
 }
 
@@ -425,6 +445,7 @@ pub struct DeploymentPolicies {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentUpdatePolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_update_policy: Option<DeploymentComponentUpdatePolicy>,
 
     ///
@@ -436,6 +457,7 @@ pub struct DeploymentPolicies {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationValidationPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_validation_policy: Option<DeploymentConfigurationValidationPolicy>,
 
     ///
@@ -449,6 +471,7 @@ pub struct DeploymentPolicies {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FailureHandlingPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failure_handling_policy: Option<String>,
 }
 
@@ -581,6 +604,7 @@ pub struct IoTJobExecutionsRolloutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExponentialRate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exponential_rate: Option<IoTJobExponentialRolloutRate>,
 
     ///
@@ -592,6 +616,7 @@ pub struct IoTJobExecutionsRolloutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaximumPerMinute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_per_minute: Option<i64>,
 }
 
@@ -680,6 +705,7 @@ pub struct IoTJobRateIncreaseCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfNotifiedThings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_notified_things: Option<i64>,
 
     ///
@@ -691,6 +717,7 @@ pub struct IoTJobRateIncreaseCriteria {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NumberOfSucceededThings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_succeeded_things: Option<i64>,
 }
 
@@ -722,6 +749,7 @@ pub struct IoTJobTimeoutConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InProgressTimeoutInMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub in_progress_timeout_in_minutes: Option<i64>,
 }
 
@@ -751,6 +779,7 @@ pub struct SystemResourceLimits {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cpus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpus: Option<f64>,
 
     ///
@@ -762,6 +791,7 @@ pub struct SystemResourceLimits {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Memory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory: Option<i64>,
 }
 

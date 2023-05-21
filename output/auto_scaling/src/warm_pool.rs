@@ -25,6 +25,7 @@ pub struct CfnWarmPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceReusePolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_reuse_policy: Option<InstanceReusePolicy>,
 
     ///
@@ -42,6 +43,7 @@ pub struct CfnWarmPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxGroupPreparedCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_group_prepared_capacity: Option<i64>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnWarmPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_size: Option<i64>,
 
     ///
@@ -68,6 +71,7 @@ pub struct CfnWarmPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PoolState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pool_state: Option<WarmPoolPoolStateEnum>,
 }
 
@@ -139,6 +143,7 @@ pub struct InstanceReusePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReuseOnScaleIn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reuse_on_scale_in: Option<bool>,
 }
 

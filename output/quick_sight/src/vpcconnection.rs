@@ -12,6 +12,7 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<VPCConnectionAvailabilityStatusEnum>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_account_id: Option<String>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsResolvers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_resolvers: Option<Vec<String>>,
 
     ///
@@ -55,6 +58,7 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -66,6 +70,7 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -79,6 +84,7 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -92,6 +98,7 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -105,6 +112,7 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -120,6 +128,7 @@ pub struct CfnVPCConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VPCConnectionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpcconnection_id: Option<String>,
 }
 
@@ -251,6 +260,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -262,6 +272,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorMessage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_message: Option<String>,
 
     ///
@@ -277,6 +288,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<String>,
 
     ///
@@ -290,6 +302,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<NetworkInterfaceStatusEnum>,
 
     ///
@@ -307,6 +320,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<String>,
 }
 

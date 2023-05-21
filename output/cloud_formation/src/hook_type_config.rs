@@ -25,6 +25,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationAlias")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_alias: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_arn: Option<String>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnHookTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<String>,
 }
 

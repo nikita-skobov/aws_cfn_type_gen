@@ -33,6 +33,7 @@ pub struct CfnVirtualService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mesh_owner: Option<String>,
 
     ///
@@ -57,6 +58,7 @@ pub struct CfnVirtualService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -290,6 +292,7 @@ pub struct VirtualServiceProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualNode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_node: Option<VirtualNodeServiceProvider>,
 
     ///
@@ -301,6 +304,7 @@ pub struct VirtualServiceProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualRouter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_router: Option<VirtualRouterServiceProvider>,
 }
 
@@ -338,6 +342,7 @@ pub struct VirtualServiceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Provider")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provider: Option<VirtualServiceProvider>,
 }
 

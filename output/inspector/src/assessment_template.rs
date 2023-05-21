@@ -29,6 +29,7 @@ pub struct CfnAssessmentTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssessmentTemplateName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assessment_template_name: Option<String>,
 
     ///
@@ -70,6 +71,7 @@ pub struct CfnAssessmentTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserAttributesForFindings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_attributes_for_findings: Option<Vec<Tag>>,
 }
 

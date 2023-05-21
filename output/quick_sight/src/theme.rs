@@ -35,6 +35,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseThemeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_theme_id: Option<String>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration: Option<ThemeConfiguration>,
 
     ///
@@ -61,6 +63,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -74,6 +77,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<ResourcePermission>>,
 
     ///
@@ -87,6 +91,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -119,6 +124,7 @@ pub struct CfnTheme {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_description: Option<String>,
 }
 
@@ -260,6 +266,7 @@ pub struct BorderStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Show")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub show: Option<bool>,
 }
 
@@ -291,6 +298,7 @@ pub struct DataColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub colors: Option<Vec<String>>,
 
     ///
@@ -304,6 +312,7 @@ pub struct DataColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmptyFillColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub empty_fill_color: Option<String>,
 
     ///
@@ -317,6 +326,7 @@ pub struct DataColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinMaxGradient")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_max_gradient: Option<Vec<String>>,
 }
 
@@ -363,6 +373,7 @@ pub struct Font {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontFamily")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_family: Option<String>,
 }
 
@@ -392,6 +403,7 @@ pub struct GutterStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Show")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub show: Option<bool>,
 }
 
@@ -421,6 +433,7 @@ pub struct MarginStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Show")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub show: Option<bool>,
 }
 
@@ -492,6 +505,7 @@ pub struct SheetStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tile: Option<TileStyle>,
 
     ///
@@ -503,6 +517,7 @@ pub struct SheetStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TileLayout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tile_layout: Option<TileLayoutStyle>,
 }
 
@@ -582,6 +597,7 @@ pub struct ThemeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataColorPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_color_palette: Option<DataColorPalette>,
 
     ///
@@ -593,6 +609,7 @@ pub struct ThemeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sheet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet: Option<SheetStyle>,
 
     /// Property description not available.
@@ -603,6 +620,7 @@ pub struct ThemeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Typography")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub typography: Option<Typography>,
 
     ///
@@ -614,6 +632,7 @@ pub struct ThemeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UIColorPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uicolor_palette: Option<UIColorPalette>,
 }
 
@@ -659,6 +678,7 @@ pub struct ThemeError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
 
     ///
@@ -672,6 +692,7 @@ pub struct ThemeError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ThemeErrorTypeEnum>,
 }
 
@@ -714,6 +735,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 
     ///
@@ -731,6 +753,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseThemeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_theme_id: Option<String>,
 
     ///
@@ -742,6 +765,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration: Option<ThemeConfiguration>,
 
     ///
@@ -753,6 +777,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_time: Option<String>,
 
     ///
@@ -768,6 +793,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -779,6 +805,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Errors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub errors: Option<Vec<ThemeError>>,
 
     ///
@@ -792,6 +819,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<ThemeVersionStatusEnum>,
 
     ///
@@ -803,6 +831,7 @@ pub struct ThemeVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_number: Option<f64>,
 }
 
@@ -909,6 +938,7 @@ pub struct TileLayoutStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gutter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gutter: Option<GutterStyle>,
 
     ///
@@ -920,6 +950,7 @@ pub struct TileLayoutStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Margin")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub margin: Option<MarginStyle>,
 }
 
@@ -953,6 +984,7 @@ pub struct TileStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Border")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub border: Option<BorderStyle>,
 }
 
@@ -983,6 +1015,7 @@ pub struct Typography {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontFamilies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_families: Option<Vec<Font>>,
 }
 
@@ -1014,6 +1047,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Accent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accent: Option<String>,
 
     ///
@@ -1027,6 +1061,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccentForeground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accent_foreground: Option<String>,
 
     ///
@@ -1040,6 +1075,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Danger")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub danger: Option<String>,
 
     ///
@@ -1053,6 +1089,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DangerForeground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub danger_foreground: Option<String>,
 
     ///
@@ -1066,6 +1103,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimension")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimension: Option<String>,
 
     ///
@@ -1079,6 +1117,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionForeground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimension_foreground: Option<String>,
 
     ///
@@ -1092,6 +1131,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Measure")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub measure: Option<String>,
 
     ///
@@ -1105,6 +1145,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MeasureForeground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub measure_foreground: Option<String>,
 
     ///
@@ -1118,6 +1159,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryBackground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_background: Option<String>,
 
     ///
@@ -1131,6 +1173,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryForeground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_foreground: Option<String>,
 
     ///
@@ -1144,6 +1187,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryBackground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_background: Option<String>,
 
     ///
@@ -1157,6 +1201,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryForeground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_foreground: Option<String>,
 
     ///
@@ -1170,6 +1215,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Success")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub success: Option<String>,
 
     ///
@@ -1183,6 +1229,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuccessForeground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub success_foreground: Option<String>,
 
     ///
@@ -1196,6 +1243,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Warning")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub warning: Option<String>,
 
     ///
@@ -1209,6 +1257,7 @@ pub struct UIColorPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WarningForeground")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub warning_foreground: Option<String>,
 }
 

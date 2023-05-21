@@ -14,6 +14,7 @@ pub struct CfnImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_description: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageDisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_display_name: Option<String>,
 
     ///
@@ -72,6 +74,7 @@ pub struct CfnImage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

@@ -10,6 +10,7 @@ pub struct CfnCustomMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnCustomMetric {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_name: Option<String>,
 
     ///
@@ -45,6 +47,7 @@ pub struct CfnCustomMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

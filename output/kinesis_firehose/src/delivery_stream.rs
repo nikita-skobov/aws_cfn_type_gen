@@ -9,6 +9,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmazonOpenSearchServerlessDestinationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amazon_open_search_serverless_destination_configuration:
         Option<AmazonOpenSearchServerlessDestinationConfiguration>,
 
@@ -21,6 +22,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmazonopensearchserviceDestinationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amazonopensearchservice_destination_configuration:
         Option<AmazonopensearchserviceDestinationConfiguration>,
 
@@ -33,6 +35,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStreamEncryptionConfigurationInput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_stream_encryption_configuration_input:
         Option<DeliveryStreamEncryptionConfigurationInput>,
 
@@ -51,6 +54,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeliveryStreamName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_stream_name: Option<String>,
 
     ///
@@ -66,6 +70,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeliveryStreamType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_stream_type: Option<DeliveryStreamDeliveryStreamTypeEnum>,
 
     ///
@@ -81,6 +86,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticsearchDestinationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elasticsearch_destination_configuration: Option<ElasticsearchDestinationConfiguration>,
 
     ///
@@ -96,6 +102,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtendedS3DestinationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extended_s3_destination_configuration: Option<ExtendedS3DestinationConfiguration>,
 
     ///
@@ -107,6 +114,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpEndpointDestinationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_endpoint_destination_configuration: Option<HttpEndpointDestinationConfiguration>,
 
     ///
@@ -118,6 +126,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KinesisStreamSourceConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_stream_source_configuration: Option<KinesisStreamSourceConfiguration>,
 
     ///
@@ -133,6 +142,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftDestinationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redshift_destination_configuration: Option<RedshiftDestinationConfiguration>,
 
     ///
@@ -148,6 +158,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3DestinationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_destination_configuration: Option<S3DestinationConfiguration>,
 
     ///
@@ -159,6 +170,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SplunkDestinationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub splunk_destination_configuration: Option<SplunkDestinationConfiguration>,
 
     ///
@@ -174,6 +186,7 @@ pub struct CfnDeliveryStream {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -286,6 +299,7 @@ pub struct AmazonOpenSearchServerlessBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_in_seconds: Option<i64>,
 
     /// Property description not available.
@@ -296,6 +310,7 @@ pub struct AmazonOpenSearchServerlessBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeInMBs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size_in_mbs: Option<i64>,
 }
 
@@ -324,6 +339,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buffering_hints: Option<AmazonOpenSearchServerlessBufferingHints>,
 
     /// Property description not available.
@@ -334,6 +350,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     /// Property description not available.
@@ -344,6 +361,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectionEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub collection_endpoint: Option<String>,
 
     /// Property description not available.
@@ -364,6 +382,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     /// Property description not available.
@@ -374,6 +393,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_options: Option<AmazonOpenSearchServerlessRetryOptions>,
 
     /// Property description not available.
@@ -394,6 +414,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_backup_mode: Option<String>,
 
     /// Property description not available.
@@ -414,6 +435,7 @@ pub struct AmazonOpenSearchServerlessDestinationConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
@@ -464,6 +486,7 @@ pub struct AmazonOpenSearchServerlessRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -497,6 +520,7 @@ pub struct AmazonopensearchserviceBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_in_seconds: Option<i64>,
 
     ///
@@ -512,6 +536,7 @@ pub struct AmazonopensearchserviceBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeInMBs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size_in_mbs: Option<i64>,
 }
 
@@ -577,6 +602,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buffering_hints: Option<AmazonopensearchserviceBufferingHints>,
 
     ///
@@ -588,6 +614,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -605,6 +632,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_endpoint: Option<String>,
 
     /// Property description not available.
@@ -615,6 +643,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentIdOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_id_options: Option<DocumentIdOptions>,
 
     ///
@@ -632,6 +661,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_arn: Option<String>,
 
     ///
@@ -662,6 +692,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IndexRotationPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub index_rotation_period:
         Option<AmazonopensearchserviceDestinationConfigurationIndexRotationPeriodEnum>,
 
@@ -674,6 +705,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -685,6 +717,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_options: Option<AmazonopensearchserviceRetryOptions>,
 
     ///
@@ -715,6 +748,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_backup_mode: Option<AmazonopensearchserviceDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -743,6 +777,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<String>,
 
     ///
@@ -754,6 +789,7 @@ pub struct AmazonopensearchserviceDestinationConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
@@ -949,6 +985,7 @@ pub struct AmazonopensearchserviceRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -1000,6 +1037,7 @@ pub struct BufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_in_seconds: Option<i64>,
 
     ///
@@ -1015,6 +1053,7 @@ pub struct BufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeInMBs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size_in_mbs: Option<i64>,
 }
 
@@ -1080,6 +1119,7 @@ pub struct CloudWatchLoggingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -1099,6 +1139,7 @@ pub struct CloudWatchLoggingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_name: Option<String>,
 
     ///
@@ -1118,6 +1159,7 @@ pub struct CloudWatchLoggingOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogStreamName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_stream_name: Option<String>,
 }
 
@@ -1189,6 +1231,7 @@ pub struct CopyCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_options: Option<String>,
 
     ///
@@ -1206,6 +1249,7 @@ pub struct CopyCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTableColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_table_columns: Option<String>,
 
     ///
@@ -1303,6 +1347,7 @@ pub struct DataFormatConversionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -1314,6 +1359,7 @@ pub struct DataFormatConversionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_format_configuration: Option<InputFormatConfiguration>,
 
     ///
@@ -1325,6 +1371,7 @@ pub struct DataFormatConversionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_format_configuration: Option<OutputFormatConfiguration>,
 
     ///
@@ -1336,6 +1383,7 @@ pub struct DataFormatConversionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_configuration: Option<SchemaConfiguration>,
 }
 
@@ -1383,6 +1431,7 @@ pub struct DeliveryStreamEncryptionConfigurationInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_arn: Option<String>,
 
     ///
@@ -1464,6 +1513,7 @@ pub struct Deserializer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HiveJsonSerDe")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hive_json_ser_de: Option<HiveJsonSerDe>,
 
     ///
@@ -1475,6 +1525,7 @@ pub struct Deserializer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenXJsonSerDe")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub open_xjson_ser_de: Option<OpenXJsonSerDe>,
 }
 
@@ -1540,6 +1591,7 @@ pub struct DynamicPartitioningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -1551,6 +1603,7 @@ pub struct DynamicPartitioningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_options: Option<RetryOptions>,
 }
 
@@ -1590,6 +1643,7 @@ pub struct ElasticsearchBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntervalInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval_in_seconds: Option<i64>,
 
     ///
@@ -1605,6 +1659,7 @@ pub struct ElasticsearchBufferingHints {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeInMBs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size_in_mbs: Option<i64>,
 }
 
@@ -1670,6 +1725,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buffering_hints: Option<ElasticsearchBufferingHints>,
 
     ///
@@ -1681,6 +1737,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -1692,6 +1749,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_endpoint: Option<String>,
 
     /// Property description not available.
@@ -1702,6 +1760,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentIdOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_id_options: Option<DocumentIdOptions>,
 
     ///
@@ -1721,6 +1780,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_arn: Option<String>,
 
     ///
@@ -1751,6 +1811,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IndexRotationPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub index_rotation_period: Option<ElasticsearchDestinationConfigurationIndexRotationPeriodEnum>,
 
     ///
@@ -1762,6 +1823,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -1773,6 +1835,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_options: Option<ElasticsearchRetryOptions>,
 
     ///
@@ -1803,6 +1866,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_backup_mode: Option<ElasticsearchDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -1831,6 +1895,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<String>,
 
     ///
@@ -1842,6 +1907,7 @@ pub struct ElasticsearchDestinationConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
@@ -2019,6 +2085,7 @@ pub struct ElasticsearchRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -2066,6 +2133,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSEncryptionConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kmsencryption_config: Option<KMSEncryptionConfig>,
 
     ///
@@ -2079,6 +2147,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoEncryptionConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_encryption_config: Option<EncryptionConfigurationNoEncryptionConfigEnum>,
 }
 
@@ -2142,6 +2211,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buffering_hints: Option<BufferingHints>,
 
     ///
@@ -2153,6 +2223,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -2166,6 +2237,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompressionFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compression_format: Option<ExtendedS3DestinationConfigurationCompressionFormatEnum>,
 
     ///
@@ -2177,6 +2249,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataFormatConversionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_format_conversion_configuration: Option<DataFormatConversionConfiguration>,
 
     ///
@@ -2188,6 +2261,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicPartitioningConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_partitioning_configuration: Option<DynamicPartitioningConfiguration>,
 
     ///
@@ -2199,6 +2273,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     ///
@@ -2216,6 +2291,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorOutputPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_output_prefix: Option<String>,
 
     ///
@@ -2233,6 +2309,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
 
     ///
@@ -2244,6 +2321,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -2272,6 +2350,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_backup_configuration: Option<S3DestinationConfiguration>,
 
     ///
@@ -2285,6 +2364,7 @@ pub struct ExtendedS3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_backup_mode: Option<ExtendedS3DestinationConfigurationS3BackupModeEnum>,
 }
 
@@ -2460,6 +2540,7 @@ pub struct HiveJsonSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampFormats")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp_formats: Option<Vec<String>>,
 }
 
@@ -2583,6 +2664,7 @@ pub struct HttpEndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_key: Option<String>,
 
     ///
@@ -2600,6 +2682,7 @@ pub struct HttpEndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -2700,6 +2783,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buffering_hints: Option<BufferingHints>,
 
     ///
@@ -2711,6 +2795,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -2733,6 +2818,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -2744,6 +2830,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_configuration: Option<HttpEndpointRequestConfiguration>,
 
     ///
@@ -2755,6 +2842,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_options: Option<RetryOptions>,
 
     ///
@@ -2772,6 +2860,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -2785,6 +2874,7 @@ pub struct HttpEndpointDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_backup_mode: Option<HttpEndpointDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -2886,6 +2976,7 @@ pub struct HttpEndpointRequestConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CommonAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub common_attributes: Option<Vec<HttpEndpointCommonAttribute>>,
 
     ///
@@ -2899,6 +2990,7 @@ pub struct HttpEndpointRequestConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentEncoding")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_encoding: Option<HttpEndpointRequestConfigurationContentEncodingEnum>,
 }
 
@@ -2954,6 +3046,7 @@ pub struct InputFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Deserializer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deserializer: Option<Deserializer>,
 }
 
@@ -3128,6 +3221,7 @@ pub struct OpenXJsonSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseInsensitive")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub case_insensitive: Option<bool>,
 
     ///
@@ -3139,6 +3233,7 @@ pub struct OpenXJsonSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnToJsonKeyMappings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_to_json_key_mappings: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -3152,6 +3247,7 @@ pub struct OpenXJsonSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConvertDotsInJsonKeysToUnderscores")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub convert_dots_in_json_keys_to_underscores: Option<bool>,
 }
 
@@ -3183,6 +3279,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockSizeBytes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_size_bytes: Option<i64>,
 
     ///
@@ -3194,6 +3291,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BloomFilterColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bloom_filter_columns: Option<Vec<String>>,
 
     ///
@@ -3205,6 +3303,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BloomFilterFalsePositiveProbability")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bloom_filter_false_positive_probability: Option<f64>,
 
     ///
@@ -3218,6 +3317,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compression: Option<OrcSerDeCompressionEnum>,
 
     ///
@@ -3229,6 +3329,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DictionaryKeyThreshold")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dictionary_key_threshold: Option<f64>,
 
     ///
@@ -3240,6 +3341,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePadding")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_padding: Option<bool>,
 
     ///
@@ -3253,6 +3355,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_version: Option<OrcSerDeFormatVersionEnum>,
 
     ///
@@ -3268,6 +3371,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaddingTolerance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub padding_tolerance: Option<f64>,
 
     ///
@@ -3281,6 +3385,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowIndexStride")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_index_stride: Option<i64>,
 
     ///
@@ -3294,6 +3399,7 @@ pub struct OrcSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StripeSizeBytes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stripe_size_bytes: Option<i64>,
 }
 
@@ -3388,6 +3494,7 @@ pub struct OutputFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Serializer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub serializer: Option<Serializer>,
 }
 
@@ -3423,6 +3530,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockSizeBytes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_size_bytes: Option<i64>,
 
     ///
@@ -3436,6 +3544,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compression: Option<ParquetSerDeCompressionEnum>,
 
     ///
@@ -3447,6 +3556,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDictionaryCompression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_dictionary_compression: Option<bool>,
 
     ///
@@ -3460,6 +3570,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxPaddingBytes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_padding_bytes: Option<i64>,
 
     ///
@@ -3473,6 +3584,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PageSizeBytes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub page_size_bytes: Option<i64>,
 
     ///
@@ -3486,6 +3598,7 @@ pub struct ParquetSerDe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriterVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub writer_version: Option<ParquetSerDeWriterVersionEnum>,
 }
 
@@ -3580,6 +3693,7 @@ pub struct ProcessingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -3591,6 +3705,7 @@ pub struct ProcessingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Processors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub processors: Option<Vec<Processor>>,
 }
 
@@ -3620,6 +3735,7 @@ pub struct Processor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<Vec<ProcessorParameter>>,
 
     ///
@@ -3798,6 +3914,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -3854,6 +3971,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -3865,6 +3983,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_options: Option<RedshiftRetryOptions>,
 
     ///
@@ -3893,6 +4012,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_backup_configuration: Option<S3DestinationConfiguration>,
 
     ///
@@ -3906,6 +4026,7 @@ pub struct RedshiftDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_backup_mode: Option<RedshiftDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -4076,6 +4197,7 @@ pub struct RedshiftRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -4127,6 +4249,7 @@ pub struct RetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_in_seconds: Option<i64>,
 }
 
@@ -4191,6 +4314,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BufferingHints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub buffering_hints: Option<BufferingHints>,
 
     ///
@@ -4202,6 +4326,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -4215,6 +4340,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompressionFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compression_format: Option<S3DestinationConfigurationCompressionFormatEnum>,
 
     ///
@@ -4226,6 +4352,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     ///
@@ -4243,6 +4370,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorOutputPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_output_prefix: Option<String>,
 
     ///
@@ -4260,6 +4388,7 @@ pub struct S3DestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
 
     ///
@@ -4425,6 +4554,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///
@@ -4444,6 +4574,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -4461,6 +4592,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region: Option<String>,
 
     ///
@@ -4480,6 +4612,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -4499,6 +4632,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_name: Option<String>,
 
     ///
@@ -4516,6 +4650,7 @@ pub struct SchemaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_id: Option<String>,
 }
 
@@ -4653,6 +4788,7 @@ pub struct Serializer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrcSerDe")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub orc_ser_de: Option<OrcSerDe>,
 
     ///
@@ -4664,6 +4800,7 @@ pub struct Serializer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParquetSerDe")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parquet_ser_de: Option<ParquetSerDe>,
 }
 
@@ -4701,6 +4838,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logging_options: Option<CloudWatchLoggingOptions>,
 
     ///
@@ -4716,6 +4854,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HECAcknowledgmentTimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hecacknowledgment_timeout_in_seconds: Option<i64>,
 
     ///
@@ -4774,6 +4913,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProcessingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub processing_configuration: Option<ProcessingConfiguration>,
 
     ///
@@ -4785,6 +4925,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_options: Option<SplunkRetryOptions>,
 
     ///
@@ -4800,6 +4941,7 @@ pub struct SplunkDestinationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BackupMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_backup_mode: Option<SplunkDestinationConfigurationS3BackupModeEnum>,
 
     ///
@@ -4940,6 +5082,7 @@ pub struct SplunkRetryOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_in_seconds: Option<i64>,
 }
 

@@ -12,6 +12,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOperations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_operations: Option<Vec<String>>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrantName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grant_name: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HomeRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub home_region: Option<String>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_arn: Option<String>,
 
     ///
@@ -62,6 +66,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principals")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub principals: Option<Vec<String>>,
 
     ///
@@ -73,6 +78,7 @@ pub struct CfnGrant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 }
 

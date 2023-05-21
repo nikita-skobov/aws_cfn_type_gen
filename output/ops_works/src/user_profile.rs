@@ -10,6 +10,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowSelfManagement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_self_management: Option<bool>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshPublicKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssh_public_key: Option<String>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnUserProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshUsername")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssh_username: Option<String>,
 }
 

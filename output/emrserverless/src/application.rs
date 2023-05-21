@@ -9,6 +9,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Architecture")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub architecture: Option<ApplicationArchitectureEnum>,
 
     ///
@@ -20,6 +21,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoStartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_start_configuration: Option<AutoStartConfiguration>,
 
     ///
@@ -31,6 +33,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoStopConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_stop_configuration: Option<AutoStopConfiguration>,
 
     /// Property description not available.
@@ -41,6 +44,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_configuration: Option<ImageConfigurationInput>,
 
     ///
@@ -52,6 +56,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InitialCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub initial_capacity: Option<Vec<InitialCapacityConfigKeyValuePair>>,
 
     ///
@@ -63,6 +68,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_capacity: Option<MaximumAllowedResources>,
 
     ///
@@ -80,6 +86,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -91,6 +98,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -119,6 +127,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -140,6 +149,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerTypeSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub worker_type_specifications:
         Option<std::collections::HashMap<String, WorkerTypeSpecificationInput>>,
 }
@@ -239,6 +249,7 @@ pub struct AutoStartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -268,6 +279,7 @@ pub struct AutoStopConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -283,6 +295,7 @@ pub struct AutoStopConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdleTimeoutMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle_timeout_minutes: Option<i64>,
 }
 
@@ -326,6 +339,7 @@ pub struct ImageConfigurationInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_uri: Option<String>,
 }
 
@@ -508,6 +522,7 @@ pub struct MaximumAllowedResources {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Disk")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk: Option<String>,
 
     ///
@@ -614,6 +629,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -631,6 +647,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 
@@ -759,6 +776,7 @@ pub struct WorkerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Disk")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk: Option<String>,
 
     ///
@@ -856,6 +874,7 @@ pub struct WorkerTypeSpecificationInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_configuration: Option<ImageConfigurationInput>,
 }
 

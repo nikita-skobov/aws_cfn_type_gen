@@ -21,6 +21,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -43,6 +44,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SchemaName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_name: Option<String>,
 
     ///
@@ -54,6 +56,7 @@ pub struct CfnSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagsEntry>>,
 
     ///

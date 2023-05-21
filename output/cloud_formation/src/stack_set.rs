@@ -16,6 +16,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdministrationRoleARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub administration_role_arn: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoDeployment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_deployment: Option<AutoDeployment>,
 
     ///
@@ -46,6 +48,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CallAs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub call_as: Option<StackSetCallAsEnum>,
 
     ///
@@ -57,6 +60,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Capabilities")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capabilities: Option<Vec<String>>,
 
     ///
@@ -72,6 +76,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -89,6 +94,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_role_name: Option<String>,
 
     ///
@@ -106,6 +112,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedExecution")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_execution: Option<ManagedExecution>,
 
     ///
@@ -117,6 +124,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperationPreferences")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operation_preferences: Option<OperationPreferences>,
 
     ///
@@ -128,6 +136,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<Vec<Parameter>>,
 
     ///
@@ -154,6 +163,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackInstancesGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_instances_group: Option<Vec<StackInstances>>,
 
     ///
@@ -182,6 +192,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -199,6 +210,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_body: Option<String>,
 
     ///
@@ -216,6 +228,7 @@ pub struct CfnStackSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateURL")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_url: Option<String>,
 }
 
@@ -387,6 +400,7 @@ pub struct AutoDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -398,6 +412,7 @@ pub struct AutoDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainStacksOnAccountRemoval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retain_stacks_on_account_removal: Option<bool>,
 }
 
@@ -433,6 +448,7 @@ pub struct DeploymentTargets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountFilterType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub account_filter_type: Option<DeploymentTargetsAccountFilterTypeEnum>,
 
     ///
@@ -446,6 +462,7 @@ pub struct DeploymentTargets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Accounts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accounts: Option<Vec<String>>,
 
     ///
@@ -459,6 +476,7 @@ pub struct DeploymentTargets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organizational_unit_ids: Option<Vec<String>>,
 }
 
@@ -517,6 +535,7 @@ pub struct ManagedExecution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Active")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub active: Option<bool>,
 }
 
@@ -550,6 +569,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureToleranceCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failure_tolerance_count: Option<i64>,
 
     ///
@@ -569,6 +589,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureTolerancePercentage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failure_tolerance_percentage: Option<i64>,
 
     ///
@@ -586,6 +607,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrent_count: Option<i64>,
 
     ///
@@ -607,6 +629,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentPercentage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrent_percentage: Option<i64>,
 
     ///
@@ -622,6 +645,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionConcurrencyType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region_concurrency_type: Option<OperationPreferencesRegionConcurrencyTypeEnum>,
 
     ///
@@ -633,6 +657,7 @@ pub struct OperationPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region_order: Option<Vec<String>>,
 }
 
@@ -775,6 +800,7 @@ pub struct StackInstances {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_overrides: Option<Vec<Parameter>>,
 
     ///

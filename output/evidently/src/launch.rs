@@ -12,6 +12,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     /// A structure that you can use to start and stop     the launch.
@@ -22,6 +23,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_status: Option<ExecutionStatusObject>,
 
     ///
@@ -44,6 +46,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricMonitors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_monitors: Option<Vec<MetricDefinitionObject>>,
 
     ///
@@ -77,6 +80,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RandomizationSalt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub randomization_salt: Option<String>,
 
     ///
@@ -107,6 +111,7 @@ pub struct CfnLaunch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -140,6 +145,7 @@ pub struct ExecutionStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub desired_state: Option<String>,
 
     /// If you are using AWS CloudFormation to stop this     launch, this is an optional field that you can use to record why the launch is being stopped or cancelled.
@@ -150,6 +156,7 @@ pub struct ExecutionStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Reason")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reason: Option<String>,
 
     /// To start the launch now, specify START     for this parameter. If this launch is currently running and you want to stop it now, specify STOP.
@@ -231,6 +238,7 @@ pub struct LaunchGroupObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -306,6 +314,7 @@ pub struct MetricDefinitionObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_pattern: Option<String>,
 
     ///
@@ -328,6 +337,7 @@ pub struct MetricDefinitionObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnitLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit_label: Option<String>,
 
     ///
@@ -436,6 +446,7 @@ pub struct StepConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SegmentOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment_overrides: Option<Vec<SegmentOverride>>,
 
     ///

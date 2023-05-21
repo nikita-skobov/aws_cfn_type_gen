@@ -14,6 +14,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPointTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_point_tags: Option<Vec<AccessPointTag>>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_token: Option<String>,
 
     ///
@@ -57,6 +59,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PosixUser")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub posix_user: Option<PosixUser>,
 
     ///
@@ -68,6 +71,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RootDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub root_directory: Option<RootDirectory>,
 }
 
@@ -138,6 +142,7 @@ pub struct AccessPointTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -153,6 +158,7 @@ pub struct AccessPointTag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -299,6 +305,7 @@ pub struct PosixUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecondaryGids")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_gids: Option<Vec<String>>,
 
     ///
@@ -350,6 +357,7 @@ pub struct RootDirectory {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CreationInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub creation_info: Option<CreationInfo>,
 
     ///
@@ -367,6 +375,7 @@ pub struct RootDirectory {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 }
 

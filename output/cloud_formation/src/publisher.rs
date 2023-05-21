@@ -33,6 +33,7 @@ pub struct CfnPublisher {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_arn: Option<String>,
 }
 

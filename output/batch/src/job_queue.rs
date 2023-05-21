@@ -23,6 +23,7 @@ pub struct CfnJobQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobQueueName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_queue_name: Option<String>,
 
     ///
@@ -45,6 +46,7 @@ pub struct CfnJobQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchedulingPolicyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduling_policy_arn: Option<String>,
 
     ///
@@ -58,6 +60,7 @@ pub struct CfnJobQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<JobQueueStateEnum>,
 
     ///
@@ -69,6 +72,7 @@ pub struct CfnJobQueue {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 }
 

@@ -12,6 +12,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_token: Option<String>,
 
     ///
@@ -36,6 +37,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -93,6 +95,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScheduledQueryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduled_query_name: Option<String>,
 
     ///
@@ -104,6 +107,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -115,6 +119,7 @@ pub struct CfnScheduledQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_configuration: Option<TargetConfiguration>,
 }
 
@@ -225,6 +230,7 @@ pub struct MixedMeasureMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeasureName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub measure_name: Option<String>,
 
     ///
@@ -247,6 +253,7 @@ pub struct MixedMeasureMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MultiMeasureAttributeMappings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_measure_attribute_mappings: Option<Vec<MultiMeasureAttributeMapping>>,
 
     ///
@@ -258,6 +265,7 @@ pub struct MixedMeasureMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_column: Option<String>,
 
     ///
@@ -269,6 +277,7 @@ pub struct MixedMeasureMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetMeasureName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_measure_name: Option<String>,
 }
 
@@ -320,6 +329,7 @@ pub struct MultiMeasureAttributeMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetMultiMeasureAttributeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_multi_measure_attribute_name: Option<String>,
 }
 
@@ -360,6 +370,7 @@ pub struct MultiMeasureMappings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TargetMultiMeasureName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_multi_measure_name: Option<String>,
 }
 
@@ -439,6 +450,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_option: Option<S3ConfigurationEncryptionOptionEnum>,
 
     ///
@@ -456,6 +468,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObjectKeyPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_key_prefix: Option<String>,
 }
 
@@ -693,6 +706,7 @@ pub struct TimestreamConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeasureNameColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub measure_name_column: Option<String>,
 
     ///
@@ -704,6 +718,7 @@ pub struct TimestreamConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MixedMeasureMappings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mixed_measure_mappings: Option<Vec<MixedMeasureMapping>>,
 
     ///
@@ -715,6 +730,7 @@ pub struct TimestreamConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MultiMeasureMappings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_measure_mappings: Option<MultiMeasureMappings>,
 
     ///

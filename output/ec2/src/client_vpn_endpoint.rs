@@ -32,6 +32,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientConnectOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_connect_options: Option<ClientConnectOptions>,
 
     ///
@@ -43,6 +44,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientLoginBannerOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_login_banner_options: Option<ClientLoginBannerOptions>,
 
     ///
@@ -69,6 +71,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -80,6 +83,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsServers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_servers: Option<Vec<String>>,
 
     ///
@@ -91,6 +95,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -106,6 +111,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelfServicePortal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub self_service_portal: Option<ClientVpnEndpointSelfServicePortalEnum>,
 
     ///
@@ -132,6 +138,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeoutHours")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_timeout_hours: Option<i64>,
 
     ///
@@ -147,6 +154,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SplitTunnel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub split_tunnel: Option<bool>,
 
     ///
@@ -158,6 +166,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
     ///
@@ -173,6 +182,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransportProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transport_protocol: Option<ClientVpnEndpointTransportProtocolEnum>,
 
     ///
@@ -184,6 +194,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<String>,
 
     ///
@@ -199,6 +210,7 @@ pub struct CfnClientVpnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpn_port: Option<i64>,
 }
 
@@ -301,6 +313,7 @@ pub struct ClientAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActiveDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub active_directory: Option<DirectoryServiceAuthenticationRequest>,
 
     ///
@@ -312,6 +325,7 @@ pub struct ClientAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FederatedAuthentication")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub federated_authentication: Option<FederatedAuthenticationRequest>,
 
     ///
@@ -323,6 +337,7 @@ pub struct ClientAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MutualAuthentication")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mutual_authentication: Option<CertificateAuthenticationRequest>,
 
     ///
@@ -409,6 +424,7 @@ pub struct ClientConnectOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_function_arn: Option<String>,
 }
 
@@ -438,6 +454,7 @@ pub struct ClientLoginBannerOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BannerText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub banner_text: Option<String>,
 
     ///
@@ -482,6 +499,7 @@ pub struct ConnectionLogOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchLogGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloudwatch_log_group: Option<String>,
 
     ///
@@ -493,6 +511,7 @@ pub struct ConnectionLogOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchLogStream")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloudwatch_log_stream: Option<String>,
 
     ///
@@ -573,6 +592,7 @@ pub struct FederatedAuthenticationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelfServiceSAMLProviderArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub self_service_samlprovider_arn: Option<String>,
 }
 

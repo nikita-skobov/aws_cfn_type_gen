@@ -12,6 +12,7 @@ pub struct CfnTrustAnchor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -53,6 +54,7 @@ pub struct CfnTrustAnchor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -111,6 +113,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_data: Option<SourceData>,
 
     ///
@@ -124,6 +127,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_type: Option<SourceSourceTypeEnum>,
 }
 
@@ -178,6 +182,7 @@ pub struct SourceData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcmPcaArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acm_pca_arn: Option<String>,
 
     ///
@@ -193,6 +198,7 @@ pub struct SourceData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "X509CertificateData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub x509_certificate_data: Option<String>,
 }
 

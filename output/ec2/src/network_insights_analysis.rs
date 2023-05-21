@@ -10,6 +10,7 @@ pub struct CfnNetworkInsightsAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalAccounts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_accounts: Option<Vec<String>>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnNetworkInsightsAnalysis {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FilterInArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_in_arns: Option<Vec<String>>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnNetworkInsightsAnalysis {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -72,6 +75,7 @@ pub struct AdditionalDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalDetailType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_detail_type: Option<String>,
 
     ///
@@ -83,6 +87,7 @@ pub struct AdditionalDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Component")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component: Option<AnalysisComponent>,
 
     ///
@@ -94,6 +99,7 @@ pub struct AdditionalDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancers: Option<Vec<AnalysisComponent>>,
 
     ///
@@ -105,6 +111,7 @@ pub struct AdditionalDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_name: Option<String>,
 }
 
@@ -138,6 +145,7 @@ pub struct AlternatePathHint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_arn: Option<String>,
 
     ///
@@ -149,6 +157,7 @@ pub struct AlternatePathHint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_id: Option<String>,
 }
 
@@ -178,6 +187,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr: Option<String>,
 
     ///
@@ -189,6 +199,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Egress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub egress: Option<bool>,
 
     ///
@@ -200,6 +211,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<PortRange>,
 
     ///
@@ -211,6 +223,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<String>,
 
     ///
@@ -222,6 +235,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleAction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_action: Option<String>,
 
     ///
@@ -233,6 +247,7 @@ pub struct AnalysisAclRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_number: Option<i64>,
 }
 
@@ -266,6 +281,7 @@ pub struct AnalysisComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 
     ///
@@ -277,6 +293,7 @@ pub struct AnalysisComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 }
 
@@ -310,6 +327,7 @@ pub struct AnalysisLoadBalancerListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstancePort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_port: Option<i64>,
 
     ///
@@ -325,6 +343,7 @@ pub struct AnalysisLoadBalancerListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_port: Option<i64>,
 }
 
@@ -396,6 +415,7 @@ pub struct AnalysisLoadBalancerTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<String>,
 
     ///
@@ -407,6 +427,7 @@ pub struct AnalysisLoadBalancerTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -418,6 +439,7 @@ pub struct AnalysisLoadBalancerTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Instance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance: Option<AnalysisComponent>,
 
     ///
@@ -433,6 +455,7 @@ pub struct AnalysisLoadBalancerTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 }
 
@@ -502,6 +525,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationAddresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_addresses: Option<Vec<String>>,
 
     ///
@@ -513,6 +537,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationPortRanges")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_port_ranges: Option<Vec<PortRange>>,
 
     ///
@@ -524,6 +549,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<String>,
 
     ///
@@ -535,6 +561,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceAddresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_addresses: Option<Vec<String>>,
 
     ///
@@ -546,6 +573,7 @@ pub struct AnalysisPacketHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePortRanges")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_port_ranges: Option<Vec<PortRange>>,
 }
 
@@ -575,6 +603,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NatGatewayId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nat_gateway_id: Option<String>,
 
     ///
@@ -586,6 +615,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<String>,
 
     ///
@@ -599,6 +629,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Origin")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub origin: Option<String>,
 
     ///
@@ -612,6 +643,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<String>,
 
     ///
@@ -623,6 +655,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway_id: Option<String>,
 
     ///
@@ -634,6 +667,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcPeeringConnectionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_peering_connection_id: Option<String>,
 
     ///
@@ -645,6 +679,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "destinationCidr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_cidr: Option<String>,
 
     ///
@@ -656,6 +691,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "destinationPrefixListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_prefix_list_id: Option<String>,
 
     ///
@@ -667,6 +703,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "egressOnlyInternetGatewayId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub egress_only_internet_gateway_id: Option<String>,
 
     ///
@@ -678,6 +715,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "gatewayId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gateway_id: Option<String>,
 
     ///
@@ -689,6 +727,7 @@ pub struct AnalysisRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "instanceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_id: Option<String>,
 }
 
@@ -718,6 +757,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr: Option<String>,
 
     ///
@@ -731,6 +771,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Direction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub direction: Option<String>,
 
     ///
@@ -742,6 +783,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<PortRange>,
 
     ///
@@ -753,6 +795,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix_list_id: Option<String>,
 
     ///
@@ -764,6 +807,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<String>,
 
     ///
@@ -775,6 +819,7 @@ pub struct AnalysisSecurityGroupRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_id: Option<String>,
 }
 
@@ -808,6 +853,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Acl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acl: Option<AnalysisComponent>,
 
     ///
@@ -819,6 +865,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AclRule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acl_rule: Option<AnalysisAclRule>,
 
     ///
@@ -836,6 +883,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<String>,
 
     ///
@@ -847,6 +895,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Addresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub addresses: Option<Vec<String>>,
 
     ///
@@ -858,6 +907,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachedTo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attached_to: Option<AnalysisComponent>,
 
     ///
@@ -869,6 +919,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZones")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zones: Option<Vec<String>>,
 
     ///
@@ -880,6 +931,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidrs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidrs: Option<Vec<String>>,
 
     ///
@@ -891,6 +943,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClassicLoadBalancerListener")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub classic_load_balancer_listener: Option<AnalysisLoadBalancerListener>,
 
     ///
@@ -902,6 +955,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Component")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component: Option<AnalysisComponent>,
 
     ///
@@ -915,6 +969,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_account: Option<String>,
 
     ///
@@ -928,6 +983,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_region: Option<String>,
 
     ///
@@ -939,6 +995,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerGateway")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customer_gateway: Option<AnalysisComponent>,
 
     ///
@@ -950,6 +1007,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<AnalysisComponent>,
 
     ///
@@ -961,6 +1019,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationVpc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_vpc: Option<AnalysisComponent>,
 
     ///
@@ -974,6 +1033,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Direction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub direction: Option<String>,
 
     ///
@@ -985,6 +1045,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticLoadBalancerListener")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elastic_load_balancer_listener: Option<AnalysisComponent>,
 
     ///
@@ -996,6 +1057,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExplanationCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub explanation_code: Option<String>,
 
     ///
@@ -1007,6 +1069,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngressRouteTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ingress_route_table: Option<AnalysisComponent>,
 
     ///
@@ -1018,6 +1081,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InternetGateway")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub internet_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1033,6 +1097,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_arn: Option<String>,
 
     ///
@@ -1048,6 +1113,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerListenerPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_listener_port: Option<i64>,
 
     ///
@@ -1059,6 +1125,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerTarget")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_target: Option<AnalysisLoadBalancerTarget>,
 
     ///
@@ -1070,6 +1137,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerTargetGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_target_group: Option<AnalysisComponent>,
 
     ///
@@ -1081,6 +1149,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerTargetGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_target_groups: Option<Vec<AnalysisComponent>>,
 
     ///
@@ -1096,6 +1165,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerTargetPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_target_port: Option<i64>,
 
     ///
@@ -1107,6 +1177,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MissingComponent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub missing_component: Option<String>,
 
     ///
@@ -1118,6 +1189,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NatGateway")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nat_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1129,6 +1201,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterface")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface: Option<AnalysisComponent>,
 
     ///
@@ -1140,6 +1213,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PacketField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub packet_field: Option<String>,
 
     ///
@@ -1155,6 +1229,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -1166,6 +1241,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRanges")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_ranges: Option<Vec<PortRange>>,
 
     ///
@@ -1177,6 +1253,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix_list: Option<AnalysisComponent>,
 
     ///
@@ -1188,6 +1265,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocols")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocols: Option<Vec<String>>,
 
     ///
@@ -1199,6 +1277,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_table: Option<AnalysisComponent>,
 
     ///
@@ -1210,6 +1289,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTableRoute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_table_route: Option<AnalysisRouteTableRoute>,
 
     ///
@@ -1221,6 +1301,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group: Option<AnalysisComponent>,
 
     ///
@@ -1232,6 +1313,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupRule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_rule: Option<AnalysisSecurityGroupRule>,
 
     ///
@@ -1243,6 +1325,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<AnalysisComponent>>,
 
     ///
@@ -1254,6 +1337,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceVpc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_vpc: Option<AnalysisComponent>,
 
     ///
@@ -1265,6 +1349,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<String>,
 
     ///
@@ -1276,6 +1361,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subnet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet: Option<AnalysisComponent>,
 
     ///
@@ -1287,6 +1373,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetRouteTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_route_table: Option<AnalysisComponent>,
 
     ///
@@ -1298,6 +1385,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGateway")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1309,6 +1397,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayAttachment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway_attachment: Option<AnalysisComponent>,
 
     ///
@@ -1320,6 +1409,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayRouteTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway_route_table: Option<AnalysisComponent>,
 
     ///
@@ -1331,6 +1421,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayRouteTableRoute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway_route_table_route: Option<TransitGatewayRouteTableRoute>,
 
     ///
@@ -1342,6 +1433,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Vpc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc: Option<AnalysisComponent>,
 
     ///
@@ -1353,6 +1445,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcPeeringConnection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_peering_connection: Option<AnalysisComponent>,
 
     ///
@@ -1364,6 +1457,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnConnection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpn_connection: Option<AnalysisComponent>,
 
     ///
@@ -1375,6 +1469,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnGateway")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpn_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1386,6 +1481,7 @@ pub struct Explanation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "vpcEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_endpoint: Option<AnalysisComponent>,
 }
 
@@ -1618,6 +1714,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AclRule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acl_rule: Option<AnalysisAclRule>,
 
     ///
@@ -1629,6 +1726,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_details: Option<Vec<AdditionalDetail>>,
 
     ///
@@ -1640,6 +1738,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Component")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component: Option<AnalysisComponent>,
 
     ///
@@ -1651,6 +1750,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationVpc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_vpc: Option<AnalysisComponent>,
 
     ///
@@ -1662,6 +1762,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticLoadBalancerListener")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elastic_load_balancer_listener: Option<AnalysisComponent>,
 
     ///
@@ -1673,6 +1774,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Explanations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub explanations: Option<Vec<Explanation>>,
 
     ///
@@ -1684,6 +1786,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InboundHeader")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inbound_header: Option<AnalysisPacketHeader>,
 
     ///
@@ -1695,6 +1798,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutboundHeader")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outbound_header: Option<AnalysisPacketHeader>,
 
     ///
@@ -1706,6 +1810,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTableRoute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_table_route: Option<AnalysisRouteTableRoute>,
 
     ///
@@ -1717,6 +1822,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupRule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_rule: Option<AnalysisSecurityGroupRule>,
 
     ///
@@ -1728,6 +1834,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SequenceNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sequence_number: Option<i64>,
 
     ///
@@ -1739,6 +1846,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_name: Option<String>,
 
     ///
@@ -1750,6 +1858,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceVpc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_vpc: Option<AnalysisComponent>,
 
     ///
@@ -1761,6 +1870,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subnet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet: Option<AnalysisComponent>,
 
     ///
@@ -1772,6 +1882,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGateway")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway: Option<AnalysisComponent>,
 
     ///
@@ -1783,6 +1894,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitGatewayRouteTableRoute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway_route_table_route: Option<TransitGatewayRouteTableRoute>,
 
     ///
@@ -1794,6 +1906,7 @@ pub struct PathComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Vpc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc: Option<AnalysisComponent>,
 }
 
@@ -1871,6 +1984,7 @@ pub struct PortRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "From")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from: Option<i64>,
 
     ///
@@ -1882,6 +1996,7 @@ pub struct PortRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "To")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub to: Option<i64>,
 }
 
@@ -1955,6 +2070,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttachmentId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attachment_id: Option<String>,
 
     ///
@@ -1966,6 +2082,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationCidr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_cidr: Option<String>,
 
     ///
@@ -1977,6 +2094,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix_list_id: Option<String>,
 
     ///
@@ -1988,6 +2106,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_id: Option<String>,
 
     ///
@@ -1999,6 +2118,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<String>,
 
     ///
@@ -2012,6 +2132,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteOrigin")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_origin: Option<String>,
 
     ///
@@ -2023,6 +2144,7 @@ pub struct TransitGatewayRouteTableRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<String>,
 }
 

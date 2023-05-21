@@ -16,6 +16,7 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodebuildRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub codebuild_role_arn: Option<String>,
 
     ///
@@ -37,6 +38,7 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_role_arn: Option<String>,
 
     ///
@@ -50,6 +52,7 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_account_id: Option<String>,
 
     ///
@@ -67,6 +70,7 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_name: Option<String>,
 
     ///
@@ -80,6 +84,7 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagementAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub management_account_id: Option<String>,
 
     ///
@@ -97,6 +102,7 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -112,6 +118,7 @@ pub struct CfnEnvironmentAccountConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

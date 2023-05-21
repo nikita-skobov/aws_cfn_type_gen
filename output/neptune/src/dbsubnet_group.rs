@@ -21,6 +21,7 @@ pub struct CfnDBSubnetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBSubnetGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dbsubnet_group_name: Option<String>,
 
     ///
@@ -43,6 +44,7 @@ pub struct CfnDBSubnetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

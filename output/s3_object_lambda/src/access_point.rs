@@ -10,6 +10,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -101,6 +102,7 @@ pub struct AwsLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionPayload")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_payload: Option<String>,
 }
 
@@ -160,6 +162,7 @@ pub struct ObjectLambdaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedFeatures")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_features: Option<Vec<String>>,
 
     ///
@@ -171,6 +174,7 @@ pub struct ObjectLambdaConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchMetricsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_metrics_enabled: Option<bool>,
 
     ///
@@ -222,6 +226,7 @@ pub struct PolicyStatus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsPublic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_public: Option<bool>,
 }
 
@@ -259,6 +264,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicAcls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_public_acls: Option<bool>,
 
     ///
@@ -274,6 +280,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_public_policy: Option<bool>,
 
     ///
@@ -289,6 +296,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnorePublicAcls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_public_acls: Option<bool>,
 
     ///
@@ -304,6 +312,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestrictPublicBuckets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restrict_public_buckets: Option<bool>,
 }
 

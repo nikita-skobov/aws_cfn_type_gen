@@ -27,6 +27,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultResult")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_result: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heartbeat_timeout: Option<i64>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LifecycleHookName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle_hook_name: Option<String>,
 
     ///
@@ -85,6 +88,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationMetadata")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_metadata: Option<String>,
 
     ///
@@ -96,6 +100,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTargetARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_target_arn: Option<String>,
 
     ///
@@ -109,6 +114,7 @@ pub struct CfnLifecycleHook {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 }
 

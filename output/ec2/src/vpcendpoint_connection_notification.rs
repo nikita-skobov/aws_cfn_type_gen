@@ -34,6 +34,7 @@ pub struct CfnVPCEndpointConnectionNotification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_id: Option<String>,
 
     ///
@@ -45,6 +46,7 @@ pub struct CfnVPCEndpointConnectionNotification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VPCEndpointId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpcendpoint_id: Option<String>,
 }
 

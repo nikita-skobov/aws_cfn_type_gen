@@ -10,6 +10,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compute_capacity: Option<ComputeCapacity>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisconnectTimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disconnect_timeout_in_seconds: Option<i64>,
 
     ///
@@ -49,6 +52,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
 
     ///
@@ -60,6 +64,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainJoinInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_join_info: Option<DomainJoinInfo>,
 
     ///
@@ -71,6 +76,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDefaultInternetAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_default_internet_access: Option<bool>,
 
     ///
@@ -86,6 +92,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FleetType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fleet_type: Option<FleetFleetTypeEnum>,
 
     ///
@@ -101,6 +108,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_role_arn: Option<String>,
 
     ///
@@ -116,6 +124,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdleDisconnectTimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle_disconnect_timeout_in_seconds: Option<i64>,
 
     ///
@@ -129,6 +138,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_arn: Option<String>,
 
     ///
@@ -142,6 +152,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_name: Option<String>,
 
     ///
@@ -171,6 +182,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentSessions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrent_sessions: Option<i64>,
 
     ///
@@ -184,6 +196,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxUserDurationInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_user_duration_in_seconds: Option<i64>,
 
     ///
@@ -211,6 +224,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Platform")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform: Option<FleetPlatformEnum>,
 
     /// The S3 location of the session scripts configuration zip file. This only applies to Elastic fleets.
@@ -221,6 +235,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionScriptS3Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_script_s3_location: Option<S3Location>,
 
     ///
@@ -236,6 +251,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamView")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_view: Option<FleetStreamViewEnum>,
 
     ///
@@ -247,6 +263,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     /// The USB device filter strings that specify which USB devices a user can redirect to the fleet streaming session, when using the Windows native client. This is allowed but not required for Elastic fleets.
@@ -257,6 +274,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UsbDeviceFilterStrings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub usb_device_filter_strings: Option<Vec<String>>,
 
     ///
@@ -268,6 +286,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
 }
 
@@ -441,6 +460,7 @@ pub struct DomainJoinInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectoryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub directory_name: Option<String>,
 
     ///
@@ -454,6 +474,7 @@ pub struct DomainJoinInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organizational_unit_distinguished_name: Option<String>,
 }
 
@@ -619,6 +640,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -630,6 +652,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 

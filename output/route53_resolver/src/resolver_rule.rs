@@ -29,6 +29,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResolverEndpointId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resolver_endpoint_id: Option<String>,
 
     ///
@@ -76,6 +78,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -87,6 +90,7 @@ pub struct CfnResolverRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetIps")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_ips: Option<Vec<TargetAddress>>,
 }
 
@@ -239,6 +243,7 @@ pub struct TargetAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip: Option<String>,
 
     ///
@@ -254,6 +259,7 @@ pub struct TargetAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6: Option<String>,
 
     ///
@@ -269,6 +275,7 @@ pub struct TargetAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<String>,
 }
 

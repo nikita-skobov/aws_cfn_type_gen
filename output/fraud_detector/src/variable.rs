@@ -49,6 +49,7 @@ pub struct CfnVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -75,6 +76,7 @@ pub struct CfnVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -88,6 +90,7 @@ pub struct CfnVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariableType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variable_type: Option<VariableVariableTypeEnum>,
 }
 

@@ -41,6 +41,7 @@ pub struct CfnServiceLinkedRole {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomSuffix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_suffix: Option<String>,
 
     ///
@@ -56,6 +57,7 @@ pub struct CfnServiceLinkedRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 }
 

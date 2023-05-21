@@ -18,6 +18,7 @@ pub struct CfnRotationSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedRotationLambda")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_rotation_lambda: Option<HostedRotationLambda>,
 
     ///
@@ -35,6 +36,7 @@ pub struct CfnRotationSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotateImmediatelyOnUpdate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rotate_immediately_on_update: Option<bool>,
 
     ///
@@ -50,6 +52,7 @@ pub struct CfnRotationSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotationLambdaARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rotation_lambda_arn: Option<String>,
 
     ///
@@ -61,6 +64,7 @@ pub struct CfnRotationSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotationRules")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rotation_rules: Option<RotationRules>,
 
     ///
@@ -115,6 +119,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeCharacters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_characters: Option<String>,
 
     ///
@@ -126,6 +131,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<String>,
 
     ///
@@ -143,6 +149,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterSecretArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub master_secret_arn: Option<String>,
 
     ///
@@ -156,6 +163,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterSecretKmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub master_secret_kms_key_arn: Option<String>,
 
     ///
@@ -167,6 +175,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotationLambdaName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rotation_lambda_name: Option<String>,
 
     ///
@@ -191,6 +200,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime: Option<String>,
 
     ///
@@ -208,6 +218,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuperuserSecretArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub superuser_secret_arn: Option<String>,
 
     ///
@@ -221,6 +232,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuperuserSecretKmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub superuser_secret_kms_key_arn: Option<String>,
 
     ///
@@ -234,6 +246,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<String>,
 
     ///
@@ -245,6 +258,7 @@ pub struct HostedRotationLambda {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_subnet_ids: Option<String>,
 }
 
@@ -276,6 +290,7 @@ pub struct RotationRules {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticallyAfterDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatically_after_days: Option<i64>,
 
     ///
@@ -287,6 +302,7 @@ pub struct RotationRules {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Duration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration: Option<String>,
 
     ///
@@ -302,6 +318,7 @@ pub struct RotationRules {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_expression: Option<String>,
 }
 

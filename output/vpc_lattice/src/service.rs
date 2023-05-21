@@ -14,6 +14,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_type: Option<String>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_arn: Option<String>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomDomainName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_domain_name: Option<String>,
 
     /// Property description not available.
@@ -46,6 +49,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsEntry")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_entry: Option<DnsEntry>,
 
     ///
@@ -59,6 +63,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -70,6 +75,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -103,6 +109,7 @@ pub struct DnsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name: Option<String>,
 
     ///
@@ -114,6 +121,7 @@ pub struct DnsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_zone_id: Option<String>,
 }
 

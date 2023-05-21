@@ -35,6 +35,7 @@ pub struct CfnKeyPair {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_type: Option<KeyPairKeyTypeEnum>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnKeyPair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicKeyMaterial")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_key_material: Option<String>,
 
     ///
@@ -57,6 +59,7 @@ pub struct CfnKeyPair {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

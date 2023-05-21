@@ -3,11 +3,13 @@
 pub struct CfnProtection {
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protection.html#cfn-shield-protection-applicationlayerautomaticresponseconfiguration
     #[serde(rename = "ApplicationLayerAutomaticResponseConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_layer_automatic_response_configuration:
         Option<ApplicationLayerAutomaticResponseConfiguration>,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protection.html#cfn-shield-protection-healthcheckarns
     #[serde(rename = "HealthCheckArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_arns: Option<Vec<String>>,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protection.html#cfn-shield-protection-name
@@ -20,6 +22,7 @@ pub struct CfnProtection {
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-protection.html#cfn-shield-protection-tags
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -46,10 +49,12 @@ impl cfn_resources::CfnResource for CfnProtection {
 pub struct Action {
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-protection-action.html#cfn-shield-protection-action-block
     #[serde(rename = "Block")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block: Option<serde_json::Value>,
 
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-shield-protection-action.html#cfn-shield-protection-action-count
     #[serde(rename = "Count")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<serde_json::Value>,
 }
 

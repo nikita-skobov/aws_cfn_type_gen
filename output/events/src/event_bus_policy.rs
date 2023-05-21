@@ -24,6 +24,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<String>,
 
     ///
@@ -39,6 +40,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition: Option<Condition>,
 
     ///
@@ -56,6 +58,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventBusName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_bus_name: Option<String>,
 
     ///
@@ -75,6 +78,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Principal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub principal: Option<String>,
 
     ///
@@ -86,6 +90,7 @@ pub struct CfnEventBusPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Statement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statement: Option<serde_json::Value>,
 
     ///
@@ -212,6 +217,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -223,6 +229,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 
     ///
@@ -234,6 +241,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 

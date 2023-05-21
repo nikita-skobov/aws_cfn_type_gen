@@ -22,6 +22,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateBody")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_body: Option<String>,
 
     ///
@@ -39,6 +40,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateChain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_chain: Option<String>,
 
     ///
@@ -60,6 +62,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 
     ///
@@ -81,6 +84,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_key: Option<String>,
 
     ///
@@ -100,6 +104,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerCertificateName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_certificate_name: Option<String>,
 
     ///
@@ -113,6 +118,7 @@ pub struct CfnServerCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

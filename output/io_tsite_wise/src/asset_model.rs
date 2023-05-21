@@ -10,6 +10,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelCompositeModels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_model_composite_models: Option<Vec<AssetModelCompositeModel>>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_model_description: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_model_hierarchies: Option<Vec<AssetModelHierarchy>>,
 
     ///
@@ -60,6 +63,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetModelProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_model_properties: Option<Vec<AssetModelProperty>>,
 
     ///
@@ -71,6 +75,7 @@ pub struct CfnAssetModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -104,6 +109,7 @@ pub struct AssetModelCompositeModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompositeModelProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub composite_model_properties: Option<Vec<AssetModelProperty>>,
 
     ///
@@ -115,6 +121,7 @@ pub struct AssetModelCompositeModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -232,6 +239,7 @@ pub struct AssetModelProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTypeSpec")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_type_spec: Option<String>,
 
     ///
@@ -280,6 +288,7 @@ pub struct AssetModelProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<String>,
 }
 
@@ -311,6 +320,7 @@ pub struct Attribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_value: Option<String>,
 }
 
@@ -443,6 +453,7 @@ pub struct MetricWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tumbling")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tumbling: Option<TumblingWindow>,
 }
 
@@ -478,6 +489,7 @@ pub struct PropertyType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attribute: Option<Attribute>,
 
     ///
@@ -491,6 +503,7 @@ pub struct PropertyType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metric")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric: Option<Metric>,
 
     ///
@@ -504,6 +517,7 @@ pub struct PropertyType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Transform")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transform: Option<Transform>,
 
     ///
@@ -663,6 +677,7 @@ pub struct TumblingWindow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Offset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub offset: Option<String>,
 }
 
@@ -694,6 +709,7 @@ pub struct VariableValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HierarchyLogicalId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hierarchy_logical_id: Option<String>,
 
     ///

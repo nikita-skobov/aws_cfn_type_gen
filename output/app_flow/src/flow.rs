@@ -14,6 +14,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -53,6 +54,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlowStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub flow_status: Option<FlowFlowStatusEnum>,
 
     ///
@@ -70,6 +72,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KMSArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kmsarn: Option<String>,
 
     /// Property description not available.
@@ -80,6 +83,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetadataCatalogConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata_catalog_config: Option<MetadataCatalogConfig>,
 
     ///
@@ -102,6 +106,7 @@ pub struct CfnFlow {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -232,6 +237,7 @@ pub struct AggregationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_type: Option<AggregationConfigAggregationTypeEnum>,
 
     /// Property description not available.
@@ -242,6 +248,7 @@ pub struct AggregationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetFileSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_file_size: Option<i64>,
 }
 
@@ -332,6 +339,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Amplitude")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amplitude: Option<ConnectorOperatorAmplitudeEnum>,
 
     ///
@@ -345,6 +353,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_connector: Option<ConnectorOperatorCustomConnectorEnum>,
 
     ///
@@ -358,6 +367,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datadog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datadog: Option<ConnectorOperatorDatadogEnum>,
 
     ///
@@ -371,6 +381,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dynatrace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynatrace: Option<ConnectorOperatorDynatraceEnum>,
 
     ///
@@ -384,6 +395,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GoogleAnalytics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub google_analytics: Option<ConnectorOperatorGoogleAnalyticsEnum>,
 
     ///
@@ -397,6 +409,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InforNexus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub infor_nexus: Option<ConnectorOperatorInforNexusEnum>,
 
     ///
@@ -410,6 +423,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marketo: Option<ConnectorOperatorMarketoEnum>,
 
     /// Property description not available.
@@ -420,6 +434,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pardot")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pardot: Option<String>,
 
     ///
@@ -433,6 +448,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3: Option<ConnectorOperatorS3Enum>,
 
     ///
@@ -446,6 +462,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sapodata: Option<ConnectorOperatorSAPODataEnum>,
 
     ///
@@ -459,6 +476,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub salesforce: Option<ConnectorOperatorSalesforceEnum>,
 
     ///
@@ -472,6 +490,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_now: Option<ConnectorOperatorServiceNowEnum>,
 
     ///
@@ -485,6 +504,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Singular")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub singular: Option<ConnectorOperatorSingularEnum>,
 
     ///
@@ -498,6 +518,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slack")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slack: Option<ConnectorOperatorSlackEnum>,
 
     ///
@@ -511,6 +532,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Trendmicro")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trendmicro: Option<ConnectorOperatorTrendmicroEnum>,
 
     ///
@@ -524,6 +546,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Veeva")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub veeva: Option<ConnectorOperatorVeevaEnum>,
 
     ///
@@ -537,6 +560,7 @@ pub struct ConnectorOperator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zendesk: Option<ConnectorOperatorZendeskEnum>,
 }
 
@@ -1710,6 +1734,7 @@ pub struct CustomConnectorDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_properties: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1736,6 +1761,7 @@ pub struct CustomConnectorDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -1747,6 +1773,7 @@ pub struct CustomConnectorDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdFieldNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id_field_names: Option<Vec<String>>,
 
     ///
@@ -1760,6 +1787,7 @@ pub struct CustomConnectorDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_operation_type: Option<CustomConnectorDestinationPropertiesWriteOperationTypeEnum>,
 }
 
@@ -1827,6 +1855,7 @@ pub struct CustomConnectorSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_properties: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1922,6 +1951,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_connector: Option<CustomConnectorDestinationProperties>,
 
     ///
@@ -1933,6 +1963,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBridge")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_bridge: Option<EventBridgeDestinationProperties>,
 
     ///
@@ -1944,6 +1975,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LookoutMetrics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lookout_metrics: Option<LookoutMetricsDestinationProperties>,
 
     ///
@@ -1955,6 +1987,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marketo: Option<MarketoDestinationProperties>,
 
     ///
@@ -1966,6 +1999,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Redshift")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redshift: Option<RedshiftDestinationProperties>,
 
     ///
@@ -1977,6 +2011,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3: Option<S3DestinationProperties>,
 
     ///
@@ -1988,6 +2023,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sapodata: Option<SAPODataDestinationProperties>,
 
     ///
@@ -1999,6 +2035,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub salesforce: Option<SalesforceDestinationProperties>,
 
     ///
@@ -2010,6 +2047,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Snowflake")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snowflake: Option<SnowflakeDestinationProperties>,
 
     ///
@@ -2021,6 +2059,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Upsolver")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub upsolver: Option<UpsolverDestinationProperties>,
 
     ///
@@ -2032,6 +2071,7 @@ pub struct DestinationConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zendesk: Option<ZendeskDestinationProperties>,
 }
 
@@ -2103,6 +2143,7 @@ pub struct DestinationFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_version: Option<String>,
 
     ///
@@ -2118,6 +2159,7 @@ pub struct DestinationFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_profile_name: Option<String>,
 
     ///
@@ -2265,6 +2307,7 @@ pub struct ErrorHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<String>,
 
     ///
@@ -2280,6 +2323,7 @@ pub struct ErrorHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<String>,
 
     ///
@@ -2291,6 +2335,7 @@ pub struct ErrorHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailOnFirstError")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fail_on_first_error: Option<bool>,
 }
 
@@ -2351,6 +2396,7 @@ pub struct EventBridgeDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -2502,6 +2548,7 @@ pub struct IncrementalPullConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatetimeTypeFieldName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datetime_type_field_name: Option<String>,
 }
 
@@ -2579,6 +2626,7 @@ pub struct LookoutMetricsDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Object")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object: Option<String>,
 }
 
@@ -2608,6 +2656,7 @@ pub struct MarketoDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -2706,6 +2755,7 @@ pub struct MetadataCatalogConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueDataCatalog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub glue_data_catalog: Option<GlueDataCatalog>,
 }
 
@@ -2766,6 +2816,7 @@ pub struct PrefixConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathPrefixHierarchy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_prefix_hierarchy: Option<Vec<String>>,
 
     ///
@@ -2779,6 +2830,7 @@ pub struct PrefixConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix_format: Option<PrefixConfigPrefixFormatEnum>,
 
     ///
@@ -2792,6 +2844,7 @@ pub struct PrefixConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix_type: Option<PrefixConfigPrefixTypeEnum>,
 }
 
@@ -2875,6 +2928,7 @@ pub struct RedshiftDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<String>,
 
     ///
@@ -2886,6 +2940,7 @@ pub struct RedshiftDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -3008,6 +3063,7 @@ pub struct S3DestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<String>,
 
     ///
@@ -3019,6 +3075,7 @@ pub struct S3DestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3OutputFormatConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_output_format_config: Option<S3OutputFormatConfig>,
 }
 
@@ -3081,6 +3138,7 @@ pub struct S3InputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputFileType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_input_file_type: Option<S3InputFormatConfigS3InputFileTypeEnum>,
 }
 
@@ -3127,6 +3185,7 @@ pub struct S3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_config: Option<AggregationConfig>,
 
     ///
@@ -3140,6 +3199,7 @@ pub struct S3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_type: Option<S3OutputFormatConfigFileTypeEnum>,
 
     ///
@@ -3151,6 +3211,7 @@ pub struct S3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix_config: Option<PrefixConfig>,
 
     /// Property description not available.
@@ -3161,6 +3222,7 @@ pub struct S3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreserveSourceDataTyping")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preserve_source_data_typing: Option<bool>,
 }
 
@@ -3251,6 +3313,7 @@ pub struct S3SourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputFormatConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_input_format_config: Option<S3InputFormatConfig>,
 }
 
@@ -3311,6 +3374,7 @@ pub struct SAPODataDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -3322,6 +3386,7 @@ pub struct SAPODataDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdFieldNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id_field_names: Option<Vec<String>>,
 
     ///
@@ -3350,6 +3415,7 @@ pub struct SAPODataDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuccessResponseHandlingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub success_response_handling_config: Option<SuccessResponseHandlingConfig>,
 
     ///
@@ -3361,6 +3427,7 @@ pub struct SAPODataDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_operation_type: Option<String>,
 }
 
@@ -3453,6 +3520,7 @@ pub struct SalesforceDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTransferApi")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_transfer_api: Option<SalesforceDestinationPropertiesDataTransferApiEnum>,
 
     ///
@@ -3464,6 +3532,7 @@ pub struct SalesforceDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -3475,6 +3544,7 @@ pub struct SalesforceDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdFieldNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id_field_names: Option<Vec<String>>,
 
     ///
@@ -3503,6 +3573,7 @@ pub struct SalesforceDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_operation_type: Option<SalesforceDestinationPropertiesWriteOperationTypeEnum>,
 }
 
@@ -3595,6 +3666,7 @@ pub struct SalesforceSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTransferApi")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_transfer_api: Option<SalesforceSourcePropertiesDataTransferApiEnum>,
 
     ///
@@ -3606,6 +3678,7 @@ pub struct SalesforceSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDynamicFieldUpdate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_dynamic_field_update: Option<bool>,
 
     ///
@@ -3617,6 +3690,7 @@ pub struct SalesforceSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeDeletedRecords")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_deleted_records: Option<bool>,
 
     ///
@@ -3693,6 +3767,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPullMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_pull_mode: Option<ScheduledTriggerPropertiesDataPullModeEnum>,
 
     ///
@@ -3704,6 +3779,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirstExecutionFrom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub first_execution_from: Option<f64>,
 
     /// Property description not available.
@@ -3714,6 +3790,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlowErrorDeactivationThreshold")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub flow_error_deactivation_threshold: Option<i64>,
 
     ///
@@ -3725,6 +3802,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleEndTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_end_time: Option<f64>,
 
     ///
@@ -3751,6 +3829,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleOffset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_offset: Option<f64>,
 
     ///
@@ -3762,6 +3841,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_start_time: Option<f64>,
 
     ///
@@ -3779,6 +3859,7 @@ pub struct ScheduledTriggerProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_zone: Option<String>,
 }
 
@@ -3973,6 +4054,7 @@ pub struct SnowflakeDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<String>,
 
     ///
@@ -3984,6 +4066,7 @@ pub struct SnowflakeDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -4085,6 +4168,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Amplitude")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amplitude: Option<AmplitudeSourceProperties>,
 
     ///
@@ -4096,6 +4180,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_connector: Option<CustomConnectorSourceProperties>,
 
     ///
@@ -4107,6 +4192,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datadog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datadog: Option<DatadogSourceProperties>,
 
     ///
@@ -4118,6 +4204,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dynatrace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynatrace: Option<DynatraceSourceProperties>,
 
     ///
@@ -4129,6 +4216,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GoogleAnalytics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub google_analytics: Option<GoogleAnalyticsSourceProperties>,
 
     ///
@@ -4140,6 +4228,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InforNexus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub infor_nexus: Option<InforNexusSourceProperties>,
 
     ///
@@ -4151,6 +4240,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marketo: Option<MarketoSourceProperties>,
 
     /// Property description not available.
@@ -4161,6 +4251,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pardot")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pardot: Option<PardotSourceProperties>,
 
     ///
@@ -4172,6 +4263,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3: Option<S3SourceProperties>,
 
     ///
@@ -4183,6 +4275,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sapodata: Option<SAPODataSourceProperties>,
 
     ///
@@ -4194,6 +4287,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub salesforce: Option<SalesforceSourceProperties>,
 
     ///
@@ -4205,6 +4299,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_now: Option<ServiceNowSourceProperties>,
 
     ///
@@ -4216,6 +4311,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Singular")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub singular: Option<SingularSourceProperties>,
 
     ///
@@ -4227,6 +4323,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slack")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slack: Option<SlackSourceProperties>,
 
     ///
@@ -4238,6 +4335,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Trendmicro")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trendmicro: Option<TrendmicroSourceProperties>,
 
     ///
@@ -4249,6 +4347,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Veeva")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub veeva: Option<VeevaSourceProperties>,
 
     ///
@@ -4260,6 +4359,7 @@ pub struct SourceConnectorProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zendesk: Option<ZendeskSourceProperties>,
 }
 
@@ -4347,6 +4447,7 @@ pub struct SourceFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_version: Option<String>,
 
     ///
@@ -4362,6 +4463,7 @@ pub struct SourceFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_profile_name: Option<String>,
 
     ///
@@ -4386,6 +4488,7 @@ pub struct SourceFlowConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncrementalPullConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub incremental_pull_config: Option<IncrementalPullConfig>,
 
     ///
@@ -4560,6 +4663,7 @@ pub struct SuccessResponseHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<String>,
 
     ///
@@ -4575,6 +4679,7 @@ pub struct SuccessResponseHandlingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<String>,
 }
 
@@ -4675,6 +4780,7 @@ pub struct Task {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOperator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_operator: Option<ConnectorOperator>,
 
     ///
@@ -4690,6 +4796,7 @@ pub struct Task {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_field: Option<String>,
 
     ///
@@ -4712,6 +4819,7 @@ pub struct Task {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_properties: Option<Vec<TaskPropertiesObject>>,
 
     ///
@@ -4961,6 +5069,7 @@ pub struct TriggerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TriggerProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trigger_properties: Option<ScheduledTriggerProperties>,
 
     ///
@@ -5049,6 +5158,7 @@ pub struct UpsolverDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<String>,
 
     ///
@@ -5118,6 +5228,7 @@ pub struct UpsolverS3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_config: Option<AggregationConfig>,
 
     ///
@@ -5131,6 +5242,7 @@ pub struct UpsolverS3OutputFormatConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_type: Option<UpsolverS3OutputFormatConfigFileTypeEnum>,
 
     ///
@@ -5202,6 +5314,7 @@ pub struct VeevaSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_type: Option<String>,
 
     ///
@@ -5213,6 +5326,7 @@ pub struct VeevaSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeAllVersions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_all_versions: Option<bool>,
 
     ///
@@ -5224,6 +5338,7 @@ pub struct VeevaSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeRenditions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_renditions: Option<bool>,
 
     ///
@@ -5235,6 +5350,7 @@ pub struct VeevaSourceProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSourceFiles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_source_files: Option<bool>,
 
     ///
@@ -5297,6 +5413,7 @@ pub struct ZendeskDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorHandlingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_handling_config: Option<ErrorHandlingConfig>,
 
     ///
@@ -5308,6 +5425,7 @@ pub struct ZendeskDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdFieldNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id_field_names: Option<Vec<String>>,
 
     ///
@@ -5334,6 +5452,7 @@ pub struct ZendeskDestinationProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteOperationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_operation_type: Option<String>,
 }
 

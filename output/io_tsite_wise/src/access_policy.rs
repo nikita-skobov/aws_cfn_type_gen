@@ -65,6 +65,7 @@ pub struct AccessPolicyIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_role: Option<IamRole>,
 
     ///
@@ -76,6 +77,7 @@ pub struct AccessPolicyIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamUser")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_user: Option<IamUser>,
 
     ///
@@ -87,6 +89,7 @@ pub struct AccessPolicyIdentity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "User")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user: Option<User>,
 }
 
@@ -126,6 +129,7 @@ pub struct AccessPolicyResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Portal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub portal: Option<Portal>,
 
     ///
@@ -137,6 +141,7 @@ pub struct AccessPolicyResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Project")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project: Option<Project>,
 }
 
@@ -170,6 +175,7 @@ pub struct IamRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 }
 
@@ -201,6 +207,7 @@ pub struct IamUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 }
 
@@ -230,6 +237,7 @@ pub struct Portal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "id")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 }
 
@@ -259,6 +267,7 @@ pub struct Project {
     ///
     /// Update requires: No interruption
     #[serde(rename = "id")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 }
 
@@ -288,6 +297,7 @@ pub struct User {
     ///
     /// Update requires: No interruption
     #[serde(rename = "id")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 }
 

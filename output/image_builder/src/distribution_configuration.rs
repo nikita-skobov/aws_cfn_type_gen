@@ -14,6 +14,7 @@ pub struct CfnDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -49,6 +50,7 @@ pub struct CfnDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -96,6 +98,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmiTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ami_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -111,6 +114,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -126,6 +130,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -137,6 +142,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchPermissionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_permission_configuration: Option<LaunchPermissionConfiguration>,
 
     ///
@@ -154,6 +160,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -167,6 +174,7 @@ pub struct AmiDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAccountIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_account_ids: Option<Vec<String>>,
 }
 
@@ -263,6 +271,7 @@ pub struct ContainerDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_tags: Option<Vec<String>>,
 
     ///
@@ -278,6 +287,7 @@ pub struct ContainerDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -289,6 +299,7 @@ pub struct ContainerDistributionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetRepository")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_repository: Option<TargetContainerRepository>,
 }
 
@@ -340,6 +351,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AmiDistributionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ami_distribution_configuration: Option<AmiDistributionConfiguration>,
 
     ///
@@ -351,6 +363,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerDistributionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_distribution_configuration: Option<ContainerDistributionConfiguration>,
 
     /// Property description not available.
@@ -361,6 +374,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FastLaunchConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fast_launch_configurations: Option<Vec<FastLaunchConfiguration>>,
 
     ///
@@ -374,6 +388,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_configurations: Option<Vec<LaunchTemplateConfiguration>>,
 
     ///
@@ -387,6 +402,7 @@ pub struct Distribution {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseConfigurationArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_configuration_arns: Option<Vec<String>>,
 
     ///
@@ -468,6 +484,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub account_id: Option<String>,
 
     /// Property description not available.
@@ -478,6 +495,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     /// Property description not available.
@@ -488,6 +506,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template: Option<FastLaunchLaunchTemplateSpecification>,
 
     /// Property description not available.
@@ -498,6 +517,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxParallelLaunches")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_parallel_launches: Option<i64>,
 
     /// Property description not available.
@@ -508,6 +528,7 @@ pub struct FastLaunchConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_configuration: Option<FastLaunchSnapshotConfiguration>,
 }
 
@@ -544,6 +565,7 @@ pub struct FastLaunchLaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_id: Option<String>,
 
     /// Property description not available.
@@ -554,6 +576,7 @@ pub struct FastLaunchLaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_name: Option<String>,
 
     /// Property description not available.
@@ -564,6 +587,7 @@ pub struct FastLaunchLaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_version: Option<String>,
 }
 
@@ -592,6 +616,7 @@ pub struct FastLaunchSnapshotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetResourceCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_resource_count: Option<i64>,
 }
 
@@ -623,6 +648,7 @@ pub struct LaunchPermissionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organization_arns: Option<Vec<String>>,
 
     ///
@@ -636,6 +662,7 @@ pub struct LaunchPermissionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organizational_unit_arns: Option<Vec<String>>,
 
     ///
@@ -647,6 +674,7 @@ pub struct LaunchPermissionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_groups: Option<Vec<String>>,
 
     ///
@@ -660,6 +688,7 @@ pub struct LaunchPermissionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_ids: Option<Vec<String>>,
 }
 
@@ -715,6 +744,7 @@ pub struct LaunchTemplateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub account_id: Option<String>,
 
     ///
@@ -728,6 +758,7 @@ pub struct LaunchTemplateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplateId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template_id: Option<String>,
 
     ///
@@ -739,6 +770,7 @@ pub struct LaunchTemplateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetDefaultVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub set_default_version: Option<bool>,
 }
 
@@ -772,6 +804,7 @@ pub struct TargetContainerRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_name: Option<String>,
 
     ///
@@ -785,6 +818,7 @@ pub struct TargetContainerRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Service")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service: Option<TargetContainerRepositoryServiceEnum>,
 }
 

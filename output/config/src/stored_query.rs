@@ -10,6 +10,7 @@ pub struct CfnStoredQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_description: Option<String>,
 
     ///
@@ -49,6 +50,7 @@ pub struct CfnStoredQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

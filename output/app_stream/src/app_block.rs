@@ -11,6 +11,7 @@ pub struct CfnAppBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     /// The display name of the app block.
@@ -23,6 +24,7 @@ pub struct CfnAppBlock {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
 
     /// The name of the app block.
@@ -67,6 +69,7 @@ pub struct CfnAppBlock {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -167,6 +170,7 @@ pub struct ScriptDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutableParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub executable_parameters: Option<String>,
 
     ///

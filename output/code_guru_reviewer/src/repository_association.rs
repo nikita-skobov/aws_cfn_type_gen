@@ -10,6 +10,7 @@ pub struct CfnRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_arn: Option<String>,
 
     ///
@@ -65,6 +67,7 @@ pub struct CfnRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Owner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub owner: Option<String>,
 
     ///
@@ -78,6 +81,7 @@ pub struct CfnRepositoryAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///

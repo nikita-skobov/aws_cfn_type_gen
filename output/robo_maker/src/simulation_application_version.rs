@@ -33,6 +33,7 @@ pub struct CfnSimulationApplicationVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CurrentRevisionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub current_revision_id: Option<String>,
 }
 

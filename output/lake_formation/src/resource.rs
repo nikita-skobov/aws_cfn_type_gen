@@ -21,6 +21,7 @@ pub struct CfnResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -43,6 +44,7 @@ pub struct CfnResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WithFederation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub with_federation: Option<bool>,
 }
 

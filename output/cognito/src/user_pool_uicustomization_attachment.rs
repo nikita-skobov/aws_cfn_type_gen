@@ -14,6 +14,7 @@ pub struct CfnUserPoolUICustomizationAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CSS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub css: Option<String>,
 
     ///

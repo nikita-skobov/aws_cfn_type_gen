@@ -9,6 +9,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_by: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_type_id: Option<String>,
 
     ///
@@ -86,6 +88,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<NotificationRuleStatusEnum>,
 
     ///
@@ -97,6 +100,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     /// Property description not available.
@@ -107,6 +111,7 @@ pub struct CfnNotificationRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_address: Option<String>,
 
     ///

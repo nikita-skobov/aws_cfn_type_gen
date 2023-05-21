@@ -12,6 +12,7 @@ pub struct CfnRoleAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialDurationSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credential_duration_seconds: Option<i64>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnRoleAlias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleAlias")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_alias: Option<String>,
 
     ///
@@ -47,6 +49,7 @@ pub struct CfnRoleAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

@@ -16,6 +16,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataStorageConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_storage_config: Option<DataStorageConfig>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -46,6 +48,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub desired_state: Option<InferenceExperimentDesiredStateEnum>,
 
     ///
@@ -76,6 +79,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key: Option<String>,
 
     ///
@@ -134,6 +138,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<InferenceExperimentSchedule>,
 
     ///
@@ -145,6 +150,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShadowModeConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shadow_mode_config: Option<ShadowModeConfig>,
 
     ///
@@ -160,6 +166,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatusReason")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status_reason: Option<String>,
 
     ///
@@ -173,6 +180,7 @@ pub struct CfnInferenceExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -331,6 +339,7 @@ pub struct CaptureContentTypeHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvContentTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv_content_types: Option<Vec<String>>,
 
     ///
@@ -344,6 +353,7 @@ pub struct CaptureContentTypeHeader {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonContentTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json_content_types: Option<Vec<String>>,
 }
 
@@ -393,6 +403,7 @@ pub struct DataStorageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type: Option<CaptureContentTypeHeader>,
 
     ///
@@ -423,6 +434,7 @@ pub struct DataStorageConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key: Option<String>,
 }
 
@@ -478,6 +490,7 @@ pub struct EndpointMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfigName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_config_name: Option<String>,
 
     ///
@@ -506,6 +519,7 @@ pub struct EndpointMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_status: Option<EndpointMetadataEndpointStatusEnum>,
 }
 
@@ -596,6 +610,7 @@ pub struct InferenceExperimentSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_time: Option<String>,
 
     ///
@@ -607,6 +622,7 @@ pub struct InferenceExperimentSchedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time: Option<String>,
 }
 

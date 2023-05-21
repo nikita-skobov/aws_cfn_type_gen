@@ -21,6 +21,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientAuthentication")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_authentication: Option<ClientAuthentication>,
 
     ///
@@ -43,6 +44,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_info: Option<ConfigurationInfo>,
 
     ///
@@ -54,6 +56,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrentVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub current_version: Option<String>,
 
     ///
@@ -65,6 +68,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_info: Option<EncryptionInfo>,
 
     ///
@@ -76,6 +80,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnhancedMonitoring")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanced_monitoring: Option<String>,
 
     ///
@@ -98,6 +103,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_info: Option<LoggingInfo>,
 
     ///
@@ -120,6 +126,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenMonitoring")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub open_monitoring: Option<OpenMonitoring>,
 
     ///
@@ -131,6 +138,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_mode: Option<String>,
 
     ///
@@ -142,6 +150,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -193,6 +202,7 @@ pub struct BrokerLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs: Option<CloudWatchLogs>,
 
     ///
@@ -204,6 +214,7 @@ pub struct BrokerLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Firehose")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub firehose: Option<Firehose>,
 
     ///
@@ -215,6 +226,7 @@ pub struct BrokerLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3: Option<S3>,
 }
 
@@ -254,6 +266,7 @@ pub struct BrokerNodeGroupInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BrokerAZDistribution")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub broker_azdistribution: Option<String>,
 
     ///
@@ -280,6 +293,7 @@ pub struct BrokerNodeGroupInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectivityInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connectivity_info: Option<ConnectivityInfo>,
 
     ///
@@ -302,6 +316,7 @@ pub struct BrokerNodeGroupInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -313,6 +328,7 @@ pub struct BrokerNodeGroupInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_info: Option<StorageInfo>,
 }
 
@@ -350,6 +366,7 @@ pub struct ClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sasl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sasl: Option<Sasl>,
 
     ///
@@ -361,6 +378,7 @@ pub struct ClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls: Option<Tls>,
 
     ///
@@ -372,6 +390,7 @@ pub struct ClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unauthenticated")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unauthenticated: Option<Unauthenticated>,
 }
 
@@ -420,6 +439,7 @@ pub struct CloudWatchLogs {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group: Option<String>,
 }
 
@@ -489,6 +509,7 @@ pub struct ConnectivityInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_access: Option<PublicAccess>,
 
     ///
@@ -500,6 +521,7 @@ pub struct ConnectivityInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConnectivity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_connectivity: Option<VpcConnectivity>,
 }
 
@@ -537,6 +559,7 @@ pub struct EBSStorageInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedThroughput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_throughput: Option<ProvisionedThroughput>,
 
     ///
@@ -548,6 +571,7 @@ pub struct EBSStorageInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_size: Option<i64>,
 }
 
@@ -618,6 +642,7 @@ pub struct EncryptionInTransit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientBroker")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_broker: Option<String>,
 
     ///
@@ -631,6 +656,7 @@ pub struct EncryptionInTransit {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InCluster")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub in_cluster: Option<bool>,
 }
 
@@ -660,6 +686,7 @@ pub struct EncryptionInfo {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionAtRest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_at_rest: Option<EncryptionAtRest>,
 
     ///
@@ -671,6 +698,7 @@ pub struct EncryptionInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionInTransit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_in_transit: Option<EncryptionInTransit>,
 }
 
@@ -708,6 +736,7 @@ pub struct Firehose {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeliveryStream")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_stream: Option<String>,
 
     ///
@@ -897,6 +926,7 @@ pub struct Prometheus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JmxExporter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jmx_exporter: Option<JmxExporter>,
 
     ///
@@ -908,6 +938,7 @@ pub struct Prometheus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NodeExporter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub node_exporter: Option<NodeExporter>,
 }
 
@@ -945,6 +976,7 @@ pub struct ProvisionedThroughput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -956,6 +988,7 @@ pub struct ProvisionedThroughput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeThroughput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_throughput: Option<i64>,
 }
 
@@ -985,6 +1018,7 @@ pub struct PublicAccess {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -1014,6 +1048,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket: Option<String>,
 
     ///
@@ -1036,6 +1071,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
 }
 
@@ -1065,6 +1101,7 @@ pub struct Sasl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iam")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam: Option<Iam>,
 
     ///
@@ -1076,6 +1113,7 @@ pub struct Sasl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scram")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scram: Option<Scram>,
 }
 
@@ -1138,6 +1176,7 @@ pub struct StorageInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EBSStorageInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebsstorage_info: Option<EBSStorageInfo>,
 }
 
@@ -1171,6 +1210,7 @@ pub struct Tls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateAuthorityArnList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_authority_arn_list: Option<Vec<String>>,
 
     ///
@@ -1182,6 +1222,7 @@ pub struct Tls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -1240,6 +1281,7 @@ pub struct VpcConnectivity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientAuthentication")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_authentication: Option<VpcConnectivityClientAuthentication>,
 }
 
@@ -1273,6 +1315,7 @@ pub struct VpcConnectivityClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sasl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sasl: Option<VpcConnectivitySasl>,
 
     ///
@@ -1284,6 +1327,7 @@ pub struct VpcConnectivityClientAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls: Option<VpcConnectivityTls>,
 }
 
@@ -1346,6 +1390,7 @@ pub struct VpcConnectivitySasl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iam")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam: Option<VpcConnectivityIam>,
 
     ///
@@ -1357,6 +1402,7 @@ pub struct VpcConnectivitySasl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scram")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scram: Option<VpcConnectivityScram>,
 }
 

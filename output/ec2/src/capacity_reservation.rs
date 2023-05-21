@@ -21,6 +21,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsOptimized")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_optimized: Option<bool>,
 
     ///
@@ -36,6 +37,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_date: Option<String>,
 
     ///
@@ -51,6 +53,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndDateType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_date_type: Option<CapacityReservationEndDateTypeEnum>,
 
     ///
@@ -62,6 +65,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EphemeralStorage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ephemeral_storage: Option<bool>,
 
     ///
@@ -92,6 +96,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceMatchCriteria")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_match_criteria: Option<CapacityReservationInstanceMatchCriteriaEnum>,
 
     ///
@@ -129,6 +134,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutPostArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub out_post_arn: Option<String>,
 
     ///
@@ -142,6 +148,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlacementGroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_group_arn: Option<String>,
 
     ///
@@ -153,6 +160,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
     ///
@@ -168,6 +176,7 @@ pub struct CfnCapacityReservation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tenancy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tenancy: Option<CapacityReservationTenancyEnum>,
 }
 
@@ -373,6 +382,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<TagSpecificationResourceTypeEnum>,
 
     ///
@@ -384,6 +394,7 @@ pub struct TagSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

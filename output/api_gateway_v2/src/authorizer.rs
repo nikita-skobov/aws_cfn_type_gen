@@ -21,6 +21,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerCredentialsArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_credentials_arn: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerPayloadFormatVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_payload_format_version: Option<String>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerResultTtlInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_result_ttl_in_seconds: Option<i64>,
 
     ///
@@ -65,6 +68,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_uri: Option<String>,
 
     ///
@@ -76,6 +80,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableSimpleResponses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_simple_responses: Option<bool>,
 
     ///
@@ -91,6 +96,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentitySource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_source: Option<Vec<String>>,
 
     ///
@@ -102,6 +108,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityValidationExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_validation_expression: Option<String>,
 
     ///
@@ -113,6 +120,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JwtConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jwt_configuration: Option<JWTConfiguration>,
 
     ///
@@ -157,6 +165,7 @@ pub struct JWTConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Audience")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audience: Option<Vec<String>>,
 
     ///
@@ -168,6 +177,7 @@ pub struct JWTConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Issuer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub issuer: Option<String>,
 }
 

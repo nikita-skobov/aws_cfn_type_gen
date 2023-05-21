@@ -16,6 +16,7 @@ pub struct CfnMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvitationId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invitation_id: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -49,6 +51,7 @@ pub struct CfnMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_id: Option<String>,
 }
 
@@ -108,6 +111,7 @@ pub struct ApprovalThresholdPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProposalDurationInHours")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub proposal_duration_in_hours: Option<i64>,
 
     ///
@@ -121,6 +125,7 @@ pub struct ApprovalThresholdPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdComparator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threshold_comparator: Option<ApprovalThresholdPolicyThresholdComparatorEnum>,
 
     ///
@@ -136,6 +141,7 @@ pub struct ApprovalThresholdPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdPercentage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threshold_percentage: Option<i64>,
 }
 
@@ -216,6 +222,7 @@ pub struct MemberConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -227,6 +234,7 @@ pub struct MemberConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemberFrameworkConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub member_framework_configuration: Option<MemberFrameworkConfiguration>,
 
     ///
@@ -391,6 +399,7 @@ pub struct MemberFrameworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemberFabricConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub member_fabric_configuration: Option<MemberFabricConfiguration>,
 }
 
@@ -426,6 +435,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -482,6 +492,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkFrameworkConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_framework_configuration: Option<NetworkFrameworkConfiguration>,
 
     ///
@@ -638,6 +649,7 @@ pub struct NetworkFrameworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkFabricConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_fabric_configuration: Option<NetworkFabricConfiguration>,
 }
 
@@ -673,6 +685,7 @@ pub struct VotingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovalThresholdPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approval_threshold_policy: Option<ApprovalThresholdPolicy>,
 }
 

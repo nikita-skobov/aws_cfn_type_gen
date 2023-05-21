@@ -16,6 +16,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEventData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_event_data: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destinations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destinations: Option<Vec<Destination>>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_configuration: Option<FilterConfiguration>,
 
     ///
@@ -72,6 +75,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTarget")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_target: Option<String>,
 
     ///
@@ -83,6 +87,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlayerLatencyPolicies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub player_latency_policies: Option<Vec<PlayerLatencyPolicy>>,
 
     ///
@@ -94,6 +99,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PriorityConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority_configuration: Option<PriorityConfiguration>,
 
     ///
@@ -107,6 +113,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -120,6 +127,7 @@ pub struct CfnGameSessionQueue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_seconds: Option<i64>,
 }
 
@@ -235,6 +243,7 @@ pub struct Destination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_arn: Option<String>,
 }
 
@@ -284,6 +293,7 @@ pub struct FilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedLocations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_locations: Option<Vec<String>>,
 }
 
@@ -324,6 +334,7 @@ pub struct PlayerLatencyPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumIndividualPlayerLatencyMilliseconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_individual_player_latency_milliseconds: Option<i64>,
 
     ///
@@ -337,6 +348,7 @@ pub struct PlayerLatencyPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDurationSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_duration_seconds: Option<i64>,
 }
 
@@ -385,6 +397,7 @@ pub struct PriorityConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocationOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location_order: Option<Vec<String>>,
 
     ///
@@ -400,6 +413,7 @@ pub struct PriorityConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PriorityOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority_order: Option<Vec<String>>,
 }
 

@@ -32,6 +32,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2SecurityGroupOwnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_security_group_owner_id: Option<String>,
 }
 

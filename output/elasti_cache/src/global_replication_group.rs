@@ -11,6 +11,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticFailoverEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatic_failover_enabled: Option<bool>,
 
     ///
@@ -22,6 +23,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheNodeType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_node_type: Option<String>,
 
     /// The name of the cache parameter group to use with the Global datastore. It must be compatible with the major engine version used by the Global datastore.
@@ -32,6 +34,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheParameterGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_parameter_group_name: Option<String>,
 
     ///
@@ -43,6 +46,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine_version: Option<String>,
 
     /// The number of node groups that comprise the Global Datastore.
@@ -53,6 +57,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalNodeGroupCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_node_group_count: Option<i64>,
 
     ///
@@ -64,6 +69,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalReplicationGroupDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_replication_group_description: Option<String>,
 
     /// The suffix name of a Global Datastore. The suffix guarantees uniqueness of the Global Datastore name across multiple regions.
@@ -74,6 +80,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalReplicationGroupIdSuffix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_replication_group_id_suffix: Option<String>,
 
     ///
@@ -95,6 +102,7 @@ pub struct CfnGlobalReplicationGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionalConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regional_configurations: Option<Vec<RegionalConfiguration>>,
 }
 
@@ -124,6 +132,7 @@ pub struct GlobalReplicationGroupMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_group_id: Option<String>,
 
     ///
@@ -135,6 +144,7 @@ pub struct GlobalReplicationGroupMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_group_region: Option<String>,
 
     ///
@@ -146,6 +156,7 @@ pub struct GlobalReplicationGroupMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<String>,
 }
 
@@ -175,6 +186,7 @@ pub struct RegionalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_group_id: Option<String>,
 
     ///
@@ -186,6 +198,7 @@ pub struct RegionalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationGroupRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_group_region: Option<String>,
 
     /// A list of PreferredAvailabilityZones objects that specifies the configuration of a node group in the resharded cluster.
@@ -196,6 +209,7 @@ pub struct RegionalConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReshardingConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resharding_configurations: Option<Vec<ReshardingConfiguration>>,
 }
 
@@ -231,6 +245,7 @@ pub struct ReshardingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NodeGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub node_group_id: Option<String>,
 
     ///
@@ -242,6 +257,7 @@ pub struct ReshardingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredAvailabilityZones")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_availability_zones: Option<Vec<String>>,
 }
 

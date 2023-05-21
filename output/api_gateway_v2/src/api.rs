@@ -10,6 +10,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeySelectionExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_key_selection_expression: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasePath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_path: Option<String>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Body")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body: Option<serde_json::Value>,
 
     ///
@@ -43,6 +46,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BodyS3Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body_s3_location: Option<BodyS3Location>,
 
     ///
@@ -54,6 +58,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CorsConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cors_configuration: Option<Cors>,
 
     ///
@@ -65,6 +70,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialsArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials_arn: Option<String>,
 
     ///
@@ -76,6 +82,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -87,6 +94,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableExecuteApiEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_execute_api_endpoint: Option<bool>,
 
     ///
@@ -98,6 +106,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableSchemaValidation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_schema_validation: Option<bool>,
 
     ///
@@ -109,6 +118,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailOnWarnings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fail_on_warnings: Option<bool>,
 
     ///
@@ -120,6 +130,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -131,6 +142,7 @@ pub struct CfnApi {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProtocolType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol_type: Option<String>,
 
     ///
@@ -142,6 +154,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_key: Option<String>,
 
     ///
@@ -153,6 +166,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteSelectionExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_selection_expression: Option<String>,
 
     ///
@@ -164,6 +178,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -175,6 +190,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target: Option<String>,
 
     ///
@@ -186,6 +202,7 @@ pub struct CfnApi {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 
@@ -223,6 +240,7 @@ pub struct BodyS3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket: Option<String>,
 
     ///
@@ -234,6 +252,7 @@ pub struct BodyS3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Etag")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub etag: Option<String>,
 
     ///
@@ -245,6 +264,7 @@ pub struct BodyS3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -256,6 +276,7 @@ pub struct BodyS3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 
@@ -285,6 +306,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowCredentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_credentials: Option<bool>,
 
     ///
@@ -296,6 +318,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowHeaders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_headers: Option<Vec<String>>,
 
     ///
@@ -307,6 +330,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowMethods")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_methods: Option<Vec<String>>,
 
     ///
@@ -318,6 +342,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowOrigins")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_origins: Option<Vec<String>>,
 
     ///
@@ -329,6 +354,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExposeHeaders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expose_headers: Option<Vec<String>>,
 
     ///
@@ -340,6 +366,7 @@ pub struct Cors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxAge")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_age: Option<i64>,
 }
 

@@ -14,6 +14,7 @@ pub struct CfnFindingsFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnFindingsFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -62,6 +64,7 @@ pub struct CfnFindingsFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub position: Option<i64>,
 }
 
@@ -93,6 +96,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "eq")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub eq: Option<Vec<String>>,
 
     ///
@@ -104,6 +108,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "gt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gt: Option<i64>,
 
     ///
@@ -115,6 +120,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "gte")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gte: Option<i64>,
 
     ///
@@ -126,6 +132,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "lt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lt: Option<i64>,
 
     ///
@@ -137,6 +144,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "lte")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lte: Option<i64>,
 
     ///
@@ -148,6 +156,7 @@ pub struct CriterionAdditionalProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "neq")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub neq: Option<Vec<String>>,
 }
 
@@ -177,6 +186,7 @@ pub struct FindingCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Criterion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub criterion: Option<std::collections::HashMap<String, CriterionAdditionalProperties>>,
 }
 

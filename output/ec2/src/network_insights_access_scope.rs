@@ -12,6 +12,7 @@ pub struct CfnNetworkInsightsAccessScope {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExcludePaths")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_paths: Option<Vec<AccessScopePathRequest>>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnNetworkInsightsAccessScope {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MatchPaths")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub match_paths: Option<Vec<AccessScopePathRequest>>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnNetworkInsightsAccessScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -63,6 +66,7 @@ pub struct AccessScopePathRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Destination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<PathStatementRequest>,
 
     ///
@@ -74,6 +78,7 @@ pub struct AccessScopePathRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Source")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source: Option<PathStatementRequest>,
 
     ///
@@ -85,6 +90,7 @@ pub struct AccessScopePathRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThroughResources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub through_resources: Option<Vec<ThroughResourcesStatementRequest>>,
 }
 
@@ -120,6 +126,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationAddresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_addresses: Option<Vec<String>>,
 
     ///
@@ -131,6 +138,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPorts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_ports: Option<Vec<String>>,
 
     ///
@@ -142,6 +150,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPrefixLists")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_prefix_lists: Option<Vec<String>>,
 
     ///
@@ -153,6 +162,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocols")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocols: Option<Vec<String>>,
 
     ///
@@ -164,6 +174,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceAddresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_addresses: Option<Vec<String>>,
 
     ///
@@ -175,6 +186,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePorts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_ports: Option<Vec<String>>,
 
     ///
@@ -186,6 +198,7 @@ pub struct PacketHeaderStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePrefixLists")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_prefix_lists: Option<Vec<String>>,
 }
 
@@ -215,6 +228,7 @@ pub struct PathStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PacketHeaderStatement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub packet_header_statement: Option<PacketHeaderStatementRequest>,
 
     ///
@@ -226,6 +240,7 @@ pub struct PathStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceStatement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_statement: Option<ResourceStatementRequest>,
 }
 
@@ -263,6 +278,7 @@ pub struct ResourceStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_types: Option<Vec<String>>,
 
     ///
@@ -274,6 +290,7 @@ pub struct ResourceStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Resources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resources: Option<Vec<String>>,
 }
 
@@ -347,6 +364,7 @@ pub struct ThroughResourcesStatementRequest {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceStatement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_statement: Option<ResourceStatementRequest>,
 }
 

@@ -14,6 +14,7 @@ pub struct CfnKeyspace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyspaceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub keyspace_name: Option<String>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnKeyspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

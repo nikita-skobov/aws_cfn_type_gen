@@ -33,6 +33,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_key: Option<String>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PermissionsPolicyDocument")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions_policy_document: Option<serde_json::Value>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

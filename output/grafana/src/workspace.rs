@@ -36,6 +36,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_token: Option<String>,
 
     ///
@@ -49,6 +50,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_sources: Option<Vec<String>>,
 
     ///
@@ -64,6 +66,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -77,6 +80,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -88,6 +92,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkAccessControl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_access_control: Option<NetworkAccessControl>,
 
     ///
@@ -99,6 +104,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationDestinations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_destinations: Option<Vec<String>>,
 
     ///
@@ -114,6 +120,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationRoleName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organization_role_name: Option<String>,
 
     ///
@@ -125,6 +132,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnits")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organizational_units: Option<Vec<String>>,
 
     ///
@@ -159,6 +167,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -170,6 +179,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamlConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub saml_configuration: Option<SamlConfiguration>,
 
     ///
@@ -181,6 +191,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_set_name: Option<String>,
 
     ///
@@ -192,6 +203,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
@@ -322,6 +334,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Email")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub email: Option<String>,
 
     ///
@@ -337,6 +350,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups: Option<String>,
 
     ///
@@ -352,6 +366,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Login")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub login: Option<String>,
 
     ///
@@ -367,6 +382,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -382,6 +398,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Org")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub org: Option<String>,
 
     ///
@@ -397,6 +414,7 @@ pub struct AssertionAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<String>,
 }
 
@@ -538,6 +556,7 @@ pub struct IdpMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
 
     ///
@@ -549,6 +568,7 @@ pub struct IdpMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Xml")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xml: Option<String>,
 }
 
@@ -606,6 +626,7 @@ pub struct NetworkAccessControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrefixListIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix_list_ids: Option<Vec<String>>,
 
     ///
@@ -623,6 +644,7 @@ pub struct NetworkAccessControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpceIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpce_ids: Option<Vec<String>>,
 }
 
@@ -652,6 +674,7 @@ pub struct RoleValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Admin")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub admin: Option<Vec<String>>,
 
     ///
@@ -663,6 +686,7 @@ pub struct RoleValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Editor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub editor: Option<Vec<String>>,
 }
 
@@ -692,6 +716,7 @@ pub struct SamlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedOrganizations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_organizations: Option<Vec<String>>,
 
     ///
@@ -703,6 +728,7 @@ pub struct SamlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssertionAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assertion_attributes: Option<AssertionAttributes>,
 
     ///
@@ -725,6 +751,7 @@ pub struct SamlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoginValidityDuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub login_validity_duration: Option<f64>,
 
     ///
@@ -736,6 +763,7 @@ pub struct SamlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_values: Option<RoleValues>,
 }
 

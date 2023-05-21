@@ -25,6 +25,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DashboardName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dashboard_name: Option<String>,
 }
 

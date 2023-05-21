@@ -14,6 +14,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_public_policy: Option<bool>,
 
     ///

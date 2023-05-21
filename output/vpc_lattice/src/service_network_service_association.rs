@@ -15,6 +15,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsEntry")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_entry: Option<DnsEntry>,
 
     ///
@@ -26,6 +27,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_identifier: Option<String>,
 
     ///
@@ -37,6 +39,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceNetworkIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_network_identifier: Option<String>,
 
     ///
@@ -48,6 +51,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -81,6 +85,7 @@ pub struct DnsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name: Option<String>,
 
     ///
@@ -92,6 +97,7 @@ pub struct DnsEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_zone_id: Option<String>,
 }
 

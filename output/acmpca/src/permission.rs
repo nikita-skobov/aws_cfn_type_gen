@@ -63,6 +63,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_account: Option<String>,
 }
 

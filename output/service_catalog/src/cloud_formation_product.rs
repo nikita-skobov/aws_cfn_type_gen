@@ -14,6 +14,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptLanguage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accept_language: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Distributor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub distributor: Option<String>,
 
     ///
@@ -79,6 +82,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProductType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub product_type: Option<CloudFormationProductProductTypeEnum>,
 
     ///
@@ -90,6 +94,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningArtifactParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning_artifact_parameters: Option<Vec<ProvisioningArtifactProperties>>,
 
     ///
@@ -103,6 +108,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceProvisioningArtifacts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replace_provisioning_artifacts: Option<bool>,
 
     ///
@@ -114,6 +120,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceConnection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_connection: Option<SourceConnection>,
 
     ///
@@ -127,6 +134,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub support_description: Option<String>,
 
     ///
@@ -140,6 +148,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportEmail")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub support_email: Option<String>,
 
     ///
@@ -155,6 +164,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub support_url: Option<String>,
 
     ///
@@ -168,6 +178,7 @@ pub struct CfnCloudFormationProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -455,6 +466,7 @@ pub struct ConnectionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeStar")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_star: Option<CodeStarParameters>,
 }
 
@@ -490,6 +502,7 @@ pub struct ProvisioningArtifactProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -501,6 +514,7 @@ pub struct ProvisioningArtifactProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableTemplateValidation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_template_validation: Option<bool>,
 
     ///
@@ -531,6 +545,7 @@ pub struct ProvisioningArtifactProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -546,6 +561,7 @@ pub struct ProvisioningArtifactProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ProvisioningArtifactPropertiesTypeEnum>,
 }
 

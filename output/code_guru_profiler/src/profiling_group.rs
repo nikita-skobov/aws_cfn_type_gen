@@ -14,6 +14,7 @@ pub struct CfnProfilingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AgentPermissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub agent_permissions: Option<AgentPermissions>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnProfilingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnomalyDetectionNotificationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub anomaly_detection_notification_configuration: Option<Vec<Channel>>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnProfilingGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputePlatform")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compute_platform: Option<String>,
 
     ///
@@ -58,6 +61,7 @@ pub struct CfnProfilingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -119,6 +123,7 @@ pub struct Channel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "channelId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub channel_id: Option<String>,
 
     ///

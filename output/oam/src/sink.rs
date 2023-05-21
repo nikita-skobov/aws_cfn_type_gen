@@ -27,6 +27,7 @@ pub struct CfnSink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy: Option<serde_json::Value>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnSink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 }
 

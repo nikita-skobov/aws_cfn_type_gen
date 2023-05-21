@@ -12,6 +12,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteProtection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_protection: Option<bool>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -74,6 +76,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FirewallPolicyChangeProtection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub firewall_policy_change_protection: Option<bool>,
 
     ///
@@ -85,6 +88,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetChangeProtection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_change_protection: Option<bool>,
 
     ///
@@ -109,6 +113,7 @@ pub struct CfnFirewall {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -220,6 +225,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPAddressType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipaddress_type: Option<SubnetMappingIPAddressTypeEnum>,
 
     ///

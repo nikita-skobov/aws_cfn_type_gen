@@ -24,6 +24,7 @@ pub struct CfnConfigurationRecorder {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -35,6 +36,7 @@ pub struct CfnConfigurationRecorder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordingGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recording_group: Option<RecordingGroup>,
 
     ///
@@ -111,6 +113,7 @@ pub struct RecordingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllSupported")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all_supported: Option<bool>,
 
     ///
@@ -128,6 +131,7 @@ pub struct RecordingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeGlobalResourceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_global_resource_types: Option<bool>,
 
     ///
@@ -145,6 +149,7 @@ pub struct RecordingGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_types: Option<Vec<String>>,
 }
 

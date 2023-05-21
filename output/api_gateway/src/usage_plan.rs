@@ -12,6 +12,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiStages")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_stages: Option<Vec<ApiStage>>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Quota")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub quota: Option<QuotaSettings>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -56,6 +60,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Throttle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttle: Option<ThrottleSettings>,
 
     ///
@@ -67,6 +72,7 @@ pub struct CfnUsagePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UsagePlanName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub usage_plan_name: Option<String>,
 }
 
@@ -102,6 +108,7 @@ pub struct ApiStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_id: Option<String>,
 
     ///
@@ -113,6 +120,7 @@ pub struct ApiStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage: Option<String>,
 
     ///
@@ -124,6 +132,7 @@ pub struct ApiStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Throttle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttle: Option<std::collections::HashMap<String, ThrottleSettings>>,
 }
 
@@ -155,6 +164,7 @@ pub struct QuotaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Limit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub limit: Option<i64>,
 
     ///
@@ -166,6 +176,7 @@ pub struct QuotaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Offset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub offset: Option<i64>,
 
     ///
@@ -179,6 +190,7 @@ pub struct QuotaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period: Option<QuotaSettingsPeriodEnum>,
 }
 
@@ -273,6 +285,7 @@ pub struct ThrottleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BurstLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub burst_limit: Option<i64>,
 
     ///
@@ -284,6 +297,7 @@ pub struct ThrottleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RateLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rate_limit: Option<f64>,
 }
 

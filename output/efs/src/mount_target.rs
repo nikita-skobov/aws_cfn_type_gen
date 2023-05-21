@@ -31,6 +31,7 @@ pub struct CfnMountTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address: Option<String>,
 
     ///

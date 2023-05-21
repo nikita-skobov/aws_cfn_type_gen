@@ -27,6 +27,7 @@ pub struct CfnFirewallRuleGroupAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MutationProtection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mutation_protection: Option<FirewallRuleGroupAssociationMutationProtectionEnum>,
 
     ///
@@ -42,6 +43,7 @@ pub struct CfnFirewallRuleGroupAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -70,6 +72,7 @@ pub struct CfnFirewallRuleGroupAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///

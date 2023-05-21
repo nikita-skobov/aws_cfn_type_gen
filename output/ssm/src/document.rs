@@ -12,6 +12,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attachments")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attachments: Option<Vec<AttachmentsSource>>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_format: Option<DocumentDocumentFormatEnum>,
 
     ///
@@ -53,6 +55,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DocumentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_type: Option<DocumentDocumentTypeEnum>,
 
     ///
@@ -68,6 +71,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -79,6 +83,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Requires")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub requires: Option<Vec<DocumentRequires>>,
 
     ///
@@ -92,6 +97,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -107,6 +113,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_type: Option<String>,
 
     ///
@@ -118,6 +125,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateMethod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub update_method: Option<String>,
 
     ///
@@ -131,6 +139,7 @@ pub struct CfnDocument {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_name: Option<String>,
 }
 
@@ -251,6 +260,7 @@ pub struct AttachmentsSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<AttachmentsSourceKeyEnum>,
 
     ///
@@ -264,6 +274,7 @@ pub struct AttachmentsSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -279,6 +290,7 @@ pub struct AttachmentsSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -340,6 +352,7 @@ pub struct DocumentRequires {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -353,6 +366,7 @@ pub struct DocumentRequires {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 

@@ -21,6 +21,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountPoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_point: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///

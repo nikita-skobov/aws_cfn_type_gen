@@ -14,6 +14,7 @@ pub struct CfnExperimentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<std::collections::HashMap<String, ExperimentTemplateAction>>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnExperimentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_configuration: Option<ExperimentTemplateLogConfiguration>,
 
     ///
@@ -199,6 +201,7 @@ pub struct ExperimentTemplateAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -210,6 +213,7 @@ pub struct ExperimentTemplateAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -221,6 +225,7 @@ pub struct ExperimentTemplateAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartAfter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_after: Option<Vec<String>>,
 
     ///
@@ -232,6 +237,7 @@ pub struct ExperimentTemplateAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub targets: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -283,6 +289,7 @@ pub struct ExperimentTemplateLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs_configuration: Option<CloudWatchLogsConfiguration>,
 
     ///
@@ -311,6 +318,7 @@ pub struct ExperimentTemplateLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Configuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_configuration: Option<S3Configuration>,
 }
 
@@ -371,6 +379,7 @@ pub struct ExperimentTemplateStopCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -429,6 +438,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<Vec<ExperimentTemplateTargetFilter>>,
 
     ///
@@ -440,6 +450,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -453,6 +464,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_arns: Option<Vec<String>>,
 
     ///
@@ -464,6 +476,7 @@ pub struct ExperimentTemplateTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -616,6 +629,7 @@ pub struct S3Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
 }
 

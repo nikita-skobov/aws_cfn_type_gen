@@ -27,6 +27,7 @@ pub struct CfnConnectorProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_label: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnConnectorProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_profile_config: Option<ConnectorProfileConfig>,
 
     ///
@@ -83,6 +85,7 @@ pub struct CfnConnectorProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KMSArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kmsarn: Option<String>,
 }
 
@@ -359,6 +362,7 @@ pub struct ApiKeyCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiSecretKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_secret_key: Option<String>,
 }
 
@@ -476,6 +480,7 @@ pub struct ConnectorOAuthRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_code: Option<String>,
 
     ///
@@ -491,6 +496,7 @@ pub struct ConnectorOAuthRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedirectUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redirect_uri: Option<String>,
 }
 
@@ -538,6 +544,7 @@ pub struct ConnectorProfileConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileCredentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_profile_credentials: Option<ConnectorProfileCredentials>,
 
     ///
@@ -549,6 +556,7 @@ pub struct ConnectorProfileConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorProfileProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_profile_properties: Option<ConnectorProfileProperties>,
 }
 
@@ -586,6 +594,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Amplitude")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amplitude: Option<AmplitudeConnectorProfileCredentials>,
 
     ///
@@ -597,6 +606,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_connector: Option<CustomConnectorProfileCredentials>,
 
     ///
@@ -608,6 +618,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datadog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datadog: Option<DatadogConnectorProfileCredentials>,
 
     ///
@@ -619,6 +630,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dynatrace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynatrace: Option<DynatraceConnectorProfileCredentials>,
 
     ///
@@ -630,6 +642,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GoogleAnalytics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub google_analytics: Option<GoogleAnalyticsConnectorProfileCredentials>,
 
     ///
@@ -641,6 +654,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InforNexus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub infor_nexus: Option<InforNexusConnectorProfileCredentials>,
 
     ///
@@ -652,6 +666,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marketo: Option<MarketoConnectorProfileCredentials>,
 
     /// Property description not available.
@@ -662,6 +677,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pardot")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pardot: Option<PardotConnectorProfileCredentials>,
 
     ///
@@ -673,6 +689,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Redshift")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redshift: Option<RedshiftConnectorProfileCredentials>,
 
     ///
@@ -684,6 +701,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sapodata: Option<SAPODataConnectorProfileCredentials>,
 
     ///
@@ -695,6 +713,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub salesforce: Option<SalesforceConnectorProfileCredentials>,
 
     ///
@@ -706,6 +725,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_now: Option<ServiceNowConnectorProfileCredentials>,
 
     ///
@@ -717,6 +737,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Singular")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub singular: Option<SingularConnectorProfileCredentials>,
 
     ///
@@ -728,6 +749,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slack")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slack: Option<SlackConnectorProfileCredentials>,
 
     ///
@@ -739,6 +761,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Snowflake")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snowflake: Option<SnowflakeConnectorProfileCredentials>,
 
     ///
@@ -750,6 +773,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Trendmicro")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trendmicro: Option<TrendmicroConnectorProfileCredentials>,
 
     ///
@@ -761,6 +785,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Veeva")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub veeva: Option<VeevaConnectorProfileCredentials>,
 
     ///
@@ -772,6 +797,7 @@ pub struct ConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zendesk: Option<ZendeskConnectorProfileCredentials>,
 }
 
@@ -861,6 +887,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomConnector")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_connector: Option<CustomConnectorProfileProperties>,
 
     ///
@@ -872,6 +899,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datadog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datadog: Option<DatadogConnectorProfileProperties>,
 
     ///
@@ -883,6 +911,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dynatrace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynatrace: Option<DynatraceConnectorProfileProperties>,
 
     ///
@@ -894,6 +923,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InforNexus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub infor_nexus: Option<InforNexusConnectorProfileProperties>,
 
     ///
@@ -905,6 +935,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Marketo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marketo: Option<MarketoConnectorProfileProperties>,
 
     /// Property description not available.
@@ -915,6 +946,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pardot")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pardot: Option<PardotConnectorProfileProperties>,
 
     ///
@@ -926,6 +958,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Redshift")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redshift: Option<RedshiftConnectorProfileProperties>,
 
     ///
@@ -937,6 +970,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SAPOData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sapodata: Option<SAPODataConnectorProfileProperties>,
 
     ///
@@ -948,6 +982,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Salesforce")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub salesforce: Option<SalesforceConnectorProfileProperties>,
 
     ///
@@ -959,6 +994,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceNow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_now: Option<ServiceNowConnectorProfileProperties>,
 
     ///
@@ -970,6 +1006,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slack")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slack: Option<SlackConnectorProfileProperties>,
 
     ///
@@ -981,6 +1018,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Snowflake")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snowflake: Option<SnowflakeConnectorProfileProperties>,
 
     ///
@@ -992,6 +1030,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Veeva")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub veeva: Option<VeevaConnectorProfileProperties>,
 
     ///
@@ -1003,6 +1042,7 @@ pub struct ConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Zendesk")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zendesk: Option<ZendeskConnectorProfileProperties>,
 }
 
@@ -1076,6 +1116,7 @@ pub struct CustomAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialsMap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials_map: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1126,6 +1167,7 @@ pub struct CustomConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_key: Option<ApiKeyCredentials>,
 
     ///
@@ -1150,6 +1192,7 @@ pub struct CustomConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Basic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub basic: Option<BasicAuthCredentials>,
 
     ///
@@ -1161,6 +1204,7 @@ pub struct CustomConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Custom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom: Option<CustomAuthCredentials>,
 
     ///
@@ -1172,6 +1216,7 @@ pub struct CustomConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Oauth2")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth2: Option<OAuth2Credentials>,
 }
 
@@ -1234,6 +1279,7 @@ pub struct CustomConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuth2Properties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth2_properties: Option<OAuth2Properties>,
 
     ///
@@ -1245,6 +1291,7 @@ pub struct CustomConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProfileProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub profile_properties: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1474,6 +1521,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<String>,
 
     ///
@@ -1515,6 +1563,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 
     ///
@@ -1530,6 +1579,7 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub refresh_token: Option<String>,
 }
 
@@ -1759,6 +1809,7 @@ pub struct MarketoConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<String>,
 
     ///
@@ -1800,6 +1851,7 @@ pub struct MarketoConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 }
 
@@ -1906,6 +1958,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<String>,
 
     ///
@@ -1921,6 +1974,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_id: Option<String>,
 
     ///
@@ -1936,6 +1990,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_secret: Option<String>,
 
     /// Property description not available.
@@ -1946,6 +2001,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth_request: Option<ConnectorOAuthRequest>,
 
     ///
@@ -1961,6 +2017,7 @@ pub struct OAuth2Credentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub refresh_token: Option<String>,
 }
 
@@ -2032,6 +2089,7 @@ pub struct OAuth2Properties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuth2GrantType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth2_grant_type: Option<OAuth2PropertiesOAuth2GrantTypeEnum>,
 
     ///
@@ -2047,6 +2105,7 @@ pub struct OAuth2Properties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub token_url: Option<String>,
 
     ///
@@ -2058,6 +2117,7 @@ pub struct OAuth2Properties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenUrlCustomProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub token_url_custom_properties: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -2121,6 +2181,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<String>,
 
     ///
@@ -2136,6 +2197,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_id: Option<String>,
 
     ///
@@ -2151,6 +2213,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_secret: Option<String>,
 
     /// Property description not available.
@@ -2161,6 +2224,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 
     ///
@@ -2176,6 +2240,7 @@ pub struct OAuthCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub refresh_token: Option<String>,
 }
 
@@ -2249,6 +2314,7 @@ pub struct OAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthCodeUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_code_url: Option<String>,
 
     ///
@@ -2260,6 +2326,7 @@ pub struct OAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthScopes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth_scopes: Option<Vec<String>>,
 
     ///
@@ -2275,6 +2342,7 @@ pub struct OAuthProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub token_url: Option<String>,
 }
 
@@ -2321,6 +2389,7 @@ pub struct PardotConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<String>,
 
     /// Property description not available.
@@ -2331,6 +2400,7 @@ pub struct PardotConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCredentialsArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_credentials_arn: Option<String>,
 
     /// Property description not available.
@@ -2341,6 +2411,7 @@ pub struct PardotConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 
     /// Property description not available.
@@ -2351,6 +2422,7 @@ pub struct PardotConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub refresh_token: Option<String>,
 }
 
@@ -2393,6 +2465,7 @@ pub struct PardotConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_url: Option<String>,
 
     /// Property description not available.
@@ -2403,6 +2476,7 @@ pub struct PardotConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsSandboxEnvironment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_sandbox_environment: Option<bool>,
 }
 
@@ -2436,6 +2510,7 @@ pub struct RedshiftConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<String>,
 
     ///
@@ -2451,6 +2526,7 @@ pub struct RedshiftConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<String>,
 }
 
@@ -2519,6 +2595,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<String>,
 
     /// Property description not available.
@@ -2529,6 +2606,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_identifier: Option<String>,
 
     /// Property description not available.
@@ -2539,6 +2617,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataApiRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_api_role_arn: Option<String>,
 
     /// Property description not available.
@@ -2549,6 +2628,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -2564,6 +2644,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_url: Option<String>,
 
     /// Property description not available.
@@ -2574,6 +2655,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsRedshiftServerless")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_redshift_serverless: Option<bool>,
 
     ///
@@ -2599,6 +2681,7 @@ pub struct RedshiftConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub workgroup_name: Option<String>,
 }
 
@@ -2673,6 +2756,7 @@ pub struct SAPODataConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthCredentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub basic_auth_credentials: Option<BasicAuthCredentials>,
 
     ///
@@ -2684,6 +2768,7 @@ pub struct SAPODataConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthCredentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth_credentials: Option<OAuthCredentials>,
 }
 
@@ -2725,6 +2810,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationHostUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_host_url: Option<String>,
 
     ///
@@ -2740,6 +2826,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplicationServicePath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_service_path: Option<String>,
 
     ///
@@ -2757,6 +2844,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_number: Option<String>,
 
     ///
@@ -2772,6 +2860,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogonLanguage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logon_language: Option<String>,
 
     ///
@@ -2783,6 +2872,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth_properties: Option<OAuthProperties>,
 
     ///
@@ -2798,6 +2888,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_number: Option<i64>,
 
     ///
@@ -2813,6 +2904,7 @@ pub struct SAPODataConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateLinkServiceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_link_service_name: Option<String>,
 }
 
@@ -2916,6 +3008,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<String>,
 
     ///
@@ -2933,6 +3026,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCredentialsArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_credentials_arn: Option<String>,
 
     ///
@@ -2944,6 +3038,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 
     /// Property description not available.
@@ -2954,6 +3049,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JwtToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jwt_token: Option<String>,
 
     /// Property description not available.
@@ -2964,6 +3060,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuth2GrantType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth2_grant_type: Option<String>,
 
     ///
@@ -2979,6 +3076,7 @@ pub struct SalesforceConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RefreshToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub refresh_token: Option<String>,
 }
 
@@ -3049,6 +3147,7 @@ pub struct SalesforceConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_url: Option<String>,
 
     ///
@@ -3060,6 +3159,7 @@ pub struct SalesforceConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "isSandboxEnvironment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_sandbox_environment: Option<bool>,
 
     /// Property description not available.
@@ -3070,6 +3170,7 @@ pub struct SalesforceConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "usePrivateLinkForMetadataAndAuthorization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_private_link_for_metadata_and_authorization: Option<bool>,
 }
 
@@ -3262,6 +3363,7 @@ pub struct SlackConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<String>,
 
     ///
@@ -3303,6 +3405,7 @@ pub struct SlackConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 }
 
@@ -3475,6 +3578,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub account_name: Option<String>,
 
     ///
@@ -3507,6 +3611,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<String>,
 
     ///
@@ -3522,6 +3627,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateLinkServiceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_link_service_name: Option<String>,
 
     ///
@@ -3537,6 +3643,7 @@ pub struct SnowflakeConnectorProfileProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region: Option<String>,
 
     ///
@@ -3819,6 +3926,7 @@ pub struct ZendeskConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_token: Option<String>,
 
     ///
@@ -3860,6 +3968,7 @@ pub struct ZendeskConnectorProfileCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectorOAuthRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_oauth_request: Option<ConnectorOAuthRequest>,
 }
 

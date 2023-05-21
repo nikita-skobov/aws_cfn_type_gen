@@ -50,6 +50,7 @@ pub struct Certificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_arn: Option<String>,
 }
 

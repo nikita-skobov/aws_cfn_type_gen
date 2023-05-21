@@ -10,6 +10,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "BackupRetention")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backup_retention: Option<bool>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaCertificateIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ca_certificate_identifier: Option<String>,
 
     ///
@@ -80,6 +83,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MasterUserPassword")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub master_user_password: Option<String>,
 
     ///
@@ -114,6 +118,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_backup_window: Option<String>,
 
     ///
@@ -125,6 +130,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_maintenance_window: Option<String>,
 
     ///
@@ -136,6 +142,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PubliclyAccessible")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publicly_accessible: Option<bool>,
 
     ///
@@ -180,6 +187,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelationalDatabaseParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relational_database_parameters: Option<Vec<RelationalDatabaseParameter>>,
 
     ///
@@ -193,6 +201,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotateMasterUserPassword")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rotate_master_user_password: Option<bool>,
 
     ///
@@ -208,6 +217,7 @@ pub struct CfnDatabase {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -237,6 +247,7 @@ pub struct RelationalDatabaseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_values: Option<String>,
 
     ///
@@ -250,6 +261,7 @@ pub struct RelationalDatabaseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplyMethod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub apply_method: Option<String>,
 
     ///
@@ -261,6 +273,7 @@ pub struct RelationalDatabaseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplyType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub apply_type: Option<String>,
 
     ///
@@ -272,6 +285,7 @@ pub struct RelationalDatabaseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_type: Option<String>,
 
     ///
@@ -283,6 +297,7 @@ pub struct RelationalDatabaseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -294,6 +309,7 @@ pub struct RelationalDatabaseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsModifiable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_modifiable: Option<bool>,
 
     ///
@@ -305,6 +321,7 @@ pub struct RelationalDatabaseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_name: Option<String>,
 
     ///
@@ -316,6 +333,7 @@ pub struct RelationalDatabaseParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_value: Option<String>,
 }
 

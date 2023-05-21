@@ -25,6 +25,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicyArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_policy_arns: Option<Vec<String>>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSessionDuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_session_duration: Option<i64>,
 
     ///
@@ -76,6 +79,7 @@ pub struct CfnRole {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 
     ///
@@ -89,6 +93,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PermissionsBoundary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions_boundary: Option<String>,
 
     ///
@@ -108,6 +113,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policies: Option<Vec<Policy>>,
 
     ///
@@ -127,6 +133,7 @@ pub struct CfnRole {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_name: Option<String>,
 
     ///
@@ -140,6 +147,7 @@ pub struct CfnRole {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

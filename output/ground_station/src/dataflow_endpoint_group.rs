@@ -13,6 +13,7 @@ pub struct CfnDataflowEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactPostPassDurationSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contact_post_pass_duration_seconds: Option<i64>,
 
     /// Property description not available.
@@ -23,6 +24,7 @@ pub struct CfnDataflowEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactPrePassDurationSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contact_pre_pass_duration_seconds: Option<i64>,
 
     ///
@@ -45,6 +47,7 @@ pub struct CfnDataflowEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -73,6 +76,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AgentStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub agent_status: Option<String>,
 
     /// Property description not available.
@@ -83,6 +87,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuditResults")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audit_results: Option<String>,
 
     /// Property description not available.
@@ -93,6 +98,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub egress_address: Option<ConnectionDetails>,
 
     /// Property description not available.
@@ -103,6 +109,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngressAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ingress_address: Option<RangedConnectionDetails>,
 
     /// Property description not available.
@@ -113,6 +120,7 @@ pub struct AwsGroundStationAgentEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -149,6 +157,7 @@ pub struct ConnectionDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mtu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mtu: Option<i64>,
 
     /// Property description not available.
@@ -159,6 +168,7 @@ pub struct ConnectionDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SocketAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub socket_address: Option<SocketAddress>,
 }
 
@@ -192,6 +202,7 @@ pub struct DataflowEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<SocketAddress>,
 
     ///
@@ -203,6 +214,7 @@ pub struct DataflowEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mtu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mtu: Option<i64>,
 
     ///
@@ -216,6 +228,7 @@ pub struct DataflowEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -246,6 +259,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsGroundStationAgentEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_ground_station_agent_endpoint: Option<AwsGroundStationAgentEndpoint>,
 
     ///
@@ -257,6 +271,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint: Option<DataflowEndpoint>,
 
     ///
@@ -268,6 +283,7 @@ pub struct EndpointDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_details: Option<SecurityDetails>,
 }
 
@@ -308,6 +324,7 @@ pub struct IntegerRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Maximum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum: Option<i64>,
 
     /// Property description not available.
@@ -318,6 +335,7 @@ pub struct IntegerRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Minimum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub minimum: Option<i64>,
 }
 
@@ -346,6 +364,7 @@ pub struct RangedConnectionDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mtu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mtu: Option<i64>,
 
     /// Property description not available.
@@ -356,6 +375,7 @@ pub struct RangedConnectionDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SocketAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub socket_address: Option<RangedSocketAddress>,
 }
 
@@ -388,6 +408,7 @@ pub struct RangedSocketAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     /// Property description not available.
@@ -398,6 +419,7 @@ pub struct RangedSocketAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<IntegerRange>,
 }
 
@@ -433,6 +455,7 @@ pub struct SecurityDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -444,6 +467,7 @@ pub struct SecurityDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -455,6 +479,7 @@ pub struct SecurityDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 
@@ -484,6 +509,7 @@ pub struct SocketAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -495,6 +521,7 @@ pub struct SocketAddress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 }
 

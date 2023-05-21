@@ -14,6 +14,7 @@ pub struct CfnStackSetConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptLanguage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accept_language: Option<String>,
 
     ///

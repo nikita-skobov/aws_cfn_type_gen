@@ -14,6 +14,7 @@ pub struct CfnLocationFSxWindows {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnLocationFSxWindows {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FsxFilesystemArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fsx_filesystem_arn: Option<String>,
 
     ///
@@ -44,6 +46,7 @@ pub struct CfnLocationFSxWindows {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Password")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<String>,
 
     ///
@@ -74,6 +77,7 @@ pub struct CfnLocationFSxWindows {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdirectory: Option<String>,
 
     ///
@@ -87,6 +91,7 @@ pub struct CfnLocationFSxWindows {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///

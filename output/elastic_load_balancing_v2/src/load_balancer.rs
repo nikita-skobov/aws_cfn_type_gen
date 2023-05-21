@@ -12,6 +12,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpAddressType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address_type: Option<LoadBalancerIpAddressTypeEnum>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_balancer_attributes: Option<Vec<LoadBalancerAttribute>>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -57,6 +60,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Scheme")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheme: Option<LoadBalancerSchemeEnum>,
 
     ///
@@ -68,6 +72,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -89,6 +94,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetMappings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_mappings: Option<Vec<SubnetMapping>>,
 
     ///
@@ -110,6 +116,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subnets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnets: Option<Vec<String>>,
 
     ///
@@ -121,6 +128,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -134,6 +142,7 @@ pub struct CfnLoadBalancer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<LoadBalancerTypeEnum>,
 }
 
@@ -240,6 +249,7 @@ pub struct LoadBalancerAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -253,6 +263,7 @@ pub struct LoadBalancerAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -300,6 +311,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocationId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_id: Option<String>,
 
     ///
@@ -311,6 +323,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPv6Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_address: Option<String>,
 
     ///
@@ -322,6 +335,7 @@ pub struct SubnetMapping {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIPv4Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ipv4_address: Option<String>,
 
     ///

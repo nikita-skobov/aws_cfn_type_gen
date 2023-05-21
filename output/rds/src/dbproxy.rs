@@ -36,6 +36,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DebugLogging")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub debug_logging: Option<bool>,
 
     ///
@@ -60,6 +61,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdleClientTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle_client_timeout: Option<i64>,
 
     ///
@@ -71,6 +73,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireTLS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub require_tls: Option<bool>,
 
     ///
@@ -93,6 +96,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagFormat>>,
 
     ///
@@ -106,6 +110,7 @@ pub struct CfnDBProxy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
 
     ///
@@ -148,6 +153,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthScheme")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_scheme: Option<AuthFormatAuthSchemeEnum>,
 
     ///
@@ -159,6 +165,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientPasswordAuthType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_password_auth_type: Option<String>,
 
     ///
@@ -170,6 +177,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -183,6 +191,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IAMAuth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iamauth: Option<AuthFormatIAMAuthEnum>,
 
     ///
@@ -194,6 +203,7 @@ pub struct AuthFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_arn: Option<String>,
 }
 
@@ -257,6 +267,7 @@ pub struct TagFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -268,6 +279,7 @@ pub struct TagFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 

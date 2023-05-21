@@ -10,6 +10,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_capacity: Option<i64>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub config_parameters: Option<Vec<ConfigParameter>>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnhancedVpcRouting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanced_vpc_routing: Option<bool>,
 
     ///
@@ -43,6 +46,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NamespaceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace_name: Option<String>,
 
     ///
@@ -54,6 +58,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -65,6 +70,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PubliclyAccessible")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publicly_accessible: Option<bool>,
 
     ///
@@ -76,6 +82,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -87,6 +94,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -98,6 +106,7 @@ pub struct CfnWorkgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -138,6 +147,7 @@ pub struct ConfigParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_key: Option<String>,
 
     ///
@@ -149,6 +159,7 @@ pub struct ConfigParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_value: Option<String>,
 }
 
@@ -178,6 +189,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<String>,
 
     ///
@@ -189,6 +201,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -200,6 +213,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpoints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_endpoints: Option<Vec<VpcEndpoint>>,
 }
 
@@ -229,6 +243,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -240,6 +255,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<String>,
 
     ///
@@ -251,6 +267,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_address: Option<String>,
 
     ///
@@ -262,6 +279,7 @@ pub struct NetworkInterface {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<String>,
 }
 
@@ -335,6 +353,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaces")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interfaces: Option<Vec<NetworkInterface>>,
 
     ///
@@ -346,6 +365,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpointId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_endpoint_id: Option<String>,
 
     ///
@@ -357,6 +377,7 @@ pub struct VpcEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<String>,
 }
 
@@ -386,6 +407,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_capacity: Option<i64>,
 
     ///
@@ -397,6 +419,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfigParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub config_parameters: Option<Vec<ConfigParameter>>,
 
     ///
@@ -408,6 +431,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreationDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub creation_date: Option<String>,
 
     ///
@@ -419,6 +443,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint: Option<Endpoint>,
 
     ///
@@ -430,6 +455,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnhancedVpcRouting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanced_vpc_routing: Option<bool>,
 
     ///
@@ -441,6 +467,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NamespaceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace_name: Option<String>,
 
     ///
@@ -452,6 +479,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PubliclyAccessible")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publicly_accessible: Option<bool>,
 
     ///
@@ -463,6 +491,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -474,6 +503,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 
     ///
@@ -485,6 +515,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -496,6 +527,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub workgroup_arn: Option<String>,
 
     ///
@@ -507,6 +539,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub workgroup_id: Option<String>,
 
     ///
@@ -518,6 +551,7 @@ pub struct Workgroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub workgroup_name: Option<String>,
 }
 

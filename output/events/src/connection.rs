@@ -40,6 +40,7 @@ pub struct CfnConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -57,6 +58,7 @@ pub struct CfnConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -224,6 +226,7 @@ pub struct AuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyAuthParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_key_auth_parameters: Option<ApiKeyAuthParameters>,
 
     ///
@@ -235,6 +238,7 @@ pub struct AuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub basic_auth_parameters: Option<BasicAuthParameters>,
 
     ///
@@ -246,6 +250,7 @@ pub struct AuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationHttpParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invocation_http_parameters: Option<ConnectionHttpParameters>,
 
     ///
@@ -257,6 +262,7 @@ pub struct AuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth_parameters: Option<OAuthParameters>,
 }
 
@@ -480,6 +486,7 @@ pub struct ConnectionHttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BodyParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body_parameters: Option<Vec<Parameter>>,
 
     ///
@@ -493,6 +500,7 @@ pub struct ConnectionHttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_parameters: Option<Vec<Parameter>>,
 
     ///
@@ -506,6 +514,7 @@ pub struct ConnectionHttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryStringParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string_parameters: Option<Vec<Parameter>>,
 }
 
@@ -600,6 +609,7 @@ pub struct OAuthParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OAuthHttpParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oauth_http_parameters: Option<ConnectionHttpParameters>,
 }
 
@@ -674,6 +684,7 @@ pub struct Parameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsValueSecret")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_value_secret: Option<bool>,
 
     ///

@@ -9,6 +9,7 @@ pub struct CfnQueryDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_names: Option<Vec<String>>,
 
     /// A name for the query definition.

@@ -16,6 +16,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AllocationId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_id: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectivityType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connectivity_type: Option<NatGatewayConnectivityTypeEnum>,
 
     ///
@@ -44,6 +46,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxDrainDurationSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_drain_duration_seconds: Option<i64>,
 
     ///
@@ -55,6 +58,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_address: Option<String>,
 
     ///
@@ -66,6 +70,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryAllocationIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_allocation_ids: Option<Vec<String>>,
 
     ///
@@ -83,6 +88,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_private_ip_address_count: Option<i64>,
 
     ///
@@ -96,6 +102,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryPrivateIpAddresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_private_ip_addresses: Option<Vec<String>>,
 
     ///
@@ -118,6 +125,7 @@ pub struct CfnNatGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

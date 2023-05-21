@@ -16,6 +16,7 @@ pub struct CfnLocationS3 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3BucketArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_arn: Option<String>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnLocationS3 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3StorageClass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_storage_class: Option<LocationS3S3StorageClassEnum>,
 
     ///
@@ -59,6 +61,7 @@ pub struct CfnLocationS3 {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdirectory: Option<String>,
 
     ///
@@ -72,6 +75,7 @@ pub struct CfnLocationS3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

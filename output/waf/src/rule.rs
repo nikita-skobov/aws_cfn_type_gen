@@ -46,6 +46,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Predicates")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predicates: Option<Vec<Predicate>>,
 }
 

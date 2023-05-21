@@ -12,6 +12,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<DatasetFormatEnum>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_options: Option<FormatOptions>,
 
     ///
@@ -60,6 +62,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_options: Option<PathOptions>,
 
     ///
@@ -71,6 +74,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -161,6 +165,7 @@ pub struct CsvOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<String>,
 
     ///
@@ -172,6 +177,7 @@ pub struct CsvOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderRow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_row: Option<bool>,
 }
 
@@ -223,6 +229,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///
@@ -238,6 +245,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -253,6 +261,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_name: Option<String>,
 
     ///
@@ -264,6 +273,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub temp_directory: Option<S3Location>,
 }
 
@@ -351,6 +361,7 @@ pub struct DatabaseInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseTableName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_table_name: Option<String>,
 
     ///
@@ -373,6 +384,7 @@ pub struct DatabaseInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string: Option<String>,
 
     ///
@@ -384,6 +396,7 @@ pub struct DatabaseInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub temp_directory: Option<S3Location>,
 }
 
@@ -417,6 +430,7 @@ pub struct DatasetParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreateColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub create_column: Option<bool>,
 
     ///
@@ -428,6 +442,7 @@ pub struct DatasetParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatetimeOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datetime_options: Option<DatetimeOptions>,
 
     ///
@@ -439,6 +454,7 @@ pub struct DatasetParameter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<FilterExpression>,
 
     ///
@@ -507,6 +523,7 @@ pub struct DatetimeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocaleCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub locale_code: Option<String>,
 
     ///
@@ -518,6 +535,7 @@ pub struct DatetimeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimezoneOffset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timezone_offset: Option<String>,
 }
 
@@ -547,6 +565,7 @@ pub struct ExcelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderRow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_row: Option<bool>,
 
     ///
@@ -560,6 +579,7 @@ pub struct ExcelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetIndexes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_indexes: Option<Vec<i64>>,
 
     ///
@@ -573,6 +593,7 @@ pub struct ExcelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_names: Option<Vec<String>>,
 }
 
@@ -631,6 +652,7 @@ pub struct FilesLimit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Order")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub order: Option<String>,
 
     ///
@@ -642,6 +664,7 @@ pub struct FilesLimit {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrderedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ordered_by: Option<String>,
 }
 
@@ -751,6 +774,7 @@ pub struct FormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Csv")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv: Option<CsvOptions>,
 
     ///
@@ -762,6 +786,7 @@ pub struct FormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Excel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excel: Option<ExcelOptions>,
 
     ///
@@ -773,6 +798,7 @@ pub struct FormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Json")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json: Option<JsonOptions>,
 }
 
@@ -808,6 +834,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCatalogInputDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_catalog_input_definition: Option<DataCatalogInputDefinition>,
 
     ///
@@ -819,6 +846,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseInputDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_input_definition: Option<DatabaseInputDefinition>,
 
     ///
@@ -830,6 +858,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metadata")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata: Option<Metadata>,
 
     ///
@@ -841,6 +870,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_input_definition: Option<S3Location>,
 }
 
@@ -886,6 +916,7 @@ pub struct JsonOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiLine")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_line: Option<bool>,
 }
 
@@ -919,6 +950,7 @@ pub struct Metadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_arn: Option<String>,
 }
 
@@ -966,6 +998,7 @@ pub struct PathOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilesLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub files_limit: Option<FilesLimit>,
 
     ///
@@ -977,6 +1010,7 @@ pub struct PathOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastModifiedDateCondition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_modified_date_condition: Option<FilterExpression>,
 
     ///
@@ -988,6 +1022,7 @@ pub struct PathOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<Vec<PathParameter>>,
 }
 
@@ -1086,6 +1121,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 

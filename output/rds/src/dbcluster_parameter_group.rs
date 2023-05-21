@@ -20,6 +20,7 @@ pub struct CfnDBClusterParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DBClusterParameterGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dbcluster_parameter_group_name: Option<String>,
 
     ///
@@ -74,6 +75,7 @@ pub struct CfnDBClusterParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

@@ -12,6 +12,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Containers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub containers: Option<Vec<ContainerDefinition>>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableNetworkIsolation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_network_isolation: Option<bool>,
 
     ///
@@ -53,6 +55,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceExecutionConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_execution_config: Option<InferenceExecutionConfig>,
 
     ///
@@ -68,6 +71,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_name: Option<String>,
 
     ///
@@ -79,6 +83,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrimaryContainer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_container: Option<ContainerDefinition>,
 
     ///
@@ -94,6 +99,7 @@ pub struct CfnModel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -105,6 +111,7 @@ pub struct CfnModel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
 }
 
@@ -197,6 +204,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerHostname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_hostname: Option<String>,
 
     ///
@@ -208,6 +216,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<serde_json::Value>,
 
     ///
@@ -225,6 +234,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Image")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image: Option<String>,
 
     ///
@@ -238,6 +248,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_config: Option<ImageConfig>,
 
     ///
@@ -249,6 +260,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceSpecificationName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_specification_name: Option<String>,
 
     ///
@@ -262,6 +274,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Mode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<ContainerDefinitionModeEnum>,
 
     ///
@@ -283,6 +296,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_data_url: Option<String>,
 
     ///
@@ -300,6 +314,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_name: Option<String>,
 
     ///
@@ -311,6 +326,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MultiModelConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_model_config: Option<MultiModelConfig>,
 }
 
@@ -425,6 +441,7 @@ pub struct ImageConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryAuthConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_auth_config: Option<RepositoryAuthConfig>,
 }
 
@@ -506,6 +523,7 @@ pub struct MultiModelConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelCacheSetting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_cache_setting: Option<String>,
 }
 

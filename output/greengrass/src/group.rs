@@ -22,6 +22,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub initial_version: Option<GroupVersion>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -59,6 +61,7 @@ pub struct CfnGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 }
 
@@ -94,6 +97,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_definition_version_arn: Option<String>,
 
     ///
@@ -105,6 +109,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CoreDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub core_definition_version_arn: Option<String>,
 
     ///
@@ -116,6 +121,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_definition_version_arn: Option<String>,
 
     ///
@@ -127,6 +133,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_definition_version_arn: Option<String>,
 
     ///
@@ -140,6 +147,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggerDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logger_definition_version_arn: Option<String>,
 
     ///
@@ -151,6 +159,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_definition_version_arn: Option<String>,
 
     ///
@@ -162,6 +171,7 @@ pub struct GroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubscriptionDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription_definition_version_arn: Option<String>,
 }
 

@@ -18,6 +18,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_log_group_arn: Option<String>,
 
     ///
@@ -42,6 +43,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Excludes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excludes: Option<Vec<FilterRule>>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Includes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub includes: Option<Vec<FilterRule>>,
 
     ///
@@ -72,6 +75,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -85,6 +89,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Options>,
 
     ///
@@ -96,6 +101,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<TaskSchedule>,
 
     ///
@@ -126,6 +132,7 @@ pub struct CfnTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -223,6 +230,7 @@ pub struct FilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_type: Option<FilterRuleFilterTypeEnum>,
 
     ///
@@ -240,6 +248,7 @@ pub struct FilterRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -303,6 +312,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Atime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub atime: Option<OptionsAtimeEnum>,
 
     ///
@@ -314,6 +324,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BytesPerSecond")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bytes_per_second: Option<i64>,
 
     ///
@@ -335,6 +346,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gid")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gid: Option<OptionsGidEnum>,
 
     ///
@@ -350,6 +362,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_level: Option<OptionsLogLevelEnum>,
 
     ///
@@ -371,6 +384,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mtime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mtime: Option<OptionsMtimeEnum>,
 
     ///
@@ -386,6 +400,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_tags: Option<OptionsObjectTagsEnum>,
 
     ///
@@ -401,6 +416,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OverwriteMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overwrite_mode: Option<OptionsOverwriteModeEnum>,
 
     ///
@@ -422,6 +438,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PosixPermissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub posix_permissions: Option<OptionsPosixPermissionsEnum>,
 
     ///
@@ -441,6 +458,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreserveDeletedFiles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preserve_deleted_files: Option<OptionsPreserveDeletedFilesEnum>,
 
     ///
@@ -462,6 +480,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreserveDevices")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preserve_devices: Option<OptionsPreserveDevicesEnum>,
 
     ///
@@ -493,6 +512,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityDescriptorCopyFlags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_descriptor_copy_flags: Option<OptionsSecurityDescriptorCopyFlagsEnum>,
 
     ///
@@ -508,6 +528,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskQueueing")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_queueing: Option<OptionsTaskQueueingEnum>,
 
     ///
@@ -525,6 +546,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransferMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transfer_mode: Option<OptionsTransferModeEnum>,
 
     ///
@@ -546,6 +568,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Uid")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uid: Option<OptionsUidEnum>,
 
     ///
@@ -567,6 +590,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerifyMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub verify_mode: Option<OptionsVerifyModeEnum>,
 }
 

@@ -21,6 +21,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDBConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamo_dbconfig: Option<DynamoDBConfig>,
 
     ///
@@ -45,6 +47,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticsearchConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elasticsearch_config: Option<ElasticsearchConfig>,
 
     ///
@@ -56,6 +59,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBridgeConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_bridge_config: Option<EventBridgeConfig>,
 
     ///
@@ -67,6 +71,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_config: Option<HttpConfig>,
 
     ///
@@ -78,6 +83,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_config: Option<LambdaConfig>,
 
     ///
@@ -100,6 +106,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenSearchServiceConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub open_search_service_config: Option<OpenSearchServiceConfig>,
 
     ///
@@ -111,6 +118,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelationalDatabaseConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relational_database_config: Option<RelationalDatabaseConfig>,
 
     ///
@@ -124,6 +132,7 @@ pub struct CfnDataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_role_arn: Option<String>,
 
     ///
@@ -209,6 +218,7 @@ pub struct AuthorizationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsIamConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_iam_config: Option<AwsIamConfig>,
 }
 
@@ -244,6 +254,7 @@ pub struct AwsIamConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub signing_region: Option<String>,
 
     ///
@@ -255,6 +266,7 @@ pub struct AwsIamConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningServiceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub signing_service_name: Option<String>,
 }
 
@@ -348,6 +360,7 @@ pub struct DynamoDBConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeltaSyncConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delta_sync_config: Option<DeltaSyncConfig>,
 
     ///
@@ -370,6 +383,7 @@ pub struct DynamoDBConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseCallerCredentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_caller_credentials: Option<bool>,
 
     ///
@@ -381,6 +395,7 @@ pub struct DynamoDBConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Versioned")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub versioned: Option<bool>,
 }
 
@@ -489,6 +504,7 @@ pub struct HttpConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization_config: Option<AuthorizationConfig>,
 
     ///
@@ -630,6 +646,7 @@ pub struct RdsHttpEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -652,6 +669,7 @@ pub struct RdsHttpEndpointConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema: Option<String>,
 }
 
@@ -683,6 +701,7 @@ pub struct RelationalDatabaseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RdsHttpEndpointConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rds_http_endpoint_config: Option<RdsHttpEndpointConfig>,
 
     ///

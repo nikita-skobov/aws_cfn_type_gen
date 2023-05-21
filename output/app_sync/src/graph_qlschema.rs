@@ -23,6 +23,7 @@ pub struct CfnGraphQLSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition: Option<String>,
 
     ///
@@ -34,6 +35,7 @@ pub struct CfnGraphQLSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefinitionS3Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition_s3_location: Option<String>,
 }
 

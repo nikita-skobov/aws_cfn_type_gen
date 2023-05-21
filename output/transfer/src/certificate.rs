@@ -10,6 +10,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActiveDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub active_date: Option<String>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateChain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_chain: Option<String>,
 
     ///
@@ -61,6 +63,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -72,6 +75,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InactiveDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inactive_date: Option<String>,
 
     ///
@@ -83,6 +87,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrivateKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_key: Option<String>,
 
     ///
@@ -96,6 +101,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///

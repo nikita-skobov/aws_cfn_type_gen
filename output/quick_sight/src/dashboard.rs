@@ -48,6 +48,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DashboardPublishOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dashboard_publish_options: Option<DashboardPublishOptions>,
 
     /// Property description not available.
@@ -58,6 +59,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition: Option<DashboardVersionDefinition>,
 
     ///
@@ -84,6 +86,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<Parameters>,
 
     ///
@@ -99,6 +102,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<ResourcePermission>>,
 
     ///
@@ -112,6 +116,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceEntity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_entity: Option<DashboardSourceEntity>,
 
     ///
@@ -125,6 +130,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -136,6 +142,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThemeArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub theme_arn: Option<String>,
 
     ///
@@ -151,6 +158,7 @@ pub struct CfnDashboard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_description: Option<String>,
 }
 
@@ -288,6 +296,7 @@ pub struct AdHocFilteringOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<AdHocFilteringOptionAvailabilityStatusEnum>,
 }
 
@@ -340,6 +349,7 @@ pub struct AggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoricalAggregationFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub categorical_aggregation_function:
         Option<AggregationFunctionCategoricalAggregationFunctionEnum>,
 
@@ -356,6 +366,7 @@ pub struct AggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateAggregationFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_aggregation_function: Option<AggregationFunctionDateAggregationFunctionEnum>,
 
     ///
@@ -367,6 +378,7 @@ pub struct AggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericalAggregationFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numerical_aggregation_function: Option<NumericalAggregationFunction>,
 }
 
@@ -553,6 +565,7 @@ pub struct AnchorDateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnchorOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub anchor_option: Option<AnchorDateConfigurationAnchorOptionEnum>,
 
     ///
@@ -570,6 +583,7 @@ pub struct AnchorDateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_name: Option<String>,
 }
 
@@ -630,6 +644,7 @@ pub struct ArcAxisConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Range")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range: Option<ArcAxisDisplayRange>,
 
     ///
@@ -641,6 +656,7 @@ pub struct ArcAxisConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReserveRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reserve_range: Option<f64>,
 }
 
@@ -672,6 +688,7 @@ pub struct ArcAxisDisplayRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<f64>,
 
     ///
@@ -683,6 +700,7 @@ pub struct ArcAxisDisplayRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<f64>,
 }
 
@@ -712,6 +730,7 @@ pub struct ArcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcAngle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arc_angle: Option<f64>,
 
     ///
@@ -725,6 +744,7 @@ pub struct ArcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcThickness")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arc_thickness: Option<ArcConfigurationArcThicknessEnum>,
 }
 
@@ -777,6 +797,7 @@ pub struct ArcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcThickness")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arc_thickness: Option<ArcOptionsArcThicknessEnum>,
 }
 
@@ -833,6 +854,7 @@ pub struct AxisDataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateAxisOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_axis_options: Option<DateAxisOptions>,
 
     ///
@@ -844,6 +866,7 @@ pub struct AxisDataOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericAxisOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numeric_axis_options: Option<NumericAxisOptions>,
 }
 
@@ -881,6 +904,7 @@ pub struct AxisDisplayMinMaxRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Maximum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum: Option<f64>,
 
     ///
@@ -892,6 +916,7 @@ pub struct AxisDisplayMinMaxRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Minimum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub minimum: Option<f64>,
 }
 
@@ -923,6 +948,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisLineVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub axis_line_visibility: Option<AxisDisplayOptionsAxisLineVisibilityEnum>,
 
     ///
@@ -934,6 +960,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisOffset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub axis_offset: Option<String>,
 
     ///
@@ -945,6 +972,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_options: Option<AxisDataOptions>,
 
     ///
@@ -958,6 +986,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GridLineVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grid_line_visibility: Option<AxisDisplayOptionsGridLineVisibilityEnum>,
 
     ///
@@ -969,6 +998,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScrollbarOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scrollbar_options: Option<ScrollBarOptions>,
 
     ///
@@ -980,6 +1010,7 @@ pub struct AxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TickLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tick_label_options: Option<AxisTickLabelOptions>,
 }
 
@@ -1057,6 +1088,7 @@ pub struct AxisDisplayRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataDriven")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_driven: Option<serde_json::Value>,
 
     ///
@@ -1068,6 +1100,7 @@ pub struct AxisDisplayRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinMax")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_max: Option<AxisDisplayMinMaxRange>,
 }
 
@@ -1099,6 +1132,7 @@ pub struct AxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplyTo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub apply_to: Option<AxisLabelReferenceOptions>,
 
     ///
@@ -1110,6 +1144,7 @@ pub struct AxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_label: Option<String>,
 
     ///
@@ -1121,6 +1156,7 @@ pub struct AxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_configuration: Option<FontConfiguration>,
 }
 
@@ -1224,6 +1260,7 @@ pub struct AxisLinearScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub step_count: Option<f64>,
 
     ///
@@ -1235,6 +1272,7 @@ pub struct AxisLinearScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub step_size: Option<f64>,
 }
 
@@ -1264,6 +1302,7 @@ pub struct AxisLogarithmicScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base: Option<f64>,
 }
 
@@ -1295,6 +1334,7 @@ pub struct AxisScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Linear")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub linear: Option<AxisLinearScale>,
 
     ///
@@ -1306,6 +1346,7 @@ pub struct AxisScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logarithmic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logarithmic: Option<AxisLogarithmicScale>,
 }
 
@@ -1341,6 +1382,7 @@ pub struct AxisTickLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_options: Option<LabelOptions>,
 
     ///
@@ -1352,6 +1394,7 @@ pub struct AxisTickLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotationAngle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rotation_angle: Option<f64>,
 }
 
@@ -1387,6 +1430,7 @@ pub struct BarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -1400,6 +1444,7 @@ pub struct BarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub colors: Option<Vec<DimensionField>>,
 
     ///
@@ -1413,6 +1458,7 @@ pub struct BarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiples")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples: Option<Vec<DimensionField>>,
 
     ///
@@ -1426,6 +1472,7 @@ pub struct BarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -1493,6 +1540,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarsArrangement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bars_arrangement: Option<BarChartConfigurationBarsArrangementEnum>,
 
     ///
@@ -1504,6 +1552,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -1515,6 +1564,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -1526,6 +1576,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -1539,6 +1590,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributionAnalysisDefaults")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contribution_analysis_defaults: Option<Vec<ContributionAnalysisDefault>>,
 
     ///
@@ -1550,6 +1602,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -1561,6 +1614,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<BarChartFieldWells>,
 
     ///
@@ -1572,6 +1626,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -1587,6 +1642,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Orientation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub orientation: Option<BarChartConfigurationOrientationEnum>,
 
     ///
@@ -1600,6 +1656,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceLines")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reference_lines: Option<Vec<ReferenceLine>>,
 
     ///
@@ -1611,6 +1668,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples_options: Option<SmallMultiplesOptions>,
 
     ///
@@ -1622,6 +1680,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<BarChartSortConfiguration>,
 
     ///
@@ -1633,6 +1692,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -1644,6 +1704,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -1655,6 +1716,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -1666,6 +1728,7 @@ pub struct BarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -1794,6 +1857,7 @@ pub struct BarChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarChartAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bar_chart_aggregated_field_wells: Option<BarChartAggregatedFieldWells>,
 }
 
@@ -1827,6 +1891,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -1840,6 +1905,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -1851,6 +1917,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -1864,6 +1931,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -1875,6 +1943,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesLimitConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -1888,6 +1957,7 @@ pub struct BarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -1962,6 +2032,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -1973,6 +2044,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<BarChartConfiguration>,
 
     ///
@@ -1986,6 +2058,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -1997,6 +2070,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -2008,6 +2082,7 @@ pub struct BarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -2102,6 +2177,7 @@ pub struct BinCountOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<f64>,
 }
 
@@ -2140,6 +2216,7 @@ pub struct BinWidthOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BinCountLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bin_count_limit: Option<f64>,
 
     ///
@@ -2151,6 +2228,7 @@ pub struct BinWidthOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<f64>,
 }
 
@@ -2191,6 +2269,7 @@ pub struct BodySectionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PageBreakConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub page_break_configuration: Option<SectionPageBreakConfiguration>,
 
     ///
@@ -2219,6 +2298,7 @@ pub struct BodySectionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Style")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style: Option<SectionStyle>,
 }
 
@@ -2274,6 +2354,7 @@ pub struct BodySectionContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Layout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub layout: Option<SectionLayoutConfiguration>,
 }
 
@@ -2307,6 +2388,7 @@ pub struct BoxPlotAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_by: Option<Vec<DimensionField>>,
 
     ///
@@ -2320,6 +2402,7 @@ pub struct BoxPlotAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -2367,6 +2450,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BoxPlotOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub box_plot_options: Option<BoxPlotOptions>,
 
     ///
@@ -2378,6 +2462,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -2389,6 +2474,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -2400,6 +2486,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<BoxPlotFieldWells>,
 
     /// Property description not available.
@@ -2410,6 +2497,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -2421,6 +2509,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -2432,6 +2521,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -2445,6 +2535,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceLines")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reference_lines: Option<Vec<ReferenceLine>>,
 
     ///
@@ -2456,6 +2547,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<BoxPlotSortConfiguration>,
 
     ///
@@ -2467,6 +2559,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -2478,6 +2571,7 @@ pub struct BoxPlotChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -2554,6 +2648,7 @@ pub struct BoxPlotFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BoxPlotAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub box_plot_aggregated_field_wells: Option<BoxPlotAggregatedFieldWells>,
 }
 
@@ -2589,6 +2684,7 @@ pub struct BoxPlotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllDataPointsVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub all_data_points_visibility: Option<BoxPlotOptionsAllDataPointsVisibilityEnum>,
 
     ///
@@ -2602,6 +2698,7 @@ pub struct BoxPlotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutlierVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outlier_visibility: Option<BoxPlotOptionsOutlierVisibilityEnum>,
 
     ///
@@ -2613,6 +2710,7 @@ pub struct BoxPlotOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StyleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style_options: Option<BoxPlotStyleOptions>,
 }
 
@@ -2682,6 +2780,7 @@ pub struct BoxPlotSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -2693,6 +2792,7 @@ pub struct BoxPlotSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pagination_configuration: Option<PaginationConfiguration>,
 }
 
@@ -2737,6 +2837,7 @@ pub struct BoxPlotStyleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FillStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fill_style: Option<BoxPlotStyleOptionsFillStyleEnum>,
 }
 
@@ -2787,6 +2888,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -2798,6 +2900,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<BoxPlotChartConfiguration>,
 
     ///
@@ -2811,6 +2914,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -2822,6 +2926,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -2833,6 +2938,7 @@ pub struct BoxPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -3128,6 +3234,7 @@ pub struct CascadingControlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceControls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_controls: Option<Vec<CascadingControlSource>>,
 }
 
@@ -3166,6 +3273,7 @@ pub struct CascadingControlSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnToMatch")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_to_match: Option<ColumnIdentifier>,
 
     ///
@@ -3177,6 +3285,7 @@ pub struct CascadingControlSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceSheetControlId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_sheet_control_id: Option<String>,
 }
 
@@ -3236,6 +3345,7 @@ pub struct CategoricalDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<StringFormatConfiguration>,
 
     ///
@@ -3251,6 +3361,7 @@ pub struct CategoricalDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HierarchyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hierarchy_id: Option<String>,
 }
 
@@ -3324,6 +3435,7 @@ pub struct CategoricalMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_function: Option<CategoricalMeasureFieldAggregationFunctionEnum>,
 
     ///
@@ -3361,6 +3473,7 @@ pub struct CategoricalMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<StringFormatConfiguration>,
 }
 
@@ -3567,6 +3680,7 @@ pub struct CategoryFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomFilterConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_filter_configuration: Option<CustomFilterConfiguration>,
 
     ///
@@ -3578,6 +3692,7 @@ pub struct CategoryFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomFilterListConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_filter_list_configuration: Option<CustomFilterListConfiguration>,
 
     ///
@@ -3589,6 +3704,7 @@ pub struct CategoryFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterListConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_list_configuration: Option<FilterListConfiguration>,
 }
 
@@ -3632,6 +3748,7 @@ pub struct ChartAxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub axis_label_options: Option<Vec<AxisLabelOptions>>,
 
     ///
@@ -3645,6 +3762,7 @@ pub struct ChartAxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortIconVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_icon_visibility: Option<ChartAxisLabelOptionsSortIconVisibilityEnum>,
 
     ///
@@ -3660,6 +3778,7 @@ pub struct ChartAxisLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<ChartAxisLabelOptionsVisibilityEnum>,
 }
 
@@ -3732,6 +3851,7 @@ pub struct ClusterMarker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SimpleClusterMarker")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub simple_cluster_marker: Option<SimpleClusterMarker>,
 }
 
@@ -3765,6 +3885,7 @@ pub struct ClusterMarkerConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterMarker")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_marker: Option<ClusterMarker>,
 }
 
@@ -3824,6 +3945,7 @@ pub struct ColorScale {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub null_value_color: Option<DataColor>,
 }
 
@@ -3882,6 +4004,7 @@ pub struct ColorsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomColors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_colors: Option<Vec<CustomColor>>,
 }
 
@@ -3910,6 +4033,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorsConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub colors_configuration: Option<ColorsConfiguration>,
 
     ///
@@ -3932,6 +4056,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<FormatConfiguration>,
 
     ///
@@ -3945,6 +4070,7 @@ pub struct ColumnConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<ColumnConfigurationRoleEnum>,
 }
 
@@ -4001,6 +4127,7 @@ pub struct ColumnHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeHierarchy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_hierarchy: Option<DateTimeHierarchy>,
 
     ///
@@ -4012,6 +4139,7 @@ pub struct ColumnHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExplicitHierarchy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub explicit_hierarchy: Option<ExplicitHierarchy>,
 
     ///
@@ -4023,6 +4151,7 @@ pub struct ColumnHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredefinedHierarchy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predefined_hierarchy: Option<PredefinedHierarchy>,
 }
 
@@ -4148,6 +4277,7 @@ pub struct ColumnSort {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_function: Option<AggregationFunction>,
 
     ///
@@ -4223,6 +4353,7 @@ pub struct ColumnTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation: Option<AggregationFunction>,
 
     ///
@@ -4245,6 +4376,7 @@ pub struct ColumnTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
 
     ///
@@ -4258,6 +4390,7 @@ pub struct ColumnTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<ColumnTooltipItemVisibilityEnum>,
 }
 
@@ -4312,6 +4445,7 @@ pub struct ComboChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bar_values: Option<Vec<MeasureField>>,
 
     ///
@@ -4325,6 +4459,7 @@ pub struct ComboChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -4338,6 +4473,7 @@ pub struct ComboChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub colors: Option<Vec<DimensionField>>,
 
     ///
@@ -4351,6 +4487,7 @@ pub struct ComboChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_values: Option<Vec<MeasureField>>,
 }
 
@@ -4418,6 +4555,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarDataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bar_data_labels: Option<DataLabelOptions>,
 
     ///
@@ -4433,6 +4571,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarsArrangement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bars_arrangement: Option<ComboChartConfigurationBarsArrangementEnum>,
 
     ///
@@ -4444,6 +4583,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -4455,6 +4595,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -4466,6 +4607,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -4477,6 +4619,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<ComboChartFieldWells>,
 
     ///
@@ -4488,6 +4631,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -4501,6 +4645,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineDataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_data_labels: Option<DataLabelOptions>,
 
     ///
@@ -4512,6 +4657,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -4523,6 +4669,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -4536,6 +4683,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceLines")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reference_lines: Option<Vec<ReferenceLine>>,
 
     ///
@@ -4547,6 +4695,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryYAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -4558,6 +4707,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryYAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -4569,6 +4719,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<ComboChartSortConfiguration>,
 
     ///
@@ -4580,6 +4731,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -4591,6 +4743,7 @@ pub struct ComboChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -4704,6 +4857,7 @@ pub struct ComboChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComboChartAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub combo_chart_aggregated_field_wells: Option<ComboChartAggregatedFieldWells>,
 }
 
@@ -4737,6 +4891,7 @@ pub struct ComboChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -4750,6 +4905,7 @@ pub struct ComboChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -4761,6 +4917,7 @@ pub struct ComboChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -4774,6 +4931,7 @@ pub struct ComboChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -4835,6 +4993,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -4846,6 +5005,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<ComboChartConfiguration>,
 
     ///
@@ -4859,6 +5019,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -4870,6 +5031,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -4881,6 +5043,7 @@ pub struct ComboChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -4973,6 +5136,7 @@ pub struct ComparisonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparisonFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comparison_format: Option<ComparisonFormatConfiguration>,
 
     ///
@@ -4988,6 +5152,7 @@ pub struct ComparisonConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparisonMethod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comparison_method: Option<ComparisonConfigurationComparisonMethodEnum>,
 }
 
@@ -5044,6 +5209,7 @@ pub struct ComparisonFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberDisplayFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_display_format_configuration: Option<NumberDisplayFormatConfiguration>,
 
     ///
@@ -5055,6 +5221,7 @@ pub struct ComparisonFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentageDisplayFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub percentage_display_format_configuration: Option<PercentageDisplayFormatConfiguration>,
 }
 
@@ -5094,6 +5261,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Forecast")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forecast: Option<ForecastComputation>,
 
     ///
@@ -5105,6 +5273,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GrowthRate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub growth_rate: Option<GrowthRateComputation>,
 
     ///
@@ -5116,6 +5285,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumMinimum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_minimum: Option<MaximumMinimumComputation>,
 
     ///
@@ -5127,6 +5297,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricComparison")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_comparison: Option<MetricComparisonComputation>,
 
     ///
@@ -5138,6 +5309,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodOverPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period_over_period: Option<PeriodOverPeriodComputation>,
 
     ///
@@ -5149,6 +5321,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodToDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period_to_date: Option<PeriodToDateComputation>,
 
     ///
@@ -5160,6 +5333,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopBottomMovers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub top_bottom_movers: Option<TopBottomMoversComputation>,
 
     ///
@@ -5171,6 +5345,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopBottomRanked")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub top_bottom_ranked: Option<TopBottomRankedComputation>,
 
     ///
@@ -5182,6 +5357,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalAggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_aggregation: Option<TotalAggregationComputation>,
 
     ///
@@ -5193,6 +5369,7 @@ pub struct Computation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UniqueValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unique_values: Option<UniqueValuesComputation>,
 }
 
@@ -5262,6 +5439,7 @@ pub struct ConditionalFormattingColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gradient")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gradient: Option<ConditionalFormattingGradientColor>,
 
     ///
@@ -5273,6 +5451,7 @@ pub struct ConditionalFormattingColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Solid")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub solid: Option<ConditionalFormattingSolidColor>,
 }
 
@@ -5310,6 +5489,7 @@ pub struct ConditionalFormattingCustomIconCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
 
     ///
@@ -5321,6 +5501,7 @@ pub struct ConditionalFormattingCustomIconCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_configuration: Option<ConditionalFormattingIconDisplayConfiguration>,
 
     ///
@@ -5402,6 +5583,7 @@ pub struct ConditionalFormattingCustomIconOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<ConditionalFormattingCustomIconOptionsIconEnum>,
 
     ///
@@ -5415,6 +5597,7 @@ pub struct ConditionalFormattingCustomIconOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnicodeIcon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unicode_icon: Option<String>,
 }
 
@@ -5621,6 +5804,7 @@ pub struct ConditionalFormattingIcon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomCondition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_condition: Option<ConditionalFormattingCustomIconCondition>,
 
     ///
@@ -5632,6 +5816,7 @@ pub struct ConditionalFormattingIcon {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IconSet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub icon_set: Option<ConditionalFormattingIconSet>,
 }
 
@@ -5671,6 +5856,7 @@ pub struct ConditionalFormattingIconDisplayConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IconDisplayOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub icon_display_option:
         Option<ConditionalFormattingIconDisplayConfigurationIconDisplayOptionEnum>,
 }
@@ -5731,6 +5917,7 @@ pub struct ConditionalFormattingIconSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IconSetType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub icon_set_type: Option<ConditionalFormattingIconSetIconSetTypeEnum>,
 }
 
@@ -5833,6 +6020,7 @@ pub struct ConditionalFormattingSolidColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
 
     ///
@@ -5968,6 +6156,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalPlacesConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decimal_places_configuration: Option<DecimalPlacesConfiguration>,
 
     ///
@@ -5979,6 +6168,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeValueConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub negative_value_configuration: Option<NegativeValueConfiguration>,
 
     ///
@@ -5990,6 +6180,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -6003,6 +6194,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberScale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_scale: Option<CurrencyDisplayFormatConfigurationNumberScaleEnum>,
 
     ///
@@ -6018,6 +6210,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
 
     ///
@@ -6029,6 +6222,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeparatorConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub separator_configuration: Option<NumericSeparatorConfiguration>,
 
     ///
@@ -6044,6 +6238,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
 
     ///
@@ -6057,6 +6252,7 @@ pub struct CurrencyDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Symbol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub symbol: Option<String>,
 }
 
@@ -6217,6 +6413,7 @@ pub struct CustomActionNavigationOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalNavigationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_navigation_configuration: Option<LocalNavigationConfiguration>,
 }
 
@@ -6385,6 +6582,7 @@ pub struct CustomColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_value: Option<String>,
 
     /// Property description not available.
@@ -6395,6 +6593,7 @@ pub struct CustomColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpecialValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub special_value: Option<String>,
 }
 
@@ -6426,6 +6625,7 @@ pub struct CustomContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type: Option<CustomContentConfigurationContentTypeEnum>,
 
     ///
@@ -6441,6 +6641,7 @@ pub struct CustomContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_url: Option<String>,
 
     ///
@@ -6454,6 +6655,7 @@ pub struct CustomContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScaling")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_scaling: Option<CustomContentConfigurationImageScalingEnum>,
 }
 
@@ -6547,6 +6749,7 @@ pub struct CustomContentVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -6558,6 +6761,7 @@ pub struct CustomContentVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<CustomContentConfiguration>,
 
     ///
@@ -6584,6 +6788,7 @@ pub struct CustomContentVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -6595,6 +6800,7 @@ pub struct CustomContentVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -6700,6 +6906,7 @@ pub struct CustomFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_value: Option<String>,
 
     ///
@@ -6747,6 +6954,7 @@ pub struct CustomFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_name: Option<String>,
 
     ///
@@ -6762,6 +6970,7 @@ pub struct CustomFilterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub select_all_options: Option<CustomFilterConfigurationSelectAllOptionsEnum>,
 }
 
@@ -6887,6 +7096,7 @@ pub struct CustomFilterListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_values: Option<Vec<String>>,
 
     ///
@@ -6930,6 +7140,7 @@ pub struct CustomFilterListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub select_all_options: Option<CustomFilterListConfigurationSelectAllOptionsEnum>,
 }
 
@@ -7079,6 +7290,7 @@ pub struct CustomParameterValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_values: Option<Vec<String>>,
 
     ///
@@ -7092,6 +7304,7 @@ pub struct CustomParameterValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decimal_values: Option<Vec<f64>>,
 
     ///
@@ -7105,6 +7318,7 @@ pub struct CustomParameterValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegerValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integer_values: Option<Vec<f64>>,
 
     ///
@@ -7118,6 +7332,7 @@ pub struct CustomParameterValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_values: Option<Vec<String>>,
 }
 
@@ -7193,6 +7408,7 @@ pub struct CustomValuesConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeNullValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_null_value: Option<bool>,
 }
 
@@ -7226,6 +7442,7 @@ pub struct DashboardError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
 
     ///
@@ -7239,6 +7456,7 @@ pub struct DashboardError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<DashboardErrorTypeEnum>,
 
     ///
@@ -7252,6 +7470,7 @@ pub struct DashboardError {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ViolatedEntities")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub violated_entities: Option<Vec<Entity>>,
 }
 
@@ -7339,6 +7558,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdHocFilteringOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ad_hoc_filtering_option: Option<AdHocFilteringOption>,
 
     ///
@@ -7350,6 +7570,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPointDrillUpDownOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_point_drill_up_down_option: Option<DataPointDrillUpDownOption>,
 
     ///
@@ -7361,6 +7582,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPointMenuLabelOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_point_menu_label_option: Option<DataPointMenuLabelOption>,
 
     ///
@@ -7372,6 +7594,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPointTooltipOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_point_tooltip_option: Option<DataPointTooltipOption>,
 
     ///
@@ -7383,6 +7606,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExportToCSVOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub export_to_csvoption: Option<ExportToCSVOption>,
 
     ///
@@ -7394,6 +7618,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExportWithHiddenFieldsOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub export_with_hidden_fields_option: Option<ExportWithHiddenFieldsOption>,
 
     ///
@@ -7405,6 +7630,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetControlsOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_controls_option: Option<SheetControlsOption>,
 
     ///
@@ -7416,6 +7642,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetLayoutElementMaximizationOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_layout_element_maximization_option: Option<SheetLayoutElementMaximizationOption>,
 
     ///
@@ -7427,6 +7654,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualAxisSortOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_axis_sort_option: Option<VisualAxisSortOption>,
 
     ///
@@ -7438,6 +7666,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualMenuOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_menu_option: Option<VisualMenuOption>,
 
     ///
@@ -7449,6 +7678,7 @@ pub struct DashboardPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPublishOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_publish_options: Option<DashboardVisualPublishOptions>,
 }
 
@@ -7522,6 +7752,7 @@ pub struct DashboardSourceEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceTemplate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_template: Option<DashboardSourceTemplate>,
 }
 
@@ -7595,6 +7826,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 
     ///
@@ -7606,6 +7838,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_time: Option<String>,
 
     ///
@@ -7619,6 +7852,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSetArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_set_arns: Option<Vec<String>>,
 
     ///
@@ -7634,6 +7868,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -7645,6 +7880,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Errors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub errors: Option<Vec<DashboardError>>,
 
     ///
@@ -7658,6 +7894,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sheets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheets: Option<Vec<Sheet>>,
 
     ///
@@ -7669,6 +7906,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceEntityArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_entity_arn: Option<String>,
 
     ///
@@ -7682,6 +7920,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<DashboardVersionStatusEnum>,
 
     ///
@@ -7693,6 +7932,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThemeArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub theme_arn: Option<String>,
 
     ///
@@ -7704,6 +7944,7 @@ pub struct DashboardVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_number: Option<f64>,
 }
 
@@ -7805,6 +8046,7 @@ pub struct DashboardVersionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnalysisDefaults")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub analysis_defaults: Option<AnalysisDefaults>,
 
     ///
@@ -7818,6 +8060,7 @@ pub struct DashboardVersionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedFields")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub calculated_fields: Option<Vec<CalculatedField>>,
 
     ///
@@ -7831,6 +8074,7 @@ pub struct DashboardVersionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_configurations: Option<Vec<ColumnConfiguration>>,
 
     ///
@@ -7859,6 +8103,7 @@ pub struct DashboardVersionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_groups: Option<Vec<FilterGroup>>,
 
     ///
@@ -7874,6 +8119,7 @@ pub struct DashboardVersionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterDeclarations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_declarations: Option<Vec<ParameterDeclaration>>,
 
     ///
@@ -7887,6 +8133,7 @@ pub struct DashboardVersionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sheets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheets: Option<Vec<SheetDefinition>>,
 }
 
@@ -7965,6 +8212,7 @@ pub struct DashboardVisualPublishOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExportHiddenFieldsOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub export_hidden_fields_option: Option<ExportHiddenFieldsOption>,
 }
 
@@ -8015,6 +8263,7 @@ pub struct DataBarsOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub negative_color: Option<String>,
 
     ///
@@ -8028,6 +8277,7 @@ pub struct DataBarsOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PositiveColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub positive_color: Option<String>,
 }
 
@@ -8077,6 +8327,7 @@ pub struct DataColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
 
     ///
@@ -8088,6 +8339,7 @@ pub struct DataColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_value: Option<f64>,
 }
 
@@ -8145,6 +8397,7 @@ pub struct DataFieldSeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_value: Option<String>,
 
     ///
@@ -8156,6 +8409,7 @@ pub struct DataFieldSeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Settings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub settings: Option<LineChartSeriesSettings>,
 }
 
@@ -8226,6 +8480,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_label_visibility: Option<DataLabelOptionsCategoryLabelVisibilityEnum>,
 
     ///
@@ -8239,6 +8494,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabelTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_label_types: Option<Vec<DataLabelType>>,
 
     ///
@@ -8252,6 +8508,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_color: Option<String>,
 
     ///
@@ -8265,6 +8522,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelContent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_content: Option<DataLabelOptionsLabelContentEnum>,
 
     ///
@@ -8276,6 +8534,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelFontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_font_configuration: Option<FontConfiguration>,
 
     ///
@@ -8289,6 +8548,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MeasureLabelVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub measure_label_visibility: Option<DataLabelOptionsMeasureLabelVisibilityEnum>,
 
     ///
@@ -8302,6 +8562,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overlap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overlap: Option<DataLabelOptionsOverlapEnum>,
 
     ///
@@ -8315,6 +8576,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub position: Option<DataLabelOptionsPositionEnum>,
 
     ///
@@ -8328,6 +8590,7 @@ pub struct DataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<DataLabelOptionsVisibilityEnum>,
 }
 
@@ -8494,6 +8757,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPathLabelType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_path_label_type: Option<DataPathLabelType>,
 
     ///
@@ -8505,6 +8769,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldLabelType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_label_type: Option<FieldLabelType>,
 
     ///
@@ -8516,6 +8781,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumLabelType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_label_type: Option<MaximumLabelType>,
 
     ///
@@ -8527,6 +8793,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumLabelType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub minimum_label_type: Option<MinimumLabelType>,
 
     ///
@@ -8538,6 +8805,7 @@ pub struct DataLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeEndsLabelType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_ends_label_type: Option<RangeEndsLabelType>,
 }
 
@@ -8613,6 +8881,7 @@ pub struct DataPathColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_granularity: Option<DataPathColorTimeGranularityEnum>,
 }
 
@@ -8693,6 +8962,7 @@ pub struct DataPathLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_id: Option<String>,
 
     ///
@@ -8706,6 +8976,7 @@ pub struct DataPathLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_value: Option<String>,
 
     ///
@@ -8719,6 +8990,7 @@ pub struct DataPathLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<DataPathLabelTypeVisibilityEnum>,
 }
 
@@ -8937,6 +9209,7 @@ pub struct DataPointDrillUpDownOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<DataPointDrillUpDownOptionAvailabilityStatusEnum>,
 }
 
@@ -8985,6 +9258,7 @@ pub struct DataPointMenuLabelOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<DataPointMenuLabelOptionAvailabilityStatusEnum>,
 }
 
@@ -9033,6 +9307,7 @@ pub struct DataPointTooltipOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<DataPointTooltipOptionAvailabilityStatusEnum>,
 }
 
@@ -9185,6 +9460,7 @@ pub struct DateAxisOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MissingDateVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub missing_date_visibility: Option<DateAxisOptionsMissingDateVisibilityEnum>,
 }
 
@@ -9246,6 +9522,7 @@ pub struct DateDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_granularity: Option<DateDimensionFieldDateGranularityEnum>,
 
     ///
@@ -9272,6 +9549,7 @@ pub struct DateDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<DateTimeFormatConfiguration>,
 
     ///
@@ -9287,6 +9565,7 @@ pub struct DateDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HierarchyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hierarchy_id: Option<String>,
 }
 
@@ -9405,6 +9684,7 @@ pub struct DateMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_function: Option<DateMeasureFieldAggregationFunctionEnum>,
 
     ///
@@ -9442,6 +9722,7 @@ pub struct DateMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<DateTimeFormatConfiguration>,
 }
 
@@ -9520,6 +9801,7 @@ pub struct DateTimeDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_value: Option<DynamicDefaultValue>,
 
     ///
@@ -9531,6 +9813,7 @@ pub struct DateTimeDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RollingDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolling_date: Option<RollingDateConfiguration>,
 
     ///
@@ -9544,6 +9827,7 @@ pub struct DateTimeDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_values: Option<Vec<String>>,
 }
 
@@ -9594,6 +9878,7 @@ pub struct DateTimeFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_format: Option<String>,
 
     ///
@@ -9605,6 +9890,7 @@ pub struct DateTimeFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -9616,6 +9902,7 @@ pub struct DateTimeFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numeric_format_configuration: Option<NumericFormatConfiguration>,
 }
 
@@ -9673,6 +9960,7 @@ pub struct DateTimeHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrillDownFilters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drill_down_filters: Option<Vec<DrillDownFilter>>,
 
     ///
@@ -9786,6 +10074,7 @@ pub struct DateTimeParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_values: Option<DateTimeDefaultValues>,
 
     /// Property description not available.
@@ -9796,6 +10085,7 @@ pub struct DateTimeParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappedDataSetParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapped_data_set_parameters: Option<Vec<MappedDataSetParameter>>,
 
     ///
@@ -9826,6 +10116,7 @@ pub struct DateTimeParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_granularity: Option<DateTimeParameterDeclarationTimeGranularityEnum>,
 
     ///
@@ -9837,6 +10128,7 @@ pub struct DateTimeParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_when_unset: Option<DateTimeValueWhenUnsetConfiguration>,
 }
 
@@ -9941,6 +10233,7 @@ pub struct DateTimePickerControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_format: Option<String>,
 
     ///
@@ -9952,6 +10245,7 @@ pub struct DateTimePickerControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -10003,6 +10297,7 @@ pub struct DateTimeValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_value: Option<String>,
 
     ///
@@ -10018,6 +10313,7 @@ pub struct DateTimeValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnsetOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_when_unset_option:
         Option<DateTimeValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
@@ -10065,6 +10361,7 @@ pub struct DecimalDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_value: Option<DynamicDefaultValue>,
 
     ///
@@ -10078,6 +10375,7 @@ pub struct DecimalDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_values: Option<Vec<f64>>,
 }
 
@@ -10162,6 +10460,7 @@ pub struct DecimalParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_values: Option<DecimalDefaultValues>,
 
     /// Property description not available.
@@ -10172,6 +10471,7 @@ pub struct DecimalParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappedDataSetParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapped_data_set_parameters: Option<Vec<MappedDataSetParameter>>,
 
     ///
@@ -10213,6 +10513,7 @@ pub struct DecimalParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_when_unset: Option<DecimalValueWhenUnsetConfiguration>,
 }
 
@@ -10314,6 +10615,7 @@ pub struct DecimalValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_value: Option<f64>,
 
     ///
@@ -10329,6 +10631,7 @@ pub struct DecimalValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnsetOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_when_unset_option: Option<DecimalValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
@@ -10437,6 +10740,7 @@ pub struct DefaultInteractiveLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FreeForm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub free_form: Option<DefaultFreeFormLayoutConfiguration>,
 
     ///
@@ -10448,6 +10752,7 @@ pub struct DefaultInteractiveLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Grid")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grid: Option<DefaultGridLayoutConfiguration>,
 }
 
@@ -10483,6 +10788,7 @@ pub struct DefaultNewSheetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InteractiveLayoutConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interactive_layout_configuration: Option<DefaultInteractiveLayoutConfiguration>,
 
     ///
@@ -10494,6 +10800,7 @@ pub struct DefaultNewSheetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginatedLayoutConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub paginated_layout_configuration: Option<DefaultPaginatedLayoutConfiguration>,
 
     ///
@@ -10507,6 +10814,7 @@ pub struct DefaultNewSheetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_content_type: Option<DefaultNewSheetConfigurationSheetContentTypeEnum>,
 }
 
@@ -10561,6 +10869,7 @@ pub struct DefaultPaginatedLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SectionBased")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub section_based: Option<DefaultSectionBasedLayoutConfiguration>,
 }
 
@@ -10627,6 +10936,7 @@ pub struct DestinationParameterValueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValuesConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_values_configuration: Option<CustomValuesConfiguration>,
 
     ///
@@ -10640,6 +10950,7 @@ pub struct DestinationParameterValueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllValueOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub select_all_value_options:
         Option<DestinationParameterValueConfigurationSelectAllValueOptionsEnum>,
 
@@ -10656,6 +10967,7 @@ pub struct DestinationParameterValueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_field: Option<String>,
 
     ///
@@ -10667,6 +10979,7 @@ pub struct DestinationParameterValueConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceParameterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_parameter_name: Option<String>,
 }
 
@@ -10731,6 +11044,7 @@ pub struct DimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoricalDimensionField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub categorical_dimension_field: Option<CategoricalDimensionField>,
 
     ///
@@ -10742,6 +11056,7 @@ pub struct DimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateDimensionField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_dimension_field: Option<DateDimensionField>,
 
     ///
@@ -10753,6 +11068,7 @@ pub struct DimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericalDimensionField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numerical_dimension_field: Option<NumericalDimensionField>,
 }
 
@@ -10796,6 +11112,7 @@ pub struct DonutCenterOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_visibility: Option<DonutCenterOptionsLabelVisibilityEnum>,
 }
 
@@ -10844,6 +11161,7 @@ pub struct DonutOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arc_options: Option<ArcOptions>,
 
     ///
@@ -10855,6 +11173,7 @@ pub struct DonutOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DonutCenterOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub donut_center_options: Option<DonutCenterOptions>,
 }
 
@@ -10894,6 +11213,7 @@ pub struct DrillDownFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_filter: Option<CategoryDrillDownFilter>,
 
     ///
@@ -10905,6 +11225,7 @@ pub struct DrillDownFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericEqualityFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numeric_equality_filter: Option<NumericEqualityDrillDownFilter>,
 
     ///
@@ -10916,6 +11237,7 @@ pub struct DrillDownFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeRangeFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_range_filter: Option<TimeRangeDrillDownFilter>,
 }
 
@@ -10957,6 +11279,7 @@ pub struct DropDownControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub select_all_options: Option<ListControlSelectAllOptions>,
 
     ///
@@ -10968,6 +11291,7 @@ pub struct DropDownControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -11016,6 +11340,7 @@ pub struct DynamicDefaultValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupNameColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_name_column: Option<ColumnIdentifier>,
 
     ///
@@ -11027,6 +11352,7 @@ pub struct DynamicDefaultValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserNameColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_name_column: Option<ColumnIdentifier>,
 }
 
@@ -11070,6 +11396,7 @@ pub struct EmptyVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -11178,6 +11505,7 @@ pub struct Entity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 }
 
@@ -11235,6 +11563,7 @@ pub struct ExcludePeriodConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<ExcludePeriodConfigurationStatusEnum>,
 }
 
@@ -11341,6 +11670,7 @@ pub struct ExplicitHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrillDownFilters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drill_down_filters: Option<Vec<DrillDownFilter>>,
 
     ///
@@ -11423,6 +11753,7 @@ pub struct ExportHiddenFieldsOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<ExportHiddenFieldsOptionAvailabilityStatusEnum>,
 }
 
@@ -11471,6 +11802,7 @@ pub struct ExportToCSVOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<ExportToCSVOptionAvailabilityStatusEnum>,
 }
 
@@ -11519,6 +11851,7 @@ pub struct ExportWithHiddenFieldsOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<ExportWithHiddenFieldsOptionAvailabilityStatusEnum>,
 }
 
@@ -11567,6 +11900,7 @@ pub struct FieldBasedTooltip {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_visibility: Option<FieldBasedTooltipAggregationVisibilityEnum>,
 
     ///
@@ -11580,6 +11914,7 @@ pub struct FieldBasedTooltip {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TooltipFields")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip_fields: Option<Vec<TooltipItem>>,
 
     ///
@@ -11595,6 +11930,7 @@ pub struct FieldBasedTooltip {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TooltipTitleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip_title_type: Option<FieldBasedTooltipTooltipTitleTypeEnum>,
 }
 
@@ -11671,6 +12007,7 @@ pub struct FieldLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_id: Option<String>,
 
     ///
@@ -11684,6 +12021,7 @@ pub struct FieldLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<FieldLabelTypeVisibilityEnum>,
 }
 
@@ -11776,6 +12114,7 @@ pub struct FieldSeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Settings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub settings: Option<LineChartSeriesSettings>,
 }
 
@@ -11927,6 +12266,7 @@ pub struct FieldSortOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_sort: Option<ColumnSort>,
 
     ///
@@ -11938,6 +12278,7 @@ pub struct FieldSortOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_sort: Option<FieldSort>,
 }
 
@@ -11990,6 +12331,7 @@ pub struct FieldTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
 
     ///
@@ -12003,6 +12345,7 @@ pub struct FieldTooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<FieldTooltipItemVisibilityEnum>,
 }
 
@@ -12069,6 +12412,7 @@ pub struct FilledMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Geospatial")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub geospatial: Option<Vec<DimensionField>>,
 
     ///
@@ -12082,6 +12426,7 @@ pub struct FilledMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -12197,6 +12542,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<FilledMapFieldWells>,
 
     ///
@@ -12208,6 +12554,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -12219,6 +12566,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapStyleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub map_style_options: Option<GeospatialMapStyleOptions>,
 
     ///
@@ -12230,6 +12578,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<FilledMapSortConfiguration>,
 
     ///
@@ -12241,6 +12590,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -12252,6 +12602,7 @@ pub struct FilledMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub window_options: Option<GeospatialWindowOptions>,
 }
 
@@ -12303,6 +12654,7 @@ pub struct FilledMapFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilledMapAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filled_map_aggregated_field_wells: Option<FilledMapAggregatedFieldWells>,
 }
 
@@ -12351,6 +12703,7 @@ pub struct FilledMapShapeConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<ShapeConditionalFormat>,
 }
 
@@ -12402,6 +12755,7 @@ pub struct FilledMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -12444,6 +12798,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -12455,6 +12810,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<FilledMapConfiguration>,
 
     ///
@@ -12468,6 +12824,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -12479,6 +12836,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditional_formatting: Option<FilledMapConditionalFormatting>,
 
     ///
@@ -12490,6 +12848,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -12501,6 +12860,7 @@ pub struct FilledMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -12601,6 +12961,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_filter: Option<CategoryFilter>,
 
     ///
@@ -12612,6 +12973,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericEqualityFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numeric_equality_filter: Option<NumericEqualityFilter>,
 
     ///
@@ -12623,6 +12985,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericRangeFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numeric_range_filter: Option<NumericRangeFilter>,
 
     ///
@@ -12634,6 +12997,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDatesFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relative_dates_filter: Option<RelativeDatesFilter>,
 
     ///
@@ -12645,6 +13009,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeEqualityFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_equality_filter: Option<TimeEqualityFilter>,
 
     ///
@@ -12656,6 +13021,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeRangeFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_range_filter: Option<TimeRangeFilter>,
 
     ///
@@ -12667,6 +13033,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TopBottomFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub top_bottom_filter: Option<TopBottomFilter>,
 }
 
@@ -12726,6 +13093,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimePicker")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_picker: Option<FilterDateTimePickerControl>,
 
     ///
@@ -12737,6 +13105,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dropdown")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dropdown: Option<FilterDropDownControl>,
 
     ///
@@ -12748,6 +13117,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "List")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub list: Option<FilterListControl>,
 
     ///
@@ -12759,6 +13129,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDateTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relative_date_time: Option<FilterRelativeDateTimeControl>,
 
     ///
@@ -12770,6 +13141,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slider")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slider: Option<FilterSliderControl>,
 
     ///
@@ -12781,6 +13153,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextArea")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_area: Option<FilterTextAreaControl>,
 
     ///
@@ -12792,6 +13165,7 @@ pub struct FilterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_field: Option<FilterTextFieldControl>,
 }
 
@@ -12845,6 +13219,7 @@ pub struct FilterDateTimePickerControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<DateTimePickerControlDisplayOptions>,
 
     ///
@@ -12909,6 +13284,7 @@ pub struct FilterDateTimePickerControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<FilterDateTimePickerControlTypeEnum>,
 }
 
@@ -13013,6 +13389,7 @@ pub struct FilterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CascadingControlConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cascading_control_configuration: Option<CascadingControlConfiguration>,
 
     ///
@@ -13024,6 +13401,7 @@ pub struct FilterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<DropDownControlDisplayOptions>,
 
     ///
@@ -13052,6 +13430,7 @@ pub struct FilterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectableValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selectable_values: Option<FilterSelectableValues>,
 
     ///
@@ -13099,6 +13478,7 @@ pub struct FilterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<FilterDropDownControlTypeEnum>,
 }
 
@@ -13273,6 +13653,7 @@ pub struct FilterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<FilterGroupStatusEnum>,
 }
 
@@ -13367,6 +13748,7 @@ pub struct FilterListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_values: Option<Vec<String>>,
 
     ///
@@ -13395,6 +13777,7 @@ pub struct FilterListConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub select_all_options: Option<FilterListConfigurationSelectAllOptionsEnum>,
 }
 
@@ -13479,6 +13862,7 @@ pub struct FilterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CascadingControlConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cascading_control_configuration: Option<CascadingControlConfiguration>,
 
     ///
@@ -13490,6 +13874,7 @@ pub struct FilterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<ListControlDisplayOptions>,
 
     ///
@@ -13518,6 +13903,7 @@ pub struct FilterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectableValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selectable_values: Option<FilterSelectableValues>,
 
     ///
@@ -13565,6 +13951,7 @@ pub struct FilterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<FilterListControlTypeEnum>,
 }
 
@@ -13685,6 +14072,7 @@ pub struct FilterOperationSelectedFieldsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedFieldOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_field_options:
         Option<FilterOperationSelectedFieldsConfigurationSelectedFieldOptionsEnum>,
 
@@ -13699,6 +14087,7 @@ pub struct FilterOperationSelectedFieldsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedFields")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_fields: Option<Vec<String>>,
 }
 
@@ -13752,6 +14141,7 @@ pub struct FilterOperationTargetVisualsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SameSheetTargetVisualConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub same_sheet_target_visual_configuration: Option<SameSheetTargetVisualConfiguration>,
 }
 
@@ -13785,6 +14175,7 @@ pub struct FilterRelativeDateTimeControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<RelativeDateTimeControlDisplayOptions>,
 
     ///
@@ -13923,6 +14314,7 @@ pub struct FilterScopeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedSheets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_sheets: Option<SelectedSheetsFilterScopeConfiguration>,
 }
 
@@ -13958,6 +14350,7 @@ pub struct FilterSelectableValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -13996,6 +14389,7 @@ pub struct FilterSliderControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<SliderControlDisplayOptions>,
 
     ///
@@ -14093,6 +14487,7 @@ pub struct FilterSliderControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<FilterSliderControlTypeEnum>,
 }
 
@@ -14201,6 +14596,7 @@ pub struct FilterTextAreaControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<String>,
 
     ///
@@ -14212,6 +14608,7 @@ pub struct FilterTextAreaControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<TextAreaControlDisplayOptions>,
 
     ///
@@ -14366,6 +14763,7 @@ pub struct FilterTextFieldControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<TextFieldControlDisplayOptions>,
 
     ///
@@ -14504,6 +14902,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_color: Option<String>,
 
     ///
@@ -14517,6 +14916,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontDecoration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_decoration: Option<FontConfigurationFontDecorationEnum>,
 
     ///
@@ -14528,6 +14928,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_size: Option<FontSize>,
 
     ///
@@ -14541,6 +14942,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_style: Option<FontConfigurationFontStyleEnum>,
 
     ///
@@ -14552,6 +14954,7 @@ pub struct FontConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontWeight")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_weight: Option<FontWeight>,
 }
 
@@ -14625,6 +15028,7 @@ pub struct FontSize {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Relative")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relative: Option<FontSizeRelativeEnum>,
 }
 
@@ -14685,6 +15089,7 @@ pub struct FontWeight {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<FontWeightNameEnum>,
 }
 
@@ -14752,6 +15157,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomSeasonalityValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_seasonality_value: Option<f64>,
 
     ///
@@ -14763,6 +15169,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LowerBoundary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lower_boundary: Option<f64>,
 
     ///
@@ -14774,6 +15181,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -14789,6 +15197,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodsBackward")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub periods_backward: Option<f64>,
 
     ///
@@ -14804,6 +15213,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodsForward")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub periods_forward: Option<f64>,
 
     ///
@@ -14819,6 +15229,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredictionInterval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prediction_interval: Option<f64>,
 
     ///
@@ -14834,6 +15245,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Seasonality")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub seasonality: Option<ForecastComputationSeasonalityEnum>,
 
     ///
@@ -14856,6 +15268,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpperBoundary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub upper_boundary: Option<f64>,
 
     ///
@@ -14867,6 +15280,7 @@ pub struct ForecastComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<MeasureField>,
 }
 
@@ -15004,6 +15418,7 @@ pub struct ForecastConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForecastProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forecast_properties: Option<TimeBasedForecastProperties>,
 
     ///
@@ -15015,6 +15430,7 @@ pub struct ForecastConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scenario")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scenario: Option<ForecastScenario>,
 }
 
@@ -15052,6 +15468,7 @@ pub struct ForecastScenario {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WhatIfPointScenario")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub what_if_point_scenario: Option<WhatIfPointScenario>,
 
     ///
@@ -15063,6 +15480,7 @@ pub struct ForecastScenario {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WhatIfRangeScenario")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub what_if_range_scenario: Option<WhatIfRangeScenario>,
 }
 
@@ -15100,6 +15518,7 @@ pub struct FormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_format_configuration: Option<DateTimeFormatConfiguration>,
 
     ///
@@ -15111,6 +15530,7 @@ pub struct FormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_format_configuration: Option<NumberFormatConfiguration>,
 
     ///
@@ -15122,6 +15542,7 @@ pub struct FormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_format_configuration: Option<StringFormatConfiguration>,
 }
 
@@ -15163,6 +15584,7 @@ pub struct FreeFormLayoutCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScreenCanvasSizeOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub screen_canvas_size_options: Option<FreeFormLayoutScreenCanvasSizeOptions>,
 }
 
@@ -15195,6 +15617,7 @@ pub struct FreeFormLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CanvasSizeOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub canvas_size_options: Option<FreeFormLayoutCanvasSizeOptions>,
 
     ///
@@ -15250,6 +15673,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_style: Option<FreeFormLayoutElementBackgroundStyle>,
 
     ///
@@ -15261,6 +15685,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub border_style: Option<FreeFormLayoutElementBorderStyle>,
 
     ///
@@ -15313,6 +15738,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadingAnimation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub loading_animation: Option<LoadingAnimation>,
 
     ///
@@ -15326,6 +15752,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RenderingRules")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rendering_rules: Option<Vec<SheetElementRenderingRule>>,
 
     ///
@@ -15337,6 +15764,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedBorderStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_border_style: Option<FreeFormLayoutElementBorderStyle>,
 
     ///
@@ -15350,6 +15778,7 @@ pub struct FreeFormLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<FreeFormLayoutElementVisibilityEnum>,
 
     ///
@@ -15499,6 +15928,7 @@ pub struct FreeFormLayoutElementBackgroundStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
 
     ///
@@ -15512,6 +15942,7 @@ pub struct FreeFormLayoutElementBackgroundStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<FreeFormLayoutElementBackgroundStyleVisibilityEnum>,
 }
 
@@ -15560,6 +15991,7 @@ pub struct FreeFormLayoutElementBorderStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
 
     ///
@@ -15573,6 +16005,7 @@ pub struct FreeFormLayoutElementBorderStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<FreeFormLayoutElementBorderStyleVisibilityEnum>,
 }
 
@@ -15690,6 +16123,7 @@ pub struct FunnelChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -15703,6 +16137,7 @@ pub struct FunnelChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -15750,6 +16185,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -15761,6 +16197,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_label_options: Option<FunnelChartDataLabelOptions>,
 
     ///
@@ -15772,6 +16209,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<FunnelChartFieldWells>,
 
     ///
@@ -15783,6 +16221,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<FunnelChartSortConfiguration>,
 
     ///
@@ -15794,6 +16233,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -15805,6 +16245,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -15816,6 +16257,7 @@ pub struct FunnelChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -15873,6 +16315,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_label_visibility: Option<FunnelChartDataLabelOptionsCategoryLabelVisibilityEnum>,
 
     ///
@@ -15886,6 +16329,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_color: Option<String>,
 
     ///
@@ -15899,6 +16343,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelFontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_font_configuration: Option<FontConfiguration>,
 
     ///
@@ -15912,6 +16357,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MeasureDataLabelStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub measure_data_label_style: Option<FunnelChartDataLabelOptionsMeasureDataLabelStyleEnum>,
 
     ///
@@ -15925,6 +16371,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MeasureLabelVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub measure_label_visibility: Option<FunnelChartDataLabelOptionsMeasureLabelVisibilityEnum>,
 
     ///
@@ -15938,6 +16385,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub position: Option<FunnelChartDataLabelOptionsPositionEnum>,
 
     ///
@@ -15951,6 +16399,7 @@ pub struct FunnelChartDataLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<FunnelChartDataLabelOptionsVisibilityEnum>,
 }
 
@@ -16099,6 +16548,7 @@ pub struct FunnelChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunnelChartAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub funnel_chart_aggregated_field_wells: Option<FunnelChartAggregatedFieldWells>,
 }
 
@@ -16132,6 +16582,7 @@ pub struct FunnelChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -16145,6 +16596,7 @@ pub struct FunnelChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -16191,6 +16643,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -16202,6 +16655,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<FunnelChartConfiguration>,
 
     ///
@@ -16215,6 +16669,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -16226,6 +16681,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -16237,6 +16693,7 @@ pub struct FunnelChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -16329,6 +16786,7 @@ pub struct GaugeChartArcConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForegroundColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub foreground_color: Option<ConditionalFormattingColor>,
 }
 
@@ -16364,6 +16822,7 @@ pub struct GaugeChartConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormattingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditional_formatting_options: Option<Vec<GaugeChartConditionalFormattingOption>>,
 }
 
@@ -16399,6 +16858,7 @@ pub struct GaugeChartConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arc: Option<GaugeChartArcConditionalFormatting>,
 
     ///
@@ -16410,6 +16870,7 @@ pub struct GaugeChartConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_value: Option<GaugeChartPrimaryValueConditionalFormatting>,
 }
 
@@ -16445,6 +16906,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -16456,6 +16918,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<GaugeChartFieldWells>,
 
     ///
@@ -16467,6 +16930,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GaugeChartOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gauge_chart_options: Option<GaugeChartOptions>,
 
     ///
@@ -16478,6 +16942,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TooltipOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip_options: Option<TooltipOptions>,
 
     ///
@@ -16489,6 +16954,7 @@ pub struct GaugeChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -16540,6 +17006,7 @@ pub struct GaugeChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_values: Option<Vec<MeasureField>>,
 
     ///
@@ -16553,6 +17020,7 @@ pub struct GaugeChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -16600,6 +17068,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arc: Option<ArcConfiguration>,
 
     ///
@@ -16611,6 +17080,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArcAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arc_axis: Option<ArcAxisConfiguration>,
 
     ///
@@ -16622,6 +17092,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comparison")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comparison: Option<ComparisonConfiguration>,
 
     ///
@@ -16635,6 +17106,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValueDisplayType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_value_display_type: Option<GaugeChartOptionsPrimaryValueDisplayTypeEnum>,
 
     ///
@@ -16646,6 +17118,7 @@ pub struct GaugeChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValueFontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_value_font_configuration: Option<FontConfiguration>,
 }
 
@@ -16710,6 +17183,7 @@ pub struct GaugeChartPrimaryValueConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<ConditionalFormattingIcon>,
 
     ///
@@ -16721,6 +17195,7 @@ pub struct GaugeChartPrimaryValueConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_color: Option<ConditionalFormattingColor>,
 }
 
@@ -16760,6 +17235,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -16771,6 +17247,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<GaugeChartConfiguration>,
 
     ///
@@ -16782,6 +17259,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditional_formatting: Option<GaugeChartConditionalFormatting>,
 
     ///
@@ -16793,6 +17271,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -16804,6 +17283,7 @@ pub struct GaugeChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -16955,6 +17435,7 @@ pub struct GeospatialMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub colors: Option<Vec<DimensionField>>,
 
     ///
@@ -16968,6 +17449,7 @@ pub struct GeospatialMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Geospatial")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub geospatial: Option<Vec<DimensionField>>,
 
     ///
@@ -16981,6 +17463,7 @@ pub struct GeospatialMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -17037,6 +17520,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<GeospatialMapFieldWells>,
 
     ///
@@ -17048,6 +17532,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -17059,6 +17544,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapStyleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub map_style_options: Option<GeospatialMapStyleOptions>,
 
     ///
@@ -17070,6 +17556,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointStyleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub point_style_options: Option<GeospatialPointStyleOptions>,
 
     ///
@@ -17081,6 +17568,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     /// Property description not available.
@@ -17091,6 +17579,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -17102,6 +17591,7 @@ pub struct GeospatialMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub window_options: Option<GeospatialWindowOptions>,
 }
 
@@ -17157,6 +17647,7 @@ pub struct GeospatialMapFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeospatialMapAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub geospatial_map_aggregated_field_wells: Option<GeospatialMapAggregatedFieldWells>,
 }
 
@@ -17192,6 +17683,7 @@ pub struct GeospatialMapStyleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseMapStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_map_style: Option<GeospatialMapStyleOptionsBaseMapStyleEnum>,
 }
 
@@ -17250,6 +17742,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -17261,6 +17754,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<GeospatialMapConfiguration>,
 
     ///
@@ -17274,6 +17768,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -17285,6 +17780,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -17296,6 +17792,7 @@ pub struct GeospatialMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -17388,6 +17885,7 @@ pub struct GeospatialPointStyleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterMarkerConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_marker_configuration: Option<ClusterMarkerConfiguration>,
 
     ///
@@ -17401,6 +17899,7 @@ pub struct GeospatialPointStyleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedPointStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_point_style: Option<GeospatialPointStyleOptionsSelectedPointStyleEnum>,
 }
 
@@ -17451,6 +17950,7 @@ pub struct GeospatialWindowOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bounds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bounds: Option<GeospatialCoordinateBounds>,
 
     ///
@@ -17464,6 +17964,7 @@ pub struct GeospatialWindowOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapZoomMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub map_zoom_mode: Option<GeospatialWindowOptionsMapZoomModeEnum>,
 }
 
@@ -17512,6 +18013,7 @@ pub struct GlobalTableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SideSpecificBorder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub side_specific_border: Option<TableSideBorderOptions>,
 
     ///
@@ -17523,6 +18025,7 @@ pub struct GlobalTableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UniformBorder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uniform_border: Option<TableBorderOptions>,
 }
 
@@ -17562,6 +18065,7 @@ pub struct GradientColor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stops: Option<Vec<GradientStop>>,
 }
 
@@ -17602,6 +18106,7 @@ pub struct GradientStop {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
 
     ///
@@ -17613,6 +18118,7 @@ pub struct GradientStop {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_value: Option<f64>,
 
     ///
@@ -17653,6 +18159,7 @@ pub struct GridLayoutCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScreenCanvasSizeOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub screen_canvas_size_options: Option<GridLayoutScreenCanvasSizeOptions>,
 }
 
@@ -17687,6 +18194,7 @@ pub struct GridLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CanvasSizeOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub canvas_size_options: Option<GridLayoutCanvasSizeOptions>,
 
     ///
@@ -17746,6 +18254,7 @@ pub struct GridLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_index: Option<f64>,
 
     ///
@@ -17806,6 +18315,7 @@ pub struct GridLayoutElement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_index: Option<f64>,
 
     ///
@@ -17965,6 +18475,7 @@ pub struct GridLayoutScreenCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptimizedViewPortWidth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub optimized_view_port_width: Option<String>,
 
     ///
@@ -18043,6 +18554,7 @@ pub struct GrowthRateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -18058,6 +18570,7 @@ pub struct GrowthRateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period_size: Option<f64>,
 
     ///
@@ -18080,6 +18593,7 @@ pub struct GrowthRateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<MeasureField>,
 }
 
@@ -18177,6 +18691,7 @@ pub struct HeaderFooterSectionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Style")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style: Option<SectionStyle>,
 }
 
@@ -18230,6 +18745,7 @@ pub struct HeatMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub columns: Option<Vec<DimensionField>>,
 
     ///
@@ -18243,6 +18759,7 @@ pub struct HeatMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rows")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rows: Option<Vec<DimensionField>>,
 
     ///
@@ -18256,6 +18773,7 @@ pub struct HeatMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -18312,6 +18830,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorScale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_scale: Option<ColorScale>,
 
     ///
@@ -18323,6 +18842,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -18334,6 +18854,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -18345,6 +18866,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<HeatMapFieldWells>,
 
     ///
@@ -18356,6 +18878,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -18367,6 +18890,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -18378,6 +18902,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<HeatMapSortConfiguration>,
 
     ///
@@ -18389,6 +18914,7 @@ pub struct HeatMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 }
 
@@ -18448,6 +18974,7 @@ pub struct HeatMapFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heat_map_aggregated_field_wells: Option<HeatMapAggregatedFieldWells>,
 }
 
@@ -18481,6 +19008,7 @@ pub struct HeatMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapColumnItemsLimitConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heat_map_column_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -18494,6 +19022,7 @@ pub struct HeatMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapColumnSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heat_map_column_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -18505,6 +19034,7 @@ pub struct HeatMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapRowItemsLimitConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heat_map_row_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -18518,6 +19048,7 @@ pub struct HeatMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapRowSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heat_map_row_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -18577,6 +19108,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -18588,6 +19120,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<HeatMapConfiguration>,
 
     ///
@@ -18601,6 +19134,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -18612,6 +19146,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -18623,6 +19158,7 @@ pub struct HeatMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -18717,6 +19253,7 @@ pub struct HistogramAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -18755,6 +19292,7 @@ pub struct HistogramBinOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BinCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bin_count: Option<BinCountOptions>,
 
     ///
@@ -18766,6 +19304,7 @@ pub struct HistogramBinOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BinWidth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bin_width: Option<BinWidthOptions>,
 
     ///
@@ -18779,6 +19318,7 @@ pub struct HistogramBinOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedBinType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_bin_type: Option<HistogramBinOptionsSelectedBinTypeEnum>,
 
     ///
@@ -18790,6 +19330,7 @@ pub struct HistogramBinOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_value: Option<f64>,
 }
 
@@ -18844,6 +19385,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BinOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bin_options: Option<HistogramBinOptions>,
 
     ///
@@ -18855,6 +19397,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -18866,6 +19409,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<HistogramFieldWells>,
 
     ///
@@ -18877,6 +19421,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -18888,6 +19433,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -18899,6 +19445,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -18910,6 +19457,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -18921,6 +19469,7 @@ pub struct HistogramConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub yaxis_display_options: Option<AxisDisplayOptions>,
 }
 
@@ -18980,6 +19529,7 @@ pub struct HistogramFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HistogramAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub histogram_aggregated_field_wells: Option<HistogramAggregatedFieldWells>,
 }
 
@@ -19017,6 +19567,7 @@ pub struct HistogramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -19028,6 +19579,7 @@ pub struct HistogramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<HistogramConfiguration>,
 
     ///
@@ -19039,6 +19591,7 @@ pub struct HistogramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -19050,6 +19603,7 @@ pub struct HistogramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -19135,6 +19689,7 @@ pub struct InsightConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Computations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub computations: Option<Vec<Computation>>,
 
     ///
@@ -19146,6 +19701,7 @@ pub struct InsightConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomNarrative")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_narrative: Option<CustomNarrativeOptions>,
 }
 
@@ -19192,6 +19748,7 @@ pub struct InsightVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -19218,6 +19775,7 @@ pub struct InsightVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insight_configuration: Option<InsightConfiguration>,
 
     ///
@@ -19229,6 +19787,7 @@ pub struct InsightVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -19240,6 +19799,7 @@ pub struct InsightVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -19341,6 +19901,7 @@ pub struct IntegerDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_value: Option<DynamicDefaultValue>,
 
     ///
@@ -19354,6 +19915,7 @@ pub struct IntegerDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_values: Option<Vec<f64>>,
 }
 
@@ -19438,6 +20000,7 @@ pub struct IntegerParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_values: Option<IntegerDefaultValues>,
 
     /// Property description not available.
@@ -19448,6 +20011,7 @@ pub struct IntegerParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappedDataSetParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapped_data_set_parameters: Option<Vec<MappedDataSetParameter>>,
 
     ///
@@ -19489,6 +20053,7 @@ pub struct IntegerParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_when_unset: Option<IntegerValueWhenUnsetConfiguration>,
 }
 
@@ -19563,6 +20128,7 @@ pub struct IntegerValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_value: Option<f64>,
 
     ///
@@ -19578,6 +20144,7 @@ pub struct IntegerValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnsetOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_when_unset_option: Option<IntegerValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
@@ -19624,6 +20191,7 @@ pub struct ItemsLimitConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub items_limit: Option<f64>,
 
     ///
@@ -19639,6 +20207,7 @@ pub struct ItemsLimitConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OtherCategories")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub other_categories: Option<ItemsLimitConfigurationOtherCategoriesEnum>,
 }
 
@@ -19687,6 +20256,7 @@ pub struct KPIConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormattingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditional_formatting_options: Option<Vec<KPIConditionalFormattingOption>>,
 }
 
@@ -19722,6 +20292,7 @@ pub struct KPIConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_value: Option<KPIPrimaryValueConditionalFormatting>,
 
     ///
@@ -19733,6 +20304,7 @@ pub struct KPIConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgressBar")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub progress_bar: Option<KPIProgressBarConditionalFormatting>,
 }
 
@@ -19770,6 +20342,7 @@ pub struct KPIConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<KPIFieldWells>,
 
     ///
@@ -19781,6 +20354,7 @@ pub struct KPIConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KPIOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kpioptions: Option<KPIOptions>,
 
     ///
@@ -19792,6 +20366,7 @@ pub struct KPIConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<KPISortConfiguration>,
 }
 
@@ -19835,6 +20410,7 @@ pub struct KPIFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_values: Option<Vec<MeasureField>>,
 
     ///
@@ -19848,6 +20424,7 @@ pub struct KPIFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrendGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trend_groups: Option<Vec<DimensionField>>,
 
     ///
@@ -19861,6 +20438,7 @@ pub struct KPIFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -19917,6 +20495,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comparison")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comparison: Option<ComparisonConfiguration>,
 
     ///
@@ -19930,6 +20509,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValueDisplayType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_value_display_type: Option<KPIOptionsPrimaryValueDisplayTypeEnum>,
 
     ///
@@ -19941,6 +20521,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryValueFontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_value_font_configuration: Option<FontConfiguration>,
 
     ///
@@ -19952,6 +20533,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProgressBar")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub progress_bar: Option<ProgressBarOptions>,
 
     ///
@@ -19963,6 +20545,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_value: Option<SecondaryValueOptions>,
 
     ///
@@ -19974,6 +20557,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryValueFontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_value_font_configuration: Option<FontConfiguration>,
 
     ///
@@ -19985,6 +20569,7 @@ pub struct KPIOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrendArrows")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trend_arrows: Option<TrendArrowOptions>,
 }
 
@@ -20059,6 +20644,7 @@ pub struct KPIPrimaryValueConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<ConditionalFormattingIcon>,
 
     ///
@@ -20070,6 +20656,7 @@ pub struct KPIPrimaryValueConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_color: Option<ConditionalFormattingColor>,
 }
 
@@ -20105,6 +20692,7 @@ pub struct KPIProgressBarConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForegroundColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub foreground_color: Option<ConditionalFormattingColor>,
 }
 
@@ -20140,6 +20728,7 @@ pub struct KPISortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrendGroupSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trend_group_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -20182,6 +20771,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -20193,6 +20783,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<KPIConfiguration>,
 
     ///
@@ -20206,6 +20797,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -20217,6 +20809,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditional_formatting: Option<KPIConditionalFormatting>,
 
     ///
@@ -20228,6 +20821,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -20239,6 +20833,7 @@ pub struct KPIVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -20335,6 +20930,7 @@ pub struct LabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_label: Option<String>,
 
     ///
@@ -20346,6 +20942,7 @@ pub struct LabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_configuration: Option<FontConfiguration>,
 
     ///
@@ -20359,6 +20956,7 @@ pub struct LabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<LabelOptionsVisibilityEnum>,
 }
 
@@ -20446,6 +21044,7 @@ pub struct LayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FreeFormLayout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub free_form_layout: Option<FreeFormLayoutConfiguration>,
 
     ///
@@ -20457,6 +21056,7 @@ pub struct LayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GridLayout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grid_layout: Option<GridLayoutConfiguration>,
 
     ///
@@ -20468,6 +21068,7 @@ pub struct LayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SectionBasedLayout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub section_based_layout: Option<SectionBasedLayoutConfiguration>,
 }
 
@@ -20509,6 +21110,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Height")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub height: Option<String>,
 
     ///
@@ -20524,6 +21126,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub position: Option<LegendOptionsPositionEnum>,
 
     ///
@@ -20535,6 +21138,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<LabelOptions>,
 
     ///
@@ -20548,6 +21152,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<LegendOptionsVisibilityEnum>,
 
     ///
@@ -20559,6 +21164,7 @@ pub struct LegendOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Width")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub width: Option<String>,
 }
 
@@ -20634,6 +21240,7 @@ pub struct LineChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -20647,6 +21254,7 @@ pub struct LineChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub colors: Option<Vec<DimensionField>>,
 
     ///
@@ -20660,6 +21268,7 @@ pub struct LineChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiples")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples: Option<Vec<DimensionField>>,
 
     ///
@@ -20673,6 +21282,7 @@ pub struct LineChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -20740,6 +21350,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributionAnalysisDefaults")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contribution_analysis_defaults: Option<Vec<ContributionAnalysisDefault>>,
 
     ///
@@ -20751,6 +21362,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -20762,6 +21374,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultSeriesSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_series_settings: Option<LineChartDefaultSeriesSettings>,
 
     ///
@@ -20773,6 +21386,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<LineChartFieldWells>,
 
     ///
@@ -20786,6 +21400,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForecastConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forecast_configurations: Option<Vec<ForecastConfiguration>>,
 
     ///
@@ -20797,6 +21412,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -20808,6 +21424,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_yaxis_display_options: Option<LineSeriesAxisDisplayOptions>,
 
     ///
@@ -20819,6 +21436,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -20832,6 +21450,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceLines")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reference_lines: Option<Vec<ReferenceLine>>,
 
     ///
@@ -20843,6 +21462,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryYAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_yaxis_display_options: Option<LineSeriesAxisDisplayOptions>,
 
     ///
@@ -20854,6 +21474,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryYAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -20867,6 +21488,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Series")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub series: Option<Vec<SeriesItem>>,
 
     ///
@@ -20878,6 +21500,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples_options: Option<SmallMultiplesOptions>,
 
     ///
@@ -20889,6 +21512,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<LineChartSortConfiguration>,
 
     ///
@@ -20900,6 +21524,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -20913,6 +21538,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<LineChartConfigurationTypeEnum>,
 
     ///
@@ -20924,6 +21550,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -20935,6 +21562,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -20946,6 +21574,7 @@ pub struct LineChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis_label_options: Option<ChartAxisLabelOptions>,
 }
 
@@ -21080,6 +21709,7 @@ pub struct LineChartDefaultSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisBinding")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub axis_binding: Option<LineChartDefaultSeriesSettingsAxisBindingEnum>,
 
     ///
@@ -21091,6 +21721,7 @@ pub struct LineChartDefaultSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineStyleSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_style_settings: Option<LineChartLineStyleSettings>,
 
     ///
@@ -21102,6 +21733,7 @@ pub struct LineChartDefaultSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerStyleSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marker_style_settings: Option<LineChartMarkerStyleSettings>,
 }
 
@@ -21156,6 +21788,7 @@ pub struct LineChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineChartAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_chart_aggregated_field_wells: Option<LineChartAggregatedFieldWells>,
 }
 
@@ -21193,6 +21826,7 @@ pub struct LineChartLineStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineInterpolation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_interpolation: Option<LineChartLineStyleSettingsLineInterpolationEnum>,
 
     ///
@@ -21208,6 +21842,7 @@ pub struct LineChartLineStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_style: Option<LineChartLineStyleSettingsLineStyleEnum>,
 
     ///
@@ -21221,6 +21856,7 @@ pub struct LineChartLineStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_visibility: Option<LineChartLineStyleSettingsLineVisibilityEnum>,
 
     ///
@@ -21232,6 +21868,7 @@ pub struct LineChartLineStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineWidth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_width: Option<String>,
 }
 
@@ -21322,6 +21959,7 @@ pub struct LineChartMarkerStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marker_color: Option<String>,
 
     ///
@@ -21337,6 +21975,7 @@ pub struct LineChartMarkerStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerShape")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marker_shape: Option<LineChartMarkerStyleSettingsMarkerShapeEnum>,
 
     ///
@@ -21348,6 +21987,7 @@ pub struct LineChartMarkerStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marker_size: Option<String>,
 
     ///
@@ -21361,6 +22001,7 @@ pub struct LineChartMarkerStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marker_visibility: Option<LineChartMarkerStyleSettingsMarkerVisibilityEnum>,
 }
 
@@ -21436,6 +22077,7 @@ pub struct LineChartSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineStyleSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_style_settings: Option<LineChartLineStyleSettings>,
 
     ///
@@ -21447,6 +22089,7 @@ pub struct LineChartSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MarkerStyleSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub marker_style_settings: Option<LineChartMarkerStyleSettings>,
 }
 
@@ -21484,6 +22127,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimitConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -21497,6 +22141,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -21508,6 +22153,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorItemsLimitConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -21519,6 +22165,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesLimitConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -21532,6 +22179,7 @@ pub struct LineChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -21595,6 +22243,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -21606,6 +22255,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<LineChartConfiguration>,
 
     ///
@@ -21619,6 +22269,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -21630,6 +22281,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -21641,6 +22293,7 @@ pub struct LineChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -21733,6 +22386,7 @@ pub struct LineSeriesAxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub axis_options: Option<AxisDisplayOptions>,
 
     ///
@@ -21746,6 +22400,7 @@ pub struct LineSeriesAxisDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MissingDataConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub missing_data_configurations: Option<Vec<MissingDataConfiguration>>,
 }
 
@@ -21785,6 +22440,7 @@ pub struct ListControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SearchOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub search_options: Option<ListControlSearchOptions>,
 
     ///
@@ -21796,6 +22452,7 @@ pub struct ListControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub select_all_options: Option<ListControlSelectAllOptions>,
 
     ///
@@ -21807,6 +22464,7 @@ pub struct ListControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -21850,6 +22508,7 @@ pub struct ListControlSearchOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<ListControlSearchOptionsVisibilityEnum>,
 }
 
@@ -21898,6 +22557,7 @@ pub struct ListControlSelectAllOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<ListControlSelectAllOptionsVisibilityEnum>,
 }
 
@@ -21946,6 +22606,7 @@ pub struct LoadingAnimation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<LoadingAnimationVisibilityEnum>,
 }
 
@@ -22051,6 +22712,7 @@ pub struct LongFormatText {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlainText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub plain_text: Option<String>,
 
     ///
@@ -22066,6 +22728,7 @@ pub struct LongFormatText {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RichText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rich_text: Option<String>,
 }
 
@@ -22219,6 +22882,7 @@ pub struct MaximumLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<MaximumLabelTypeVisibilityEnum>,
 }
 
@@ -22282,6 +22946,7 @@ pub struct MaximumMinimumComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -22319,6 +22984,7 @@ pub struct MaximumMinimumComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<MeasureField>,
 }
 
@@ -22387,6 +23053,7 @@ pub struct MeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedMeasureField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub calculated_measure_field: Option<CalculatedMeasureField>,
 
     ///
@@ -22398,6 +23065,7 @@ pub struct MeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoricalMeasureField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub categorical_measure_field: Option<CategoricalMeasureField>,
 
     ///
@@ -22409,6 +23077,7 @@ pub struct MeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateMeasureField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_measure_field: Option<DateMeasureField>,
 
     ///
@@ -22420,6 +23089,7 @@ pub struct MeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericalMeasureField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numerical_measure_field: Option<NumericalMeasureField>,
 }
 
@@ -22493,6 +23163,7 @@ pub struct MetricComparisonComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -22570,6 +23241,7 @@ pub struct MinimumLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<MinimumLabelTypeVisibilityEnum>,
 }
 
@@ -22620,6 +23292,7 @@ pub struct MissingDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatmentOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub treatment_option: Option<MissingDataConfigurationTreatmentOptionEnum>,
 }
 
@@ -22769,6 +23442,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalPlacesConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decimal_places_configuration: Option<DecimalPlacesConfiguration>,
 
     ///
@@ -22780,6 +23454,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeValueConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub negative_value_configuration: Option<NegativeValueConfiguration>,
 
     ///
@@ -22791,6 +23466,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -22804,6 +23480,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberScale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_scale: Option<NumberDisplayFormatConfigurationNumberScaleEnum>,
 
     ///
@@ -22819,6 +23496,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
 
     ///
@@ -22830,6 +23508,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeparatorConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub separator_configuration: Option<NumericSeparatorConfiguration>,
 
     ///
@@ -22845,6 +23524,7 @@ pub struct NumberDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
 }
 
@@ -22959,6 +23639,7 @@ pub struct NumberFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<NumericFormatConfiguration>,
 }
 
@@ -22992,6 +23673,7 @@ pub struct NumericAxisOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Range")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range: Option<AxisDisplayRange>,
 
     ///
@@ -23003,6 +23685,7 @@ pub struct NumericAxisOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scale: Option<AxisScale>,
 }
 
@@ -23078,6 +23761,7 @@ pub struct NumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_function: Option<AggregationFunction>,
 
     ///
@@ -23151,6 +23835,7 @@ pub struct NumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_name: Option<String>,
 
     ///
@@ -23166,6 +23851,7 @@ pub struct NumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub select_all_options: Option<NumericEqualityFilterSelectAllOptionsEnum>,
 
     ///
@@ -23177,6 +23863,7 @@ pub struct NumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<f64>,
 }
 
@@ -23301,6 +23988,7 @@ pub struct NumericFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrencyDisplayFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub currency_display_format_configuration: Option<CurrencyDisplayFormatConfiguration>,
 
     ///
@@ -23312,6 +24000,7 @@ pub struct NumericFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberDisplayFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_display_format_configuration: Option<NumberDisplayFormatConfiguration>,
 
     ///
@@ -23323,6 +24012,7 @@ pub struct NumericFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentageDisplayFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub percentage_display_format_configuration: Option<PercentageDisplayFormatConfiguration>,
 }
 
@@ -23364,6 +24054,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_function: Option<AggregationFunction>,
 
     ///
@@ -23403,6 +24094,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMaximum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_maximum: Option<bool>,
 
     ///
@@ -23414,6 +24106,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMinimum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_minimum: Option<bool>,
 
     ///
@@ -23440,6 +24133,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeMaximum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_maximum: Option<NumericRangeFilterValue>,
 
     ///
@@ -23451,6 +24145,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeMinimum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_minimum: Option<NumericRangeFilterValue>,
 
     ///
@@ -23466,6 +24161,7 @@ pub struct NumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectAllOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub select_all_options: Option<NumericRangeFilterSelectAllOptionsEnum>,
 }
 
@@ -23567,6 +24263,7 @@ pub struct NumericRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter: Option<String>,
 
     ///
@@ -23578,6 +24275,7 @@ pub struct NumericRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_value: Option<f64>,
 }
 
@@ -23627,6 +24325,7 @@ pub struct NumericSeparatorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalSeparator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decimal_separator: Option<NumericSeparatorConfigurationDecimalSeparatorEnum>,
 
     ///
@@ -23638,6 +24337,7 @@ pub struct NumericSeparatorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThousandsSeparator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thousands_separator: Option<ThousandSeparatorOptions>,
 }
 
@@ -23692,6 +24392,7 @@ pub struct NumericalAggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentileAggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub percentile_aggregation: Option<PercentileAggregation>,
 
     ///
@@ -23707,6 +24408,7 @@ pub struct NumericalAggregationFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SimpleNumericalAggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub simple_numerical_aggregation:
         Option<NumericalAggregationFunctionSimpleNumericalAggregationEnum>,
 }
@@ -23820,6 +24522,7 @@ pub struct NumericalDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<NumberFormatConfiguration>,
 
     ///
@@ -23835,6 +24538,7 @@ pub struct NumericalDimensionField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HierarchyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hierarchy_id: Option<String>,
 }
 
@@ -23906,6 +24610,7 @@ pub struct NumericalMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_function: Option<NumericalAggregationFunction>,
 
     ///
@@ -23943,6 +24648,7 @@ pub struct NumericalMeasureField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<NumberFormatConfiguration>,
 }
 
@@ -24042,6 +24748,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_color: Option<String>,
 
     ///
@@ -24055,6 +24762,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_visibility: Option<PanelConfigurationBackgroundVisibilityEnum>,
 
     ///
@@ -24068,6 +24776,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub border_color: Option<String>,
 
     ///
@@ -24081,6 +24790,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub border_style: Option<PanelConfigurationBorderStyleEnum>,
 
     ///
@@ -24092,6 +24802,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderThickness")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub border_thickness: Option<String>,
 
     ///
@@ -24105,6 +24816,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorderVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub border_visibility: Option<PanelConfigurationBorderVisibilityEnum>,
 
     ///
@@ -24116,6 +24828,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GutterSpacing")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gutter_spacing: Option<String>,
 
     ///
@@ -24129,6 +24842,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GutterVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gutter_visibility: Option<PanelConfigurationGutterVisibilityEnum>,
 
     ///
@@ -24140,6 +24854,7 @@ pub struct PanelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<PanelTitleOptions>,
 }
 
@@ -24242,6 +24957,7 @@ pub struct PanelTitleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_configuration: Option<FontConfiguration>,
 
     ///
@@ -24255,6 +24971,7 @@ pub struct PanelTitleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HorizontalTextAlignment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub horizontal_text_alignment: Option<PanelTitleOptionsHorizontalTextAlignmentEnum>,
 
     ///
@@ -24268,6 +24985,7 @@ pub struct PanelTitleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<PanelTitleOptionsVisibilityEnum>,
 }
 
@@ -24345,6 +25063,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimePicker")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_picker: Option<ParameterDateTimePickerControl>,
 
     ///
@@ -24356,6 +25075,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dropdown")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dropdown: Option<ParameterDropDownControl>,
 
     ///
@@ -24367,6 +25087,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "List")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub list: Option<ParameterListControl>,
 
     ///
@@ -24378,6 +25099,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Slider")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slider: Option<ParameterSliderControl>,
 
     ///
@@ -24389,6 +25111,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextArea")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_area: Option<ParameterTextAreaControl>,
 
     ///
@@ -24400,6 +25123,7 @@ pub struct ParameterControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_field: Option<ParameterTextFieldControl>,
 }
 
@@ -24449,6 +25173,7 @@ pub struct ParameterDateTimePickerControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<DateTimePickerControlDisplayOptions>,
 
     ///
@@ -24589,6 +25314,7 @@ pub struct ParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeParameterDeclaration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_parameter_declaration: Option<DateTimeParameterDeclaration>,
 
     ///
@@ -24600,6 +25326,7 @@ pub struct ParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalParameterDeclaration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decimal_parameter_declaration: Option<DecimalParameterDeclaration>,
 
     ///
@@ -24611,6 +25338,7 @@ pub struct ParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegerParameterDeclaration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integer_parameter_declaration: Option<IntegerParameterDeclaration>,
 
     ///
@@ -24622,6 +25350,7 @@ pub struct ParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringParameterDeclaration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_parameter_declaration: Option<StringParameterDeclaration>,
 }
 
@@ -24667,6 +25396,7 @@ pub struct ParameterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CascadingControlConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cascading_control_configuration: Option<CascadingControlConfiguration>,
 
     ///
@@ -24678,6 +25408,7 @@ pub struct ParameterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<DropDownControlDisplayOptions>,
 
     ///
@@ -24706,6 +25437,7 @@ pub struct ParameterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectableValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selectable_values: Option<ParameterSelectableValues>,
 
     ///
@@ -24751,6 +25483,7 @@ pub struct ParameterDropDownControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ParameterDropDownControlTypeEnum>,
 }
 
@@ -24863,6 +25596,7 @@ pub struct ParameterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CascadingControlConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cascading_control_configuration: Option<CascadingControlConfiguration>,
 
     ///
@@ -24874,6 +25608,7 @@ pub struct ParameterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<ListControlDisplayOptions>,
 
     ///
@@ -24902,6 +25637,7 @@ pub struct ParameterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectableValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selectable_values: Option<ParameterSelectableValues>,
 
     ///
@@ -24947,6 +25683,7 @@ pub struct ParameterListControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ParameterListControlTypeEnum>,
 }
 
@@ -25059,6 +25796,7 @@ pub struct ParameterSelectableValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LinkToDataSetColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub link_to_data_set_column: Option<ColumnIdentifier>,
 
     ///
@@ -25072,6 +25810,7 @@ pub struct ParameterSelectableValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -25114,6 +25853,7 @@ pub struct ParameterSliderControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<SliderControlDisplayOptions>,
 
     ///
@@ -25287,6 +26027,7 @@ pub struct ParameterTextAreaControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<String>,
 
     ///
@@ -25298,6 +26039,7 @@ pub struct ParameterTextAreaControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<TextAreaControlDisplayOptions>,
 
     ///
@@ -25452,6 +26194,7 @@ pub struct ParameterTextFieldControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_options: Option<TextFieldControlDisplayOptions>,
 
     ///
@@ -25590,6 +26333,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_parameters: Option<Vec<DateTimeParameter>>,
 
     ///
@@ -25603,6 +26347,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decimal_parameters: Option<Vec<DecimalParameter>>,
 
     ///
@@ -25616,6 +26361,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegerParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integer_parameters: Option<Vec<IntegerParameter>>,
 
     ///
@@ -25629,6 +26375,7 @@ pub struct Parameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_parameters: Option<Vec<StringParameter>>,
 }
 
@@ -25694,6 +26441,7 @@ pub struct PercentVisibleRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "From")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from: Option<f64>,
 
     ///
@@ -25705,6 +26453,7 @@ pub struct PercentVisibleRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "To")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub to: Option<f64>,
 }
 
@@ -25734,6 +26483,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalPlacesConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decimal_places_configuration: Option<DecimalPlacesConfiguration>,
 
     ///
@@ -25745,6 +26495,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeValueConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub negative_value_configuration: Option<NegativeValueConfiguration>,
 
     ///
@@ -25756,6 +26507,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -25771,6 +26523,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
 
     ///
@@ -25782,6 +26535,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeparatorConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub separator_configuration: Option<NumericSeparatorConfiguration>,
 
     ///
@@ -25797,6 +26551,7 @@ pub struct PercentageDisplayFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
 }
 
@@ -25878,6 +26633,7 @@ pub struct PercentileAggregation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentileValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub percentile_value: Option<f64>,
 }
 
@@ -25924,6 +26680,7 @@ pub struct PeriodOverPeriodComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -25946,6 +26703,7 @@ pub struct PeriodOverPeriodComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<MeasureField>,
 }
 
@@ -26014,6 +26772,7 @@ pub struct PeriodToDateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -26029,6 +26788,7 @@ pub struct PeriodToDateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodTimeGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period_time_granularity: Option<PeriodToDateComputationPeriodTimeGranularityEnum>,
 
     ///
@@ -26051,6 +26811,7 @@ pub struct PeriodToDateComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<MeasureField>,
 }
 
@@ -26149,6 +26910,7 @@ pub struct PieChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -26162,6 +26924,7 @@ pub struct PieChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiples")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples: Option<Vec<DimensionField>>,
 
     ///
@@ -26175,6 +26938,7 @@ pub struct PieChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -26231,6 +26995,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -26244,6 +27009,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributionAnalysisDefaults")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contribution_analysis_defaults: Option<Vec<ContributionAnalysisDefault>>,
 
     ///
@@ -26255,6 +27021,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -26266,6 +27033,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DonutOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub donut_options: Option<DonutOptions>,
 
     ///
@@ -26277,6 +27045,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<PieChartFieldWells>,
 
     ///
@@ -26288,6 +27057,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -26299,6 +27069,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples_options: Option<SmallMultiplesOptions>,
 
     ///
@@ -26310,6 +27081,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<PieChartSortConfiguration>,
 
     ///
@@ -26321,6 +27093,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -26332,6 +27105,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -26343,6 +27117,7 @@ pub struct PieChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -26416,6 +27191,7 @@ pub struct PieChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PieChartAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pie_chart_aggregated_field_wells: Option<PieChartAggregatedFieldWells>,
 }
 
@@ -26449,6 +27225,7 @@ pub struct PieChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -26462,6 +27239,7 @@ pub struct PieChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -26473,6 +27251,7 @@ pub struct PieChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesLimitConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -26486,6 +27265,7 @@ pub struct PieChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SmallMultiplesSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub small_multiples_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -26551,6 +27331,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -26562,6 +27343,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<PieChartConfiguration>,
 
     ///
@@ -26575,6 +27357,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -26586,6 +27369,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -26597,6 +27381,7 @@ pub struct PieChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -26755,6 +27540,7 @@ pub struct PivotTableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub columns: Option<Vec<DimensionField>>,
 
     ///
@@ -26768,6 +27554,7 @@ pub struct PivotTableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rows")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rows: Option<Vec<DimensionField>>,
 
     ///
@@ -26781,6 +27568,7 @@ pub struct PivotTableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -26852,6 +27640,7 @@ pub struct PivotTableCellConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope: Option<PivotTableConditionalFormattingScope>,
 
     ///
@@ -26863,6 +27652,7 @@ pub struct PivotTableCellConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_format: Option<TextConditionalFormat>,
 }
 
@@ -26918,6 +27708,7 @@ pub struct PivotTableConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormattingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditional_formatting_options: Option<Vec<PivotTableConditionalFormattingOption>>,
 }
 
@@ -26953,6 +27744,7 @@ pub struct PivotTableConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cell")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cell: Option<PivotTableCellConditionalFormatting>,
 }
 
@@ -26986,6 +27778,7 @@ pub struct PivotTableConditionalFormattingScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Role")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<PivotTableConditionalFormattingScopeRoleEnum>,
 }
 
@@ -27036,6 +27829,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_options: Option<PivotTableFieldOptions>,
 
     ///
@@ -27047,6 +27841,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<PivotTableFieldWells>,
 
     ///
@@ -27058,6 +27853,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginatedReportOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub paginated_report_options: Option<PivotTablePaginatedReportOptions>,
 
     ///
@@ -27069,6 +27865,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<PivotTableSortConfiguration>,
 
     ///
@@ -27080,6 +27877,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_options: Option<PivotTableOptions>,
 
     ///
@@ -27091,6 +27889,7 @@ pub struct PivotTableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_options: Option<PivotTableTotalOptions>,
 }
 
@@ -27157,6 +27956,7 @@ pub struct PivotTableDataPathOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Width")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub width: Option<String>,
 }
 
@@ -27199,6 +27999,7 @@ pub struct PivotTableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_label: Option<String>,
 
     ///
@@ -27227,6 +28028,7 @@ pub struct PivotTableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<PivotTableFieldOptionVisibilityEnum>,
 }
 
@@ -27311,6 +28113,7 @@ pub struct PivotTableFieldOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPathOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_path_options: Option<Vec<PivotTableDataPathOption>>,
 
     ///
@@ -27324,6 +28127,7 @@ pub struct PivotTableFieldOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedFieldOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_field_options: Option<Vec<PivotTableFieldOption>>,
 }
 
@@ -27372,6 +28176,7 @@ pub struct PivotTableFieldSubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_id: Option<String>,
 }
 
@@ -27421,6 +28226,7 @@ pub struct PivotTableFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PivotTableAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pivot_table_aggregated_field_wells: Option<PivotTableAggregatedFieldWells>,
 }
 
@@ -27454,6 +28260,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cell_style: Option<TableCellStyle>,
 
     ///
@@ -27465,6 +28272,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHeaderStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_header_style: Option<TableCellStyle>,
 
     ///
@@ -27478,6 +28286,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnNamesVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_names_visibility: Option<PivotTableOptionsColumnNamesVisibilityEnum>,
 
     ///
@@ -27491,6 +28300,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricPlacement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_placement: Option<PivotTableOptionsMetricPlacementEnum>,
 
     ///
@@ -27502,6 +28312,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowAlternateColorOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_alternate_color_options: Option<RowAlternateColorOptions>,
 
     ///
@@ -27513,6 +28324,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowFieldNamesStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_field_names_style: Option<TableCellStyle>,
 
     ///
@@ -27524,6 +28336,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowHeaderStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_header_style: Option<TableCellStyle>,
 
     ///
@@ -27537,6 +28350,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingleMetricVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub single_metric_visibility: Option<PivotTableOptionsSingleMetricVisibilityEnum>,
 
     ///
@@ -27550,6 +28364,7 @@ pub struct PivotTableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ToggleButtonsVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub toggle_buttons_visibility: Option<PivotTableOptionsToggleButtonsVisibilityEnum>,
 }
 
@@ -27669,6 +28484,7 @@ pub struct PivotTablePaginatedReportOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OverflowColumnHeaderVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overflow_column_header_visibility:
         Option<PivotTablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum>,
 
@@ -27683,6 +28499,7 @@ pub struct PivotTablePaginatedReportOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerticalOverflowVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vertical_overflow_visibility:
         Option<PivotTablePaginatedReportOptionsVerticalOverflowVisibilityEnum>,
 }
@@ -27747,6 +28564,7 @@ pub struct PivotTableSortBy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Column")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column: Option<ColumnSort>,
 
     ///
@@ -27758,6 +28576,7 @@ pub struct PivotTableSortBy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_path: Option<DataPathSort>,
 
     ///
@@ -27769,6 +28588,7 @@ pub struct PivotTableSortBy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<FieldSort>,
 }
 
@@ -27808,6 +28628,7 @@ pub struct PivotTableSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldSortOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_sort_options: Option<Vec<PivotFieldSortOptions>>,
 }
 
@@ -27846,6 +28667,7 @@ pub struct PivotTableTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnSubtotalOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_subtotal_options: Option<SubtotalOptions>,
 
     ///
@@ -27857,6 +28679,7 @@ pub struct PivotTableTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnTotalOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_total_options: Option<PivotTotalOptions>,
 
     ///
@@ -27868,6 +28691,7 @@ pub struct PivotTableTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowSubtotalOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_subtotal_options: Option<SubtotalOptions>,
 
     ///
@@ -27879,6 +28703,7 @@ pub struct PivotTableTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowTotalOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_total_options: Option<PivotTotalOptions>,
 }
 
@@ -27928,6 +28753,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -27939,6 +28765,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<PivotTableConfiguration>,
 
     ///
@@ -27950,6 +28777,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditional_formatting: Option<PivotTableConditionalFormatting>,
 
     ///
@@ -27961,6 +28789,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -27972,6 +28801,7 @@ pub struct PivotTableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -28059,6 +28889,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_label: Option<String>,
 
     ///
@@ -28070,6 +28901,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricHeaderCellStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_header_cell_style: Option<TableCellStyle>,
 
     ///
@@ -28083,6 +28915,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Placement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement: Option<PivotTotalOptionsPlacementEnum>,
 
     ///
@@ -28096,6 +28929,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScrollStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scroll_status: Option<PivotTotalOptionsScrollStatusEnum>,
 
     ///
@@ -28107,6 +28941,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalCellStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_cell_style: Option<TableCellStyle>,
 
     ///
@@ -28120,6 +28955,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalsVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub totals_visibility: Option<PivotTotalOptionsTotalsVisibilityEnum>,
 
     ///
@@ -28131,6 +28967,7 @@ pub struct PivotTotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueCellStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_cell_style: Option<TableCellStyle>,
 }
 
@@ -28238,6 +29075,7 @@ pub struct PredefinedHierarchy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DrillDownFilters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drill_down_filters: Option<Vec<DrillDownFilter>>,
 
     ///
@@ -28320,6 +29158,7 @@ pub struct ProgressBarOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<ProgressBarOptionsVisibilityEnum>,
 }
 
@@ -28368,6 +29207,7 @@ pub struct RadarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -28381,6 +29221,7 @@ pub struct RadarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Vec<DimensionField>>,
 
     ///
@@ -28394,6 +29235,7 @@ pub struct RadarChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -28452,6 +29294,7 @@ pub struct RadarChartAreaStyleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<RadarChartAreaStyleSettingsVisibilityEnum>,
 }
 
@@ -28500,6 +29343,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateBandColorsVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alternate_band_colors_visibility:
         Option<RadarChartConfigurationAlternateBandColorsVisibilityEnum>,
 
@@ -28514,6 +29358,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateBandEvenColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alternate_band_even_color: Option<String>,
 
     ///
@@ -28527,6 +29372,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlternateBandOddColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alternate_band_odd_color: Option<String>,
 
     ///
@@ -28538,6 +29384,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseSeriesSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_series_settings: Option<RadarChartSeriesSettings>,
 
     ///
@@ -28549,6 +29396,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -28560,6 +29408,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -28571,6 +29420,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_axis: Option<AxisDisplayOptions>,
 
     ///
@@ -28582,6 +29432,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -28593,6 +29444,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<RadarChartFieldWells>,
 
     ///
@@ -28604,6 +29456,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -28617,6 +29470,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Shape")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shape: Option<RadarChartConfigurationShapeEnum>,
 
     ///
@@ -28628,6 +29482,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<RadarChartSortConfiguration>,
 
     ///
@@ -28639,6 +29494,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartAngle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_angle: Option<f64>,
 
     ///
@@ -28650,6 +29506,7 @@ pub struct RadarChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 }
 
@@ -28747,6 +29604,7 @@ pub struct RadarChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RadarChartAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub radar_chart_aggregated_field_wells: Option<RadarChartAggregatedFieldWells>,
 }
 
@@ -28780,6 +29638,7 @@ pub struct RadarChartSeriesSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AreaStyleSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub area_style_settings: Option<RadarChartAreaStyleSettings>,
 }
 
@@ -28813,6 +29672,7 @@ pub struct RadarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -28826,6 +29686,7 @@ pub struct RadarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 
     ///
@@ -28837,6 +29698,7 @@ pub struct RadarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -28850,6 +29712,7 @@ pub struct RadarChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -28907,6 +29770,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -28918,6 +29782,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<RadarChartConfiguration>,
 
     ///
@@ -28931,6 +29796,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -28942,6 +29808,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -28953,6 +29820,7 @@ pub struct RadarChartVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -29047,6 +29915,7 @@ pub struct RangeEndsLabelType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<RangeEndsLabelTypeVisibilityEnum>,
 }
 
@@ -29104,6 +29973,7 @@ pub struct ReferenceLine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LabelConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label_configuration: Option<ReferenceLineLabelConfiguration>,
 
     ///
@@ -29119,6 +29989,7 @@ pub struct ReferenceLine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<ReferenceLineStatusEnum>,
 
     ///
@@ -29130,6 +30001,7 @@ pub struct ReferenceLine {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StyleConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style_configuration: Option<ReferenceLineStyleConfiguration>,
 }
 
@@ -29221,6 +30093,7 @@ pub struct ReferenceLineDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AxisBinding")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub axis_binding: Option<ReferenceLineDataConfigurationAxisBindingEnum>,
 
     ///
@@ -29232,6 +30105,7 @@ pub struct ReferenceLineDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_configuration: Option<ReferenceLineDynamicDataConfiguration>,
 
     ///
@@ -29243,6 +30117,7 @@ pub struct ReferenceLineDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_configuration: Option<ReferenceLineStaticDataConfiguration>,
 }
 
@@ -29354,6 +30229,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabelConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_label_configuration: Option<ReferenceLineCustomLabelConfiguration>,
 
     ///
@@ -29367,6 +30243,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_color: Option<String>,
 
     ///
@@ -29378,6 +30255,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_configuration: Option<FontConfiguration>,
 
     ///
@@ -29393,6 +30271,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HorizontalPosition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub horizontal_position: Option<ReferenceLineLabelConfigurationHorizontalPositionEnum>,
 
     ///
@@ -29404,6 +30283,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueLabelConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_label_configuration: Option<ReferenceLineValueLabelConfiguration>,
 
     ///
@@ -29419,6 +30299,7 @@ pub struct ReferenceLineLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerticalPosition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vertical_position: Option<ReferenceLineLabelConfigurationVerticalPositionEnum>,
 }
 
@@ -29529,6 +30410,7 @@ pub struct ReferenceLineStyleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
 
     ///
@@ -29544,6 +30426,7 @@ pub struct ReferenceLineStyleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pattern: Option<ReferenceLineStyleConfigurationPatternEnum>,
 }
 
@@ -29594,6 +30477,7 @@ pub struct ReferenceLineValueLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<NumericFormatConfiguration>,
 
     ///
@@ -29609,6 +30493,7 @@ pub struct ReferenceLineValueLabelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativePosition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relative_position: Option<ReferenceLineValueLabelConfigurationRelativePositionEnum>,
 }
 
@@ -29663,6 +30548,7 @@ pub struct RelativeDateTimeControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_format: Option<String>,
 
     ///
@@ -29674,6 +30560,7 @@ pub struct RelativeDateTimeControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -29747,6 +30634,7 @@ pub struct RelativeDatesFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludePeriodConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_period_configuration: Option<ExcludePeriodConfiguration>,
 
     ///
@@ -29777,6 +30665,7 @@ pub struct RelativeDatesFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub minimum_granularity: Option<RelativeDatesFilterMinimumGranularityEnum>,
 
     ///
@@ -29809,6 +30698,7 @@ pub struct RelativeDatesFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_name: Option<String>,
 
     ///
@@ -29835,6 +30725,7 @@ pub struct RelativeDatesFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDateValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relative_date_value: Option<f64>,
 
     ///
@@ -30084,6 +30975,7 @@ pub struct ResourcePermission {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Resource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource: Option<String>,
 }
 
@@ -30117,6 +31009,7 @@ pub struct RollingDateConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSetIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_set_identifier: Option<String>,
 
     ///
@@ -30199,6 +31092,7 @@ pub struct RowAlternateColorOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowAlternateColors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_alternate_colors: Option<Vec<String>>,
 
     ///
@@ -30212,6 +31106,7 @@ pub struct RowAlternateColorOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<RowAlternateColorOptionsStatusEnum>,
 }
 
@@ -30275,6 +31170,7 @@ pub struct SameSheetTargetVisualConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetVisualOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_visual_options: Option<SameSheetTargetVisualConfigurationTargetVisualOptionsEnum>,
 
     ///
@@ -30288,6 +31184,7 @@ pub struct SameSheetTargetVisualConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetVisuals")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_visuals: Option<Vec<String>>,
 }
 
@@ -30341,6 +31238,7 @@ pub struct SankeyDiagramAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<Vec<DimensionField>>,
 
     ///
@@ -30354,6 +31252,7 @@ pub struct SankeyDiagramAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source: Option<Vec<DimensionField>>,
 
     ///
@@ -30367,6 +31266,7 @@ pub struct SankeyDiagramAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<Vec<MeasureField>>,
 }
 
@@ -30423,6 +31323,7 @@ pub struct SankeyDiagramChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -30434,6 +31335,7 @@ pub struct SankeyDiagramChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<SankeyDiagramFieldWells>,
 
     ///
@@ -30445,6 +31347,7 @@ pub struct SankeyDiagramChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<SankeyDiagramSortConfiguration>,
 }
 
@@ -30486,6 +31389,7 @@ pub struct SankeyDiagramFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SankeyDiagramAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sankey_diagram_aggregated_field_wells: Option<SankeyDiagramAggregatedFieldWells>,
 }
 
@@ -30519,6 +31423,7 @@ pub struct SankeyDiagramSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -30530,6 +31435,7 @@ pub struct SankeyDiagramSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -30543,6 +31449,7 @@ pub struct SankeyDiagramSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeightSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -30593,6 +31500,7 @@ pub struct SankeyDiagramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -30604,6 +31512,7 @@ pub struct SankeyDiagramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<SankeyDiagramChartConfiguration>,
 
     ///
@@ -30615,6 +31524,7 @@ pub struct SankeyDiagramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -30626,6 +31536,7 @@ pub struct SankeyDiagramVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -30711,6 +31622,7 @@ pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<Vec<DimensionField>>,
 
     ///
@@ -30724,6 +31636,7 @@ pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<Vec<MeasureField>>,
 
     ///
@@ -30739,6 +31652,7 @@ pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis: Option<Vec<MeasureField>>,
 
     ///
@@ -30754,6 +31668,7 @@ pub struct ScatterPlotCategoricallyAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub yaxis: Option<Vec<MeasureField>>,
 }
 
@@ -30819,6 +31734,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -30830,6 +31746,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<ScatterPlotFieldWells>,
 
     ///
@@ -30841,6 +31758,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -30852,6 +31770,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 
     ///
@@ -30863,6 +31782,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -30874,6 +31794,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -30885,6 +31806,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -30896,6 +31818,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -30907,6 +31830,7 @@ pub struct ScatterPlotConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub yaxis_label_options: Option<ChartAxisLabelOptions>,
 }
 
@@ -30970,6 +31894,7 @@ pub struct ScatterPlotFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScatterPlotCategoricallyAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scatter_plot_categorically_aggregated_field_wells:
         Option<ScatterPlotCategoricallyAggregatedFieldWells>,
 
@@ -30982,6 +31907,7 @@ pub struct ScatterPlotFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScatterPlotUnaggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scatter_plot_unaggregated_field_wells: Option<ScatterPlotUnaggregatedFieldWells>,
 }
 
@@ -31021,6 +31947,7 @@ pub struct ScatterPlotUnaggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<Vec<MeasureField>>,
 
     ///
@@ -31036,6 +31963,7 @@ pub struct ScatterPlotUnaggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis: Option<Vec<DimensionField>>,
 
     ///
@@ -31051,6 +31979,7 @@ pub struct ScatterPlotUnaggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub yaxis: Option<Vec<DimensionField>>,
 }
 
@@ -31111,6 +32040,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -31122,6 +32052,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<ScatterPlotConfiguration>,
 
     ///
@@ -31135,6 +32066,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -31146,6 +32078,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -31157,6 +32090,7 @@ pub struct ScatterPlotVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -31251,6 +32185,7 @@ pub struct ScrollBarOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<ScrollBarOptionsVisibilityEnum>,
 
     ///
@@ -31262,6 +32197,7 @@ pub struct ScrollBarOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisibleRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visible_range: Option<VisibleRangeOptions>,
 }
 
@@ -31314,6 +32250,7 @@ pub struct SecondaryValueOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<SecondaryValueOptionsVisibilityEnum>,
 }
 
@@ -31362,6 +32299,7 @@ pub struct SectionAfterPageBreak {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<SectionAfterPageBreakStatusEnum>,
 }
 
@@ -31408,6 +32346,7 @@ pub struct SectionBasedLayoutCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaperCanvasSizeOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub paper_canvas_size_options: Option<SectionBasedLayoutPaperCanvasSizeOptions>,
 }
 
@@ -31538,6 +32477,7 @@ pub struct SectionBasedLayoutPaperCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaperMargin")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub paper_margin: Option<Spacing>,
 
     ///
@@ -31553,6 +32493,7 @@ pub struct SectionBasedLayoutPaperCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaperOrientation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub paper_orientation: Option<SectionBasedLayoutPaperCanvasSizeOptionsPaperOrientationEnum>,
 
     ///
@@ -31566,6 +32507,7 @@ pub struct SectionBasedLayoutPaperCanvasSizeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaperSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub paper_size: Option<SectionBasedLayoutPaperCanvasSizeOptionsPaperSizeEnum>,
 }
 
@@ -31700,6 +32642,7 @@ pub struct SectionPageBreakConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "After")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub after: Option<SectionAfterPageBreak>,
 }
 
@@ -31733,6 +32676,7 @@ pub struct SectionStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Height")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub height: Option<String>,
 
     ///
@@ -31746,6 +32690,7 @@ pub struct SectionStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Padding")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub padding: Option<Spacing>,
 }
 
@@ -31781,6 +32726,7 @@ pub struct SelectedSheetsFilterScopeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetVisualScopingConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_visual_scoping_configurations: Option<Vec<SheetVisualScopingConfiguration>>,
 }
 
@@ -31818,6 +32764,7 @@ pub struct SeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataFieldSeriesItem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_field_series_item: Option<DataFieldSeriesItem>,
 
     ///
@@ -31829,6 +32776,7 @@ pub struct SeriesItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldSeriesItem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_series_item: Option<FieldSeriesItem>,
 }
 
@@ -31963,6 +32911,7 @@ pub struct Sheet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -31980,6 +32929,7 @@ pub struct Sheet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_id: Option<String>,
 }
 
@@ -32076,6 +33026,7 @@ pub struct SheetControlLayoutConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GridLayout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grid_layout: Option<GridLayoutConfiguration>,
 }
 
@@ -32111,6 +33062,7 @@ pub struct SheetControlsOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisibilityState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility_state: Option<SheetControlsOptionVisibilityStateEnum>,
 }
 
@@ -32161,6 +33113,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type: Option<SheetDefinitionContentTypeEnum>,
 
     ///
@@ -32176,6 +33129,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -32191,6 +33145,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterControls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_controls: Option<Vec<FilterControl>>,
 
     ///
@@ -32206,6 +33161,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Layouts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub layouts: Option<Vec<Layout>>,
 
     ///
@@ -32221,6 +33177,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -32236,6 +33193,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterControls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_controls: Option<Vec<ParameterControl>>,
 
     ///
@@ -32249,6 +33207,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetControlLayouts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_control_layouts: Option<Vec<SheetControlLayout>>,
 
     ///
@@ -32279,6 +33238,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextBoxes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_boxes: Option<Vec<SheetTextBox>>,
 
     ///
@@ -32294,6 +33254,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<String>,
 
     ///
@@ -32307,6 +33268,7 @@ pub struct SheetDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visuals")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visuals: Option<Vec<Visual>>,
 }
 
@@ -32483,6 +33445,7 @@ pub struct SheetElementConfigurationOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<SheetElementConfigurationOverridesVisibilityEnum>,
 }
 
@@ -32595,6 +33558,7 @@ pub struct SheetLayoutElementMaximizationOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<SheetLayoutElementMaximizationOptionAvailabilityStatusEnum>,
 }
 
@@ -32643,6 +33607,7 @@ pub struct SheetTextBox {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content: Option<String>,
 
     ///
@@ -32750,6 +33715,7 @@ pub struct SheetVisualScopingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_ids: Option<Vec<String>>,
 }
 
@@ -32829,6 +33795,7 @@ pub struct ShortFormatText {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlainText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub plain_text: Option<String>,
 
     ///
@@ -32844,6 +33811,7 @@ pub struct ShortFormatText {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RichText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rich_text: Option<String>,
 }
 
@@ -32911,6 +33879,7 @@ pub struct SimpleClusterMarker {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
 }
 
@@ -32940,6 +33909,7 @@ pub struct SliderControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -32975,6 +33945,7 @@ pub struct SmallMultiplesOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxVisibleColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_visible_columns: Option<f64>,
 
     ///
@@ -32988,6 +33959,7 @@ pub struct SmallMultiplesOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxVisibleRows")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_visible_rows: Option<f64>,
 
     ///
@@ -32999,6 +33971,7 @@ pub struct SmallMultiplesOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PanelConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub panel_configuration: Option<PanelConfiguration>,
 }
 
@@ -33032,6 +34005,7 @@ pub struct Spacing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bottom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bottom: Option<String>,
 
     ///
@@ -33043,6 +34017,7 @@ pub struct Spacing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Left")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub left: Option<String>,
 
     ///
@@ -33054,6 +34029,7 @@ pub struct Spacing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Right")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub right: Option<String>,
 
     ///
@@ -33065,6 +34041,7 @@ pub struct Spacing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Top")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub top: Option<String>,
 }
 
@@ -33094,6 +34071,7 @@ pub struct StringDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_value: Option<DynamicDefaultValue>,
 
     ///
@@ -33107,6 +34085,7 @@ pub struct StringDefaultValues {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_values: Option<Vec<String>>,
 }
 
@@ -33149,6 +34128,7 @@ pub struct StringFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NullValueFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub null_value_format_configuration: Option<NullValueFormatConfiguration>,
 
     ///
@@ -33160,6 +34140,7 @@ pub struct StringFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numeric_format_configuration: Option<NumericFormatConfiguration>,
 }
 
@@ -33239,6 +34220,7 @@ pub struct StringParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_values: Option<StringDefaultValues>,
 
     /// Property description not available.
@@ -33249,6 +34231,7 @@ pub struct StringParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MappedDataSetParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mapped_data_set_parameters: Option<Vec<MappedDataSetParameter>>,
 
     ///
@@ -33290,6 +34273,7 @@ pub struct StringParameterDeclaration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_when_unset: Option<StringValueWhenUnsetConfiguration>,
 }
 
@@ -33362,6 +34346,7 @@ pub struct StringValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_value: Option<String>,
 
     ///
@@ -33377,6 +34362,7 @@ pub struct StringValueWhenUnsetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueWhenUnsetOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_when_unset_option: Option<StringValueWhenUnsetConfigurationValueWhenUnsetOptionEnum>,
 }
 
@@ -33423,6 +34409,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_label: Option<String>,
 
     ///
@@ -33436,6 +34423,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_level: Option<SubtotalOptionsFieldLevelEnum>,
 
     ///
@@ -33449,6 +34437,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldLevelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_level_options: Option<Vec<PivotTableFieldSubtotalOptions>>,
 
     ///
@@ -33460,6 +34449,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricHeaderCellStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_header_cell_style: Option<TableCellStyle>,
 
     ///
@@ -33471,6 +34461,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalCellStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_cell_style: Option<TableCellStyle>,
 
     ///
@@ -33484,6 +34475,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalsVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub totals_visibility: Option<SubtotalOptionsTotalsVisibilityEnum>,
 
     ///
@@ -33495,6 +34487,7 @@ pub struct SubtotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueCellStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_cell_style: Option<TableCellStyle>,
 }
 
@@ -33585,6 +34578,7 @@ pub struct TableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_by: Option<Vec<DimensionField>>,
 
     ///
@@ -33598,6 +34592,7 @@ pub struct TableAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -33647,6 +34642,7 @@ pub struct TableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Color")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
 
     ///
@@ -33660,6 +34656,7 @@ pub struct TableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Style")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style: Option<TableBorderOptionsStyleEnum>,
 
     ///
@@ -33675,6 +34672,7 @@ pub struct TableBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Thickness")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thickness: Option<f64>,
 }
 
@@ -33754,6 +34752,7 @@ pub struct TableCellConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_format: Option<TextConditionalFormat>,
 }
 
@@ -33807,6 +34806,7 @@ pub struct TableCellImageSizingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableCellImageScalingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_cell_image_scaling_configuration:
         Option<TableCellImageSizingConfigurationTableCellImageScalingConfigurationEnum>,
 }
@@ -33860,6 +34860,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_color: Option<String>,
 
     ///
@@ -33871,6 +34872,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Border")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub border: Option<GlobalTableBorderOptions>,
 
     ///
@@ -33882,6 +34884,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FontConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub font_configuration: Option<FontConfiguration>,
 
     ///
@@ -33897,6 +34900,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Height")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub height: Option<f64>,
 
     ///
@@ -33910,6 +34914,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HorizontalTextAlignment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub horizontal_text_alignment: Option<TableCellStyleHorizontalTextAlignmentEnum>,
 
     ///
@@ -33923,6 +34928,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextWrap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_wrap: Option<TableCellStyleTextWrapEnum>,
 
     ///
@@ -33936,6 +34942,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerticalTextAlignment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vertical_text_alignment: Option<TableCellStyleVerticalTextAlignmentEnum>,
 
     ///
@@ -33949,6 +34956,7 @@ pub struct TableCellStyle {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<TableCellStyleVisibilityEnum>,
 }
 
@@ -34084,6 +35092,7 @@ pub struct TableConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormattingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditional_formatting_options: Option<Vec<TableConditionalFormattingOption>>,
 }
 
@@ -34119,6 +35128,7 @@ pub struct TableConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cell")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cell: Option<TableCellConditionalFormatting>,
 
     ///
@@ -34130,6 +35140,7 @@ pub struct TableConditionalFormattingOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Row")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row: Option<TableRowConditionalFormatting>,
 }
 
@@ -34163,6 +35174,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_options: Option<TableFieldOptions>,
 
     ///
@@ -34174,6 +35186,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<TableFieldWells>,
 
     ///
@@ -34185,6 +35198,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginatedReportOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub paginated_report_options: Option<TablePaginatedReportOptions>,
 
     ///
@@ -34196,6 +35210,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<TableSortConfiguration>,
 
     ///
@@ -34209,6 +35224,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableInlineVisualizations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_inline_visualizations: Option<Vec<TableInlineVisualization>>,
 
     ///
@@ -34220,6 +35236,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_options: Option<TableOptions>,
 
     ///
@@ -34231,6 +35248,7 @@ pub struct TableConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_options: Option<TotalOptions>,
 }
 
@@ -34292,6 +35310,7 @@ pub struct TableFieldCustomIconContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<TableFieldCustomIconContentIconEnum>,
 }
 
@@ -34345,6 +35364,7 @@ pub struct TableFieldCustomTextContent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -34376,6 +35396,7 @@ pub struct TableFieldImageConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sizing_options: Option<TableCellImageSizingConfiguration>,
 }
 
@@ -34474,6 +35495,7 @@ pub struct TableFieldLinkContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomIconContent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_icon_content: Option<TableFieldCustomIconContent>,
 
     ///
@@ -34485,6 +35507,7 @@ pub struct TableFieldLinkContentConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomTextContent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_text_content: Option<TableFieldCustomTextContent>,
 }
 
@@ -34526,6 +35549,7 @@ pub struct TableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_label: Option<String>,
 
     ///
@@ -34552,6 +35576,7 @@ pub struct TableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "URLStyling")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub urlstyling: Option<TableFieldURLConfiguration>,
 
     ///
@@ -34565,6 +35590,7 @@ pub struct TableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<TableFieldOptionVisibilityEnum>,
 
     ///
@@ -34576,6 +35602,7 @@ pub struct TableFieldOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Width")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub width: Option<String>,
 }
 
@@ -34664,6 +35691,7 @@ pub struct TableFieldOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Order")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub order: Option<Vec<String>>,
 
     ///
@@ -34677,6 +35705,7 @@ pub struct TableFieldOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedFieldOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_field_options: Option<Vec<TableFieldOption>>,
 }
 
@@ -34721,6 +35750,7 @@ pub struct TableFieldURLConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_configuration: Option<TableFieldImageConfiguration>,
 
     ///
@@ -34732,6 +35762,7 @@ pub struct TableFieldURLConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LinkConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub link_configuration: Option<TableFieldLinkConfiguration>,
 }
 
@@ -34771,6 +35802,7 @@ pub struct TableFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_aggregated_field_wells: Option<TableAggregatedFieldWells>,
 
     ///
@@ -34782,6 +35814,7 @@ pub struct TableFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableUnaggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_unaggregated_field_wells: Option<TableUnaggregatedFieldWells>,
 }
 
@@ -34819,6 +35852,7 @@ pub struct TableInlineVisualization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataBars")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_bars: Option<DataBarsOptions>,
 }
 
@@ -34852,6 +35886,7 @@ pub struct TableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cell_style: Option<TableCellStyle>,
 
     ///
@@ -34863,6 +35898,7 @@ pub struct TableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_style: Option<TableCellStyle>,
 
     ///
@@ -34876,6 +35912,7 @@ pub struct TableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Orientation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub orientation: Option<TableOptionsOrientationEnum>,
 
     ///
@@ -34887,6 +35924,7 @@ pub struct TableOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowAlternateColorOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_alternate_color_options: Option<RowAlternateColorOptions>,
 }
 
@@ -34947,6 +35985,7 @@ pub struct TablePaginatedReportOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OverflowColumnHeaderVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overflow_column_header_visibility:
         Option<TablePaginatedReportOptionsOverflowColumnHeaderVisibilityEnum>,
 
@@ -34961,6 +36000,7 @@ pub struct TablePaginatedReportOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VerticalOverflowVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vertical_overflow_visibility:
         Option<TablePaginatedReportOptionsVerticalOverflowVisibilityEnum>,
 }
@@ -35025,6 +36065,7 @@ pub struct TableRowConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_color: Option<ConditionalFormattingColor>,
 
     ///
@@ -35036,6 +36077,7 @@ pub struct TableRowConditionalFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_color: Option<ConditionalFormattingColor>,
 }
 
@@ -35073,6 +36115,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bottom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bottom: Option<TableBorderOptions>,
 
     ///
@@ -35084,6 +36127,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InnerHorizontal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inner_horizontal: Option<TableBorderOptions>,
 
     ///
@@ -35095,6 +36139,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InnerVertical")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inner_vertical: Option<TableBorderOptions>,
 
     ///
@@ -35106,6 +36151,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Left")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub left: Option<TableBorderOptions>,
 
     ///
@@ -35117,6 +36163,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Right")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub right: Option<TableBorderOptions>,
 
     ///
@@ -35128,6 +36175,7 @@ pub struct TableSideBorderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Top")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub top: Option<TableBorderOptions>,
 }
 
@@ -35173,6 +36221,7 @@ pub struct TableSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PaginationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pagination_configuration: Option<PaginationConfiguration>,
 
     ///
@@ -35186,6 +36235,7 @@ pub struct TableSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -35230,6 +36280,7 @@ pub struct TableUnaggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<UnaggregatedField>>,
 }
 
@@ -35272,6 +36323,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -35283,6 +36335,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<TableConfiguration>,
 
     ///
@@ -35294,6 +36347,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionalFormatting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditional_formatting: Option<TableConditionalFormatting>,
 
     ///
@@ -35305,6 +36359,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -35316,6 +36371,7 @@ pub struct TableVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -35447,6 +36503,7 @@ pub struct TextAreaControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlaceholderOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placeholder_options: Option<TextControlPlaceholderOptions>,
 
     ///
@@ -35458,6 +36515,7 @@ pub struct TextAreaControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -35495,6 +36553,7 @@ pub struct TextConditionalFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackgroundColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub background_color: Option<ConditionalFormattingColor>,
 
     ///
@@ -35506,6 +36565,7 @@ pub struct TextConditionalFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<ConditionalFormattingIcon>,
 
     ///
@@ -35517,6 +36577,7 @@ pub struct TextConditionalFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_color: Option<ConditionalFormattingColor>,
 }
 
@@ -35558,6 +36619,7 @@ pub struct TextControlPlaceholderOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<TextControlPlaceholderOptionsVisibilityEnum>,
 }
 
@@ -35604,6 +36666,7 @@ pub struct TextFieldControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlaceholderOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placeholder_options: Option<TextControlPlaceholderOptions>,
 
     ///
@@ -35615,6 +36678,7 @@ pub struct TextFieldControlDisplayOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TitleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title_options: Option<LabelOptions>,
 }
 
@@ -35654,6 +36718,7 @@ pub struct ThousandSeparatorOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Symbol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub symbol: Option<ThousandSeparatorOptionsSymbolEnum>,
 
     ///
@@ -35667,6 +36732,7 @@ pub struct ThousandSeparatorOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<ThousandSeparatorOptionsVisibilityEnum>,
 }
 
@@ -35734,6 +36800,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LowerBoundary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lower_boundary: Option<f64>,
 
     ///
@@ -35749,6 +36816,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodsBackward")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub periods_backward: Option<f64>,
 
     ///
@@ -35764,6 +36832,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PeriodsForward")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub periods_forward: Option<f64>,
 
     ///
@@ -35779,6 +36848,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PredictionInterval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prediction_interval: Option<f64>,
 
     ///
@@ -35796,6 +36866,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Seasonality")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub seasonality: Option<f64>,
 
     ///
@@ -35807,6 +36878,7 @@ pub struct TimeBasedForecastProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpperBoundary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub upper_boundary: Option<f64>,
 }
 
@@ -35944,6 +37016,7 @@ pub struct TimeEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_name: Option<String>,
 
     ///
@@ -35957,6 +37030,7 @@ pub struct TimeEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_granularity: Option<TimeEqualityFilterTimeGranularityEnum>,
 
     ///
@@ -35970,6 +37044,7 @@ pub struct TimeEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -36204,6 +37279,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludePeriodConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_period_configuration: Option<ExcludePeriodConfiguration>,
 
     ///
@@ -36232,6 +37308,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMaximum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_maximum: Option<bool>,
 
     ///
@@ -36243,6 +37320,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeMinimum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_minimum: Option<bool>,
 
     ///
@@ -36269,6 +37347,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeMaximumValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_maximum_value: Option<TimeRangeFilterValue>,
 
     ///
@@ -36280,6 +37359,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeMinimumValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_minimum_value: Option<TimeRangeFilterValue>,
 
     ///
@@ -36293,6 +37373,7 @@ pub struct TimeRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_granularity: Option<TimeRangeFilterTimeGranularityEnum>,
 }
 
@@ -36428,6 +37509,7 @@ pub struct TimeRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter: Option<String>,
 
     ///
@@ -36439,6 +37521,7 @@ pub struct TimeRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RollingDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolling_date: Option<RollingDateConfiguration>,
 
     ///
@@ -36450,6 +37533,7 @@ pub struct TimeRangeFilterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_value: Option<String>,
 }
 
@@ -36503,6 +37587,7 @@ pub struct TooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnTooltipItem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_tooltip_item: Option<ColumnTooltipItem>,
 
     ///
@@ -36514,6 +37599,7 @@ pub struct TooltipItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldTooltipItem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_tooltip_item: Option<FieldTooltipItem>,
 }
 
@@ -36551,6 +37637,7 @@ pub struct TooltipOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldBasedTooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_based_tooltip: Option<FieldBasedTooltip>,
 
     ///
@@ -36566,6 +37653,7 @@ pub struct TooltipOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedTooltipType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_tooltip_type: Option<TooltipOptionsSelectedTooltipTypeEnum>,
 
     ///
@@ -36579,6 +37667,7 @@ pub struct TooltipOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TooltipVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip_visibility: Option<TooltipOptionsTooltipVisibilityEnum>,
 }
 
@@ -36687,6 +37776,7 @@ pub struct TopBottomFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Limit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub limit: Option<f64>,
 
     ///
@@ -36704,6 +37794,7 @@ pub struct TopBottomFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_name: Option<String>,
 
     ///
@@ -36717,6 +37808,7 @@ pub struct TopBottomFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_granularity: Option<TopBottomFilterTimeGranularityEnum>,
 }
 
@@ -36867,6 +37959,7 @@ pub struct TopBottomMoversComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MoverSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mover_size: Option<f64>,
 
     ///
@@ -36878,6 +37971,7 @@ pub struct TopBottomMoversComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -36891,6 +37985,7 @@ pub struct TopBottomMoversComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_order: Option<TopBottomMoversComputationSortOrderEnum>,
 
     ///
@@ -36928,6 +38023,7 @@ pub struct TopBottomMoversComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<MeasureField>,
 }
 
@@ -37061,6 +38157,7 @@ pub struct TopBottomRankedComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -37076,6 +38173,7 @@ pub struct TopBottomRankedComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResultSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub result_size: Option<f64>,
 
     ///
@@ -37102,6 +38200,7 @@ pub struct TopBottomRankedComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<MeasureField>,
 }
 
@@ -37205,6 +38304,7 @@ pub struct TotalAggregationComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -37265,6 +38365,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_label: Option<String>,
 
     ///
@@ -37278,6 +38379,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Placement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement: Option<TotalOptionsPlacementEnum>,
 
     ///
@@ -37291,6 +38393,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScrollStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scroll_status: Option<TotalOptionsScrollStatusEnum>,
 
     ///
@@ -37302,6 +38405,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalCellStyle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_cell_style: Option<TableCellStyle>,
 
     ///
@@ -37315,6 +38419,7 @@ pub struct TotalOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalsVisibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub totals_visibility: Option<TotalOptionsTotalsVisibilityEnum>,
 }
 
@@ -37401,6 +38506,7 @@ pub struct TreeMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Colors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub colors: Option<Vec<MeasureField>>,
 
     ///
@@ -37414,6 +38520,7 @@ pub struct TreeMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups: Option<Vec<DimensionField>>,
 
     ///
@@ -37427,6 +38534,7 @@ pub struct TreeMapAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sizes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sizes: Option<Vec<MeasureField>>,
 }
 
@@ -37483,6 +38591,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -37494,6 +38603,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorScale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_scale: Option<ColorScale>,
 
     ///
@@ -37505,6 +38615,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -37516,6 +38627,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<TreeMapFieldWells>,
 
     ///
@@ -37527,6 +38639,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -37538,6 +38651,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -37549,6 +38663,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SizeLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -37560,6 +38675,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<TreeMapSortConfiguration>,
 
     ///
@@ -37571,6 +38687,7 @@ pub struct TreeMapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tooltip")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tooltip: Option<TooltipOptions>,
 }
 
@@ -37634,6 +38751,7 @@ pub struct TreeMapFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreeMapAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tree_map_aggregated_field_wells: Option<TreeMapAggregatedFieldWells>,
 }
 
@@ -37667,6 +38785,7 @@ pub struct TreeMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreeMapGroupItemsLimitConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tree_map_group_items_limit_configuration: Option<ItemsLimitConfiguration>,
 
     ///
@@ -37680,6 +38799,7 @@ pub struct TreeMapSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreeMapSort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tree_map_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -37726,6 +38846,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -37737,6 +38858,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<TreeMapConfiguration>,
 
     ///
@@ -37750,6 +38872,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -37761,6 +38884,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -37772,6 +38896,7 @@ pub struct TreeMapVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -37866,6 +38991,7 @@ pub struct TrendArrowOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<TrendArrowOptionsVisibilityEnum>,
 }
 
@@ -37938,6 +39064,7 @@ pub struct UnaggregatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_configuration: Option<FormatConfiguration>,
 }
 
@@ -38019,6 +39146,7 @@ pub struct UniqueValuesComputation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -38068,6 +39196,7 @@ pub struct VisibleRangeOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub percent_range: Option<PercentVisibleRange>,
 }
 
@@ -38105,6 +39234,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BarChartVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bar_chart_visual: Option<BarChartVisual>,
 
     ///
@@ -38118,6 +39248,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BoxPlotVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub box_plot_visual: Option<BoxPlotVisual>,
 
     ///
@@ -38131,6 +39262,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComboChartVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub combo_chart_visual: Option<ComboChartVisual>,
 
     ///
@@ -38144,6 +39276,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomContentVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_content_visual: Option<CustomContentVisual>,
 
     ///
@@ -38155,6 +39288,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmptyVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub empty_visual: Option<EmptyVisual>,
 
     ///
@@ -38168,6 +39302,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilledMapVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filled_map_visual: Option<FilledMapVisual>,
 
     ///
@@ -38181,6 +39316,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunnelChartVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub funnel_chart_visual: Option<FunnelChartVisual>,
 
     ///
@@ -38194,6 +39330,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GaugeChartVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gauge_chart_visual: Option<GaugeChartVisual>,
 
     ///
@@ -38207,6 +39344,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GeospatialMapVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub geospatial_map_visual: Option<GeospatialMapVisual>,
 
     ///
@@ -38220,6 +39358,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeatMapVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heat_map_visual: Option<HeatMapVisual>,
 
     ///
@@ -38233,6 +39372,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HistogramVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub histogram_visual: Option<HistogramVisual>,
 
     ///
@@ -38246,6 +39386,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsightVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insight_visual: Option<InsightVisual>,
 
     ///
@@ -38259,6 +39400,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KPIVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kpivisual: Option<KPIVisual>,
 
     ///
@@ -38272,6 +39414,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineChartVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_chart_visual: Option<LineChartVisual>,
 
     ///
@@ -38285,6 +39428,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PieChartVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pie_chart_visual: Option<PieChartVisual>,
 
     ///
@@ -38298,6 +39442,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PivotTableVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pivot_table_visual: Option<PivotTableVisual>,
 
     ///
@@ -38311,6 +39456,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RadarChartVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub radar_chart_visual: Option<RadarChartVisual>,
 
     ///
@@ -38324,6 +39470,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SankeyDiagramVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sankey_diagram_visual: Option<SankeyDiagramVisual>,
 
     ///
@@ -38337,6 +39484,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScatterPlotVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scatter_plot_visual: Option<ScatterPlotVisual>,
 
     ///
@@ -38350,6 +39498,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_visual: Option<TableVisual>,
 
     ///
@@ -38363,6 +39512,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreeMapVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tree_map_visual: Option<TreeMapVisual>,
 
     ///
@@ -38376,6 +39526,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaterfallVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub waterfall_visual: Option<WaterfallVisual>,
 
     ///
@@ -38389,6 +39540,7 @@ pub struct Visual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordCloudVisual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub word_cloud_visual: Option<WordCloudVisual>,
 }
 
@@ -38512,6 +39664,7 @@ pub struct VisualAxisSortOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<VisualAxisSortOptionAvailabilityStatusEnum>,
 }
 
@@ -38607,6 +39760,7 @@ pub struct VisualCustomAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<VisualCustomActionStatusEnum>,
 
     ///
@@ -38734,6 +39888,7 @@ pub struct VisualCustomActionOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_operation: Option<CustomActionFilterOperation>,
 
     ///
@@ -38745,6 +39900,7 @@ pub struct VisualCustomActionOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NavigationOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub navigation_operation: Option<CustomActionNavigationOperation>,
 
     ///
@@ -38756,6 +39912,7 @@ pub struct VisualCustomActionOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetParametersOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub set_parameters_operation: Option<CustomActionSetParametersOperation>,
 
     ///
@@ -38767,6 +39924,7 @@ pub struct VisualCustomActionOperation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "URLOperation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub urloperation: Option<CustomActionURLOperation>,
 }
 
@@ -38814,6 +39972,7 @@ pub struct VisualMenuOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_status: Option<VisualMenuOptionAvailabilityStatusEnum>,
 }
 
@@ -38862,6 +40021,7 @@ pub struct VisualPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartColor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_color: Option<String>,
 
     ///
@@ -38875,6 +40035,7 @@ pub struct VisualPalette {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColorMap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub color_map: Option<Vec<DataPathColor>>,
 }
 
@@ -38913,6 +40074,7 @@ pub struct VisualSubtitleLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_text: Option<LongFormatText>,
 
     ///
@@ -38926,6 +40088,7 @@ pub struct VisualSubtitleLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<VisualSubtitleLabelOptionsVisibilityEnum>,
 }
 
@@ -38976,6 +40139,7 @@ pub struct VisualTitleLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_text: Option<ShortFormatText>,
 
     ///
@@ -38989,6 +40153,7 @@ pub struct VisualTitleLabelOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<VisualTitleLabelOptionsVisibilityEnum>,
 }
 
@@ -39041,6 +40206,7 @@ pub struct WaterfallChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Breakdowns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub breakdowns: Option<Vec<DimensionField>>,
 
     ///
@@ -39054,6 +40220,7 @@ pub struct WaterfallChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Categories")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub categories: Option<Vec<DimensionField>>,
 
     ///
@@ -39067,6 +40234,7 @@ pub struct WaterfallChartAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<MeasureField>>,
 }
 
@@ -39123,6 +40291,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_axis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -39134,6 +40303,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_axis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -39145,6 +40315,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_labels: Option<DataLabelOptions>,
 
     ///
@@ -39156,6 +40327,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<WaterfallChartFieldWells>,
 
     ///
@@ -39167,6 +40339,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Legend")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub legend: Option<LegendOptions>,
 
     ///
@@ -39178,6 +40351,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisDisplayOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_yaxis_display_options: Option<AxisDisplayOptions>,
 
     ///
@@ -39189,6 +40363,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrimaryYAxisLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_yaxis_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -39200,6 +40375,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<WaterfallChartSortConfiguration>,
 
     ///
@@ -39211,6 +40387,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualPalette")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_palette: Option<VisualPalette>,
 
     ///
@@ -39222,6 +40399,7 @@ pub struct WaterfallChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaterfallChartOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub waterfall_chart_options: Option<WaterfallChartOptions>,
 }
 
@@ -39289,6 +40467,7 @@ pub struct WaterfallChartFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaterfallChartAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub waterfall_chart_aggregated_field_wells: Option<WaterfallChartAggregatedFieldWells>,
 }
 
@@ -39322,6 +40501,7 @@ pub struct WaterfallChartOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TotalBarLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub total_bar_label: Option<String>,
 }
 
@@ -39351,6 +40531,7 @@ pub struct WaterfallChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BreakdownItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub breakdown_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -39364,6 +40545,7 @@ pub struct WaterfallChartSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -39410,6 +40592,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -39421,6 +40604,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<WaterfallChartConfiguration>,
 
     ///
@@ -39434,6 +40618,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -39445,6 +40630,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -39456,6 +40642,7 @@ pub struct WaterfallVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///
@@ -39641,6 +40828,7 @@ pub struct WordCloudAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_by: Option<Vec<DimensionField>>,
 
     ///
@@ -39654,6 +40842,7 @@ pub struct WordCloudAggregatedFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<Vec<MeasureField>>,
 }
 
@@ -39701,6 +40890,7 @@ pub struct WordCloudChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryLabelOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_label_options: Option<ChartAxisLabelOptions>,
 
     ///
@@ -39712,6 +40902,7 @@ pub struct WordCloudChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_wells: Option<WordCloudFieldWells>,
 
     ///
@@ -39723,6 +40914,7 @@ pub struct WordCloudChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_configuration: Option<WordCloudSortConfiguration>,
 
     ///
@@ -39734,6 +40926,7 @@ pub struct WordCloudChartConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordCloudOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub word_cloud_options: Option<WordCloudOptions>,
 }
 
@@ -39781,6 +40974,7 @@ pub struct WordCloudFieldWells {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordCloudAggregatedFieldWells")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub word_cloud_aggregated_field_wells: Option<WordCloudAggregatedFieldWells>,
 }
 
@@ -39816,6 +41010,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudLayout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_layout: Option<WordCloudOptionsCloudLayoutEnum>,
 
     ///
@@ -39831,6 +41026,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumStringLength")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_string_length: Option<f64>,
 
     ///
@@ -39844,6 +41040,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordCasing")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub word_casing: Option<WordCloudOptionsWordCasingEnum>,
 
     ///
@@ -39857,6 +41054,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordOrientation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub word_orientation: Option<WordCloudOptionsWordOrientationEnum>,
 
     ///
@@ -39870,6 +41068,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordPadding")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub word_padding: Option<WordCloudOptionsWordPaddingEnum>,
 
     ///
@@ -39883,6 +41082,7 @@ pub struct WordCloudOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WordScaling")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub word_scaling: Option<WordCloudOptionsWordScalingEnum>,
 }
 
@@ -40020,6 +41220,7 @@ pub struct WordCloudSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryItemsLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_items_limit: Option<ItemsLimitConfiguration>,
 
     ///
@@ -40033,6 +41234,7 @@ pub struct WordCloudSortConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategorySort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_sort: Option<Vec<FieldSortOptions>>,
 }
 
@@ -40079,6 +41281,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<VisualCustomAction>>,
 
     ///
@@ -40090,6 +41293,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChartConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chart_configuration: Option<WordCloudChartConfiguration>,
 
     ///
@@ -40103,6 +41307,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_hierarchies: Option<Vec<ColumnHierarchy>>,
 
     ///
@@ -40114,6 +41319,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subtitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subtitle: Option<VisualSubtitleLabelOptions>,
 
     ///
@@ -40125,6 +41331,7 @@ pub struct WordCloudVisual {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<VisualTitleLabelOptions>,
 
     ///

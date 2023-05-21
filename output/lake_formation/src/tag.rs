@@ -12,6 +12,7 @@ pub struct CfnTag {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///

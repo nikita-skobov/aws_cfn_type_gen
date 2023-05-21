@@ -29,6 +29,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StaticRoutesOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_routes_only: Option<bool>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -53,6 +55,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_gateway_id: Option<String>,
 
     ///
@@ -79,6 +82,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpnGatewayId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpn_gateway_id: Option<String>,
 
     ///
@@ -90,6 +94,7 @@ pub struct CfnVPNConnection {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpnTunnelOptionsSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpn_tunnel_options_specifications: Option<Vec<VpnTunnelOptionsSpecification>>,
 }
 
@@ -178,6 +183,7 @@ pub struct VpnTunnelOptionsSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreSharedKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pre_shared_key: Option<String>,
 
     ///
@@ -193,6 +199,7 @@ pub struct VpnTunnelOptionsSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TunnelInsideCidr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tunnel_inside_cidr: Option<String>,
 }
 

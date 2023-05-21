@@ -10,6 +10,7 @@ pub struct CfnClientVpnAuthorizationRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_group_id: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnClientVpnAuthorizationRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthorizeAllGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorize_all_groups: Option<bool>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnClientVpnAuthorizationRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///

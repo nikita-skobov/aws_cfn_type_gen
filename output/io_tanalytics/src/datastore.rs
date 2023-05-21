@@ -16,6 +16,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DatastoreName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datastore_name: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatastorePartitions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datastore_partitions: Option<DatastorePartitions>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatastoreStorage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datastore_storage: Option<DatastoreStorage>,
 
     ///
@@ -53,6 +56,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileFormatConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_format_configuration: Option<FileFormatConfiguration>,
 
     ///
@@ -64,6 +68,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetentionPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retention_period: Option<RetentionPeriod>,
 
     ///
@@ -79,6 +84,7 @@ pub struct CfnDatastore {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -214,6 +220,7 @@ pub struct CustomerManagedS3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_prefix: Option<String>,
 
     ///
@@ -323,6 +330,7 @@ pub struct CustomerManagedS3Storage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_prefix: Option<String>,
 }
 
@@ -352,6 +360,7 @@ pub struct DatastorePartition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Partition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partition: Option<Partition>,
 
     ///
@@ -363,6 +372,7 @@ pub struct DatastorePartition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampPartition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp_partition: Option<TimestampPartition>,
 }
 
@@ -400,6 +410,7 @@ pub struct DatastorePartitions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Partitions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partitions: Option<Vec<DatastorePartition>>,
 }
 
@@ -429,6 +440,7 @@ pub struct DatastoreStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedS3")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customer_managed_s3: Option<CustomerManagedS3>,
 
     ///
@@ -440,6 +452,7 @@ pub struct DatastoreStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotSiteWiseMultiLayerStorage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_site_wise_multi_layer_storage: Option<IotSiteWiseMultiLayerStorage>,
 
     ///
@@ -451,6 +464,7 @@ pub struct DatastoreStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceManagedS3")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_managed_s3: Option<serde_json::Value>,
 }
 
@@ -492,6 +506,7 @@ pub struct FileFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json_configuration: Option<serde_json::Value>,
 
     ///
@@ -503,6 +518,7 @@ pub struct FileFormatConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParquetConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parquet_configuration: Option<ParquetConfiguration>,
 }
 
@@ -536,6 +552,7 @@ pub struct IotSiteWiseMultiLayerStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedS3Storage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customer_managed_s3_storage: Option<CustomerManagedS3Storage>,
 }
 
@@ -569,6 +586,7 @@ pub struct ParquetConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_definition: Option<SchemaDefinition>,
 }
 
@@ -633,6 +651,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_days: Option<i64>,
 
     ///
@@ -644,6 +663,7 @@ pub struct RetentionPeriod {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unlimited")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unlimited: Option<bool>,
 }
 
@@ -684,6 +704,7 @@ pub struct SchemaDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub columns: Option<Vec<Column>>,
 }
 
@@ -768,6 +789,7 @@ pub struct TimestampPartition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp_format: Option<String>,
 }
 

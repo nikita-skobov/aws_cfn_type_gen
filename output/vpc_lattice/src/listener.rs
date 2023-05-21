@@ -23,6 +23,7 @@ pub struct CfnListener {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -34,6 +35,7 @@ pub struct CfnListener {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -56,6 +58,7 @@ pub struct CfnListener {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_identifier: Option<String>,
 
     ///
@@ -67,6 +70,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -98,6 +102,7 @@ pub struct DefaultAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedResponse")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fixed_response: Option<FixedResponse>,
 
     ///
@@ -109,6 +114,7 @@ pub struct DefaultAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Forward")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forward: Option<Forward>,
 }
 
@@ -259,6 +265,7 @@ pub struct WeightedTargetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<i64>,
 }
 

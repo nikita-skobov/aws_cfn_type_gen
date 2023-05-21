@@ -10,6 +10,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentCanarySettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_canary_settings: Option<DeploymentCanarySettings>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage_description: Option<StageDescription>,
 
     ///
@@ -54,6 +57,7 @@ pub struct CfnDeployment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage_name: Option<String>,
 }
 
@@ -93,6 +97,7 @@ pub struct AccessLogSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_arn: Option<String>,
 
     ///
@@ -104,6 +109,7 @@ pub struct AccessLogSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<String>,
 }
 
@@ -135,6 +141,7 @@ pub struct CanarySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PercentTraffic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub percent_traffic: Option<f64>,
 
     ///
@@ -146,6 +153,7 @@ pub struct CanarySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageVariableOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage_variable_overrides: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -157,6 +165,7 @@ pub struct CanarySetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseStageCache")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_stage_cache: Option<bool>,
 }
 
@@ -186,6 +195,7 @@ pub struct DeploymentCanarySettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PercentTraffic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub percent_traffic: Option<f64>,
 
     ///
@@ -197,6 +207,7 @@ pub struct DeploymentCanarySettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StageVariableOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage_variable_overrides: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -208,6 +219,7 @@ pub struct DeploymentCanarySettings {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UseStageCache")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_stage_cache: Option<bool>,
 }
 
@@ -239,6 +251,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheDataEncrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_data_encrypted: Option<bool>,
 
     ///
@@ -250,6 +263,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheTtlInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_ttl_in_seconds: Option<i64>,
 
     ///
@@ -261,6 +275,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachingEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caching_enabled: Option<bool>,
 
     ///
@@ -272,6 +287,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTraceEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_trace_enabled: Option<bool>,
 
     ///
@@ -283,6 +299,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpMethod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_method: Option<String>,
 
     ///
@@ -294,6 +311,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_level: Option<String>,
 
     ///
@@ -305,6 +323,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metrics_enabled: Option<bool>,
 
     ///
@@ -316,6 +335,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcePath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_path: Option<String>,
 
     ///
@@ -327,6 +347,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingBurstLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttling_burst_limit: Option<i64>,
 
     ///
@@ -338,6 +359,7 @@ pub struct MethodSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingRateLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttling_rate_limit: Option<f64>,
 }
 
@@ -367,6 +389,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLogSetting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_log_setting: Option<AccessLogSetting>,
 
     ///
@@ -378,6 +401,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheClusterEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_cluster_enabled: Option<bool>,
 
     ///
@@ -389,6 +413,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheClusterSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_cluster_size: Option<String>,
 
     ///
@@ -400,6 +425,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheDataEncrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_data_encrypted: Option<bool>,
 
     ///
@@ -411,6 +437,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CacheTtlInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_ttl_in_seconds: Option<i64>,
 
     ///
@@ -422,6 +449,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachingEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caching_enabled: Option<bool>,
 
     ///
@@ -433,6 +461,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CanarySetting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub canary_setting: Option<CanarySetting>,
 
     ///
@@ -444,6 +473,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_certificate_id: Option<String>,
 
     ///
@@ -455,6 +485,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTraceEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_trace_enabled: Option<bool>,
 
     ///
@@ -466,6 +497,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -477,6 +509,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentationVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub documentation_version: Option<String>,
 
     ///
@@ -488,6 +521,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_level: Option<String>,
 
     ///
@@ -499,6 +533,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MethodSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub method_settings: Option<Vec<MethodSetting>>,
 
     ///
@@ -510,6 +545,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metrics_enabled: Option<bool>,
 
     ///
@@ -521,6 +557,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -532,6 +569,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingBurstLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttling_burst_limit: Option<i64>,
 
     ///
@@ -543,6 +581,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingRateLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttling_rate_limit: Option<f64>,
 
     ///
@@ -556,6 +595,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TracingEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tracing_enabled: Option<bool>,
 
     ///
@@ -567,6 +607,7 @@ pub struct StageDescription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variables: Option<std::collections::HashMap<String, String>>,
 }
 

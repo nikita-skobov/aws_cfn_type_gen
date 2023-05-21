@@ -12,6 +12,7 @@ pub struct CfnVpcConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -36,6 +37,7 @@ pub struct CfnVpcConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnVpcConnector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConnectorName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_connector_name: Option<String>,
 }
 

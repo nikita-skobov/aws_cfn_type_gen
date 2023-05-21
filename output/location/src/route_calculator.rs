@@ -56,6 +56,7 @@ pub struct CfnRouteCalculator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -69,6 +70,7 @@ pub struct CfnRouteCalculator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PricingPlan")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pricing_plan: Option<RouteCalculatorPricingPlanEnum>,
 }
 

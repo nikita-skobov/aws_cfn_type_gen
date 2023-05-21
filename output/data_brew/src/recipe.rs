@@ -12,6 +12,7 @@ pub struct CfnRecipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -49,6 +50,7 @@ pub struct CfnRecipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -116,6 +118,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<RecipeParameters>,
 }
 
@@ -187,6 +190,7 @@ pub struct ConditionExpression {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -265,6 +269,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///
@@ -280,6 +285,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -295,6 +301,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_name: Option<String>,
 
     ///
@@ -306,6 +313,7 @@ pub struct DataCatalogInputDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub temp_directory: Option<S3Location>,
 }
 
@@ -392,6 +400,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCatalogInputDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_catalog_input_definition: Option<DataCatalogInputDefinition>,
 
     /// Property description not available.
@@ -402,6 +411,7 @@ pub struct Input {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_input_definition: Option<S3Location>,
 }
 
@@ -439,6 +449,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregateFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregate_function: Option<String>,
 
     ///
@@ -450,6 +461,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base: Option<String>,
 
     ///
@@ -461,6 +473,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseStatement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub case_statement: Option<String>,
 
     ///
@@ -472,6 +485,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryMap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_map: Option<String>,
 
     ///
@@ -483,6 +497,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CharsToRemove")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chars_to_remove: Option<String>,
 
     ///
@@ -494,6 +509,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollapseConsecutiveWhitespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub collapse_consecutive_whitespace: Option<String>,
 
     ///
@@ -505,6 +521,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDataType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_data_type: Option<String>,
 
     ///
@@ -516,6 +533,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_range: Option<String>,
 
     ///
@@ -527,6 +545,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<String>,
 
     ///
@@ -538,6 +557,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomCharacters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_characters: Option<String>,
 
     ///
@@ -549,6 +569,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomStopWords")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_stop_words: Option<String>,
 
     ///
@@ -560,6 +581,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_value: Option<String>,
 
     ///
@@ -571,6 +593,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetsColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datasets_columns: Option<String>,
 
     ///
@@ -582,6 +605,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateAddValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_add_value: Option<String>,
 
     ///
@@ -593,6 +617,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_format: Option<String>,
 
     ///
@@ -604,6 +629,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateTimeParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_time_parameters: Option<String>,
 
     ///
@@ -615,6 +641,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteOtherRows")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_other_rows: Option<String>,
 
     ///
@@ -626,6 +653,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<String>,
 
     ///
@@ -637,6 +665,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndPattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_pattern: Option<String>,
 
     ///
@@ -648,6 +677,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndPosition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_position: Option<String>,
 
     ///
@@ -659,6 +689,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_value: Option<String>,
 
     ///
@@ -670,6 +701,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpandContractions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expand_contractions: Option<String>,
 
     ///
@@ -681,6 +713,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exponent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exponent: Option<String>,
 
     ///
@@ -692,6 +725,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FalseString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub false_string: Option<String>,
 
     ///
@@ -703,6 +737,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupByAggFunctionOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_by_agg_function_options: Option<String>,
 
     ///
@@ -714,6 +749,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupByColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_by_columns: Option<String>,
 
     ///
@@ -725,6 +761,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HiddenColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hidden_columns: Option<String>,
 
     ///
@@ -736,6 +773,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreCase")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_case: Option<String>,
 
     ///
@@ -747,6 +785,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeInSplit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_in_split: Option<String>,
 
     ///
@@ -758,6 +797,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Input")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input: Option<Input>,
 
     ///
@@ -769,6 +809,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Interval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<String>,
 
     ///
@@ -780,6 +821,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_text: Option<String>,
 
     ///
@@ -791,6 +833,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JoinKeys")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub join_keys: Option<String>,
 
     ///
@@ -802,6 +845,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JoinType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub join_type: Option<String>,
 
     ///
@@ -813,6 +857,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LeftColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub left_columns: Option<String>,
 
     ///
@@ -824,6 +869,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Limit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub limit: Option<String>,
 
     ///
@@ -835,6 +881,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LowerBound")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lower_bound: Option<String>,
 
     ///
@@ -846,6 +893,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub map_type: Option<String>,
 
     ///
@@ -857,6 +905,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModeType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode_type: Option<String>,
 
     ///
@@ -868,6 +917,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiLine")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_line: Option<bool>,
 
     ///
@@ -879,6 +929,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRows")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_rows: Option<String>,
 
     ///
@@ -890,6 +941,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRowsAfter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_rows_after: Option<String>,
 
     ///
@@ -901,6 +953,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumRowsBefore")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub num_rows_before: Option<String>,
 
     ///
@@ -912,6 +965,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrderByColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub order_by_column: Option<String>,
 
     ///
@@ -923,6 +977,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrderByColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub order_by_columns: Option<String>,
 
     ///
@@ -934,6 +989,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Other")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub other: Option<String>,
 
     ///
@@ -945,6 +1001,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pattern: Option<String>,
 
     ///
@@ -956,6 +1013,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternOption1")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pattern_option1: Option<String>,
 
     ///
@@ -967,6 +1025,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternOption2")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pattern_option2: Option<String>,
 
     ///
@@ -978,6 +1037,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PatternOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pattern_options: Option<String>,
 
     ///
@@ -989,6 +1049,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period: Option<String>,
 
     ///
@@ -1000,6 +1061,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Position")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub position: Option<String>,
 
     ///
@@ -1011,6 +1073,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAllPunctuation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_all_punctuation: Option<String>,
 
     ///
@@ -1022,6 +1085,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAllQuotes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_all_quotes: Option<String>,
 
     ///
@@ -1033,6 +1097,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAllWhitespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_all_whitespace: Option<String>,
 
     ///
@@ -1044,6 +1109,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveCustomCharacters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_custom_characters: Option<String>,
 
     ///
@@ -1055,6 +1121,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveCustomValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_custom_value: Option<String>,
 
     ///
@@ -1066,6 +1133,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveLeadingAndTrailingPunctuation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_leading_and_trailing_punctuation: Option<String>,
 
     ///
@@ -1077,6 +1145,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveLeadingAndTrailingQuotes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_leading_and_trailing_quotes: Option<String>,
 
     ///
@@ -1088,6 +1157,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveLeadingAndTrailingWhitespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_leading_and_trailing_whitespace: Option<String>,
 
     ///
@@ -1099,6 +1169,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveLetters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_letters: Option<String>,
 
     ///
@@ -1110,6 +1181,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveNumbers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_numbers: Option<String>,
 
     ///
@@ -1121,6 +1193,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveSourceColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_source_column: Option<String>,
 
     ///
@@ -1132,6 +1205,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveSpecialCharacters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_special_characters: Option<String>,
 
     ///
@@ -1143,6 +1217,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RightColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub right_columns: Option<String>,
 
     ///
@@ -1154,6 +1229,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SampleSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sample_size: Option<String>,
 
     ///
@@ -1165,6 +1241,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SampleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sample_type: Option<String>,
 
     ///
@@ -1176,6 +1253,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondInput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub second_input: Option<String>,
 
     ///
@@ -1187,6 +1265,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryInputs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_inputs: Option<Vec<SecondaryInput>>,
 
     ///
@@ -1198,6 +1277,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetIndexes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_indexes: Option<Vec<i64>>,
 
     ///
@@ -1209,6 +1289,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SheetNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sheet_names: Option<Vec<String>>,
 
     ///
@@ -1220,6 +1301,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_column: Option<String>,
 
     ///
@@ -1231,6 +1313,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceColumn1")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_column1: Option<String>,
 
     ///
@@ -1242,6 +1325,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceColumn2")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_column2: Option<String>,
 
     ///
@@ -1253,6 +1337,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_columns: Option<String>,
 
     ///
@@ -1264,6 +1349,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartColumnIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_column_index: Option<String>,
 
     ///
@@ -1275,6 +1361,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartPattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_pattern: Option<String>,
 
     ///
@@ -1286,6 +1373,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartPosition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_position: Option<String>,
 
     ///
@@ -1297,6 +1385,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_value: Option<String>,
 
     ///
@@ -1308,6 +1397,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StemmingMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stemming_mode: Option<String>,
 
     ///
@@ -1319,6 +1409,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub step_count: Option<String>,
 
     ///
@@ -1330,6 +1421,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub step_index: Option<String>,
 
     ///
@@ -1341,6 +1433,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StopWordsMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stop_words_mode: Option<String>,
 
     ///
@@ -1352,6 +1445,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Strategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub strategy: Option<String>,
 
     ///
@@ -1363,6 +1457,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_column: Option<String>,
 
     ///
@@ -1374,6 +1469,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetColumnNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_column_names: Option<String>,
 
     ///
@@ -1385,6 +1481,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDateFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_date_format: Option<String>,
 
     ///
@@ -1396,6 +1493,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_index: Option<String>,
 
     ///
@@ -1407,6 +1505,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_zone: Option<String>,
 
     ///
@@ -1418,6 +1517,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenizerPattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tokenizer_pattern: Option<String>,
 
     ///
@@ -1429,6 +1529,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrueString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub true_string: Option<String>,
 
     ///
@@ -1440,6 +1541,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UdfLang")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub udf_lang: Option<String>,
 
     ///
@@ -1451,6 +1553,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Units")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub units: Option<String>,
 
     ///
@@ -1462,6 +1565,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnpivotColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unpivot_column: Option<String>,
 
     ///
@@ -1473,6 +1577,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpperBound")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub upper_bound: Option<String>,
 
     ///
@@ -1484,6 +1589,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseNewDataFrame")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_new_data_frame: Option<String>,
 
     ///
@@ -1495,6 +1601,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 
     ///
@@ -1506,6 +1613,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value1")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value1: Option<String>,
 
     ///
@@ -1517,6 +1625,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value2")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value2: Option<String>,
 
     ///
@@ -1528,6 +1637,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueColumn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_column: Option<String>,
 
     ///
@@ -1539,6 +1649,7 @@ pub struct RecipeParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ViewFrame")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub view_frame: Option<String>,
 }
 
@@ -1583,6 +1694,7 @@ pub struct RecipeStep {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConditionExpressions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition_expressions: Option<Vec<ConditionExpression>>,
 }
 
@@ -1633,6 +1745,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 
@@ -1698,6 +1811,7 @@ pub struct SecondaryInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCatalogInputDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_catalog_input_definition: Option<DataCatalogInputDefinition>,
 
     ///
@@ -1709,6 +1823,7 @@ pub struct SecondaryInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3InputDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_input_definition: Option<S3Location>,
 }
 

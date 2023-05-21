@@ -10,6 +10,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplyOnlyAtCronInterval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub apply_only_at_cron_interval: Option<bool>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssociationName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub association_name: Option<String>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomationTargetParameterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automation_target_parameter_name: Option<String>,
 
     ///
@@ -49,6 +52,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalendarNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub calendar_names: Option<Vec<String>>,
 
     ///
@@ -62,6 +66,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceSeverity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compliance_severity: Option<AssociationComplianceSeverityEnum>,
 
     ///
@@ -77,6 +82,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_version: Option<String>,
 
     ///
@@ -92,6 +98,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_id: Option<String>,
 
     ///
@@ -111,6 +118,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrency: Option<String>,
 
     ///
@@ -130,6 +138,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxErrors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_errors: Option<String>,
 
     ///
@@ -160,6 +169,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputLocation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_location: Option<InstanceAssociationOutputLocation>,
 
     ///
@@ -171,6 +181,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -186,6 +197,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_expression: Option<String>,
 
     ///
@@ -201,6 +213,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleOffset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_offset: Option<i64>,
 
     ///
@@ -218,6 +231,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SyncCompliance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_compliance: Option<AssociationSyncComplianceEnum>,
 
     ///
@@ -231,6 +245,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub targets: Option<Vec<Target>>,
 
     ///
@@ -242,6 +257,7 @@ pub struct CfnAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitForSuccessTimeoutSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub wait_for_success_timeout_seconds: Option<i64>,
 }
 
@@ -416,6 +432,7 @@ pub struct InstanceAssociationOutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_location: Option<S3OutputLocation>,
 }
 
@@ -453,6 +470,7 @@ pub struct S3OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_s3_bucket_name: Option<String>,
 
     ///
@@ -466,6 +484,7 @@ pub struct S3OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3KeyPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_s3_key_prefix: Option<String>,
 
     ///
@@ -481,6 +500,7 @@ pub struct S3OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3Region")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_s3_region: Option<String>,
 }
 

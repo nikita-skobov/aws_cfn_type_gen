@@ -12,6 +12,7 @@ pub struct CfnThingType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeprecateThingType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecate_thing_type: Option<bool>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnThingType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnThingType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingTypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_type_name: Option<String>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnThingType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingTypeProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_type_properties: Option<ThingTypeProperties>,
 }
 
@@ -122,6 +126,7 @@ pub struct ThingTypeProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SearchableAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub searchable_attributes: Option<Vec<String>>,
 
     ///
@@ -133,6 +138,7 @@ pub struct ThingTypeProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingTypeDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_type_description: Option<String>,
 }
 

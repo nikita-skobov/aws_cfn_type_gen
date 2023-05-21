@@ -10,6 +10,7 @@ pub struct CfnIPAMResourceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnIPAMResourceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperatingRegions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operating_regions: Option<Vec<IpamOperatingRegion>>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnIPAMResourceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

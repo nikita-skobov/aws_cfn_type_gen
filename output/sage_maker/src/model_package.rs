@@ -10,6 +10,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalInferenceSpecificationDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_inference_specification_definition:
         Option<AdditionalInferenceSpecificationDefinition>,
 
@@ -24,6 +25,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalInferenceSpecifications")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_inference_specifications:
         Option<Vec<AdditionalInferenceSpecificationDefinition>>,
 
@@ -36,6 +38,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalInferenceSpecificationsToAdd")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_inference_specifications_to_add:
         Option<Vec<AdditionalInferenceSpecificationDefinition>>,
 
@@ -52,6 +55,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovalDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approval_description: Option<String>,
 
     ///
@@ -63,6 +67,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertifyForMarketplace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certify_for_marketplace: Option<bool>,
 
     ///
@@ -74,6 +79,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_token: Option<String>,
 
     ///
@@ -85,6 +91,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_by: Option<UserContext>,
 
     ///
@@ -96,6 +103,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerMetadataProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customer_metadata_properties: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -107,6 +115,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<String>,
 
     ///
@@ -118,6 +127,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DriftCheckBaselines")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drift_check_baselines: Option<DriftCheckBaselines>,
 
     ///
@@ -129,6 +139,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -140,6 +151,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_specification: Option<InferenceSpecification>,
 
     ///
@@ -151,6 +163,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastModifiedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_modified_by: Option<UserContext>,
 
     ///
@@ -162,6 +175,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastModifiedTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_modified_time: Option<String>,
 
     ///
@@ -173,6 +187,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetadataProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata_properties: Option<MetadataProperties>,
 
     ///
@@ -188,6 +203,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelApprovalStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_approval_status: Option<ModelPackageModelApprovalStatusEnum>,
 
     ///
@@ -199,6 +215,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelMetrics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_metrics: Option<ModelMetrics>,
 
     ///
@@ -214,6 +231,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_description: Option<String>,
 
     ///
@@ -231,6 +249,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelPackageGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_group_name: Option<String>,
 
     ///
@@ -248,6 +267,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_name: Option<String>,
 
     ///
@@ -259,6 +279,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageStatusDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_status_details: Option<ModelPackageStatusDetails>,
 
     ///
@@ -270,6 +291,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageStatusItem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_status_item: Option<ModelPackageStatusItem>,
 
     ///
@@ -283,6 +305,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_version: Option<i64>,
 
     ///
@@ -294,6 +317,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SamplePayloadUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sample_payload_url: Option<String>,
 
     ///
@@ -305,6 +329,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceAlgorithmSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_algorithm_specification: Option<SourceAlgorithmSpecification>,
 
     ///
@@ -318,6 +343,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -329,6 +355,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Task")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task: Option<String>,
 
     ///
@@ -340,6 +367,7 @@ pub struct CfnModelPackage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidationSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validation_specification: Option<ValidationSpecification>,
 }
 
@@ -520,6 +548,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -548,6 +577,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedContentTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_content_types: Option<Vec<String>>,
 
     ///
@@ -559,6 +589,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedRealtimeInferenceInstanceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_realtime_inference_instance_types: Option<Vec<String>>,
 
     ///
@@ -570,6 +601,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedResponseMIMETypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_response_mimetypes: Option<Vec<String>>,
 
     ///
@@ -581,6 +613,7 @@ pub struct AdditionalInferenceSpecificationDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SupportedTransformInstanceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_transform_instance_types: Option<Vec<String>>,
 }
 
@@ -646,6 +679,7 @@ pub struct Bias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PostTrainingReport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub post_training_report: Option<MetricsSource>,
 
     ///
@@ -657,6 +691,7 @@ pub struct Bias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreTrainingReport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pre_training_report: Option<MetricsSource>,
 
     ///
@@ -668,6 +703,7 @@ pub struct Bias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Report")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub report: Option<MetricsSource>,
 }
 
@@ -738,6 +774,7 @@ pub struct DriftCheckBaselines {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bias")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bias: Option<DriftCheckBias>,
 
     ///
@@ -749,6 +786,7 @@ pub struct DriftCheckBaselines {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Explainability")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub explainability: Option<DriftCheckExplainability>,
 
     ///
@@ -760,6 +798,7 @@ pub struct DriftCheckBaselines {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataQuality")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_data_quality: Option<DriftCheckModelDataQuality>,
 
     ///
@@ -771,6 +810,7 @@ pub struct DriftCheckBaselines {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelQuality")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_quality: Option<DriftCheckModelQuality>,
 }
 
@@ -814,6 +854,7 @@ pub struct DriftCheckBias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigFile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub config_file: Option<FileSource>,
 
     ///
@@ -825,6 +866,7 @@ pub struct DriftCheckBias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PostTrainingConstraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub post_training_constraints: Option<MetricsSource>,
 
     ///
@@ -836,6 +878,7 @@ pub struct DriftCheckBias {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreTrainingConstraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pre_training_constraints: Option<MetricsSource>,
 }
 
@@ -877,6 +920,7 @@ pub struct DriftCheckExplainability {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigFile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub config_file: Option<FileSource>,
 
     ///
@@ -888,6 +932,7 @@ pub struct DriftCheckExplainability {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constraints: Option<MetricsSource>,
 }
 
@@ -925,6 +970,7 @@ pub struct DriftCheckModelDataQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constraints: Option<MetricsSource>,
 
     ///
@@ -936,6 +982,7 @@ pub struct DriftCheckModelDataQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Statistics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statistics: Option<MetricsSource>,
 }
 
@@ -973,6 +1020,7 @@ pub struct DriftCheckModelQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constraints: Option<MetricsSource>,
 
     ///
@@ -984,6 +1032,7 @@ pub struct DriftCheckModelQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Statistics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statistics: Option<MetricsSource>,
 }
 
@@ -1021,6 +1070,7 @@ pub struct Explainability {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Report")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub report: Option<MetricsSource>,
 }
 
@@ -1056,6 +1106,7 @@ pub struct FileSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentDigest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_digest: Option<String>,
 
     ///
@@ -1071,6 +1122,7 @@ pub struct FileSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type: Option<String>,
 
     ///
@@ -1168,6 +1220,7 @@ pub struct InferenceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SupportedRealtimeInferenceInstanceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_realtime_inference_instance_types: Option<Vec<String>>,
 
     ///
@@ -1192,6 +1245,7 @@ pub struct InferenceSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SupportedTransformInstanceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_transform_instance_types: Option<Vec<String>>,
 }
 
@@ -1234,6 +1288,7 @@ pub struct MetadataProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CommitId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub commit_id: Option<String>,
 
     ///
@@ -1249,6 +1304,7 @@ pub struct MetadataProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GeneratedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub generated_by: Option<String>,
 
     ///
@@ -1264,6 +1320,7 @@ pub struct MetadataProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project_id: Option<String>,
 
     ///
@@ -1279,6 +1336,7 @@ pub struct MetadataProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Repository")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository: Option<String>,
 }
 
@@ -1348,6 +1406,7 @@ pub struct MetricsSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentDigest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_digest: Option<String>,
 
     ///
@@ -1434,6 +1493,7 @@ pub struct ModelDataQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constraints: Option<MetricsSource>,
 
     ///
@@ -1445,6 +1505,7 @@ pub struct ModelDataQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Statistics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statistics: Option<MetricsSource>,
 }
 
@@ -1535,6 +1596,7 @@ pub struct ModelMetrics {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Bias")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bias: Option<Bias>,
 
     ///
@@ -1546,6 +1608,7 @@ pub struct ModelMetrics {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Explainability")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub explainability: Option<Explainability>,
 
     ///
@@ -1557,6 +1620,7 @@ pub struct ModelMetrics {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataQuality")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_data_quality: Option<ModelDataQuality>,
 
     ///
@@ -1568,6 +1632,7 @@ pub struct ModelMetrics {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelQuality")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_quality: Option<ModelQuality>,
 }
 
@@ -1615,6 +1680,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ContainerHostname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_hostname: Option<String>,
 
     ///
@@ -1626,6 +1692,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1637,6 +1704,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Framework")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framework: Option<String>,
 
     ///
@@ -1654,6 +1722,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "FrameworkVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framework_version: Option<String>,
 
     ///
@@ -1686,6 +1755,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ImageDigest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_digest: Option<String>,
 
     ///
@@ -1703,6 +1773,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ModelDataUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_data_url: Option<String>,
 
     ///
@@ -1714,6 +1785,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ModelInput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_input: Option<ModelInput>,
 
     ///
@@ -1725,6 +1797,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NearestModelName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nearest_model_name: Option<String>,
 
     ///
@@ -1740,6 +1813,7 @@ pub struct ModelPackageContainerDefinition {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ProductId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub product_id: Option<String>,
 }
 
@@ -1836,6 +1910,7 @@ pub struct ModelPackageStatusDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScanStatuses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_scan_statuses: Option<Vec<ModelPackageStatusItem>>,
 
     ///
@@ -1876,6 +1951,7 @@ pub struct ModelPackageStatusItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureReason")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failure_reason: Option<String>,
 
     ///
@@ -1978,6 +2054,7 @@ pub struct ModelQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Constraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constraints: Option<MetricsSource>,
 
     ///
@@ -1989,6 +2066,7 @@ pub struct ModelQuality {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Statistics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statistics: Option<MetricsSource>,
 }
 
@@ -2135,6 +2213,7 @@ pub struct SourceAlgorithm {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelDataUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_data_url: Option<String>,
 }
 
@@ -2277,6 +2356,7 @@ pub struct TransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CompressionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compression_type: Option<TransformInputCompressionTypeEnum>,
 
     ///
@@ -2292,6 +2372,7 @@ pub struct TransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type: Option<String>,
 
     ///
@@ -2322,6 +2403,7 @@ pub struct TransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SplitType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub split_type: Option<TransformInputSplitTypeEnum>,
 }
 
@@ -2408,6 +2490,7 @@ pub struct TransformJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BatchStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_strategy: Option<TransformJobDefinitionBatchStrategyEnum>,
 
     ///
@@ -2419,6 +2502,7 @@ pub struct TransformJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -2432,6 +2516,7 @@ pub struct TransformJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxConcurrentTransforms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrent_transforms: Option<i64>,
 
     ///
@@ -2445,6 +2530,7 @@ pub struct TransformJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxPayloadInMB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_payload_in_mb: Option<i64>,
 
     ///
@@ -2552,6 +2638,7 @@ pub struct TransformOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Accept")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accept: Option<String>,
 
     ///
@@ -2565,6 +2652,7 @@ pub struct TransformOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssembleWith")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assemble_with: Option<TransformOutputAssembleWithEnum>,
 
     ///
@@ -2586,6 +2674,7 @@ pub struct TransformOutput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -2712,6 +2801,7 @@ pub struct TransformResources {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeKmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_kms_key_id: Option<String>,
 }
 
@@ -2896,6 +2986,7 @@ pub struct UserContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_id: Option<String>,
 
     ///
@@ -2907,6 +2998,7 @@ pub struct UserContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProfileArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_profile_arn: Option<String>,
 
     ///
@@ -2918,6 +3010,7 @@ pub struct UserContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProfileName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_profile_name: Option<String>,
 }
 

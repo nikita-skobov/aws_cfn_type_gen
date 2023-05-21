@@ -16,6 +16,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_key: Option<String>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<String>,
 
     ///
@@ -63,6 +65,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_key: Option<String>,
 
     ///
@@ -80,6 +83,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_certificate: Option<String>,
 
     ///
@@ -95,6 +99,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerHostname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_hostname: Option<String>,
 
     ///
@@ -110,6 +115,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_port: Option<i64>,
 
     ///
@@ -123,6 +129,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_protocol: Option<LocationObjectStorageServerProtocolEnum>,
 
     ///
@@ -138,6 +145,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdirectory: Option<String>,
 
     ///
@@ -151,6 +159,7 @@ pub struct CfnLocationObjectStorage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

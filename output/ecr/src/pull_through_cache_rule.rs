@@ -16,6 +16,7 @@ pub struct CfnPullThroughCacheRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EcrRepositoryPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecr_repository_prefix: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnPullThroughCacheRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UpstreamRegistryUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub upstream_registry_url: Option<String>,
 }
 

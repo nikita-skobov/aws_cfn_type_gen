@@ -52,6 +52,7 @@ pub struct PublicKeyConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<String>,
 
     ///

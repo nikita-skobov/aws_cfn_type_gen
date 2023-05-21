@@ -21,6 +21,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_id: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_type: Option<String>,
 
     ///
@@ -49,6 +51,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentHandlingStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_handling_strategy: Option<String>,
 
     ///
@@ -60,6 +63,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CredentialsArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials_arn: Option<String>,
 
     ///
@@ -71,6 +75,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -82,6 +87,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationMethod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integration_method: Option<String>,
 
     ///
@@ -93,6 +99,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationSubtype")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integration_subtype: Option<String>,
 
     ///
@@ -129,6 +136,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegrationUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integration_uri: Option<String>,
 
     ///
@@ -146,6 +154,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PassthroughBehavior")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub passthrough_behavior: Option<String>,
 
     ///
@@ -157,6 +166,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadFormatVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload_format_version: Option<String>,
 
     ///
@@ -172,6 +182,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_parameters: Option<serde_json::Value>,
 
     ///
@@ -183,6 +194,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestTemplates")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_templates: Option<serde_json::Value>,
 
     ///
@@ -194,6 +206,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_parameters: Option<serde_json::Value>,
 
     ///
@@ -205,6 +218,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateSelectionExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_selection_expression: Option<String>,
 
     ///
@@ -216,6 +230,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMillis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_millis: Option<i64>,
 
     ///
@@ -227,6 +242,7 @@ pub struct CfnIntegration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls_config: Option<TlsConfig>,
 }
 
@@ -300,6 +316,7 @@ pub struct ResponseParameterList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_parameters: Option<Vec<ResponseParameter>>,
 }
 
@@ -329,6 +346,7 @@ pub struct TlsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerNameToVerify")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_name_to_verify: Option<String>,
 }
 

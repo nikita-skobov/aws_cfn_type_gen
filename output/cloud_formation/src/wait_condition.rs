@@ -14,6 +14,7 @@ pub struct CfnWaitCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Count")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub count: Option<i64>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnWaitCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Handle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub handle: Option<String>,
 
     ///
@@ -42,6 +44,7 @@ pub struct CfnWaitCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<String>,
 }
 

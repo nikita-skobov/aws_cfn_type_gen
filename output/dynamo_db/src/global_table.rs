@@ -29,6 +29,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BillingMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_mode: Option<GlobalTableBillingModeEnum>,
 
     ///
@@ -42,6 +43,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalSecondaryIndexes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_secondary_indexes: Option<Vec<GlobalSecondaryIndex>>,
 
     ///
@@ -64,6 +66,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalSecondaryIndexes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_secondary_indexes: Option<Vec<LocalSecondaryIndex>>,
 
     ///
@@ -90,6 +93,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSESpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssespecification: Option<SSESpecification>,
 
     ///
@@ -101,6 +105,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_specification: Option<StreamSpecification>,
 
     ///
@@ -120,6 +125,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_name: Option<String>,
 
     ///
@@ -131,6 +137,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeToLiveSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_to_live_specification: Option<TimeToLiveSpecification>,
 
     ///
@@ -142,6 +149,7 @@ pub struct CfnGlobalTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteProvisionedThroughputSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_provisioned_throughput_settings: Option<WriteProvisionedThroughputSettings>,
 }
 
@@ -274,6 +282,7 @@ pub struct CapacityAutoScalingSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SeedCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub seed_capacity: Option<i64>,
 
     ///
@@ -393,6 +402,7 @@ pub struct GlobalSecondaryIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteProvisionedThroughputSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_provisioned_throughput_settings: Option<WriteProvisionedThroughputSettings>,
 }
 
@@ -687,6 +697,7 @@ pub struct PointInTimeRecoverySpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointInTimeRecoveryEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub point_in_time_recovery_enabled: Option<bool>,
 }
 
@@ -720,6 +731,7 @@ pub struct Projection {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NonKeyAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub non_key_attributes: Option<Vec<String>>,
 
     ///
@@ -735,6 +747,7 @@ pub struct Projection {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "ProjectionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub projection_type: Option<ProjectionProjectionTypeEnum>,
 }
 
@@ -794,6 +807,7 @@ pub struct ReadProvisionedThroughputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadCapacityAutoScalingSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_capacity_auto_scaling_settings: Option<CapacityAutoScalingSettings>,
 
     ///
@@ -805,6 +819,7 @@ pub struct ReadProvisionedThroughputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadCapacityUnits")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_capacity_units: Option<i64>,
 }
 
@@ -838,6 +853,7 @@ pub struct ReplicaGlobalSecondaryIndexSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributorInsightsSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contributor_insights_specification: Option<ContributorInsightsSpecification>,
 
     ///
@@ -866,6 +882,7 @@ pub struct ReplicaGlobalSecondaryIndexSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadProvisionedThroughputSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_provisioned_throughput_settings: Option<ReadProvisionedThroughputSettings>,
 }
 
@@ -950,6 +967,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributorInsightsSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contributor_insights_specification: Option<ContributorInsightsSpecification>,
 
     ///
@@ -961,6 +979,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeletionProtectionEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deletion_protection_enabled: Option<bool>,
 
     ///
@@ -972,6 +991,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlobalSecondaryIndexes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global_secondary_indexes: Option<Vec<ReplicaGlobalSecondaryIndexSpecification>>,
 
     ///
@@ -983,6 +1003,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_stream_specification: Option<KinesisStreamSpecification>,
 
     ///
@@ -994,6 +1015,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointInTimeRecoverySpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub point_in_time_recovery_specification: Option<PointInTimeRecoverySpecification>,
 
     ///
@@ -1005,6 +1027,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadProvisionedThroughputSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_provisioned_throughput_settings: Option<ReadProvisionedThroughputSettings>,
 
     ///
@@ -1027,6 +1050,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSESpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssespecification: Option<ReplicaSSESpecification>,
 
     ///
@@ -1040,6 +1064,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableClass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_class: Option<ReplicaSpecificationTableClassEnum>,
 
     ///
@@ -1053,6 +1078,7 @@ pub struct ReplicaSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -1134,6 +1160,7 @@ pub struct SSESpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SSEType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssetype: Option<SSESpecificationSSETypeEnum>,
 }
 
@@ -1284,6 +1311,7 @@ pub struct TargetTrackingScalingPolicyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableScaleIn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_scale_in: Option<bool>,
 
     ///
@@ -1295,6 +1323,7 @@ pub struct TargetTrackingScalingPolicyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScaleInCooldown")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scale_in_cooldown: Option<i64>,
 
     ///
@@ -1306,6 +1335,7 @@ pub struct TargetTrackingScalingPolicyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScaleOutCooldown")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scale_out_cooldown: Option<i64>,
 
     ///
@@ -1352,6 +1382,7 @@ pub struct TimeToLiveSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attribute_name: Option<String>,
 
     ///
@@ -1410,6 +1441,7 @@ pub struct WriteProvisionedThroughputSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteCapacityAutoScalingSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_capacity_auto_scaling_settings: Option<CapacityAutoScalingSettings>,
 }
 

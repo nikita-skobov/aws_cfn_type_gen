@@ -10,6 +10,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_config: Option<AuthorizerConfig>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainConfigurationName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_configuration_name: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainConfigurationStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_configuration_status: Option<String>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name: Option<String>,
 
     ///
@@ -56,6 +60,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerCertificateArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_certificate_arns: Option<Vec<String>>,
 
     ///
@@ -69,6 +74,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_type: Option<String>,
 
     ///
@@ -82,6 +88,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     /// Property description not available.
@@ -92,6 +99,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TlsConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls_config: Option<TlsConfig>,
 
     ///
@@ -103,6 +111,7 @@ pub struct CfnDomainConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ValidationCertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validation_certificate_arn: Option<String>,
 }
 
@@ -140,6 +149,7 @@ pub struct AuthorizerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowAuthorizerOverride")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_authorizer_override: Option<bool>,
 
     ///
@@ -151,6 +161,7 @@ pub struct AuthorizerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultAuthorizerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_authorizer_name: Option<String>,
 }
 
@@ -180,6 +191,7 @@ pub struct ServerCertificateSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_certificate_arn: Option<String>,
 
     ///
@@ -191,6 +203,7 @@ pub struct ServerCertificateSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_certificate_status: Option<String>,
 
     ///
@@ -202,6 +215,7 @@ pub struct ServerCertificateSummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateStatusDetail")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_certificate_status_detail: Option<String>,
 }
 
@@ -274,6 +288,7 @@ pub struct TlsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_policy: Option<String>,
 }
 

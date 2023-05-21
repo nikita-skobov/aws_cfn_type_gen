@@ -12,6 +12,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrBlock")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_block: Option<String>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Egress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub egress: Option<bool>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Icmp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub icmp: Option<Icmp>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6CidrBlock")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_cidr_block: Option<String>,
 
     ///
@@ -67,6 +71,7 @@ pub struct CfnNetworkAclEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<PortRange>,
 
     ///
@@ -156,6 +161,7 @@ pub struct Icmp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<i64>,
 
     ///
@@ -167,6 +173,7 @@ pub struct Icmp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<i64>,
 }
 
@@ -196,6 +203,7 @@ pub struct PortRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "From")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from: Option<i64>,
 
     ///
@@ -207,6 +215,7 @@ pub struct PortRange {
     ///
     /// Update requires: No interruption
     #[serde(rename = "To")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub to: Option<i64>,
 }
 

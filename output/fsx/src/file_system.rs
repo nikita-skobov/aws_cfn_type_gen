@@ -10,6 +10,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BackupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backup_id: Option<String>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemTypeVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_system_type_version: Option<String>,
 
     ///
@@ -57,6 +59,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -70,6 +73,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LustreConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lustre_configuration: Option<LustreConfiguration>,
 
     ///
@@ -81,6 +85,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OntapConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ontap_configuration: Option<OntapConfiguration>,
 
     ///
@@ -92,6 +97,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenZFSConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub open_zfsconfiguration: Option<OpenZFSConfiguration>,
 
     ///
@@ -105,6 +111,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -132,6 +139,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_capacity: Option<i64>,
 
     ///
@@ -149,6 +157,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_type: Option<FileSystemStorageTypeEnum>,
 
     ///
@@ -179,6 +188,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -190,6 +200,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WindowsConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub windows_configuration: Option<WindowsConfiguration>,
 }
 
@@ -319,6 +330,7 @@ pub struct AuditLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuditLogDestination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audit_log_destination: Option<String>,
 
     ///
@@ -449,6 +461,7 @@ pub struct ClientConfigurations {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Clients")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub clients: Option<String>,
 
     ///
@@ -464,6 +477,7 @@ pub struct ClientConfigurations {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Options")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Vec<String>>,
 }
 
@@ -520,6 +534,7 @@ pub struct DiskIopsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Iops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///
@@ -533,6 +548,7 @@ pub struct DiskIopsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Mode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<DiskIopsConfigurationModeEnum>,
 }
 
@@ -587,6 +603,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoImportPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_import_policy: Option<LustreConfigurationAutoImportPolicyEnum>,
 
     ///
@@ -598,6 +615,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticBackupRetentionDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatic_backup_retention_days: Option<i64>,
 
     ///
@@ -609,6 +627,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CopyTagsToBackups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_tags_to_backups: Option<bool>,
 
     ///
@@ -620,6 +639,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub daily_automatic_backup_start_time: Option<String>,
 
     ///
@@ -637,6 +657,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCompressionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_compression_type: Option<LustreConfigurationDataCompressionTypeEnum>,
 
     ///
@@ -660,6 +681,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_type: Option<LustreConfigurationDeploymentTypeEnum>,
 
     ///
@@ -675,6 +697,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DriveCacheType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drive_cache_type: Option<LustreConfigurationDriveCacheTypeEnum>,
 
     ///
@@ -696,6 +719,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExportPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub export_path: Option<String>,
 
     ///
@@ -715,6 +739,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImportPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub import_path: Option<String>,
 
     ///
@@ -734,6 +759,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImportedFileChunkSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub imported_file_chunk_size: Option<i64>,
 
     ///
@@ -753,6 +779,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PerUnitStorageThroughput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub per_unit_storage_throughput: Option<i64>,
 
     ///
@@ -770,6 +797,7 @@ pub struct LustreConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weekly_maintenance_start_time: Option<String>,
 }
 
@@ -948,6 +976,7 @@ pub struct NfsExports {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_configurations: Option<Vec<ClientConfigurations>>,
 }
 
@@ -986,6 +1015,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticBackupRetentionDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatic_backup_retention_days: Option<i64>,
 
     ///
@@ -997,6 +1027,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub daily_automatic_backup_start_time: Option<String>,
 
     ///
@@ -1025,6 +1056,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DiskIopsConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_iops_configuration: Option<DiskIopsConfiguration>,
 
     ///
@@ -1042,6 +1074,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointIpAddressRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_ip_address_range: Option<String>,
 
     ///
@@ -1059,6 +1092,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FsxAdminPassword")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fsx_admin_password: Option<String>,
 
     ///
@@ -1070,6 +1104,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreferredSubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_subnet_id: Option<String>,
 
     ///
@@ -1083,6 +1118,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteTableIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_table_ids: Option<Vec<String>>,
 
     ///
@@ -1098,6 +1134,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThroughputCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throughput_capacity: Option<i64>,
 
     ///
@@ -1115,6 +1152,7 @@ pub struct OntapConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weekly_maintenance_start_time: Option<String>,
 }
 
@@ -1222,6 +1260,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticBackupRetentionDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatic_backup_retention_days: Option<i64>,
 
     ///
@@ -1233,6 +1272,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToBackups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_tags_to_backups: Option<bool>,
 
     ///
@@ -1244,6 +1284,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyTagsToVolumes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_tags_to_volumes: Option<bool>,
 
     ///
@@ -1255,6 +1296,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub daily_automatic_backup_start_time: Option<String>,
 
     ///
@@ -1283,6 +1325,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DiskIopsConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_iops_configuration: Option<DiskIopsConfiguration>,
 
     ///
@@ -1296,6 +1339,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Vec<String>>,
 
     ///
@@ -1307,6 +1351,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RootVolumeConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub root_volume_configuration: Option<RootVolumeConfiguration>,
 
     ///
@@ -1326,6 +1371,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThroughputCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throughput_capacity: Option<i64>,
 
     ///
@@ -1343,6 +1389,7 @@ pub struct OpenZFSConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weekly_maintenance_start_time: Option<String>,
 }
 
@@ -1421,6 +1468,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CopyTagsToSnapshots")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_tags_to_snapshots: Option<bool>,
 
     ///
@@ -1436,6 +1484,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataCompressionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_compression_type: Option<RootVolumeConfigurationDataCompressionTypeEnum>,
 
     ///
@@ -1449,6 +1498,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NfsExports")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nfs_exports: Option<Vec<NfsExports>>,
 
     ///
@@ -1460,6 +1510,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReadOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_only: Option<bool>,
 
     ///
@@ -1475,6 +1526,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RecordSizeKiB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub record_size_ki_b: Option<i64>,
 
     ///
@@ -1488,6 +1540,7 @@ pub struct RootVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserAndGroupQuotas")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_and_group_quotas: Option<Vec<UserAndGroupQuotas>>,
 }
 
@@ -1573,6 +1626,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsIps")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_ips: Option<Vec<String>>,
 
     ///
@@ -1590,6 +1644,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name: Option<String>,
 
     ///
@@ -1607,6 +1662,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemAdministratorsGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_system_administrators_group: Option<String>,
 
     ///
@@ -1626,6 +1682,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organizational_unit_distinguished_name: Option<String>,
 
     ///
@@ -1643,6 +1700,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<String>,
 
     ///
@@ -1660,6 +1718,7 @@ pub struct SelfManagedActiveDirectoryConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_name: Option<String>,
 }
 
@@ -1824,6 +1883,7 @@ pub struct UserAndGroupQuotas {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Id")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<i64>,
 
     ///
@@ -1839,6 +1899,7 @@ pub struct UserAndGroupQuotas {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StorageCapacityQuotaGiB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_capacity_quota_gi_b: Option<i64>,
 
     ///
@@ -1852,6 +1913,7 @@ pub struct UserAndGroupQuotas {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<UserAndGroupQuotasTypeEnum>,
 }
 
@@ -1934,6 +1996,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ActiveDirectoryId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub active_directory_id: Option<String>,
 
     ///
@@ -1955,6 +2018,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aliases")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aliases: Option<Vec<String>>,
 
     ///
@@ -1966,6 +2030,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuditLogConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub audit_log_configuration: Option<AuditLogConfiguration>,
 
     ///
@@ -1977,6 +2042,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomaticBackupRetentionDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automatic_backup_retention_days: Option<i64>,
 
     ///
@@ -1988,6 +2054,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CopyTagsToBackups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_tags_to_backups: Option<bool>,
 
     ///
@@ -1999,6 +2066,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DailyAutomaticBackupStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub daily_automatic_backup_start_time: Option<String>,
 
     ///
@@ -2016,6 +2084,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeploymentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_type: Option<WindowsConfigurationDeploymentTypeEnum>,
 
     ///
@@ -2027,6 +2096,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PreferredSubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_subnet_id: Option<String>,
 
     ///
@@ -2038,6 +2108,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelfManagedActiveDirectoryConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub self_managed_active_directory_configuration:
         Option<SelfManagedActiveDirectoryConfiguration>,
 
@@ -2071,6 +2142,7 @@ pub struct WindowsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weekly_maintenance_start_time: Option<String>,
 }
 

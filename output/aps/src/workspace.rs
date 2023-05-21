@@ -10,6 +10,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlertManagerDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alert_manager_definition: Option<String>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alias")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alias: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_configuration: Option<LoggingConfiguration>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnWorkspace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -78,6 +82,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_arn: Option<String>,
 }
 

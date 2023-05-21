@@ -10,6 +10,7 @@ pub struct CfnGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GatewayCapabilitySummaries")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gateway_capability_summaries: Option<Vec<GatewayCapabilitySummary>>,
 
     ///
@@ -45,6 +46,7 @@ pub struct CfnGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -76,6 +78,7 @@ pub struct GatewayCapabilitySummary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapabilityConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capability_configuration: Option<String>,
 
     ///
@@ -118,6 +121,7 @@ pub struct GatewayPlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Greengrass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub greengrass: Option<Greengrass>,
 
     ///
@@ -129,6 +133,7 @@ pub struct GatewayPlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GreengrassV2")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub greengrass_v2: Option<GreengrassV2>,
 }
 

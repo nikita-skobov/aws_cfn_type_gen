@@ -16,6 +16,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arguments")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arguments: Option<serde_json::Value>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_name: Option<String>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtraJarsS3Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extra_jars_s3_path: Option<String>,
 
     ///
@@ -53,6 +56,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtraPythonLibsS3Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extra_python_libs_s3_path: Option<String>,
 
     ///
@@ -70,6 +74,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub glue_version: Option<String>,
 
     ///
@@ -81,6 +86,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfNodes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_nodes: Option<i64>,
 
     ///
@@ -94,6 +100,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfWorkers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_workers: Option<i64>,
 
     ///
@@ -105,6 +112,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_key: Option<String>,
 
     ///
@@ -120,6 +128,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicKeys")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_keys: Option<Vec<String>>,
 
     ///
@@ -150,6 +159,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_configuration: Option<String>,
 
     ///
@@ -161,6 +171,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -172,6 +183,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<String>,
 
     ///
@@ -183,6 +195,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -198,6 +211,7 @@ pub struct CfnDevEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub worker_type: Option<String>,
 }
 

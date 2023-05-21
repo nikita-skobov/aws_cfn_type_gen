@@ -10,6 +10,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerDefinitions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_definitions: Option<Vec<ContainerDefinition>>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cpu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu: Option<String>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EphemeralStorage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ephemeral_storage: Option<EphemeralStorage>,
 
     ///
@@ -47,6 +50,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_role_arn: Option<String>,
 
     ///
@@ -62,6 +66,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Family")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub family: Option<String>,
 
     ///
@@ -73,6 +78,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceAccelerators")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_accelerators: Option<Vec<InferenceAccelerator>>,
 
     ///
@@ -94,6 +100,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpcMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipc_mode: Option<TaskDefinitionIpcModeEnum>,
 
     ///
@@ -111,6 +118,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Memory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory: Option<String>,
 
     ///
@@ -136,6 +144,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_mode: Option<TaskDefinitionNetworkModeEnum>,
 
     ///
@@ -153,6 +162,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PidMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pid_mode: Option<TaskDefinitionPidModeEnum>,
 
     ///
@@ -166,6 +176,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PlacementConstraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_constraints: Option<Vec<TaskDefinitionPlacementConstraint>>,
 
     ///
@@ -179,6 +190,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProxyConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub proxy_configuration: Option<ProxyConfiguration>,
 
     ///
@@ -190,6 +202,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RequiresCompatibilities")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub requires_compatibilities: Option<Vec<String>>,
 
     ///
@@ -203,6 +216,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RuntimePlatform")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime_platform: Option<RuntimePlatform>,
 
     ///
@@ -220,6 +234,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -233,6 +248,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TaskRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_role_arn: Option<String>,
 
     ///
@@ -246,6 +262,7 @@ pub struct CfnTaskDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Volumes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volumes: Option<Vec<Volume>>,
 }
 
@@ -359,6 +376,7 @@ pub struct AuthorizationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessPointId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_point_id: Option<String>,
 
     ///
@@ -372,6 +390,7 @@ pub struct AuthorizationConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IAM")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam: Option<AuthorizationConfigIAMEnum>,
 }
 
@@ -418,6 +437,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Command")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -441,6 +461,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cpu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu: Option<i64>,
 
     ///
@@ -460,6 +481,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DependsOn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub depends_on: Option<Vec<ContainerDependency>>,
 
     ///
@@ -473,6 +495,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DisableNetworking")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_networking: Option<bool>,
 
     ///
@@ -486,6 +509,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DnsSearchDomains")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_search_domains: Option<Vec<String>>,
 
     ///
@@ -499,6 +523,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DnsServers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_servers: Option<Vec<String>>,
 
     ///
@@ -510,6 +535,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DockerLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub docker_labels: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -533,6 +559,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DockerSecurityOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub docker_security_options: Option<Vec<String>>,
 
     ///
@@ -546,6 +573,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EntryPoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entry_point: Option<Vec<String>>,
 
     ///
@@ -559,6 +587,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<Vec<KeyValuePair>>,
 
     ///
@@ -574,6 +603,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentFiles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_files: Option<Vec<EnvironmentFile>>,
 
     ///
@@ -587,6 +617,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Essential")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub essential: Option<bool>,
 
     ///
@@ -600,6 +631,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExtraHosts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extra_hosts: Option<Vec<HostEntry>>,
 
     ///
@@ -611,6 +643,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirelensConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub firelens_configuration: Option<FirelensConfiguration>,
 
     ///
@@ -622,6 +655,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HealthCheck")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check: Option<HealthCheck>,
 
     ///
@@ -635,6 +669,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Hostname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hostname: Option<String>,
 
     ///
@@ -659,6 +694,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Interactive")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interactive: Option<bool>,
 
     ///
@@ -674,6 +710,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Links")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub links: Option<Vec<String>>,
 
     ///
@@ -687,6 +724,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LinuxParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub linux_parameters: Option<LinuxParameters>,
 
     ///
@@ -706,6 +744,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_configuration: Option<LogConfiguration>,
 
     ///
@@ -725,6 +764,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Memory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory: Option<i64>,
 
     ///
@@ -744,6 +784,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemoryReservation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_reservation: Option<i64>,
 
     ///
@@ -759,6 +800,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MountPoints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_points: Option<Vec<MountPoint>>,
 
     ///
@@ -789,6 +831,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PortMappings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_mappings: Option<Vec<PortMapping>>,
 
     ///
@@ -802,6 +845,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Privileged")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub privileged: Option<bool>,
 
     ///
@@ -813,6 +857,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PseudoTerminal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pseudo_terminal: Option<bool>,
 
     ///
@@ -826,6 +871,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReadonlyRootFilesystem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub readonly_root_filesystem: Option<bool>,
 
     ///
@@ -837,6 +883,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryCredentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_credentials: Option<RepositoryCredentials>,
 
     ///
@@ -848,6 +895,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceRequirements")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_requirements: Option<Vec<ResourceRequirement>>,
 
     ///
@@ -859,6 +907,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Secrets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets: Option<Vec<Secret>>,
 
     ///
@@ -878,6 +927,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_timeout: Option<i64>,
 
     ///
@@ -897,6 +947,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StopTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stop_timeout: Option<i64>,
 
     ///
@@ -910,6 +961,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SystemControls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub system_controls: Option<Vec<SystemControl>>,
 
     ///
@@ -923,6 +975,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Ulimits")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ulimits: Option<Vec<Ulimit>>,
 
     ///
@@ -942,6 +995,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "User")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user: Option<String>,
 
     ///
@@ -953,6 +1007,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumesFrom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volumes_from: Option<Vec<VolumeFrom>>,
 
     ///
@@ -964,6 +1019,7 @@ pub struct ContainerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkingDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub working_directory: Option<String>,
 }
 
@@ -1019,6 +1075,7 @@ pub struct ContainerDependency {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Condition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition: Option<ContainerDependencyConditionEnum>,
 
     ///
@@ -1030,6 +1087,7 @@ pub struct ContainerDependency {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_name: Option<String>,
 }
 
@@ -1084,6 +1142,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_path: Option<String>,
 
     ///
@@ -1095,6 +1154,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_path: Option<String>,
 
     ///
@@ -1106,6 +1166,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Permissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<String>>,
 }
 
@@ -1137,6 +1198,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Autoprovision")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub autoprovision: Option<bool>,
 
     ///
@@ -1148,6 +1210,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Driver")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub driver: Option<String>,
 
     ///
@@ -1159,6 +1222,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DriverOpts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub driver_opts: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1170,6 +1234,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Labels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub labels: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1183,6 +1248,7 @@ pub struct DockerVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Scope")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope: Option<DockerVolumeConfigurationScopeEnum>,
 }
 
@@ -1229,6 +1295,7 @@ pub struct EFSVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthorizationConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization_config: Option<AuthorizationConfig>,
 
     ///
@@ -1253,6 +1320,7 @@ pub struct EFSVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RootDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub root_directory: Option<String>,
 
     ///
@@ -1266,6 +1334,7 @@ pub struct EFSVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitEncryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_encryption: Option<EFSVolumeConfigurationTransitEncryptionEnum>,
 
     ///
@@ -1277,6 +1346,7 @@ pub struct EFSVolumeConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransitEncryptionPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transit_encryption_port: Option<i64>,
 }
 
@@ -1333,6 +1403,7 @@ pub struct EnvironmentFile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<EnvironmentFileTypeEnum>,
 
     ///
@@ -1344,6 +1415,7 @@ pub struct EnvironmentFile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -1386,6 +1458,7 @@ pub struct EphemeralStorage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SizeInGiB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size_in_gi_b: Option<i64>,
 }
 
@@ -1419,6 +1492,7 @@ pub struct FirelensConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Options")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1432,6 +1506,7 @@ pub struct FirelensConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<FirelensConfigurationTypeEnum>,
 }
 
@@ -1492,6 +1567,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Command")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -1503,6 +1579,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Interval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<i64>,
 
     ///
@@ -1514,6 +1591,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Retries")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retries: Option<i64>,
 
     ///
@@ -1527,6 +1605,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_period: Option<i64>,
 
     ///
@@ -1538,6 +1617,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i64>,
 }
 
@@ -1567,6 +1647,7 @@ pub struct HostEntry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Hostname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hostname: Option<String>,
 
     ///
@@ -1578,6 +1659,7 @@ pub struct HostEntry {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address: Option<String>,
 }
 
@@ -1609,6 +1691,7 @@ pub struct HostVolumeProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_path: Option<String>,
 }
 
@@ -1638,6 +1721,7 @@ pub struct InferenceAccelerator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_name: Option<String>,
 
     ///
@@ -1649,6 +1733,7 @@ pub struct InferenceAccelerator {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_type: Option<String>,
 }
 
@@ -1682,6 +1767,7 @@ pub struct KernelCapabilities {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Add")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub add: Option<Vec<String>>,
 
     ///
@@ -1695,6 +1781,7 @@ pub struct KernelCapabilities {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Drop")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub drop: Option<Vec<String>>,
 }
 
@@ -1724,6 +1811,7 @@ pub struct KeyValuePair {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -1735,6 +1823,7 @@ pub struct KeyValuePair {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -1766,6 +1855,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Capabilities")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capabilities: Option<KernelCapabilities>,
 
     ///
@@ -1779,6 +1869,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Devices")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub devices: Option<Vec<Device>>,
 
     ///
@@ -1790,6 +1881,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitProcessEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub init_process_enabled: Option<bool>,
 
     ///
@@ -1805,6 +1897,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxSwap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_swap: Option<i64>,
 
     ///
@@ -1818,6 +1911,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SharedMemorySize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shared_memory_size: Option<i64>,
 
     ///
@@ -1831,6 +1925,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Swappiness")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub swappiness: Option<i64>,
 
     ///
@@ -1844,6 +1939,7 @@ pub struct LinuxParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tmpfs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tmpfs: Option<Vec<Tmpfs>>,
 }
 
@@ -1900,6 +1996,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Options")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1911,6 +2008,7 @@ pub struct LogConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecretOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_options: Option<Vec<Secret>>,
 }
 
@@ -1981,6 +2079,7 @@ pub struct MountPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_path: Option<String>,
 
     ///
@@ -1992,6 +2091,7 @@ pub struct MountPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReadOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_only: Option<bool>,
 
     ///
@@ -2003,6 +2103,7 @@ pub struct MountPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceVolume")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_volume: Option<String>,
 }
 
@@ -2042,6 +2143,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AppProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_protocol: Option<PortMappingAppProtocolEnum>,
 
     ///
@@ -2057,6 +2159,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_port: Option<i64>,
 
     ///
@@ -2074,6 +2177,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_port_range: Option<String>,
 
     ///
@@ -2097,6 +2201,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HostPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host_port: Option<i64>,
 
     ///
@@ -2110,6 +2215,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -2123,6 +2229,7 @@ pub struct PortMapping {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<PortMappingProtocolEnum>,
 }
 
@@ -2205,6 +2312,7 @@ pub struct ProxyConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProxyConfigurationProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub proxy_configuration_properties: Option<Vec<KeyValuePair>>,
 
     ///
@@ -2218,6 +2326,7 @@ pub struct ProxyConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ProxyConfigurationTypeEnum>,
 }
 
@@ -2262,6 +2371,7 @@ pub struct RepositoryCredentials {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CredentialsParameter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials_parameter: Option<String>,
 }
 
@@ -2360,6 +2470,7 @@ pub struct RuntimePlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CpuArchitecture")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_architecture: Option<RuntimePlatformCpuArchitectureEnum>,
 
     ///
@@ -2373,6 +2484,7 @@ pub struct RuntimePlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OperatingSystemFamily")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operating_system_family: Option<RuntimePlatformOperatingSystemFamilyEnum>,
 }
 
@@ -2508,6 +2620,7 @@ pub struct SystemControl {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<String>,
 
     ///
@@ -2519,6 +2632,7 @@ pub struct SystemControl {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -2592,6 +2706,7 @@ pub struct TaskDefinitionPlacementConstraint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Expression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expression: Option<String>,
 
     ///
@@ -2647,6 +2762,7 @@ pub struct Tmpfs {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_path: Option<String>,
 
     ///
@@ -2660,6 +2776,7 @@ pub struct Tmpfs {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MountOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_options: Option<Vec<String>>,
 
     ///
@@ -2830,6 +2947,7 @@ pub struct Volume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DockerVolumeConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub docker_volume_configuration: Option<DockerVolumeConfiguration>,
 
     ///
@@ -2841,6 +2959,7 @@ pub struct Volume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EFSVolumeConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub efsvolume_configuration: Option<EFSVolumeConfiguration>,
 
     ///
@@ -2854,6 +2973,7 @@ pub struct Volume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Host")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host: Option<HostVolumeProperties>,
 
     ///
@@ -2865,6 +2985,7 @@ pub struct Volume {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -2904,6 +3025,7 @@ pub struct VolumeFrom {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReadOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_only: Option<bool>,
 
     ///
@@ -2915,6 +3037,7 @@ pub struct VolumeFrom {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceContainer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_container: Option<String>,
 }
 

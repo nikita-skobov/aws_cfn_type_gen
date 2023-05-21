@@ -14,6 +14,7 @@ pub struct CfnLocationFSxLustre {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FsxFilesystemArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fsx_filesystem_arn: Option<String>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnLocationFSxLustre {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdirectory: Option<String>,
 
     ///
@@ -59,6 +61,7 @@ pub struct CfnLocationFSxLustre {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

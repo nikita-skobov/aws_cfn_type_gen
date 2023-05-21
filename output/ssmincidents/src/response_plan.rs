@@ -12,6 +12,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Actions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions: Option<Vec<Action>>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChatChannel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chat_channel: Option<ChatChannel>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
 
     ///
@@ -51,6 +54,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Engagements")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engagements: Option<Vec<String>>,
 
     ///
@@ -73,6 +77,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Integrations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integrations: Option<Vec<Integration>>,
 
     ///
@@ -103,6 +108,7 @@ pub struct CfnResponsePlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -192,6 +198,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SsmAutomation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssm_automation: Option<SsmAutomation>,
 }
 
@@ -227,6 +234,7 @@ pub struct ChatChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChatbotSns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chatbot_sns: Option<Vec<String>>,
 }
 
@@ -317,6 +325,7 @@ pub struct DynamicSsmParameterValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Variable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variable: Option<DynamicSsmParameterValueVariableEnum>,
 }
 
@@ -367,6 +376,7 @@ pub struct IncidentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DedupeString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dedupe_string: Option<String>,
 
     ///
@@ -395,6 +405,7 @@ pub struct IncidentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncidentTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub incident_tags: Option<Vec<Tag>>,
 
     ///
@@ -408,6 +419,7 @@ pub struct IncidentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTargets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_targets: Option<Vec<NotificationTargetItem>>,
 
     ///
@@ -423,6 +435,7 @@ pub struct IncidentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Summary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<String>,
 
     ///
@@ -585,6 +598,7 @@ pub struct NotificationTargetItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns_topic_arn: Option<String>,
 }
 
@@ -731,6 +745,7 @@ pub struct SsmAutomation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_version: Option<String>,
 
     ///
@@ -742,6 +757,7 @@ pub struct SsmAutomation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_parameters: Option<Vec<DynamicSsmParameter>>,
 
     ///
@@ -753,6 +769,7 @@ pub struct SsmAutomation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<Vec<SsmParameter>>,
 
     ///
@@ -783,6 +800,7 @@ pub struct SsmAutomation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_account: Option<SsmAutomationTargetAccountEnum>,
 }
 

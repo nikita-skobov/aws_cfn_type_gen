@@ -38,6 +38,7 @@ pub struct CfnClusterParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParameterGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_group_name: Option<String>,
 
     ///
@@ -53,6 +54,7 @@ pub struct CfnClusterParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<Vec<Parameter>>,
 
     ///
@@ -64,6 +66,7 @@ pub struct CfnClusterParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

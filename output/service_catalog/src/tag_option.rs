@@ -10,6 +10,7 @@ pub struct CfnTagOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Active")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub active: Option<bool>,
 
     ///

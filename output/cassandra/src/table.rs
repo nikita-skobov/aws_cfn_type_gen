@@ -14,6 +14,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BillingMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_mode: Option<BillingMode>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClientSideTimestampsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_side_timestamps_enabled: Option<bool>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusteringKeyColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub clustering_key_columns: Option<Vec<ClusteringKeyColumn>>,
 
     /// The default Time To Live (TTL) value for all rows in a table in seconds.     The maximum configurable value is 630,720,000 seconds, which is the equivalent of 20 years. By default, the TTL value for a table is 0, which means data does not expire.
@@ -52,6 +55,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultTimeToLive")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_time_to_live: Option<i64>,
 
     ///
@@ -67,6 +71,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_specification: Option<EncryptionSpecification>,
 
     ///
@@ -100,6 +105,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PointInTimeRecoveryEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub point_in_time_recovery_enabled: Option<bool>,
 
     ///
@@ -113,6 +119,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegularColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regular_columns: Option<Vec<Column>>,
 
     ///
@@ -130,6 +137,7 @@ pub struct CfnTable {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_name: Option<String>,
 
     ///
@@ -141,6 +149,7 @@ pub struct CfnTable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -193,6 +202,7 @@ pub struct BillingMode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedThroughput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_throughput: Option<ProvisionedThroughput>,
 }
 
@@ -239,6 +249,7 @@ pub struct ClusteringKeyColumn {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrderBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub order_by: Option<String>,
 }
 
@@ -324,6 +335,7 @@ pub struct EncryptionSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_identifier: Option<String>,
 }
 

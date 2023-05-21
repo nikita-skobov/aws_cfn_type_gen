@@ -21,6 +21,7 @@ pub struct CfnRouteResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelSelectionExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_selection_expression: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnRouteResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseModels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_models: Option<serde_json::Value>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnRouteResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_parameters: Option<serde_json::Value>,
 
     ///

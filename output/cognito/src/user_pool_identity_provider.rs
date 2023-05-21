@@ -10,6 +10,7 @@ pub struct CfnUserPoolIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeMapping")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attribute_mapping: Option<serde_json::Value>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnUserPoolIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdpIdentifiers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idp_identifiers: Option<Vec<String>>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnUserPoolIdentityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProviderDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provider_details: Option<serde_json::Value>,
 
     ///

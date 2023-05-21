@@ -21,6 +21,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyRequired")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_key_required: Option<bool>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationScopes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization_scopes: Option<Vec<String>>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization_type: Option<String>,
 
     ///
@@ -54,6 +57,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_id: Option<String>,
 
     ///
@@ -65,6 +69,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelSelectionExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_selection_expression: Option<String>,
 
     ///
@@ -76,6 +81,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperationName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operation_name: Option<String>,
 
     ///
@@ -87,6 +93,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestModels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_models: Option<serde_json::Value>,
 
     ///
@@ -98,6 +105,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_parameters: Option<serde_json::Value>,
 
     ///
@@ -120,6 +128,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteResponseSelectionExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_response_selection_expression: Option<String>,
 
     ///
@@ -131,6 +140,7 @@ pub struct CfnRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target: Option<String>,
 }
 

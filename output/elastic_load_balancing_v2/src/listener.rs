@@ -10,6 +10,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlpnPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alpn_policy: Option<Vec<String>>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificates")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificates: Option<Vec<Certificate>>,
 
     ///
@@ -62,6 +64,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -75,6 +78,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<ListenerProtocolEnum>,
 
     ///
@@ -88,6 +92,7 @@ pub struct CfnListener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_policy: Option<String>,
 }
 
@@ -172,6 +177,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticateCognitoConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authenticate_cognito_config: Option<AuthenticateCognitoConfig>,
 
     ///
@@ -183,6 +189,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticateOidcConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authenticate_oidc_config: Option<AuthenticateOidcConfig>,
 
     ///
@@ -194,6 +201,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FixedResponseConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fixed_response_config: Option<FixedResponseConfig>,
 
     ///
@@ -205,6 +213,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForwardConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub forward_config: Option<ForwardConfig>,
 
     ///
@@ -220,6 +229,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Order")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub order: Option<i64>,
 
     ///
@@ -231,6 +241,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedirectConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redirect_config: Option<RedirectConfig>,
 
     ///
@@ -242,6 +253,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_arn: Option<String>,
 
     ///
@@ -351,6 +363,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationRequestExtraParams")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -366,6 +379,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUnauthenticatedRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_unauthenticated_request: Option<AuthenticateCognitoConfigOnUnauthenticatedRequestEnum>,
 
     ///
@@ -379,6 +393,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope: Option<String>,
 
     ///
@@ -390,6 +405,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_cookie_name: Option<String>,
 
     ///
@@ -401,6 +417,7 @@ pub struct AuthenticateCognitoConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_timeout: Option<String>,
 
     ///
@@ -484,6 +501,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthenticationRequestExtraParams")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authentication_request_extra_params: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -517,6 +535,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_secret: Option<String>,
 
     ///
@@ -543,6 +562,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnUnauthenticatedRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_unauthenticated_request: Option<AuthenticateOidcConfigOnUnauthenticatedRequestEnum>,
 
     ///
@@ -556,6 +576,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope: Option<String>,
 
     ///
@@ -567,6 +588,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionCookieName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_cookie_name: Option<String>,
 
     ///
@@ -578,6 +600,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_timeout: Option<String>,
 
     ///
@@ -600,6 +623,7 @@ pub struct AuthenticateOidcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseExistingClientSecret")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_existing_client_secret: Option<bool>,
 
     ///
@@ -661,6 +685,7 @@ pub struct Certificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_arn: Option<String>,
 }
 
@@ -696,6 +721,7 @@ pub struct FixedResponseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type: Option<FixedResponseConfigContentTypeEnum>,
 
     ///
@@ -711,6 +737,7 @@ pub struct FixedResponseConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageBody")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_body: Option<String>,
 
     ///
@@ -800,6 +827,7 @@ pub struct ForwardConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupStickinessConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_stickiness_config: Option<TargetGroupStickinessConfig>,
 
     ///
@@ -811,6 +839,7 @@ pub struct ForwardConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_groups: Option<Vec<TargetGroupTuple>>,
 }
 
@@ -854,6 +883,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Host")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub host: Option<String>,
 
     ///
@@ -869,6 +899,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 
     ///
@@ -880,6 +911,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<String>,
 
     ///
@@ -893,6 +925,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<String>,
 
     ///
@@ -908,6 +941,7 @@ pub struct RedirectConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Query")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query: Option<String>,
 
     ///
@@ -1021,6 +1055,7 @@ pub struct TargetGroupStickinessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_seconds: Option<i64>,
 
     ///
@@ -1032,6 +1067,7 @@ pub struct TargetGroupStickinessConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -1061,6 +1097,7 @@ pub struct TargetGroupTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetGroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_group_arn: Option<String>,
 
     ///
@@ -1072,6 +1109,7 @@ pub struct TargetGroupTuple {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<i64>,
 }
 

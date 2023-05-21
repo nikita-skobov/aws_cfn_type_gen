@@ -23,6 +23,7 @@ pub struct CfnCRL {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -53,6 +54,7 @@ pub struct CfnCRL {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -70,6 +72,7 @@ pub struct CfnCRL {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrustAnchorArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trust_anchor_arn: Option<String>,
 }
 

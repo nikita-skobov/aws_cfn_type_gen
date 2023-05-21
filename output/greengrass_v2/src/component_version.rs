@@ -14,6 +14,7 @@ pub struct CfnComponentVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InlineRecipe")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inline_recipe: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnComponentVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LambdaFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_function: Option<LambdaFunctionRecipeSource>,
 
     ///
@@ -42,6 +44,7 @@ pub struct CfnComponentVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -79,6 +82,7 @@ pub struct ComponentDependencyRequirement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DependencyType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dependency_type: Option<String>,
 
     ///
@@ -92,6 +96,7 @@ pub struct ComponentDependencyRequirement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VersionRequirement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_requirement: Option<String>,
 }
 
@@ -121,6 +126,7 @@ pub struct ComponentPlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Attributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -134,6 +140,7 @@ pub struct ComponentPlatform {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -163,6 +170,7 @@ pub struct LambdaContainerParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Devices")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub devices: Option<Vec<LambdaDeviceMount>>,
 
     ///
@@ -176,6 +184,7 @@ pub struct LambdaContainerParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemorySizeInKB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_size_in_kb: Option<i64>,
 
     ///
@@ -189,6 +198,7 @@ pub struct LambdaContainerParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MountROSysfs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_rosysfs: Option<bool>,
 
     ///
@@ -200,6 +210,7 @@ pub struct LambdaContainerParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Volumes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volumes: Option<Vec<LambdaVolumeMount>>,
 }
 
@@ -231,6 +242,7 @@ pub struct LambdaDeviceMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AddGroupOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub add_group_owner: Option<bool>,
 
     ///
@@ -242,6 +254,7 @@ pub struct LambdaDeviceMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 
     ///
@@ -255,6 +268,7 @@ pub struct LambdaDeviceMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permission: Option<String>,
 }
 
@@ -284,6 +298,7 @@ pub struct LambdaEventSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Topic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub topic: Option<String>,
 
     ///
@@ -297,6 +312,7 @@ pub struct LambdaEventSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -326,6 +342,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_variables: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -337,6 +354,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventSources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_sources: Option<Vec<LambdaEventSource>>,
 
     ///
@@ -348,6 +366,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecArgs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exec_args: Option<Vec<String>>,
 
     ///
@@ -361,6 +380,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InputPayloadEncodingType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_payload_encoding_type: Option<String>,
 
     ///
@@ -372,6 +392,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LinuxProcessParams")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub linux_process_params: Option<LambdaLinuxProcessParams>,
 
     ///
@@ -383,6 +404,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxIdleTimeInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_idle_time_in_seconds: Option<i64>,
 
     ///
@@ -394,6 +416,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxInstancesCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_instances_count: Option<i64>,
 
     ///
@@ -405,6 +428,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxQueueSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_queue_size: Option<i64>,
 
     ///
@@ -420,6 +444,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Pinned")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pinned: Option<bool>,
 
     ///
@@ -431,6 +456,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StatusTimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status_timeout_in_seconds: Option<i64>,
 
     ///
@@ -442,6 +468,7 @@ pub struct LambdaExecutionParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_seconds: Option<i64>,
 }
 
@@ -475,6 +502,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentDependencies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_dependencies:
         Option<std::collections::HashMap<String, ComponentDependencyRequirement>>,
 
@@ -487,6 +515,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentLambdaParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_lambda_parameters: Option<LambdaExecutionParameters>,
 
     ///
@@ -500,6 +529,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_name: Option<String>,
 
     ///
@@ -511,6 +541,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentPlatforms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_platforms: Option<Vec<ComponentPlatform>>,
 
     ///
@@ -524,6 +555,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComponentVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_version: Option<String>,
 
     ///
@@ -535,6 +567,7 @@ pub struct LambdaFunctionRecipeSource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LambdaArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_arn: Option<String>,
 }
 
@@ -568,6 +601,7 @@ pub struct LambdaLinuxProcessParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerParams")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_params: Option<LambdaContainerParams>,
 
     ///
@@ -581,6 +615,7 @@ pub struct LambdaLinuxProcessParams {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IsolationMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub isolation_mode: Option<String>,
 }
 
@@ -616,6 +651,7 @@ pub struct LambdaVolumeMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AddGroupOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub add_group_owner: Option<bool>,
 
     ///
@@ -627,6 +663,7 @@ pub struct LambdaVolumeMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_path: Option<String>,
 
     ///
@@ -640,6 +677,7 @@ pub struct LambdaVolumeMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permission: Option<String>,
 
     ///
@@ -651,6 +689,7 @@ pub struct LambdaVolumeMount {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_path: Option<String>,
 }
 

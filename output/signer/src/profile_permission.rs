@@ -43,6 +43,7 @@ pub struct CfnProfilePermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProfileVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub profile_version: Option<String>,
 
     ///

@@ -21,6 +21,7 @@ pub struct CfnMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableEmailNotification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_email_notification: Option<bool>,
 
     ///
@@ -54,6 +55,7 @@ pub struct CfnMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
 
     ///
@@ -65,6 +67,7 @@ pub struct CfnMember {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 }
 

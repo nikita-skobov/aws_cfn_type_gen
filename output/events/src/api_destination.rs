@@ -37,6 +37,7 @@ pub struct CfnApiDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -80,6 +81,7 @@ pub struct CfnApiDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationRateLimitPerSecond")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invocation_rate_limit_per_second: Option<i64>,
 
     ///
@@ -97,6 +99,7 @@ pub struct CfnApiDestination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 

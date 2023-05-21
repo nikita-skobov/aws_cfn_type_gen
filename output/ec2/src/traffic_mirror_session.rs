@@ -16,6 +16,7 @@ pub struct CfnTrafficMirrorSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnTrafficMirrorSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PacketLength")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub packet_length: Option<i64>,
 
     ///
@@ -64,6 +66,7 @@ pub struct CfnTrafficMirrorSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -97,6 +100,7 @@ pub struct CfnTrafficMirrorSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualNetworkId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_network_id: Option<i64>,
 }
 

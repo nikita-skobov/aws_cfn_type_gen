@@ -55,6 +55,7 @@ pub struct CfnWebACL {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rules: Option<Vec<ActivatedRule>>,
 }
 
@@ -128,6 +129,7 @@ pub struct ActivatedRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<WafAction>,
 
     ///

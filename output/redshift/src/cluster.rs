@@ -16,6 +16,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowVersionUpgrade")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_version_upgrade: Option<bool>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AquaConfigurationStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aqua_configuration_status: Option<ClusterAquaConfigurationStatusEnum>,
 
     ///
@@ -44,6 +46,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutomatedSnapshotRetentionPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub automated_snapshot_retention_period: Option<i64>,
 
     ///
@@ -63,6 +66,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -74,6 +78,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZoneRelocation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone_relocation: Option<bool>,
 
     ///
@@ -87,6 +92,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZoneRelocationStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone_relocation_status: Option<String>,
 
     ///
@@ -98,6 +104,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Classic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub classic: Option<bool>,
 
     ///
@@ -117,6 +124,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_identifier: Option<String>,
 
     ///
@@ -136,6 +144,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterParameterGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_parameter_group_name: Option<String>,
 
     ///
@@ -149,6 +158,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterSecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_security_groups: Option<Vec<String>>,
 
     ///
@@ -164,6 +174,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterSubnetGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_subnet_group_name: Option<String>,
 
     ///
@@ -202,6 +213,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_version: Option<String>,
 
     ///
@@ -234,6 +246,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeferMaintenance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub defer_maintenance: Option<bool>,
 
     ///
@@ -245,6 +258,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeferMaintenanceDuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub defer_maintenance_duration: Option<i64>,
 
     ///
@@ -256,6 +270,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeferMaintenanceEndTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub defer_maintenance_end_time: Option<String>,
 
     ///
@@ -267,6 +282,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeferMaintenanceStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub defer_maintenance_start_time: Option<String>,
 
     ///
@@ -280,6 +296,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_region: Option<String>,
 
     ///
@@ -295,6 +312,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elastic_ip: Option<String>,
 
     ///
@@ -308,6 +326,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
 
     ///
@@ -319,6 +338,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Endpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint: Option<Endpoint>,
 
     ///
@@ -334,6 +354,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnhancedVpcRouting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanced_vpc_routing: Option<bool>,
 
     ///
@@ -347,6 +368,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HsmClientCertificateIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hsm_client_certificate_identifier: Option<String>,
 
     ///
@@ -360,6 +382,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HsmConfigurationIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hsm_configuration_identifier: Option<String>,
 
     ///
@@ -373,6 +396,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_roles: Option<Vec<String>>,
 
     ///
@@ -386,6 +410,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -397,6 +422,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_properties: Option<LoggingProperties>,
 
     ///
@@ -410,6 +436,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceTrackName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_track_name: Option<String>,
 
     ///
@@ -423,6 +450,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManualSnapshotRetentionPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manual_snapshot_retention_period: Option<i64>,
 
     ///
@@ -491,6 +519,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfNodes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_nodes: Option<i64>,
 
     ///
@@ -504,6 +533,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OwnerAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub owner_account: Option<String>,
 
     ///
@@ -521,6 +551,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -542,6 +573,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_maintenance_window: Option<String>,
 
     ///
@@ -553,6 +585,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PubliclyAccessible")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publicly_accessible: Option<bool>,
 
     ///
@@ -564,6 +597,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceAction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_action: Option<String>,
 
     ///
@@ -575,6 +609,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RevisionTarget")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub revision_target: Option<String>,
 
     ///
@@ -586,6 +621,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotateEncryptionKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rotate_encryption_key: Option<bool>,
 
     ///
@@ -599,6 +635,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotClusterIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_cluster_identifier: Option<String>,
 
     ///
@@ -612,6 +649,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotCopyGrantName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_copy_grant_name: Option<String>,
 
     ///
@@ -623,6 +661,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotCopyManual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_copy_manual: Option<bool>,
 
     ///
@@ -646,6 +685,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotCopyRetentionPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_copy_retention_period: Option<i64>,
 
     ///
@@ -661,6 +701,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SnapshotIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_identifier: Option<String>,
 
     ///
@@ -672,6 +713,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -685,6 +727,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
 }
 
@@ -942,6 +985,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<String>,
 
     ///
@@ -953,6 +997,7 @@ pub struct Endpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<String>,
 }
 
@@ -1014,6 +1059,7 @@ pub struct LoggingProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_key_prefix: Option<String>,
 }
 

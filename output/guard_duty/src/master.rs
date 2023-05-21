@@ -25,6 +25,7 @@ pub struct CfnMaster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InvitationId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invitation_id: Option<String>,
 
     ///

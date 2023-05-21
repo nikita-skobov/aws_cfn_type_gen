@@ -14,6 +14,7 @@ pub struct CfnTracker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnTracker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -48,6 +50,7 @@ pub struct CfnTracker {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PositionFiltering")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub position_filtering: Option<TrackerPositionFilteringEnum>,
 
     ///

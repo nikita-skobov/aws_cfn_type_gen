@@ -10,6 +10,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoRegistrationStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_registration_status: Option<String>,
 
     ///
@@ -36,6 +37,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_mode: Option<String>,
 
     ///
@@ -47,6 +49,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistrationConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub registration_config: Option<RegistrationConfig>,
 
     ///
@@ -58,6 +61,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveAutoRegistration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_auto_registration: Option<bool>,
 
     ///
@@ -84,6 +88,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -95,6 +100,7 @@ pub struct CfnCACertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VerificationCertificatePem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub verification_certificate_pem: Option<String>,
 }
 
@@ -128,6 +134,7 @@ pub struct RegistrationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -139,6 +146,7 @@ pub struct RegistrationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateBody")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_body: Option<String>,
 
     ///
@@ -150,6 +158,7 @@ pub struct RegistrationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_name: Option<String>,
 }
 

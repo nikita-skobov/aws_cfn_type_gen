@@ -18,6 +18,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<EIPDomainEnum>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_id: Option<String>,
 
     ///
@@ -46,6 +48,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkBorderGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_border_group: Option<String>,
 
     ///
@@ -59,6 +62,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicIpv4Pool")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_ipv4_pool: Option<String>,
 
     ///
@@ -72,6 +76,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -83,6 +88,7 @@ pub struct CfnEIP {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TransferAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transfer_address: Option<String>,
 }
 

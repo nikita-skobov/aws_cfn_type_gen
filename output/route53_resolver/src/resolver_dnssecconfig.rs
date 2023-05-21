@@ -14,6 +14,7 @@ pub struct CfnResolverDNSSECConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_id: Option<String>,
 }
 

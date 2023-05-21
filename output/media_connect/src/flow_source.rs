@@ -10,6 +10,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Decryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decryption: Option<Encryption>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntitlementArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entitlement_arn: Option<String>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FlowArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub flow_arn: Option<String>,
 
     ///
@@ -54,6 +57,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IngestPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ingest_port: Option<i64>,
 
     ///
@@ -65,6 +69,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxBitrate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_bitrate: Option<i64>,
 
     ///
@@ -76,6 +81,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxLatency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_latency: Option<i64>,
 
     ///
@@ -87,6 +93,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinLatency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_latency: Option<i64>,
 
     ///
@@ -111,6 +118,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<String>,
 
     ///
@@ -122,6 +130,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SenderControlPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sender_control_port: Option<i64>,
 
     ///
@@ -133,6 +142,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SenderIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sender_ip_address: Option<String>,
 
     ///
@@ -144,6 +154,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceListenerAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_listener_address: Option<String>,
 
     ///
@@ -155,6 +166,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceListenerPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_listener_port: Option<i64>,
 
     ///
@@ -166,6 +178,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_id: Option<String>,
 
     ///
@@ -177,6 +190,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcInterfaceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_interface_name: Option<String>,
 
     ///
@@ -188,6 +202,7 @@ pub struct CfnFlowSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WhitelistCidr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub whitelist_cidr: Option<String>,
 }
 
@@ -221,6 +236,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Algorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub algorithm: Option<String>,
 
     ///
@@ -232,6 +248,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantInitializationVector")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant_initialization_vector: Option<String>,
 
     ///
@@ -243,6 +260,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_id: Option<String>,
 
     ///
@@ -254,6 +272,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_type: Option<String>,
 
     ///
@@ -265,6 +284,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Region")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region: Option<String>,
 
     ///
@@ -276,6 +296,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_id: Option<String>,
 
     ///
@@ -298,6 +319,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_arn: Option<String>,
 
     ///
@@ -309,6 +331,7 @@ pub struct Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
 }
 

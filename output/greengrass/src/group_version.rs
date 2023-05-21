@@ -10,6 +10,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConnectorDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connector_definition_version_arn: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CoreDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub core_definition_version_arn: Option<String>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_definition_version_arn: Option<String>,
 
     ///
@@ -43,6 +46,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_definition_version_arn: Option<String>,
 
     ///
@@ -65,6 +69,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggerDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logger_definition_version_arn: Option<String>,
 
     ///
@@ -76,6 +81,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_definition_version_arn: Option<String>,
 
     ///
@@ -87,6 +93,7 @@ pub struct CfnGroupVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubscriptionDefinitionVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription_definition_version_arn: Option<String>,
 }
 

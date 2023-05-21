@@ -154,6 +154,7 @@ pub struct Column {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<String>,
 
     ///
@@ -188,6 +189,7 @@ pub struct Column {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -292,6 +294,7 @@ pub struct Order {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_order: Option<i64>,
 }
 
@@ -357,6 +360,7 @@ pub struct PartitionInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -368,6 +372,7 @@ pub struct PartitionInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StorageDescriptor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_descriptor: Option<StorageDescriptor>,
 
     ///
@@ -414,6 +419,7 @@ pub struct SchemaId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub registry_name: Option<String>,
 
     ///
@@ -425,6 +431,7 @@ pub struct SchemaId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_arn: Option<String>,
 
     ///
@@ -436,6 +443,7 @@ pub struct SchemaId {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_name: Option<String>,
 }
 
@@ -465,6 +473,7 @@ pub struct SchemaReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_id: Option<SchemaId>,
 
     ///
@@ -476,6 +485,7 @@ pub struct SchemaReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_version_id: Option<String>,
 
     ///
@@ -487,6 +497,7 @@ pub struct SchemaReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersionNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_version_number: Option<i64>,
 }
 
@@ -520,6 +531,7 @@ pub struct SerdeInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -531,6 +543,7 @@ pub struct SerdeInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -542,6 +555,7 @@ pub struct SerdeInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SerializationLibrary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub serialization_library: Option<String>,
 }
 
@@ -571,6 +585,7 @@ pub struct SkewedInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkewedColumnNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub skewed_column_names: Option<Vec<String>>,
 
     ///
@@ -582,6 +597,7 @@ pub struct SkewedInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkewedColumnValueLocationMaps")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub skewed_column_value_location_maps: Option<serde_json::Value>,
 
     ///
@@ -593,6 +609,7 @@ pub struct SkewedInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkewedColumnValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub skewed_column_values: Option<Vec<String>>,
 }
 
@@ -622,6 +639,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_columns: Option<Vec<String>>,
 
     ///
@@ -633,6 +651,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub columns: Option<Vec<Column>>,
 
     ///
@@ -644,6 +663,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compressed")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compressed: Option<bool>,
 
     ///
@@ -659,6 +679,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_format: Option<String>,
 
     ///
@@ -674,6 +695,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<String>,
 
     ///
@@ -687,6 +709,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfBuckets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_buckets: Option<i64>,
 
     ///
@@ -702,6 +725,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_format: Option<String>,
 
     ///
@@ -713,6 +737,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -724,6 +749,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaReference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_reference: Option<SchemaReference>,
 
     ///
@@ -735,6 +761,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SerdeInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub serde_info: Option<SerdeInfo>,
 
     ///
@@ -746,6 +773,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkewedInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub skewed_info: Option<SkewedInfo>,
 
     ///
@@ -757,6 +785,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SortColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort_columns: Option<Vec<Order>>,
 
     ///
@@ -768,6 +797,7 @@ pub struct StorageDescriptor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StoredAsSubDirectories")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stored_as_sub_directories: Option<bool>,
 }
 

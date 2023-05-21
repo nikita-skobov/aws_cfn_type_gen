@@ -54,6 +54,7 @@ pub struct ConnectionInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_properties: Option<serde_json::Value>,
 
     ///
@@ -92,6 +93,7 @@ pub struct ConnectionInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -105,6 +107,7 @@ pub struct ConnectionInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MatchCriteria")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub match_criteria: Option<Vec<String>>,
 
     ///
@@ -122,6 +125,7 @@ pub struct ConnectionInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -133,6 +137,7 @@ pub struct ConnectionInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PhysicalConnectionRequirements")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub physical_connection_requirements: Option<PhysicalConnectionRequirements>,
 }
 
@@ -254,6 +259,7 @@ pub struct PhysicalConnectionRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -267,6 +273,7 @@ pub struct PhysicalConnectionRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIdList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_id_list: Option<Vec<String>>,
 
     ///
@@ -284,6 +291,7 @@ pub struct PhysicalConnectionRequirements {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_id: Option<String>,
 }
 

@@ -14,6 +14,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptanceRequired")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acceptance_required: Option<bool>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContributorInsightsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contributor_insights_enabled: Option<bool>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GatewayLoadBalancerArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gateway_load_balancer_arns: Option<Vec<String>>,
 
     ///
@@ -47,6 +50,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkLoadBalancerArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_load_balancer_arns: Option<Vec<String>>,
 
     ///
@@ -60,6 +64,7 @@ pub struct CfnVPCEndpointService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayerResponsibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payer_responsibility: Option<VPCEndpointServicePayerResponsibilityEnum>,
 }
 

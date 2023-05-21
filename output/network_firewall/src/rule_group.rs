@@ -25,6 +25,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -36,6 +37,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_group: Option<Box<RuleGroup>>,
 
     ///
@@ -68,6 +70,7 @@ pub struct CfnRuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -169,6 +172,7 @@ pub struct ActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublishMetricAction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publish_metric_action: Option<PublishMetricAction>,
 }
 
@@ -690,6 +694,7 @@ pub struct IPSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition: Option<Vec<String>>,
 }
 
@@ -725,6 +730,7 @@ pub struct IPSetReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reference_arn: Option<String>,
 }
 
@@ -774,6 +780,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationPorts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_ports: Option<Vec<PortRange>>,
 
     ///
@@ -785,6 +792,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Destinations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destinations: Option<Vec<Address>>,
 
     ///
@@ -796,6 +804,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocols")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocols: Option<Vec<i64>>,
 
     ///
@@ -809,6 +818,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourcePorts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_ports: Option<Vec<PortRange>>,
 
     ///
@@ -820,6 +830,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sources: Option<Vec<Address>>,
 
     ///
@@ -831,6 +842,7 @@ pub struct MatchAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TCPFlags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcpflags: Option<Vec<TCPFlagField>>,
 }
 
@@ -944,6 +956,7 @@ pub struct PortSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition: Option<Vec<String>>,
 }
 
@@ -1013,6 +1026,7 @@ pub struct ReferenceSets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSetReferences")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipset_references: Option<std::collections::HashMap<String, IPSetReference>>,
 }
 
@@ -1098,6 +1112,7 @@ pub struct RuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceSets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reference_sets: Option<ReferenceSets>,
 
     ///
@@ -1109,6 +1124,7 @@ pub struct RuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_variables: Option<RuleVariables>,
 
     ///
@@ -1131,6 +1147,7 @@ pub struct RuleGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulRuleOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stateful_rule_options: Option<StatefulRuleOptions>,
 }
 
@@ -1191,6 +1208,7 @@ pub struct RuleOption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Settings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub settings: Option<Vec<String>>,
 }
 
@@ -1238,6 +1256,7 @@ pub struct RuleVariables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IPSets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipsets: Option<std::collections::HashMap<String, IPSet>>,
 
     ///
@@ -1249,6 +1268,7 @@ pub struct RuleVariables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortSets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_sets: Option<std::collections::HashMap<String, PortSet>>,
 }
 
@@ -1278,6 +1298,7 @@ pub struct RulesSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RulesSourceList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rules_source_list: Option<RulesSourceList>,
 
     ///
@@ -1295,6 +1316,7 @@ pub struct RulesSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RulesString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rules_string: Option<String>,
 
     ///
@@ -1306,6 +1328,7 @@ pub struct RulesSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatefulRules")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stateful_rules: Option<Vec<StatefulRule>>,
 
     ///
@@ -1317,6 +1340,7 @@ pub struct RulesSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatelessRulesAndCustomActions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stateless_rules_and_custom_actions: Option<StatelessRulesAndCustomActions>,
 }
 
@@ -1534,6 +1558,7 @@ pub struct StatefulRuleOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_order: Option<StatefulRuleOptionsRuleOrderEnum>,
 }
 
@@ -1648,6 +1673,7 @@ pub struct StatelessRulesAndCustomActions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomActions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_actions: Option<Vec<CustomAction>>,
 
     ///
@@ -1707,6 +1733,7 @@ pub struct TCPFlagField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Masks")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub masks: Option<Vec<String>>,
 }
 

@@ -14,6 +14,7 @@ pub struct CfnResolverQueryLoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DestinationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_arn: Option<String>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnResolverQueryLoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 

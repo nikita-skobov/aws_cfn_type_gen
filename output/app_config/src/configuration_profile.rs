@@ -31,6 +31,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -82,6 +83,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetrievalRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retrieval_role_arn: Option<String>,
 
     ///
@@ -93,6 +95,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tags>>,
 
     ///
@@ -110,6 +113,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 
     ///
@@ -123,6 +127,7 @@ pub struct CfnConfigurationProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Validators")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validators: Option<Vec<Validators>>,
 }
 
@@ -233,6 +238,7 @@ pub struct Tags {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -244,6 +250,7 @@ pub struct Tags {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -277,6 +284,7 @@ pub struct Validators {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Content")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content: Option<String>,
 
     ///
@@ -290,6 +298,7 @@ pub struct Validators {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ValidatorsTypeEnum>,
 }
 

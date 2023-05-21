@@ -12,6 +12,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups: Option<Vec<String>>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoginProfile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub login_profile: Option<LoginProfile>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicyArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_policy_arns: Option<Vec<String>>,
 
     ///
@@ -61,6 +64,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 
     ///
@@ -76,6 +80,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PermissionsBoundary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions_boundary: Option<String>,
 
     ///
@@ -91,6 +96,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policies: Option<Vec<Policy>>,
 
     ///
@@ -106,6 +112,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -125,6 +132,7 @@ pub struct CfnUser {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_name: Option<String>,
 }
 
@@ -196,6 +204,7 @@ pub struct LoginProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PasswordResetRequired")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password_reset_required: Option<bool>,
 }
 

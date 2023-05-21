@@ -29,6 +29,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CNAMEPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cnameprefix: Option<String>,
 
     ///
@@ -42,6 +43,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -65,6 +67,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnvironmentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_name: Option<String>,
 
     ///
@@ -82,6 +85,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperationsRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operations_role: Option<String>,
 
     ///
@@ -93,6 +97,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OptionSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub option_settings: Option<Vec<OptionSetting>>,
 
     ///
@@ -106,6 +111,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlatformArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform_arn: Option<String>,
 
     ///
@@ -119,6 +125,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SolutionStackName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub solution_stack_name: Option<String>,
 
     ///
@@ -130,6 +137,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -147,6 +155,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_name: Option<String>,
 
     ///
@@ -158,6 +167,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tier: Option<Tier>,
 
     ///
@@ -175,6 +185,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_label: Option<String>,
 }
 
@@ -353,6 +364,7 @@ pub struct OptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_name: Option<String>,
 
     ///
@@ -364,6 +376,7 @@ pub struct OptionSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -459,6 +472,7 @@ pub struct Tier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -474,6 +488,7 @@ pub struct Tier {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 
     ///
@@ -487,6 +502,7 @@ pub struct Tier {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 

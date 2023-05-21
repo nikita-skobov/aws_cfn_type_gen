@@ -9,6 +9,7 @@ pub struct CfnModelBiasJobDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_name: Option<String>,
 
     ///
@@ -20,6 +21,7 @@ pub struct CfnModelBiasJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "JobDefinitionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_definition_name: Option<String>,
 
     ///
@@ -53,6 +55,7 @@ pub struct CfnModelBiasJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ModelBiasBaselineConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_bias_baseline_config: Option<ModelBiasBaselineConfig>,
 
     ///
@@ -86,6 +89,7 @@ pub struct CfnModelBiasJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_config: Option<NetworkConfig>,
 
     ///
@@ -108,6 +112,7 @@ pub struct CfnModelBiasJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StoppingCondition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stopping_condition: Option<StoppingCondition>,
 
     ///
@@ -121,6 +126,7 @@ pub struct CfnModelBiasJobDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -189,6 +195,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndTimeOffset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_time_offset: Option<String>,
 
     /// Property description not available.
@@ -199,6 +206,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeaturesAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub features_attribute: Option<String>,
 
     /// Property description not available.
@@ -209,6 +217,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_attribute: Option<String>,
 
     /// Property description not available.
@@ -229,6 +238,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub probability_attribute: Option<String>,
 
     /// Property description not available.
@@ -239,6 +249,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityThresholdAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub probability_threshold_attribute: Option<f64>,
 
     /// Property description not available.
@@ -249,6 +260,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3DataDistributionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_data_distribution_type: Option<String>,
 
     /// Property description not available.
@@ -259,6 +271,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3InputMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_input_mode: Option<String>,
 
     /// Property description not available.
@@ -269,6 +282,7 @@ pub struct BatchTransformInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartTimeOffset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time_offset: Option<String>,
 }
 
@@ -322,6 +336,7 @@ pub struct ClusterConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VolumeKmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_kms_key_id: Option<String>,
 
     ///
@@ -362,6 +377,7 @@ pub struct ConstraintsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_uri: Option<String>,
 }
 
@@ -390,6 +406,7 @@ pub struct Csv {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Header")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header: Option<bool>,
 }
 
@@ -418,6 +435,7 @@ pub struct DatasetFormat {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Csv")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv: Option<Csv>,
 
     /// Property description not available.
@@ -428,6 +446,7 @@ pub struct DatasetFormat {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Json")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json: Option<Json>,
 
     /// Property description not available.
@@ -438,6 +457,7 @@ pub struct DatasetFormat {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Parquet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parquet: Option<bool>,
 }
 
@@ -477,6 +497,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndTimeOffset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_time_offset: Option<String>,
 
     ///
@@ -503,6 +524,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeaturesAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub features_attribute: Option<String>,
 
     ///
@@ -514,6 +536,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InferenceAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_attribute: Option<String>,
 
     ///
@@ -540,6 +563,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub probability_attribute: Option<String>,
 
     ///
@@ -551,6 +575,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityThresholdAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub probability_threshold_attribute: Option<f64>,
 
     ///
@@ -564,6 +589,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3DataDistributionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_data_distribution_type: Option<EndpointInputS3DataDistributionTypeEnum>,
 
     ///
@@ -577,6 +603,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3InputMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_input_mode: Option<EndpointInputS3InputModeEnum>,
 
     ///
@@ -594,6 +621,7 @@ pub struct EndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartTimeOffset")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time_offset: Option<String>,
 }
 
@@ -710,6 +738,7 @@ pub struct Json {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Line")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line: Option<bool>,
 }
 
@@ -754,6 +783,7 @@ pub struct ModelBiasAppSpecification {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -822,6 +852,7 @@ pub struct ModelBiasBaselineConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BaseliningJobName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub baselining_job_name: Option<String>,
 
     ///
@@ -833,6 +864,7 @@ pub struct ModelBiasBaselineConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConstraintsResource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constraints_resource: Option<ConstraintsResource>,
 }
 
@@ -883,6 +915,7 @@ pub struct ModelBiasJobInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BatchTransformInput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_transform_input: Option<BatchTransformInput>,
 
     ///
@@ -894,6 +927,7 @@ pub struct ModelBiasJobInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointInput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_input: Option<EndpointInput>,
 
     ///
@@ -1021,6 +1055,7 @@ pub struct MonitoringOutputConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -1112,6 +1147,7 @@ pub struct NetworkConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableInterContainerTrafficEncryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_inter_container_traffic_encryption: Option<bool>,
 
     ///
@@ -1123,6 +1159,7 @@ pub struct NetworkConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnableNetworkIsolation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_network_isolation: Option<bool>,
 
     ///
@@ -1134,6 +1171,7 @@ pub struct NetworkConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
 }
 
@@ -1178,6 +1216,7 @@ pub struct S3Output {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3UploadMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_upload_mode: Option<String>,
 
     ///

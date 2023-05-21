@@ -10,6 +10,7 @@ pub struct CfnResourcePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BypassPolicyLockoutCheck")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bypass_policy_lockout_check: Option<bool>,
 
     ///

@@ -27,6 +27,7 @@ pub struct CfnSqlInjectionMatchSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqlInjectionMatchTuples")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sql_injection_match_tuples: Option<Vec<SqlInjectionMatchTuple>>,
 }
 
@@ -84,6 +85,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Data")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data: Option<String>,
 
     ///

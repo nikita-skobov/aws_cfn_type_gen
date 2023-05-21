@@ -20,6 +20,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcStartPosition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdc_start_position: Option<String>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcStartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdc_start_time: Option<f64>,
 
     ///
@@ -46,6 +48,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcStopPosition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdc_stop_position: Option<String>,
 
     ///
@@ -85,6 +88,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationTaskIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_task_identifier: Option<String>,
 
     ///
@@ -96,6 +100,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationTaskSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_task_settings: Option<String>,
 
     ///
@@ -109,6 +114,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_identifier: Option<String>,
 
     ///
@@ -142,6 +148,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -163,6 +170,7 @@ pub struct CfnReplicationTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_data: Option<String>,
 }
 

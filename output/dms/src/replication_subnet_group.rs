@@ -21,6 +21,7 @@ pub struct CfnReplicationSubnetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReplicationSubnetGroupIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_subnet_group_identifier: Option<String>,
 
     ///
@@ -43,6 +44,7 @@ pub struct CfnReplicationSubnetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

@@ -14,6 +14,7 @@ pub struct CfnPlacementGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PartitionCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partition_count: Option<i64>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnPlacementGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SpreadLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spread_level: Option<PlacementGroupSpreadLevelEnum>,
 
     ///
@@ -42,6 +44,7 @@ pub struct CfnPlacementGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Strategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub strategy: Option<PlacementGroupStrategyEnum>,
 
     ///
@@ -53,6 +56,7 @@ pub struct CfnPlacementGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

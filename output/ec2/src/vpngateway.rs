@@ -12,6 +12,7 @@ pub struct CfnVPNGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AmazonSideAsn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub amazon_side_asn: Option<i64>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnVPNGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///

@@ -10,6 +10,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventCategories")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_categories: Option<Vec<String>>,
 
     ///
@@ -47,6 +49,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_ids: Option<Vec<String>>,
 
     ///
@@ -60,6 +63,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_type: Option<String>,
 
     ///
@@ -71,6 +75,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubscriptionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription_name: Option<String>,
 
     ///
@@ -82,6 +87,7 @@ pub struct CfnEventSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

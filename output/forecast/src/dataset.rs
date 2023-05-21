@@ -28,6 +28,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataFrequency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_frequency: Option<String>,
 
     ///
@@ -82,6 +83,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_config: Option<EncryptionConfig>,
 
     ///
@@ -106,6 +108,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagsItems>>,
 }
 
@@ -234,6 +237,7 @@ pub struct AttributesItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attribute_name: Option<String>,
 
     /// Property description not available.
@@ -244,6 +248,7 @@ pub struct AttributesItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributeType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attribute_type: Option<String>,
 }
 
@@ -277,6 +282,7 @@ pub struct EncryptionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<String>,
 
     ///
@@ -294,6 +300,7 @@ pub struct EncryptionConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 }
 
@@ -343,6 +350,7 @@ pub struct Schema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<Vec<AttributesItems>>,
 }
 

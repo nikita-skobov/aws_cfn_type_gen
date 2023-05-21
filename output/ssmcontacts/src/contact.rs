@@ -44,6 +44,7 @@ pub struct CfnContact {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Plan")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub plan: Option<Vec<Stage>>,
 
     ///
@@ -299,6 +300,7 @@ pub struct Stage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_in_minutes: Option<i64>,
 
     /// Property description not available.
@@ -309,6 +311,7 @@ pub struct Stage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RotationIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rotation_ids: Option<Vec<String>>,
 
     ///
@@ -320,6 +323,7 @@ pub struct Stage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub targets: Option<Vec<Targets>>,
 }
 
@@ -367,6 +371,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelTargetInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub channel_target_info: Option<ChannelTargetInfo>,
 
     ///
@@ -378,6 +383,7 @@ pub struct Targets {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactTargetInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contact_target_info: Option<ContactTargetInfo>,
 }
 

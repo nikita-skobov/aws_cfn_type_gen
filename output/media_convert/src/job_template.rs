@@ -14,6 +14,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccelerationSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acceleration_settings: Option<AccelerationSettings>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -47,6 +50,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HopDestinations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hop_destinations: Option<Vec<HopDestination>>,
 
     ///
@@ -58,6 +62,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -69,6 +74,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i64>,
 
     ///
@@ -80,6 +86,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Queue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue: Option<String>,
 
     ///
@@ -136,6 +143,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatusUpdateInterval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status_update_interval: Option<String>,
 
     ///
@@ -149,6 +157,7 @@ pub struct CfnJobTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 }
 
@@ -220,6 +229,7 @@ pub struct HopDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i64>,
 
     ///
@@ -231,6 +241,7 @@ pub struct HopDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Queue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue: Option<String>,
 
     ///
@@ -242,6 +253,7 @@ pub struct HopDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub wait_minutes: Option<i64>,
 }
 

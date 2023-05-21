@@ -18,6 +18,7 @@ pub struct CfnFirewallDomainList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainFileUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_file_url: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnFirewallDomainList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domains")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domains: Option<Vec<String>>,
 
     ///
@@ -44,6 +46,7 @@ pub struct CfnFirewallDomainList {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -57,6 +60,7 @@ pub struct CfnFirewallDomainList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

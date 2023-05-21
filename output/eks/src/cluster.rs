@@ -20,6 +20,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_config: Option<Vec<EncryptionConfig>>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KubernetesNetworkConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kubernetes_network_config: Option<KubernetesNetworkConfig>,
 
     ///
@@ -42,6 +44,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging: Option<Logging>,
 
     ///
@@ -59,6 +62,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -70,6 +74,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OutpostConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outpost_config: Option<OutpostConfig>,
 
     ///
@@ -107,6 +112,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -120,6 +126,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 
@@ -190,6 +197,7 @@ pub struct ClusterLogging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnabledTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled_types: Option<Vec<LoggingTypeConfig>>,
 }
 
@@ -219,6 +227,7 @@ pub struct ControlPlanePlacement {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_name: Option<String>,
 }
 
@@ -248,6 +257,7 @@ pub struct EncryptionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Provider")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provider: Option<Provider>,
 
     ///
@@ -259,6 +269,7 @@ pub struct EncryptionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Resources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resources: Option<Vec<String>>,
 }
 
@@ -296,6 +307,7 @@ pub struct KubernetesNetworkConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpFamily")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_family: Option<KubernetesNetworkConfigIpFamilyEnum>,
 
     ///
@@ -311,6 +323,7 @@ pub struct KubernetesNetworkConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIpv4Cidr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_ipv4_cidr: Option<String>,
 
     ///
@@ -322,6 +335,7 @@ pub struct KubernetesNetworkConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceIpv6Cidr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_ipv6_cidr: Option<String>,
 }
 
@@ -368,6 +382,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterLogging")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_logging: Option<ClusterLogging>,
 }
 
@@ -401,6 +416,7 @@ pub struct LoggingTypeConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -445,6 +461,7 @@ pub struct OutpostConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ControlPlanePlacement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub control_plane_placement: Option<ControlPlanePlacement>,
 
     ///
@@ -489,6 +506,7 @@ pub struct Provider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_arn: Option<String>,
 }
 
@@ -518,6 +536,7 @@ pub struct ResourcesVpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointPrivateAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_private_access: Option<bool>,
 
     ///
@@ -529,6 +548,7 @@ pub struct ResourcesVpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointPublicAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_public_access: Option<bool>,
 
     ///
@@ -540,6 +560,7 @@ pub struct ResourcesVpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicAccessCidrs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_access_cidrs: Option<Vec<String>>,
 
     ///
@@ -551,6 +572,7 @@ pub struct ResourcesVpcConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///

@@ -14,6 +14,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecursiveDeleteOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recursive_delete_option: Option<bool>,
 
     ///
@@ -51,6 +53,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<WorkGroupStateEnum>,
 
     ///
@@ -62,6 +65,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -73,6 +77,7 @@ pub struct CfnWorkGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkGroupConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub work_group_configuration: Option<WorkGroupConfiguration>,
 }
 
@@ -212,6 +217,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key: Option<String>,
 }
 
@@ -266,6 +272,7 @@ pub struct EngineVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EffectiveEngineVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub effective_engine_version: Option<String>,
 
     ///
@@ -281,6 +288,7 @@ pub struct EngineVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelectedEngineVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selected_engine_version: Option<String>,
 }
 
@@ -339,6 +347,7 @@ pub struct ResultConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AclConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acl_configuration: Option<AclConfiguration>,
 
     ///
@@ -350,6 +359,7 @@ pub struct ResultConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     /// Property description not available.
@@ -360,6 +370,7 @@ pub struct ResultConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpectedBucketOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expected_bucket_owner: Option<String>,
 
     ///
@@ -371,6 +382,7 @@ pub struct ResultConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputLocation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_location: Option<String>,
 }
 
@@ -451,6 +463,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_configuration: Option<String>,
 
     ///
@@ -464,6 +477,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BytesScannedCutoffPerQuery")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bytes_scanned_cutoff_per_query: Option<i64>,
 
     /// Property description not available.
@@ -474,6 +488,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerContentEncryptionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customer_content_encryption_configuration: Option<CustomerContentEncryptionConfiguration>,
 
     ///
@@ -485,6 +500,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnforceWorkGroupConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enforce_work_group_configuration: Option<bool>,
 
     /// Property description not available.
@@ -495,6 +511,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine_version: Option<EngineVersion>,
 
     /// Property description not available.
@@ -505,6 +522,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_role: Option<String>,
 
     ///
@@ -516,6 +534,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublishCloudWatchMetricsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub publish_cloud_watch_metrics_enabled: Option<bool>,
 
     ///
@@ -527,6 +546,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequesterPaysEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub requester_pays_enabled: Option<bool>,
 
     ///
@@ -538,6 +558,7 @@ pub struct WorkGroupConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResultConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub result_configuration: Option<ResultConfiguration>,
 }
 

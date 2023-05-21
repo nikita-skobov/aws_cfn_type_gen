@@ -10,6 +10,7 @@ pub struct CfnRobotApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrentRevisionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub current_revision_id: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnRobotApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<String>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnRobotApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -60,6 +63,7 @@ pub struct CfnRobotApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sources: Option<Vec<SourceConfig>>,
 
     ///
@@ -71,6 +75,7 @@ pub struct CfnRobotApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -135,6 +140,7 @@ pub struct RobotSoftwareSuite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<RobotSoftwareSuiteVersionEnum>,
 }
 

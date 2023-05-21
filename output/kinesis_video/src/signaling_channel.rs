@@ -16,6 +16,7 @@ pub struct CfnSignalingChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageTtlSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_ttl_seconds: Option<i64>,
 
     ///
@@ -33,6 +34,7 @@ pub struct CfnSignalingChannel {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -46,6 +48,7 @@ pub struct CfnSignalingChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -59,6 +62,7 @@ pub struct CfnSignalingChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<SignalingChannelTypeEnum>,
 }
 

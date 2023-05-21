@@ -21,6 +21,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AuthorizerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_name: Option<String>,
 
     /// Property description not available.
@@ -31,6 +32,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableCachingForHttp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_caching_for_http: Option<bool>,
 
     ///
@@ -42,6 +44,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SigningDisabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub signing_disabled: Option<bool>,
 
     ///
@@ -55,6 +58,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 
     ///
@@ -68,6 +72,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -79,6 +84,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenKeyName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub token_key_name: Option<String>,
 
     ///
@@ -90,6 +96,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenSigningPublicKeys")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub token_signing_public_keys: Option<std::collections::HashMap<String, String>>,
 }
 

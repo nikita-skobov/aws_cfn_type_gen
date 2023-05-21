@@ -14,6 +14,7 @@ pub struct CfnLoggerDefinition {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InitialVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub initial_version: Option<LoggerDefinitionVersion>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnLoggerDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 }
 
@@ -108,6 +110,7 @@ pub struct Logger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Space")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub space: Option<i64>,
 
     ///

@@ -12,6 +12,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name: Option<String>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainNameServers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name_servers: Option<Vec<String>>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetbiosNameServers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub netbios_name_servers: Option<Vec<String>>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetbiosNodeType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub netbios_node_type: Option<i64>,
 
     ///
@@ -56,6 +60,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NtpServers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ntp_servers: Option<Vec<String>>,
 
     ///
@@ -67,6 +72,7 @@ pub struct CfnDHCPOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

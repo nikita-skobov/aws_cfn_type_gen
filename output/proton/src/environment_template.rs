@@ -16,6 +16,7 @@ pub struct CfnEnvironmentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnEnvironmentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
 
     ///
@@ -48,6 +50,7 @@ pub struct CfnEnvironmentTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_key: Option<String>,
 
     ///
@@ -65,6 +68,7 @@ pub struct CfnEnvironmentTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -78,6 +82,7 @@ pub struct CfnEnvironmentTemplate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Provisioning")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning: Option<EnvironmentTemplateProvisioningEnum>,
 
     ///
@@ -93,6 +98,7 @@ pub struct CfnEnvironmentTemplate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

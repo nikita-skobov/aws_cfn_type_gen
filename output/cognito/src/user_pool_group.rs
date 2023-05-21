@@ -14,6 +14,7 @@ pub struct CfnUserPoolGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnUserPoolGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_name: Option<String>,
 
     ///
@@ -48,6 +50,7 @@ pub struct CfnUserPoolGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Precedence")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub precedence: Option<f64>,
 
     ///
@@ -65,6 +68,7 @@ pub struct CfnUserPoolGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///

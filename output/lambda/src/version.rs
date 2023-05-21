@@ -10,6 +10,7 @@ pub struct CfnVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeSha256")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_sha256: Option<String>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -57,6 +59,7 @@ pub struct CfnVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedConcurrencyConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
 }
 

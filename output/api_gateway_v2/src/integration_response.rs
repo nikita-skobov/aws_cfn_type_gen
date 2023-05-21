@@ -27,6 +27,7 @@ pub struct CfnIntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentHandlingStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_handling_strategy: Option<String>,
 
     ///
@@ -60,6 +61,7 @@ pub struct CfnIntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_parameters: Option<serde_json::Value>,
 
     ///
@@ -71,6 +73,7 @@ pub struct CfnIntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseTemplates")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_templates: Option<serde_json::Value>,
 
     ///
@@ -82,6 +85,7 @@ pub struct CfnIntegrationResponse {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TemplateSelectionExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub template_selection_expression: Option<String>,
 }
 

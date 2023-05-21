@@ -25,6 +25,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub basic_auth_config: Option<BasicAuthConfig>,
 
     ///
@@ -55,6 +56,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub build_spec: Option<String>,
 
     ///
@@ -70,6 +72,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -81,6 +84,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableAutoBuild")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_auto_build: Option<bool>,
 
     ///
@@ -94,6 +98,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePerformanceMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_performance_mode: Option<bool>,
 
     ///
@@ -109,6 +114,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnablePullRequestPreview")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_pull_request_preview: Option<bool>,
 
     ///
@@ -120,6 +126,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_variables: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -131,6 +138,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Framework")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framework: Option<String>,
 
     ///
@@ -152,6 +160,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PullRequestEnvironmentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pull_request_environment_name: Option<String>,
 
     ///
@@ -165,6 +174,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage: Option<BranchStageEnum>,
 
     ///
@@ -176,6 +186,7 @@ pub struct CfnBranch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -238,6 +249,7 @@ pub struct BasicAuthConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableBasicAuth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_basic_auth: Option<bool>,
 
     ///

@@ -21,6 +21,7 @@ pub struct CfnAccessLogSubscription {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_identifier: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnAccessLogSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

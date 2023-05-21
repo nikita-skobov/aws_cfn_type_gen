@@ -35,6 +35,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventSourceToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_source_token: Option<String>,
 
     ///
@@ -69,6 +70,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FunctionUrlAuthType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_url_auth_type: Option<PermissionFunctionUrlAuthTypeEnum>,
 
     ///
@@ -99,6 +101,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PrincipalOrgID")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub principal_org_id: Option<String>,
 
     ///
@@ -114,6 +117,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_account: Option<String>,
 
     ///
@@ -129,6 +133,7 @@ pub struct CfnPermission {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_arn: Option<String>,
 }
 

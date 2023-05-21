@@ -10,6 +10,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_field: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_type: Option<AggregationType>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -43,6 +46,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IndexName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub index_name: Option<String>,
 
     ///
@@ -65,6 +69,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Period")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period: Option<i64>,
 
     ///
@@ -76,6 +81,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string: Option<String>,
 
     ///
@@ -87,6 +93,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_version: Option<String>,
 
     ///
@@ -98,6 +105,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -109,6 +117,7 @@ pub struct CfnFleetMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<String>,
 }
 

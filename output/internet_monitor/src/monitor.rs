@@ -14,6 +14,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InternetMeasurementsLogDelivery")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub internet_measurements_log_delivery: Option<InternetMeasurementsLogDelivery>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCityNetworksToMonitor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_city_networks_to_monitor: Option<i64>,
 
     ///
@@ -49,6 +51,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Resources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resources: Option<Vec<String>>,
 
     ///
@@ -64,6 +67,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcesToAdd")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resources_to_add: Option<Vec<String>>,
 
     ///
@@ -75,6 +79,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcesToRemove")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resources_to_remove: Option<Vec<String>>,
 
     ///
@@ -86,6 +91,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 
     ///
@@ -97,6 +103,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -108,6 +115,7 @@ pub struct CfnMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrafficPercentageToMonitor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub traffic_percentage_to_monitor: Option<i64>,
 }
 
@@ -141,6 +149,7 @@ pub struct InternetMeasurementsLogDelivery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Config")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_config: Option<S3Config>,
 }
 
@@ -174,6 +183,7 @@ pub struct S3Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<String>,
 
     ///
@@ -185,6 +195,7 @@ pub struct S3Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_prefix: Option<String>,
 
     ///
@@ -196,6 +207,7 @@ pub struct S3Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogDeliveryStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_delivery_status: Option<String>,
 }
 

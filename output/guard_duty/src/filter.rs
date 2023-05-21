@@ -94,6 +94,7 @@ pub struct CfnFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -196,6 +197,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Eq")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub eq: Option<Vec<String>>,
 
     ///
@@ -207,6 +209,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Equals")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub equals: Option<Vec<String>>,
 
     ///
@@ -218,6 +221,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GreaterThan")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub greater_than: Option<i64>,
 
     ///
@@ -229,6 +233,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GreaterThanOrEqual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub greater_than_or_equal: Option<i64>,
 
     ///
@@ -240,6 +245,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gt: Option<i64>,
 
     ///
@@ -251,6 +257,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Gte")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gte: Option<i64>,
 
     ///
@@ -262,6 +269,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LessThan")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub less_than: Option<i64>,
 
     ///
@@ -273,6 +281,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LessThanOrEqual")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub less_than_or_equal: Option<i64>,
 
     ///
@@ -284,6 +293,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lt: Option<i64>,
 
     ///
@@ -295,6 +305,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lte")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lte: Option<i64>,
 
     ///
@@ -306,6 +317,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Neq")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub neq: Option<Vec<String>>,
 
     ///
@@ -317,6 +329,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotEquals")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub not_equals: Option<Vec<String>>,
 }
 
@@ -350,6 +363,7 @@ pub struct FindingCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Criterion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub criterion: Option<serde_json::Value>,
 
     ///
@@ -361,6 +375,7 @@ pub struct FindingCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ItemType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub item_type: Option<Condition>,
 }
 

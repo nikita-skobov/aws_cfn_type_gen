@@ -16,6 +16,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -82,6 +83,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedConcurrencyConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
 
     ///
@@ -93,6 +95,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoutingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub routing_config: Option<AliasRoutingConfiguration>,
 }
 

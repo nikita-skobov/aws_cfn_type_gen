@@ -24,6 +24,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups: Option<Vec<String>>,
 
     ///
@@ -81,6 +82,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub roles: Option<Vec<String>>,
 
     ///
@@ -100,6 +102,7 @@ pub struct CfnPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Users")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub users: Option<Vec<String>>,
 }
 

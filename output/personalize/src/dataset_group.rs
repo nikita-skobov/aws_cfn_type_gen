@@ -14,6 +14,7 @@ pub struct CfnDatasetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Domain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<DatasetGroupDomainEnum>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnDatasetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<String>,
 
     ///
@@ -61,6 +63,7 @@ pub struct CfnDatasetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 }
 

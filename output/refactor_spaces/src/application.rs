@@ -12,6 +12,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApiGatewayProxy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_gateway_proxy: Option<ApiGatewayProxyInput>,
 
     ///
@@ -56,6 +57,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -102,6 +104,7 @@ pub struct ApiGatewayProxyInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_type: Option<String>,
 
     ///
@@ -113,6 +116,7 @@ pub struct ApiGatewayProxyInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StageName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage_name: Option<String>,
 }
 

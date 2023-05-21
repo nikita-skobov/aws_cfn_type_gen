@@ -10,6 +10,7 @@ pub struct CfnInstanceGroupConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoScalingPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_scaling_policy: Option<AutoScalingPolicy>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnInstanceGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BidPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bid_price: Option<String>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnInstanceGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Configurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configurations: Option<Vec<Configuration>>,
 
     ///
@@ -57,6 +60,7 @@ pub struct CfnInstanceGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomAmiId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_ami_id: Option<String>,
 
     ///
@@ -68,6 +72,7 @@ pub struct CfnInstanceGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EbsConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_configuration: Option<EbsConfiguration>,
 
     ///
@@ -133,6 +138,7 @@ pub struct CfnInstanceGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Market")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub market: Option<InstanceGroupConfigMarketEnum>,
 
     ///
@@ -150,6 +156,7 @@ pub struct CfnInstanceGroupConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -344,6 +351,7 @@ pub struct CloudWatchAlarmDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Dimensions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<MetricDimension>>,
 
     ///
@@ -355,6 +363,7 @@ pub struct CloudWatchAlarmDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluationPeriods")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub evaluation_periods: Option<i64>,
 
     ///
@@ -377,6 +386,7 @@ pub struct CloudWatchAlarmDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<String>,
 
     ///
@@ -401,6 +411,7 @@ pub struct CloudWatchAlarmDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Statistic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statistic: Option<CloudWatchAlarmDefinitionStatisticEnum>,
 
     ///
@@ -425,6 +436,7 @@ pub struct CloudWatchAlarmDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<CloudWatchAlarmDefinitionUnitEnum>,
 }
 
@@ -627,6 +639,7 @@ pub struct Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Classification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub classification: Option<String>,
 
     ///
@@ -638,6 +651,7 @@ pub struct Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfigurationProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration_properties: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -649,6 +663,7 @@ pub struct Configuration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Configurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configurations: Option<Vec<Configuration>>,
 }
 
@@ -689,6 +704,7 @@ pub struct EbsBlockDeviceConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumesPerInstance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volumes_per_instance: Option<i64>,
 }
 
@@ -720,6 +736,7 @@ pub struct EbsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EbsBlockDeviceConfigs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_block_device_configs: Option<Vec<EbsBlockDeviceConfig>>,
 
     ///
@@ -731,6 +748,7 @@ pub struct EbsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EbsOptimized")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ebs_optimized: Option<bool>,
 }
 
@@ -802,6 +820,7 @@ pub struct ScalingAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Market")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub market: Option<ScalingActionMarketEnum>,
 
     ///
@@ -912,6 +931,7 @@ pub struct ScalingRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -1000,6 +1020,7 @@ pub struct SimpleScalingPolicyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdjustmentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub adjustment_type: Option<SimpleScalingPolicyConfigurationAdjustmentTypeEnum>,
 
     ///
@@ -1011,6 +1032,7 @@ pub struct SimpleScalingPolicyConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CoolDown")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cool_down: Option<i64>,
 
     ///
@@ -1072,6 +1094,7 @@ pub struct VolumeSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///

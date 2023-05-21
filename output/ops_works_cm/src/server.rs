@@ -10,6 +10,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssociatePublicIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub associate_public_ip_address: Option<bool>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BackupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backup_id: Option<String>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupRetentionCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backup_retention_count: Option<i64>,
 
     ///
@@ -55,6 +58,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomCertificate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_certificate: Option<String>,
 
     ///
@@ -70,6 +74,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomDomain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_domain: Option<String>,
 
     ///
@@ -85,6 +90,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomPrivateKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_private_key: Option<String>,
 
     ///
@@ -96,6 +102,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisableAutomatedBackup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_automated_backup: Option<bool>,
 
     ///
@@ -111,6 +118,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine: Option<String>,
 
     ///
@@ -126,6 +134,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EngineAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine_attributes: Option<Vec<EngineAttribute>>,
 
     ///
@@ -141,6 +150,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineModel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine_model: Option<String>,
 
     ///
@@ -156,6 +166,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EngineVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub engine_version: Option<String>,
 
     ///
@@ -201,6 +212,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyPair")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_pair: Option<String>,
 
     ///
@@ -220,6 +232,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredBackupWindow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_backup_window: Option<String>,
 
     ///
@@ -233,6 +246,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreferredMaintenanceWindow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_maintenance_window: Option<String>,
 
     ///
@@ -246,6 +260,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -278,6 +293,7 @@ pub struct CfnServer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -293,6 +309,7 @@ pub struct CfnServer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -448,6 +465,7 @@ pub struct EngineAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -471,6 +489,7 @@ pub struct EngineAttribute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 

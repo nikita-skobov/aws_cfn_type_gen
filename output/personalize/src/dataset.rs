@@ -33,6 +33,7 @@ pub struct CfnDataset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetImportJob")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_import_job: Option<DatasetImportJob>,
 
     ///
@@ -157,6 +158,7 @@ pub struct DataSource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLocation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_location: Option<String>,
 }
 
@@ -188,6 +190,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_source: Option<DataSource>,
 
     ///
@@ -203,6 +206,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_arn: Option<String>,
 
     ///
@@ -218,6 +222,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetImportJobArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_import_job_arn: Option<String>,
 
     ///
@@ -235,6 +240,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_name: Option<String>,
 
     ///
@@ -250,6 +256,7 @@ pub struct DatasetImportJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 }
 

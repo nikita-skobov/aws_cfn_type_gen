@@ -16,6 +16,7 @@ pub struct CfnRateBasedRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MatchPredicates")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub match_predicates: Option<Vec<Predicate>>,
 
     ///

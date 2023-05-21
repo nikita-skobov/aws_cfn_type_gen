@@ -52,6 +52,7 @@ pub struct MonitoringSubscription {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RealtimeMetricsSubscriptionConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub realtime_metrics_subscription_config: Option<RealtimeMetricsSubscriptionConfig>,
 }
 

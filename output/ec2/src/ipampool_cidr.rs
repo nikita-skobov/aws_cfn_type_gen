@@ -10,6 +10,7 @@ pub struct CfnIPAMPoolCidr {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Cidr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnIPAMPoolCidr {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetmaskLength")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub netmask_length: Option<i64>,
 }
 

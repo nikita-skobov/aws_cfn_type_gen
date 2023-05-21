@@ -12,6 +12,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CompatibleArchitectures")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compatible_architectures: Option<Vec<String>>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CompatibleRuntimes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compatible_runtimes: Option<Vec<String>>,
 
     ///
@@ -51,6 +53,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -68,6 +71,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LayerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub layer_name: Option<String>,
 
     ///
@@ -83,6 +87,7 @@ pub struct CfnLayerVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LicenseInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_info: Option<String>,
 }
 
@@ -210,6 +215,7 @@ pub struct Content {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_object_version: Option<String>,
 }
 

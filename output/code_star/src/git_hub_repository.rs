@@ -10,6 +10,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<Code>,
 
     /// Property description not available.
@@ -20,6 +21,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_arn: Option<String>,
 
     ///
@@ -31,6 +33,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "EnableIssues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_issues: Option<bool>,
 
     ///
@@ -42,6 +45,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IsPrivate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_private: Option<bool>,
 
     ///
@@ -53,6 +57,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryAccessToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_access_token: Option<String>,
 
     ///
@@ -64,6 +69,7 @@ pub struct CfnGitHubRepository {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RepositoryDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_description: Option<String>,
 
     ///
@@ -174,6 +180,7 @@ pub struct S3 {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_version: Option<String>,
 }
 

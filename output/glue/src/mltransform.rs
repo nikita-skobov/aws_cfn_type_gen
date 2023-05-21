@@ -16,6 +16,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub glue_version: Option<String>,
 
     ///
@@ -57,6 +59,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_capacity: Option<f64>,
 
     ///
@@ -68,6 +71,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetries")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_retries: Option<i64>,
 
     ///
@@ -87,6 +91,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -100,6 +105,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfWorkers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_workers: Option<i64>,
 
     ///
@@ -124,6 +130,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -137,6 +144,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i64>,
 
     ///
@@ -150,6 +158,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransformEncryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transform_encryption: Option<TransformEncryption>,
 
     ///
@@ -180,6 +189,7 @@ pub struct CfnMLTransform {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub worker_type: Option<MLTransformWorkerTypeEnum>,
 }
 
@@ -291,6 +301,7 @@ pub struct FindMatchesParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccuracyCostTradeoff")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accuracy_cost_tradeoff: Option<f64>,
 
     ///
@@ -304,6 +315,7 @@ pub struct FindMatchesParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnforceProvidedLabels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enforce_provided_labels: Option<bool>,
 
     ///
@@ -319,6 +331,7 @@ pub struct FindMatchesParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrecisionRecallTradeoff")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub precision_recall_tradeoff: Option<f64>,
 
     ///
@@ -382,6 +395,7 @@ pub struct GlueTables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     /// The name of the connection to the AWS Glue Data Catalog.
@@ -392,6 +406,7 @@ pub struct GlueTables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_name: Option<String>,
 
     /// A database name in the AWS Glue Data Catalog.
@@ -440,6 +455,7 @@ pub struct InputRecordTables {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueTables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub glue_tables: Option<Vec<GlueTables>>,
 }
 
@@ -469,6 +485,7 @@ pub struct MLUserDataEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -513,6 +530,7 @@ pub struct TransformEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MLUserDataEncryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mluser_data_encryption: Option<MLUserDataEncryption>,
 
     ///
@@ -524,6 +542,7 @@ pub struct TransformEncryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskRunSecurityConfigurationName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_run_security_configuration_name: Option<String>,
 }
 
@@ -557,6 +576,7 @@ pub struct TransformParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindMatchesParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub find_matches_parameters: Option<FindMatchesParameters>,
 
     ///

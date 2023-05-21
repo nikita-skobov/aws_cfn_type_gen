@@ -16,6 +16,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServiceNetworkIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_network_identifier: Option<String>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -49,6 +52,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_identifier: Option<String>,
 }
 

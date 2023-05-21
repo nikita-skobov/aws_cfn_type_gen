@@ -14,6 +14,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProjectDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project_description: Option<String>,
 
     ///
@@ -55,6 +56,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -196,6 +198,7 @@ pub struct ServiceCatalogProvisionedProductDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedProductId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_product_id: Option<String>,
 
     ///
@@ -211,6 +214,7 @@ pub struct ServiceCatalogProvisionedProductDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedProductStatusMessage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_product_status_message: Option<String>,
 }
 
@@ -261,6 +265,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PathId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_id: Option<String>,
 
     ///
@@ -295,6 +300,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisioningArtifactId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning_artifact_id: Option<String>,
 
     ///
@@ -306,6 +312,7 @@ pub struct ServiceCatalogProvisioningDetails {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisioningParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning_parameters: Option<Vec<ProvisioningParameter>>,
 }
 

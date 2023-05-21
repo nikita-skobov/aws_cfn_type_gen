@@ -12,6 +12,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_seconds: Option<f64>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicyArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_policy_arns: Option<Vec<String>>,
 
     ///
@@ -64,6 +67,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireInstanceProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub require_instance_properties: Option<bool>,
 
     ///
@@ -88,6 +92,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_policy: Option<String>,
 
     ///
@@ -101,6 +106,7 @@ pub struct CfnProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

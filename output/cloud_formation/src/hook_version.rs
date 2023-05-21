@@ -10,6 +10,7 @@ pub struct CfnHookVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecutionRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_role_arn: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnHookVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LoggingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_config: Option<LoggingConfig>,
 
     ///
@@ -110,6 +112,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_name: Option<String>,
 
     ///
@@ -127,6 +130,7 @@ pub struct LoggingConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LogRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_role_arn: Option<String>,
 }
 

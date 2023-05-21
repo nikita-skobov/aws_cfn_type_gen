@@ -10,6 +10,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessRules")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_rules: Option<AccessRules>,
 
     ///
@@ -53,6 +54,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectVersioning")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_versioning: Option<bool>,
 
     ///
@@ -66,6 +68,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadOnlyAccessAccounts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_only_access_accounts: Option<Vec<String>>,
 
     ///
@@ -77,6 +80,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourcesReceivingAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resources_receiving_access: Option<Vec<String>>,
 
     ///
@@ -92,6 +96,7 @@ pub struct CfnBucket {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -133,6 +138,7 @@ pub struct AccessRules {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowPublicOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_public_overrides: Option<bool>,
 
     ///
@@ -150,6 +156,7 @@ pub struct AccessRules {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GetObject")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub get_object: Option<AccessRulesGetObjectEnum>,
 }
 

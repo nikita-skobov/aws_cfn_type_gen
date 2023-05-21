@@ -81,6 +81,7 @@ pub struct CfnScalableTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduledActions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduled_actions: Option<Vec<ScheduledAction>>,
 
     ///
@@ -109,6 +110,7 @@ pub struct CfnScalableTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuspendedState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suspended_state: Option<SuspendedState>,
 }
 
@@ -318,6 +320,7 @@ pub struct ScalableTargetAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_capacity: Option<i64>,
 
     ///
@@ -329,6 +332,7 @@ pub struct ScalableTargetAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_capacity: Option<i64>,
 }
 
@@ -360,6 +364,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_time: Option<String>,
 
     ///
@@ -371,6 +376,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScalableTargetAction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scalable_target_action: Option<ScalableTargetAction>,
 
     ///
@@ -426,6 +432,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time: Option<String>,
 
     ///
@@ -443,6 +450,7 @@ pub struct ScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timezone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timezone: Option<String>,
 }
 
@@ -532,6 +540,7 @@ pub struct SuspendedState {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicScalingInSuspended")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_scaling_in_suspended: Option<bool>,
 
     ///
@@ -543,6 +552,7 @@ pub struct SuspendedState {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamicScalingOutSuspended")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_scaling_out_suspended: Option<bool>,
 
     ///
@@ -554,6 +564,7 @@ pub struct SuspendedState {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduledScalingSuspended")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduled_scaling_suspended: Option<bool>,
 }
 

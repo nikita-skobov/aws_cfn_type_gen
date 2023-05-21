@@ -16,6 +16,7 @@ pub struct CfnHookDefaultVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<String>,
 
     ///
@@ -35,6 +36,7 @@ pub struct CfnHookDefaultVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_version_arn: Option<String>,
 
     ///
@@ -54,6 +56,7 @@ pub struct CfnHookDefaultVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VersionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_id: Option<String>,
 }
 

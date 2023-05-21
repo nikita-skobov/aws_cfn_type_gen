@@ -10,6 +10,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_options: Option<DeviceOptions>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceTrustProviderType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_trust_provider_type: Option<VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OidcOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oidc_options: Option<OidcOptions>,
 
     ///
@@ -67,6 +71,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -93,6 +98,7 @@ pub struct CfnVerifiedAccessTrustProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UserTrustProviderType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_trust_provider_type: Option<VerifiedAccessTrustProviderUserTrustProviderTypeEnum>,
 }
 
@@ -181,6 +187,7 @@ pub struct DeviceOptions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TenantId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tenant_id: Option<String>,
 }
 
@@ -210,6 +217,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizationEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorization_endpoint: Option<String>,
 
     ///
@@ -221,6 +229,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_id: Option<String>,
 
     ///
@@ -232,6 +241,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_secret: Option<String>,
 
     ///
@@ -243,6 +253,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Issuer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub issuer: Option<String>,
 
     ///
@@ -254,6 +265,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Scope")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scope: Option<String>,
 
     ///
@@ -265,6 +277,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TokenEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub token_endpoint: Option<String>,
 
     ///
@@ -276,6 +289,7 @@ pub struct OidcOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserInfoEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_info_endpoint: Option<String>,
 }
 

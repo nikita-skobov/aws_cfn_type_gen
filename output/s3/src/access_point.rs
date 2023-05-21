@@ -21,6 +21,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BucketAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_account_id: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy: Option<serde_json::Value>,
 
     ///
@@ -54,6 +57,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PublicAccessBlockConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 
     ///
@@ -65,6 +69,7 @@ pub struct CfnAccessPoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<VpcConfiguration>,
 }
 
@@ -106,6 +111,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicAcls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_public_acls: Option<bool>,
 
     ///
@@ -119,6 +125,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockPublicPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_public_policy: Option<bool>,
 
     ///
@@ -132,6 +139,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnorePublicAcls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_public_acls: Option<bool>,
 
     ///
@@ -145,6 +153,7 @@ pub struct PublicAccessBlockConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RestrictPublicBuckets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restrict_public_buckets: Option<bool>,
 }
 
@@ -174,6 +183,7 @@ pub struct VpcConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<String>,
 }
 

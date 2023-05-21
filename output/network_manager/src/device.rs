@@ -18,6 +18,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<Location>,
 
     ///
@@ -65,6 +67,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Model")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model: Option<String>,
 
     ///
@@ -84,6 +87,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SerialNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub serial_number: Option<String>,
 
     ///
@@ -101,6 +105,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SiteId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub site_id: Option<String>,
 
     ///
@@ -112,6 +117,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -129,6 +135,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 
     ///
@@ -148,6 +155,7 @@ pub struct CfnDevice {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Vendor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vendor: Option<String>,
 }
 
@@ -313,6 +321,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<String>,
 
     ///
@@ -330,6 +339,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Latitude")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub latitude: Option<String>,
 
     ///
@@ -347,6 +357,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Longitude")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub longitude: Option<String>,
 }
 

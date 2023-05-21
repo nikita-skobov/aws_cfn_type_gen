@@ -10,6 +10,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration: Option<Configuration>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Dimensions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricMathAnomalyDetector")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_math_anomaly_detector: Option<MetricMathAnomalyDetector>,
 
     ///
@@ -43,6 +46,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_name: Option<String>,
 
     ///
@@ -54,6 +58,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<String>,
 
     ///
@@ -65,6 +70,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SingleMetricAnomalyDetector")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub single_metric_anomaly_detector: Option<SingleMetricAnomalyDetector>,
 
     ///
@@ -76,6 +82,7 @@ pub struct CfnAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Stat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stat: Option<String>,
 }
 
@@ -117,6 +124,7 @@ pub struct Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedTimeRanges")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_time_ranges: Option<Vec<Range>>,
 
     ///
@@ -130,6 +138,7 @@ pub struct Configuration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricTimeZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_time_zone: Option<String>,
 }
 
@@ -247,6 +256,7 @@ pub struct Metric {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Dimensions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -387,6 +397,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub account_id: Option<String>,
 
     ///
@@ -406,6 +417,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Expression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expression: Option<String>,
 
     ///
@@ -434,6 +446,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Label")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
 
     ///
@@ -447,6 +460,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricStat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_stat: Option<MetricStat>,
 
     ///
@@ -460,6 +474,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Period")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period: Option<i64>,
 
     ///
@@ -473,6 +488,7 @@ pub struct MetricDataQuery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReturnData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub return_data: Option<bool>,
 }
 
@@ -569,6 +585,7 @@ pub struct MetricMathAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricDataQueries")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_data_queries: Option<Vec<MetricDataQuery>>,
 }
 
@@ -641,6 +658,7 @@ pub struct MetricStat {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Unit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<MetricStatUnitEnum>,
 }
 
@@ -840,6 +858,7 @@ pub struct SingleMetricAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Dimensions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimensions: Option<Vec<Dimension>>,
 
     ///
@@ -855,6 +874,7 @@ pub struct SingleMetricAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_name: Option<String>,
 
     ///
@@ -872,6 +892,7 @@ pub struct SingleMetricAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<String>,
 
     ///
@@ -887,6 +908,7 @@ pub struct SingleMetricAnomalyDetector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Stat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stat: Option<String>,
 }
 

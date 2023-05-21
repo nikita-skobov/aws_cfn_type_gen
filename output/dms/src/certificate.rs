@@ -10,6 +10,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_identifier: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificatePem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_pem: Option<String>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnCertificate {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateWallet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_wallet: Option<String>,
 }
 

@@ -70,6 +70,7 @@ pub struct CfnContactChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeferActivation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub defer_activation: Option<bool>,
 }
 

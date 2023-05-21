@@ -12,6 +12,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Beneficiary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub beneficiary: Option<String>,
 
     ///
@@ -67,6 +68,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LicenseMetadata")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_metadata: Option<Vec<Metadata>>,
 
     ///
@@ -100,6 +102,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProductSKU")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub product_sku: Option<String>,
 
     ///
@@ -111,6 +114,7 @@ pub struct CfnLicense {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 
     ///
@@ -197,6 +201,7 @@ pub struct ConsumptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BorrowConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub borrow_configuration: Option<BorrowConfiguration>,
 
     ///
@@ -208,6 +213,7 @@ pub struct ConsumptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionalConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisional_configuration: Option<ProvisionalConfiguration>,
 
     ///
@@ -219,6 +225,7 @@ pub struct ConsumptionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RenewType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub renew_type: Option<String>,
 }
 
@@ -256,6 +263,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowCheckIn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_check_in: Option<bool>,
 
     ///
@@ -267,6 +275,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_count: Option<i64>,
 
     ///
@@ -289,6 +298,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overage: Option<bool>,
 
     ///
@@ -311,6 +321,7 @@ pub struct Entitlement {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -351,6 +362,7 @@ pub struct IssuerData {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SignKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sign_key: Option<String>,
 }
 

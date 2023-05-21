@@ -24,6 +24,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_ip: Option<String>,
 
     ///
@@ -39,6 +40,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CidrIpv6")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_ipv6: Option<String>,
 
     ///
@@ -52,6 +54,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -65,6 +68,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FromPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from_port: Option<i64>,
 
     ///
@@ -76,6 +80,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_id: Option<String>,
 
     ///
@@ -91,6 +96,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_name: Option<String>,
 
     ///
@@ -115,6 +121,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourcePrefixListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_prefix_list_id: Option<String>,
 
     ///
@@ -126,6 +133,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceSecurityGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_security_group_id: Option<String>,
 
     ///
@@ -139,6 +147,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceSecurityGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_security_group_name: Option<String>,
 
     ///
@@ -152,6 +161,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceSecurityGroupOwnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_security_group_owner_id: Option<String>,
 
     ///
@@ -165,6 +175,7 @@ pub struct CfnSecurityGroupIngress {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ToPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub to_port: Option<i64>,
 }
 

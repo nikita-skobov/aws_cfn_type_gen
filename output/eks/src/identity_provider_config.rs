@@ -23,6 +23,7 @@ pub struct CfnIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IdentityProviderConfigName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_provider_config_name: Option<String>,
 
     ///
@@ -34,6 +35,7 @@ pub struct CfnIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Oidc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oidc: Option<OidcIdentityProviderConfig>,
 
     ///
@@ -45,6 +47,7 @@ pub struct CfnIdentityProviderConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -98,6 +101,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupsClaim")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups_claim: Option<String>,
 
     ///
@@ -109,6 +113,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupsPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups_prefix: Option<String>,
 
     ///
@@ -131,6 +136,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RequiredClaims")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub required_claims: Option<Vec<RequiredClaim>>,
 
     ///
@@ -142,6 +148,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UsernameClaim")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username_claim: Option<String>,
 
     ///
@@ -153,6 +160,7 @@ pub struct OidcIdentityProviderConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UsernamePrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username_prefix: Option<String>,
 }
 

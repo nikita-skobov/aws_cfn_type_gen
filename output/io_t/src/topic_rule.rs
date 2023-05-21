@@ -10,6 +10,7 @@ pub struct CfnTopicRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RuleName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_name: Option<String>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnTopicRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -65,6 +67,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchAlarm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloudwatch_alarm: Option<CloudwatchAlarmAction>,
 
     ///
@@ -76,6 +79,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchLogs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloudwatch_logs: Option<CloudwatchLogsAction>,
 
     ///
@@ -87,6 +91,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudwatchMetric")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloudwatch_metric: Option<CloudwatchMetricAction>,
 
     ///
@@ -98,6 +103,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamo_db: Option<DynamoDBAction>,
 
     ///
@@ -109,6 +115,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDBv2")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamo_dbv2: Option<DynamoDBv2Action>,
 
     ///
@@ -122,6 +129,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Elasticsearch")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elasticsearch: Option<ElasticsearchAction>,
 
     ///
@@ -133,6 +141,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Firehose")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub firehose: Option<FirehoseAction>,
 
     ///
@@ -144,6 +153,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Http")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http: Option<HttpAction>,
 
     ///
@@ -155,6 +165,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotAnalytics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_analytics: Option<IotAnalyticsAction>,
 
     ///
@@ -166,6 +177,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotEvents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_events: Option<IotEventsAction>,
 
     ///
@@ -177,6 +189,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IotSiteWise")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iot_site_wise: Option<IotSiteWiseAction>,
 
     ///
@@ -188,6 +201,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Kafka")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kafka: Option<KafkaAction>,
 
     ///
@@ -199,6 +213,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Kinesis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis: Option<KinesisAction>,
 
     ///
@@ -210,6 +225,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lambda")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda: Option<LambdaAction>,
 
     ///
@@ -221,6 +237,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<LocationAction>,
 
     ///
@@ -232,6 +249,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OpenSearch")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub open_search: Option<OpenSearchAction>,
 
     ///
@@ -243,6 +261,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Republish")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub republish: Option<RepublishAction>,
 
     ///
@@ -254,6 +273,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3: Option<S3Action>,
 
     ///
@@ -265,6 +285,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sns: Option<SnsAction>,
 
     ///
@@ -276,6 +297,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sqs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sqs: Option<SqsAction>,
 
     ///
@@ -287,6 +309,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepFunctions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub step_functions: Option<StepFunctionsAction>,
 
     ///
@@ -298,6 +321,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timestream")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestream: Option<TimestreamAction>,
 }
 
@@ -401,6 +425,7 @@ pub struct AssetPropertyTimestamp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OffsetInNanos")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub offset_in_nanos: Option<String>,
 
     ///
@@ -441,6 +466,7 @@ pub struct AssetPropertyValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Quality")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub quality: Option<String>,
 
     ///
@@ -496,6 +522,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BooleanValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub boolean_value: Option<String>,
 
     ///
@@ -507,6 +534,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DoubleValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub double_value: Option<String>,
 
     ///
@@ -518,6 +546,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntegerValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integer_value: Option<String>,
 
     ///
@@ -529,6 +558,7 @@ pub struct AssetPropertyVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_value: Option<String>,
 }
 
@@ -620,6 +650,7 @@ pub struct CloudwatchLogsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_mode: Option<bool>,
 
     ///
@@ -693,6 +724,7 @@ pub struct CloudwatchMetricAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricTimestamp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_timestamp: Option<String>,
 
     ///
@@ -780,6 +812,7 @@ pub struct DynamoDBAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HashKeyType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hash_key_type: Option<String>,
 
     ///
@@ -802,6 +835,7 @@ pub struct DynamoDBAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload_field: Option<String>,
 
     ///
@@ -813,6 +847,7 @@ pub struct DynamoDBAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeKeyField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_key_field: Option<String>,
 
     ///
@@ -824,6 +859,7 @@ pub struct DynamoDBAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeKeyType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_key_type: Option<String>,
 
     ///
@@ -835,6 +871,7 @@ pub struct DynamoDBAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeKeyValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_key_value: Option<String>,
 
     ///
@@ -892,6 +929,7 @@ pub struct DynamoDBv2Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PutItem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub put_item: Option<PutItemInput>,
 
     ///
@@ -903,6 +941,7 @@ pub struct DynamoDBv2Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 }
 
@@ -1011,6 +1050,7 @@ pub struct FirehoseAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_mode: Option<bool>,
 
     ///
@@ -1044,6 +1084,7 @@ pub struct FirehoseAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Separator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub separator: Option<String>,
 }
 
@@ -1073,6 +1114,7 @@ pub struct HttpAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Auth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth: Option<HttpAuthorization>,
 
     ///
@@ -1084,6 +1126,7 @@ pub struct HttpAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConfirmationUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub confirmation_url: Option<String>,
 
     ///
@@ -1095,6 +1138,7 @@ pub struct HttpAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Headers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub headers: Option<Vec<HttpActionHeader>>,
 
     ///
@@ -1177,6 +1221,7 @@ pub struct HttpAuthorization {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sigv4")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sigv4: Option<SigV4Authorization>,
 }
 
@@ -1210,6 +1255,7 @@ pub struct IotAnalyticsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_mode: Option<bool>,
 
     ///
@@ -1265,6 +1311,7 @@ pub struct IotEventsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_mode: Option<bool>,
 
     ///
@@ -1291,6 +1338,7 @@ pub struct IotEventsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_id: Option<String>,
 
     ///
@@ -1393,6 +1441,7 @@ pub struct KafkaAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -1404,6 +1453,7 @@ pub struct KafkaAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Partition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partition: Option<String>,
 
     ///
@@ -1444,6 +1494,7 @@ pub struct KinesisAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partition_key: Option<String>,
 
     ///
@@ -1495,6 +1546,7 @@ pub struct LambdaAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FunctionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function_arn: Option<String>,
 }
 
@@ -1568,6 +1620,7 @@ pub struct LocationAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timestamp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp: Option<Timestamp>,
 
     ///
@@ -1685,6 +1738,7 @@ pub struct PutAssetPropertyValueEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_id: Option<String>,
 
     ///
@@ -1696,6 +1750,7 @@ pub struct PutAssetPropertyValueEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntryId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entry_id: Option<String>,
 
     ///
@@ -1707,6 +1762,7 @@ pub struct PutAssetPropertyValueEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyAlias")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_alias: Option<String>,
 
     ///
@@ -1718,6 +1774,7 @@ pub struct PutAssetPropertyValueEntry {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_id: Option<String>,
 
     ///
@@ -1787,6 +1844,7 @@ pub struct RepublishAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Headers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub headers: Option<RepublishActionHeaders>,
 
     ///
@@ -1798,6 +1856,7 @@ pub struct RepublishAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Qos")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub qos: Option<i64>,
 
     ///
@@ -1855,6 +1914,7 @@ pub struct RepublishActionHeaders {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content_type: Option<String>,
 
     ///
@@ -1872,6 +1932,7 @@ pub struct RepublishActionHeaders {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CorrelationData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub correlation_data: Option<String>,
 
     ///
@@ -1885,6 +1946,7 @@ pub struct RepublishActionHeaders {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageExpiry")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_expiry: Option<String>,
 
     ///
@@ -1902,6 +1964,7 @@ pub struct RepublishActionHeaders {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PayloadFormatIndicator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload_format_indicator: Option<String>,
 
     ///
@@ -1917,6 +1980,7 @@ pub struct RepublishActionHeaders {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseTopic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_topic: Option<String>,
 
     ///
@@ -1928,6 +1992,7 @@ pub struct RepublishActionHeaders {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_properties: Option<Vec<UserProperty>>,
 }
 
@@ -1968,6 +2033,7 @@ pub struct S3Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CannedAcl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub canned_acl: Option<String>,
 
     ///
@@ -2070,6 +2136,7 @@ pub struct SnsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_format: Option<String>,
 
     ///
@@ -2143,6 +2210,7 @@ pub struct SqsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBase64")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_base64: Option<bool>,
 }
 
@@ -2172,6 +2240,7 @@ pub struct StepFunctionsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionNamePrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_name_prefix: Option<String>,
 
     ///
@@ -2267,6 +2336,7 @@ pub struct Timestamp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<String>,
 
     ///
@@ -2351,6 +2421,7 @@ pub struct TimestreamAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timestamp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp: Option<TimestreamTimestamp>,
 }
 
@@ -2477,6 +2548,7 @@ pub struct TopicRulePayload {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsIotSqlVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_iot_sql_version: Option<String>,
 
     ///
@@ -2488,6 +2560,7 @@ pub struct TopicRulePayload {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -2499,6 +2572,7 @@ pub struct TopicRulePayload {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorAction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_action: Option<Action>,
 
     ///
@@ -2510,6 +2584,7 @@ pub struct TopicRulePayload {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuleDisabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_disabled: Option<bool>,
 
     ///

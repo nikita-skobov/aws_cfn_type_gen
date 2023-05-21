@@ -10,6 +10,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ParameterGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_group_name: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParameterNameValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameter_name_values: Option<serde_json::Value>,
 }
 

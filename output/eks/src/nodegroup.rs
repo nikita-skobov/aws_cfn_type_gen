@@ -14,6 +14,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AmiType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ami_type: Option<NodegroupAmiTypeEnum>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CapacityType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_type: Option<NodegroupCapacityTypeEnum>,
 
     ///
@@ -49,6 +51,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DiskSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_size: Option<i64>,
 
     ///
@@ -60,6 +63,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ForceUpdateEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub force_update_enabled: Option<bool>,
 
     ///
@@ -71,6 +75,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_types: Option<Vec<String>>,
 
     ///
@@ -84,6 +89,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Labels")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub labels: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -95,6 +101,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchTemplate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_template: Option<LaunchTemplateSpecification>,
 
     ///
@@ -117,6 +124,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NodegroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nodegroup_name: Option<String>,
 
     ///
@@ -130,6 +138,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReleaseVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub release_version: Option<String>,
 
     ///
@@ -141,6 +150,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RemoteAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remote_access: Option<RemoteAccess>,
 
     ///
@@ -152,6 +162,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScalingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scaling_config: Option<ScalingConfig>,
 
     ///
@@ -174,6 +185,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -185,6 +197,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Taints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub taints: Option<Vec<Taint>>,
 
     ///
@@ -196,6 +209,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UpdateConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub update_config: Option<UpdateConfig>,
 
     ///
@@ -209,6 +223,7 @@ pub struct CfnNodegroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 
@@ -332,6 +347,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 
     ///
@@ -345,6 +361,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -356,6 +373,7 @@ pub struct LaunchTemplateSpecification {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 
@@ -396,6 +414,7 @@ pub struct RemoteAccess {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SourceSecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_security_groups: Option<Vec<String>>,
 }
 
@@ -433,6 +452,7 @@ pub struct ScalingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub desired_size: Option<i64>,
 
     ///
@@ -446,6 +466,7 @@ pub struct ScalingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_size: Option<i64>,
 
     ///
@@ -459,6 +480,7 @@ pub struct ScalingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_size: Option<i64>,
 }
 
@@ -517,6 +539,7 @@ pub struct Taint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Effect")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub effect: Option<TaintEffectEnum>,
 
     ///
@@ -532,6 +555,7 @@ pub struct Taint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -547,6 +571,7 @@ pub struct Taint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -635,6 +660,7 @@ pub struct UpdateConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxUnavailable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_unavailable: Option<f64>,
 
     ///
@@ -650,6 +676,7 @@ pub struct UpdateConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxUnavailablePercentage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_unavailable_percentage: Option<f64>,
 }
 

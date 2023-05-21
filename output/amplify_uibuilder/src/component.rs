@@ -9,6 +9,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_id: Option<String>,
 
     ///
@@ -33,6 +34,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Children")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<ComponentChild>>,
 
     ///
@@ -44,6 +46,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectionProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub collection_properties:
         Option<std::collections::HashMap<String, ComponentDataConfiguration>>,
 
@@ -66,6 +69,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_name: Option<String>,
 
     ///
@@ -77,6 +81,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Events")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub events: Option<std::collections::HashMap<String, ComponentEvent>>,
 
     ///
@@ -121,6 +126,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schema_version: Option<String>,
 
     ///
@@ -132,6 +138,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_id: Option<String>,
 
     ///
@@ -143,6 +150,7 @@ pub struct CfnComponent {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -183,6 +191,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Anchor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub anchor: Option<ComponentProperty>,
 
     ///
@@ -194,6 +203,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Fields")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fields: Option<std::collections::HashMap<String, ComponentProperty>>,
 
     ///
@@ -205,6 +215,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Global")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub global: Option<ComponentProperty>,
 
     ///
@@ -216,6 +227,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Id")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<ComponentProperty>,
 
     ///
@@ -227,6 +239,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Model")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model: Option<String>,
 
     ///
@@ -238,6 +251,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<MutationActionSetStateParameter>,
 
     ///
@@ -249,6 +263,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Target")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target: Option<ComponentProperty>,
 
     ///
@@ -260,6 +275,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ComponentProperty>,
 
     ///
@@ -271,6 +287,7 @@ pub struct ActionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Url")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<ComponentProperty>,
 }
 
@@ -316,6 +333,7 @@ pub struct ComponentBindingPropertiesValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BindingProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub binding_properties: Option<ComponentBindingPropertiesValueProperties>,
 
     ///
@@ -327,6 +345,7 @@ pub struct ComponentBindingPropertiesValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_value: Option<String>,
 
     ///
@@ -338,6 +357,7 @@ pub struct ComponentBindingPropertiesValue {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -371,6 +391,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket: Option<String>,
 
     ///
@@ -382,6 +403,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_value: Option<String>,
 
     ///
@@ -393,6 +415,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<String>,
 
     ///
@@ -404,6 +427,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -415,6 +439,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Model")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model: Option<String>,
 
     ///
@@ -426,6 +451,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Predicates")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predicates: Option<Vec<Predicate>>,
 
     ///
@@ -437,6 +463,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_attribute: Option<String>,
 }
 
@@ -466,6 +493,7 @@ pub struct ComponentChild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Children")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<ComponentChild>>,
 
     ///
@@ -488,6 +516,7 @@ pub struct ComponentChild {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Events")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub events: Option<std::collections::HashMap<String, ComponentEvent>>,
 
     ///
@@ -539,6 +568,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Else")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_else: Option<ComponentProperty>,
 
     ///
@@ -550,6 +580,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<String>,
 
     ///
@@ -561,6 +592,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operand")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operand: Option<String>,
 
     ///
@@ -572,6 +604,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OperandType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operand_type: Option<String>,
 
     ///
@@ -583,6 +616,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operator: Option<String>,
 
     ///
@@ -594,6 +628,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Property")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property: Option<String>,
 
     ///
@@ -605,6 +640,7 @@ pub struct ComponentConditionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Then")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub then: Option<ComponentProperty>,
 }
 
@@ -640,6 +676,7 @@ pub struct ComponentDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Identifiers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identifiers: Option<Vec<String>>,
 
     ///
@@ -662,6 +699,7 @@ pub struct ComponentDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Predicate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predicate: Option<Predicate>,
 
     ///
@@ -673,6 +711,7 @@ pub struct ComponentDataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort: Option<Vec<SortProperty>>,
 }
 
@@ -706,6 +745,7 @@ pub struct ComponentEvent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Action")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<String>,
 
     ///
@@ -717,6 +757,7 @@ pub struct ComponentEvent {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<ActionParameters>,
 }
 
@@ -750,6 +791,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BindingProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub binding_properties: Option<ComponentPropertyBindingProperties>,
 
     ///
@@ -761,6 +803,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Bindings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bindings: Option<std::collections::HashMap<String, FormBindingElement>>,
 
     ///
@@ -772,6 +815,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectionBindingProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub collection_binding_properties: Option<ComponentPropertyBindingProperties>,
 
     ///
@@ -783,6 +827,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComponentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub component_name: Option<String>,
 
     ///
@@ -794,6 +839,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Concat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub concat: Option<Vec<ComponentProperty>>,
 
     ///
@@ -805,6 +851,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition: Option<Box<ComponentConditionProperty>>,
 
     ///
@@ -816,6 +863,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configured")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configured: Option<bool>,
 
     ///
@@ -827,6 +875,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_value: Option<String>,
 
     ///
@@ -838,6 +887,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Event")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event: Option<String>,
 
     ///
@@ -849,6 +899,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImportedValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub imported_value: Option<String>,
 
     ///
@@ -860,6 +911,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Model")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model: Option<String>,
 
     ///
@@ -871,6 +923,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Property")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property: Option<String>,
 
     ///
@@ -882,6 +935,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 
     ///
@@ -893,6 +947,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserAttribute")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_attribute: Option<String>,
 
     ///
@@ -904,6 +959,7 @@ pub struct ComponentProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -945,6 +1001,7 @@ pub struct ComponentPropertyBindingProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<String>,
 
     ///
@@ -985,6 +1042,7 @@ pub struct ComponentVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overrides: Option<serde_json::Value>,
 
     ///
@@ -996,6 +1054,7 @@ pub struct ComponentVariant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariantValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variant_values: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1116,6 +1175,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "And")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub and: Option<Vec<Predicate>>,
 
     ///
@@ -1127,6 +1187,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<String>,
 
     ///
@@ -1138,6 +1199,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operand")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operand: Option<String>,
 
     ///
@@ -1149,6 +1211,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operator: Option<String>,
 
     ///
@@ -1160,6 +1223,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Or")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub or: Option<Vec<Predicate>>,
 }
 

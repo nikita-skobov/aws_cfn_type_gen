@@ -16,6 +16,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationARNs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_arns: Option<Vec<String>>,
 
     ///
@@ -33,6 +34,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -46,6 +48,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -78,6 +81,7 @@ pub struct CfnStack {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_minutes: Option<i64>,
 }
 

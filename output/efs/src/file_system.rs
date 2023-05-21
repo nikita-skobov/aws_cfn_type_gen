@@ -18,6 +18,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AvailabilityZoneName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone_name: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backup_policy: Option<BackupPolicy>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BypassPolicyLockoutSafetyCheck")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bypass_policy_lockout_safety_check: Option<bool>,
 
     ///
@@ -51,6 +54,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
 
     ///
@@ -68,6 +72,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_system_policy: Option<serde_json::Value>,
 
     ///
@@ -79,6 +84,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_system_tags: Option<Vec<ElasticFileSystemTag>>,
 
     ///
@@ -98,6 +104,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -115,6 +122,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecyclePolicies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle_policies: Option<Vec<LifecyclePolicy>>,
 
     ///
@@ -130,6 +138,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PerformanceMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_mode: Option<FileSystemPerformanceModeEnum>,
 
     ///
@@ -141,6 +150,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedThroughputInMibps")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_throughput_in_mibps: Option<f64>,
 
     ///
@@ -156,6 +166,7 @@ pub struct CfnFileSystem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThroughputMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throughput_mode: Option<FileSystemThroughputModeEnum>,
 }
 
@@ -397,6 +408,7 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitionToIA")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transition_to_ia: Option<LifecyclePolicyTransitionToIAEnum>,
 
     ///
@@ -410,6 +422,7 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TransitionToPrimaryStorageClass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub transition_to_primary_storage_class:
         Option<LifecyclePolicyTransitionToPrimaryStorageClassEnum>,
 }

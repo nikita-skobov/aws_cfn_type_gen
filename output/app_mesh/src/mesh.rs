@@ -18,6 +18,7 @@ pub struct CfnMesh {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mesh_name: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnMesh {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Spec")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spec: Option<MeshSpec>,
 
     ///
@@ -42,6 +44,7 @@ pub struct CfnMesh {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -152,6 +155,7 @@ pub struct MeshServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpPreference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_preference: Option<MeshServiceDiscoveryIpPreferenceEnum>,
 }
 
@@ -206,6 +210,7 @@ pub struct MeshSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub egress_filter: Option<EgressFilter>,
 
     /// Property description not available.
@@ -216,6 +221,7 @@ pub struct MeshSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceDiscovery")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_discovery: Option<MeshServiceDiscovery>,
 }
 

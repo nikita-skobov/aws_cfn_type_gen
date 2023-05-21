@@ -29,6 +29,7 @@ pub struct CfnFramework {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameworkDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framework_description: Option<String>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnFramework {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FrameworkName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framework_name: Option<String>,
 
     ///
@@ -57,6 +59,7 @@ pub struct CfnFramework {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameworkTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framework_tags: Option<Vec<Tag>>,
 }
 
@@ -161,6 +164,7 @@ pub struct ControlScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceResourceIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compliance_resource_ids: Option<Vec<String>>,
 
     ///
@@ -172,6 +176,7 @@ pub struct ControlScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComplianceResourceTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compliance_resource_types: Option<Vec<String>>,
 
     ///
@@ -183,6 +188,7 @@ pub struct ControlScope {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -218,6 +224,7 @@ pub struct FrameworkControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlInputParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub control_input_parameters: Option<Vec<ControlInputParameter>>,
 
     ///
@@ -240,6 +247,7 @@ pub struct FrameworkControl {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlScope")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub control_scope: Option<ControlScope>,
 }
 

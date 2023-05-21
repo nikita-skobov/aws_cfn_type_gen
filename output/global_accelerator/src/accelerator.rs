@@ -12,6 +12,7 @@ pub struct CfnAccelerator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnAccelerator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpAddressType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address_type: Option<AcceleratorIpAddressTypeEnum>,
 
     ///
@@ -42,6 +44,7 @@ pub struct CfnAccelerator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpAddresses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_addresses: Option<Vec<String>>,
 
     ///
@@ -68,6 +71,7 @@ pub struct CfnAccelerator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

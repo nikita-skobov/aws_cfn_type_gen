@@ -14,6 +14,7 @@ pub struct CfnSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FindingPublishingFrequency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub finding_publishing_frequency: Option<String>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnSession {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 }
 

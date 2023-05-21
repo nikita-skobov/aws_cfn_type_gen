@@ -23,6 +23,7 @@ pub struct CfnInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_description: Option<String>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InputName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_name: Option<String>,
 
     ///
@@ -53,6 +55,7 @@ pub struct CfnInput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

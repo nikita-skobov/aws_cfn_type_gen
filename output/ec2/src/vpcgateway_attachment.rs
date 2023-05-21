@@ -12,6 +12,7 @@ pub struct CfnVPCGatewayAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InternetGatewayId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub internet_gateway_id: Option<String>,
 
     ///
@@ -36,6 +37,7 @@ pub struct CfnVPCGatewayAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpnGatewayId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpn_gateway_id: Option<String>,
 }
 

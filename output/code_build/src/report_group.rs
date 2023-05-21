@@ -12,6 +12,7 @@ pub struct CfnReportGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteReports")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_reports: Option<bool>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnReportGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -53,6 +55,7 @@ pub struct CfnReportGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -158,6 +161,7 @@ pub struct ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Destination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_destination: Option<S3ReportExportConfig>,
 }
 
@@ -221,6 +225,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_owner: Option<String>,
 
     ///
@@ -232,6 +237,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionDisabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_disabled: Option<bool>,
 
     ///
@@ -245,6 +251,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_key: Option<String>,
 
     ///
@@ -260,6 +267,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Packaging")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub packaging: Option<S3ReportExportConfigPackagingEnum>,
 
     ///
@@ -271,6 +279,7 @@ pub struct S3ReportExportConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 }
 

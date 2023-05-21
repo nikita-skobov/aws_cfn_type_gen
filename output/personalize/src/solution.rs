@@ -27,6 +27,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_type: Option<String>,
 
     ///
@@ -57,6 +58,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PerformAutoML")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub perform_auto_ml: Option<bool>,
 
     ///
@@ -68,6 +70,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PerformHPO")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub perform_hpo: Option<bool>,
 
     ///
@@ -83,6 +86,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RecipeArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recipe_arn: Option<String>,
 
     ///
@@ -94,6 +98,7 @@ pub struct CfnSolution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SolutionConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub solution_config: Option<SolutionConfig>,
 }
 
@@ -171,6 +176,7 @@ pub struct AlgorithmHyperParameterRanges {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CategoricalHyperParameterRanges")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub categorical_hyper_parameter_ranges: Option<Vec<CategoricalHyperParameterRange>>,
 
     /// Property description not available.
@@ -181,6 +187,7 @@ pub struct AlgorithmHyperParameterRanges {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContinuousHyperParameterRanges")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub continuous_hyper_parameter_ranges: Option<Vec<ContinuousHyperParameterRange>>,
 
     /// Property description not available.
@@ -191,6 +198,7 @@ pub struct AlgorithmHyperParameterRanges {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IntegerHyperParameterRanges")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub integer_hyper_parameter_ranges: Option<Vec<IntegerHyperParameterRange>>,
 }
 
@@ -219,6 +227,7 @@ pub struct AutoMLConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_name: Option<String>,
 
     /// Property description not available.
@@ -229,6 +238,7 @@ pub struct AutoMLConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RecipeList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recipe_list: Option<Vec<String>>,
 }
 
@@ -257,6 +267,7 @@ pub struct CategoricalHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     /// Property description not available.
@@ -267,6 +278,7 @@ pub struct CategoricalHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Values")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
 }
 
@@ -295,6 +307,7 @@ pub struct ContinuousHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_value: Option<f64>,
 
     /// Property description not available.
@@ -305,6 +318,7 @@ pub struct ContinuousHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MinValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_value: Option<f64>,
 
     /// Property description not available.
@@ -315,6 +329,7 @@ pub struct ContinuousHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -343,6 +358,7 @@ pub struct HpoConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlgorithmHyperParameterRanges")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub algorithm_hyper_parameter_ranges: Option<AlgorithmHyperParameterRanges>,
 
     /// Property description not available.
@@ -353,6 +369,7 @@ pub struct HpoConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HpoObjective")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hpo_objective: Option<HpoObjective>,
 
     /// Property description not available.
@@ -363,6 +380,7 @@ pub struct HpoConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HpoResourceConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hpo_resource_config: Option<HpoResourceConfig>,
 }
 
@@ -403,6 +421,7 @@ pub struct HpoObjective {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_name: Option<String>,
 
     /// Property description not available.
@@ -413,6 +432,7 @@ pub struct HpoObjective {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MetricRegex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_regex: Option<String>,
 
     /// Property description not available.
@@ -423,6 +443,7 @@ pub struct HpoObjective {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -451,6 +472,7 @@ pub struct HpoResourceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxNumberOfTrainingJobs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_number_of_training_jobs: Option<String>,
 
     /// Property description not available.
@@ -461,6 +483,7 @@ pub struct HpoResourceConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxParallelTrainingJobs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_parallel_training_jobs: Option<String>,
 }
 
@@ -489,6 +512,7 @@ pub struct IntegerHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MaxValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_value: Option<i64>,
 
     /// Property description not available.
@@ -499,6 +523,7 @@ pub struct IntegerHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MinValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_value: Option<i64>,
 
     /// Property description not available.
@@ -509,6 +534,7 @@ pub struct IntegerHyperParameterRange {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -538,6 +564,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlgorithmHyperParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub algorithm_hyper_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -549,6 +576,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AutoMLConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_mlconfig: Option<AutoMLConfig>,
 
     ///
@@ -562,6 +590,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventValueThreshold")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_value_threshold: Option<String>,
 
     ///
@@ -573,6 +602,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FeatureTransformationParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub feature_transformation_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -584,6 +614,7 @@ pub struct SolutionConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HpoConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hpo_config: Option<HpoConfig>,
 }
 

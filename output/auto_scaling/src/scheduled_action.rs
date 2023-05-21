@@ -33,6 +33,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub desired_capacity: Option<i64>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_time: Option<String>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_size: Option<i64>,
 
     ///
@@ -66,6 +69,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_size: Option<i64>,
 
     ///
@@ -81,6 +85,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Recurrence")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recurrence: Option<String>,
 
     ///
@@ -94,6 +99,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time: Option<String>,
 
     ///
@@ -107,6 +113,7 @@ pub struct CfnScheduledAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_zone: Option<String>,
 }
 

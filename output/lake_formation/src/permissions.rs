@@ -21,6 +21,7 @@ pub struct CfnPermissions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Permissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<String>>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnPermissions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PermissionsWithGrantOption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions_with_grant_option: Option<Vec<String>>,
 
     ///
@@ -76,6 +78,7 @@ pub struct ColumnWildcard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedColumnNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_column_names: Option<Vec<String>>,
 }
 
@@ -105,6 +108,7 @@ pub struct DataLakePrincipal {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLakePrincipalIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_lake_principal_identifier: Option<String>,
 }
 
@@ -134,6 +138,7 @@ pub struct DataLocationResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///
@@ -145,6 +150,7 @@ pub struct DataLocationResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Resource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_resource: Option<String>,
 }
 
@@ -174,6 +180,7 @@ pub struct DatabaseResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///
@@ -185,6 +192,7 @@ pub struct DatabaseResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -214,6 +222,7 @@ pub struct Resource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataLocationResource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_location_resource: Option<DataLocationResource>,
 
     ///
@@ -225,6 +234,7 @@ pub struct Resource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseResource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_resource: Option<DatabaseResource>,
 
     ///
@@ -236,6 +246,7 @@ pub struct Resource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableResource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_resource: Option<TableResource>,
 
     ///
@@ -247,6 +258,7 @@ pub struct Resource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableWithColumnsResource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_with_columns_resource: Option<TableWithColumnsResource>,
 }
 
@@ -292,6 +304,7 @@ pub struct TableResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///
@@ -303,6 +316,7 @@ pub struct TableResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -314,6 +328,7 @@ pub struct TableResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -325,6 +340,7 @@ pub struct TableResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TableWildcard")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_wildcard: Option<TableWildcard>,
 }
 
@@ -378,6 +394,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///
@@ -389,6 +406,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_names: Option<Vec<String>>,
 
     ///
@@ -400,6 +418,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnWildcard")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_wildcard: Option<ColumnWildcard>,
 
     ///
@@ -411,6 +430,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -422,6 +442,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 

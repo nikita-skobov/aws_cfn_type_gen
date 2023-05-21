@@ -14,6 +14,7 @@ pub struct CfnView {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<Filters>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnView {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub included_properties: Option<Vec<IncludedProperty>>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnView {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     ///

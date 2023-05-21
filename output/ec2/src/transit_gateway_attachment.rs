@@ -18,6 +18,7 @@ pub struct CfnTransitGatewayAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Options>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnTransitGatewayAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -95,6 +97,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApplianceModeSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub appliance_mode_support: Option<OptionsApplianceModeSupportEnum>,
 
     ///
@@ -108,6 +111,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_support: Option<OptionsDnsSupportEnum>,
 
     ///
@@ -121,6 +125,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Support")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_support: Option<OptionsIpv6SupportEnum>,
 }
 

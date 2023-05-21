@@ -29,6 +29,7 @@ pub struct CfnDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_policy: Option<String>,
 
     ///

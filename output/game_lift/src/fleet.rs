@@ -9,6 +9,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnywhereConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub anywhere_configuration: Option<AnywhereConfiguration>,
 
     ///
@@ -22,6 +23,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "BuildId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub build_id: Option<String>,
 
     ///
@@ -37,6 +39,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CertificateConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_configuration: Option<CertificateConfiguration>,
 
     ///
@@ -50,6 +53,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputeType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compute_type: Option<FleetComputeTypeEnum>,
 
     ///
@@ -65,6 +69,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -78,6 +83,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredEC2Instances")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub desired_ec2_instances: Option<i64>,
 
     ///
@@ -91,6 +97,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EC2InboundPermissions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_inbound_permissions: Option<Vec<IpPermission>>,
 
     ///
@@ -104,6 +111,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EC2InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ec2_instance_type: Option<FleetEC2InstanceTypeEnum>,
 
     ///
@@ -117,6 +125,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FleetType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fleet_type: Option<FleetFleetTypeEnum>,
 
     ///
@@ -130,6 +139,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InstanceRoleARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_role_arn: Option<String>,
 
     ///
@@ -145,6 +155,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Locations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub locations: Option<Vec<LocationConfiguration>>,
 
     ///
@@ -158,6 +169,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_size: Option<i64>,
 
     ///
@@ -171,6 +183,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_groups: Option<Vec<String>>,
 
     ///
@@ -184,6 +197,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_size: Option<i64>,
 
     ///
@@ -214,6 +228,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NewGameSessionProtectionPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub new_game_session_protection_policy: Option<FleetNewGameSessionProtectionPolicyEnum>,
 
     ///
@@ -229,6 +244,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerVpcAwsAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub peer_vpc_aws_account_id: Option<String>,
 
     ///
@@ -244,6 +260,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "PeerVpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub peer_vpc_id: Option<String>,
 
     ///
@@ -255,6 +272,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceCreationLimitPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_creation_limit_policy: Option<ResourceCreationLimitPolicy>,
 
     ///
@@ -268,6 +286,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RuntimeConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime_configuration: Option<RuntimeConfiguration>,
 
     ///
@@ -283,6 +302,7 @@ pub struct CfnFleet {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ScriptId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub script_id: Option<String>,
 }
 
@@ -1322,6 +1342,7 @@ pub struct LocationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocationCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location_capacity: Option<LocationCapacity>,
 }
 
@@ -1379,6 +1400,7 @@ pub struct ResourceCreationLimitPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NewGameSessionsPerCreator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub new_game_sessions_per_creator: Option<i64>,
 
     ///
@@ -1392,6 +1414,7 @@ pub struct ResourceCreationLimitPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyPeriodInMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_period_in_minutes: Option<i64>,
 }
 
@@ -1442,6 +1465,7 @@ pub struct RuntimeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GameSessionActivationTimeoutSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub game_session_activation_timeout_seconds: Option<i64>,
 
     ///
@@ -1457,6 +1481,7 @@ pub struct RuntimeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentGameSessionActivations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrent_game_session_activations: Option<i64>,
 
     ///
@@ -1470,6 +1495,7 @@ pub struct RuntimeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerProcesses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_processes: Option<Vec<ServerProcess>>,
 }
 
@@ -1570,6 +1596,7 @@ pub struct ServerProcess {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<String>,
 }
 

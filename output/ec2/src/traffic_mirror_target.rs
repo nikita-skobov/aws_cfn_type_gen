@@ -16,6 +16,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GatewayLoadBalancerEndpointId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gateway_load_balancer_endpoint_id: Option<String>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkInterfaceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<String>,
 
     ///
@@ -49,6 +52,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NetworkLoadBalancerArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_load_balancer_arn: Option<String>,
 
     ///
@@ -60,6 +64,7 @@ pub struct CfnTrafficMirrorTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

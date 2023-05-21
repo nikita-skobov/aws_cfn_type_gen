@@ -145,6 +145,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Catalog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog: Option<serde_json::Value>,
 
     ///
@@ -156,6 +157,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Database")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database: Option<DatabaseResource>,
 
     ///
@@ -167,6 +169,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Table")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table: Option<TableResource>,
 
     ///
@@ -178,6 +181,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableWithColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_with_columns: Option<TableWithColumnsResource>,
 }
 
@@ -239,6 +243,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -252,6 +257,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableWildcard")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_wildcard: Option<serde_json::Value>,
 }
 

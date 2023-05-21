@@ -31,6 +31,7 @@ pub struct CfnReportPlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReportPlanDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub report_plan_description: Option<String>,
 
     ///
@@ -48,6 +49,7 @@ pub struct CfnReportPlan {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ReportPlanName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub report_plan_name: Option<String>,
 
     ///
@@ -59,6 +61,7 @@ pub struct CfnReportPlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReportPlanTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub report_plan_tags: Option<Vec<Tag>>,
 
     ///
@@ -140,6 +143,7 @@ pub struct ReportDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Formats")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub formats: Option<Vec<String>>,
 
     ///
@@ -162,6 +166,7 @@ pub struct ReportDeliveryChannel {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_key_prefix: Option<String>,
 }
 
@@ -191,6 +196,7 @@ pub struct ReportSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Accounts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accounts: Option<Vec<String>>,
 
     ///
@@ -202,6 +208,7 @@ pub struct ReportSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FrameworkArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub framework_arns: Option<Vec<String>>,
 
     ///
@@ -213,6 +220,7 @@ pub struct ReportSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationUnits")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organization_units: Option<Vec<String>>,
 
     ///
@@ -224,6 +232,7 @@ pub struct ReportSetting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regions: Option<Vec<String>>,
 
     ///

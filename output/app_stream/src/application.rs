@@ -21,6 +21,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributesToDelete")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes_to_delete: Option<Vec<String>>,
 
     /// The description of the application.
@@ -33,6 +34,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     /// The display name of the application. This name is visible to users in the application catalog.
@@ -45,6 +47,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
 
     /// The icon S3 location of the application.
@@ -79,6 +82,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_parameters: Option<String>,
 
     /// The launch path of the application.
@@ -129,6 +133,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     /// The working directory of the application.
@@ -141,6 +146,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkingDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub working_directory: Option<String>,
 }
 

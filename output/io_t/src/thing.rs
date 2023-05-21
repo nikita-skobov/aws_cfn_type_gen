@@ -12,6 +12,7 @@ pub struct CfnThing {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AttributePayload")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attribute_payload: Option<AttributePayload>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnThing {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ThingName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_name: Option<String>,
 }
 
@@ -60,6 +62,7 @@ pub struct AttributePayload {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 }
 

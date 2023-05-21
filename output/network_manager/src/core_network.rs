@@ -16,6 +16,7 @@ pub struct CfnCoreNetwork {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnCoreNetwork {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PolicyDocument")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_document: Option<serde_json::Value>,
 
     ///
@@ -57,6 +59,7 @@ pub struct CfnCoreNetwork {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -122,6 +125,7 @@ pub struct CoreNetworkEdge {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Asn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asn: Option<f64>,
 
     ///
@@ -139,6 +143,7 @@ pub struct CoreNetworkEdge {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EdgeLocation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub edge_location: Option<String>,
 
     ///
@@ -150,6 +155,7 @@ pub struct CoreNetworkEdge {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsideCidrBlocks")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inside_cidr_blocks: Option<Vec<String>>,
 }
 
@@ -197,6 +203,7 @@ pub struct CoreNetworkSegment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EdgeLocations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub edge_locations: Option<Vec<String>>,
 
     ///
@@ -214,6 +221,7 @@ pub struct CoreNetworkSegment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -225,6 +233,7 @@ pub struct CoreNetworkSegment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SharedSegments")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub shared_segments: Option<Vec<String>>,
 }
 

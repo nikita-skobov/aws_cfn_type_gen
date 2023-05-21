@@ -11,6 +11,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityUnits")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_units: Option<CapacityUnitsConfiguration>,
 
     ///
@@ -22,6 +23,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -33,6 +35,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentMetadataConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_metadata_configurations: Option<Vec<DocumentMetadataConfiguration>>,
 
     ///
@@ -85,6 +88,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ServerSideEncryptionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_side_encryption_configuration: Option<ServerSideEncryptionConfiguration>,
 
     ///
@@ -98,6 +102,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -117,6 +122,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserContextPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_context_policy: Option<String>,
 
     ///
@@ -128,6 +134,7 @@ pub struct CfnIndex {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserTokenConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_token_configurations: Option<Vec<UserTokenConfiguration>>,
 }
 
@@ -281,6 +288,7 @@ pub struct DocumentMetadataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Relevance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relevance: Option<Relevance>,
 
     ///
@@ -292,6 +300,7 @@ pub struct DocumentMetadataConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Search")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub search: Option<Search>,
 
     ///
@@ -470,6 +479,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClaimRegex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub claim_regex: Option<String>,
 
     ///
@@ -487,6 +497,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupAttributeField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_attribute_field: Option<String>,
 
     ///
@@ -504,6 +515,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Issuer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub issuer: Option<String>,
 
     ///
@@ -534,6 +546,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretManagerArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_manager_arn: Option<String>,
 
     ///
@@ -551,6 +564,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "URL")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
 
     ///
@@ -568,6 +582,7 @@ pub struct JwtTokenTypeConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserNameAttributeField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_name_attribute_field: Option<String>,
 }
 
@@ -724,6 +739,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Duration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration: Option<String>,
 
     ///
@@ -735,6 +751,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Freshness")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub freshness: Option<bool>,
 
     ///
@@ -750,6 +767,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Importance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub importance: Option<i64>,
 
     ///
@@ -769,6 +787,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RankOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rank_order: Option<RelevanceRankOrderEnum>,
 
     ///
@@ -782,6 +801,7 @@ pub struct Relevance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueImportanceItems")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_importance_items: Option<Vec<ValueImportanceItem>>,
 }
 
@@ -864,6 +884,7 @@ pub struct Search {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Displayable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub displayable: Option<bool>,
 
     ///
@@ -875,6 +896,7 @@ pub struct Search {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Facetable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub facetable: Option<bool>,
 
     ///
@@ -886,6 +908,7 @@ pub struct Search {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Searchable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub searchable: Option<bool>,
 
     ///
@@ -897,6 +920,7 @@ pub struct Search {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sortable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sortable: Option<bool>,
 }
 
@@ -930,6 +954,7 @@ pub struct ServerSideEncryptionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 }
 
@@ -1021,6 +1046,7 @@ pub struct UserTokenConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JsonTokenTypeConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json_token_type_configuration: Option<JsonTokenTypeConfiguration>,
 
     ///
@@ -1032,6 +1058,7 @@ pub struct UserTokenConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JwtTokenTypeConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jwt_token_type_configuration: Option<JwtTokenTypeConfiguration>,
 }
 
@@ -1069,6 +1096,7 @@ pub struct ValueImportanceItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -1080,6 +1108,7 @@ pub struct ValueImportanceItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<i64>,
 }
 

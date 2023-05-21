@@ -14,6 +14,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArtifactConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub artifact_config: Option<ArtifactConfig>,
 
     ///
@@ -74,6 +75,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailureRetentionPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failure_retention_period: Option<i64>,
 
     ///
@@ -104,6 +106,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub run_config: Option<RunConfig>,
 
     ///
@@ -143,6 +146,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartCanaryAfterCreation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_canary_after_creation: Option<bool>,
 
     ///
@@ -158,6 +162,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SuccessRetentionPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub success_retention_period: Option<i64>,
 
     ///
@@ -169,6 +174,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -180,6 +186,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VPCConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpcconfig: Option<VPCConfig>,
 
     ///
@@ -191,6 +198,7 @@ pub struct CfnCanary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VisualReference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_reference: Option<VisualReference>,
 }
 
@@ -341,6 +349,7 @@ pub struct ArtifactConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Encryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_encryption: Option<S3Encryption>,
 }
 
@@ -373,6 +382,7 @@ pub struct BaseScreenshot {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreCoordinates")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_coordinates: Option<Vec<String>>,
 
     /// The name of the screenshot. This is generated the first time the canary is run after the UpdateCanary operation that     specified for this canary to perform visual monitoring.
@@ -433,6 +443,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket: Option<String>,
 
     ///
@@ -448,6 +459,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_key: Option<String>,
 
     ///
@@ -463,6 +475,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_object_version: Option<String>,
 
     ///
@@ -474,6 +487,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Script")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub script: Option<String>,
 
     ///
@@ -489,6 +503,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceLocationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_location_arn: Option<String>,
 }
 
@@ -610,6 +625,7 @@ pub struct RunConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActiveTracing")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub active_tracing: Option<bool>,
 
     ///
@@ -625,6 +641,7 @@ pub struct RunConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_variables: Option<std::collections::HashMap<String, String>>,
 
     /// The maximum amount of memory that the    canary can use while running. This value must be a multiple of 64. The range is 960 to 3008.
@@ -639,6 +656,7 @@ pub struct RunConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryInMB")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_in_mb: Option<i64>,
 
     ///
@@ -656,6 +674,7 @@ pub struct RunConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_seconds: Option<i64>,
 }
 
@@ -722,6 +741,7 @@ pub struct S3Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_mode: Option<String>,
 
     ///
@@ -733,6 +753,7 @@ pub struct S3Encryption {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_arn: Option<String>,
 }
 
@@ -762,6 +783,7 @@ pub struct Schedule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DurationInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub duration_in_seconds: Option<String>,
 
     ///
@@ -902,6 +924,7 @@ pub struct VPCConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<String>,
 }
 
@@ -960,6 +983,7 @@ pub struct VisualReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BaseScreenshots")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base_screenshots: Option<Vec<BaseScreenshot>>,
 }
 

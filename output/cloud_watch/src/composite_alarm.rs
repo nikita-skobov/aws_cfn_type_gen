@@ -20,6 +20,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions_enabled: Option<bool>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionsSuppressor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions_suppressor: Option<String>,
 
     ///
@@ -44,6 +46,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionsSuppressorExtensionPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions_suppressor_extension_period: Option<i64>,
 
     /// The maximum time     in seconds     that the composite alarm waits     for the suppressor alarm     to go     into the ALARM state.     After this time,     the composite alarm performs its actions.
@@ -56,6 +59,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActionsSuppressorWaitPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub actions_suppressor_wait_period: Option<i64>,
 
     ///
@@ -67,6 +71,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmActions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_actions: Option<Vec<String>>,
 
     ///
@@ -78,6 +83,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_description: Option<String>,
 
     ///
@@ -89,6 +95,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AlarmName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_name: Option<String>,
 
     ///
@@ -121,6 +128,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsufficientDataActions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insufficient_data_actions: Option<Vec<String>>,
 
     ///
@@ -132,6 +140,7 @@ pub struct CfnCompositeAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OKActions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub okactions: Option<Vec<String>>,
 }
 

@@ -32,6 +32,7 @@ pub struct CfnCertificateAuthorityActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateChain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_chain: Option<String>,
 
     ///
@@ -43,6 +44,7 @@ pub struct CfnCertificateAuthorityActivation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 }
 

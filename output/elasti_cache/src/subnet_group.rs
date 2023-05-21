@@ -14,6 +14,7 @@ pub struct CfnSubnetGroup {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CacheSubnetGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache_subnet_group_name: Option<String>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnSubnetGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

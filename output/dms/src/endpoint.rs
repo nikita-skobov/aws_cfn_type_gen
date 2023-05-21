@@ -12,6 +12,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_arn: Option<String>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocDbSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub doc_db_settings: Option<DocDbSettings>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDbSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamo_db_settings: Option<DynamoDbSettings>,
 
     ///
@@ -56,6 +60,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ElasticsearchSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub elasticsearch_settings: Option<ElasticsearchSettings>,
 
     ///
@@ -67,6 +72,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_identifier: Option<String>,
 
     ///
@@ -104,6 +110,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtraConnectionAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extra_connection_attributes: Option<String>,
 
     ///
@@ -115,6 +122,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GcpMySQLSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gcp_my_sqlsettings: Option<GcpMySQLSettings>,
 
     ///
@@ -126,6 +134,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IbmDb2Settings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ibm_db2_settings: Option<IbmDb2Settings>,
 
     ///
@@ -137,6 +146,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KafkaSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kafka_settings: Option<KafkaSettings>,
 
     ///
@@ -148,6 +158,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_settings: Option<KinesisSettings>,
 
     ///
@@ -163,6 +174,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -174,6 +186,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MicrosoftSqlServerSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub microsoft_sql_server_settings: Option<MicrosoftSqlServerSettings>,
 
     ///
@@ -185,6 +198,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MongoDbSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mongo_db_settings: Option<MongoDbSettings>,
 
     ///
@@ -196,6 +210,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MySqlSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub my_sql_settings: Option<MySqlSettings>,
 
     ///
@@ -207,6 +222,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NeptuneSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub neptune_settings: Option<NeptuneSettings>,
 
     ///
@@ -218,6 +234,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OracleSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oracle_settings: Option<OracleSettings>,
 
     ///
@@ -229,6 +246,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<String>,
 
     ///
@@ -240,6 +258,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -253,6 +272,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PostgreSqlSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub postgre_sql_settings: Option<PostgreSqlSettings>,
 
     ///
@@ -264,6 +284,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedisSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redis_settings: Option<RedisSettings>,
 
     ///
@@ -277,6 +298,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redshift_settings: Option<RedshiftSettings>,
 
     ///
@@ -290,6 +312,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_identifier: Option<String>,
 
     ///
@@ -301,6 +324,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Settings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_settings: Option<S3Settings>,
 
     ///
@@ -312,6 +336,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_name: Option<String>,
 
     ///
@@ -327,6 +352,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_mode: Option<EndpointSslModeEnum>,
 
     ///
@@ -338,6 +364,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SybaseSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sybase_settings: Option<SybaseSettings>,
 
     ///
@@ -349,6 +376,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -360,6 +388,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<String>,
 }
 
@@ -501,6 +530,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocsToInvestigate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub docs_to_investigate: Option<i64>,
 
     ///
@@ -514,6 +544,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtractDocId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extract_doc_id: Option<bool>,
 
     ///
@@ -529,6 +560,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NestingLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nesting_level: Option<DocDbSettingsNestingLevelEnum>,
 
     ///
@@ -542,6 +574,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -553,6 +586,7 @@ pub struct DocDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 }
 
@@ -599,6 +633,7 @@ pub struct DynamoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_access_role_arn: Option<String>,
 }
 
@@ -628,6 +663,7 @@ pub struct ElasticsearchSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_uri: Option<String>,
 
     ///
@@ -639,6 +675,7 @@ pub struct ElasticsearchSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorRetryDuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_retry_duration: Option<i64>,
 
     ///
@@ -652,6 +689,7 @@ pub struct ElasticsearchSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FullLoadErrorPercentage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub full_load_error_percentage: Option<i64>,
 
     ///
@@ -663,6 +701,7 @@ pub struct ElasticsearchSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_access_role_arn: Option<String>,
 }
 
@@ -694,6 +733,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub after_connect_script: Option<String>,
 
     ///
@@ -705,6 +745,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CleanSourceMetadataOnMismatch")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub clean_source_metadata_on_mismatch: Option<bool>,
 
     ///
@@ -716,6 +757,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -731,6 +773,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventsPollInterval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub events_poll_interval: Option<i64>,
 
     ///
@@ -744,6 +787,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -757,6 +801,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelLoadThreads")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parallel_load_threads: Option<i64>,
 
     ///
@@ -768,6 +813,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<String>,
 
     ///
@@ -779,6 +825,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -792,6 +839,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -803,6 +851,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 
     ///
@@ -814,6 +863,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_name: Option<String>,
 
     ///
@@ -827,6 +877,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerTimezone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_timezone: Option<String>,
 
     ///
@@ -838,6 +889,7 @@ pub struct GcpMySQLSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<String>,
 }
 
@@ -867,6 +919,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrentLsn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub current_lsn: Option<String>,
 
     ///
@@ -878,6 +931,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxKBytesPerRead")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_kbytes_per_read: Option<i64>,
 
     ///
@@ -891,6 +945,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -902,6 +957,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 
     ///
@@ -913,6 +969,7 @@ pub struct IbmDb2Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SetDataCaptureChanges")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub set_data_capture_changes: Option<bool>,
 }
 
@@ -942,6 +999,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Broker")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub broker: Option<String>,
 
     ///
@@ -953,6 +1011,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeControlDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_control_details: Option<bool>,
 
     ///
@@ -964,6 +1023,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeNullAndEmpty")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_null_and_empty: Option<bool>,
 
     ///
@@ -975,6 +1035,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludePartitionValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_partition_value: Option<bool>,
 
     ///
@@ -986,6 +1047,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTableAlterOperations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_table_alter_operations: Option<bool>,
 
     ///
@@ -997,6 +1059,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTransactionDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_transaction_details: Option<bool>,
 
     ///
@@ -1010,6 +1073,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_format: Option<KafkaSettingsMessageFormatEnum>,
 
     ///
@@ -1021,6 +1085,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageMaxBytes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_max_bytes: Option<i64>,
 
     ///
@@ -1032,6 +1097,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoHexPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_hex_prefix: Option<bool>,
 
     ///
@@ -1043,6 +1109,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionIncludeSchemaTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partition_include_schema_table: Option<bool>,
 
     ///
@@ -1054,6 +1121,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SaslPassword")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sasl_password: Option<String>,
 
     ///
@@ -1065,6 +1133,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SaslUserName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sasl_user_name: Option<String>,
 
     ///
@@ -1078,6 +1147,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_protocol: Option<KafkaSettingsSecurityProtocolEnum>,
 
     ///
@@ -1089,6 +1159,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslCaCertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_ca_certificate_arn: Option<String>,
 
     ///
@@ -1100,6 +1171,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslClientCertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_client_certificate_arn: Option<String>,
 
     ///
@@ -1111,6 +1183,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslClientKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_client_key_arn: Option<String>,
 
     ///
@@ -1122,6 +1195,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslClientKeyPassword")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_client_key_password: Option<String>,
 
     ///
@@ -1133,6 +1207,7 @@ pub struct KafkaSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Topic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub topic: Option<String>,
 }
 
@@ -1204,6 +1279,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeControlDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_control_details: Option<bool>,
 
     ///
@@ -1215,6 +1291,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeNullAndEmpty")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_null_and_empty: Option<bool>,
 
     ///
@@ -1226,6 +1303,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludePartitionValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_partition_value: Option<bool>,
 
     ///
@@ -1237,6 +1315,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTableAlterOperations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_table_alter_operations: Option<bool>,
 
     ///
@@ -1248,6 +1327,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeTransactionDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_transaction_details: Option<bool>,
 
     ///
@@ -1261,6 +1341,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_format: Option<KinesisSettingsMessageFormatEnum>,
 
     ///
@@ -1272,6 +1353,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoHexPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_hex_prefix: Option<bool>,
 
     ///
@@ -1283,6 +1365,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionIncludeSchemaTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partition_include_schema_table: Option<bool>,
 
     ///
@@ -1294,6 +1377,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_access_role_arn: Option<String>,
 
     ///
@@ -1305,6 +1389,7 @@ pub struct KinesisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_arn: Option<String>,
 }
 
@@ -1351,6 +1436,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BcpPacketSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bcp_packet_size: Option<i64>,
 
     ///
@@ -1362,6 +1448,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlTablesFileGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub control_tables_file_group: Option<String>,
 
     ///
@@ -1373,6 +1460,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QuerySingleAlwaysOnNode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_single_always_on_node: Option<bool>,
 
     ///
@@ -1384,6 +1472,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadBackupOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_backup_only: Option<bool>,
 
     ///
@@ -1399,6 +1488,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SafeguardPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub safeguard_policy: Option<String>,
 
     ///
@@ -1412,6 +1502,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -1423,6 +1514,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 
     ///
@@ -1434,6 +1526,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBcpFullLoad")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_bcp_full_load: Option<bool>,
 
     ///
@@ -1445,6 +1538,7 @@ pub struct MicrosoftSqlServerSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseThirdPartyBackupDevice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_third_party_backup_device: Option<bool>,
 }
 
@@ -1478,6 +1572,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthMechanism")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_mechanism: Option<MongoDbSettingsAuthMechanismEnum>,
 
     ///
@@ -1491,6 +1586,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthSource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_source: Option<String>,
 
     ///
@@ -1506,6 +1602,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_type: Option<MongoDbSettingsAuthTypeEnum>,
 
     ///
@@ -1517,6 +1614,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_name: Option<String>,
 
     ///
@@ -1530,6 +1628,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocsToInvestigate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub docs_to_investigate: Option<String>,
 
     ///
@@ -1543,6 +1642,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtractDocId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extract_doc_id: Option<String>,
 
     ///
@@ -1558,6 +1658,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NestingLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nesting_level: Option<MongoDbSettingsNestingLevelEnum>,
 
     ///
@@ -1569,6 +1670,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Password")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<String>,
 
     ///
@@ -1580,6 +1682,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -1593,6 +1696,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -1604,6 +1708,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 
     ///
@@ -1615,6 +1720,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_name: Option<String>,
 
     ///
@@ -1626,6 +1732,7 @@ pub struct MongoDbSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Username")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<String>,
 }
 
@@ -1712,6 +1819,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub after_connect_script: Option<String>,
 
     ///
@@ -1723,6 +1831,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CleanSourceMetadataOnMismatch")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub clean_source_metadata_on_mismatch: Option<bool>,
 
     ///
@@ -1738,6 +1847,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventsPollInterval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub events_poll_interval: Option<i64>,
 
     ///
@@ -1751,6 +1861,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -1764,6 +1875,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelLoadThreads")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parallel_load_threads: Option<i64>,
 
     ///
@@ -1777,6 +1889,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -1788,6 +1901,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 
     ///
@@ -1803,6 +1917,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerTimezone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_timezone: Option<String>,
 
     ///
@@ -1816,6 +1931,7 @@ pub struct MySqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetDbType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_db_type: Option<String>,
 }
 
@@ -1845,6 +1961,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ErrorRetryDuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub error_retry_duration: Option<i64>,
 
     ///
@@ -1856,6 +1973,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamAuthEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_auth_enabled: Option<bool>,
 
     ///
@@ -1867,6 +1985,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -1878,6 +1997,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetryCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_retry_count: Option<i64>,
 
     ///
@@ -1889,6 +2009,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketFolder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_folder: Option<String>,
 
     ///
@@ -1900,6 +2021,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_name: Option<String>,
 
     ///
@@ -1913,6 +2035,7 @@ pub struct NeptuneSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_access_role_arn: Option<String>,
 }
 
@@ -1942,6 +2065,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessAlternateDirectly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_alternate_directly: Option<bool>,
 
     ///
@@ -1955,6 +2079,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddSupplementalLogging")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub add_supplemental_logging: Option<bool>,
 
     ///
@@ -1968,6 +2093,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalArchivedLogDestId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_archived_log_dest_id: Option<i64>,
 
     ///
@@ -1979,6 +2105,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowSelectNestedTables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_select_nested_tables: Option<bool>,
 
     ///
@@ -1990,6 +2117,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchivedLogDestId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub archived_log_dest_id: Option<i64>,
 
     ///
@@ -2001,6 +2129,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArchivedLogsOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub archived_logs_only: Option<bool>,
 
     ///
@@ -2012,6 +2141,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AsmPassword")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asm_password: Option<String>,
 
     ///
@@ -2023,6 +2153,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AsmServer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asm_server: Option<String>,
 
     ///
@@ -2034,6 +2165,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AsmUser")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asm_user: Option<String>,
 
     ///
@@ -2049,6 +2181,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CharLengthSemantics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub char_length_semantics: Option<OracleSettingsCharLengthSemanticsEnum>,
 
     ///
@@ -2060,6 +2193,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectPathNoLog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub direct_path_no_log: Option<bool>,
 
     ///
@@ -2071,6 +2205,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectPathParallelLoad")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub direct_path_parallel_load: Option<bool>,
 
     ///
@@ -2082,6 +2217,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableHomogenousTablespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_homogenous_tablespace: Option<bool>,
 
     ///
@@ -2103,6 +2239,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExtraArchivedLogDestIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extra_archived_log_dest_ids: Option<Vec<i64>>,
 
     ///
@@ -2116,6 +2253,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailTasksOnLobTruncation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fail_tasks_on_lob_truncation: Option<bool>,
 
     ///
@@ -2129,6 +2267,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberDatatypeScale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_datatype_scale: Option<i64>,
 
     ///
@@ -2140,6 +2279,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OraclePathPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oracle_path_prefix: Option<String>,
 
     ///
@@ -2151,6 +2291,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelAsmReadThreads")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parallel_asm_read_threads: Option<i64>,
 
     ///
@@ -2162,6 +2303,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadAheadBlocks")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_ahead_blocks: Option<i64>,
 
     ///
@@ -2173,6 +2315,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReadTableSpaceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_table_space_name: Option<bool>,
 
     ///
@@ -2184,6 +2327,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplacePathPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replace_path_prefix: Option<bool>,
 
     ///
@@ -2197,6 +2341,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryInterval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_interval: Option<i64>,
 
     ///
@@ -2210,6 +2355,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -2223,6 +2369,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerOracleAsmAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_oracle_asm_access_role_arn: Option<String>,
 
     ///
@@ -2234,6 +2381,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerOracleAsmSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_oracle_asm_secret_id: Option<String>,
 
     ///
@@ -2245,6 +2393,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 
     ///
@@ -2256,6 +2405,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityDbEncryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_db_encryption: Option<String>,
 
     ///
@@ -2267,6 +2417,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityDbEncryptionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_db_encryption_name: Option<String>,
 
     ///
@@ -2278,6 +2429,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpatialDataOptionToGeoJsonFunctionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spatial_data_option_to_geo_json_function_name: Option<String>,
 
     ///
@@ -2291,6 +2443,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandbyDelayTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub standby_delay_time: Option<i64>,
 
     ///
@@ -2302,6 +2455,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseAlternateFolderForOnline")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_alternate_folder_for_online: Option<bool>,
 
     ///
@@ -2313,6 +2467,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBFile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_bfile: Option<bool>,
 
     ///
@@ -2324,6 +2479,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseDirectPathFullLoad")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_direct_path_full_load: Option<bool>,
 
     ///
@@ -2335,6 +2491,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseLogminerReader")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_logminer_reader: Option<bool>,
 
     ///
@@ -2346,6 +2503,7 @@ pub struct OracleSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UsePathPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_path_prefix: Option<String>,
 }
 
@@ -2398,6 +2556,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub after_connect_script: Option<String>,
 
     ///
@@ -2411,6 +2570,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaptureDdls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_ddls: Option<bool>,
 
     ///
@@ -2424,6 +2584,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DdlArtifactsSchema")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ddl_artifacts_schema: Option<String>,
 
     ///
@@ -2437,6 +2598,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecuteTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execute_timeout: Option<i64>,
 
     ///
@@ -2450,6 +2612,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FailTasksOnLobTruncation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fail_tasks_on_lob_truncation: Option<bool>,
 
     ///
@@ -2461,6 +2624,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatEnable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heartbeat_enable: Option<bool>,
 
     ///
@@ -2472,6 +2636,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatFrequency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heartbeat_frequency: Option<i64>,
 
     ///
@@ -2483,6 +2648,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeartbeatSchema")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub heartbeat_schema: Option<String>,
 
     /// Property description not available.
@@ -2493,6 +2659,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapBooleanAsBoolean")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub map_boolean_as_boolean: Option<bool>,
 
     ///
@@ -2506,6 +2673,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -2517,6 +2685,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PluginName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub plugin_name: Option<String>,
 
     ///
@@ -2530,6 +2699,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -2541,6 +2711,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 
     ///
@@ -2556,6 +2727,7 @@ pub struct PostgreSqlSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SlotName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub slot_name: Option<String>,
 }
 
@@ -2585,6 +2757,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthPassword")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_password: Option<String>,
 
     ///
@@ -2598,6 +2771,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_type: Option<RedisSettingsAuthTypeEnum>,
 
     ///
@@ -2609,6 +2783,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthUserName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_user_name: Option<String>,
 
     ///
@@ -2620,6 +2795,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<f64>,
 
     ///
@@ -2631,6 +2807,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_name: Option<String>,
 
     ///
@@ -2642,6 +2819,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslCaCertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_ca_certificate_arn: Option<String>,
 
     ///
@@ -2657,6 +2835,7 @@ pub struct RedisSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SslSecurityProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_security_protocol: Option<RedisSettingsSslSecurityProtocolEnum>,
 }
 
@@ -2726,6 +2905,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptAnyDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accept_any_date: Option<bool>,
 
     ///
@@ -2737,6 +2917,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AfterConnectScript")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub after_connect_script: Option<String>,
 
     ///
@@ -2752,6 +2933,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketFolder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_folder: Option<String>,
 
     ///
@@ -2763,6 +2945,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<String>,
 
     ///
@@ -2774,6 +2957,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaseSensitiveNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub case_sensitive_names: Option<bool>,
 
     ///
@@ -2785,6 +2969,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompUpdate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comp_update: Option<bool>,
 
     ///
@@ -2796,6 +2981,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_timeout: Option<i64>,
 
     ///
@@ -2809,6 +2995,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_format: Option<String>,
 
     ///
@@ -2820,6 +3007,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EmptyAsNull")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub empty_as_null: Option<bool>,
 
     ///
@@ -2837,6 +3025,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_mode: Option<RedshiftSettingsEncryptionModeEnum>,
 
     ///
@@ -2848,6 +3037,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExplicitIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub explicit_ids: Option<bool>,
 
     ///
@@ -2863,6 +3053,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileTransferUploadStreams")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_transfer_upload_streams: Option<i64>,
 
     ///
@@ -2874,6 +3065,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoadTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub load_timeout: Option<i64>,
 
     /// Property description not available.
@@ -2884,6 +3076,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MapBooleanAsBoolean")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub map_boolean_as_boolean: Option<bool>,
 
     ///
@@ -2895,6 +3088,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -2906,6 +3100,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveQuotes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_quotes: Option<bool>,
 
     ///
@@ -2917,6 +3112,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceChars")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replace_chars: Option<String>,
 
     ///
@@ -2928,6 +3124,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplaceInvalidChars")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replace_invalid_chars: Option<String>,
 
     ///
@@ -2941,6 +3138,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -2952,6 +3150,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 
     ///
@@ -2963,6 +3162,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerSideEncryptionKmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_side_encryption_kms_key_id: Option<String>,
 
     ///
@@ -2974,6 +3174,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_access_role_arn: Option<String>,
 
     ///
@@ -2987,6 +3188,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_format: Option<String>,
 
     ///
@@ -2998,6 +3200,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrimBlanks")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trim_blanks: Option<bool>,
 
     ///
@@ -3009,6 +3212,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruncateColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub truncate_columns: Option<bool>,
 
     ///
@@ -3020,6 +3224,7 @@ pub struct RedshiftSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WriteBufferSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub write_buffer_size: Option<i64>,
 }
 
@@ -3068,6 +3273,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddColumnName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub add_column_name: Option<bool>,
 
     ///
@@ -3079,6 +3285,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketFolder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_folder: Option<String>,
 
     ///
@@ -3090,6 +3297,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<String>,
 
     ///
@@ -3105,6 +3313,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CannedAclForObjects")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub canned_acl_for_objects: Option<S3SettingsCannedAclForObjectsEnum>,
 
     ///
@@ -3120,6 +3329,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcInsertsAndUpdates")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdc_inserts_and_updates: Option<bool>,
 
     ///
@@ -3135,6 +3345,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcInsertsOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdc_inserts_only: Option<bool>,
 
     ///
@@ -3150,6 +3361,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcMaxBatchInterval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdc_max_batch_interval: Option<i64>,
 
     ///
@@ -3165,6 +3377,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcMinFileSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdc_min_file_size: Option<i64>,
 
     ///
@@ -3184,6 +3397,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CdcPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cdc_path: Option<String>,
 
     ///
@@ -3197,6 +3411,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompressionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compression_type: Option<S3SettingsCompressionTypeEnum>,
 
     ///
@@ -3208,6 +3423,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvDelimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv_delimiter: Option<String>,
 
     ///
@@ -3221,6 +3437,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvNoSupValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv_no_sup_value: Option<String>,
 
     ///
@@ -3234,6 +3451,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvNullValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv_null_value: Option<String>,
 
     ///
@@ -3247,6 +3465,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CsvRowDelimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv_row_delimiter: Option<String>,
 
     ///
@@ -3262,6 +3481,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_format: Option<S3SettingsDataFormatEnum>,
 
     ///
@@ -3273,6 +3493,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataPageSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_page_size: Option<i64>,
 
     ///
@@ -3286,6 +3507,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatePartitionDelimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_partition_delimiter: Option<S3SettingsDatePartitionDelimiterEnum>,
 
     ///
@@ -3297,6 +3519,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatePartitionEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_partition_enabled: Option<bool>,
 
     ///
@@ -3310,6 +3533,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatePartitionSequence")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_partition_sequence: Option<S3SettingsDatePartitionSequenceEnum>,
 
     ///
@@ -3323,6 +3547,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatePartitionTimezone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_partition_timezone: Option<String>,
 
     ///
@@ -3334,6 +3559,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DictPageSizeLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dict_page_size_limit: Option<i64>,
 
     ///
@@ -3345,6 +3571,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableStatistics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_statistics: Option<bool>,
 
     ///
@@ -3360,6 +3587,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncodingType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encoding_type: Option<S3SettingsEncodingTypeEnum>,
 
     ///
@@ -3379,6 +3607,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_mode: Option<S3SettingsEncryptionModeEnum>,
 
     ///
@@ -3392,6 +3621,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExternalTableDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub external_table_definition: Option<String>,
 
     ///
@@ -3405,6 +3635,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IgnoreHeaderRows")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ignore_header_rows: Option<i64>,
 
     ///
@@ -3422,6 +3653,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeOpForFullLoad")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_op_for_full_load: Option<bool>,
 
     ///
@@ -3435,6 +3667,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxFileSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_file_size: Option<i64>,
 
     ///
@@ -3454,6 +3687,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParquetTimestampInMillisecond")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parquet_timestamp_in_millisecond: Option<bool>,
 
     ///
@@ -3467,6 +3701,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParquetVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parquet_version: Option<S3SettingsParquetVersionEnum>,
 
     ///
@@ -3480,6 +3715,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PreserveTransactions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub preserve_transactions: Option<bool>,
 
     ///
@@ -3495,6 +3731,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Rfc4180")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rfc4180: Option<bool>,
 
     ///
@@ -3508,6 +3745,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RowGroupLength")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub row_group_length: Option<i64>,
 
     ///
@@ -3521,6 +3759,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerSideEncryptionKmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_side_encryption_kms_key_id: Option<String>,
 
     ///
@@ -3532,6 +3771,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_access_role_arn: Option<String>,
 
     ///
@@ -3555,6 +3795,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimestampColumnName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp_column_name: Option<String>,
 
     ///
@@ -3568,6 +3809,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseCsvNoSupValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_csv_no_sup_value: Option<bool>,
 
     ///
@@ -3581,6 +3823,7 @@ pub struct S3Settings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseTaskStartTimeForFullLoadTimestamp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_task_start_time_for_full_load_timestamp: Option<bool>,
 }
 
@@ -3796,6 +4039,7 @@ pub struct SybaseSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_access_role_arn: Option<String>,
 
     ///
@@ -3807,6 +4051,7 @@ pub struct SybaseSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretsManagerSecretId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_id: Option<String>,
 }
 

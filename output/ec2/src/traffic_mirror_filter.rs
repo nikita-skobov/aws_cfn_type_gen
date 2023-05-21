@@ -14,6 +14,7 @@ pub struct CfnTrafficMirrorFilter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnTrafficMirrorFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkServices")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_services: Option<Vec<String>>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnTrafficMirrorFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

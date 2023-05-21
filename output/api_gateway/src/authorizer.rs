@@ -10,6 +10,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_type: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerCredentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_credentials: Option<String>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerResultTtlInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_result_ttl_in_seconds: Option<i64>,
 
     ///
@@ -43,6 +46,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AuthorizerUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub authorizer_uri: Option<String>,
 
     ///
@@ -54,6 +58,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentitySource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_source: Option<String>,
 
     ///
@@ -65,6 +70,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityValidationExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_validation_expression: Option<String>,
 
     ///
@@ -87,6 +93,7 @@ pub struct CfnAuthorizer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProviderARNs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provider_arns: Option<Vec<String>>,
 
     ///

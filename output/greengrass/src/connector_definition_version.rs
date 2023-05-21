@@ -78,6 +78,7 @@ pub struct Connector {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 }
 

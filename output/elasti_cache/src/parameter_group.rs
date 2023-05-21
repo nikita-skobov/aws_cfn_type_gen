@@ -38,6 +38,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Properties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub properties: Option<std::collections::HashMap<String, String>>,
 
     /// A tag that can be added to an ElastiCache parameter group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your parameter groups. A tag with a null Value is permitted.
@@ -48,6 +49,7 @@ pub struct CfnParameterGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

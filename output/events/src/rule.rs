@@ -28,6 +28,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -45,6 +46,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EventBusName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_bus_name: Option<String>,
 
     ///
@@ -58,6 +60,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_pattern: Option<serde_json::Value>,
 
     ///
@@ -75,6 +78,7 @@ pub struct CfnRule {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -92,6 +96,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -105,6 +110,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_expression: Option<String>,
 
     ///
@@ -118,6 +124,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<RuleStateEnum>,
 
     ///
@@ -169,6 +176,7 @@ pub struct CfnRule {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub targets: Option<Vec<Target>>,
 }
 
@@ -289,6 +297,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssignPublicIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assign_public_ip: Option<AwsVpcConfigurationAssignPublicIpEnum>,
 
     ///
@@ -300,6 +309,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -357,6 +367,7 @@ pub struct BatchArrayProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i64>,
 }
 
@@ -386,6 +397,7 @@ pub struct BatchParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArrayProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub array_properties: Option<BatchArrayProperties>,
 
     ///
@@ -419,6 +431,7 @@ pub struct BatchParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_strategy: Option<BatchRetryStrategy>,
 }
 
@@ -456,6 +469,7 @@ pub struct BatchRetryStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attempts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attempts: Option<i64>,
 }
 
@@ -489,6 +503,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base: Option<i64>,
 
     ///
@@ -519,6 +534,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<i64>,
 }
 
@@ -606,6 +622,7 @@ pub struct DeadLetterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 }
 
@@ -657,6 +674,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProviderStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
 
     ///
@@ -668,6 +686,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableECSManagedTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_ecsmanaged_tags: Option<bool>,
 
     ///
@@ -679,6 +698,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableExecuteCommand")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_execute_command: Option<bool>,
 
     ///
@@ -690,6 +710,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Group")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group: Option<String>,
 
     ///
@@ -703,6 +724,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_type: Option<EcsParametersLaunchTypeEnum>,
 
     ///
@@ -716,6 +738,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -729,6 +752,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementConstraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_constraints: Option<Vec<PlacementConstraint>>,
 
     ///
@@ -742,6 +766,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementStrategies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_strategies: Option<Vec<PlacementStrategy>>,
 
     ///
@@ -755,6 +780,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlatformVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform_version: Option<String>,
 
     ///
@@ -768,6 +794,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropagateTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub propagate_tags: Option<EcsParametersPropagateTagsEnum>,
 
     ///
@@ -781,6 +808,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reference_id: Option<String>,
 
     ///
@@ -792,6 +820,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TagList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_list: Option<Vec<Tag>>,
 
     ///
@@ -805,6 +834,7 @@ pub struct EcsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_count: Option<i64>,
 
     ///
@@ -947,6 +977,7 @@ pub struct HttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -958,6 +989,7 @@ pub struct HttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathParameterValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_parameter_values: Option<Vec<String>>,
 
     ///
@@ -969,6 +1001,7 @@ pub struct HttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryStringParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1002,6 +1035,7 @@ pub struct InputTransformer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputPathsMap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_paths_map: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1144,6 +1178,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsVpcConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_vpc_configuration: Option<AwsVpcConfiguration>,
 }
 
@@ -1179,6 +1214,7 @@ pub struct PlacementConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expression: Option<String>,
 
     ///
@@ -1192,6 +1228,7 @@ pub struct PlacementConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<PlacementConstraintTypeEnum>,
 }
 
@@ -1249,6 +1286,7 @@ pub struct PlacementStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<String>,
 
     ///
@@ -1262,6 +1300,7 @@ pub struct PlacementStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<PlacementStrategyTypeEnum>,
 }
 
@@ -1340,6 +1379,7 @@ pub struct RedshiftDataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DbUser")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub db_user: Option<String>,
 
     ///
@@ -1357,6 +1397,7 @@ pub struct RedshiftDataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretManagerArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_manager_arn: Option<String>,
 
     ///
@@ -1387,6 +1428,7 @@ pub struct RedshiftDataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatementName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statement_name: Option<String>,
 
     ///
@@ -1398,6 +1440,7 @@ pub struct RedshiftDataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WithEvent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub with_event: Option<bool>,
 }
 
@@ -1521,6 +1564,7 @@ pub struct RetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumEventAgeInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_event_age_in_seconds: Option<i64>,
 
     ///
@@ -1536,6 +1580,7 @@ pub struct RetryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRetryAttempts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_retry_attempts: Option<i64>,
 }
 
@@ -1784,6 +1829,7 @@ pub struct SageMakerPipelineParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineParameterList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_parameter_list: Option<Vec<SageMakerPipelineParameter>>,
 }
 
@@ -1863,6 +1909,7 @@ pub struct Tag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -1878,6 +1925,7 @@ pub struct Tag {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -1960,6 +2008,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_parameters: Option<BatchParameters>,
 
     ///
@@ -1971,6 +2020,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeadLetterConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dead_letter_config: Option<DeadLetterConfig>,
 
     ///
@@ -1982,6 +2032,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcsParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecs_parameters: Option<EcsParameters>,
 
     ///
@@ -1995,6 +2046,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_parameters: Option<HttpParameters>,
 
     ///
@@ -2025,6 +2077,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Input")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input: Option<String>,
 
     ///
@@ -2038,6 +2091,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_path: Option<String>,
 
     ///
@@ -2049,6 +2103,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputTransformer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_transformer: Option<InputTransformer>,
 
     ///
@@ -2060,6 +2115,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_parameters: Option<KinesisParameters>,
 
     ///
@@ -2073,6 +2129,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftDataParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redshift_data_parameters: Option<RedshiftDataParameters>,
 
     ///
@@ -2084,6 +2141,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_policy: Option<RetryPolicy>,
 
     ///
@@ -2099,6 +2157,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -2110,6 +2169,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunCommandParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub run_command_parameters: Option<RunCommandParameters>,
 
     ///
@@ -2123,6 +2183,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerPipelineParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_pipeline_parameters: Option<SageMakerPipelineParameters>,
 
     ///
@@ -2136,6 +2197,7 @@ pub struct Target {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqsParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sqs_parameters: Option<SqsParameters>,
 }
 

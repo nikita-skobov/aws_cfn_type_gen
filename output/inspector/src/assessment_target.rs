@@ -14,6 +14,7 @@ pub struct CfnAssessmentTarget {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AssessmentTargetName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assessment_target_name: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnAssessmentTarget {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceGroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_group_arn: Option<String>,
 }
 

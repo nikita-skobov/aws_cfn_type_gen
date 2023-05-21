@@ -23,6 +23,7 @@ pub struct CfnCustomerGateway {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DeviceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_name: Option<String>,
 
     ///
@@ -45,6 +46,7 @@ pub struct CfnCustomerGateway {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///

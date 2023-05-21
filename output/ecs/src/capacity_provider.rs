@@ -23,6 +23,7 @@ pub struct CfnCapacityProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnCapacityProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -91,6 +93,7 @@ pub struct AutoScalingGroupProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedScaling")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_scaling: Option<ManagedScaling>,
 
     ///
@@ -110,6 +113,7 @@ pub struct AutoScalingGroupProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedTerminationProtection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_termination_protection:
         Option<AutoScalingGroupProviderManagedTerminationProtectionEnum>,
 }
@@ -169,6 +173,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceWarmupPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_warmup_period: Option<i64>,
 
     ///
@@ -184,6 +189,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumScalingStepSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_scaling_step_size: Option<i64>,
 
     ///
@@ -203,6 +209,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinimumScalingStepSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub minimum_scaling_step_size: Option<i64>,
 
     ///
@@ -216,6 +223,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<ManagedScalingStatusEnum>,
 
     ///
@@ -231,6 +239,7 @@ pub struct ManagedScaling {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_capacity: Option<i64>,
 }
 

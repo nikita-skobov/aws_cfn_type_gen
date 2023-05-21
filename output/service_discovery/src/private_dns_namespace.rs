@@ -12,6 +12,7 @@ pub struct CfnPrivateDnsNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnPrivateDnsNamespace {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Properties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub properties: Option<Properties>,
 
     ///
@@ -51,6 +53,7 @@ pub struct CfnPrivateDnsNamespace {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -133,6 +136,7 @@ pub struct PrivateDnsPropertiesMutable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SOA")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub soa: Option<SOA>,
 }
 
@@ -164,6 +168,7 @@ pub struct Properties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DnsProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_properties: Option<PrivateDnsPropertiesMutable>,
 }
 
@@ -197,6 +202,7 @@ pub struct SOA {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TTL")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ttl: Option<f64>,
 }
 

@@ -29,6 +29,7 @@ pub struct CfnNamedQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnNamedQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -72,6 +74,7 @@ pub struct CfnNamedQuery {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub work_group: Option<String>,
 }
 

@@ -12,6 +12,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllocatedCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocated_capacity: Option<f64>,
 
     ///
@@ -34,6 +35,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Connections")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connections: Option<ConnectionsList>,
 
     ///
@@ -51,6 +53,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultArguments")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_arguments: Option<serde_json::Value>,
 
     ///
@@ -68,6 +71,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -83,6 +87,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionClass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_class: Option<String>,
 
     ///
@@ -94,6 +99,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionProperty")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_property: Option<ExecutionProperty>,
 
     ///
@@ -115,6 +121,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GlueVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub glue_version: Option<String>,
 
     ///
@@ -126,6 +133,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_uri: Option<String>,
 
     ///
@@ -143,6 +151,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_capacity: Option<f64>,
 
     ///
@@ -154,6 +163,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetries")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_retries: Option<f64>,
 
     ///
@@ -171,6 +181,7 @@ pub struct CfnJob {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -182,6 +193,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NonOverridableArguments")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub non_overridable_arguments: Option<serde_json::Value>,
 
     /// Specifies configuration properties of a notification.
@@ -192,6 +204,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationProperty")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_property: Option<NotificationProperty>,
 
     ///
@@ -205,6 +218,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumberOfWorkers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub number_of_workers: Option<i64>,
 
     ///
@@ -233,6 +247,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_configuration: Option<String>,
 
     ///
@@ -244,6 +259,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     /// The job timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours).
@@ -254,6 +270,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i64>,
 
     ///
@@ -269,6 +286,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub worker_type: Option<JobWorkerTypeEnum>,
 }
 
@@ -406,6 +424,7 @@ pub struct ConnectionsList {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Connections")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connections: Option<Vec<String>>,
 }
 
@@ -435,6 +454,7 @@ pub struct ExecutionProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrentRuns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrent_runs: Option<f64>,
 }
 
@@ -464,6 +484,7 @@ pub struct JobCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -477,6 +498,7 @@ pub struct JobCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PythonVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub python_version: Option<String>,
 
     ///
@@ -490,6 +512,7 @@ pub struct JobCommand {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScriptLocation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub script_location: Option<String>,
 }
 
@@ -527,6 +550,7 @@ pub struct NotificationProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyDelayAfter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notify_delay_after: Option<i64>,
 }
 

@@ -16,6 +16,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AwsAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aws_account_id: Option<String>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_sets: Option<Vec<DatasetMetadata>>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -55,6 +58,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -70,6 +74,7 @@ pub struct CfnTopic {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TopicId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub topic_id: Option<String>,
 }
 
@@ -155,6 +160,7 @@ pub struct CellValueSynonym {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cell_value: Option<String>,
 
     ///
@@ -166,6 +172,7 @@ pub struct CellValueSynonym {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Synonyms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub synonyms: Option<Vec<String>>,
 }
 
@@ -204,6 +211,7 @@ pub struct CollectiveConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_list: Option<Vec<String>>,
 }
 
@@ -233,6 +241,7 @@ pub struct ComparativeOrder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SpecifedOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub specifed_order: Option<Vec<String>>,
 
     ///
@@ -246,6 +255,7 @@ pub struct ComparativeOrder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatUndefinedSpecifiedValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub treat_undefined_specified_values: Option<ComparativeOrderTreatUndefinedSpecifiedValuesEnum>,
 
     ///
@@ -259,6 +269,7 @@ pub struct ComparativeOrder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseOrdering")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_ordering: Option<ComparativeOrderUseOrderingEnum>,
 }
 
@@ -328,6 +339,7 @@ pub struct DataAggregation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetRowDateGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_row_date_granularity: Option<DataAggregationDatasetRowDateGranularityEnum>,
 
     ///
@@ -341,6 +353,7 @@ pub struct DataAggregation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultDateColumnName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_date_column_name: Option<String>,
 }
 
@@ -417,6 +430,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedFields")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub calculated_fields: Option<Vec<TopicCalculatedField>>,
 
     ///
@@ -428,6 +442,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Columns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub columns: Option<Vec<TopicColumn>>,
 
     ///
@@ -439,6 +454,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataAggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_aggregation: Option<DataAggregation>,
 
     ///
@@ -463,6 +479,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_description: Option<String>,
 
     ///
@@ -476,6 +493,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_name: Option<String>,
 
     ///
@@ -487,6 +505,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<Vec<TopicFilter>>,
 
     ///
@@ -498,6 +517,7 @@ pub struct DatasetMetadata {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NamedEntities")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub named_entities: Option<Vec<TopicNamedEntity>>,
 }
 
@@ -551,6 +571,7 @@ pub struct DefaultFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_format: Option<DefaultFormattingDisplayFormatEnum>,
 
     ///
@@ -562,6 +583,7 @@ pub struct DefaultFormatting {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayFormatOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_format_options: Option<DisplayFormatOptions>,
 }
 
@@ -630,6 +652,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlankCellFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub blank_cell_format: Option<String>,
 
     ///
@@ -643,6 +666,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CurrencySymbol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub currency_symbol: Option<String>,
 
     ///
@@ -656,6 +680,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_format: Option<String>,
 
     ///
@@ -669,6 +694,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DecimalSeparator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decimal_separator: Option<DisplayFormatOptionsDecimalSeparatorEnum>,
 
     ///
@@ -680,6 +706,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FractionDigits")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fraction_digits: Option<f64>,
 
     ///
@@ -693,6 +720,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupingSeparator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grouping_separator: Option<String>,
 
     ///
@@ -704,6 +732,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NegativeFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub negative_format: Option<NegativeFormat>,
 
     ///
@@ -717,6 +746,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
 
     ///
@@ -730,6 +760,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
 
     ///
@@ -743,6 +774,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnitScaler")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit_scaler: Option<DisplayFormatOptionsUnitScalerEnum>,
 
     ///
@@ -754,6 +786,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseBlankCellFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_blank_cell_format: Option<bool>,
 
     ///
@@ -765,6 +798,7 @@ pub struct DisplayFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UseGrouping")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_grouping: Option<bool>,
 }
 
@@ -904,6 +938,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FieldName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_name: Option<String>,
 
     ///
@@ -915,6 +950,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metric")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric: Option<NamedEntityDefinitionMetric>,
 
     ///
@@ -928,6 +964,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_name: Option<String>,
 
     ///
@@ -941,6 +978,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_role: Option<NamedEntityDefinitionPropertyRoleEnum>,
 
     ///
@@ -954,6 +992,7 @@ pub struct NamedEntityDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropertyUsage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub property_usage: Option<NamedEntityDefinitionPropertyUsageEnum>,
 }
 
@@ -1043,6 +1082,7 @@ pub struct NamedEntityDefinitionMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation: Option<NamedEntityDefinitionMetricAggregationEnum>,
 
     ///
@@ -1054,6 +1094,7 @@ pub struct NamedEntityDefinitionMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AggregationFunctionParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation_function_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1146,6 +1187,7 @@ pub struct NegativeFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
 
     ///
@@ -1159,6 +1201,7 @@ pub struct NegativeFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Suffix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
 }
 
@@ -1208,6 +1251,7 @@ pub struct RangeConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Maximum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum: Option<String>,
 
     ///
@@ -1221,6 +1265,7 @@ pub struct RangeConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Minimum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub minimum: Option<String>,
 }
 
@@ -1270,6 +1315,7 @@ pub struct SemanticEntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubTypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sub_type_name: Option<String>,
 
     ///
@@ -1283,6 +1329,7 @@ pub struct SemanticEntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<String>,
 
     ///
@@ -1294,6 +1341,7 @@ pub struct SemanticEntityType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1341,6 +1389,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FalseyCellValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub falsey_cell_value: Option<String>,
 
     ///
@@ -1352,6 +1401,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FalseyCellValueSynonyms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub falsey_cell_value_synonyms: Option<Vec<String>>,
 
     ///
@@ -1365,6 +1415,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubTypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sub_type_name: Option<String>,
 
     ///
@@ -1376,6 +1427,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruthyCellValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub truthy_cell_value: Option<String>,
 
     ///
@@ -1387,6 +1439,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruthyCellValueSynonyms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub truthy_cell_value_synonyms: Option<Vec<String>>,
 
     ///
@@ -1400,6 +1453,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<String>,
 
     ///
@@ -1411,6 +1465,7 @@ pub struct SemanticType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TypeParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub type_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1460,6 +1515,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation: Option<TopicCalculatedFieldAggregationEnum>,
 
     ///
@@ -1471,6 +1527,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedAggregations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_aggregations: Option<Vec<String>>,
 
     ///
@@ -1484,6 +1541,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedFieldDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub calculated_field_description: Option<String>,
 
     ///
@@ -1508,6 +1566,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CalculatedFieldSynonyms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub calculated_field_synonyms: Option<Vec<String>>,
 
     ///
@@ -1519,6 +1578,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellValueSynonyms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cell_value_synonyms: Option<Vec<CellValueSynonym>>,
 
     ///
@@ -1532,6 +1592,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDataRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_data_role: Option<TopicCalculatedFieldColumnDataRoleEnum>,
 
     ///
@@ -1543,6 +1604,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparativeOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comparative_order: Option<ComparativeOrder>,
 
     ///
@@ -1554,6 +1616,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultFormatting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_formatting: Option<DefaultFormatting>,
 
     ///
@@ -1580,6 +1643,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsIncludedInTopic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_included_in_topic: Option<bool>,
 
     ///
@@ -1591,6 +1655,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NeverAggregateInFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub never_aggregate_in_filter: Option<bool>,
 
     ///
@@ -1602,6 +1667,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotAllowedAggregations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub not_allowed_aggregations: Option<Vec<String>>,
 
     ///
@@ -1613,6 +1679,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SemanticType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub semantic_type: Option<SemanticType>,
 
     ///
@@ -1626,6 +1693,7 @@ pub struct TopicCalculatedField {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_granularity: Option<TopicCalculatedFieldTimeGranularityEnum>,
 }
 
@@ -1793,6 +1861,7 @@ pub struct TopicCategoryFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilterFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_filter_function: Option<TopicCategoryFilterCategoryFilterFunctionEnum>,
 
     ///
@@ -1806,6 +1875,7 @@ pub struct TopicCategoryFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilterType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_filter_type: Option<TopicCategoryFilterCategoryFilterTypeEnum>,
 
     ///
@@ -1817,6 +1887,7 @@ pub struct TopicCategoryFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant: Option<TopicCategoryFilterConstant>,
 
     ///
@@ -1828,6 +1899,7 @@ pub struct TopicCategoryFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inverse")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inverse: Option<bool>,
 }
 
@@ -1899,6 +1971,7 @@ pub struct TopicCategoryFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectiveConstant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub collective_constant: Option<CollectiveConstant>,
 
     ///
@@ -1912,6 +1985,7 @@ pub struct TopicCategoryFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant_type: Option<TopicCategoryFilterConstantConstantTypeEnum>,
 
     ///
@@ -1925,6 +1999,7 @@ pub struct TopicCategoryFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingularConstant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub singular_constant: Option<String>,
 }
 
@@ -1990,6 +2065,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation: Option<TopicColumnAggregationEnum>,
 
     ///
@@ -2001,6 +2077,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedAggregations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_aggregations: Option<Vec<String>>,
 
     ///
@@ -2012,6 +2089,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CellValueSynonyms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cell_value_synonyms: Option<Vec<CellValueSynonym>>,
 
     ///
@@ -2025,6 +2103,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDataRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_data_role: Option<TopicColumnColumnDataRoleEnum>,
 
     ///
@@ -2038,6 +2117,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_description: Option<String>,
 
     ///
@@ -2051,6 +2131,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnFriendlyName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_friendly_name: Option<String>,
 
     ///
@@ -2075,6 +2156,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnSynonyms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_synonyms: Option<Vec<String>>,
 
     ///
@@ -2086,6 +2168,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComparativeOrder")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comparative_order: Option<ComparativeOrder>,
 
     ///
@@ -2097,6 +2180,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultFormatting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_formatting: Option<DefaultFormatting>,
 
     ///
@@ -2108,6 +2192,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IsIncludedInTopic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_included_in_topic: Option<bool>,
 
     ///
@@ -2119,6 +2204,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NeverAggregateInFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub never_aggregate_in_filter: Option<bool>,
 
     ///
@@ -2130,6 +2216,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotAllowedAggregations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub not_allowed_aggregations: Option<Vec<String>>,
 
     ///
@@ -2141,6 +2228,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SemanticType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub semantic_type: Option<SemanticType>,
 
     ///
@@ -2154,6 +2242,7 @@ pub struct TopicColumn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_granularity: Option<TopicColumnTimeGranularityEnum>,
 }
 
@@ -2313,6 +2402,7 @@ pub struct TopicDateRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant: Option<TopicRangeFilterConstant>,
 
     ///
@@ -2324,6 +2414,7 @@ pub struct TopicDateRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inclusive")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inclusive: Option<bool>,
 }
 
@@ -2357,6 +2448,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CategoryFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category_filter: Option<TopicCategoryFilter>,
 
     ///
@@ -2368,6 +2460,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DateRangeFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date_range_filter: Option<TopicDateRangeFilter>,
 
     ///
@@ -2381,6 +2474,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterClass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_class: Option<TopicFilterFilterClassEnum>,
 
     ///
@@ -2394,6 +2488,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_description: Option<String>,
 
     ///
@@ -2418,6 +2513,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterSynonyms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_synonyms: Option<Vec<String>>,
 
     ///
@@ -2431,6 +2527,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_type: Option<TopicFilterFilterTypeEnum>,
 
     ///
@@ -2442,6 +2539,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericEqualityFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numeric_equality_filter: Option<TopicNumericEqualityFilter>,
 
     ///
@@ -2453,6 +2551,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NumericRangeFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub numeric_range_filter: Option<TopicNumericRangeFilter>,
 
     ///
@@ -2477,6 +2576,7 @@ pub struct TopicFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDateFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relative_date_filter: Option<TopicRelativeDateFilter>,
 }
 
@@ -2603,6 +2703,7 @@ pub struct TopicNamedEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub definition: Option<Vec<NamedEntityDefinition>>,
 
     ///
@@ -2616,6 +2717,7 @@ pub struct TopicNamedEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entity_description: Option<String>,
 
     ///
@@ -2640,6 +2742,7 @@ pub struct TopicNamedEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntitySynonyms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entity_synonyms: Option<Vec<String>>,
 
     ///
@@ -2651,6 +2754,7 @@ pub struct TopicNamedEntity {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SemanticEntityType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub semantic_entity_type: Option<SemanticEntityType>,
 }
 
@@ -2704,6 +2808,7 @@ pub struct TopicNumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation: Option<TopicNumericEqualityFilterAggregationEnum>,
 
     ///
@@ -2715,6 +2820,7 @@ pub struct TopicNumericEqualityFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant: Option<TopicSingularFilterConstant>,
 }
 
@@ -2807,6 +2913,7 @@ pub struct TopicNumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Aggregation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregation: Option<TopicNumericRangeFilterAggregationEnum>,
 
     ///
@@ -2818,6 +2925,7 @@ pub struct TopicNumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant: Option<TopicRangeFilterConstant>,
 
     ///
@@ -2829,6 +2937,7 @@ pub struct TopicNumericRangeFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Inclusive")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inclusive: Option<bool>,
 }
 
@@ -2921,6 +3030,7 @@ pub struct TopicRangeFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant_type: Option<TopicRangeFilterConstantConstantTypeEnum>,
 
     ///
@@ -2932,6 +3042,7 @@ pub struct TopicRangeFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RangeConstant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range_constant: Option<RangeConstant>,
 }
 
@@ -2986,6 +3097,7 @@ pub struct TopicRelativeDateFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Constant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant: Option<TopicSingularFilterConstant>,
 
     ///
@@ -2999,6 +3111,7 @@ pub struct TopicRelativeDateFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelativeDateFilterFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relative_date_filter_function:
         Option<TopicRelativeDateFilterRelativeDateFilterFunctionEnum>,
 
@@ -3013,6 +3126,7 @@ pub struct TopicRelativeDateFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeGranularity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_granularity: Option<TopicRelativeDateFilterTimeGranularityEnum>,
 }
 
@@ -3118,6 +3232,7 @@ pub struct TopicSingularFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConstantType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub constant_type: Option<TopicSingularFilterConstantConstantTypeEnum>,
 
     ///
@@ -3131,6 +3246,7 @@ pub struct TopicSingularFilterConstant {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SingularConstant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub singular_constant: Option<String>,
 }
 

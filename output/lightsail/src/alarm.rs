@@ -36,6 +36,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContactProtocols")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub contact_protocols: Option<Vec<String>>,
 
     ///
@@ -47,6 +48,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatapointsToAlarm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datapoints_to_alarm: Option<i64>,
 
     ///
@@ -93,6 +95,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_enabled: Option<bool>,
 
     ///
@@ -108,6 +111,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationTriggers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_triggers: Option<Vec<String>>,
 
     ///
@@ -136,6 +140,7 @@ pub struct CfnAlarm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatMissingData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub treat_missing_data: Option<AlarmTreatMissingDataEnum>,
 }
 

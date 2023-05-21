@@ -37,6 +37,7 @@ pub struct CfnVirtualNode {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MeshOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mesh_owner: Option<String>,
 
     ///
@@ -61,6 +62,7 @@ pub struct CfnVirtualNode {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -76,6 +78,7 @@ pub struct CfnVirtualNode {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualNodeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_node_name: Option<String>,
 }
 
@@ -170,6 +173,7 @@ pub struct AccessLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<FileAccessLog>,
 }
 
@@ -289,6 +293,7 @@ pub struct AwsCloudMapServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<Vec<AwsCloudMapInstanceAttribute>>,
 
     ///
@@ -302,6 +307,7 @@ pub struct AwsCloudMapServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpPreference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_preference: Option<AwsCloudMapServiceDiscoveryIpPreferenceEnum>,
 
     ///
@@ -422,6 +428,7 @@ pub struct Backend {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VirtualService")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_service: Option<VirtualServiceBackend>,
 }
 
@@ -455,6 +462,7 @@ pub struct BackendDefaults {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_policy: Option<ClientPolicy>,
 }
 
@@ -488,6 +496,7 @@ pub struct ClientPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls: Option<ClientPolicyTls>,
 }
 
@@ -519,6 +528,7 @@ pub struct ClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate: Option<ClientTlsCertificate>,
 
     ///
@@ -530,6 +540,7 @@ pub struct ClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enforce")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enforce: Option<bool>,
 
     ///
@@ -541,6 +552,7 @@ pub struct ClientPolicyTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ports")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ports: Option<Vec<i64>>,
 
     ///
@@ -587,6 +599,7 @@ pub struct ClientTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<ListenerTlsFileCertificate>,
 
     ///
@@ -598,6 +611,7 @@ pub struct ClientTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sds: Option<ListenerTlsSdsCertificate>,
 }
 
@@ -644,6 +658,7 @@ pub struct DnsServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IpPreference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_preference: Option<DnsServiceDiscoveryIpPreferenceEnum>,
 
     ///
@@ -657,6 +672,7 @@ pub struct DnsServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_type: Option<DnsServiceDiscoveryResponseTypeEnum>,
 }
 
@@ -787,6 +803,7 @@ pub struct FileAccessLog {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<LoggingFormat>,
 
     ///
@@ -853,6 +870,7 @@ pub struct GrpcTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Idle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle: Option<Duration>,
 
     ///
@@ -864,6 +882,7 @@ pub struct GrpcTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PerRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub per_request: Option<Duration>,
 }
 
@@ -925,6 +944,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 
     ///
@@ -940,6 +960,7 @@ pub struct HealthCheck {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i64>,
 
     ///
@@ -1087,6 +1108,7 @@ pub struct HttpTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Idle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle: Option<Duration>,
 
     ///
@@ -1098,6 +1120,7 @@ pub struct HttpTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PerRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub per_request: Option<Duration>,
 }
 
@@ -1217,6 +1240,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConnectionPool")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_pool: Option<VirtualNodeConnectionPool>,
 
     ///
@@ -1228,6 +1252,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheck")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check: Option<HealthCheck>,
 
     ///
@@ -1239,6 +1264,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutlierDetection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outlier_detection: Option<OutlierDetection>,
 
     ///
@@ -1261,6 +1287,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TLS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls: Option<ListenerTls>,
 
     ///
@@ -1272,6 +1299,7 @@ pub struct Listener {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<ListenerTimeout>,
 }
 
@@ -1319,6 +1347,7 @@ pub struct ListenerTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GRPC")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grpc: Option<GrpcTimeout>,
 
     ///
@@ -1330,6 +1359,7 @@ pub struct ListenerTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http: Option<HttpTimeout>,
 
     ///
@@ -1341,6 +1371,7 @@ pub struct ListenerTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP2")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http2: Option<HttpTimeout>,
 
     ///
@@ -1352,6 +1383,7 @@ pub struct ListenerTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TCP")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcp: Option<TcpTimeout>,
 }
 
@@ -1415,6 +1447,7 @@ pub struct ListenerTls {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Validation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validation: Option<ListenerTlsValidationContext>,
 }
 
@@ -1500,6 +1533,7 @@ pub struct ListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACM")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acm: Option<ListenerTlsAcmCertificate>,
 
     ///
@@ -1511,6 +1545,7 @@ pub struct ListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<ListenerTlsFileCertificate>,
 
     ///
@@ -1522,6 +1557,7 @@ pub struct ListenerTlsCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sds: Option<ListenerTlsSdsCertificate>,
 }
 
@@ -1670,6 +1706,7 @@ pub struct ListenerTlsValidationContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubjectAlternativeNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subject_alternative_names: Option<SubjectAlternativeNames>,
 
     ///
@@ -1716,6 +1753,7 @@ pub struct ListenerTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<TlsValidationContextFileTrust>,
 
     ///
@@ -1727,6 +1765,7 @@ pub struct ListenerTlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sds: Option<TlsValidationContextSdsTrust>,
 }
 
@@ -1760,6 +1799,7 @@ pub struct Logging {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_log: Option<AccessLog>,
 }
 
@@ -1793,6 +1833,7 @@ pub struct LoggingFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Json")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json: Option<Vec<JsonFormatRef>>,
 
     ///
@@ -1808,6 +1849,7 @@ pub struct LoggingFormat {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Text")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<String>,
 }
 
@@ -2032,6 +2074,7 @@ pub struct ServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AWSCloudMap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub awscloud_map: Option<AwsCloudMapServiceDiscovery>,
 
     ///
@@ -2043,6 +2086,7 @@ pub struct ServiceDiscovery {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DNS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns: Option<DnsServiceDiscovery>,
 }
 
@@ -2078,6 +2122,7 @@ pub struct SubjectAlternativeNameMatchers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Exact")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exact: Option<Vec<String>>,
 }
 
@@ -2182,6 +2227,7 @@ pub struct TcpTimeout {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Idle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle: Option<Duration>,
 }
 
@@ -2213,6 +2259,7 @@ pub struct TlsValidationContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubjectAlternativeNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subject_alternative_names: Option<SubjectAlternativeNames>,
 
     ///
@@ -2379,6 +2426,7 @@ pub struct TlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ACM")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acm: Option<TlsValidationContextAcmTrust>,
 
     ///
@@ -2390,6 +2438,7 @@ pub struct TlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "File")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<TlsValidationContextFileTrust>,
 
     ///
@@ -2401,6 +2450,7 @@ pub struct TlsValidationContextTrust {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SDS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sds: Option<TlsValidationContextSdsTrust>,
 }
 
@@ -2441,6 +2491,7 @@ pub struct VirtualNodeConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GRPC")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub grpc: Option<VirtualNodeGrpcConnectionPool>,
 
     ///
@@ -2452,6 +2503,7 @@ pub struct VirtualNodeConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http: Option<VirtualNodeHttpConnectionPool>,
 
     ///
@@ -2463,6 +2515,7 @@ pub struct VirtualNodeConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HTTP2")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http2: Option<VirtualNodeHttp2ConnectionPool>,
 
     ///
@@ -2474,6 +2527,7 @@ pub struct VirtualNodeConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TCP")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcp: Option<VirtualNodeTcpConnectionPool>,
 }
 
@@ -2606,6 +2660,7 @@ pub struct VirtualNodeHttpConnectionPool {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxPendingRequests")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_pending_requests: Option<i64>,
 }
 
@@ -2653,6 +2708,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackendDefaults")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backend_defaults: Option<BackendDefaults>,
 
     ///
@@ -2666,6 +2722,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Backends")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backends: Option<Vec<Backend>>,
 
     ///
@@ -2677,6 +2734,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Listeners")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub listeners: Option<Vec<Listener>>,
 
     ///
@@ -2688,6 +2746,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging: Option<Logging>,
 
     ///
@@ -2699,6 +2758,7 @@ pub struct VirtualNodeSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceDiscovery")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_discovery: Option<ServiceDiscovery>,
 }
 
@@ -2778,6 +2838,7 @@ pub struct VirtualServiceBackend {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_policy: Option<ClientPolicy>,
 
     ///

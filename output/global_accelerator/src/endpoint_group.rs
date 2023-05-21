@@ -12,6 +12,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_configurations: Option<Vec<EndpointConfiguration>>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckIntervalSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_interval_seconds: Option<i64>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_path: Option<String>,
 
     ///
@@ -72,6 +75,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_port: Option<i64>,
 
     ///
@@ -85,6 +89,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HealthCheckProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_protocol: Option<EndpointGroupHealthCheckProtocolEnum>,
 
     ///
@@ -111,6 +116,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PortOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_overrides: Option<Vec<PortOverride>>,
 
     ///
@@ -126,6 +132,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThresholdCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threshold_count: Option<i64>,
 
     ///
@@ -141,6 +148,7 @@ pub struct CfnEndpointGroup {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrafficDialPercentage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub traffic_dial_percentage: Option<f64>,
 }
 
@@ -285,6 +293,7 @@ pub struct EndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientIPPreservationEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_ippreservation_enabled: Option<bool>,
 
     ///
@@ -315,6 +324,7 @@ pub struct EndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<i64>,
 }
 

@@ -84,6 +84,7 @@ pub struct FieldToMatch {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Data")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data: Option<String>,
 
     ///

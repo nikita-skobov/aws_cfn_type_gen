@@ -120,6 +120,7 @@ pub struct Overrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Manifest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub manifest: Option<serde_json::Value>,
 }
 
@@ -151,6 +152,7 @@ pub struct SkillPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overrides: Option<Overrides>,
 
     ///
@@ -173,6 +175,7 @@ pub struct SkillPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_role: Option<String>,
 
     ///
@@ -195,6 +198,7 @@ pub struct SkillPackage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_object_version: Option<String>,
 }
 

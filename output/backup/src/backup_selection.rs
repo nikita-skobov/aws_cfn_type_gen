@@ -60,6 +60,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Conditions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditions: Option<Conditions>,
 
     ///
@@ -86,6 +87,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ListOfTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub list_of_tags: Option<Vec<ConditionResourceType>>,
 
     ///
@@ -99,6 +101,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotResources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub not_resources: Option<Vec<String>>,
 
     ///
@@ -110,6 +113,7 @@ pub struct BackupSelectionResourceType {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Resources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resources: Option<Vec<String>>,
 
     ///
@@ -154,6 +158,7 @@ pub struct ConditionParameter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConditionKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition_key: Option<String>,
 
     ///
@@ -165,6 +170,7 @@ pub struct ConditionParameter {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConditionValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition_value: Option<String>,
 }
 
@@ -245,6 +251,7 @@ pub struct Conditions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StringEquals")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_equals: Option<Vec<ConditionParameter>>,
 
     ///
@@ -256,6 +263,7 @@ pub struct Conditions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StringLike")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_like: Option<Vec<ConditionParameter>>,
 
     ///
@@ -267,6 +275,7 @@ pub struct Conditions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StringNotEquals")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_not_equals: Option<Vec<ConditionParameter>>,
 
     ///
@@ -278,6 +287,7 @@ pub struct Conditions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StringNotLike")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub string_not_like: Option<Vec<ConditionParameter>>,
 }
 

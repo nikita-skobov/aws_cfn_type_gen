@@ -18,6 +18,7 @@ pub struct CfnOIDCProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientIdList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_id_list: Option<Vec<String>>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnOIDCProvider {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -51,6 +53,7 @@ pub struct CfnOIDCProvider {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Url")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
 }
 

@@ -10,6 +10,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AirflowConfigurationOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub airflow_configuration_options: Option<serde_json::Value>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AirflowVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub airflow_version: Option<EnvironmentAirflowVersionEnum>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DagS3Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dag_s3_path: Option<String>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentClass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_class: Option<String>,
 
     ///
@@ -56,6 +60,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_role_arn: Option<String>,
 
     ///
@@ -67,6 +72,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key: Option<String>,
 
     ///
@@ -78,6 +84,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_configuration: Option<LoggingConfiguration>,
 
     ///
@@ -89,6 +96,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxWorkers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_workers: Option<i64>,
 
     ///
@@ -100,6 +108,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MinWorkers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_workers: Option<i64>,
 
     ///
@@ -122,6 +131,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     ///
@@ -133,6 +143,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PluginsS3ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub plugins_s3_object_version: Option<String>,
 
     ///
@@ -144,6 +155,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PluginsS3Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub plugins_s3_path: Option<String>,
 
     ///
@@ -155,6 +167,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequirementsS3ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub requirements_s3_object_version: Option<String>,
 
     ///
@@ -166,6 +179,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequirementsS3Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub requirements_s3_path: Option<String>,
 
     ///
@@ -179,6 +193,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedulers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedulers: Option<i64>,
 
     ///
@@ -190,6 +205,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceBucketArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_bucket_arn: Option<String>,
 
     ///
@@ -207,6 +223,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartupScriptS3ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub startup_script_s3_object_version: Option<String>,
 
     ///
@@ -220,6 +237,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartupScriptS3Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub startup_script_s3_path: Option<String>,
 
     ///
@@ -231,6 +249,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -242,6 +261,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebserverAccessMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub webserver_access_mode: Option<String>,
 
     ///
@@ -255,6 +275,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeeklyMaintenanceWindowStart")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weekly_maintenance_window_start: Option<String>,
 }
 
@@ -321,6 +342,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DagProcessingLogs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dag_processing_logs: Option<ModuleLoggingConfiguration>,
 
     ///
@@ -332,6 +354,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SchedulerLogs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduler_logs: Option<ModuleLoggingConfiguration>,
 
     ///
@@ -343,6 +366,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskLogs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_logs: Option<ModuleLoggingConfiguration>,
 
     ///
@@ -354,6 +378,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WebserverLogs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub webserver_logs: Option<ModuleLoggingConfiguration>,
 
     ///
@@ -365,6 +390,7 @@ pub struct LoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerLogs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub worker_logs: Option<ModuleLoggingConfiguration>,
 }
 
@@ -416,6 +442,7 @@ pub struct ModuleLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_log_group_arn: Option<String>,
 
     ///
@@ -427,6 +454,7 @@ pub struct ModuleLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -438,6 +466,7 @@ pub struct ModuleLoggingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_level: Option<String>,
 }
 
@@ -467,6 +496,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -478,6 +508,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 

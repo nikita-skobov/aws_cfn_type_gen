@@ -23,6 +23,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BadgeEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub badge_enabled: Option<bool>,
 
     ///
@@ -34,6 +35,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildBatchConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub build_batch_config: Option<ProjectBuildBatchConfig>,
 
     ///
@@ -45,6 +47,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cache")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cache: Option<ProjectCache>,
 
     ///
@@ -58,6 +61,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConcurrentBuildLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub concurrent_build_limit: Option<i64>,
 
     ///
@@ -73,6 +77,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -90,6 +95,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_key: Option<String>,
 
     ///
@@ -112,6 +118,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FileSystemLocations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_system_locations: Option<Vec<ProjectFileSystemLocation>>,
 
     ///
@@ -123,6 +130,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogsConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logs_config: Option<LogsConfig>,
 
     ///
@@ -140,6 +148,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -155,6 +164,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueuedTimeoutInMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queued_timeout_in_minutes: Option<i64>,
 
     ///
@@ -168,6 +178,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceAccessRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_access_role: Option<String>,
 
     ///
@@ -181,6 +192,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryArtifacts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_artifacts: Option<Vec<Artifacts>>,
 
     ///
@@ -194,6 +206,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondarySourceVersions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_source_versions: Option<Vec<ProjectSourceVersion>>,
 
     ///
@@ -207,6 +220,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondarySources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_sources: Option<Vec<Source>>,
 
     ///
@@ -248,6 +262,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_version: Option<String>,
 
     ///
@@ -263,6 +278,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -278,6 +294,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_minutes: Option<i64>,
 
     ///
@@ -289,6 +306,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Triggers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub triggers: Option<ProjectTriggers>,
 
     ///
@@ -302,6 +320,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Visibility")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<String>,
 
     ///
@@ -313,6 +332,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
 }
 
@@ -495,6 +515,7 @@ pub struct Artifacts {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArtifactIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub artifact_identifier: Option<String>,
 
     ///
@@ -506,6 +527,7 @@ pub struct Artifacts {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionDisabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_disabled: Option<bool>,
 
     ///
@@ -521,6 +543,7 @@ pub struct Artifacts {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<String>,
 
     ///
@@ -540,6 +563,7 @@ pub struct Artifacts {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -557,6 +581,7 @@ pub struct Artifacts {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NamespaceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace_type: Option<ArtifactsNamespaceTypeEnum>,
 
     ///
@@ -568,6 +593,7 @@ pub struct Artifacts {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OverrideArtifactName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub override_artifact_name: Option<bool>,
 
     ///
@@ -583,6 +609,7 @@ pub struct Artifacts {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Packaging")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub packaging: Option<ArtifactsPackagingEnum>,
 
     ///
@@ -598,6 +625,7 @@ pub struct Artifacts {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 
     ///
@@ -697,6 +725,7 @@ pub struct BatchRestrictions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeTypesAllowed")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compute_types_allowed: Option<Vec<String>>,
 
     ///
@@ -708,6 +737,7 @@ pub struct BatchRestrictions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBuildsAllowed")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_builds_allowed: Option<i64>,
 }
 
@@ -739,6 +769,7 @@ pub struct BuildStatusConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Context")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub context: Option<String>,
 
     ///
@@ -752,6 +783,7 @@ pub struct BuildStatusConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_url: Option<String>,
 }
 
@@ -781,6 +813,7 @@ pub struct CloudWatchLogsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_name: Option<String>,
 
     ///
@@ -807,6 +840,7 @@ pub struct CloudWatchLogsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StreamName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stream_name: Option<String>,
 }
 
@@ -853,6 +887,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Certificate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate: Option<String>,
 
     ///
@@ -879,6 +914,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_variables: Option<Vec<EnvironmentVariable>>,
 
     ///
@@ -913,6 +949,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImagePullCredentialsType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_pull_credentials_type: Option<EnvironmentImagePullCredentialsTypeEnum>,
 
     ///
@@ -938,6 +975,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivilegedMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub privileged_mode: Option<bool>,
 
     ///
@@ -951,6 +989,7 @@ pub struct Environment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistryCredential")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub registry_credential: Option<RegistryCredential>,
 
     ///
@@ -1075,6 +1114,7 @@ pub struct EnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<EnvironmentVariableTypeEnum>,
 
     ///
@@ -1200,6 +1240,7 @@ pub struct LogsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs: Option<CloudWatchLogsConfig>,
 
     ///
@@ -1211,6 +1252,7 @@ pub struct LogsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Logs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_logs: Option<S3LogsConfig>,
 }
 
@@ -1250,6 +1292,7 @@ pub struct ProjectBuildBatchConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchReportMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_report_mode: Option<ProjectBuildBatchConfigBatchReportModeEnum>,
 
     ///
@@ -1261,6 +1304,7 @@ pub struct ProjectBuildBatchConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CombineArtifacts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub combine_artifacts: Option<bool>,
 
     ///
@@ -1272,6 +1316,7 @@ pub struct ProjectBuildBatchConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Restrictions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub restrictions: Option<BatchRestrictions>,
 
     ///
@@ -1285,6 +1330,7 @@ pub struct ProjectBuildBatchConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_role: Option<String>,
 
     ///
@@ -1296,6 +1342,7 @@ pub struct ProjectBuildBatchConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutInMins")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_mins: Option<i64>,
 }
 
@@ -1357,6 +1404,7 @@ pub struct ProjectCache {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<String>,
 
     ///
@@ -1372,6 +1420,7 @@ pub struct ProjectCache {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Modes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub modes: Option<Vec<String>>,
 
     ///
@@ -1463,6 +1512,7 @@ pub struct ProjectFileSystemLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MountOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_options: Option<String>,
 
     ///
@@ -1544,6 +1594,7 @@ pub struct ProjectSourceVersion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_version: Option<String>,
 }
 
@@ -1575,6 +1626,7 @@ pub struct ProjectTriggers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub build_type: Option<String>,
 
     ///
@@ -1586,6 +1638,7 @@ pub struct ProjectTriggers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_groups: Option<Vec<FilterGroup>>,
 
     ///
@@ -1597,6 +1650,7 @@ pub struct ProjectTriggers {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Webhook")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub webhook: Option<bool>,
 }
 
@@ -1696,6 +1750,7 @@ pub struct S3LogsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionDisabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_disabled: Option<bool>,
 
     ///
@@ -1707,6 +1762,7 @@ pub struct S3LogsConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<String>,
 
     ///
@@ -1770,6 +1826,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Auth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth: Option<SourceAuth>,
 
     ///
@@ -1781,6 +1838,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildSpec")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub build_spec: Option<String>,
 
     ///
@@ -1792,6 +1850,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BuildStatusConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub build_status_config: Option<BuildStatusConfig>,
 
     ///
@@ -1805,6 +1864,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GitCloneDepth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub git_clone_depth: Option<i64>,
 
     ///
@@ -1816,6 +1876,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GitSubmodulesConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub git_submodules_config: Option<GitSubmodulesConfig>,
 
     ///
@@ -1827,6 +1888,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InsecureSsl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insecure_ssl: Option<bool>,
 
     ///
@@ -1842,6 +1904,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<String>,
 
     ///
@@ -1853,6 +1916,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReportBuildStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub report_build_status: Option<bool>,
 
     ///
@@ -1864,6 +1928,7 @@ pub struct Source {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_identifier: Option<String>,
 
     ///
@@ -1968,6 +2033,7 @@ pub struct SourceAuth {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Resource")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource: Option<String>,
 
     ///
@@ -2071,6 +2137,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -2084,6 +2151,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subnets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnets: Option<Vec<String>>,
 
     ///
@@ -2097,6 +2165,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<String>,
 }
 
@@ -2153,6 +2222,7 @@ pub struct WebhookFilter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeMatchedPattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_matched_pattern: Option<bool>,
 
     ///

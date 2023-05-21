@@ -10,6 +10,7 @@ pub struct CfnTopicRuleDestination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HttpUrlProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_url_properties: Option<HttpUrlDestinationSummary>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnTopicRuleDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 
     ///
@@ -32,6 +34,7 @@ pub struct CfnTopicRuleDestination {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_properties: Option<VpcDestinationProperties>,
 }
 
@@ -69,6 +72,7 @@ pub struct HttpUrlDestinationSummary {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConfirmationUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub confirmation_url: Option<String>,
 }
 
@@ -98,6 +102,7 @@ pub struct VpcDestinationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
 
     ///
@@ -109,6 +114,7 @@ pub struct VpcDestinationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -120,6 +126,7 @@ pub struct VpcDestinationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 
     ///
@@ -131,6 +138,7 @@ pub struct VpcDestinationProperties {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<String>,
 }
 

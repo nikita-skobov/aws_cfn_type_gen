@@ -14,6 +14,7 @@ pub struct CfnAlias {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -111,6 +112,7 @@ pub struct RoutingStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FleetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fleet_id: Option<String>,
 
     ///
@@ -122,6 +124,7 @@ pub struct RoutingStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
 
     ///

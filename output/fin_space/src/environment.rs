@@ -16,6 +16,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FederationMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub federation_mode: Option<EnvironmentFederationModeEnum>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FederationParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub federation_parameters: Option<FederationParameters>,
 
     ///
@@ -57,6 +60,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -85,6 +89,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SuperuserParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub superuser_parameters: Option<SuperuserParameters>,
 
     /// Property description not available.
@@ -95,6 +100,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -202,6 +208,7 @@ pub struct AttributeMapItems {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     /// Property description not available.
@@ -212,6 +219,7 @@ pub struct AttributeMapItems {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -247,6 +255,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationCallBackURL")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_call_back_url: Option<String>,
 
     ///
@@ -258,6 +267,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AttributeMap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attribute_map: Option<Vec<AttributeMapItems>>,
 
     ///
@@ -275,6 +285,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FederationProviderName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub federation_provider_name: Option<String>,
 
     ///
@@ -292,6 +303,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FederationURN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub federation_urn: Option<String>,
 
     ///
@@ -309,6 +321,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SamlMetadataDocument")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub saml_metadata_document: Option<String>,
 
     ///
@@ -326,6 +339,7 @@ pub struct FederationParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SamlMetadataURL")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub saml_metadata_url: Option<String>,
 }
 
@@ -442,6 +456,7 @@ pub struct SuperuserParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EmailAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub email_address: Option<String>,
 
     ///
@@ -459,6 +474,7 @@ pub struct SuperuserParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirstName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub first_name: Option<String>,
 
     ///
@@ -476,6 +492,7 @@ pub struct SuperuserParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LastName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_name: Option<String>,
 }
 

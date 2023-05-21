@@ -33,6 +33,7 @@ pub struct CfnBudgetsAction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovalModel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approval_model: Option<BudgetsActionApprovalModelEnum>,
 
     /// A string that represents the budget name. ":" and "\" characters aren't allowed.
@@ -253,6 +254,7 @@ pub struct Definition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamActionDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_action_definition: Option<IamActionDefinition>,
 
     /// The service control policies (SCP) action definition details.
@@ -263,6 +265,7 @@ pub struct Definition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScpActionDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scp_action_definition: Option<ScpActionDefinition>,
 
     /// The Amazon EC2 Systems Manager (SSM) action definition details.
@@ -273,6 +276,7 @@ pub struct Definition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SsmActionDefinition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssm_action_definition: Option<SsmActionDefinition>,
 }
 
@@ -315,6 +319,7 @@ pub struct IamActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub groups: Option<Vec<String>>,
 
     /// The Amazon Resource Name (ARN) of the policy to be attached.
@@ -343,6 +348,7 @@ pub struct IamActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub roles: Option<Vec<String>>,
 
     /// A list of users to be attached. There must be at least one user.
@@ -355,6 +361,7 @@ pub struct IamActionDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Users")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub users: Option<Vec<String>>,
 }
 

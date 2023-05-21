@@ -23,6 +23,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ChannelName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub channel_name: Option<String>,
 
     ///
@@ -45,6 +46,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyOnAddCorrespondenceToCase")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notify_on_add_correspondence_to_case: Option<bool>,
 
     ///
@@ -67,6 +69,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyOnCreateOrReopenCase")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notify_on_create_or_reopen_case: Option<bool>,
 
     ///
@@ -78,6 +81,7 @@ pub struct CfnSlackChannelConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyOnResolveCase")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notify_on_resolve_case: Option<bool>,
 
     ///

@@ -10,6 +10,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CsrExtensions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csr_extensions: Option<CsrExtensions>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyStorageSecurityStandard")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_storage_security_standard: Option<CertificateAuthorityKeyStorageSecurityStandardEnum>,
 
     ///
@@ -53,6 +55,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RevocationConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub revocation_configuration: Option<RevocationConfiguration>,
 
     ///
@@ -90,6 +93,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -118,6 +122,7 @@ pub struct CfnCertificateAuthority {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UsageMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub usage_mode: Option<CertificateAuthorityUsageModeEnum>,
 }
 
@@ -312,6 +317,7 @@ pub struct AccessMethod {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessMethodType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_method_type: Option<AccessMethodAccessMethodTypeEnum>,
 
     ///
@@ -329,6 +335,7 @@ pub struct AccessMethod {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomObjectIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_object_identifier: Option<String>,
 }
 
@@ -416,6 +423,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomCname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_cname: Option<String>,
 
     ///
@@ -427,6 +435,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -442,6 +451,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExpirationInDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expiration_in_days: Option<i64>,
 
     ///
@@ -461,6 +471,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_name: Option<String>,
 
     ///
@@ -478,6 +489,7 @@ pub struct CrlConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3ObjectAcl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_object_acl: Option<String>,
 }
 
@@ -561,6 +573,7 @@ pub struct CsrExtensions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyUsage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_usage: Option<KeyUsage>,
 
     ///
@@ -572,6 +585,7 @@ pub struct CsrExtensions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SubjectInformationAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subject_information_access: Option<Vec<AccessDescription>>,
 }
 
@@ -777,6 +791,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DirectoryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub directory_name: Option<Subject>,
 
     ///
@@ -792,6 +807,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DnsName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dns_name: Option<String>,
 
     ///
@@ -803,6 +819,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EdiPartyName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub edi_party_name: Option<EdiPartyName>,
 
     ///
@@ -818,6 +835,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address: Option<String>,
 
     ///
@@ -829,6 +847,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OtherName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub other_name: Option<OtherName>,
 
     ///
@@ -846,6 +865,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RegisteredId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub registered_id: Option<String>,
 
     ///
@@ -861,6 +881,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Rfc822Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rfc822_name: Option<String>,
 
     ///
@@ -876,6 +897,7 @@ pub struct GeneralName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UniformResourceIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uniform_resource_identifier: Option<String>,
 }
 
@@ -1001,6 +1023,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CRLSign")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crlsign: Option<bool>,
 
     ///
@@ -1012,6 +1035,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataEncipherment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_encipherment: Option<bool>,
 
     ///
@@ -1023,6 +1047,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DecipherOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub decipher_only: Option<bool>,
 
     ///
@@ -1034,6 +1059,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DigitalSignature")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub digital_signature: Option<bool>,
 
     ///
@@ -1045,6 +1071,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncipherOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encipher_only: Option<bool>,
 
     ///
@@ -1056,6 +1083,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyAgreement")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_agreement: Option<bool>,
 
     ///
@@ -1067,6 +1095,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyCertSign")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_cert_sign: Option<bool>,
 
     ///
@@ -1078,6 +1107,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyEncipherment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_encipherment: Option<bool>,
 
     ///
@@ -1089,6 +1119,7 @@ pub struct KeyUsage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NonRepudiation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub non_repudiation: Option<bool>,
 }
 
@@ -1118,6 +1149,7 @@ pub struct OcspConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -1137,6 +1169,7 @@ pub struct OcspConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OcspCustomCname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ocsp_custom_cname: Option<String>,
 }
 
@@ -1270,6 +1303,7 @@ pub struct RevocationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrlConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crl_configuration: Option<CrlConfiguration>,
 
     ///
@@ -1281,6 +1315,7 @@ pub struct RevocationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OcspConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ocsp_configuration: Option<OcspConfiguration>,
 }
 
@@ -1318,6 +1353,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CommonName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub common_name: Option<String>,
 
     ///
@@ -1329,6 +1365,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Country")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub country: Option<String>,
 
     ///
@@ -1346,6 +1383,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "CustomAttributes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_attributes: Option<Vec<CustomAttribute>>,
 
     ///
@@ -1357,6 +1395,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DistinguishedNameQualifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub distinguished_name_qualifier: Option<String>,
 
     ///
@@ -1368,6 +1407,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GenerationQualifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub generation_qualifier: Option<String>,
 
     ///
@@ -1379,6 +1419,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GivenName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub given_name: Option<String>,
 
     ///
@@ -1390,6 +1431,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Initials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub initials: Option<String>,
 
     ///
@@ -1401,6 +1443,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Locality")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub locality: Option<String>,
 
     ///
@@ -1412,6 +1455,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Organization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organization: Option<String>,
 
     ///
@@ -1423,6 +1467,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OrganizationalUnit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organizational_unit: Option<String>,
 
     ///
@@ -1434,6 +1479,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Pseudonym")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pseudonym: Option<String>,
 
     ///
@@ -1445,6 +1491,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SerialNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub serial_number: Option<String>,
 
     ///
@@ -1456,6 +1503,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<String>,
 
     ///
@@ -1467,6 +1515,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Surname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub surname: Option<String>,
 
     ///
@@ -1478,6 +1527,7 @@ pub struct Subject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Title")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<String>,
 }
 

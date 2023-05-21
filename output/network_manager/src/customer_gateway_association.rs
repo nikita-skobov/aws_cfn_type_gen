@@ -69,6 +69,7 @@ pub struct CfnCustomerGatewayAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LinkId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub link_id: Option<String>,
 }
 

@@ -12,6 +12,7 @@ pub struct CfnDisk {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddOns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub add_ons: Option<Vec<AddOn>>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnDisk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -46,6 +48,7 @@ pub struct CfnDisk {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<Location>,
 
     ///
@@ -72,6 +75,7 @@ pub struct CfnDisk {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -118,6 +122,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoSnapshotAddOnRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
 
     ///
@@ -131,6 +136,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<AddOnStatusEnum>,
 }
 
@@ -187,6 +193,7 @@ pub struct AutoSnapshotAddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotTimeOfDay")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_time_of_day: Option<String>,
 }
 
@@ -215,6 +222,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     /// Property description not available.
@@ -225,6 +233,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region_name: Option<String>,
 }
 

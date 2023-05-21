@@ -21,6 +21,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub api_key_id: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnApiKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expires")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expires: Option<f64>,
 }
 

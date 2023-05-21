@@ -27,6 +27,7 @@ pub struct CfnTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBatchingCondition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_batching_condition: Option<EventBatchingCondition>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnTrigger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -66,6 +69,7 @@ pub struct CfnTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Predicate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub predicate: Option<Predicate>,
 
     ///
@@ -77,6 +81,7 @@ pub struct CfnTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Schedule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<String>,
 
     /// Set to true to start SCHEDULED and CONDITIONAL triggers when created. True is not supported for ON_DEMAND triggers.
@@ -87,6 +92,7 @@ pub struct CfnTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartOnCreation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_on_creation: Option<bool>,
 
     ///
@@ -98,6 +104,7 @@ pub struct CfnTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 
     ///
@@ -121,6 +128,7 @@ pub struct CfnTrigger {
     ///
     /// Update requires: Replacement
     #[serde(rename = "WorkflowName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub workflow_name: Option<String>,
 }
 
@@ -225,6 +233,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arguments")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arguments: Option<serde_json::Value>,
 
     /// The name of the crawler to be used with this action.
@@ -235,6 +244,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawler_name: Option<String>,
 
     ///
@@ -252,6 +262,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_name: Option<String>,
 
     /// Specifies configuration properties of a job run notification.
@@ -262,6 +273,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationProperty")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_property: Option<NotificationProperty>,
 
     ///
@@ -279,6 +291,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_configuration: Option<String>,
 
     /// The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours). This overrides the timeout value set in the parent job.
@@ -289,6 +302,7 @@ pub struct Action {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i64>,
 }
 
@@ -354,6 +368,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawl_state: Option<String>,
 
     /// The name of the crawler to which this condition applies.
@@ -364,6 +379,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CrawlerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub crawler_name: Option<String>,
 
     ///
@@ -381,6 +397,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_name: Option<String>,
 
     ///
@@ -394,6 +411,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogicalOperator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logical_operator: Option<ConditionLogicalOperatorEnum>,
 
     ///
@@ -407,6 +425,7 @@ pub struct Condition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<ConditionStateEnum>,
 }
 
@@ -523,6 +542,7 @@ pub struct EventBatchingCondition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchWindow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_window: Option<i64>,
 }
 
@@ -551,6 +571,7 @@ pub struct NotificationProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyDelayAfter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notify_delay_after: Option<i64>,
 }
 
@@ -580,6 +601,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Conditions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conditions: Option<Vec<Condition>>,
 
     ///
@@ -593,6 +615,7 @@ pub struct Predicate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logical")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logical: Option<PredicateLogicalEnum>,
 }
 

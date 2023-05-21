@@ -14,6 +14,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessPointArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_point_arn: Option<String>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EfsFilesystemArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub efs_filesystem_arn: Option<String>,
 
     ///
@@ -55,6 +57,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FileSystemAccessRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_system_access_role_arn: Option<String>,
 
     ///
@@ -70,6 +73,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "InTransitEncryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub in_transit_encryption: Option<LocationEFSInTransitEncryptionEnum>,
 
     ///
@@ -87,6 +91,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Subdirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdirectory: Option<String>,
 
     ///
@@ -100,6 +105,7 @@ pub struct CfnLocationEFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

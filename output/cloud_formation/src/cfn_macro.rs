@@ -10,6 +10,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_group_name: Option<String>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnMacro {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogRoleARN")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_role_arn: Option<String>,
 
     ///

@@ -29,6 +29,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -65,6 +66,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Provider")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provider: Option<String>,
 
     ///
@@ -93,6 +95,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -112,6 +115,7 @@ pub struct CfnLink {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -233,6 +237,7 @@ pub struct Bandwidth {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DownloadSpeed")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub download_speed: Option<i64>,
 
     ///
@@ -244,6 +249,7 @@ pub struct Bandwidth {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UploadSpeed")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub upload_speed: Option<i64>,
 }
 

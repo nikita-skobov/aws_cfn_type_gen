@@ -26,6 +26,7 @@ pub struct CfnObservabilityConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ObservabilityConfigurationName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub observability_configuration_name: Option<String>,
 
     ///
@@ -37,6 +38,7 @@ pub struct CfnObservabilityConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -48,6 +50,7 @@ pub struct CfnObservabilityConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TraceConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trace_configuration: Option<TraceConfiguration>,
 }
 

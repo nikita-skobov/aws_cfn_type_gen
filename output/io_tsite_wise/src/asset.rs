@@ -10,6 +10,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_description: Option<String>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetHierarchies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_hierarchies: Option<Vec<AssetHierarchy>>,
 
     ///
@@ -58,6 +60,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssetProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub asset_properties: Option<Vec<AssetProperty>>,
 
     ///
@@ -69,6 +72,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -142,6 +146,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Alias")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alias: Option<String>,
 
     ///
@@ -170,6 +175,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_state: Option<String>,
 
     ///
@@ -181,6 +187,7 @@ pub struct AssetProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<String>,
 }
 

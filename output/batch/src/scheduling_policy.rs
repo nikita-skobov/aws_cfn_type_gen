@@ -10,6 +10,7 @@ pub struct CfnSchedulingPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FairsharePolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub fairshare_policy: Option<FairsharePolicy>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnSchedulingPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnSchedulingPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -73,6 +76,7 @@ pub struct FairsharePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ComputeReservation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compute_reservation: Option<f64>,
 
     ///
@@ -84,6 +88,7 @@ pub struct FairsharePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShareDecaySeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub share_decay_seconds: Option<f64>,
 
     ///
@@ -95,6 +100,7 @@ pub struct FairsharePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShareDistribution")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub share_distribution: Option<Vec<ShareAttributes>>,
 }
 
@@ -128,6 +134,7 @@ pub struct ShareAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ShareIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub share_identifier: Option<String>,
 
     ///
@@ -141,6 +148,7 @@ pub struct ShareAttributes {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WeightFactor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight_factor: Option<f64>,
 }
 

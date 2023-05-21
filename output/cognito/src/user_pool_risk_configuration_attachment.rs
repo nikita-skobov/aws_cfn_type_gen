@@ -12,6 +12,7 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccountTakeoverRiskConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub account_takeover_risk_configuration: Option<AccountTakeoverRiskConfigurationType>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompromisedCredentialsRiskConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compromised_credentials_risk_configuration:
         Option<CompromisedCredentialsRiskConfigurationType>,
 
@@ -52,6 +54,7 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RiskExceptionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub risk_exception_configuration: Option<RiskExceptionConfigurationType>,
 
     ///
@@ -215,6 +218,7 @@ pub struct AccountTakeoverActionsType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HighAction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub high_action: Option<AccountTakeoverActionType>,
 
     ///
@@ -226,6 +230,7 @@ pub struct AccountTakeoverActionsType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LowAction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub low_action: Option<AccountTakeoverActionType>,
 
     ///
@@ -237,6 +242,7 @@ pub struct AccountTakeoverActionsType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MediumAction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub medium_action: Option<AccountTakeoverActionType>,
 }
 
@@ -289,6 +295,7 @@ pub struct AccountTakeoverRiskConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotifyConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notify_configuration: Option<NotifyConfigurationType>,
 }
 
@@ -383,6 +390,7 @@ pub struct CompromisedCredentialsRiskConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_filter: Option<Vec<String>>,
 }
 
@@ -414,6 +422,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockEmail")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_email: Option<NotifyEmailType>,
 
     ///
@@ -425,6 +434,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "From")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from: Option<String>,
 
     ///
@@ -436,6 +446,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MfaEmail")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mfa_email: Option<NotifyEmailType>,
 
     ///
@@ -447,6 +458,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NoActionEmail")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub no_action_email: Option<NotifyEmailType>,
 
     ///
@@ -458,6 +470,7 @@ pub struct NotifyConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplyTo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reply_to: Option<String>,
 
     ///
@@ -540,6 +553,7 @@ pub struct NotifyEmailType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HtmlBody")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub html_body: Option<String>,
 
     ///
@@ -574,6 +588,7 @@ pub struct NotifyEmailType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TextBody")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub text_body: Option<String>,
 }
 
@@ -659,6 +674,7 @@ pub struct RiskExceptionConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockedIPRangeList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub blocked_iprange_list: Option<Vec<String>>,
 
     ///
@@ -672,6 +688,7 @@ pub struct RiskExceptionConfigurationType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SkippedIPRangeList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub skipped_iprange_list: Option<Vec<String>>,
 }
 

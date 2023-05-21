@@ -10,6 +10,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerRecipeArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_recipe_arn: Option<String>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DistributionConfigurationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub distribution_configuration_arn: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EnhancedImageMetadataEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanced_image_metadata_enabled: Option<bool>,
 
     ///
@@ -47,6 +50,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageRecipeArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_recipe_arn: Option<String>,
 
     /// Property description not available.
@@ -57,6 +61,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageScanningConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_scanning_configuration: Option<ImageScanningConfiguration>,
 
     ///
@@ -68,6 +73,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageTestsConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_tests_configuration: Option<ImageTestsConfiguration>,
 
     ///
@@ -90,6 +96,7 @@ pub struct CfnImage {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -126,6 +133,7 @@ pub struct EcrConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ContainerTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_tags: Option<Vec<String>>,
 
     /// Property description not available.
@@ -136,6 +144,7 @@ pub struct EcrConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_name: Option<String>,
 }
 
@@ -164,6 +173,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EcrConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecr_configuration: Option<EcrConfiguration>,
 
     /// Property description not available.
@@ -174,6 +184,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageScanningEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_scanning_enabled: Option<bool>,
 }
 
@@ -207,6 +218,7 @@ pub struct ImageTestsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ImageTestsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_tests_enabled: Option<bool>,
 
     ///
@@ -224,6 +236,7 @@ pub struct ImageTestsConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TimeoutMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_minutes: Option<i64>,
 }
 

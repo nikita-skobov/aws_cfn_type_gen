@@ -44,6 +44,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_role: Option<String>,
 
     ///
@@ -57,6 +58,7 @@ pub struct CfnConnector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -157,6 +159,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Compression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compression: Option<As2ConfigCompressionEnum>,
 
     ///
@@ -172,6 +175,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionAlgorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_algorithm: Option<As2ConfigEncryptionAlgorithmEnum>,
 
     ///
@@ -189,6 +193,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalProfileId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_profile_id: Option<String>,
 
     ///
@@ -204,6 +209,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MdnResponse")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mdn_response: Option<As2ConfigMdnResponseEnum>,
 
     ///
@@ -219,6 +225,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MdnSigningAlgorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mdn_signing_algorithm: Option<As2ConfigMdnSigningAlgorithmEnum>,
 
     ///
@@ -236,6 +243,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageSubject")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_subject: Option<String>,
 
     ///
@@ -253,6 +261,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartnerProfileId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partner_profile_id: Option<String>,
 
     ///
@@ -266,6 +275,7 @@ pub struct As2Config {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SigningAlgorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub signing_algorithm: Option<As2ConfigSigningAlgorithmEnum>,
 }
 

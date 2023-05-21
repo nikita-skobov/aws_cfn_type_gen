@@ -10,6 +10,7 @@ pub struct CfnCostCategory {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_value: Option<String>,
 
     ///
@@ -60,6 +61,7 @@ pub struct CfnCostCategory {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SplitChargeRules")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub split_charge_rules: Option<String>,
 }
 

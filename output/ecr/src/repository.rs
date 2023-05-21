@@ -10,6 +10,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncryptionConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageScanningConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_scanning_configuration: Option<ImageScanningConfiguration>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageTagMutability")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_tag_mutability: Option<RepositoryImageTagMutabilityEnum>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecyclePolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle_policy: Option<LifecyclePolicy>,
 
     ///
@@ -66,6 +70,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RepositoryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_name: Option<String>,
 
     ///
@@ -81,6 +86,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryPolicyText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_policy_text: Option<serde_json::Value>,
 
     ///
@@ -92,6 +98,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -193,6 +200,7 @@ pub struct EncryptionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key: Option<String>,
 }
 
@@ -257,6 +265,7 @@ pub struct ImageScanningConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScanOnPush")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scan_on_push: Option<bool>,
 }
 
@@ -290,6 +299,7 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LifecyclePolicyText")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle_policy_text: Option<String>,
 
     ///
@@ -303,6 +313,7 @@ pub struct LifecyclePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegistryId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub registry_id: Option<String>,
 }
 

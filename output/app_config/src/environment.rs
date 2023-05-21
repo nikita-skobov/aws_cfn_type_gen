@@ -31,6 +31,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -44,6 +45,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Monitors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub monitors: Option<Vec<Monitors>>,
 
     ///
@@ -70,6 +72,7 @@ pub struct CfnEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tags>>,
 }
 
@@ -148,6 +151,7 @@ pub struct Monitors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_arn: Option<String>,
 
     ///
@@ -165,6 +169,7 @@ pub struct Monitors {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlarmRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub alarm_role_arn: Option<String>,
 }
 
@@ -230,6 +235,7 @@ pub struct Tags {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 
     ///
@@ -241,6 +247,7 @@ pub struct Tags {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 

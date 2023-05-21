@@ -63,6 +63,7 @@ pub struct GroupOwnerSetting {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_owner: Option<String>,
 }
 
@@ -94,6 +95,7 @@ pub struct LocalDeviceResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupOwnerSetting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_owner_setting: Option<GroupOwnerSetting>,
 
     ///
@@ -151,6 +153,7 @@ pub struct LocalVolumeResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "GroupOwnerSetting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_owner_setting: Option<GroupOwnerSetting>,
 
     ///
@@ -197,6 +200,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalDeviceResourceData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_device_resource_data: Option<LocalDeviceResourceData>,
 
     ///
@@ -208,6 +212,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalVolumeResourceData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_volume_resource_data: Option<LocalVolumeResourceData>,
 
     ///
@@ -219,6 +224,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "S3MachineLearningModelResourceData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_machine_learning_model_resource_data: Option<S3MachineLearningModelResourceData>,
 
     ///
@@ -230,6 +236,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SageMakerMachineLearningModelResourceData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_machine_learning_model_resource_data:
         Option<SageMakerMachineLearningModelResourceData>,
 
@@ -242,6 +249,7 @@ pub struct ResourceDataContainer {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecretsManagerSecretResourceData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secrets_manager_secret_resource_data: Option<SecretsManagerSecretResourceData>,
 }
 
@@ -403,6 +411,7 @@ pub struct S3MachineLearningModelResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OwnerSetting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub owner_setting: Option<ResourceDownloadOwnerSetting>,
 
     ///
@@ -460,6 +469,7 @@ pub struct SageMakerMachineLearningModelResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "OwnerSetting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub owner_setting: Option<ResourceDownloadOwnerSetting>,
 
     ///
@@ -517,6 +527,7 @@ pub struct SecretsManagerSecretResourceData {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AdditionalStagingLabelsToDownload")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_staging_labels_to_download: Option<Vec<String>>,
 }
 

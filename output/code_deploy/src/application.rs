@@ -16,6 +16,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ApplicationName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub application_name: Option<String>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ComputePlatform")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compute_platform: Option<ApplicationComputePlatformEnum>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

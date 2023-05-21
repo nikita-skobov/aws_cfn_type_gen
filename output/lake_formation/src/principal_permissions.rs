@@ -10,6 +10,7 @@ pub struct CfnPrincipalPermissions {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Catalog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog: Option<String>,
 
     ///
@@ -87,6 +88,7 @@ pub struct ColumnWildcard {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExcludedColumnNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_column_names: Option<Vec<String>>,
 }
 
@@ -178,6 +180,7 @@ pub struct DataLakePrincipal {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataLakePrincipalIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_lake_principal_identifier: Option<String>,
 }
 
@@ -287,6 +290,7 @@ pub struct LFTag {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_key: Option<String>,
 
     ///
@@ -298,6 +302,7 @@ pub struct LFTag {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TagValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_values: Option<Vec<String>>,
 }
 
@@ -431,6 +436,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Catalog")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog: Option<serde_json::Value>,
 
     ///
@@ -442,6 +448,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataCellsFilter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_cells_filter: Option<DataCellsFilterResource>,
 
     ///
@@ -453,6 +460,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DataLocation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_location: Option<DataLocationResource>,
 
     ///
@@ -464,6 +472,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Database")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database: Option<DatabaseResource>,
 
     ///
@@ -475,6 +484,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LFTag")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lftag: Option<LFTagKeyResource>,
 
     ///
@@ -486,6 +496,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LFTagPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lftag_policy: Option<LFTagPolicyResource>,
 
     ///
@@ -497,6 +508,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Table")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table: Option<TableResource>,
 
     ///
@@ -508,6 +520,7 @@ pub struct Resource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableWithColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_with_columns: Option<TableWithColumnsResource>,
 }
 
@@ -582,6 +595,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -595,6 +609,7 @@ pub struct TableResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "TableWildcard")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub table_wildcard: Option<serde_json::Value>,
 }
 
@@ -637,6 +652,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ColumnNames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_names: Option<Vec<String>>,
 
     ///
@@ -648,6 +664,7 @@ pub struct TableWithColumnsResource {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ColumnWildcard")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_wildcard: Option<ColumnWildcard>,
 
     ///

@@ -10,6 +10,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataCatalogOutputs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_catalog_outputs: Option<Vec<DataCatalogOutput>>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseOutputs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_outputs: Option<Vec<DatabaseOutput>>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_name: Option<String>,
 
     ///
@@ -51,6 +54,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionKeyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_key_arn: Option<String>,
 
     ///
@@ -66,6 +70,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EncryptionMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_mode: Option<JobEncryptionModeEnum>,
 
     ///
@@ -77,6 +82,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobSample")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_sample: Option<JobSample>,
 
     ///
@@ -90,6 +96,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogSubscription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_subscription: Option<JobLogSubscriptionEnum>,
 
     ///
@@ -101,6 +108,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_capacity: Option<i64>,
 
     ///
@@ -114,6 +122,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxRetries")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_retries: Option<i64>,
 
     ///
@@ -139,6 +148,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputLocation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_location: Option<OutputLocation>,
 
     ///
@@ -150,6 +160,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Outputs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outputs: Option<Vec<Output>>,
 
     ///
@@ -161,6 +172,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProfileConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub profile_configuration: Option<ProfileConfiguration>,
 
     ///
@@ -176,6 +188,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProjectName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project_name: Option<String>,
 
     ///
@@ -187,6 +200,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Recipe")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recipe: Option<Recipe>,
 
     ///
@@ -213,6 +227,7 @@ pub struct CfnJob {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -226,6 +241,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i64>,
 
     ///
@@ -252,6 +268,7 @@ pub struct CfnJob {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidationConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validation_configurations: Option<Vec<ValidationConfiguration>>,
 }
 
@@ -487,6 +504,7 @@ pub struct ColumnSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -502,6 +520,7 @@ pub struct ColumnSelector {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Regex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regex: Option<String>,
 }
 
@@ -567,6 +586,7 @@ pub struct ColumnStatisticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Selectors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub selectors: Option<Vec<ColumnSelector>>,
 
     ///
@@ -613,6 +633,7 @@ pub struct CsvOutputOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Delimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delimiter: Option<String>,
 }
 
@@ -664,6 +685,7 @@ pub struct DataCatalogOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CatalogId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<String>,
 
     ///
@@ -690,6 +712,7 @@ pub struct DataCatalogOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_options: Option<DatabaseTableOutputOptions>,
 
     ///
@@ -701,6 +724,7 @@ pub struct DataCatalogOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overwrite")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overwrite: Option<bool>,
 
     ///
@@ -712,6 +736,7 @@ pub struct DataCatalogOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Options")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_options: Option<S3TableOutputOptions>,
 
     ///
@@ -831,6 +856,7 @@ pub struct DatabaseOutput {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatabaseOutputMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub database_output_mode: Option<DatabaseOutputDatabaseOutputModeEnum>,
 
     ///
@@ -923,6 +949,7 @@ pub struct DatabaseTableOutputOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub temp_directory: Option<S3Location>,
 }
 
@@ -974,6 +1001,7 @@ pub struct EntityDetectorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowedStatistics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allowed_statistics: Option<AllowedStatistics>,
 
     ///
@@ -1026,6 +1054,7 @@ pub struct JobSample {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Mode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<JobSampleModeEnum>,
 
     ///
@@ -1039,6 +1068,7 @@ pub struct JobSample {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i64>,
 }
 
@@ -1087,6 +1117,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompressionFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compression_format: Option<OutputCompressionFormatEnum>,
 
     ///
@@ -1100,6 +1131,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<OutputFormatEnum>,
 
     ///
@@ -1111,6 +1143,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FormatOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format_options: Option<OutputFormatOptions>,
 
     ///
@@ -1133,6 +1166,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxOutputFiles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_output_files: Option<i64>,
 
     ///
@@ -1144,6 +1178,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overwrite")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overwrite: Option<bool>,
 
     ///
@@ -1157,6 +1192,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PartitionColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub partition_columns: Option<Vec<String>>,
 }
 
@@ -1287,6 +1323,7 @@ pub struct OutputFormatOptions {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Csv")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv: Option<CsvOutputOptions>,
 }
 
@@ -1328,6 +1365,7 @@ pub struct OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_owner: Option<String>,
 
     ///
@@ -1339,6 +1377,7 @@ pub struct OutputLocation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 
@@ -1368,6 +1407,7 @@ pub struct ProfileConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ColumnStatisticsConfigurations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub column_statistics_configurations: Option<Vec<ColumnStatisticsConfiguration>>,
 
     ///
@@ -1379,6 +1419,7 @@ pub struct ProfileConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DatasetStatisticsConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dataset_statistics_configuration: Option<StatisticsConfiguration>,
 
     ///
@@ -1390,6 +1431,7 @@ pub struct ProfileConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EntityDetectorConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub entity_detector_configuration: Option<EntityDetectorConfiguration>,
 
     ///
@@ -1401,6 +1443,7 @@ pub struct ProfileConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProfileColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub profile_columns: Option<Vec<ColumnSelector>>,
 }
 
@@ -1453,6 +1496,7 @@ pub struct Recipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 
@@ -1521,6 +1565,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BucketOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_owner: Option<String>,
 
     ///
@@ -1536,6 +1581,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 
@@ -1714,6 +1760,7 @@ pub struct StatisticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedStatistics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub included_statistics: Option<Vec<String>>,
 
     ///
@@ -1725,6 +1772,7 @@ pub struct StatisticsConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overrides: Option<Vec<StatisticOverride>>,
 }
 
@@ -1809,6 +1857,7 @@ pub struct ValidationConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValidationMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub validation_mode: Option<String>,
 }
 

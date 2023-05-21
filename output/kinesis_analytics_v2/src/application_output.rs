@@ -86,6 +86,7 @@ pub struct DestinationSchema {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecordFormatType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub record_format_type: Option<DestinationSchemaRecordFormatTypeEnum>,
 }
 
@@ -305,6 +306,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisFirehoseOutput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_firehose_output: Option<KinesisFirehoseOutput>,
 
     ///
@@ -316,6 +318,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamsOutput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_streams_output: Option<KinesisStreamsOutput>,
 
     ///
@@ -327,6 +330,7 @@ pub struct Output {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaOutput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_output: Option<LambdaOutput>,
 
     ///
@@ -344,6 +348,7 @@ pub struct Output {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 

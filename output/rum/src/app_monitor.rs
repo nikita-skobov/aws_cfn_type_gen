@@ -14,6 +14,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppMonitorConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub app_monitor_configuration: Option<AppMonitorConfiguration>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomEvents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_events: Option<CustomEvents>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CwLogEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cw_log_enabled: Option<bool>,
 
     ///
@@ -79,6 +82,7 @@ pub struct CfnAppMonitor {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -116,6 +120,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AllowCookies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_cookies: Option<bool>,
 
     ///
@@ -127,6 +132,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableXRay")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_xray: Option<bool>,
 
     ///
@@ -140,6 +146,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludedPages")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub excluded_pages: Option<Vec<String>>,
 
     ///
@@ -151,6 +158,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FavoritePages")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub favorite_pages: Option<Vec<String>>,
 
     ///
@@ -162,6 +170,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GuestRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub guest_role_arn: Option<String>,
 
     ///
@@ -173,6 +182,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IdentityPoolId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub identity_pool_id: Option<String>,
 
     ///
@@ -186,6 +196,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludedPages")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub included_pages: Option<Vec<String>>,
 
     ///
@@ -197,6 +208,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricDestinations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_destinations: Option<Vec<MetricDestination>>,
 
     ///
@@ -212,6 +224,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionSampleRate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_sample_rate: Option<f64>,
 
     ///
@@ -225,6 +238,7 @@ pub struct AppMonitorConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Telemetries")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub telemetries: Option<Vec<String>>,
 }
 
@@ -256,6 +270,7 @@ pub struct CustomEvents {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 }
 
@@ -297,6 +312,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DimensionKeys")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dimension_keys: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -310,6 +326,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_pattern: Option<String>,
 
     ///
@@ -334,6 +351,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<String>,
 
     ///
@@ -345,6 +363,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnitLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit_label: Option<String>,
 
     ///
@@ -356,6 +375,7 @@ pub struct MetricDefinition {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ValueKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value_key: Option<String>,
 }
 
@@ -398,6 +418,7 @@ pub struct MetricDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_arn: Option<String>,
 
     ///
@@ -411,6 +432,7 @@ pub struct MetricDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_role_arn: Option<String>,
 
     ///
@@ -422,6 +444,7 @@ pub struct MetricDestination {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricDefinitions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_definitions: Option<Vec<MetricDefinition>>,
 }
 

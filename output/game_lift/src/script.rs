@@ -14,6 +14,7 @@ pub struct CfnScript {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -38,6 +39,7 @@ pub struct CfnScript {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -53,6 +55,7 @@ pub struct CfnScript {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<String>,
 }
 
@@ -159,6 +162,7 @@ pub struct S3Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_version: Option<String>,
 
     ///

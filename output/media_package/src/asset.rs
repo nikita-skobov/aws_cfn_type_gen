@@ -12,6 +12,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EgressEndpoints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub egress_endpoints: Option<Vec<EgressEndpoint>>,
 
     ///
@@ -45,6 +46,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_id: Option<String>,
 
     ///
@@ -78,6 +80,7 @@ pub struct CfnAsset {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

@@ -9,6 +9,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     /// The state the pipe should be in.
@@ -19,6 +20,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub desired_state: Option<String>,
 
     /// The ARN of the enrichment resource.
@@ -29,6 +31,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enrichment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enrichment: Option<String>,
 
     /// The parameters required to set up enrichment on your pipe.
@@ -39,6 +42,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnrichmentParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enrichment_parameters: Option<PipeEnrichmentParameters>,
 
     /// The name of the pipe.
@@ -49,6 +53,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     /// The ARN of the role that allows the pipe to send data to the target.
@@ -79,6 +84,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_parameters: Option<PipeSourceParameters>,
 
     /// The list of key-value pairs to associate with the pipe.
@@ -89,6 +95,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
     /// The ARN of the target resource.
@@ -111,6 +118,7 @@ pub struct CfnPipe {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target_parameters: Option<PipeTargetParameters>,
 }
 
@@ -152,6 +160,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AssignPublicIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assign_public_ip: Option<String>,
 
     ///
@@ -163,6 +172,7 @@ pub struct AwsVpcConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_groups: Option<Vec<String>>,
 
     ///
@@ -203,6 +213,7 @@ pub struct BatchArrayProperties {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i64>,
 }
 
@@ -232,6 +243,7 @@ pub struct BatchContainerOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Command")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -245,6 +257,7 @@ pub struct BatchContainerOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<Vec<BatchEnvironmentVariable>>,
 
     ///
@@ -258,6 +271,7 @@ pub struct BatchContainerOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<String>,
 
     ///
@@ -269,6 +283,7 @@ pub struct BatchContainerOverrides {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceRequirements")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_requirements: Option<Vec<BatchResourceRequirement>>,
 }
 
@@ -298,6 +313,7 @@ pub struct BatchEnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -309,6 +325,7 @@ pub struct BatchEnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -338,6 +355,7 @@ pub struct BatchJobDependency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "JobId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_id: Option<String>,
 
     ///
@@ -349,6 +367,7 @@ pub struct BatchJobDependency {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -420,6 +439,7 @@ pub struct BatchRetryStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Attempts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attempts: Option<i64>,
 }
 
@@ -449,6 +469,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base: Option<i64>,
 
     ///
@@ -471,6 +492,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<i64>,
 }
 
@@ -500,6 +522,7 @@ pub struct DeadLetterConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub arn: Option<String>,
 }
 
@@ -529,6 +552,7 @@ pub struct EcsContainerOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Command")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub command: Option<Vec<String>>,
 
     ///
@@ -540,6 +564,7 @@ pub struct EcsContainerOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cpu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu: Option<i64>,
 
     ///
@@ -551,6 +576,7 @@ pub struct EcsContainerOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<Vec<EcsEnvironmentVariable>>,
 
     ///
@@ -562,6 +588,7 @@ pub struct EcsContainerOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnvironmentFiles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment_files: Option<Vec<EcsEnvironmentFile>>,
 
     ///
@@ -573,6 +600,7 @@ pub struct EcsContainerOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory: Option<i64>,
 
     ///
@@ -584,6 +612,7 @@ pub struct EcsContainerOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MemoryReservation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_reservation: Option<i64>,
 
     ///
@@ -595,6 +624,7 @@ pub struct EcsContainerOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -606,6 +636,7 @@ pub struct EcsContainerOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceRequirements")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_requirements: Option<Vec<EcsResourceRequirement>>,
 }
 
@@ -679,6 +710,7 @@ pub struct EcsEnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -690,6 +722,7 @@ pub struct EcsEnvironmentVariable {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -748,6 +781,7 @@ pub struct EcsInferenceAcceleratorOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_name: Option<String>,
 
     ///
@@ -759,6 +793,7 @@ pub struct EcsInferenceAcceleratorOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeviceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device_type: Option<String>,
 }
 
@@ -832,6 +867,7 @@ pub struct EcsTaskOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_overrides: Option<Vec<EcsContainerOverride>>,
 
     ///
@@ -843,6 +879,7 @@ pub struct EcsTaskOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cpu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu: Option<String>,
 
     ///
@@ -856,6 +893,7 @@ pub struct EcsTaskOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EphemeralStorage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ephemeral_storage: Option<EcsEphemeralStorage>,
 
     ///
@@ -867,6 +905,7 @@ pub struct EcsTaskOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecutionRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution_role_arn: Option<String>,
 
     ///
@@ -878,6 +917,7 @@ pub struct EcsTaskOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InferenceAcceleratorOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_accelerator_overrides: Option<Vec<EcsInferenceAcceleratorOverride>>,
 
     ///
@@ -889,6 +929,7 @@ pub struct EcsTaskOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory: Option<String>,
 
     ///
@@ -900,6 +941,7 @@ pub struct EcsTaskOverride {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_role_arn: Option<String>,
 }
 
@@ -933,6 +975,7 @@ pub struct Filter {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pattern: Option<String>,
 }
 
@@ -966,6 +1009,7 @@ pub struct FilterCriteria {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Filters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<Vec<Filter>>,
 }
 
@@ -1024,6 +1068,7 @@ pub struct MSKAccessCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateTlsAuth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_certificate_tls_auth: Option<String>,
 
     ///
@@ -1035,6 +1080,7 @@ pub struct MSKAccessCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SaslScram512Auth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sasl_scram512_auth: Option<String>,
 }
 
@@ -1064,6 +1110,7 @@ pub struct NetworkConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AwsvpcConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub awsvpc_configuration: Option<AwsVpcConfiguration>,
 }
 
@@ -1097,6 +1144,7 @@ pub struct PipeEnrichmentHttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1108,6 +1156,7 @@ pub struct PipeEnrichmentHttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathParameterValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_parameter_values: Option<Vec<String>>,
 
     ///
@@ -1119,6 +1168,7 @@ pub struct PipeEnrichmentHttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryStringParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -1150,6 +1200,7 @@ pub struct PipeEnrichmentParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_parameters: Option<PipeEnrichmentHttpParameters>,
 
     ///
@@ -1163,6 +1214,7 @@ pub struct PipeEnrichmentParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputTemplate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_template: Option<String>,
 }
 
@@ -1195,6 +1247,7 @@ pub struct PipeSourceActiveMQBrokerParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_size: Option<i64>,
 
     /// The credentials needed to access the resource.
@@ -1215,6 +1268,7 @@ pub struct PipeSourceActiveMQBrokerParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBatchingWindowInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_batching_window_in_seconds: Option<i64>,
 
     /// The name of the destination queue to consume.
@@ -1255,6 +1309,7 @@ pub struct PipeSourceDynamoDBStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_size: Option<i64>,
 
     /// Define the target queue to send dead-letter queue events to.
@@ -1265,6 +1320,7 @@ pub struct PipeSourceDynamoDBStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeadLetterConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dead_letter_config: Option<DeadLetterConfig>,
 
     /// The maximum length of a time to wait for events.
@@ -1275,6 +1331,7 @@ pub struct PipeSourceDynamoDBStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBatchingWindowInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_batching_window_in_seconds: Option<i64>,
 
     /// (Streams only) Discard records older than the specified age. The default value is -1, which sets the maximum age to infinite. When the value is set to infinite, EventBridge never discards old records.
@@ -1285,6 +1342,7 @@ pub struct PipeSourceDynamoDBStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRecordAgeInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_record_age_in_seconds: Option<i64>,
 
     /// (Streams only) Discard records after the specified number of retries. The default value is -1, which sets the maximum number of retries to infinite. When MaximumRetryAttempts is infinite, EventBridge retries failed records until the record expires in the event source.
@@ -1295,6 +1353,7 @@ pub struct PipeSourceDynamoDBStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRetryAttempts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_retry_attempts: Option<i64>,
 
     /// (Streams only) Define how to handle item process failures. AUTOMATIC_BISECT halves each batch and retry each half until all the records are processed or there is one failed message left in the batch.
@@ -1305,6 +1364,7 @@ pub struct PipeSourceDynamoDBStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPartialBatchItemFailure")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_partial_batch_item_failure: Option<String>,
 
     /// (Streams only) The number of batches to process concurrently from each shard. The default value is 1.
@@ -1315,6 +1375,7 @@ pub struct PipeSourceDynamoDBStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelizationFactor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parallelization_factor: Option<i64>,
 
     /// (Streams only) The position in a stream from which to start reading.
@@ -1359,6 +1420,7 @@ pub struct PipeSourceKinesisStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_size: Option<i64>,
 
     /// Define the target queue to send dead-letter queue events to.
@@ -1369,6 +1431,7 @@ pub struct PipeSourceKinesisStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeadLetterConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dead_letter_config: Option<DeadLetterConfig>,
 
     /// The maximum length of a time to wait for events.
@@ -1379,6 +1442,7 @@ pub struct PipeSourceKinesisStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBatchingWindowInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_batching_window_in_seconds: Option<i64>,
 
     /// (Streams only) Discard records older than the specified age. The default value is -1, which sets the maximum age to infinite. When the value is set to infinite, EventBridge never discards old records.
@@ -1389,6 +1453,7 @@ pub struct PipeSourceKinesisStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRecordAgeInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_record_age_in_seconds: Option<i64>,
 
     /// (Streams only) Discard records after the specified number of retries. The default value is -1, which sets the maximum number of retries to infinite. When MaximumRetryAttempts is infinite, EventBridge retries failed records until the record expires in the event source.
@@ -1399,6 +1464,7 @@ pub struct PipeSourceKinesisStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumRetryAttempts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_retry_attempts: Option<i64>,
 
     /// (Streams only) Define how to handle item process failures. AUTOMATIC_BISECT halves each batch and retry each half until all the records are processed or there is one failed message left in the batch.
@@ -1409,6 +1475,7 @@ pub struct PipeSourceKinesisStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OnPartialBatchItemFailure")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_partial_batch_item_failure: Option<String>,
 
     /// (Streams only) The number of batches to process concurrently from each shard. The default value is 1.
@@ -1419,6 +1486,7 @@ pub struct PipeSourceKinesisStreamParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ParallelizationFactor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parallelization_factor: Option<i64>,
 
     /// (Streams only) The position in a stream from which to start reading.
@@ -1440,6 +1508,7 @@ pub struct PipeSourceKinesisStreamParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartingPositionTimestamp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub starting_position_timestamp: Option<String>,
 }
 
@@ -1472,6 +1541,7 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_size: Option<i64>,
 
     /// The name of the destination queue to consume.
@@ -1482,6 +1552,7 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ConsumerGroupID")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub consumer_group_id: Option<String>,
 
     /// The credentials needed to access the resource.
@@ -1492,6 +1563,7 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Credentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials: Option<MSKAccessCredentials>,
 
     /// The maximum length of a time to wait for events.
@@ -1502,6 +1574,7 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBatchingWindowInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_batching_window_in_seconds: Option<i64>,
 
     /// (Streams only) The position in a stream from which to start reading.
@@ -1512,6 +1585,7 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StartingPosition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub starting_position: Option<String>,
 
     /// The name of the topic that the pipe will read from.
@@ -1554,6 +1628,7 @@ pub struct PipeSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ActiveMQBrokerParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub active_mqbroker_parameters: Option<PipeSourceActiveMQBrokerParameters>,
 
     /// The parameters for using a DynamoDB stream as a source.
@@ -1564,6 +1639,7 @@ pub struct PipeSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DynamoDBStreamParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamo_dbstream_parameters: Option<PipeSourceDynamoDBStreamParameters>,
 
     /// The collection of event patterns used to filter events.
@@ -1578,6 +1654,7 @@ pub struct PipeSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FilterCriteria")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filter_criteria: Option<FilterCriteria>,
 
     /// The parameters for using a Kinesis stream as a source.
@@ -1588,6 +1665,7 @@ pub struct PipeSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_stream_parameters: Option<PipeSourceKinesisStreamParameters>,
 
     /// The parameters for using an MSK stream as a source.
@@ -1598,6 +1676,7 @@ pub struct PipeSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedStreamingKafkaParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_streaming_kafka_parameters: Option<PipeSourceManagedStreamingKafkaParameters>,
 
     /// The parameters for using a Rabbit MQ broker as a source.
@@ -1608,6 +1687,7 @@ pub struct PipeSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RabbitMQBrokerParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rabbit_mqbroker_parameters: Option<PipeSourceRabbitMQBrokerParameters>,
 
     /// The parameters for using a self-managed Apache Kafka stream as a source.
@@ -1618,6 +1698,7 @@ pub struct PipeSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SelfManagedKafkaParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub self_managed_kafka_parameters: Option<PipeSourceSelfManagedKafkaParameters>,
 
     /// The parameters for using a Amazon SQS stream as a source.
@@ -1628,6 +1709,7 @@ pub struct PipeSourceParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqsQueueParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sqs_queue_parameters: Option<PipeSourceSqsQueueParameters>,
 }
 
@@ -1688,6 +1770,7 @@ pub struct PipeSourceRabbitMQBrokerParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_size: Option<i64>,
 
     /// The credentials needed to access the resource.
@@ -1708,6 +1791,7 @@ pub struct PipeSourceRabbitMQBrokerParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBatchingWindowInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_batching_window_in_seconds: Option<i64>,
 
     /// The name of the destination queue to consume.
@@ -1729,6 +1813,7 @@ pub struct PipeSourceRabbitMQBrokerParameters {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VirtualHost")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_host: Option<String>,
 }
 
@@ -1760,6 +1845,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalBootstrapServers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_bootstrap_servers: Option<Vec<String>>,
 
     /// The maximum number of records to include in each batch.
@@ -1770,6 +1856,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_size: Option<i64>,
 
     /// The name of the destination queue to consume.
@@ -1780,6 +1867,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConsumerGroupID")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub consumer_group_id: Option<String>,
 
     /// The credentials needed to access the resource.
@@ -1790,6 +1878,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Credentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub credentials: Option<SelfManagedKafkaAccessConfigurationCredentials>,
 
     /// The maximum length of a time to wait for events.
@@ -1800,6 +1889,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBatchingWindowInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_batching_window_in_seconds: Option<i64>,
 
     /// The ARN of the Secrets Manager secret used for certification.
@@ -1810,6 +1900,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServerRootCaCertificate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_root_ca_certificate: Option<String>,
 
     /// (Streams only) The position in a stream from which to start reading.
@@ -1820,6 +1911,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartingPosition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub starting_position: Option<String>,
 
     /// The name of the topic that the pipe will read from.
@@ -1840,6 +1932,7 @@ pub struct PipeSourceSelfManagedKafkaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Vpc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc: Option<SelfManagedKafkaAccessConfigurationVpc>,
 }
 
@@ -1874,6 +1967,7 @@ pub struct PipeSourceSqsQueueParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_size: Option<i64>,
 
     /// The maximum length of a time to wait for events.
@@ -1884,6 +1978,7 @@ pub struct PipeSourceSqsQueueParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumBatchingWindowInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_batching_window_in_seconds: Option<i64>,
 }
 
@@ -1912,6 +2007,7 @@ pub struct PipeTargetBatchJobParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ArrayProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub array_properties: Option<BatchArrayProperties>,
 
     /// The overrides that are sent to a container.
@@ -1922,6 +2018,7 @@ pub struct PipeTargetBatchJobParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_overrides: Option<BatchContainerOverrides>,
 
     ///
@@ -1933,6 +2030,7 @@ pub struct PipeTargetBatchJobParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DependsOn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub depends_on: Option<Vec<BatchJobDependency>>,
 
     ///
@@ -1966,6 +2064,7 @@ pub struct PipeTargetBatchJobParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -1977,6 +2076,7 @@ pub struct PipeTargetBatchJobParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetryStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retry_strategy: Option<BatchRetryStrategy>,
 }
 
@@ -2018,6 +2118,7 @@ pub struct PipeTargetCloudWatchLogsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogStreamName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_stream_name: Option<String>,
 
     ///
@@ -2029,6 +2130,7 @@ pub struct PipeTargetCloudWatchLogsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Timestamp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp: Option<String>,
 }
 
@@ -2060,6 +2162,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProviderStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
 
     ///
@@ -2071,6 +2174,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableECSManagedTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_ecsmanaged_tags: Option<bool>,
 
     ///
@@ -2082,6 +2186,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableExecuteCommand")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_execute_command: Option<bool>,
 
     ///
@@ -2093,6 +2198,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Group")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group: Option<String>,
 
     ///
@@ -2104,6 +2210,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LaunchType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_type: Option<String>,
 
     ///
@@ -2117,6 +2224,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_configuration: Option<NetworkConfiguration>,
 
     /// The overrides that are associated with a task.
@@ -2127,6 +2235,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Overrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overrides: Option<EcsTaskOverride>,
 
     ///
@@ -2138,6 +2247,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementConstraints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_constraints: Option<Vec<PlacementConstraint>>,
 
     ///
@@ -2149,6 +2259,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlacementStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub placement_strategy: Option<Vec<PlacementStrategy>>,
 
     ///
@@ -2162,6 +2273,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PlatformVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform_version: Option<String>,
 
     ///
@@ -2173,6 +2285,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PropagateTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub propagate_tags: Option<String>,
 
     ///
@@ -2184,6 +2297,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReferenceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reference_id: Option<String>,
 
     ///
@@ -2195,6 +2309,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -2206,6 +2321,7 @@ pub struct PipeTargetEcsTaskParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_count: Option<i64>,
 
     ///
@@ -2254,6 +2370,7 @@ pub struct PipeTargetEventBridgeEventBusParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetailType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub detail_type: Option<String>,
 
     ///
@@ -2265,6 +2382,7 @@ pub struct PipeTargetEventBridgeEventBusParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_id: Option<String>,
 
     ///
@@ -2276,6 +2394,7 @@ pub struct PipeTargetEventBridgeEventBusParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Resources")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resources: Option<Vec<String>>,
 
     ///
@@ -2287,6 +2406,7 @@ pub struct PipeTargetEventBridgeEventBusParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Source")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source: Option<String>,
 
     ///
@@ -2298,6 +2418,7 @@ pub struct PipeTargetEventBridgeEventBusParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Time")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time: Option<String>,
 }
 
@@ -2327,6 +2448,7 @@ pub struct PipeTargetHttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HeaderParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub header_parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -2338,6 +2460,7 @@ pub struct PipeTargetHttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathParameterValues")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_parameter_values: Option<Vec<String>>,
 
     ///
@@ -2349,6 +2472,7 @@ pub struct PipeTargetHttpParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QueryStringParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_string_parameters: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -2411,6 +2535,7 @@ pub struct PipeTargetLambdaFunctionParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invocation_type: Option<String>,
 }
 
@@ -2441,6 +2566,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BatchJobParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub batch_job_parameters: Option<PipeTargetBatchJobParameters>,
 
     /// The parameters for using an CloudWatch Logs log stream as a target.
@@ -2451,6 +2577,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogsParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_logs_parameters: Option<PipeTargetCloudWatchLogsParameters>,
 
     /// The parameters for using an Amazon ECS task as a target.
@@ -2461,6 +2588,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EcsTaskParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ecs_task_parameters: Option<PipeTargetEcsTaskParameters>,
 
     /// The parameters for using an EventBridge event bus as a target.
@@ -2471,6 +2599,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventBridgeEventBusParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_bridge_event_bus_parameters: Option<PipeTargetEventBridgeEventBusParameters>,
 
     /// These are custom parameter to be used when the target is an API Gateway REST APIs or    EventBridge ApiDestinations.
@@ -2481,6 +2610,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HttpParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_parameters: Option<PipeTargetHttpParameters>,
 
     ///
@@ -2494,6 +2624,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InputTemplate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_template: Option<String>,
 
     /// The parameters for using a Kinesis stream as a source.
@@ -2504,6 +2635,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KinesisStreamParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kinesis_stream_parameters: Option<PipeTargetKinesisStreamParameters>,
 
     /// The parameters for using a Lambda function as a target.
@@ -2514,6 +2646,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_function_parameters: Option<PipeTargetLambdaFunctionParameters>,
 
     /// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the    Amazon Redshift Data API BatchExecuteStatement.
@@ -2524,6 +2657,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RedshiftDataParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub redshift_data_parameters: Option<PipeTargetRedshiftDataParameters>,
 
     /// The parameters for using a SageMaker pipeline as a target.
@@ -2534,6 +2668,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerPipelineParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_pipeline_parameters: Option<PipeTargetSageMakerPipelineParameters>,
 
     /// The parameters for using a Amazon SQS stream as a source.
@@ -2544,6 +2679,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SqsQueueParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sqs_queue_parameters: Option<PipeTargetSqsQueueParameters>,
 
     /// The parameters for using a Step Functions state machine as a target.
@@ -2554,6 +2690,7 @@ pub struct PipeTargetParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StepFunctionStateMachineParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub step_function_state_machine_parameters: Option<PipeTargetStateMachineParameters>,
 }
 
@@ -2638,6 +2775,7 @@ pub struct PipeTargetRedshiftDataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DbUser")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub db_user: Option<String>,
 
     ///
@@ -2649,6 +2787,7 @@ pub struct PipeTargetRedshiftDataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretManagerArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_manager_arn: Option<String>,
 
     ///
@@ -2671,6 +2810,7 @@ pub struct PipeTargetRedshiftDataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StatementName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub statement_name: Option<String>,
 
     ///
@@ -2682,6 +2822,7 @@ pub struct PipeTargetRedshiftDataParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WithEvent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub with_event: Option<bool>,
 }
 
@@ -2711,6 +2852,7 @@ pub struct PipeTargetSageMakerPipelineParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineParameterList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_parameter_list: Option<Vec<SageMakerPipelineParameter>>,
 }
 
@@ -2742,6 +2884,7 @@ pub struct PipeTargetSqsQueueParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageDeduplicationId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_deduplication_id: Option<String>,
 
     ///
@@ -2753,6 +2896,7 @@ pub struct PipeTargetSqsQueueParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MessageGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message_group_id: Option<String>,
 }
 
@@ -2786,6 +2930,7 @@ pub struct PipeTargetStateMachineParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InvocationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invocation_type: Option<String>,
 }
 
@@ -2815,6 +2960,7 @@ pub struct PlacementConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Expression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expression: Option<String>,
 
     ///
@@ -2826,6 +2972,7 @@ pub struct PlacementConstraint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -2855,6 +3002,7 @@ pub struct PlacementStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Field")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<String>,
 
     ///
@@ -2866,6 +3014,7 @@ pub struct PlacementStrategy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<String>,
 }
 
@@ -2935,6 +3084,7 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BasicAuth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub basic_auth: Option<String>,
 
     ///
@@ -2946,6 +3096,7 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateTlsAuth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_certificate_tls_auth: Option<String>,
 
     ///
@@ -2957,6 +3108,7 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SaslScram256Auth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sasl_scram256_auth: Option<String>,
 
     ///
@@ -2968,6 +3120,7 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SaslScram512Auth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sasl_scram512_auth: Option<String>,
 }
 
@@ -2997,6 +3150,7 @@ pub struct SelfManagedKafkaAccessConfigurationVpc {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group: Option<Vec<String>>,
 
     ///
@@ -3008,6 +3162,7 @@ pub struct SelfManagedKafkaAccessConfigurationVpc {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subnets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnets: Option<Vec<String>>,
 }
 

@@ -12,6 +12,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CutoffBehavior")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cutoff_behavior: Option<MaintenanceWindowTaskCutoffBehaviorEnum>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -40,6 +42,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_info: Option<LoggingInfo>,
 
     ///
@@ -59,6 +62,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxConcurrency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_concurrency: Option<String>,
 
     ///
@@ -78,6 +82,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxErrors")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_errors: Option<String>,
 
     ///
@@ -95,6 +100,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -119,6 +125,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_role_arn: Option<String>,
 
     ///
@@ -134,6 +141,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub targets: Option<Vec<Target>>,
 
     ///
@@ -168,6 +176,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskInvocationParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_invocation_parameters: Option<TaskInvocationParameters>,
 
     ///
@@ -181,6 +190,7 @@ pub struct CfnMaintenanceWindowTask {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TaskParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task_parameters: Option<serde_json::Value>,
 
     ///
@@ -422,6 +432,7 @@ pub struct CloudWatchOutputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_log_group_name: Option<String>,
 
     ///
@@ -433,6 +444,7 @@ pub struct CloudWatchOutputConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchOutputEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_output_enabled: Option<bool>,
 }
 
@@ -508,6 +520,7 @@ pub struct LoggingInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_prefix: Option<String>,
 }
 
@@ -588,6 +601,7 @@ pub struct MaintenanceWindowAutomationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_version: Option<String>,
 
     ///
@@ -599,6 +613,7 @@ pub struct MaintenanceWindowAutomationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 }
 
@@ -634,6 +649,7 @@ pub struct MaintenanceWindowLambdaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientContext")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_context: Option<String>,
 
     ///
@@ -649,6 +665,7 @@ pub struct MaintenanceWindowLambdaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Payload")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payload: Option<String>,
 
     ///
@@ -664,6 +681,7 @@ pub struct MaintenanceWindowLambdaParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Qualifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub qualifier: Option<String>,
 }
 
@@ -733,6 +751,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchOutputConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_output_config: Option<CloudWatchOutputConfig>,
 
     ///
@@ -746,6 +765,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Comment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<String>,
 
     ///
@@ -759,6 +779,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentHash")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_hash: Option<String>,
 
     ///
@@ -772,6 +793,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentHashType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_hash_type: Option<MaintenanceWindowRunCommandParametersDocumentHashTypeEnum>,
 
     ///
@@ -791,6 +813,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DocumentVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub document_version: Option<String>,
 
     ///
@@ -802,6 +825,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_config: Option<NotificationConfig>,
 
     ///
@@ -817,6 +841,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_s3_bucket_name: Option<String>,
 
     ///
@@ -830,6 +855,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutputS3KeyPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_s3_key_prefix: Option<String>,
 
     ///
@@ -843,6 +869,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<serde_json::Value>,
 
     ///
@@ -854,6 +881,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_role_arn: Option<String>,
 
     ///
@@ -869,6 +897,7 @@ pub struct MaintenanceWindowRunCommandParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TimeoutSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_seconds: Option<i64>,
 }
 
@@ -990,6 +1019,7 @@ pub struct MaintenanceWindowStepFunctionsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Input")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input: Option<String>,
 
     ///
@@ -1005,6 +1035,7 @@ pub struct MaintenanceWindowStepFunctionsParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 
@@ -1074,6 +1105,7 @@ pub struct NotificationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationEvents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_events: Option<Vec<String>>,
 
     ///
@@ -1089,6 +1121,7 @@ pub struct NotificationConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NotificationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_type: Option<NotificationConfigNotificationTypeEnum>,
 }
 
@@ -1214,6 +1247,7 @@ pub struct TaskInvocationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowAutomationParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_window_automation_parameters: Option<MaintenanceWindowAutomationParameters>,
 
     ///
@@ -1225,6 +1259,7 @@ pub struct TaskInvocationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowLambdaParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_window_lambda_parameters: Option<MaintenanceWindowLambdaParameters>,
 
     ///
@@ -1236,6 +1271,7 @@ pub struct TaskInvocationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowRunCommandParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_window_run_command_parameters: Option<MaintenanceWindowRunCommandParameters>,
 
     ///
@@ -1247,6 +1283,7 @@ pub struct TaskInvocationParameters {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaintenanceWindowStepFunctionsParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maintenance_window_step_functions_parameters:
         Option<MaintenanceWindowStepFunctionsParameters>,
 }

@@ -20,6 +20,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -33,6 +34,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GenerateSecretString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub generate_secret_string: Option<GenerateSecretString>,
 
     ///
@@ -50,6 +52,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -65,6 +68,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -76,6 +80,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicaRegions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replica_regions: Option<Vec<ReplicaRegion>>,
 
     ///
@@ -87,6 +92,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_string: Option<String>,
 
     ///
@@ -110,6 +116,7 @@ pub struct CfnSecret {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -145,6 +152,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeCharacters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_characters: Option<String>,
 
     ///
@@ -156,6 +164,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeLowercase")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_lowercase: Option<bool>,
 
     ///
@@ -167,6 +176,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeNumbers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_numbers: Option<bool>,
 
     ///
@@ -178,6 +188,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludePunctuation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_punctuation: Option<bool>,
 
     ///
@@ -189,6 +200,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeUppercase")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_uppercase: Option<bool>,
 
     ///
@@ -200,6 +212,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GenerateStringKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub generate_string_key: Option<String>,
 
     ///
@@ -211,6 +224,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IncludeSpace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub include_space: Option<bool>,
 
     ///
@@ -222,6 +236,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PasswordLength")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password_length: Option<i64>,
 
     ///
@@ -233,6 +248,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequireEachIncludedType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub require_each_included_type: Option<bool>,
 
     ///
@@ -244,6 +260,7 @@ pub struct GenerateSecretString {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecretStringTemplate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secret_string_template: Option<String>,
 }
 
@@ -273,6 +290,7 @@ pub struct ReplicaRegion {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///

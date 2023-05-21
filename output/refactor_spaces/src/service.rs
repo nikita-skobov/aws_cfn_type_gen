@@ -21,6 +21,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -54,6 +55,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "LambdaEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_endpoint: Option<LambdaEndpointInput>,
 
     ///
@@ -76,6 +78,7 @@ pub struct CfnService {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -87,6 +90,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "UrlEndpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url_endpoint: Option<UrlEndpointInput>,
 
     ///
@@ -98,6 +102,7 @@ pub struct CfnService {
     ///
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<String>,
 }
 
@@ -208,6 +213,7 @@ pub struct UrlEndpointInput {
     ///
     /// Update requires: Replacement
     #[serde(rename = "HealthUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_url: Option<String>,
 
     ///

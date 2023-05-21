@@ -9,6 +9,7 @@ pub struct CfnGraph {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoEnableMembers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_enable_members: Option<bool>,
 
     ///
@@ -20,6 +21,7 @@ pub struct CfnGraph {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

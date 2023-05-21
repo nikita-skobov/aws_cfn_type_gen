@@ -10,6 +10,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedPolicyReferences")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customer_managed_policy_references: Option<Vec<CustomerManagedPolicyReference>>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -46,6 +48,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InlinePolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inline_policy: Option<serde_json::Value>,
 
     ///
@@ -74,6 +77,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_policies: Option<Vec<String>>,
 
     ///
@@ -104,6 +108,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PermissionsBoundary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions_boundary: Option<PermissionsBoundary>,
 
     ///
@@ -121,6 +126,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RelayStateType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub relay_state_type: Option<String>,
 
     ///
@@ -138,6 +144,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SessionDuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_duration: Option<String>,
 
     ///
@@ -151,6 +158,7 @@ pub struct CfnPermissionSet {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -306,6 +314,7 @@ pub struct CustomerManagedPolicyReference {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 }
 
@@ -371,6 +380,7 @@ pub struct PermissionsBoundary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomerManagedPolicyReference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub customer_managed_policy_reference: Option<CustomerManagedPolicyReference>,
 
     ///
@@ -388,6 +398,7 @@ pub struct PermissionsBoundary {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ManagedPolicyArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub managed_policy_arn: Option<String>,
 }
 

@@ -27,6 +27,7 @@ pub struct CfnLoggingConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "FirewallName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub firewall_name: Option<String>,
 
     ///

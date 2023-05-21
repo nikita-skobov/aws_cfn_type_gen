@@ -51,6 +51,7 @@ pub struct CfnApp {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResourceSpec")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_spec: Option<ResourceSpec>,
 
     ///
@@ -64,6 +65,7 @@ pub struct CfnApp {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -176,6 +178,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
 
     ///
@@ -191,6 +194,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_image_arn: Option<String>,
 
     ///
@@ -206,6 +210,7 @@ pub struct ResourceSpec {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sage_maker_image_version_arn: Option<String>,
 }
 

@@ -16,6 +16,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HomeDirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub home_directory: Option<String>,
 
     ///
@@ -35,6 +36,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HomeDirectoryMappings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub home_directory_mappings: Option<Vec<HomeDirectoryMapEntry>>,
 
     ///
@@ -48,6 +50,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HomeDirectoryType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub home_directory_type: Option<UserHomeDirectoryTypeEnum>,
 
     ///
@@ -63,6 +66,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy: Option<String>,
 
     ///
@@ -74,6 +78,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PosixProfile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub posix_profile: Option<PosixProfile>,
 
     ///
@@ -121,6 +126,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SshPublicKeys")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ssh_public_keys: Option<Vec<SshPublicKey>>,
 
     ///
@@ -134,6 +140,7 @@ pub struct CfnUser {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -376,6 +383,7 @@ pub struct PosixProfile {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecondaryGids")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub secondary_gids: Option<Vec<f64>>,
 
     ///

@@ -45,6 +45,7 @@ pub struct CfnTransitGatewayPeeringAttachment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -85,6 +86,7 @@ pub struct PeeringAttachmentStatus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<String>,
 
     ///
@@ -96,6 +98,7 @@ pub struct PeeringAttachmentStatus {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Message")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
 }
 

@@ -12,6 +12,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_arn: Option<String>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_name: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EndpointConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_configuration: Option<EndpointConfiguration>,
 
     ///
@@ -45,6 +48,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MutualTlsAuthentication")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
 
     /// The ARN of the public certificate issued by ACM to validate ownership of your custom domain. Only required when configuring mutual TLS and using an ACM imported or private CA certificate ARN as the RegionalCertificateArn.
@@ -55,6 +59,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OwnershipVerificationCertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ownership_verification_certificate_arn: Option<String>,
 
     ///
@@ -66,6 +71,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionalCertificateArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub regional_certificate_arn: Option<String>,
 
     ///
@@ -79,6 +85,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_policy: Option<DomainNameSecurityPolicyEnum>,
 
     ///
@@ -90,6 +97,7 @@ pub struct CfnDomainName {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -146,6 +154,7 @@ pub struct EndpointConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Types")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub types: Option<Vec<String>>,
 }
 
@@ -175,6 +184,7 @@ pub struct MutualTlsAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruststoreUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub truststore_uri: Option<String>,
 
     ///
@@ -186,6 +196,7 @@ pub struct MutualTlsAuthentication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TruststoreVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub truststore_version: Option<String>,
 }
 

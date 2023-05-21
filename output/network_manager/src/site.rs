@@ -18,6 +18,7 @@ pub struct CfnSite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -48,6 +49,7 @@ pub struct CfnSite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<Location>,
 
     ///
@@ -59,6 +61,7 @@ pub struct CfnSite {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -134,6 +137,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Address")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<String>,
 
     ///
@@ -151,6 +155,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Latitude")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub latitude: Option<String>,
 
     ///
@@ -168,6 +173,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Longitude")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub longitude: Option<String>,
 }
 

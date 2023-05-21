@@ -74,6 +74,7 @@ pub struct Device {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SyncShadow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_shadow: Option<bool>,
 
     ///

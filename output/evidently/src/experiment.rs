@@ -12,6 +12,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -67,6 +68,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RandomizationSalt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub randomization_salt: Option<String>,
 
     ///
@@ -78,6 +80,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RemoveSegment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub remove_segment: Option<bool>,
 
     /// A structure that you can use     to start and stop the experiment.
@@ -88,6 +91,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RunningStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub running_status: Option<RunningStatusObject>,
 
     ///
@@ -101,6 +105,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SamplingRate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sampling_rate: Option<i64>,
 
     ///
@@ -114,6 +119,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Segment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub segment: Option<String>,
 
     ///
@@ -133,6 +139,7 @@ pub struct CfnExperiment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -205,6 +212,7 @@ pub struct MetricGoalObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EventPattern")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub event_pattern: Option<String>,
 
     ///
@@ -227,6 +235,7 @@ pub struct MetricGoalObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UnitLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub unit_label: Option<String>,
 
     ///
@@ -267,6 +276,7 @@ pub struct OnlineAbConfigObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ControlTreatmentName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub control_treatment_name: Option<String>,
 
     ///
@@ -278,6 +288,7 @@ pub struct OnlineAbConfigObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TreatmentWeights")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub treatment_weights: Option<Vec<TreatmentToWeight>>,
 }
 
@@ -306,6 +317,7 @@ pub struct RunningStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AnalysisCompleteTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub analysis_complete_time: Option<String>,
 
     /// If you are using AWS CloudFormation to stop this     experiment, specify either COMPLETED or CANCELLED here to indicate how to classify this   experiment.
@@ -316,6 +328,7 @@ pub struct RunningStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub desired_state: Option<String>,
 
     /// If you are using AWS CloudFormation to stop this   experiment, this is an optional field that you can use to record why the experiment is being stopped or cancelled.
@@ -326,6 +339,7 @@ pub struct RunningStatusObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Reason")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reason: Option<String>,
 
     /// To start the experiment now, specify START   for this parameter. If this experiment is currently running and you want to stop it now, specify STOP.
@@ -409,6 +423,7 @@ pub struct TreatmentObject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///

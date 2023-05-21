@@ -12,6 +12,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AddOns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub add_ons: Option<Vec<AddOn>>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -58,6 +60,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Hardware")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hardware: Option<Hardware>,
 
     ///
@@ -84,6 +87,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KeyPairName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_pair_name: Option<String>,
 
     ///
@@ -97,6 +101,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<Location>,
 
     ///
@@ -108,6 +113,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Networking")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub networking: Option<Networking>,
 
     ///
@@ -121,6 +127,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "State")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub state: Option<State>,
 
     ///
@@ -136,6 +143,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -151,6 +159,7 @@ pub struct CfnInstance {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_data: Option<String>,
 }
 
@@ -207,6 +216,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoSnapshotAddOnRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
 
     ///
@@ -220,6 +230,7 @@ pub struct AddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<AddOnStatusEnum>,
 }
 
@@ -276,6 +287,7 @@ pub struct AutoSnapshotAddOn {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SnapshotTimeOfDay")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_time_of_day: Option<String>,
 }
 
@@ -305,6 +317,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AttachedTo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attached_to: Option<String>,
 
     ///
@@ -318,6 +331,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "AttachmentState")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attachment_state: Option<String>,
 
     ///
@@ -340,6 +354,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IOPS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///
@@ -351,6 +366,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "IsSystemDisk")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_system_disk: Option<bool>,
 
     ///
@@ -373,6 +389,7 @@ pub struct Disk {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "SizeInGb")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size_in_gb: Option<String>,
 }
 
@@ -404,6 +421,7 @@ pub struct Hardware {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "CpuCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_count: Option<i64>,
 
     ///
@@ -417,6 +435,7 @@ pub struct Hardware {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Disks")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disks: Option<Vec<Disk>>,
 
     ///
@@ -430,6 +449,7 @@ pub struct Hardware {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "RamSizeInGb")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ram_size_in_gb: Option<i64>,
 }
 
@@ -459,6 +479,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AvailabilityZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub availability_zone: Option<String>,
 
     ///
@@ -470,6 +491,7 @@ pub struct Location {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub region_name: Option<String>,
 }
 
@@ -499,6 +521,7 @@ pub struct MonthlyTransfer {
     ///
     /// Update requires: No interruption
     #[serde(rename = "GbPerMonthAllocated")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gb_per_month_allocated: Option<String>,
 }
 
@@ -528,6 +551,7 @@ pub struct Networking {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "MonthlyTransfer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub monthly_transfer: Option<MonthlyTransfer>,
 
     ///
@@ -574,6 +598,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessDirection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_direction: Option<String>,
 
     ///
@@ -585,6 +610,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessFrom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_from: Option<String>,
 
     ///
@@ -596,6 +622,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_type: Option<String>,
 
     ///
@@ -609,6 +636,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CidrListAliases")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidr_list_aliases: Option<Vec<String>>,
 
     ///
@@ -626,6 +654,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Cidrs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cidrs: Option<Vec<String>>,
 
     ///
@@ -637,6 +666,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CommonName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub common_name: Option<String>,
 
     ///
@@ -652,6 +682,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FromPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub from_port: Option<i64>,
 
     ///
@@ -665,6 +696,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Cidrs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_cidrs: Option<Vec<String>>,
 
     ///
@@ -680,6 +712,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<String>,
 
     ///
@@ -695,6 +728,7 @@ pub struct Port {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ToPort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub to_port: Option<i64>,
 }
 
@@ -724,6 +758,7 @@ pub struct State {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<i64>,
 
     ///
@@ -735,6 +770,7 @@ pub struct State {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 }
 

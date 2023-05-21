@@ -21,6 +21,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caching_config: Option<CachingConfig>,
 
     ///
@@ -32,6 +33,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<String>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CodeS3Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code_s3_location: Option<String>,
 
     ///
@@ -54,6 +57,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataSourceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_source_name: Option<String>,
 
     ///
@@ -78,6 +82,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Kind")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kind: Option<String>,
 
     ///
@@ -89,6 +94,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxBatchSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_batch_size: Option<i64>,
 
     ///
@@ -100,6 +106,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PipelineConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pipeline_config: Option<PipelineConfig>,
 
     ///
@@ -113,6 +120,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestMappingTemplate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_mapping_template: Option<String>,
 
     ///
@@ -124,6 +132,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RequestMappingTemplateS3Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_mapping_template_s3_location: Option<String>,
 
     ///
@@ -135,6 +144,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseMappingTemplate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_mapping_template: Option<String>,
 
     ///
@@ -146,6 +156,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ResponseMappingTemplateS3Location")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_mapping_template_s3_location: Option<String>,
 
     ///
@@ -157,6 +168,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime: Option<AppSyncRuntime>,
 
     ///
@@ -168,6 +180,7 @@ pub struct CfnResolver {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SyncConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_config: Option<SyncConfig>,
 
     ///
@@ -264,6 +277,7 @@ pub struct CachingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CachingKeys")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caching_keys: Option<Vec<String>>,
 
     ///
@@ -306,6 +320,7 @@ pub struct LambdaConflictHandlerConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConflictHandlerArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_conflict_handler_arn: Option<String>,
 }
 
@@ -337,6 +352,7 @@ pub struct PipelineConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Functions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub functions: Option<Vec<String>>,
 }
 
@@ -383,6 +399,7 @@ pub struct SyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ConflictHandler")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub conflict_handler: Option<String>,
 
     ///
@@ -394,6 +411,7 @@ pub struct SyncConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LambdaConflictHandlerConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lambda_conflict_handler_config: Option<LambdaConflictHandlerConfig>,
 }
 

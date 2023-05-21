@@ -23,6 +23,7 @@ pub struct CfnBackupPlan {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BackupPlanTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub backup_plan_tags: Option<std::collections::HashMap<String, String>>,
 }
 
@@ -104,6 +105,7 @@ pub struct BackupPlanResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdvancedBackupSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub advanced_backup_settings: Option<Vec<AdvancedBackupSettingResourceType>>,
 
     ///
@@ -155,6 +157,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompletionWindowMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub completion_window_minutes: Option<f64>,
 
     ///
@@ -166,6 +169,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CopyActions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub copy_actions: Option<Vec<CopyActionResourceType>>,
 
     ///
@@ -177,6 +181,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableContinuousBackup")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_continuous_backup: Option<bool>,
 
     ///
@@ -188,6 +193,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lifecycle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle: Option<LifecycleResourceType>,
 
     ///
@@ -199,6 +205,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RecoveryPointTags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recovery_point_tags: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -221,6 +228,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ScheduleExpression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_expression: Option<String>,
 
     ///
@@ -234,6 +242,7 @@ pub struct BackupRuleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StartWindowMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_window_minutes: Option<f64>,
 
     ///
@@ -291,6 +300,7 @@ pub struct CopyActionResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Lifecycle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub lifecycle: Option<LifecycleResourceType>,
 }
 
@@ -324,6 +334,7 @@ pub struct LifecycleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeleteAfterDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_after_days: Option<f64>,
 
     ///
@@ -335,6 +346,7 @@ pub struct LifecycleResourceType {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MoveToColdStorageAfterDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub move_to_cold_storage_after_days: Option<f64>,
 }
 

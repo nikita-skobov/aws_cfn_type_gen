@@ -32,6 +32,7 @@ pub struct CfnReplicaKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -49,6 +50,7 @@ pub struct CfnReplicaKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -99,6 +101,7 @@ pub struct CfnReplicaKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PendingWindowInDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pending_window_in_days: Option<i64>,
 
     ///
@@ -137,6 +140,7 @@ pub struct CfnReplicaKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

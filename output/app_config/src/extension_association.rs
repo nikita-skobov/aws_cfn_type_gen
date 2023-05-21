@@ -14,6 +14,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExtensionIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extension_identifier: Option<String>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExtensionVersionNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub extension_version_number: Option<i64>,
 
     ///
@@ -36,6 +38,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parameters: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -51,6 +54,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_identifier: Option<String>,
 
     ///
@@ -62,6 +66,7 @@ pub struct CfnExtensionAssociation {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

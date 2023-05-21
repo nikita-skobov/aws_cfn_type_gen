@@ -32,6 +32,7 @@ pub struct CfnRegistryPolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RevisionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub revision_id: Option<String>,
 }
 

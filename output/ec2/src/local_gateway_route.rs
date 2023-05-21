@@ -32,6 +32,7 @@ pub struct CfnLocalGatewayRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LocalGatewayVirtualInterfaceGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub local_gateway_virtual_interface_group_id: Option<String>,
 
     ///
@@ -43,6 +44,7 @@ pub struct CfnLocalGatewayRoute {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NetworkInterfaceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<String>,
 }
 

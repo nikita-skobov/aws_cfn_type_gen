@@ -11,6 +11,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<Code>,
 
     ///
@@ -26,6 +27,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RepositoryDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub repository_description: Option<String>,
 
     ///
@@ -56,6 +58,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -67,6 +70,7 @@ pub struct CfnRepository {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "Triggers")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub triggers: Option<Vec<RepositoryTrigger>>,
 }
 
@@ -122,6 +126,7 @@ pub struct Code {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BranchName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub branch_name: Option<String>,
 
     /// Information about the Amazon S3 bucket that contains a ZIP file of code     to be committed to the repository. Changes to this property are ignored after initial resource creation.
@@ -165,6 +170,7 @@ pub struct RepositoryTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Branches")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub branches: Option<Vec<String>>,
 
     ///
@@ -176,6 +182,7 @@ pub struct RepositoryTrigger {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_data: Option<String>,
 
     ///
@@ -259,6 +266,7 @@ pub struct S3 {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_version: Option<String>,
 }
 

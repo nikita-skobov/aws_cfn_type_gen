@@ -37,6 +37,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BlockSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub block_size: Option<i64>,
 
     ///
@@ -48,6 +49,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KerberosKeytab")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kerberos_keytab: Option<String>,
 
     ///
@@ -59,6 +61,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KerberosKrb5Conf")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kerberos_krb5_conf: Option<String>,
 
     ///
@@ -78,6 +81,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KerberosPrincipal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kerberos_principal: Option<String>,
 
     ///
@@ -95,6 +99,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyProviderUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_provider_uri: Option<String>,
 
     ///
@@ -117,6 +122,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "QopConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub qop_configuration: Option<QopConfiguration>,
 
     ///
@@ -132,6 +138,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ReplicationFactor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub replication_factor: Option<i64>,
 
     ///
@@ -151,6 +158,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SimpleUser")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub simple_user: Option<String>,
 
     ///
@@ -166,6 +174,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Subdirectory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subdirectory: Option<String>,
 
     ///
@@ -179,6 +188,7 @@ pub struct CfnLocationHDFS {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -418,6 +428,7 @@ pub struct QopConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTransferProtection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_transfer_protection: Option<QopConfigurationDataTransferProtectionEnum>,
 
     ///
@@ -431,6 +442,7 @@ pub struct QopConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RpcProtection")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rpc_protection: Option<QopConfigurationRpcProtectionEnum>,
 }
 

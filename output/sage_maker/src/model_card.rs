@@ -25,6 +25,7 @@ pub struct CfnModelCard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_by: Option<UserContext>,
 
     /// Property description not available.
@@ -35,6 +36,7 @@ pub struct CfnModelCard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LastModifiedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_modified_by: Option<UserContext>,
 
     ///
@@ -78,6 +80,7 @@ pub struct CfnModelCard {
     ///
     /// Update requires: Replacement
     #[serde(rename = "SecurityConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_config: Option<SecurityConfig>,
 
     ///
@@ -91,6 +94,7 @@ pub struct CfnModelCard {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -186,6 +190,7 @@ pub struct AdditionalInformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CaveatsAndRecommendations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub caveats_and_recommendations: Option<String>,
 
     ///
@@ -197,6 +202,7 @@ pub struct AdditionalInformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_details: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -208,6 +214,7 @@ pub struct AdditionalInformation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EthicalConsiderations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ethical_considerations: Option<String>,
 }
 
@@ -237,6 +244,7 @@ pub struct BusinessDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BusinessProblem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub business_problem: Option<String>,
 
     ///
@@ -248,6 +256,7 @@ pub struct BusinessDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BusinessStakeholders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub business_stakeholders: Option<String>,
 
     ///
@@ -259,6 +268,7 @@ pub struct BusinessDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LineOfBusiness")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub line_of_business: Option<String>,
 }
 
@@ -297,6 +307,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelDataUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_data_url: Option<String>,
 
     /// Property description not available.
@@ -307,6 +318,7 @@ pub struct Container {
     ///
     /// Update requires: No interruption
     #[serde(rename = "NearestModelName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nearest_model_name: Option<String>,
 }
 
@@ -336,6 +348,7 @@ pub struct Content {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AdditionalInformation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_information: Option<AdditionalInformation>,
 
     ///
@@ -347,6 +360,7 @@ pub struct Content {
     ///
     /// Update requires: No interruption
     #[serde(rename = "BusinessDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub business_details: Option<BusinessDetails>,
 
     ///
@@ -358,6 +372,7 @@ pub struct Content {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluationDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub evaluation_details: Option<Vec<EvaluationDetail>>,
 
     ///
@@ -369,6 +384,7 @@ pub struct Content {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntendedUses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub intended_uses: Option<IntendedUses>,
 
     ///
@@ -380,6 +396,7 @@ pub struct Content {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelOverview")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_overview: Option<ModelOverview>,
 
     /// Property description not available.
@@ -390,6 +407,7 @@ pub struct Content {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_details: Option<ModelPackageDetails>,
 
     ///
@@ -401,6 +419,7 @@ pub struct Content {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrainingDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub training_details: Option<TrainingDetails>,
 }
 
@@ -454,6 +473,7 @@ pub struct EvaluationDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Datasets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub datasets: Option<Vec<String>>,
 
     ///
@@ -465,6 +485,7 @@ pub struct EvaluationDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluationJobArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub evaluation_job_arn: Option<String>,
 
     ///
@@ -476,6 +497,7 @@ pub struct EvaluationDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EvaluationObservation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub evaluation_observation: Option<String>,
 
     ///
@@ -487,6 +509,7 @@ pub struct EvaluationDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Metadata")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata: Option<std::collections::HashMap<String, String>>,
 
     ///
@@ -498,6 +521,7 @@ pub struct EvaluationDetail {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MetricGroups")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub metric_groups: Option<Vec<MetricGroup>>,
 
     ///
@@ -538,6 +562,7 @@ pub struct Function {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Condition")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub condition: Option<String>,
 
     ///
@@ -551,6 +576,7 @@ pub struct Function {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Facet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub facet: Option<String>,
 
     ///
@@ -564,6 +590,7 @@ pub struct Function {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Function")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function: Option<String>,
 }
 
@@ -593,6 +620,7 @@ pub struct InferenceEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerImage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_image: Option<Vec<String>>,
 }
 
@@ -650,6 +678,7 @@ pub struct IntendedUses {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExplanationsForRiskRating")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub explanations_for_risk_rating: Option<String>,
 
     ///
@@ -661,6 +690,7 @@ pub struct IntendedUses {
     ///
     /// Update requires: No interruption
     #[serde(rename = "FactorsAffectingModelEfficiency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub factors_affecting_model_efficiency: Option<String>,
 
     ///
@@ -672,6 +702,7 @@ pub struct IntendedUses {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IntendedUses")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub intended_uses: Option<String>,
 
     ///
@@ -683,6 +714,7 @@ pub struct IntendedUses {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PurposeOfModel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub purpose_of_model: Option<String>,
 
     ///
@@ -696,6 +728,7 @@ pub struct IntendedUses {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RiskRating")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub risk_rating: Option<String>,
 }
 
@@ -736,6 +769,7 @@ pub struct MetricDataItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Notes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
 
     ///
@@ -771,6 +805,7 @@ pub struct MetricDataItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "XAxisName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub xaxis_name: Option<Vec<String>>,
 
     ///
@@ -782,6 +817,7 @@ pub struct MetricDataItems {
     ///
     /// Update requires: No interruption
     #[serde(rename = "YAxisName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub yaxis_name: Option<Vec<String>>,
 }
 
@@ -855,6 +891,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AlgorithmType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub algorithm_type: Option<String>,
 
     ///
@@ -866,6 +903,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InferenceEnvironment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_environment: Option<InferenceEnvironment>,
 
     ///
@@ -877,6 +915,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelArtifact")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_artifact: Option<Vec<String>>,
 
     ///
@@ -888,6 +927,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelCreator")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_creator: Option<String>,
 
     ///
@@ -899,6 +939,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_description: Option<String>,
 
     ///
@@ -910,6 +951,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_id: Option<String>,
 
     ///
@@ -921,6 +963,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_name: Option<String>,
 
     ///
@@ -932,6 +975,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelOwner")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_owner: Option<String>,
 
     ///
@@ -943,6 +987,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_version: Option<f64>,
 
     ///
@@ -954,6 +999,7 @@ pub struct ModelOverview {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProblemType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub problem_type: Option<String>,
 }
 
@@ -986,6 +1032,7 @@ pub struct ModelPackageCreator {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProfileName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_profile_name: Option<String>,
 }
 
@@ -1014,6 +1061,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ApprovalDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub approval_description: Option<String>,
 
     /// Property description not available.
@@ -1024,6 +1072,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CreatedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub created_by: Option<ModelPackageCreator>,
 
     /// Property description not available.
@@ -1034,6 +1083,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Domain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<String>,
 
     /// Property description not available.
@@ -1044,6 +1094,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "InferenceSpecification")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub inference_specification: Option<InferenceSpecification>,
 
     /// Property description not available.
@@ -1054,6 +1105,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelApprovalStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_approval_status: Option<String>,
 
     /// Property description not available.
@@ -1064,6 +1116,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_arn: Option<String>,
 
     /// Property description not available.
@@ -1074,6 +1127,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageDescription")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_description: Option<String>,
 
     /// Property description not available.
@@ -1084,6 +1138,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_group_name: Option<String>,
 
     /// Property description not available.
@@ -1094,6 +1149,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_name: Option<String>,
 
     /// Property description not available.
@@ -1104,6 +1160,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_status: Option<String>,
 
     /// Property description not available.
@@ -1114,6 +1171,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelPackageVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_package_version: Option<f64>,
 
     /// Property description not available.
@@ -1124,6 +1182,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SourceAlgorithms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_algorithms: Option<Vec<SourceAlgorithm>>,
 
     /// Property description not available.
@@ -1134,6 +1193,7 @@ pub struct ModelPackageDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Task")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub task: Option<String>,
 }
 
@@ -1171,6 +1231,7 @@ pub struct ObjectiveFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Function")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub function: Option<Function>,
 
     ///
@@ -1182,6 +1243,7 @@ pub struct ObjectiveFunction {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Notes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
 }
 
@@ -1215,6 +1277,7 @@ pub struct SecurityConfig {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 }
 
@@ -1253,6 +1316,7 @@ pub struct SourceAlgorithm {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ModelDataUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub model_data_url: Option<String>,
 }
 
@@ -1326,6 +1390,7 @@ pub struct TrainingDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ObjectiveFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub objective_function: Option<ObjectiveFunction>,
 
     ///
@@ -1337,6 +1402,7 @@ pub struct TrainingDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrainingJobDetails")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub training_job_details: Option<TrainingJobDetails>,
 
     ///
@@ -1348,6 +1414,7 @@ pub struct TrainingDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrainingObservations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub training_observations: Option<String>,
 }
 
@@ -1385,6 +1452,7 @@ pub struct TrainingEnvironment {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ContainerImage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub container_image: Option<Vec<String>>,
 }
 
@@ -1454,6 +1522,7 @@ pub struct TrainingJobDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "HyperParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hyper_parameters: Option<Vec<TrainingHyperParameter>>,
 
     ///
@@ -1465,6 +1534,7 @@ pub struct TrainingJobDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrainingArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub training_arn: Option<String>,
 
     ///
@@ -1476,6 +1546,7 @@ pub struct TrainingJobDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrainingDatasets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub training_datasets: Option<Vec<String>>,
 
     ///
@@ -1487,6 +1558,7 @@ pub struct TrainingJobDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrainingEnvironment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub training_environment: Option<TrainingEnvironment>,
 
     ///
@@ -1498,6 +1570,7 @@ pub struct TrainingJobDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TrainingMetrics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub training_metrics: Option<Vec<TrainingMetric>>,
 
     ///
@@ -1509,6 +1582,7 @@ pub struct TrainingJobDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProvidedHyperParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_provided_hyper_parameters: Option<Vec<TrainingHyperParameter>>,
 
     ///
@@ -1520,6 +1594,7 @@ pub struct TrainingJobDetails {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProvidedTrainingMetrics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_provided_training_metrics: Option<Vec<TrainingMetric>>,
 }
 
@@ -1564,6 +1639,7 @@ pub struct TrainingMetric {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Notes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
 
     ///
@@ -1604,6 +1680,7 @@ pub struct UserContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_id: Option<String>,
 
     ///
@@ -1615,6 +1692,7 @@ pub struct UserContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProfileArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_profile_arn: Option<String>,
 
     ///
@@ -1626,6 +1704,7 @@ pub struct UserContext {
     ///
     /// Update requires: No interruption
     #[serde(rename = "UserProfileName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_profile_name: Option<String>,
 }
 

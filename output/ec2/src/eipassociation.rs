@@ -12,6 +12,7 @@ pub struct CfnEIPAssociation {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "AllocationId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allocation_id: Option<String>,
 
     ///
@@ -23,6 +24,7 @@ pub struct CfnEIPAssociation {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "EIP")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub eip: Option<String>,
 
     ///
@@ -34,6 +36,7 @@ pub struct CfnEIPAssociation {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "InstanceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_id: Option<String>,
 
     ///
@@ -47,6 +50,7 @@ pub struct CfnEIPAssociation {
     ///
     /// Update requires: Some interruptions
     #[serde(rename = "NetworkInterfaceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<String>,
 
     ///
@@ -58,6 +62,7 @@ pub struct CfnEIPAssociation {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_ip_address: Option<String>,
 }
 

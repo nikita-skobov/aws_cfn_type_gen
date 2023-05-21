@@ -10,6 +10,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_config: Option<DeploymentConfig>,
 
     ///
@@ -40,6 +41,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EndpointName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint_name: Option<String>,
 
     ///
@@ -53,6 +55,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExcludeRetainedVariantProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude_retained_variant_properties: Option<Vec<VariantProperty>>,
 
     ///
@@ -64,6 +67,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainAllVariantProperties")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retain_all_variant_properties: Option<bool>,
 
     ///
@@ -75,6 +79,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RetainDeploymentConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retain_deployment_config: Option<bool>,
 
     ///
@@ -90,6 +95,7 @@ pub struct CfnEndpoint {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -253,6 +259,7 @@ pub struct BlueGreenUpdatePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaximumExecutionTimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum_execution_timeout_in_seconds: Option<i64>,
 
     ///
@@ -268,6 +275,7 @@ pub struct BlueGreenUpdatePolicy {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TerminationWaitInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub termination_wait_in_seconds: Option<i64>,
 
     ///
@@ -406,6 +414,7 @@ pub struct DeploymentConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoRollbackConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_rollback_configuration: Option<AutoRollbackConfig>,
 
     ///
@@ -496,6 +505,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CanarySize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub canary_size: Option<CapacitySize>,
 
     ///
@@ -507,6 +517,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LinearStepSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub linear_step_size: Option<CapacitySize>,
 
     ///
@@ -537,6 +548,7 @@ pub struct TrafficRoutingConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WaitIntervalInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub wait_interval_in_seconds: Option<i64>,
 }
 
@@ -614,6 +626,7 @@ pub struct VariantProperty {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VariantPropertyType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variant_property_type: Option<String>,
 }
 

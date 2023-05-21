@@ -63,6 +63,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Method")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub method: Option<String>,
 
     ///
@@ -74,6 +75,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     ///
@@ -85,6 +87,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Path")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
 
     ///
@@ -98,6 +101,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "StatusCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status_code: Option<String>,
 
     ///
@@ -111,6 +115,7 @@ pub struct Location {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<LocationTypeEnum>,
 }
 

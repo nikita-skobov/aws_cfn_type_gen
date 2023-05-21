@@ -70,6 +70,7 @@ pub struct CfnProject {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Sample")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sample: Option<Sample>,
 
     ///
@@ -81,6 +82,7 @@ pub struct CfnProject {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -188,6 +190,7 @@ pub struct Sample {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i64>,
 
     ///

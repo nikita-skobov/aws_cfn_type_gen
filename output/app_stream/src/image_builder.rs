@@ -14,6 +14,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessEndpoints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_endpoints: Option<Vec<AccessEndpoint>>,
 
     ///
@@ -29,6 +30,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AppstreamAgentVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub appstream_agent_version: Option<String>,
 
     ///
@@ -42,6 +44,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -55,6 +58,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DisplayName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
 
     ///
@@ -66,6 +70,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DomainJoinInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain_join_info: Option<DomainJoinInfo>,
 
     ///
@@ -77,6 +82,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableDefaultInternetAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_default_internet_access: Option<bool>,
 
     ///
@@ -92,6 +98,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "IamRoleArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iam_role_arn: Option<String>,
 
     ///
@@ -105,6 +112,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_arn: Option<String>,
 
     ///
@@ -118,6 +126,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ImageName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_name: Option<String>,
 
     ///
@@ -157,6 +166,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -168,6 +178,7 @@ pub struct CfnImageBuilder {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
 }
 
@@ -331,6 +342,7 @@ pub struct DomainJoinInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DirectoryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub directory_name: Option<String>,
 
     ///
@@ -344,6 +356,7 @@ pub struct DomainJoinInfo {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnitDistinguishedName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub organizational_unit_distinguished_name: Option<String>,
 }
 
@@ -425,6 +438,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_ids: Option<Vec<String>>,
 
     ///
@@ -436,6 +450,7 @@ pub struct VpcConfig {
     ///
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subnet_ids: Option<Vec<String>>,
 }
 

@@ -10,6 +10,7 @@ pub struct CfnFunctionDefinitionVersion {
     ///
     /// Update requires: Replacement
     #[serde(rename = "DefaultConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_config: Option<DefaultConfig>,
 
     ///
@@ -102,6 +103,7 @@ pub struct Environment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "AccessSysfs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_sysfs: Option<bool>,
 
     ///
@@ -113,6 +115,7 @@ pub struct Environment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Execution")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execution: Option<Execution>,
 
     ///
@@ -126,6 +129,7 @@ pub struct Environment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ResourceAccessPolicies")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_access_policies: Option<Vec<ResourceAccessPolicy>>,
 
     ///
@@ -137,6 +141,7 @@ pub struct Environment {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Variables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub variables: Option<serde_json::Value>,
 }
 
@@ -176,6 +181,7 @@ pub struct Execution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "IsolationMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub isolation_mode: Option<String>,
 
     ///
@@ -191,6 +197,7 @@ pub struct Execution {
     ///
     /// Update requires: Replacement
     #[serde(rename = "RunAs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub run_as: Option<RunAs>,
 }
 
@@ -279,6 +286,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "EncodingType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encoding_type: Option<String>,
 
     ///
@@ -290,6 +298,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Environment")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub environment: Option<Environment>,
 
     ///
@@ -301,6 +310,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ExecArgs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exec_args: Option<String>,
 
     ///
@@ -312,6 +322,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Executable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub executable: Option<String>,
 
     ///
@@ -325,6 +336,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MemorySize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_size: Option<i64>,
 
     ///
@@ -336,6 +348,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Pinned")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pinned: Option<bool>,
 
     ///
@@ -347,6 +360,7 @@ pub struct FunctionConfiguration {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i64>,
 }
 
@@ -382,6 +396,7 @@ pub struct ResourceAccessPolicy {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub permission: Option<String>,
 
     ///
@@ -424,6 +439,7 @@ pub struct RunAs {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Gid")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gid: Option<i64>,
 
     ///
@@ -435,6 +451,7 @@ pub struct RunAs {
     ///
     /// Update requires: Replacement
     #[serde(rename = "Uid")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub uid: Option<i64>,
 }
 

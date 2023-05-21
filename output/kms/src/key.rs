@@ -28,6 +28,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -45,6 +46,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "EnableKeyRotation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_key_rotation: Option<bool>,
 
     ///
@@ -62,6 +64,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 
     ///
@@ -108,6 +111,7 @@ pub struct CfnKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeySpec")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_spec: Option<KeyKeySpecEnum>,
 
     ///
@@ -127,6 +131,7 @@ pub struct CfnKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "KeyUsage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key_usage: Option<KeyKeyUsageEnum>,
 
     ///
@@ -150,6 +155,7 @@ pub struct CfnKey {
     ///
     /// Update requires: Replacement
     #[serde(rename = "MultiRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_region: Option<bool>,
 
     ///
@@ -173,6 +179,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PendingWindowInDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pending_window_in_days: Option<i64>,
 
     ///
@@ -188,6 +195,7 @@ pub struct CfnKey {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 

@@ -10,6 +10,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessLogSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_log_settings: Option<AccessLogSettings>,
 
     ///
@@ -21,6 +22,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_policy_id: Option<String>,
 
     ///
@@ -43,6 +45,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoDeploy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_deploy: Option<bool>,
 
     ///
@@ -54,6 +57,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClientCertificateId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub client_certificate_id: Option<String>,
 
     ///
@@ -65,6 +69,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultRouteSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_route_settings: Option<RouteSettings>,
 
     ///
@@ -76,6 +81,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DeploymentId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deployment_id: Option<String>,
 
     ///
@@ -87,6 +93,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
     ///
@@ -98,6 +105,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "RouteSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_settings: Option<serde_json::Value>,
 
     ///
@@ -120,6 +128,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StageVariables")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stage_variables: Option<serde_json::Value>,
 
     ///
@@ -131,6 +140,7 @@ pub struct CfnStage {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
 }
 
@@ -168,6 +178,7 @@ pub struct AccessLogSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DestinationArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_arn: Option<String>,
 
     ///
@@ -179,6 +190,7 @@ pub struct AccessLogSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<String>,
 }
 
@@ -208,6 +220,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DataTraceEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_trace_enabled: Option<bool>,
 
     ///
@@ -219,6 +232,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DetailedMetricsEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub detailed_metrics_enabled: Option<bool>,
 
     ///
@@ -230,6 +244,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LoggingLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging_level: Option<String>,
 
     ///
@@ -241,6 +256,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingBurstLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttling_burst_limit: Option<i64>,
 
     ///
@@ -252,6 +268,7 @@ pub struct RouteSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ThrottlingRateLimit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throttling_rate_limit: Option<f64>,
 }
 

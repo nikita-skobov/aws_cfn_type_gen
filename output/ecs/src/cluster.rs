@@ -16,6 +16,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProviders")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_providers: Option<Vec<String>>,
 
     ///
@@ -27,6 +28,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ClusterName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_name: Option<String>,
 
     ///
@@ -38,6 +40,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ClusterSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cluster_settings: Option<Vec<ClusterSettings>>,
 
     ///
@@ -49,6 +52,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Configuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub configuration: Option<ClusterConfiguration>,
 
     ///
@@ -60,6 +64,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultCapacityProviderStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_capacity_provider_strategy: Option<Vec<CapacityProviderStrategyItem>>,
 
     ///
@@ -73,6 +78,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ServiceConnectDefaults")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub service_connect_defaults: Option<ServiceConnectDefaults>,
 
     ///
@@ -90,6 +96,7 @@ pub struct CfnCluster {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -140,6 +147,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Base")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub base: Option<i64>,
 
     ///
@@ -151,6 +159,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CapacityProvider")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub capacity_provider: Option<String>,
 
     ///
@@ -170,6 +179,7 @@ pub struct CapacityProviderStrategyItem {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Weight")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weight: Option<i64>,
 }
 
@@ -235,6 +245,7 @@ pub struct ClusterConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ExecuteCommandConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub execute_command_configuration: Option<ExecuteCommandConfiguration>,
 }
 
@@ -270,6 +281,7 @@ pub struct ClusterSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<ClusterSettingsNameEnum>,
 
     ///
@@ -283,6 +295,7 @@ pub struct ClusterSettings {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -325,6 +338,7 @@ pub struct ExecuteCommandConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -336,6 +350,7 @@ pub struct ExecuteCommandConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "LogConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_configuration: Option<ExecuteCommandLogConfiguration>,
 
     ///
@@ -351,6 +366,7 @@ pub struct ExecuteCommandConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Logging")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logging: Option<ExecuteCommandConfigurationLoggingEnum>,
 }
 
@@ -405,6 +421,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchEncryptionEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_encryption_enabled: Option<bool>,
 
     ///
@@ -418,6 +435,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLogGroupName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_log_group_name: Option<String>,
 
     ///
@@ -431,6 +449,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_bucket_name: Option<String>,
 
     ///
@@ -442,6 +461,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3EncryptionEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_encryption_enabled: Option<bool>,
 
     ///
@@ -453,6 +473,7 @@ pub struct ExecuteCommandLogConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "S3KeyPrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub s3_key_prefix: Option<String>,
 }
 
@@ -492,6 +513,7 @@ pub struct ServiceConnectDefaults {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub namespace: Option<String>,
 }
 

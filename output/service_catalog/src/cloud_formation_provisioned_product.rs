@@ -18,6 +18,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AcceptLanguage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accept_language: Option<String>,
 
     ///
@@ -31,6 +32,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: Replacement
     #[serde(rename = "NotificationArns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notification_arns: Option<Vec<String>>,
 
     ///
@@ -50,6 +52,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_id: Option<String>,
 
     ///
@@ -67,6 +70,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "PathName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub path_name: Option<String>,
 
     ///
@@ -86,6 +90,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProductId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub product_id: Option<String>,
 
     ///
@@ -107,6 +112,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProductName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub product_name: Option<String>,
 
     ///
@@ -124,6 +130,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: Replacement
     #[serde(rename = "ProvisionedProductName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_product_name: Option<String>,
 
     ///
@@ -143,6 +150,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningArtifactId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning_artifact_id: Option<String>,
 
     ///
@@ -158,6 +166,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningArtifactName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning_artifact_name: Option<String>,
 
     ///
@@ -169,6 +178,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning_parameters: Option<Vec<ProvisioningParameter>>,
 
     ///
@@ -180,6 +190,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "ProvisioningPreferences")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioning_preferences: Option<ProvisioningPreferences>,
 
     ///
@@ -195,6 +206,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 }
 
@@ -450,6 +462,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetAccounts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_set_accounts: Option<Vec<String>>,
 
     ///
@@ -469,6 +482,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetFailureToleranceCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_set_failure_tolerance_count: Option<i64>,
 
     ///
@@ -490,6 +504,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetFailureTolerancePercentage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_set_failure_tolerance_percentage: Option<i64>,
 
     ///
@@ -509,6 +524,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetMaxConcurrencyCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_set_max_concurrency_count: Option<i64>,
 
     ///
@@ -532,6 +548,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetMaxConcurrencyPercentage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_set_max_concurrency_percentage: Option<i64>,
 
     ///
@@ -549,6 +566,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetOperationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_set_operation_type: Option<ProvisioningPreferencesStackSetOperationTypeEnum>,
 
     ///
@@ -566,6 +584,7 @@ pub struct ProvisioningPreferences {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StackSetRegions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stack_set_regions: Option<Vec<String>>,
 }
 

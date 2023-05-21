@@ -14,6 +14,7 @@ pub struct CfnTransitGatewayMulticastDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Options")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Options>,
 
     ///
@@ -25,6 +26,7 @@ pub struct CfnTransitGatewayMulticastDomain {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -69,6 +71,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoAcceptSharedAssociations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_accept_shared_associations: Option<OptionsAutoAcceptSharedAssociationsEnum>,
 
     ///
@@ -82,6 +85,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Igmpv2Support")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub igmpv2_support: Option<OptionsIgmpv2SupportEnum>,
 
     ///
@@ -95,6 +99,7 @@ pub struct Options {
     ///
     /// Update requires: No interruption
     #[serde(rename = "StaticSourcesSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub static_sources_support: Option<OptionsStaticSourcesSupportEnum>,
 }
 

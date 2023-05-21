@@ -22,6 +22,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "AutoEnableIO")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_enable_io: Option<bool>,
 
     ///
@@ -46,6 +47,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
 
     ///
@@ -65,6 +67,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Iops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i64>,
 
     ///
@@ -82,6 +85,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 
     ///
@@ -95,6 +99,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MultiAttachEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub multi_attach_enabled: Option<bool>,
 
     ///
@@ -106,6 +111,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "OutpostArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub outpost_arn: Option<String>,
 
     ///
@@ -121,6 +127,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i64>,
 
     ///
@@ -132,6 +139,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: Updates are not supported.
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
 
     ///
@@ -143,6 +151,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
 
     ///
@@ -158,6 +167,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "Throughput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throughput: Option<i64>,
 
     ///
@@ -177,6 +187,7 @@ pub struct CfnVolume {
     ///
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_type: Option<VolumeVolumeTypeEnum>,
 }
 
