@@ -9,6 +9,7 @@ members = [
     "parser",
     "emitter",
     "html_extractor",
+    "output/cfn_resources",
 
 "output/access_analyzer",
 "output/acmpca",
