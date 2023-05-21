@@ -111,11 +111,11 @@ pub struct CfnSchema {
 
 
 impl cfn_resources::CfnResource for CfnSchema {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Glue::Schema"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -176,11 +176,11 @@ pub struct Registry {
 
 
 impl cfn_resources::CfnResource for Registry {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -223,11 +223,11 @@ pub struct SchemaVersion {
 
 
 impl cfn_resources::CfnResource for SchemaVersion {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -274,11 +274,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

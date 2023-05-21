@@ -88,11 +88,11 @@ pub struct CfnDisk {
 
 
 impl cfn_resources::CfnResource for CfnDisk {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Lightsail::Disk"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -172,11 +172,11 @@ impl Default for AddOnStatusEnum {
 
 
 impl cfn_resources::CfnResource for AddOn {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -215,11 +215,11 @@ pub struct AutoSnapshotAddOn {
 
 
 impl cfn_resources::CfnResource for AutoSnapshotAddOn {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -260,11 +260,11 @@ pub struct Location {
 
 
 impl cfn_resources::CfnResource for Location {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -311,11 +311,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

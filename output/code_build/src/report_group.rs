@@ -102,11 +102,11 @@ impl Default for ReportGroupTypeEnum {
 
 
 impl cfn_resources::CfnResource for CfnReportGroup {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::CodeBuild::ReportGroup"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -198,11 +198,11 @@ impl Default for ReportExportConfigExportConfigTypeEnum {
 
 
 impl cfn_resources::CfnResource for ReportExportConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -322,11 +322,11 @@ impl Default for S3ReportExportConfigPackagingEnum {
 
 
 impl cfn_resources::CfnResource for S3ReportExportConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -388,11 +388,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

@@ -73,11 +73,11 @@ pub struct CfnTargetGroup {
 
 
 impl cfn_resources::CfnResource for CfnTargetGroup {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::VpcLattice::TargetGroup"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -218,11 +218,11 @@ pub struct HealthCheckConfig {
 
 
 impl cfn_resources::CfnResource for HealthCheckConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -255,11 +255,11 @@ pub struct Matcher {
 
 
 impl cfn_resources::CfnResource for Matcher {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -306,11 +306,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -353,11 +353,11 @@ pub struct Target {
 
 
 impl cfn_resources::CfnResource for Target {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -448,11 +448,11 @@ pub struct TargetGroupConfig {
 
 
 impl cfn_resources::CfnResource for TargetGroupConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

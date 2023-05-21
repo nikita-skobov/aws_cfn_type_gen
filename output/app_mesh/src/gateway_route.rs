@@ -103,11 +103,11 @@ pub struct CfnGatewayRoute {
 
 
 impl cfn_resources::CfnResource for CfnGatewayRoute {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::AppMesh::GatewayRoute"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -228,11 +228,11 @@ pub struct GatewayRouteHostnameMatch {
 
 
 impl cfn_resources::CfnResource for GatewayRouteHostnameMatch {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -316,11 +316,11 @@ impl Default for GatewayRouteHostnameRewriteDefaultTargetHostnameEnum {
 
 
 impl cfn_resources::CfnResource for GatewayRouteHostnameRewrite {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -415,11 +415,11 @@ pub struct GatewayRouteMetadataMatch {
 
 
 impl cfn_resources::CfnResource for GatewayRouteMetadataMatch {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -528,11 +528,11 @@ pub struct GatewayRouteRangeMatch {
 
 
 impl cfn_resources::CfnResource for GatewayRouteRangeMatch {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -603,11 +603,11 @@ pub struct GatewayRouteSpec {
 
 
 impl cfn_resources::CfnResource for GatewayRouteSpec {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -676,11 +676,11 @@ pub struct GatewayRouteTarget {
 
 
 impl cfn_resources::CfnResource for GatewayRouteTarget {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -733,11 +733,11 @@ pub struct GatewayRouteVirtualService {
 
 
 impl cfn_resources::CfnResource for GatewayRouteVirtualService {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -794,11 +794,11 @@ pub struct GrpcGatewayRoute {
 
 
 impl cfn_resources::CfnResource for GrpcGatewayRoute {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -845,11 +845,11 @@ pub struct GrpcGatewayRouteAction {
 
 
 impl cfn_resources::CfnResource for GrpcGatewayRouteAction {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -926,11 +926,11 @@ pub struct GrpcGatewayRouteMatch {
 
 
 impl cfn_resources::CfnResource for GrpcGatewayRouteMatch {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1015,11 +1015,11 @@ pub struct GrpcGatewayRouteMetadata {
 
 
 impl cfn_resources::CfnResource for GrpcGatewayRouteMetadata {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1066,11 +1066,11 @@ pub struct GrpcGatewayRouteRewrite {
 
 
 impl cfn_resources::CfnResource for GrpcGatewayRouteRewrite {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1115,11 +1115,11 @@ pub struct HttpGatewayRoute {
 
 
 impl cfn_resources::CfnResource for HttpGatewayRoute {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1166,11 +1166,11 @@ pub struct HttpGatewayRouteAction {
 
 
 impl cfn_resources::CfnResource for HttpGatewayRouteAction {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1233,11 +1233,11 @@ pub struct HttpGatewayRouteHeader {
 
 
 impl cfn_resources::CfnResource for HttpGatewayRouteHeader {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1348,11 +1348,11 @@ pub struct HttpGatewayRouteHeaderMatch {
 
 
 impl cfn_resources::CfnResource for HttpGatewayRouteHeaderMatch {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1578,11 +1578,11 @@ impl Default for HttpGatewayRouteMatchMethodEnum {
 
 
 impl cfn_resources::CfnResource for HttpGatewayRouteMatch {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1653,11 +1653,11 @@ pub struct HttpGatewayRoutePathRewrite {
 
 
 impl cfn_resources::CfnResource for HttpGatewayRoutePathRewrite {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1741,11 +1741,11 @@ impl Default for HttpGatewayRoutePrefixRewriteDefaultPrefixEnum {
 
 
 impl cfn_resources::CfnResource for HttpGatewayRoutePrefixRewrite {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1816,11 +1816,11 @@ pub struct HttpGatewayRouteRewrite {
 
 
 impl cfn_resources::CfnResource for HttpGatewayRouteRewrite {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1877,11 +1877,11 @@ pub struct HttpPathMatch {
 
 
 impl cfn_resources::CfnResource for HttpPathMatch {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1944,11 +1944,11 @@ pub struct HttpQueryParameterMatch {
 
 
 impl cfn_resources::CfnResource for HttpQueryParameterMatch {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1991,11 +1991,11 @@ pub struct QueryParameter {
 
 
 impl cfn_resources::CfnResource for QueryParameter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2044,11 +2044,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

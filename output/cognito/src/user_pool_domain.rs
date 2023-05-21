@@ -59,11 +59,11 @@ pub struct CfnUserPoolDomain {
 
 
 impl cfn_resources::CfnResource for CfnUserPoolDomain {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Cognito::UserPoolDomain"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -130,11 +130,11 @@ pub struct CustomDomainConfigType {
 
 
 impl cfn_resources::CfnResource for CustomDomainConfigType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

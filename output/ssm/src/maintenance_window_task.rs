@@ -281,11 +281,11 @@ impl Default for MaintenanceWindowTaskTaskTypeEnum {
 
 
 impl cfn_resources::CfnResource for CfnMaintenanceWindowTask {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::SSM::MaintenanceWindowTask"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -445,11 +445,11 @@ pub struct CloudWatchOutputConfig {
 
 
 impl cfn_resources::CfnResource for CloudWatchOutputConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -532,11 +532,11 @@ pub struct LoggingInfo {
 
 
 impl cfn_resources::CfnResource for LoggingInfo {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -621,11 +621,11 @@ pub struct MaintenanceWindowAutomationParameters {
 
 
 impl cfn_resources::CfnResource for MaintenanceWindowAutomationParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -694,11 +694,11 @@ pub struct MaintenanceWindowLambdaParameters {
 
 
 impl cfn_resources::CfnResource for MaintenanceWindowLambdaParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -930,11 +930,11 @@ impl Default for MaintenanceWindowRunCommandParametersDocumentHashTypeEnum {
 
 
 impl cfn_resources::CfnResource for MaintenanceWindowRunCommandParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1045,11 +1045,11 @@ pub struct MaintenanceWindowStepFunctionsParameters {
 
 
 impl cfn_resources::CfnResource for MaintenanceWindowStepFunctionsParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1153,11 +1153,11 @@ impl Default for NotificationConfigNotificationTypeEnum {
 
 
 impl cfn_resources::CfnResource for NotificationConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1210,11 +1210,11 @@ pub struct Target {
 
 
 impl cfn_resources::CfnResource for Target {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1304,11 +1304,11 @@ pub struct TaskInvocationParameters {
 
 
 impl cfn_resources::CfnResource for TaskInvocationParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

@@ -225,11 +225,11 @@ impl Default for ConnectorProfileConnectorTypeEnum {
 
 
 impl cfn_resources::CfnResource for CfnConnectorProfile {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::AppFlow::ConnectorProfile"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -313,11 +313,11 @@ pub struct AmplitudeConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for AmplitudeConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -382,11 +382,11 @@ pub struct ApiKeyCredentials {
 
 
 impl cfn_resources::CfnResource for ApiKeyCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -452,11 +452,11 @@ pub struct BasicAuthCredentials {
 
 
 impl cfn_resources::CfnResource for BasicAuthCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -521,11 +521,11 @@ pub struct ConnectorOAuthRequest {
 
 
 impl cfn_resources::CfnResource for ConnectorOAuthRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -584,11 +584,11 @@ pub struct ConnectorProfileConfig {
 
 
 impl cfn_resources::CfnResource for ConnectorProfileConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -826,11 +826,11 @@ pub struct ConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for ConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1052,11 +1052,11 @@ pub struct ConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for ConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1131,11 +1131,11 @@ pub struct CustomAuthCredentials {
 
 
 impl cfn_resources::CfnResource for CustomAuthCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1250,11 +1250,11 @@ impl Default for CustomConnectorProfileCredentialsAuthenticationTypeEnum {
 
 
 impl cfn_resources::CfnResource for CustomConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1305,11 +1305,11 @@ pub struct CustomConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for CustomConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1362,11 +1362,11 @@ pub struct DatadogConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for DatadogConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1415,11 +1415,11 @@ pub struct DatadogConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for DatadogConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1461,11 +1461,11 @@ pub struct DynatraceConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for DynatraceConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1507,11 +1507,11 @@ pub struct DynatraceConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for DynatraceConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1613,11 +1613,11 @@ pub struct GoogleAnalyticsConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for GoogleAnalyticsConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1732,11 +1732,11 @@ pub struct InforNexusConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for InforNexusConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1799,11 +1799,11 @@ pub struct InforNexusConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for InforNexusConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1889,11 +1889,11 @@ pub struct MarketoConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for MarketoConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1952,11 +1952,11 @@ pub struct MarketoConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for MarketoConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2057,11 +2057,11 @@ pub struct OAuth2Credentials {
 
 
 impl cfn_resources::CfnResource for OAuth2Credentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2179,11 +2179,11 @@ impl Default for OAuth2PropertiesOAuth2GrantTypeEnum {
 
 
 impl cfn_resources::CfnResource for OAuth2Properties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2285,11 +2285,11 @@ pub struct OAuthCredentials {
 
 
 impl cfn_resources::CfnResource for OAuthCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2386,11 +2386,11 @@ pub struct OAuthProperties {
 
 
 impl cfn_resources::CfnResource for OAuthProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2469,11 +2469,11 @@ pub struct PardotConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for PardotConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2527,11 +2527,11 @@ pub struct PardotConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for PardotConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2582,11 +2582,11 @@ pub struct RedshiftConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for RedshiftConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2742,11 +2742,11 @@ pub struct RedshiftConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for RedshiftConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2826,11 +2826,11 @@ pub struct SAPODataConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for SAPODataConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2963,11 +2963,11 @@ pub struct SAPODataConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for SAPODataConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3136,11 +3136,11 @@ pub struct SalesforceConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for SalesforceConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3232,11 +3232,11 @@ pub struct SalesforceConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for SalesforceConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3295,11 +3295,11 @@ pub struct ServiceNowConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for ServiceNowConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3348,11 +3348,11 @@ pub struct ServiceNowConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for ServiceNowConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3394,11 +3394,11 @@ pub struct SingularConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for SingularConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3484,11 +3484,11 @@ pub struct SlackConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for SlackConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3547,11 +3547,11 @@ pub struct SlackConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for SlackConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3609,11 +3609,11 @@ pub struct SnowflakeConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for SnowflakeConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3760,11 +3760,11 @@ pub struct SnowflakeConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for SnowflakeConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3859,11 +3859,11 @@ pub struct TrendmicroConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for TrendmicroConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3921,11 +3921,11 @@ pub struct VeevaConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for VeevaConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3974,11 +3974,11 @@ pub struct VeevaConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for VeevaConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4064,11 +4064,11 @@ pub struct ZendeskConnectorProfileCredentials {
 
 
 impl cfn_resources::CfnResource for ZendeskConnectorProfileCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4127,11 +4127,11 @@ pub struct ZendeskConnectorProfileProperties {
 
 
 impl cfn_resources::CfnResource for ZendeskConnectorProfileProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

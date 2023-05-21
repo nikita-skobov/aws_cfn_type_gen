@@ -179,11 +179,11 @@ pub struct CfnScalingPolicy {
 
 
 impl cfn_resources::CfnResource for CfnScalingPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::AutoScaling::ScalingPolicy"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -307,11 +307,11 @@ impl Default for CustomizedMetricSpecificationStatisticEnum {
 
 
 impl cfn_resources::CfnResource for CustomizedMetricSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -370,11 +370,11 @@ pub struct Metric {
 
 
 impl cfn_resources::CfnResource for Metric {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -485,11 +485,11 @@ pub struct MetricDataQuery {
 
 
 impl cfn_resources::CfnResource for MetricDataQuery {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -572,11 +572,11 @@ pub struct MetricDimension {
 
 
 impl cfn_resources::CfnResource for MetricDimension {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -643,11 +643,11 @@ pub struct MetricStat {
 
 
 impl cfn_resources::CfnResource for MetricStat {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -755,11 +755,11 @@ impl Default for PredefinedMetricSpecificationPredefinedMetricTypeEnum {
 
 
 impl cfn_resources::CfnResource for PredefinedMetricSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -916,11 +916,11 @@ impl Default for PredictiveScalingConfigurationModeEnum {
 
 
 impl cfn_resources::CfnResource for PredictiveScalingConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -975,11 +975,11 @@ pub struct PredictiveScalingCustomizedCapacityMetric {
 
 
 impl cfn_resources::CfnResource for PredictiveScalingCustomizedCapacityMetric {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1010,11 +1010,11 @@ pub struct PredictiveScalingCustomizedLoadMetric {
 
 
 impl cfn_resources::CfnResource for PredictiveScalingCustomizedLoadMetric {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1045,11 +1045,11 @@ pub struct PredictiveScalingCustomizedScalingMetric {
 
 
 impl cfn_resources::CfnResource for PredictiveScalingCustomizedScalingMetric {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1160,11 +1160,11 @@ pub struct PredictiveScalingMetricSpecification {
 
 
 impl cfn_resources::CfnResource for PredictiveScalingMetricSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1258,11 +1258,11 @@ impl Default for PredictiveScalingPredefinedLoadMetricPredefinedMetricTypeEnum {
 
 
 impl cfn_resources::CfnResource for PredictiveScalingPredefinedLoadMetric {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1352,11 +1352,11 @@ impl Default for PredictiveScalingPredefinedMetricPairPredefinedMetricTypeEnum {
 
 
 impl cfn_resources::CfnResource for PredictiveScalingPredefinedMetricPair {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1454,11 +1454,11 @@ impl Default for PredictiveScalingPredefinedScalingMetricPredefinedMetricTypeEnu
 
 
 impl cfn_resources::CfnResource for PredictiveScalingPredefinedScalingMetric {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1523,11 +1523,11 @@ pub struct StepAdjustment {
 
 
 impl cfn_resources::CfnResource for StepAdjustment {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1598,11 +1598,11 @@ pub struct TargetTrackingConfiguration {
 
 
 impl cfn_resources::CfnResource for TargetTrackingConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

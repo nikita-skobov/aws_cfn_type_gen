@@ -45,11 +45,11 @@ pub struct CfnSubnetGroup {
 
 
 impl cfn_resources::CfnResource for CfnSubnetGroup {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::DAX::SubnetGroup"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

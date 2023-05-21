@@ -33,11 +33,11 @@ pub struct CfnVdmAttributes {
 
 
 impl cfn_resources::CfnResource for CfnVdmAttributes {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::SES::VdmAttributes"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -74,11 +74,11 @@ pub struct DashboardAttributes {
 
 
 impl cfn_resources::CfnResource for DashboardAttributes {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -111,11 +111,11 @@ pub struct GuardianAttributes {
 
 
 impl cfn_resources::CfnResource for GuardianAttributes {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

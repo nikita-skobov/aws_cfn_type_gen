@@ -83,11 +83,11 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
 
 
 impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Cognito::UserPoolRiskConfigurationAttachment"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -195,11 +195,11 @@ impl Default for AccountTakeoverActionTypeEventActionEnum {
 
 
 impl cfn_resources::CfnResource for AccountTakeoverActionType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -254,11 +254,11 @@ pub struct AccountTakeoverActionsType {
 
 
 impl cfn_resources::CfnResource for AccountTakeoverActionsType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -307,11 +307,11 @@ pub struct AccountTakeoverRiskConfigurationType {
 
 
 impl cfn_resources::CfnResource for AccountTakeoverRiskConfigurationType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -367,11 +367,11 @@ impl Default for CompromisedCredentialsActionsTypeEventActionEnum {
 
 
 impl cfn_resources::CfnResource for CompromisedCredentialsActionsType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -414,11 +414,11 @@ pub struct CompromisedCredentialsRiskConfigurationType {
 
 
 impl cfn_resources::CfnResource for CompromisedCredentialsRiskConfigurationType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -517,11 +517,11 @@ pub struct NotifyConfigurationType {
 
 
 impl cfn_resources::CfnResource for NotifyConfigurationType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -614,11 +614,11 @@ pub struct NotifyEmailType {
 
 
 impl cfn_resources::CfnResource for NotifyEmailType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -711,11 +711,11 @@ pub struct RiskExceptionConfigurationType {
 
 
 impl cfn_resources::CfnResource for RiskExceptionConfigurationType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

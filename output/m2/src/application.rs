@@ -114,11 +114,11 @@ impl Default for ApplicationEngineTypeEnum {
 
 
 impl cfn_resources::CfnResource for CfnApplication {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::M2::Application"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -185,11 +185,11 @@ pub struct Definition {
 
 
 impl cfn_resources::CfnResource for Definition {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

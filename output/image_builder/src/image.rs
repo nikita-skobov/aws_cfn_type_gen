@@ -108,11 +108,11 @@ pub struct CfnImage {
 
 
 impl cfn_resources::CfnResource for CfnImage {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ImageBuilder::Image"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -157,11 +157,11 @@ pub struct EcrConfiguration {
 
 
 impl cfn_resources::CfnResource for EcrConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -202,11 +202,11 @@ pub struct ImageScanningConfiguration {
 
 
 impl cfn_resources::CfnResource for ImageScanningConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -257,11 +257,11 @@ pub struct ImageTestsConfiguration {
 
 
 impl cfn_resources::CfnResource for ImageTestsConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

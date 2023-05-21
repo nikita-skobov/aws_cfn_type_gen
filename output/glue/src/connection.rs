@@ -35,11 +35,11 @@ pub struct CfnConnection {
 
 
 impl cfn_resources::CfnResource for CfnConnection {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Glue::Connection"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -195,11 +195,11 @@ impl Default for ConnectionInputConnectionTypeEnum {
 
 
 impl cfn_resources::CfnResource for ConnectionInput {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -310,11 +310,11 @@ pub struct PhysicalConnectionRequirements {
 
 
 impl cfn_resources::CfnResource for PhysicalConnectionRequirements {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

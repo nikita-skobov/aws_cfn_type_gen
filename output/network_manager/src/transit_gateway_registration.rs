@@ -45,11 +45,11 @@ pub struct CfnTransitGatewayRegistration {
 
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRegistration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::NetworkManager::TransitGatewayRegistration"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

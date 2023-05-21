@@ -33,11 +33,11 @@ pub struct CfnDevice {
 
 
 impl cfn_resources::CfnResource for CfnDevice {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::IoT1Click::Device"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

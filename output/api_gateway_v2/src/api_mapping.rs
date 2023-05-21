@@ -57,11 +57,11 @@ pub struct CfnApiMapping {
 
 
 impl cfn_resources::CfnResource for CfnApiMapping {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ApiGatewayV2::ApiMapping"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

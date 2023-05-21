@@ -69,11 +69,11 @@ pub struct CfnDestination {
 
 
 impl cfn_resources::CfnResource for CfnDestination {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Logs::Destination"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

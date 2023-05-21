@@ -289,11 +289,11 @@ impl Default for ScalableTargetServiceNamespaceEnum {
 
 
 impl cfn_resources::CfnResource for CfnScalableTarget {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ApplicationAutoScaling::ScalableTarget"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -352,11 +352,11 @@ pub struct ScalableTargetAction {
 
 
 impl cfn_resources::CfnResource for ScalableTargetAction {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -477,11 +477,11 @@ pub struct ScheduledAction {
 
 
 impl cfn_resources::CfnResource for ScheduledAction {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -584,11 +584,11 @@ pub struct SuspendedState {
 
 
 impl cfn_resources::CfnResource for SuspendedState {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

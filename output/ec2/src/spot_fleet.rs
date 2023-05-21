@@ -33,11 +33,11 @@ pub struct CfnSpotFleet {
 
 
 impl cfn_resources::CfnResource for CfnSpotFleet {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::EC2::SpotFleet"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -82,11 +82,11 @@ pub struct AcceleratorCountRequest {
 
 
 impl cfn_resources::CfnResource for AcceleratorCountRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -129,11 +129,11 @@ pub struct AcceleratorTotalMemoryMiBRequest {
 
 
 impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -176,11 +176,11 @@ pub struct BaselineEbsBandwidthMbpsRequest {
 
 
 impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -253,11 +253,11 @@ pub struct BlockDeviceMapping {
 
 
 impl cfn_resources::CfnResource for BlockDeviceMapping {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -290,11 +290,11 @@ pub struct ClassicLoadBalancer {
 
 
 impl cfn_resources::CfnResource for ClassicLoadBalancer {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -327,11 +327,11 @@ pub struct ClassicLoadBalancersConfig {
 
 
 impl cfn_resources::CfnResource for ClassicLoadBalancersConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -488,11 +488,11 @@ impl Default for EbsBlockDeviceVolumeTypeEnum {
 
 
 impl cfn_resources::CfnResource for EbsBlockDevice {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -567,11 +567,11 @@ pub struct FleetLaunchTemplateSpecification {
 
 
 impl cfn_resources::CfnResource for FleetLaunchTemplateSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -618,11 +618,11 @@ pub struct GroupIdentifier {
 
 
 impl cfn_resources::CfnResource for GroupIdentifier {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -653,11 +653,11 @@ pub struct IamInstanceProfileSpecification {
 
 
 impl cfn_resources::CfnResource for IamInstanceProfileSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -688,11 +688,11 @@ pub struct InstanceIpv6Address {
 
 
 impl cfn_resources::CfnResource for InstanceIpv6Address {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -847,11 +847,11 @@ pub struct InstanceNetworkInterfaceSpecification {
 
 
 impl cfn_resources::CfnResource for InstanceNetworkInterfaceSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1327,11 +1327,11 @@ impl Default for InstanceRequirementsRequestLocalStorageEnum {
 
 
 impl cfn_resources::CfnResource for InstanceRequirementsRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1408,11 +1408,11 @@ pub struct LaunchTemplateConfig {
 
 
 impl cfn_resources::CfnResource for LaunchTemplateConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4080,11 +4080,11 @@ impl Default for LaunchTemplateOverridesInstanceTypeEnum {
 
 
 impl cfn_resources::CfnResource for LaunchTemplateOverrides {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4129,11 +4129,11 @@ pub struct LoadBalancersConfig {
 
 
 impl cfn_resources::CfnResource for LoadBalancersConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4180,11 +4180,11 @@ pub struct MemoryGiBPerVCpuRequest {
 
 
 impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4227,11 +4227,11 @@ pub struct MemoryMiBRequest {
 
 
 impl cfn_resources::CfnResource for MemoryMiBRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4276,11 +4276,11 @@ pub struct NetworkBandwidthGbpsRequest {
 
 
 impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4323,11 +4323,11 @@ pub struct NetworkInterfaceCountRequest {
 
 
 impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4370,11 +4370,11 @@ pub struct PrivateIpAddressSpecification {
 
 
 impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -4448,11 +4448,11 @@ impl Default for SpotCapacityRebalanceReplacementStrategyEnum {
 
 
 impl cfn_resources::CfnResource for SpotCapacityRebalance {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -7250,11 +7250,11 @@ impl Default for SpotFleetLaunchSpecificationInstanceTypeEnum {
 
 
 impl cfn_resources::CfnResource for SpotFleetLaunchSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -7295,11 +7295,11 @@ pub struct SpotFleetMonitoring {
 
 
 impl cfn_resources::CfnResource for SpotFleetMonitoring {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -7760,11 +7760,11 @@ impl Default for SpotFleetRequestConfigDataTypeEnum {
 
 
 impl cfn_resources::CfnResource for SpotFleetRequestConfigData {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -8164,11 +8164,11 @@ impl Default for SpotFleetTagSpecificationResourceTypeEnum {
 
 
 impl cfn_resources::CfnResource for SpotFleetTagSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -8199,11 +8199,11 @@ pub struct SpotMaintenanceStrategies {
 
 
 impl cfn_resources::CfnResource for SpotMaintenanceStrategies {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -8287,11 +8287,11 @@ impl Default for SpotPlacementTenancyEnum {
 
 
 impl cfn_resources::CfnResource for SpotPlacement {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -8338,11 +8338,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -8373,11 +8373,11 @@ pub struct TargetGroup {
 
 
 impl cfn_resources::CfnResource for TargetGroup {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -8410,11 +8410,11 @@ pub struct TargetGroupsConfig {
 
 
 impl cfn_resources::CfnResource for TargetGroupsConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -8464,11 +8464,11 @@ pub struct TotalLocalStorageGBRequest {
 
 
 impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -8511,11 +8511,11 @@ pub struct VCpuCountRangeRequest {
 
 
 impl cfn_resources::CfnResource for VCpuCountRangeRequest {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

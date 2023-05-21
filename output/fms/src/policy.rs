@@ -233,11 +233,11 @@ pub struct CfnPolicy {
 
 
 impl cfn_resources::CfnResource for CfnPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::FMS::Policy"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -336,11 +336,11 @@ pub struct IEMap {
 
 
 impl cfn_resources::CfnResource for IEMap {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -392,11 +392,11 @@ impl Default for NetworkFirewallPolicyFirewallDeploymentModelEnum {
 
 
 impl cfn_resources::CfnResource for NetworkFirewallPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -439,11 +439,11 @@ pub struct PolicyOption {
 
 
 impl cfn_resources::CfnResource for PolicyOption {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -502,11 +502,11 @@ pub struct PolicyTag {
 
 
 impl cfn_resources::CfnResource for PolicyTag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -587,11 +587,11 @@ pub struct ResourceTag {
 
 
 impl cfn_resources::CfnResource for ResourceTag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -729,11 +729,11 @@ impl Default for SecurityServicePolicyDataTypeEnum {
 
 
 impl cfn_resources::CfnResource for SecurityServicePolicyData {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -803,11 +803,11 @@ impl Default for ThirdPartyFirewallPolicyFirewallDeploymentModelEnum {
 
 
 impl cfn_resources::CfnResource for ThirdPartyFirewallPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

@@ -35,11 +35,11 @@ pub struct CfnBackupPlan {
 
 
 impl cfn_resources::CfnResource for CfnBackupPlan {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Backup::BackupPlan"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -94,11 +94,11 @@ pub struct AdvancedBackupSettingResourceType {
 
 
 impl cfn_resources::CfnResource for AdvancedBackupSettingResourceType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -153,11 +153,11 @@ pub struct BackupPlanResourceType {
 
 
 impl cfn_resources::CfnResource for BackupPlanResourceType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -286,11 +286,11 @@ pub struct BackupRuleResourceType {
 
 
 impl cfn_resources::CfnResource for BackupRuleResourceType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -337,11 +337,11 @@ pub struct CopyActionResourceType {
 
 
 impl cfn_resources::CfnResource for CopyActionResourceType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -386,11 +386,11 @@ pub struct LifecycleResourceType {
 
 
 impl cfn_resources::CfnResource for LifecycleResourceType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

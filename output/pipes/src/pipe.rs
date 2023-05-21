@@ -132,11 +132,11 @@ pub struct CfnPipe {
 
 
 impl cfn_resources::CfnResource for CfnPipe {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Pipes::Pipe"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -197,11 +197,11 @@ pub struct AwsVpcConfiguration {
 
 
 impl cfn_resources::CfnResource for AwsVpcConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -232,11 +232,11 @@ pub struct BatchArrayProperties {
 
 
 impl cfn_resources::CfnResource for BatchArrayProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -307,11 +307,11 @@ pub struct BatchContainerOverrides {
 
 
 impl cfn_resources::CfnResource for BatchContainerOverrides {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -354,11 +354,11 @@ pub struct BatchEnvironmentVariable {
 
 
 impl cfn_resources::CfnResource for BatchEnvironmentVariable {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -401,11 +401,11 @@ pub struct BatchJobDependency {
 
 
 impl cfn_resources::CfnResource for BatchJobDependency {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -450,11 +450,11 @@ pub struct BatchResourceRequirement {
 
 
 impl cfn_resources::CfnResource for BatchResourceRequirement {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -485,11 +485,11 @@ pub struct BatchRetryStrategy {
 
 
 impl cfn_resources::CfnResource for BatchRetryStrategy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -544,11 +544,11 @@ pub struct CapacityProviderStrategyItem {
 
 
 impl cfn_resources::CfnResource for CapacityProviderStrategyItem {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -579,11 +579,11 @@ pub struct DeadLetterConfig {
 
 
 impl cfn_resources::CfnResource for DeadLetterConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -698,11 +698,11 @@ pub struct EcsContainerOverride {
 
 
 impl cfn_resources::CfnResource for EcsContainerOverride {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -749,11 +749,11 @@ pub struct EcsEnvironmentFile {
 
 
 impl cfn_resources::CfnResource for EcsEnvironmentFile {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -796,11 +796,11 @@ pub struct EcsEnvironmentVariable {
 
 
 impl cfn_resources::CfnResource for EcsEnvironmentVariable {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -831,11 +831,11 @@ pub struct EcsEphemeralStorage {
 
 
 impl cfn_resources::CfnResource for EcsEphemeralStorage {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -878,11 +878,11 @@ pub struct EcsInferenceAcceleratorOverride {
 
 
 impl cfn_resources::CfnResource for EcsInferenceAcceleratorOverride {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -929,11 +929,11 @@ pub struct EcsResourceRequirement {
 
 
 impl cfn_resources::CfnResource for EcsResourceRequirement {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1038,11 +1038,11 @@ pub struct EcsTaskOverride {
 
 
 impl cfn_resources::CfnResource for EcsTaskOverride {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1075,11 +1075,11 @@ pub struct Filter {
 
 
 impl cfn_resources::CfnResource for Filter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1114,11 +1114,11 @@ pub struct FilterCriteria {
 
 
 impl cfn_resources::CfnResource for FilterCriteria {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1149,11 +1149,11 @@ pub struct MQBrokerAccessCredentials {
 
 
 impl cfn_resources::CfnResource for MQBrokerAccessCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1196,11 +1196,11 @@ pub struct MSKAccessCredentials {
 
 
 impl cfn_resources::CfnResource for MSKAccessCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1231,11 +1231,11 @@ pub struct NetworkConfiguration {
 
 
 impl cfn_resources::CfnResource for NetworkConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1292,11 +1292,11 @@ pub struct PipeEnrichmentHttpParameters {
 
 
 impl cfn_resources::CfnResource for PipeEnrichmentHttpParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1343,11 +1343,11 @@ pub struct PipeEnrichmentParameters {
 
 
 impl cfn_resources::CfnResource for PipeEnrichmentParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1412,11 +1412,11 @@ pub struct PipeSourceActiveMQBrokerParameters {
 
 
 impl cfn_resources::CfnResource for PipeSourceActiveMQBrokerParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1527,11 +1527,11 @@ pub struct PipeSourceDynamoDBStreamParameters {
 
 
 impl cfn_resources::CfnResource for PipeSourceDynamoDBStreamParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1652,11 +1652,11 @@ pub struct PipeSourceKinesisStreamParameters {
 
 
 impl cfn_resources::CfnResource for PipeSourceKinesisStreamParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1743,11 +1743,11 @@ pub struct PipeSourceManagedStreamingKafkaParameters {
 
 
 impl cfn_resources::CfnResource for PipeSourceManagedStreamingKafkaParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1860,11 +1860,11 @@ pub struct PipeSourceParameters {
 
 
 impl cfn_resources::CfnResource for PipeSourceParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1955,11 +1955,11 @@ pub struct PipeSourceRabbitMQBrokerParameters {
 
 
 impl cfn_resources::CfnResource for PipeSourceRabbitMQBrokerParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2080,11 +2080,11 @@ pub struct PipeSourceSelfManagedKafkaParameters {
 
 
 impl cfn_resources::CfnResource for PipeSourceSelfManagedKafkaParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2129,11 +2129,11 @@ pub struct PipeSourceSqsQueueParameters {
 
 
 impl cfn_resources::CfnResource for PipeSourceSqsQueueParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2234,11 +2234,11 @@ pub struct PipeTargetBatchJobParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetBatchJobParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2287,11 +2287,11 @@ pub struct PipeTargetCloudWatchLogsParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetCloudWatchLogsParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2495,11 +2495,11 @@ pub struct PipeTargetEcsTaskParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetEcsTaskParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2582,11 +2582,11 @@ pub struct PipeTargetEventBridgeEventBusParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetEventBridgeEventBusParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2641,11 +2641,11 @@ pub struct PipeTargetHttpParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetHttpParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2676,11 +2676,11 @@ pub struct PipeTargetKinesisStreamParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetKinesisStreamParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2715,11 +2715,11 @@ pub struct PipeTargetLambdaFunctionParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetLambdaFunctionParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2875,11 +2875,11 @@ pub struct PipeTargetParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2992,11 +2992,11 @@ pub struct PipeTargetRedshiftDataParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetRedshiftDataParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3027,11 +3027,11 @@ pub struct PipeTargetSageMakerPipelineParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetSageMakerPipelineParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3076,11 +3076,11 @@ pub struct PipeTargetSqsQueueParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetSqsQueueParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3115,11 +3115,11 @@ pub struct PipeTargetStateMachineParameters {
 
 
 impl cfn_resources::CfnResource for PipeTargetStateMachineParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3162,11 +3162,11 @@ pub struct PlacementConstraint {
 
 
 impl cfn_resources::CfnResource for PlacementConstraint {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3209,11 +3209,11 @@ pub struct PlacementStrategy {
 
 
 impl cfn_resources::CfnResource for PlacementStrategy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3256,11 +3256,11 @@ pub struct SageMakerPipelineParameter {
 
 
 impl cfn_resources::CfnResource for SageMakerPipelineParameter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3327,11 +3327,11 @@ pub struct SelfManagedKafkaAccessConfigurationCredentials {
 
 
 impl cfn_resources::CfnResource for SelfManagedKafkaAccessConfigurationCredentials {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3374,11 +3374,11 @@ pub struct SelfManagedKafkaAccessConfigurationVpc {
 
 
 impl cfn_resources::CfnResource for SelfManagedKafkaAccessConfigurationVpc {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3425,11 +3425,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

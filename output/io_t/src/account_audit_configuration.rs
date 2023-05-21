@@ -65,11 +65,11 @@ pub struct CfnAccountAuditConfiguration {
 
 
 impl cfn_resources::CfnResource for CfnAccountAuditConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::IoT::AccountAuditConfiguration"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -104,11 +104,11 @@ pub struct AuditCheckConfiguration {
 
 
 impl cfn_resources::CfnResource for AuditCheckConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -317,11 +317,11 @@ pub struct AuditCheckConfigurations {
 
 
 impl cfn_resources::CfnResource for AuditCheckConfigurations {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -408,11 +408,11 @@ pub struct AuditNotificationTarget {
 
 
 impl cfn_resources::CfnResource for AuditNotificationTarget {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -443,11 +443,11 @@ pub struct AuditNotificationTargetConfigurations {
 
 
 impl cfn_resources::CfnResource for AuditNotificationTargetConfigurations {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

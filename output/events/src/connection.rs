@@ -94,11 +94,11 @@ impl Default for ConnectionAuthorizationTypeEnum {
 
 
 impl cfn_resources::CfnResource for CfnConnection {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Events::Connection"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -179,11 +179,11 @@ pub struct ApiKeyAuthParameters {
 
 
 impl cfn_resources::CfnResource for ApiKeyAuthParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -278,11 +278,11 @@ pub struct AuthParameters {
 
 
 impl cfn_resources::CfnResource for AuthParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -345,11 +345,11 @@ pub struct BasicAuthParameters {
 
 
 impl cfn_resources::CfnResource for BasicAuthParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -432,11 +432,11 @@ pub struct ClientParameters {
 
 
 impl cfn_resources::CfnResource for ClientParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -525,11 +525,11 @@ pub struct ConnectionHttpParameters {
 
 
 impl cfn_resources::CfnResource for ConnectionHttpParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -651,11 +651,11 @@ impl Default for OAuthParametersHttpMethodEnum {
 
 
 impl cfn_resources::CfnResource for OAuthParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -736,11 +736,11 @@ pub struct Parameter {
 
 
 impl cfn_resources::CfnResource for Parameter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

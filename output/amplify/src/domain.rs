@@ -93,11 +93,11 @@ pub struct CfnDomain {
 
 
 impl cfn_resources::CfnResource for CfnDomain {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Amplify::Domain"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -148,11 +148,11 @@ pub struct SubDomainSetting {
 
 
 impl cfn_resources::CfnResource for SubDomainSetting {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

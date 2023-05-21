@@ -87,11 +87,11 @@ pub struct CfnVirtualGateway {
 
 
 impl cfn_resources::CfnResource for CfnVirtualGateway {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::AppMesh::VirtualGateway"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -198,11 +198,11 @@ pub struct JsonFormatRef {
 
 
 impl cfn_resources::CfnResource for JsonFormatRef {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -277,11 +277,11 @@ pub struct LoggingFormat {
 
 
 impl cfn_resources::CfnResource for LoggingFormat {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -328,11 +328,11 @@ pub struct SubjectAlternativeNameMatchers {
 
 
 impl cfn_resources::CfnResource for SubjectAlternativeNameMatchers {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -363,11 +363,11 @@ pub struct SubjectAlternativeNames {
 
 
 impl cfn_resources::CfnResource for SubjectAlternativeNames {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -416,11 +416,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -451,11 +451,11 @@ pub struct VirtualGatewayAccessLog {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayAccessLog {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -488,11 +488,11 @@ pub struct VirtualGatewayBackendDefaults {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayBackendDefaults {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -525,11 +525,11 @@ pub struct VirtualGatewayClientPolicy {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayClientPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -598,11 +598,11 @@ pub struct VirtualGatewayClientPolicyTls {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayClientPolicyTls {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -649,11 +649,11 @@ pub struct VirtualGatewayClientTlsCertificate {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayClientTlsCertificate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -716,11 +716,11 @@ pub struct VirtualGatewayConnectionPool {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayConnectionPool {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -773,11 +773,11 @@ pub struct VirtualGatewayFileAccessLog {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayFileAccessLog {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -826,11 +826,11 @@ pub struct VirtualGatewayGrpcConnectionPool {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayGrpcConnectionPool {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -977,11 +977,11 @@ impl Default for VirtualGatewayHealthCheckPolicyProtocolEnum {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayHealthCheckPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1058,11 +1058,11 @@ pub struct VirtualGatewayHttp2ConnectionPool {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayHttp2ConnectionPool {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1116,11 +1116,11 @@ pub struct VirtualGatewayHttpConnectionPool {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayHttpConnectionPool {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1202,11 +1202,11 @@ pub struct VirtualGatewayListener {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayListener {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1296,11 +1296,11 @@ impl Default for VirtualGatewayListenerTlsModeEnum {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTls {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1335,11 +1335,11 @@ pub struct VirtualGatewayListenerTlsAcmCertificate {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTlsAcmCertificate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1394,11 +1394,11 @@ pub struct VirtualGatewayListenerTlsCertificate {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTlsCertificate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1455,11 +1455,11 @@ pub struct VirtualGatewayListenerTlsFileCertificate {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTlsFileCertificate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1518,11 +1518,11 @@ pub struct VirtualGatewayListenerTlsSdsCertificate {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTlsSdsCertificate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1565,11 +1565,11 @@ pub struct VirtualGatewayListenerTlsValidationContext {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTlsValidationContext {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1616,11 +1616,11 @@ pub struct VirtualGatewayListenerTlsValidationContextTrust {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayListenerTlsValidationContextTrust {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1655,11 +1655,11 @@ pub struct VirtualGatewayLogging {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayLogging {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1733,11 +1733,11 @@ impl Default for VirtualGatewayPortMappingProtocolEnum {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayPortMapping {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1806,11 +1806,11 @@ pub struct VirtualGatewaySpec {
 
 
 impl cfn_resources::CfnResource for VirtualGatewaySpec {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1857,11 +1857,11 @@ pub struct VirtualGatewayTlsValidationContext {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContext {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1898,11 +1898,11 @@ pub struct VirtualGatewayTlsValidationContextAcmTrust {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextAcmTrust {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1944,11 +1944,11 @@ pub struct VirtualGatewayTlsValidationContextFileTrust {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextFileTrust {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1993,11 +1993,11 @@ pub struct VirtualGatewayTlsValidationContextSdsTrust {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextSdsTrust {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2052,11 +2052,11 @@ pub struct VirtualGatewayTlsValidationContextTrust {
 
 
 impl cfn_resources::CfnResource for VirtualGatewayTlsValidationContextTrust {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

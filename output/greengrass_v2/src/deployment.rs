@@ -105,11 +105,11 @@ pub struct CfnDeployment {
 
 
 impl cfn_resources::CfnResource for CfnDeployment {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::GreengrassV2::Deployment"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -156,11 +156,11 @@ pub struct ComponentConfigurationUpdate {
 
 
 impl cfn_resources::CfnResource for ComponentConfigurationUpdate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -215,11 +215,11 @@ pub struct ComponentDeploymentSpecification {
 
 
 impl cfn_resources::CfnResource for ComponentDeploymentSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -282,11 +282,11 @@ pub struct ComponentRunWith {
 
 
 impl cfn_resources::CfnResource for ComponentRunWith {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -339,11 +339,11 @@ pub struct DeploymentComponentUpdatePolicy {
 
 
 impl cfn_resources::CfnResource for DeploymentComponentUpdatePolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -376,11 +376,11 @@ pub struct DeploymentConfigurationValidationPolicy {
 
 
 impl cfn_resources::CfnResource for DeploymentConfigurationValidationPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -435,11 +435,11 @@ pub struct DeploymentIoTJobConfiguration {
 
 
 impl cfn_resources::CfnResource for DeploymentIoTJobConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -502,11 +502,11 @@ pub struct DeploymentPolicies {
 
 
 impl cfn_resources::CfnResource for DeploymentPolicies {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -541,11 +541,11 @@ pub struct IoTJobAbortConfig {
 
 
 impl cfn_resources::CfnResource for IoTJobAbortConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -616,11 +616,11 @@ pub struct IoTJobAbortCriteria {
 
 
 impl cfn_resources::CfnResource for IoTJobAbortCriteria {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -663,11 +663,11 @@ pub struct IoTJobExecutionsRolloutConfig {
 
 
 impl cfn_resources::CfnResource for IoTJobExecutionsRolloutConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -726,11 +726,11 @@ pub struct IoTJobExponentialRolloutRate {
 
 
 impl cfn_resources::CfnResource for IoTJobExponentialRolloutRate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -775,11 +775,11 @@ pub struct IoTJobRateIncreaseCriteria {
 
 
 impl cfn_resources::CfnResource for IoTJobRateIncreaseCriteria {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -812,11 +812,11 @@ pub struct IoTJobTimeoutConfig {
 
 
 impl cfn_resources::CfnResource for IoTJobTimeoutConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -859,11 +859,11 @@ pub struct SystemResourceLimits {
 
 
 impl cfn_resources::CfnResource for SystemResourceLimits {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

@@ -326,11 +326,11 @@ impl Default for JobWorkerTypeEnum {
 
 
 impl cfn_resources::CfnResource for CfnJob {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Glue::Job"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -433,11 +433,11 @@ pub struct ConnectionsList {
 
 
 impl cfn_resources::CfnResource for ConnectionsList {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -468,11 +468,11 @@ pub struct ExecutionProperty {
 
 
 impl cfn_resources::CfnResource for ExecutionProperty {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -531,11 +531,11 @@ pub struct JobCommand {
 
 
 impl cfn_resources::CfnResource for JobCommand {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -573,11 +573,11 @@ pub struct NotificationProperty {
 
 
 impl cfn_resources::CfnResource for NotificationProperty {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

@@ -37,11 +37,11 @@ pub struct CfnEnclaveCertificateIamRoleAssociation {
 
 
 impl cfn_resources::CfnResource for CfnEnclaveCertificateIamRoleAssociation {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::EC2::EnclaveCertificateIamRoleAssociation"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

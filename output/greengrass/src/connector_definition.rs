@@ -53,11 +53,11 @@ pub struct CfnConnectorDefinition {
 
 
 impl cfn_resources::CfnResource for CfnConnectorDefinition {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Greengrass::ConnectorDefinition"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -120,11 +120,11 @@ pub struct Connector {
 
 
 impl cfn_resources::CfnResource for Connector {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -157,11 +157,11 @@ pub struct ConnectorDefinitionVersion {
 
 
 impl cfn_resources::CfnResource for ConnectorDefinitionVersion {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

@@ -57,11 +57,11 @@ pub struct CfnApiGatewayManagedOverrides {
 
 
 impl cfn_resources::CfnResource for CfnApiGatewayManagedOverrides {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ApiGatewayV2::ApiGatewayManagedOverrides"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -110,11 +110,11 @@ pub struct AccessLogSettings {
 
 
 impl cfn_resources::CfnResource for AccessLogSettings {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -181,11 +181,11 @@ pub struct IntegrationOverrides {
 
 
 impl cfn_resources::CfnResource for IntegrationOverrides {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -264,11 +264,11 @@ pub struct RouteOverrides {
 
 
 impl cfn_resources::CfnResource for RouteOverrides {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -347,11 +347,11 @@ pub struct RouteSettings {
 
 
 impl cfn_resources::CfnResource for RouteSettings {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -442,11 +442,11 @@ pub struct StageOverrides {
 
 
 impl cfn_resources::CfnResource for StageOverrides {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

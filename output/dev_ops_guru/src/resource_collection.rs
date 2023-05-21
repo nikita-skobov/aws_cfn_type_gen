@@ -21,11 +21,11 @@ pub struct CfnResourceCollection {
 
 
 impl cfn_resources::CfnResource for CfnResourceCollection {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::DevOpsGuru::ResourceCollection"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -58,11 +58,11 @@ pub struct CloudFormationCollectionFilter {
 
 
 impl cfn_resources::CfnResource for CloudFormationCollectionFilter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -115,11 +115,11 @@ pub struct ResourceCollectionFilter {
 
 
 impl cfn_resources::CfnResource for ResourceCollectionFilter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -180,11 +180,11 @@ pub struct TagCollection {
 
 
 impl cfn_resources::CfnResource for TagCollection {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

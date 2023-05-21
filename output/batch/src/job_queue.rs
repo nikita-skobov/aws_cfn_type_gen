@@ -104,11 +104,11 @@ impl Default for JobQueueStateEnum {
 
 
 impl cfn_resources::CfnResource for CfnJobQueue {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Batch::JobQueue"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -151,11 +151,11 @@ pub struct ComputeEnvironmentOrder {
 
 
 impl cfn_resources::CfnResource for ComputeEnvironmentOrder {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

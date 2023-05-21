@@ -99,11 +99,11 @@ pub struct CfnDeliveryChannel {
 
 
 impl cfn_resources::CfnResource for CfnDeliveryChannel {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Config::DeliveryChannel"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -193,11 +193,11 @@ impl Default for ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum {
 
 
 impl cfn_resources::CfnResource for ConfigSnapshotDeliveryProperties {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

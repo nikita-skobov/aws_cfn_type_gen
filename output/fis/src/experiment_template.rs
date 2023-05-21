@@ -107,11 +107,11 @@ pub struct CfnExperimentTemplate {
 
 
 impl cfn_resources::CfnResource for CfnExperimentTemplate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::FIS::ExperimentTemplate"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -164,11 +164,11 @@ pub struct CloudWatchLogsConfiguration {
 
 
 impl cfn_resources::CfnResource for CloudWatchLogsConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -257,11 +257,11 @@ pub struct ExperimentTemplateAction {
 
 
 impl cfn_resources::CfnResource for ExperimentTemplateAction {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -341,11 +341,11 @@ pub struct ExperimentTemplateLogConfiguration {
 
 
 impl cfn_resources::CfnResource for ExperimentTemplateLogConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -404,11 +404,11 @@ pub struct ExperimentTemplateStopCondition {
 
 
 impl cfn_resources::CfnResource for ExperimentTemplateStopCondition {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -536,11 +536,11 @@ pub struct ExperimentTemplateTarget {
 
 
 impl cfn_resources::CfnResource for ExperimentTemplateTarget {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -611,11 +611,11 @@ pub struct ExperimentTemplateTargetFilter {
 
 
 impl cfn_resources::CfnResource for ExperimentTemplateTargetFilter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -663,11 +663,11 @@ pub struct S3Configuration {
 
 
 impl cfn_resources::CfnResource for S3Configuration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

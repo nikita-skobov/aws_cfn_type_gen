@@ -57,11 +57,11 @@ pub struct CfnUserProfile {
 
 
 impl cfn_resources::CfnResource for CfnUserProfile {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::OpsWorks::UserProfile"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

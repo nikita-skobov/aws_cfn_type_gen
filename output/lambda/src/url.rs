@@ -117,11 +117,11 @@ impl Default for UrlInvokeModeEnum {
 
 
 impl cfn_resources::CfnResource for CfnUrl {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Lambda::Url"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -228,11 +228,11 @@ pub struct Cors {
 
 
 impl cfn_resources::CfnResource for Cors {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

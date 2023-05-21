@@ -318,11 +318,11 @@ impl Default for EnvironmentAirflowVersionEnum {
 
 
 impl cfn_resources::CfnResource for CfnEnvironment {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::MWAA::Environment"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -405,11 +405,11 @@ pub struct LoggingConfiguration {
 
 
 impl cfn_resources::CfnResource for LoggingConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -476,11 +476,11 @@ pub struct ModuleLoggingConfiguration {
 
 
 impl cfn_resources::CfnResource for ModuleLoggingConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -523,11 +523,11 @@ pub struct NetworkConfiguration {
 
 
 impl cfn_resources::CfnResource for NetworkConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

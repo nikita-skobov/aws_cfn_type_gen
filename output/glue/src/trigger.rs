@@ -168,11 +168,11 @@ impl Default for TriggerTypeEnum {
 
 
 impl cfn_resources::CfnResource for CfnTrigger {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Glue::Trigger"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -314,11 +314,11 @@ pub struct Action {
 
 
 impl cfn_resources::CfnResource for Action {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -501,11 +501,11 @@ impl Default for ConditionStateEnum {
 
 
 impl cfn_resources::CfnResource for Condition {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -564,11 +564,11 @@ pub struct EventBatchingCondition {
 
 
 impl cfn_resources::CfnResource for EventBatchingCondition {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -598,11 +598,11 @@ pub struct NotificationProperty {
 
 
 impl cfn_resources::CfnResource for NotificationProperty {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -666,11 +666,11 @@ impl Default for PredicateLogicalEnum {
 
 
 impl cfn_resources::CfnResource for Predicate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

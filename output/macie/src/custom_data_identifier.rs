@@ -95,11 +95,11 @@ pub struct CfnCustomDataIdentifier {
 
 
 impl cfn_resources::CfnResource for CfnCustomDataIdentifier {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Macie::CustomDataIdentifier"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

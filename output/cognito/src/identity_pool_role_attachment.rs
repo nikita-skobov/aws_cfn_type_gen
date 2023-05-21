@@ -49,11 +49,11 @@ pub struct CfnIdentityPoolRoleAttachment {
 
 
 impl cfn_resources::CfnResource for CfnIdentityPoolRoleAttachment {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Cognito::IdentityPoolRoleAttachment"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -122,11 +122,11 @@ pub struct MappingRule {
 
 
 impl cfn_resources::CfnResource for MappingRule {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -199,11 +199,11 @@ pub struct RoleMapping {
 
 
 impl cfn_resources::CfnResource for RoleMapping {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -236,11 +236,11 @@ pub struct RulesConfigurationType {
 
 
 impl cfn_resources::CfnResource for RulesConfigurationType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

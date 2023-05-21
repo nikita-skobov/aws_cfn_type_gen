@@ -45,11 +45,11 @@ pub struct CfnApplicationReferenceDataSource {
 
 
 impl cfn_resources::CfnResource for CfnApplicationReferenceDataSource {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::KinesisAnalytics::ApplicationReferenceDataSource"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -116,11 +116,11 @@ pub struct CSVMappingParameters {
 
 
 impl cfn_resources::CfnResource for CSVMappingParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -167,11 +167,11 @@ pub struct JSONMappingParameters {
 
 
 impl cfn_resources::CfnResource for JSONMappingParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -221,11 +221,11 @@ pub struct MappingParameters {
 
 
 impl cfn_resources::CfnResource for MappingParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -288,11 +288,11 @@ pub struct RecordColumn {
 
 
 impl cfn_resources::CfnResource for RecordColumn {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -363,11 +363,11 @@ impl Default for RecordFormatRecordFormatTypeEnum {
 
 
 impl cfn_resources::CfnResource for RecordFormat {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -428,11 +428,11 @@ pub struct ReferenceDataSource {
 
 
 impl cfn_resources::CfnResource for ReferenceDataSource {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -507,11 +507,11 @@ pub struct ReferenceSchema {
 
 
 impl cfn_resources::CfnResource for ReferenceSchema {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -586,11 +586,11 @@ pub struct S3ReferenceDataSource {
 
 
 impl cfn_resources::CfnResource for S3ReferenceDataSource {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

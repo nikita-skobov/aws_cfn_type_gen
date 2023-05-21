@@ -33,11 +33,11 @@ pub struct CfnConfigurationAssociation {
 
 
 impl cfn_resources::CfnResource for CfnConfigurationAssociation {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::AmazonMQ::ConfigurationAssociation"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -82,11 +82,11 @@ pub struct ConfigurationId {
 
 
 impl cfn_resources::CfnResource for ConfigurationId {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

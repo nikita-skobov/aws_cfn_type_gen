@@ -53,11 +53,11 @@ pub struct CfnApplication {
 
 
 impl cfn_resources::CfnResource for CfnApplication {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ElasticBeanstalk::Application"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -130,11 +130,11 @@ pub struct ApplicationResourceLifecycleConfig {
 
 
 impl cfn_resources::CfnResource for ApplicationResourceLifecycleConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -183,11 +183,11 @@ pub struct ApplicationVersionLifecycleConfig {
 
 
 impl cfn_resources::CfnResource for ApplicationVersionLifecycleConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -248,11 +248,11 @@ pub struct MaxAgeRule {
 
 
 impl cfn_resources::CfnResource for MaxAgeRule {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -309,11 +309,11 @@ pub struct MaxCountRule {
 
 
 impl cfn_resources::CfnResource for MaxCountRule {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

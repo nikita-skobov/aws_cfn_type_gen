@@ -61,11 +61,11 @@ pub struct CfnEventBus {
 
 
 impl cfn_resources::CfnResource for CfnEventBus {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Events::EventBus"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -146,11 +146,11 @@ pub struct TagEntry {
 
 
 impl cfn_resources::CfnResource for TagEntry {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

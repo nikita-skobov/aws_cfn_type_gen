@@ -277,11 +277,11 @@ pub struct CfnLaunchConfiguration {
 
 
 impl cfn_resources::CfnResource for CfnLaunchConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::AutoScaling::LaunchConfiguration"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -436,11 +436,11 @@ pub struct BlockDevice {
 
 
 impl cfn_resources::CfnResource for BlockDevice {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -547,11 +547,11 @@ pub struct BlockDeviceMapping {
 
 
 impl cfn_resources::CfnResource for BlockDeviceMapping {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -664,11 +664,11 @@ impl Default for MetadataOptionsHttpTokensEnum {
 
 
 impl cfn_resources::CfnResource for MetadataOptions {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

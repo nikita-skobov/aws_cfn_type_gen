@@ -838,11 +838,11 @@ impl Default for FleetNewGameSessionProtectionPolicyEnum {
 
 
 impl cfn_resources::CfnResource for CfnFleet {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::GameLift::Fleet"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1005,11 +1005,11 @@ pub struct AnywhereConfiguration {
 
 
 impl cfn_resources::CfnResource for AnywhereConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1079,11 +1079,11 @@ impl Default for CertificateConfigurationCertificateTypeEnum {
 
 
 impl cfn_resources::CfnResource for CertificateConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1189,11 +1189,11 @@ impl Default for IpPermissionProtocolEnum {
 
 
 impl cfn_resources::CfnResource for IpPermission {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1286,11 +1286,11 @@ pub struct LocationCapacity {
 
 
 impl cfn_resources::CfnResource for LocationCapacity {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1364,11 +1364,11 @@ pub struct LocationConfiguration {
 
 
 impl cfn_resources::CfnResource for LocationConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1435,11 +1435,11 @@ pub struct ResourceCreationLimitPolicy {
 
 
 impl cfn_resources::CfnResource for ResourceCreationLimitPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1522,11 +1522,11 @@ pub struct RuntimeConfiguration {
 
 
 impl cfn_resources::CfnResource for RuntimeConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1637,11 +1637,11 @@ pub struct ServerProcess {
 
 
 impl cfn_resources::CfnResource for ServerProcess {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

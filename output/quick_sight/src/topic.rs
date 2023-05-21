@@ -85,11 +85,11 @@ pub struct CfnTopic {
 
 
 impl cfn_resources::CfnResource for CfnTopic {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::QuickSight::Topic"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -182,11 +182,11 @@ pub struct CellValueSynonym {
 
 
 impl cfn_resources::CfnResource for CellValueSynonym {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -225,11 +225,11 @@ pub struct CollectiveConstant {
 
 
 impl cfn_resources::CfnResource for CollectiveConstant {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -330,11 +330,11 @@ impl Default for ComparativeOrderUseOrderingEnum {
 
 
 impl cfn_resources::CfnResource for ComparativeOrder {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -424,11 +424,11 @@ impl Default for DataAggregationDatasetRowDateGranularityEnum {
 
 
 impl cfn_resources::CfnResource for DataAggregation {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -555,11 +555,11 @@ pub struct DatasetMetadata {
 
 
 impl cfn_resources::CfnResource for DatasetMetadata {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -657,11 +657,11 @@ impl Default for DefaultFormattingDisplayFormatEnum {
 
 
 impl cfn_resources::CfnResource for DefaultFormatting {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -896,11 +896,11 @@ impl Default for DisplayFormatOptionsUnitScalerEnum {
 
 
 impl cfn_resources::CfnResource for DisplayFormatOptions {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1079,11 +1079,11 @@ impl Default for NamedEntityDefinitionPropertyUsageEnum {
 
 
 impl cfn_resources::CfnResource for NamedEntityDefinition {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1209,11 +1209,11 @@ impl Default for NamedEntityDefinitionMetricAggregationEnum {
 
 
 impl cfn_resources::CfnResource for NamedEntityDefinitionMetric {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1260,11 +1260,11 @@ pub struct NegativeFormat {
 
 
 impl cfn_resources::CfnResource for NegativeFormat {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1327,11 +1327,11 @@ pub struct RangeConstant {
 
 
 impl cfn_resources::CfnResource for RangeConstant {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1406,11 +1406,11 @@ pub struct SemanticEntityType {
 
 
 impl cfn_resources::CfnResource for SemanticEntityType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1533,11 +1533,11 @@ pub struct SemanticType {
 
 
 impl cfn_resources::CfnResource for SemanticType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1863,11 +1863,11 @@ impl Default for TopicCalculatedFieldTimeGranularityEnum {
 
 
 impl cfn_resources::CfnResource for TopicCalculatedField {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2015,11 +2015,11 @@ impl Default for TopicCategoryFilterCategoryFilterTypeEnum {
 
 
 impl cfn_resources::CfnResource for TopicCategoryFilter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2103,11 +2103,11 @@ impl Default for TopicCategoryFilterConstantConstantTypeEnum {
 
 
 impl cfn_resources::CfnResource for TopicCategoryFilterConstant {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2425,11 +2425,11 @@ impl Default for TopicColumnTimeGranularityEnum {
 
 
 impl cfn_resources::CfnResource for TopicColumn {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2501,11 +2501,11 @@ pub struct TopicDateRangeFilter {
 
 
 impl cfn_resources::CfnResource for TopicDateRangeFilter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2722,11 +2722,11 @@ impl Default for TopicFilterFilterTypeEnum {
 
 
 impl cfn_resources::CfnResource for TopicFilter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2841,11 +2841,11 @@ pub struct TopicNamedEntity {
 
 
 impl cfn_resources::CfnResource for TopicNamedEntity {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -2966,11 +2966,11 @@ impl Default for TopicNumericEqualityFilterAggregationEnum {
 
 
 impl cfn_resources::CfnResource for TopicNumericEqualityFilter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3088,11 +3088,11 @@ impl Default for TopicNumericRangeFilterAggregationEnum {
 
 
 impl cfn_resources::CfnResource for TopicNumericRangeFilter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3162,11 +3162,11 @@ impl Default for TopicRangeFilterConstantConstantTypeEnum {
 
 
 impl cfn_resources::CfnResource for TopicRangeFilterConstant {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3301,11 +3301,11 @@ impl Default for TopicRelativeDateFilterTimeGranularityEnum {
 
 
 impl cfn_resources::CfnResource for TopicRelativeDateFilter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -3377,11 +3377,11 @@ impl Default for TopicSingularFilterConstantConstantTypeEnum {
 
 
 impl cfn_resources::CfnResource for TopicSingularFilterConstant {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

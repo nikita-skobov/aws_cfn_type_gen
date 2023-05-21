@@ -372,11 +372,11 @@ impl Default for UserPoolClientPreventUserExistenceErrorsEnum {
 
 
 impl cfn_resources::CfnResource for CfnUserPoolClient {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Cognito::UserPoolClient"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -561,11 +561,11 @@ pub struct AnalyticsConfiguration {
 
 
 impl cfn_resources::CfnResource for AnalyticsConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -723,11 +723,11 @@ impl Default for TokenValidityUnitsRefreshTokenEnum {
 
 
 impl cfn_resources::CfnResource for TokenValidityUnits {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

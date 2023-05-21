@@ -69,11 +69,11 @@ pub struct CfnAlert {
 
 
 impl cfn_resources::CfnResource for CfnAlert {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::LookoutMetrics::Alert"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -118,11 +118,11 @@ pub struct Action {
 
 
 impl cfn_resources::CfnResource for Action {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -169,11 +169,11 @@ pub struct LambdaConfiguration {
 
 
 impl cfn_resources::CfnResource for LambdaConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -216,11 +216,11 @@ pub struct SNSConfiguration {
 
 
 impl cfn_resources::CfnResource for SNSConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

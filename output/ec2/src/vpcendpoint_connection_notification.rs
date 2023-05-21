@@ -59,11 +59,11 @@ pub struct CfnVPCEndpointConnectionNotification {
 
 
 impl cfn_resources::CfnResource for CfnVPCEndpointConnectionNotification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::EC2::VPCEndpointConnectionNotification"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

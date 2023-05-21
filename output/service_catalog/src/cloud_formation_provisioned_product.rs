@@ -217,11 +217,11 @@ pub struct CfnCloudFormationProvisionedProduct {
 
 
 impl cfn_resources::CfnResource for CfnCloudFormationProvisionedProduct {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ServiceCatalog::CloudFormationProvisionedProduct"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -400,11 +400,11 @@ pub struct ProvisioningParameter {
 
 
 impl cfn_resources::CfnResource for ProvisioningParameter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -615,11 +615,11 @@ impl Default for ProvisioningPreferencesStackSetOperationTypeEnum {
 
 
 impl cfn_resources::CfnResource for ProvisioningPreferences {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -714,11 +714,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

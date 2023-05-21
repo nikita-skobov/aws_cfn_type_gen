@@ -81,11 +81,11 @@ pub struct CfnResiliencyPolicy {
 
 
 impl cfn_resources::CfnResource for CfnResiliencyPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ResilienceHub::ResiliencyPolicy"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -128,11 +128,11 @@ pub struct FailurePolicy {
 
 
 impl cfn_resources::CfnResource for FailurePolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

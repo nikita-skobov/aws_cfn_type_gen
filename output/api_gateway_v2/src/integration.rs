@@ -255,11 +255,11 @@ pub struct CfnIntegration {
 
 
 impl cfn_resources::CfnResource for CfnIntegration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ApiGatewayV2::Integration"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -304,11 +304,11 @@ pub struct ResponseParameter {
 
 
 impl cfn_resources::CfnResource for ResponseParameter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -339,11 +339,11 @@ pub struct ResponseParameterList {
 
 
 impl cfn_resources::CfnResource for ResponseParameterList {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -374,11 +374,11 @@ pub struct TlsConfig {
 
 
 impl cfn_resources::CfnResource for TlsConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

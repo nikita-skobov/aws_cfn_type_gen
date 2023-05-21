@@ -119,11 +119,11 @@ pub struct CfnScheduledAction {
 
 
 impl cfn_resources::CfnResource for CfnScheduledAction {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Redshift::ScheduledAction"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -189,11 +189,11 @@ pub struct PauseClusterMessage {
 
 
 impl cfn_resources::CfnResource for PauseClusterMessage {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -285,11 +285,11 @@ pub struct ResizeClusterMessage {
 
 
 impl cfn_resources::CfnResource for ResizeClusterMessage {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -345,11 +345,11 @@ pub struct ResumeClusterMessage {
 
 
 impl cfn_resources::CfnResource for ResumeClusterMessage {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -411,11 +411,11 @@ pub struct ScheduledActionType {
 
 
 impl cfn_resources::CfnResource for ScheduledActionType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

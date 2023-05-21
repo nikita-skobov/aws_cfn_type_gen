@@ -109,11 +109,11 @@ impl Default for ListenerProtocolEnum {
 
 
 impl cfn_resources::CfnResource for CfnListener {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::GlobalAccelerator::Listener"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -178,11 +178,11 @@ pub struct PortRange {
 
 
 impl cfn_resources::CfnResource for PortRange {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

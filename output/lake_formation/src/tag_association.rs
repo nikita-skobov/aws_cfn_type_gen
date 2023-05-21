@@ -35,11 +35,11 @@ pub struct CfnTagAssociation {
 
 
 impl cfn_resources::CfnResource for CfnTagAssociation {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::LakeFormation::TagAssociation"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -84,11 +84,11 @@ pub struct DatabaseResource {
 
 
 impl cfn_resources::CfnResource for DatabaseResource {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -143,11 +143,11 @@ pub struct LFTagPair {
 
 
 impl cfn_resources::CfnResource for LFTagPair {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -214,11 +214,11 @@ pub struct Resource {
 
 
 impl cfn_resources::CfnResource for Resource {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -293,11 +293,11 @@ pub struct TableResource {
 
 
 impl cfn_resources::CfnResource for TableResource {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -368,11 +368,11 @@ pub struct TableWithColumnsResource {
 
 
 impl cfn_resources::CfnResource for TableWithColumnsResource {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

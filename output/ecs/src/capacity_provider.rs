@@ -53,11 +53,11 @@ pub struct CfnCapacityProvider {
 
 
 impl cfn_resources::CfnResource for CfnCapacityProvider {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ECS::CapacityProvider"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -149,11 +149,11 @@ impl Default for AutoScalingGroupProviderManagedTerminationProtectionEnum {
 
 
 impl cfn_resources::CfnResource for AutoScalingGroupProvider {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -279,11 +279,11 @@ impl Default for ManagedScalingStatusEnum {
 
 
 impl cfn_resources::CfnResource for ManagedScaling {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -394,11 +394,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

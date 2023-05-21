@@ -53,11 +53,11 @@ pub struct CfnApplicationVersion {
 
 
 impl cfn_resources::CfnResource for CfnApplicationVersion {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ElasticBeanstalk::ApplicationVersion"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -128,11 +128,11 @@ pub struct SourceBundle {
 
 
 impl cfn_resources::CfnResource for SourceBundle {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

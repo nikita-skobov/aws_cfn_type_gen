@@ -25,11 +25,11 @@ pub struct CfnOriginRequestPolicy {
 
 
 impl cfn_resources::CfnResource for CfnOriginRequestPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::CloudFront::OriginRequestPolicy"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -105,11 +105,11 @@ impl Default for CookiesConfigCookieBehaviorEnum {
 
 
 impl cfn_resources::CfnResource for CookiesConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -187,11 +187,11 @@ impl Default for HeadersConfigHeaderBehaviorEnum {
 
 
 impl cfn_resources::CfnResource for HeadersConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -274,11 +274,11 @@ pub struct OriginRequestPolicyConfig {
 
 
 impl cfn_resources::CfnResource for OriginRequestPolicyConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -358,11 +358,11 @@ impl Default for QueryStringsConfigQueryStringBehaviorEnum {
 
 
 impl cfn_resources::CfnResource for QueryStringsConfig {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

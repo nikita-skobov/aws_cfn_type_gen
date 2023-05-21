@@ -320,11 +320,11 @@ impl Default for ScalingPolicyServiceNamespaceEnum {
 
 
 impl cfn_resources::CfnResource for CfnScalingPolicy {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ApplicationAutoScaling::ScalingPolicy"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -482,11 +482,11 @@ impl Default for CustomizedMetricSpecificationStatisticEnum {
 
 
 impl cfn_resources::CfnResource for CustomizedMetricSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -529,11 +529,11 @@ pub struct MetricDimension {
 
 
 impl cfn_resources::CfnResource for MetricDimension {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -693,11 +693,11 @@ impl Default for PredefinedMetricSpecificationPredefinedMetricTypeEnum {
 
 
 impl cfn_resources::CfnResource for PredefinedMetricSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -778,11 +778,11 @@ pub struct StepAdjustment {
 
 
 impl cfn_resources::CfnResource for StepAdjustment {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -915,11 +915,11 @@ impl Default for StepScalingPolicyConfigurationMetricAggregationTypeEnum {
 
 
 impl cfn_resources::CfnResource for StepScalingPolicyConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1012,11 +1012,11 @@ pub struct TargetTrackingScalingPolicyConfiguration {
 
 
 impl cfn_resources::CfnResource for TargetTrackingScalingPolicyConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

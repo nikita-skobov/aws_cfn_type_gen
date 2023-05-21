@@ -39,11 +39,11 @@ pub struct CfnGeoMatchSet {
 
 
 impl cfn_resources::CfnResource for CfnGeoMatchSet {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::WAFRegional::GeoMatchSet"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -1126,11 +1126,11 @@ impl Default for GeoMatchConstraintValueEnum {
 
 
 impl cfn_resources::CfnResource for GeoMatchConstraint {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

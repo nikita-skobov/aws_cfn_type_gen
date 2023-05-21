@@ -41,11 +41,11 @@ pub struct CfnInstanceAccessControlAttributeConfiguration {
 
 
 impl cfn_resources::CfnResource for CfnInstanceAccessControlAttributeConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::SSO::InstanceAccessControlAttributeConfiguration"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -116,11 +116,11 @@ pub struct AccessControlAttribute {
 
 
 impl cfn_resources::CfnResource for AccessControlAttribute {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -169,11 +169,11 @@ pub struct AccessControlAttributeValue {
 
 
 impl cfn_resources::CfnResource for AccessControlAttributeValue {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

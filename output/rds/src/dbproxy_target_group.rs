@@ -79,11 +79,11 @@ pub struct CfnDBProxyTargetGroup {
 
 
 impl cfn_resources::CfnResource for CfnDBProxyTargetGroup {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::RDS::DBProxyTargetGroup"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -184,11 +184,11 @@ pub struct ConnectionPoolConfigurationInfoFormat {
 
 
 impl cfn_resources::CfnResource for ConnectionPoolConfigurationInfoFormat {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

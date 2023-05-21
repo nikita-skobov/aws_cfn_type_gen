@@ -146,11 +146,11 @@ impl Default for CertificateUsageEnum {
 
 
 impl cfn_resources::CfnResource for CfnCertificate {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Transfer::Certificate"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -251,11 +251,11 @@ pub struct Tag {
 
 
 impl cfn_resources::CfnResource for Tag {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

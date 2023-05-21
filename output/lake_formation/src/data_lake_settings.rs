@@ -125,11 +125,11 @@ pub struct CfnDataLakeSettings {
 
 
 impl cfn_resources::CfnResource for CfnDataLakeSettings {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::LakeFormation::DataLakeSettings"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -156,11 +156,11 @@ pub struct Admins {
 
 
 impl cfn_resources::CfnResource for Admins {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -185,11 +185,11 @@ pub struct CreateDatabaseDefaultPermissions {
 
 
 impl cfn_resources::CfnResource for CreateDatabaseDefaultPermissions {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -214,11 +214,11 @@ pub struct CreateTableDefaultPermissions {
 
 
 impl cfn_resources::CfnResource for CreateTableDefaultPermissions {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -249,11 +249,11 @@ pub struct DataLakePrincipal {
 
 
 impl cfn_resources::CfnResource for DataLakePrincipal {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -272,11 +272,11 @@ pub struct ExternalDataFilteringAllowList {
 
 
 impl cfn_resources::CfnResource for ExternalDataFilteringAllowList {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -295,11 +295,11 @@ pub struct Permissions {
 
 
 impl cfn_resources::CfnResource for Permissions {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -342,11 +342,11 @@ pub struct PrincipalPermissions {
 
 
 impl cfn_resources::CfnResource for PrincipalPermissions {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

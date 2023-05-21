@@ -55,11 +55,11 @@ pub struct CfnComponentVersion {
 
 
 impl cfn_resources::CfnResource for CfnComponentVersion {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::GreengrassV2::ComponentVersion"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -110,11 +110,11 @@ pub struct ComponentDependencyRequirement {
 
 
 impl cfn_resources::CfnResource for ComponentDependencyRequirement {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -159,11 +159,11 @@ pub struct ComponentPlatform {
 
 
 impl cfn_resources::CfnResource for ComponentPlatform {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -234,11 +234,11 @@ pub struct LambdaContainerParams {
 
 
 impl cfn_resources::CfnResource for LambdaContainerParams {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -297,11 +297,11 @@ pub struct LambdaDeviceMount {
 
 
 impl cfn_resources::CfnResource for LambdaDeviceMount {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -346,11 +346,11 @@ pub struct LambdaEventSource {
 
 
 impl cfn_resources::CfnResource for LambdaEventSource {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -507,11 +507,11 @@ pub struct LambdaExecutionParameters {
 
 
 impl cfn_resources::CfnResource for LambdaExecutionParameters {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -608,11 +608,11 @@ pub struct LambdaFunctionRecipeSource {
 
 
 impl cfn_resources::CfnResource for LambdaFunctionRecipeSource {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -659,11 +659,11 @@ pub struct LambdaLinuxProcessParams {
 
 
 impl cfn_resources::CfnResource for LambdaLinuxProcessParams {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -736,11 +736,11 @@ pub struct LambdaVolumeMount {
 
 
 impl cfn_resources::CfnResource for LambdaVolumeMount {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

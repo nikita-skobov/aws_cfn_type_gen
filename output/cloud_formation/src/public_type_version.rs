@@ -148,11 +148,11 @@ impl Default for PublicTypeVersionTypeEnum {
 
 
 impl cfn_resources::CfnResource for CfnPublicTypeVersion {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::CloudFormation::PublicTypeVersion"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

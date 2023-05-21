@@ -71,11 +71,11 @@ pub struct CfnModuleDefaultVersion {
 
 
 impl cfn_resources::CfnResource for CfnModuleDefaultVersion {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::CloudFormation::ModuleDefaultVersion"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

@@ -39,11 +39,11 @@ pub struct CfnByteMatchSet {
 
 
 impl cfn_resources::CfnResource for CfnByteMatchSet {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::WAF::ByteMatchSet"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -276,11 +276,11 @@ impl Default for ByteMatchTupleTextTransformationEnum {
 
 
 impl cfn_resources::CfnResource for ByteMatchTuple {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -378,11 +378,11 @@ impl Default for FieldToMatchTypeEnum {
 
 
 impl cfn_resources::CfnResource for FieldToMatch {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

@@ -45,11 +45,11 @@ pub struct CfnSkill {
 
 
 impl cfn_resources::CfnResource for CfnSkill {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "Alexa::ASK::Skill"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -110,11 +110,11 @@ pub struct AuthenticationConfiguration {
 
 
 impl cfn_resources::CfnResource for AuthenticationConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -147,11 +147,11 @@ pub struct Overrides {
 
 
 impl cfn_resources::CfnResource for Overrides {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -232,11 +232,11 @@ pub struct SkillPackage {
 
 
 impl cfn_resources::CfnResource for SkillPackage {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

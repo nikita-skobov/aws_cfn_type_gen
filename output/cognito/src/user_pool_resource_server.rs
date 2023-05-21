@@ -77,11 +77,11 @@ pub struct CfnUserPoolResourceServer {
 
 
 impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::Cognito::UserPoolResourceServer"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -184,11 +184,11 @@ pub struct ResourceServerScopeType {
 
 
 impl cfn_resources::CfnResource for ResourceServerScopeType {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

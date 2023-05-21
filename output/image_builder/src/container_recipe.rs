@@ -228,11 +228,11 @@ impl Default for ContainerRecipeContainerTypeEnum {
 
 
 impl cfn_resources::CfnResource for CfnContainerRecipe {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::ImageBuilder::ContainerRecipe"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -342,11 +342,11 @@ pub struct ComponentConfiguration {
 
 
 impl cfn_resources::CfnResource for ComponentConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -387,11 +387,11 @@ pub struct ComponentParameter {
 
 
 impl cfn_resources::CfnResource for ComponentParameter {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -567,11 +567,11 @@ impl Default for EbsInstanceBlockDeviceSpecificationVolumeTypeEnum {
 
 
 impl cfn_resources::CfnResource for EbsInstanceBlockDeviceSpecification {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -730,11 +730,11 @@ pub struct InstanceBlockDeviceMapping {
 
 
 impl cfn_resources::CfnResource for InstanceBlockDeviceMapping {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -831,11 +831,11 @@ pub struct InstanceConfiguration {
 
 
 impl cfn_resources::CfnResource for InstanceConfiguration {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -915,11 +915,11 @@ impl Default for TargetContainerRepositoryServiceEnum {
 
 
 impl cfn_resources::CfnResource for TargetContainerRepository {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 

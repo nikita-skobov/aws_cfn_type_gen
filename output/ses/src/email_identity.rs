@@ -87,11 +87,11 @@ pub struct CfnEmailIdentity {
 
 
 impl cfn_resources::CfnResource for CfnEmailIdentity {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "AWS::SES::EmailIdentity"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -132,11 +132,11 @@ pub struct ConfigurationSetAttributes {
 
 
 impl cfn_resources::CfnResource for ConfigurationSetAttributes {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -169,11 +169,11 @@ pub struct DkimAttributes {
 
 
 impl cfn_resources::CfnResource for DkimAttributes {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -253,11 +253,11 @@ impl Default for DkimSigningAttributesNextSigningKeyLengthEnum {
 
 
 impl cfn_resources::CfnResource for DkimSigningAttributes {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -292,11 +292,11 @@ pub struct FeedbackAttributes {
 
 
 impl cfn_resources::CfnResource for FeedbackAttributes {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
@@ -364,11 +364,11 @@ impl Default for MailFromAttributesBehaviorOnMxFailureEnum {
 
 
 impl cfn_resources::CfnResource for MailFromAttributes {
-    fn type_string() -> &'static str {
+    fn type_string(&self) -> &'static str {
         "NOT_A_VALID_CFN_RESOURCE"
     }
 
-    fn properties(self) -> serde_json::Value {
+    fn properties(&self) -> serde_json::Value {
         serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
     }
 
