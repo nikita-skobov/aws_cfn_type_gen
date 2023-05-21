@@ -77,11 +77,14 @@ pub struct CfnField {
     pub ty: String,
     /// it is the caller's job to properly format this
     pub documentation: String,
+
+    pub valid_values: Option<Vec<String>>,
 }
 
 impl CfnField {
     pub fn get_type(
         &self,
+        field_enums: &mut HashMap<String, Vec<String>>,
         owning_struct_name: &str,
         use_map_tracker: &mut HashMap<String, Vec<String>>
     ) -> String {
@@ -95,10 +98,21 @@ impl CfnField {
                 should_box = true;
             }
         }
-        let use_type = if should_box {
-            format!("Box<{}>", self.ty)
+        let use_type = if let Some(valid_values) = &self.valid_values {
+            if self.ty == "String" {
+                let enum_name = format!("{}{}Enum", owning_struct_name, self.name);
+                field_enums.insert(enum_name.clone(), valid_values.clone());
+                enum_name
+            } else {
+                self.ty.clone()
+            }
         } else {
             self.ty.clone()
+        };
+        let use_type = if should_box {
+            format!("Box<{}>", use_type)
+        } else {
+            use_type
         };
         if !self.required {
             format!("Option<{}>", use_type)
@@ -184,17 +198,83 @@ pub fn add_or_insert_to_use_map(use_map_tracker: &mut HashMap<String, Vec<String
     }
 }
 
+pub fn emit_field_enum_variant(val: &String) -> (String, String) {
+    let mut val_renamed = "".to_string();
+    for (i, c) in val.chars().enumerate() {
+        if i == 0 {
+            if c.is_numeric() {
+                val_renamed.push('E');
+            }
+            val_renamed.push(c.to_ascii_uppercase());
+        } else {
+            if c == '-' || c == '_' || c == '.' || c == ' ' || c == '/' || c == '\\' || c == ')' || c == '(' || c == '[' || c == ']' || c == '{' || c == '}' || c == '@' || c == '$' || c == '!' || c == ':' || c == ';' || c == '=' || c == '%' || c == '"' || c == '\'' || c == '#' || c == '&' {
+                continue;
+            }
+            val_renamed.push(c.to_ascii_lowercase());
+        }
+    }
+    if val_renamed == "Self" {
+        val_renamed.insert(0, 'S');
+    }
+    let out = format!("
+    /// {val}
+    #[serde(rename = \"{val}\")]
+    {val_renamed},
+");
+    (val_renamed, out)
+}
+
+pub fn emit_field_enum(name: String, values: Vec<String>) -> String {
+    let mut first = "".to_string();
+    let mut variants = "".to_string();
+    for (i, v) in values.iter().enumerate() {
+        let (variant_name, code) = emit_field_enum_variant(v);
+        if i == 0 {
+            first = variant_name;
+        }
+        variants.push_str(&code);
+    }
+    format!("
+#[derive(Clone, Debug, serde::Serialize)]
+pub enum {name} {{
+{variants}
+}}
+
+impl Default for {name} {{
+    fn default() -> Self {{
+        {name}::{first}
+    }}
+}}
+")
+}
+
+impl Default for CfnField {
+    fn default() -> Self {
+        Self { name: Default::default(), required: Default::default(), ty: Default::default(), documentation: Default::default(), valid_values: Default::default() }
+    }
+}
+
+pub fn emit_field_enums(field_enums: HashMap<String, Vec<String>>) -> String {
+    let mut out = "".to_string();
+    for (name, values) in field_enums {
+        out.push_str(&emit_field_enum(name, values));
+    }
+    out
+}
+
 pub fn emit_struct(use_map_tracker: &mut HashMap<String, Vec<String>>, use_name: &str, s: &CfnStruct, is_entrypoint: bool) -> String {
     let mut fields = "".to_string();
+    let mut field_enums = HashMap::new();
     for f in s.fields.iter() {
         // add to the use tracker to say that
         // this current struct uses that other custom type
         if is_custom_type(&f.ty) {
             add_or_insert_to_use_map(use_map_tracker, s.name.clone(), f.ty.clone());
         }
-        fields.push_str(&emit_field(use_map_tracker, &s.name, f));
+        fields.push_str(&emit_field(&mut field_enums, use_map_tracker, &s.name, f));
     }
     let doc_comment = emit_doc_comments("", &s.documentation);
+    let field_enums = emit_field_enums(field_enums);
 
 format!("
 {doc_comment}
@@ -202,6 +282,8 @@ format!("
 pub struct {} {{
 {fields}
 }}
+
+{field_enums}
 ", use_name)
 }
 
@@ -221,6 +303,7 @@ pub fn emit_doc_comments(indent: &str, f: &String) -> String {
 }
 
 pub fn emit_field(
+    field_enums: &mut HashMap<String, Vec<String>>,
     use_map_tracker: &mut HashMap<String, Vec<String>>,
     owning_struct_name: &str,
     f: &CfnField
@@ -230,7 +313,7 @@ format!("
 {docs}
     #[serde(rename = \"{}\")]
     pub {}: {},
-", f.name, f.get_field_name(), f.get_type(owning_struct_name, use_map_tracker))
+", f.name, f.get_field_name(), f.get_type(field_enums, owning_struct_name, use_map_tracker))
 }
 
 pub fn emit_cargo_toml(base_path: &str, service_name: &String, extra_deps: &str) {
@@ -360,14 +443,66 @@ pub fn get_type_from_prop<T: PropertyLike>(prop: &T) -> String {
     }
 }
 
+pub fn parse_valid_values(doc: &str) -> Option<Vec<String>> {
+    // Valid Values: | Allowed values: | Allowed Values: | 
+    // ^ if found empty list, must ignore, and change type back to string (this means newline)
+    if let Some((_, right)) = doc.split_once("Valid Values:") {
+        return parse_valid_values_line(right);
+    }
+    // try Allowed values:
+    if let Some((_, right)) = doc.split_once("Allowed values:") {
+        return parse_valid_values_line(right);
+    }
+
+    // try Allowed Values:
+    if let Some((_, right)) = doc.split_once("Allowed Values:") {
+        return parse_valid_values_line(right);
+    }
+
+    None
+}
+
+pub fn trim_surrounding_quotes(s: &mut String) {
+    while s.starts_with('"') && s.ends_with('"') {
+        s.remove(0);
+        s.pop();
+    }
+}
+
+pub fn parse_valid_values_line(line: &str) -> Option<Vec<String>> {
+    let mut out = vec![];
+    if let Some((left, _)) = line.split_once("\n") {
+        let left = left.trim();
+        if left.is_empty() { return None; }
+
+        let pipe_split = left.split("|");
+        for word in pipe_split {
+            let mut valid_value = word.trim().to_string();
+            trim_surrounding_quotes(&mut valid_value);
+            out.push(valid_value);
+        }
+    }
+    if !out.is_empty() {
+        Some(out)
+    } else {
+        None
+    }
+}
+
 pub fn prop_to_cfn_field<T: PropertyLike>(name: &str, prop: &T) -> CfnField {
-    // l prop.primitive_type()
+    let doc = prop.doc().to_string();
     CfnField {
         name: name.to_string(),
         required: prop.required(),
         ty: get_type_from_prop(prop),
-        documentation: prop.doc().to_string(),
+        valid_values: parse_valid_values(&doc),
+        documentation: doc,
     }
+
+
+    // Maximum:
+    // Minimum:
+    // Pattern:
 }
 
 pub fn resource_type_to_cfn_struct<T: PropertyLike>(name: &str, doc: &str, props: &HashMap<String, T>) -> CfnStruct {
