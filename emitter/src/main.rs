@@ -103,7 +103,13 @@ impl CfnField {
                 self.ty.clone()
             }
         } else {
-            self.ty.clone()
+            // there are no valid_values, so check if this is a string,
+            // if so, use StrVal instead of String:
+            if self.ty == "String" {
+                "cfn_resources::StrVal".to_string()
+            } else {
+                self.ty.clone()
+            }
         };
         let use_type = if should_box {
             format!("Box<{}>", use_type)
@@ -307,7 +313,17 @@ pub fn add_check_for_max_or_min(out: &mut String, f: &CfnField, limit: f64, dire
         ("Min", "less")
     };
 
-    let inner = if f.ty.starts_with("Vec<") || f.ty == "String" {
+    let inner = if f.ty == "String" {
+        // if its a string, we actually represent it as StrVal, so we need to only apply
+        // this check if its a String underneath:
+        format!("
+        if let cfn_resources::StrVal::String(s) = &the_val {{
+            if s.len() {} {} as _ {{
+                return Err(format!(\"{} validation failed on field '{}'. {{}} is {} than {}\", s.len()));
+            }}
+        }}
+", direction, limit, validation_type, f.get_field_name(), word, limit)
+    } else if f.ty.starts_with("Vec<") {
         format!("
         if the_val.len() {} {} as _ {{
             return Err(format!(\"{} validation failed on field '{}'. {{}} is {} than {}\", the_val.len()));
