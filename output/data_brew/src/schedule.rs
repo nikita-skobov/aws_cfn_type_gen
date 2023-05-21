@@ -1,13 +1,9 @@
-
-
 /// Specifies a new schedule for one or more AWS Glue DataBrew jobs. Jobs can be       run at a specific date and time, or at regular intervals.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSchedule {
-
-
-    /// 
+    ///
     /// The dates and times when the job is to run. For more information, see Working with cron       expressions for recipe jobs in the         AWS Glue DataBrew Developer       Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnSchedule {
     #[serde(rename = "CronExpression")]
     pub cron_expression: String,
 
-
-    /// 
+    ///
     /// A list of jobs to be run, according to the schedule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -34,10 +29,9 @@ pub struct CfnSchedule {
     #[serde(rename = "JobNames")]
     pub job_names: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The name of the schedule.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -50,10 +44,9 @@ pub struct CfnSchedule {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Metadata tags that have been applied to the schedule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -61,10 +54,7 @@ pub struct CfnSchedule {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSchedule {
     fn type_string(&self) -> &'static str {
@@ -76,43 +66,51 @@ impl cfn_resources::CfnResource for CfnSchedule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.cron_expression;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'cron_expression'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'cron_expression'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.cron_expression;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'cron_expression'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'cron_expression'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.job_names {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'job_names'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'job_names'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -126,32 +124,26 @@ impl cfn_resources::CfnResource for CfnSchedule {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -163,7 +155,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

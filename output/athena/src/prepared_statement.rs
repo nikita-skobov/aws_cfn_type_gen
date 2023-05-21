@@ -1,13 +1,9 @@
-
-
 /// Specifies a prepared statement for use with SQL queries in Athena.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPreparedStatement {
-
-
-    /// 
+    ///
     /// The description of the prepared statement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnPreparedStatement {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The query string for the prepared statement.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnPreparedStatement {
     #[serde(rename = "QueryStatement")]
     pub query_statement: String,
 
-
-    /// 
+    ///
     /// The name of the prepared statement.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,10 +48,9 @@ pub struct CfnPreparedStatement {
     #[serde(rename = "StatementName")]
     pub statement_name: String,
 
-
-    /// 
+    ///
     /// The workgroup to which the prepared statement belongs.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -65,10 +58,7 @@ pub struct CfnPreparedStatement {
     /// Update requires: Replacement
     #[serde(rename = "WorkGroup")]
     pub work_group: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnPreparedStatement {
     fn type_string(&self) -> &'static str {
@@ -80,51 +70,60 @@ impl cfn_resources::CfnResource for CfnPreparedStatement {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.query_statement;
 
         if the_val.len() > 262144 as _ {
-            return Err(format!("Max validation failed on field 'query_statement'. {} is greater than 262144", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'query_statement'. {} is greater than 262144",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.query_statement;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'query_statement'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'query_statement'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.statement_name;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'statement_name'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'statement_name'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.statement_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'statement_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'statement_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

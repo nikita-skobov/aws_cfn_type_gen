@@ -1,15 +1,11 @@
-
-
 /// Describes a Network Access Scope. A Network Access Scope defines outbound (egress) and inbound (ingress)      traffic patterns, including sources, destinations, paths, and traffic types.
 ///
 /// Network Access Analyzer identifies unintended network access to your resources on       AWS. When you start an analysis on a Network Access Scope, Network     Access Analyzer produces findings. For more information, see the Network Access Analyzer       User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNetworkInsightsAccessScope {
-
-
-    /// 
+    ///
     /// The paths to exclude.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AccessScopePathRequest
@@ -18,10 +14,9 @@ pub struct CfnNetworkInsightsAccessScope {
     #[serde(rename = "ExcludePaths")]
     pub exclude_paths: Option<Vec<AccessScopePathRequest>>,
 
-
-    /// 
+    ///
     /// The paths to match.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AccessScopePathRequest
@@ -30,10 +25,9 @@ pub struct CfnNetworkInsightsAccessScope {
     #[serde(rename = "MatchPaths")]
     pub match_paths: Option<Vec<AccessScopePathRequest>>,
 
-
-    /// 
+    ///
     /// The tags.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -41,10 +35,7 @@ pub struct CfnNetworkInsightsAccessScope {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnNetworkInsightsAccessScope {
     fn type_string(&self) -> &'static str {
@@ -56,7 +47,6 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAccessScope {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -64,11 +54,9 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAccessScope {
 /// Describes a path.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccessScopePathRequest {
-
-
-    /// 
+    ///
     /// The destination.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PathStatementRequest
@@ -77,10 +65,9 @@ pub struct AccessScopePathRequest {
     #[serde(rename = "Destination")]
     pub destination: Option<PathStatementRequest>,
 
-
-    /// 
+    ///
     /// The source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PathStatementRequest
@@ -89,10 +76,9 @@ pub struct AccessScopePathRequest {
     #[serde(rename = "Source")]
     pub source: Option<PathStatementRequest>,
 
-
-    /// 
+    ///
     /// The through resources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ThroughResourcesStatementRequest
@@ -100,10 +86,7 @@ pub struct AccessScopePathRequest {
     /// Update requires: Replacement
     #[serde(rename = "ThroughResources")]
     pub through_resources: Option<Vec<ThroughResourcesStatementRequest>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AccessScopePathRequest {
     fn type_string(&self) -> &'static str {
@@ -115,8 +98,9 @@ impl cfn_resources::CfnResource for AccessScopePathRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.destination
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.source.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -127,11 +111,9 @@ impl cfn_resources::CfnResource for AccessScopePathRequest {
 /// Describes a packet header statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PacketHeaderStatementRequest {
-
-
-    /// 
+    ///
     /// The destination addresses.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -140,10 +122,9 @@ pub struct PacketHeaderStatementRequest {
     #[serde(rename = "DestinationAddresses")]
     pub destination_addresses: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The destination ports.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -152,10 +133,9 @@ pub struct PacketHeaderStatementRequest {
     #[serde(rename = "DestinationPorts")]
     pub destination_ports: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The destination prefix lists.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -164,10 +144,9 @@ pub struct PacketHeaderStatementRequest {
     #[serde(rename = "DestinationPrefixLists")]
     pub destination_prefix_lists: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The protocols.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -176,10 +155,9 @@ pub struct PacketHeaderStatementRequest {
     #[serde(rename = "Protocols")]
     pub protocols: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The source addresses.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -188,10 +166,9 @@ pub struct PacketHeaderStatementRequest {
     #[serde(rename = "SourceAddresses")]
     pub source_addresses: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The source ports.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -200,10 +177,9 @@ pub struct PacketHeaderStatementRequest {
     #[serde(rename = "SourcePorts")]
     pub source_ports: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The source prefix lists.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -211,10 +187,7 @@ pub struct PacketHeaderStatementRequest {
     /// Update requires: Replacement
     #[serde(rename = "SourcePrefixLists")]
     pub source_prefix_lists: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PacketHeaderStatementRequest {
     fn type_string(&self) -> &'static str {
@@ -226,7 +199,6 @@ impl cfn_resources::CfnResource for PacketHeaderStatementRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -234,11 +206,9 @@ impl cfn_resources::CfnResource for PacketHeaderStatementRequest {
 /// Describes a path statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PathStatementRequest {
-
-
-    /// 
+    ///
     /// The packet header statement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PacketHeaderStatementRequest
@@ -247,10 +217,9 @@ pub struct PathStatementRequest {
     #[serde(rename = "PacketHeaderStatement")]
     pub packet_header_statement: Option<PacketHeaderStatementRequest>,
 
-
-    /// 
+    ///
     /// The resource statement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ResourceStatementRequest
@@ -258,10 +227,7 @@ pub struct PathStatementRequest {
     /// Update requires: Replacement
     #[serde(rename = "ResourceStatement")]
     pub resource_statement: Option<ResourceStatementRequest>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PathStatementRequest {
     fn type_string(&self) -> &'static str {
@@ -273,10 +239,13 @@ impl cfn_resources::CfnResource for PathStatementRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.packet_header_statement
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.packet_header_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.resource_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.resource_statement
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -285,11 +254,9 @@ impl cfn_resources::CfnResource for PathStatementRequest {
 /// Describes a resource statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceStatementRequest {
-
-
-    /// 
+    ///
     /// The resource types.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -298,10 +265,9 @@ pub struct ResourceStatementRequest {
     #[serde(rename = "ResourceTypes")]
     pub resource_types: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The resources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -309,10 +275,7 @@ pub struct ResourceStatementRequest {
     /// Update requires: Replacement
     #[serde(rename = "Resources")]
     pub resources: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ResourceStatementRequest {
     fn type_string(&self) -> &'static str {
@@ -324,7 +287,6 @@ impl cfn_resources::CfnResource for ResourceStatementRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -338,32 +300,26 @@ impl cfn_resources::CfnResource for ResourceStatementRequest {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -375,7 +331,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -383,11 +338,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Describes a through resource statement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ThroughResourcesStatementRequest {
-
-
-    /// 
+    ///
     /// The resource statement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ResourceStatementRequest
@@ -395,10 +348,7 @@ pub struct ThroughResourcesStatementRequest {
     /// Update requires: Replacement
     #[serde(rename = "ResourceStatement")]
     pub resource_statement: Option<ResourceStatementRequest>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ThroughResourcesStatementRequest {
     fn type_string(&self) -> &'static str {
@@ -410,8 +360,9 @@ impl cfn_resources::CfnResource for ThroughResourcesStatementRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.resource_statement.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.resource_statement
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }

@@ -1,13 +1,9 @@
-
-
 /// The AWS::SageMaker::EndpointConfig resource creates a configuration       for an Amazon SageMaker endpoint. For more information, see CreateEndpointConfig       in the SageMaker Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEndpointConfig {
-
-
-    /// 
+    ///
     /// Specifies configuration for how an endpoint performs asynchronous inference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AsyncInferenceConfig
@@ -16,10 +12,9 @@ pub struct CfnEndpointConfig {
     #[serde(rename = "AsyncInferenceConfig")]
     pub async_inference_config: Option<AsyncInferenceConfig>,
 
-
-    /// 
+    ///
     /// Specifies how to capture endpoint data for model monitor. The data capture       configuration applies to all production variants hosted at the endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataCaptureConfig
@@ -28,10 +23,9 @@ pub struct CfnEndpointConfig {
     #[serde(rename = "DataCaptureConfig")]
     pub data_capture_config: Option<DataCaptureConfig>,
 
-
-    /// 
+    ///
     /// The name of the endpoint configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -44,7 +38,6 @@ pub struct CfnEndpointConfig {
     #[serde(rename = "EndpointConfigName")]
     pub endpoint_config_name: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -55,16 +48,15 @@ pub struct CfnEndpointConfig {
     #[serde(rename = "ExplainerConfig")]
     pub explainer_config: Option<ExplainerConfig>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an AWS Key Management Service key       that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML       compute instance that hosts the endpoint.
-    /// 
+    ///
     /// Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab               Key ARN:             arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab               Alias name: alias/ExampleAlias               Alias name ARN:             arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias
-    /// 
+    ///
     /// The KMS key policy must grant permission to the IAM role that you specify in your         CreateEndpoint, UpdateEndpoint requests. For more       information, refer to the AWS Key Management Service section Using Key         Policies in AWS KMS
-    /// 
+    ///
     /// NoteCertain Nitro-based instances include local storage, dependent on the instance         type. Local storage volumes are encrypted using a hardware module on the instance.         You can't request a KmsKeyId when using an instance type with local         storage. If any of the models that you specify in the           ProductionVariants parameter use nitro-based instances with local         storage, do not specify a value for the KmsKeyId parameter. If you         specify a value for KmsKeyId when using any nitro-based instances with         local storage, the call to CreateEndpointConfig fails.For a list of instance types that support local instance storage, see Instance Store Volumes.For more information about local instance storage encryption, see SSD           Instance Store Volumes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -77,10 +69,9 @@ pub struct CfnEndpointConfig {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// A list of ProductionVariant objects, one for each model that you want       to host at this endpoint.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ProductionVariant
@@ -91,10 +82,9 @@ pub struct CfnEndpointConfig {
     #[serde(rename = "ProductionVariants")]
     pub production_variants: Vec<ProductionVariant>,
 
-
-    /// 
+    ///
     /// Array of ProductionVariant objects. There is one for each model that you       want to host at this endpoint in shadow mode with production traffic replicated from the       model specified on ProductionVariants. If you use this field, you can only       specify one variant for ProductionVariants and one variant for         ShadowProductionVariants.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ProductionVariant
@@ -105,12 +95,11 @@ pub struct CfnEndpointConfig {
     #[serde(rename = "ShadowProductionVariants")]
     pub shadow_production_variants: Option<Vec<ProductionVariant>>,
 
-
-    /// 
+    ///
     /// A list of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Resource         Tag and Using         Cost Allocation Tags.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -120,10 +109,7 @@ pub struct CfnEndpointConfig {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnEndpointConfig {
     fn type_string(&self) -> &'static str {
@@ -135,52 +121,60 @@ impl cfn_resources::CfnResource for CfnEndpointConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.async_inference_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.async_inference_config.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.data_capture_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.data_capture_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.endpoint_config_name {
-
-        if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'endpoint_config_name'. {} is greater than 63", the_val.len()));
+            if the_val.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'endpoint_config_name'. {} is greater than 63",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.explainer_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.explainer_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.kms_key_id {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.production_variants;
 
         if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'production_variants'. {} is greater than 10", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'production_variants'. {} is greater than 10",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.shadow_production_variants {
-
-        if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'shadow_production_variants'. {} is greater than 10", the_val.len()));
+            if the_val.len() > 10 as _ {
+                return Err(format!("Max validation failed on field 'shadow_production_variants'. {} is greater than 10", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -188,11 +182,9 @@ impl cfn_resources::CfnResource for CfnEndpointConfig {
 /// Configures the behavior of the client used by SageMaker to interact with the model       container during asynchronous inference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AsyncInferenceClientConfig {
-
-
-    /// 
+    ///
     /// The maximum number of concurrent requests sent by the SageMaker client to the model       container. If no value is provided, SageMaker will choose an optimal value for       you.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -200,10 +192,7 @@ pub struct AsyncInferenceClientConfig {
     /// Update requires: Replacement
     #[serde(rename = "MaxConcurrentInvocationsPerInstance")]
     pub max_concurrent_invocations_per_instance: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AsyncInferenceClientConfig {
     fn type_string(&self) -> &'static str {
@@ -215,7 +204,6 @@ impl cfn_resources::CfnResource for AsyncInferenceClientConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -223,11 +211,9 @@ impl cfn_resources::CfnResource for AsyncInferenceClientConfig {
 /// Specifies configuration for how an endpoint performs asynchronous inference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AsyncInferenceConfig {
-
-
-    /// 
+    ///
     /// Configures the behavior of the client used by SageMaker to interact with the model       container during asynchronous inference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AsyncInferenceClientConfig
@@ -236,10 +222,9 @@ pub struct AsyncInferenceConfig {
     #[serde(rename = "ClientConfig")]
     pub client_config: Option<AsyncInferenceClientConfig>,
 
-
-    /// 
+    ///
     /// Specifies the configuration for asynchronous inference invocation outputs.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: AsyncInferenceOutputConfig
@@ -247,10 +232,7 @@ pub struct AsyncInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "OutputConfig")]
     pub output_config: AsyncInferenceOutputConfig,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AsyncInferenceConfig {
     fn type_string(&self) -> &'static str {
@@ -262,8 +244,9 @@ impl cfn_resources::CfnResource for AsyncInferenceConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.client_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.client_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.output_config.validate()?;
 
@@ -274,11 +257,9 @@ impl cfn_resources::CfnResource for AsyncInferenceConfig {
 /// Specifies the configuration for notifications of inference results for asynchronous       inference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AsyncInferenceNotificationConfig {
-
-
-    /// 
+    ///
     /// Amazon SNS topic to post a notification to when an inference fails. If no topic is       provided, no notification is sent on failure.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -286,7 +267,6 @@ pub struct AsyncInferenceNotificationConfig {
     /// Update requires: Replacement
     #[serde(rename = "ErrorTopic")]
     pub error_topic: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -298,10 +278,9 @@ pub struct AsyncInferenceNotificationConfig {
     #[serde(rename = "IncludeInferenceResponseIn")]
     pub include_inference_response_in: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Amazon SNS topic to post a notification to when an inference completes successfully.       If no topic is provided, no notification is sent on success.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -309,10 +288,7 @@ pub struct AsyncInferenceNotificationConfig {
     /// Update requires: Replacement
     #[serde(rename = "SuccessTopic")]
     pub success_topic: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AsyncInferenceNotificationConfig {
     fn type_string(&self) -> &'static str {
@@ -324,7 +300,6 @@ impl cfn_resources::CfnResource for AsyncInferenceNotificationConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -332,11 +307,9 @@ impl cfn_resources::CfnResource for AsyncInferenceNotificationConfig {
 /// Specifies the configuration for asynchronous inference invocation outputs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AsyncInferenceOutputConfig {
-
-
-    /// 
+    ///
     /// The AWS Key Management Service (AWS KMS) key that Amazon       SageMaker uses to encrypt the asynchronous inference output in Amazon S3.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -345,10 +318,9 @@ pub struct AsyncInferenceOutputConfig {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the configuration for notifications of inference results for asynchronous       inference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AsyncInferenceNotificationConfig
@@ -356,7 +328,6 @@ pub struct AsyncInferenceOutputConfig {
     /// Update requires: Replacement
     #[serde(rename = "NotificationConfig")]
     pub notification_config: Option<AsyncInferenceNotificationConfig>,
-
 
     /// Property description not available.
     ///
@@ -368,10 +339,9 @@ pub struct AsyncInferenceOutputConfig {
     #[serde(rename = "S3FailurePath")]
     pub s3_failure_path: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon S3 location to upload inference responses to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -379,10 +349,7 @@ pub struct AsyncInferenceOutputConfig {
     /// Update requires: Replacement
     #[serde(rename = "S3OutputPath")]
     pub s3_output_path: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AsyncInferenceOutputConfig {
     fn type_string(&self) -> &'static str {
@@ -394,8 +361,9 @@ impl cfn_resources::CfnResource for AsyncInferenceOutputConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.notification_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.notification_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -404,11 +372,9 @@ impl cfn_resources::CfnResource for AsyncInferenceOutputConfig {
 /// Specifies the JSON and CSV content types of the data that the endpoint       captures.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CaptureContentTypeHeader {
-
-
-    /// 
+    ///
     /// A list of the CSV content types of the data that the endpoint captures. For the       endpoint to capture the data, you must also specify the content type when you invoke the       endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -419,10 +385,9 @@ pub struct CaptureContentTypeHeader {
     #[serde(rename = "CsvContentTypes")]
     pub csv_content_types: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of the JSON content types of the data that the endpoint captures. For the       endpoint to capture the data, you must also specify the content type when you invoke the       endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -432,10 +397,7 @@ pub struct CaptureContentTypeHeader {
     /// Update requires: Replacement
     #[serde(rename = "JsonContentTypes")]
     pub json_content_types: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CaptureContentTypeHeader {
     fn type_string(&self) -> &'static str {
@@ -447,23 +409,24 @@ impl cfn_resources::CfnResource for CaptureContentTypeHeader {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.csv_content_types {
-
-        if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'csv_content_types'. {} is greater than 10", the_val.len()));
+            if the_val.len() > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'csv_content_types'. {} is greater than 10",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.json_content_types {
-
-        if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'json_content_types'. {} is greater than 10", the_val.len()));
+            if the_val.len() > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'json_content_types'. {} is greater than 10",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -471,11 +434,9 @@ impl cfn_resources::CfnResource for CaptureContentTypeHeader {
 /// Specifies whether the endpoint captures input data or output data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CaptureOption {
-
-
-    /// 
+    ///
     /// Specifies whether the endpoint captures input data or output data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -485,13 +446,10 @@ pub struct CaptureOption {
     /// Update requires: Replacement
     #[serde(rename = "CaptureMode")]
     pub capture_mode: CaptureOptionCaptureModeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CaptureOptionCaptureModeEnum {
-
     /// Input
     #[serde(rename = "Input")]
     Input,
@@ -499,7 +457,6 @@ pub enum CaptureOptionCaptureModeEnum {
     /// Output
     #[serde(rename = "Output")]
     Output,
-
 }
 
 impl Default for CaptureOptionCaptureModeEnum {
@@ -507,7 +464,6 @@ impl Default for CaptureOptionCaptureModeEnum {
         CaptureOptionCaptureModeEnum::Input
     }
 }
-
 
 impl cfn_resources::CfnResource for CaptureOption {
     fn type_string(&self) -> &'static str {
@@ -519,7 +475,6 @@ impl cfn_resources::CfnResource for CaptureOption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -527,8 +482,6 @@ impl cfn_resources::CfnResource for CaptureOption {
 /// The ClarifyExplainerConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClarifyExplainerConfig {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -538,7 +491,6 @@ pub struct ClarifyExplainerConfig {
     /// Update requires: Replacement
     #[serde(rename = "EnableExplanations")]
     pub enable_explanations: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -550,7 +502,6 @@ pub struct ClarifyExplainerConfig {
     #[serde(rename = "InferenceConfig")]
     pub inference_config: Option<ClarifyInferenceConfig>,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -560,10 +511,7 @@ pub struct ClarifyExplainerConfig {
     /// Update requires: Replacement
     #[serde(rename = "ShapConfig")]
     pub shap_config: ClarifyShapConfig,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClarifyExplainerConfig {
     fn type_string(&self) -> &'static str {
@@ -575,8 +523,9 @@ impl cfn_resources::CfnResource for ClarifyExplainerConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.inference_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.inference_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.shap_config.validate()?;
 
@@ -586,11 +535,7 @@ impl cfn_resources::CfnResource for ClarifyExplainerConfig {
 
 /// The ClarifyFeatureType property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ClarifyFeatureType {
-
-}
-
-
+pub struct ClarifyFeatureType {}
 
 impl cfn_resources::CfnResource for ClarifyFeatureType {
     fn type_string(&self) -> &'static str {
@@ -602,18 +547,13 @@ impl cfn_resources::CfnResource for ClarifyFeatureType {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
 
 /// The ClarifyHeader property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct ClarifyHeader {
-
-}
-
-
+pub struct ClarifyHeader {}
 
 impl cfn_resources::CfnResource for ClarifyHeader {
     fn type_string(&self) -> &'static str {
@@ -625,7 +565,6 @@ impl cfn_resources::CfnResource for ClarifyHeader {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -633,8 +572,6 @@ impl cfn_resources::CfnResource for ClarifyHeader {
 /// The ClarifyInferenceConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClarifyInferenceConfig {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -644,7 +581,6 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "ContentTemplate")]
     pub content_template: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -656,7 +592,6 @@ pub struct ClarifyInferenceConfig {
     #[serde(rename = "FeatureHeaders")]
     pub feature_headers: Option<Vec<ClarifyHeader>>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -666,7 +601,6 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "FeatureTypes")]
     pub feature_types: Option<Vec<ClarifyFeatureType>>,
-
 
     /// Property description not available.
     ///
@@ -678,7 +612,6 @@ pub struct ClarifyInferenceConfig {
     #[serde(rename = "FeaturesAttribute")]
     pub features_attribute: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -688,7 +621,6 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "LabelAttribute")]
     pub label_attribute: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -700,7 +632,6 @@ pub struct ClarifyInferenceConfig {
     #[serde(rename = "LabelHeaders")]
     pub label_headers: Option<Vec<ClarifyHeader>>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -710,7 +641,6 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "LabelIndex")]
     pub label_index: Option<i64>,
-
 
     /// Property description not available.
     ///
@@ -722,7 +652,6 @@ pub struct ClarifyInferenceConfig {
     #[serde(rename = "MaxPayloadInMB")]
     pub max_payload_in_mb: Option<i64>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -732,7 +661,6 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "MaxRecordCount")]
     pub max_record_count: Option<i64>,
-
 
     /// Property description not available.
     ///
@@ -744,7 +672,6 @@ pub struct ClarifyInferenceConfig {
     #[serde(rename = "ProbabilityAttribute")]
     pub probability_attribute: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -754,10 +681,7 @@ pub struct ClarifyInferenceConfig {
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityIndex")]
     pub probability_index: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClarifyInferenceConfig {
     fn type_string(&self) -> &'static str {
@@ -769,7 +693,6 @@ impl cfn_resources::CfnResource for ClarifyInferenceConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -777,8 +700,6 @@ impl cfn_resources::CfnResource for ClarifyInferenceConfig {
 /// The ClarifyShapBaselineConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClarifyShapBaselineConfig {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -788,7 +709,6 @@ pub struct ClarifyShapBaselineConfig {
     /// Update requires: Replacement
     #[serde(rename = "MimeType")]
     pub mime_type: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -800,7 +720,6 @@ pub struct ClarifyShapBaselineConfig {
     #[serde(rename = "ShapBaseline")]
     pub shap_baseline: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -810,10 +729,7 @@ pub struct ClarifyShapBaselineConfig {
     /// Update requires: Replacement
     #[serde(rename = "ShapBaselineUri")]
     pub shap_baseline_uri: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClarifyShapBaselineConfig {
     fn type_string(&self) -> &'static str {
@@ -825,7 +741,6 @@ impl cfn_resources::CfnResource for ClarifyShapBaselineConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -833,8 +748,6 @@ impl cfn_resources::CfnResource for ClarifyShapBaselineConfig {
 /// The ClarifyShapConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClarifyShapConfig {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -844,7 +757,6 @@ pub struct ClarifyShapConfig {
     /// Update requires: Replacement
     #[serde(rename = "NumberOfSamples")]
     pub number_of_samples: Option<i64>,
-
 
     /// Property description not available.
     ///
@@ -856,7 +768,6 @@ pub struct ClarifyShapConfig {
     #[serde(rename = "Seed")]
     pub seed: Option<i64>,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -866,7 +777,6 @@ pub struct ClarifyShapConfig {
     /// Update requires: Replacement
     #[serde(rename = "ShapBaselineConfig")]
     pub shap_baseline_config: ClarifyShapBaselineConfig,
-
 
     /// Property description not available.
     ///
@@ -878,7 +788,6 @@ pub struct ClarifyShapConfig {
     #[serde(rename = "TextConfig")]
     pub text_config: Option<ClarifyTextConfig>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -888,10 +797,7 @@ pub struct ClarifyShapConfig {
     /// Update requires: Replacement
     #[serde(rename = "UseLogit")]
     pub use_logit: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClarifyShapConfig {
     fn type_string(&self) -> &'static str {
@@ -903,10 +809,11 @@ impl cfn_resources::CfnResource for ClarifyShapConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.shap_baseline_config.validate()?;
 
-        self.text_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.text_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -915,8 +822,6 @@ impl cfn_resources::CfnResource for ClarifyShapConfig {
 /// The ClarifyTextConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClarifyTextConfig {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -927,7 +832,6 @@ pub struct ClarifyTextConfig {
     #[serde(rename = "Granularity")]
     pub granularity: String,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -937,10 +841,7 @@ pub struct ClarifyTextConfig {
     /// Update requires: Replacement
     #[serde(rename = "Language")]
     pub language: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClarifyTextConfig {
     fn type_string(&self) -> &'static str {
@@ -952,7 +853,6 @@ impl cfn_resources::CfnResource for ClarifyTextConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -960,11 +860,9 @@ impl cfn_resources::CfnResource for ClarifyTextConfig {
 /// Specifies the configuration of your endpoint for model monitor data capture.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataCaptureConfig {
-
-
-    /// 
+    ///
     /// A list of the JSON and CSV content type that the endpoint captures.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CaptureContentTypeHeader
@@ -973,10 +871,9 @@ pub struct DataCaptureConfig {
     #[serde(rename = "CaptureContentTypeHeader")]
     pub capture_content_type_header: Option<CaptureContentTypeHeader>,
 
-
-    /// 
+    ///
     /// Specifies whether the endpoint captures input data to your model, output data from       your model, or both.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of CaptureOption
@@ -987,10 +884,9 @@ pub struct DataCaptureConfig {
     #[serde(rename = "CaptureOptions")]
     pub capture_options: Vec<CaptureOption>,
 
-
-    /// 
+    ///
     /// The S3 bucket where model monitor stores captured data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1003,10 +899,9 @@ pub struct DataCaptureConfig {
     #[serde(rename = "DestinationS3Uri")]
     pub destination_s3_uri: String,
 
-
-    /// 
+    ///
     /// Set to True to enable data capture.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -1015,10 +910,9 @@ pub struct DataCaptureConfig {
     #[serde(rename = "EnableCapture")]
     pub enable_capture: Option<bool>,
 
-
-    /// 
+    ///
     /// The percentage of data to capture.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1031,10 +925,9 @@ pub struct DataCaptureConfig {
     #[serde(rename = "InitialSamplingPercentage")]
     pub initial_sampling_percentage: i64,
 
-
-    /// 
+    ///
     /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt the captured data at rest using Amazon S3 server-side       encryption. The KmsKeyId can be any of the following formats: Key ID:       1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:       arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab Alias name:       alias/ExampleAlias Alias name ARN: arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias       If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon       S3 for your role's account. For more information, see KMS-Managed Encryption Keys       (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html) in the Amazon       Simple Storage Service Developer Guide. The KMS key policy must grant permission to the       IAM role that you specify in your CreateModel       (https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html)       request. For more information, see Using Key Policies in AWS KMS       (http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) in the AWS Key Management Service Developer Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1046,10 +939,7 @@ pub struct DataCaptureConfig {
     /// Update requires: Replacement
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataCaptureConfig {
     fn type_string(&self) -> &'static str {
@@ -1061,45 +951,52 @@ impl cfn_resources::CfnResource for DataCaptureConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.capture_content_type_header.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.capture_content_type_header
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.capture_options;
 
         if the_val.len() > 2 as _ {
-            return Err(format!("Max validation failed on field 'capture_options'. {} is greater than 2", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'capture_options'. {} is greater than 2",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.destination_s3_uri;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'destination_s3_uri'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'destination_s3_uri'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.initial_sampling_percentage;
 
         if *the_val > 100 as _ {
             return Err(format!("Max validation failed on field 'initial_sampling_percentage'. {} is greater than 100", the_val));
         }
 
-        
         let the_val = &self.initial_sampling_percentage;
 
         if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'initial_sampling_percentage'. {} is less than 0", the_val));
+            return Err(format!(
+                "Min validation failed on field 'initial_sampling_percentage'. {} is less than 0",
+                the_val
+            ));
         }
 
-        
         if let Some(the_val) = &self.kms_key_id {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -1107,8 +1004,6 @@ impl cfn_resources::CfnResource for DataCaptureConfig {
 /// The ExplainerConfig property type specifies Property description not available. for an AWS::SageMaker::EndpointConfig.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ExplainerConfig {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -1118,10 +1013,7 @@ pub struct ExplainerConfig {
     /// Update requires: Replacement
     #[serde(rename = "ClarifyExplainerConfig")]
     pub clarify_explainer_config: Option<ClarifyExplainerConfig>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ExplainerConfig {
     fn type_string(&self) -> &'static str {
@@ -1133,8 +1025,9 @@ impl cfn_resources::CfnResource for ExplainerConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.clarify_explainer_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.clarify_explainer_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1143,11 +1036,9 @@ impl cfn_resources::CfnResource for ExplainerConfig {
 /// Specifies a model that you want to host and the resources to deploy for hosting it.       If you are deploying multiple models, tell Amazon SageMaker how to distribute traffic       among the models by specifying the InitialVariantWeight objects.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProductionVariant {
-
-
-    /// 
+    ///
     /// The size of the Elastic Inference (EI) instance to use for the production variant. EI       instances provide on-demand GPU computing for inference. For more information, see         Using Elastic         Inference in Amazon SageMaker. For more information, see Using Elastic Inference in         Amazon SageMaker.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1157,7 +1048,6 @@ pub struct ProductionVariant {
     /// Update requires: Replacement
     #[serde(rename = "AcceleratorType")]
     pub accelerator_type: Option<ProductionVariantAcceleratorTypeEnum>,
-
 
     /// Property description not available.
     ///
@@ -1169,7 +1059,6 @@ pub struct ProductionVariant {
     #[serde(rename = "ContainerStartupHealthCheckTimeoutInSeconds")]
     pub container_startup_health_check_timeout_in_seconds: Option<i64>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -1180,10 +1069,9 @@ pub struct ProductionVariant {
     #[serde(rename = "EnableSSMAccess")]
     pub enable_ssmaccess: Option<bool>,
 
-
-    /// 
+    ///
     /// Number of instances to launch initially.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1194,10 +1082,9 @@ pub struct ProductionVariant {
     #[serde(rename = "InitialInstanceCount")]
     pub initial_instance_count: Option<i64>,
 
-
-    /// 
+    ///
     /// Determines initial traffic distribution among all of the models that you specify in       the endpoint configuration. The traffic to a production variant is determined by the       ratio of the VariantWeight to the sum of all VariantWeight       values across all ProductionVariants. If unspecified, it defaults to 1.0.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Double
@@ -1206,10 +1093,9 @@ pub struct ProductionVariant {
     #[serde(rename = "InitialVariantWeight")]
     pub initial_variant_weight: f64,
 
-
-    /// 
+    ///
     /// The ML compute instance type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1219,7 +1105,6 @@ pub struct ProductionVariant {
     /// Update requires: Replacement
     #[serde(rename = "InstanceType")]
     pub instance_type: Option<ProductionVariantInstanceTypeEnum>,
-
 
     /// Property description not available.
     ///
@@ -1231,10 +1116,9 @@ pub struct ProductionVariant {
     #[serde(rename = "ModelDataDownloadTimeoutInSeconds")]
     pub model_data_download_timeout_in_seconds: Option<i64>,
 
-
-    /// 
+    ///
     /// The name of the model that you want to host. This is the name that you specified       when creating the model.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1247,10 +1131,9 @@ pub struct ProductionVariant {
     #[serde(rename = "ModelName")]
     pub model_name: String,
 
-
-    /// 
+    ///
     /// The serverless configuration for an endpoint. Specifies a serverless endpoint configuration instead of an instance-based endpoint configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ServerlessConfig
@@ -1259,10 +1142,9 @@ pub struct ProductionVariant {
     #[serde(rename = "ServerlessConfig")]
     pub serverless_config: Option<ServerlessConfig>,
 
-
-    /// 
+    ///
     /// The name of the production variant.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1275,7 +1157,6 @@ pub struct ProductionVariant {
     #[serde(rename = "VariantName")]
     pub variant_name: String,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -1285,13 +1166,10 @@ pub struct ProductionVariant {
     /// Update requires: Replacement
     #[serde(rename = "VolumeSizeInGB")]
     pub volume_size_in_gb: Option<i64>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ProductionVariantAcceleratorTypeEnum {
-
     /// ml.eia1.large
     #[serde(rename = "ml.eia1.large")]
     Mleia1large,
@@ -1315,7 +1193,6 @@ pub enum ProductionVariantAcceleratorTypeEnum {
     /// ml.eia2.xlarge
     #[serde(rename = "ml.eia2.xlarge")]
     Mleia2xlarge,
-
 }
 
 impl Default for ProductionVariantAcceleratorTypeEnum {
@@ -1326,7 +1203,6 @@ impl Default for ProductionVariantAcceleratorTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ProductionVariantInstanceTypeEnum {
-
     /// ml.c4.2xlarge
     #[serde(rename = "ml.c4.2xlarge")]
     Mlc42xlarge,
@@ -1914,7 +1790,6 @@ pub enum ProductionVariantInstanceTypeEnum {
     /// ml.trn1.32xlarge
     #[serde(rename = "ml.trn1.32xlarge")]
     Mltrn132xlarge,
-
 }
 
 impl Default for ProductionVariantInstanceTypeEnum {
@@ -1922,7 +1797,6 @@ impl Default for ProductionVariantInstanceTypeEnum {
         ProductionVariantInstanceTypeEnum::Mlc42xlarge
     }
 }
-
 
 impl cfn_resources::CfnResource for ProductionVariant {
     fn type_string(&self) -> &'static str {
@@ -1934,31 +1808,37 @@ impl cfn_resources::CfnResource for ProductionVariant {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.initial_instance_count {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'initial_instance_count'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'initial_instance_count'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.model_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'model_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'model_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
-        self.serverless_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.serverless_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.variant_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'variant_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'variant_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1966,11 +1846,9 @@ impl cfn_resources::CfnResource for ProductionVariant {
 /// Specifies the serverless configuration for an endpoint variant.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServerlessConfig {
-
-
-    /// 
+    ///
     /// The maximum number of concurrent invocations your serverless endpoint can process.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1983,10 +1861,9 @@ pub struct ServerlessConfig {
     #[serde(rename = "MaxConcurrency")]
     pub max_concurrency: i64,
 
-
-    /// 
+    ///
     /// The memory size of your serverless endpoint. Valid values are in 1 GB increments: 1024 MB, 2048 MB, 3072 MB, 4096 MB, 5120 MB, or 6144 MB.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1999,7 +1876,6 @@ pub struct ServerlessConfig {
     #[serde(rename = "MemorySizeInMB")]
     pub memory_size_in_mb: i64,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -2009,10 +1885,7 @@ pub struct ServerlessConfig {
     /// Update requires: Replacement
     #[serde(rename = "ProvisionedConcurrency")]
     pub provisioned_concurrency: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServerlessConfig {
     fn type_string(&self) -> &'static str {
@@ -2024,35 +1897,42 @@ impl cfn_resources::CfnResource for ServerlessConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.max_concurrency;
 
         if *the_val > 200 as _ {
-            return Err(format!("Max validation failed on field 'max_concurrency'. {} is greater than 200", the_val));
+            return Err(format!(
+                "Max validation failed on field 'max_concurrency'. {} is greater than 200",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.max_concurrency;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'max_concurrency'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'max_concurrency'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.memory_size_in_mb;
 
         if *the_val > 6144 as _ {
-            return Err(format!("Max validation failed on field 'memory_size_in_mb'. {} is greater than 6144", the_val));
+            return Err(format!(
+                "Max validation failed on field 'memory_size_in_mb'. {} is greater than 6144",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.memory_size_in_mb;
 
         if *the_val < 1024 as _ {
-            return Err(format!("Min validation failed on field 'memory_size_in_mb'. {} is less than 1024", the_val));
+            return Err(format!(
+                "Min validation failed on field 'memory_size_in_mb'. {} is less than 1024",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -2066,32 +1946,26 @@ impl cfn_resources::CfnResource for ServerlessConfig {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -2103,7 +1977,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

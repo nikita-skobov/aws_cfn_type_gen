@@ -1,5 +1,3 @@
-
-
 /// Specifies a security group. To create a security group, use the VpcId property to specify the VPC for which to create the security     group.
 ///
 /// If you do not specify an egress rule, we add egress rules that allow IPv4      and IPv6 traffic on all ports and protocols to any destination. We do not add     these rules if you specify your own egress rules. If you later remove your      egress rules, we restore the default egress rules.
@@ -7,15 +5,13 @@
 /// This type supports updates. For more information about updating stacks, see AWS CloudFormation Stacks Updates.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSecurityGroup {
-
-
-    /// 
+    ///
     /// A description for the security group.
-    /// 
+    ///
     /// Constraints: Up to 255 characters in length
-    /// 
+    ///
     /// Valid characters: a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -24,14 +20,13 @@ pub struct CfnSecurityGroup {
     #[serde(rename = "GroupDescription")]
     pub group_description: String,
 
-
-    /// 
+    ///
     /// The name of the security group.
-    /// 
+    ///
     /// Constraints: Up to 255 characters in length. Cannot start with sg-.
-    /// 
+    ///
     /// Valid characters: a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,10 +35,9 @@ pub struct CfnSecurityGroup {
     #[serde(rename = "GroupName")]
     pub group_name: Option<String>,
 
-
-    /// 
+    ///
     /// The outbound rules associated with the security group. There is a short     interruption during which you cannot connect to the security group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Egress
@@ -52,10 +46,9 @@ pub struct CfnSecurityGroup {
     #[serde(rename = "SecurityGroupEgress")]
     pub security_group_egress: Option<Vec<Egress>>,
 
-
-    /// 
+    ///
     /// The inbound rules associated with the security group. There is a short interruption     during which you cannot connect to the security group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Ingress
@@ -64,10 +57,9 @@ pub struct CfnSecurityGroup {
     #[serde(rename = "SecurityGroupIngress")]
     pub security_group_ingress: Option<Vec<Ingress>>,
 
-
-    /// 
+    ///
     /// Any tags assigned to the security group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -76,10 +68,9 @@ pub struct CfnSecurityGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the VPC for the security group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -87,10 +78,7 @@ pub struct CfnSecurityGroup {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSecurityGroup {
     fn type_string(&self) -> &'static str {
@@ -102,7 +90,6 @@ impl cfn_resources::CfnResource for CfnSecurityGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -126,15 +113,13 @@ impl cfn_resources::CfnResource for CfnSecurityGroup {
 /// The EC2 Security Group Rule is an embedded property of the       AWS::EC2::SecurityGroup type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Egress {
-
-
-    /// 
+    ///
     /// The IPv4 address range, in CIDR format.
-    /// 
+    ///
     /// You must specify a destination security group (DestinationPrefixListId or       DestinationSecurityGroupId) or a CIDR range (CidrIp or       CidrIpv6).
-    /// 
+    ///
     /// For examples of rules that you can add to security groups for specific access scenarios,     see Security group rules       for different use cases in the Amazon EC2 User       Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -143,14 +128,13 @@ pub struct Egress {
     #[serde(rename = "CidrIp")]
     pub cidr_ip: Option<String>,
 
-
-    /// 
+    ///
     /// The IPv6 address range, in CIDR format.
-    /// 
+    ///
     /// You must specify a destination security group (DestinationPrefixListId or       DestinationSecurityGroupId) or a CIDR range (CidrIp or       CidrIpv6).
-    /// 
+    ///
     /// For examples of rules that you can add to security groups for specific access scenarios,     see Security group rules       for different use cases in the Amazon EC2 User       Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -159,12 +143,11 @@ pub struct Egress {
     #[serde(rename = "CidrIpv6")]
     pub cidr_ipv6: Option<String>,
 
-
-    /// 
+    ///
     /// A description for the security group rule.
-    /// 
+    ///
     /// Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9,     spaces, and ._-:/()#,@[]+=;{}!$*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -173,12 +156,11 @@ pub struct Egress {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The prefix list IDs for the destination AWS service.     This is the AWS service that you want to access through a VPC endpoint     from instances associated with the security group.
-    /// 
+    ///
     /// You must specify a destination security group (DestinationPrefixListId or     DestinationSecurityGroupId) or a CIDR range (CidrIp or     CidrIpv6).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -187,12 +169,11 @@ pub struct Egress {
     #[serde(rename = "DestinationPrefixListId")]
     pub destination_prefix_list_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the destination VPC security group.
-    /// 
+    ///
     /// You must specify a destination security group (DestinationPrefixListId or       DestinationSecurityGroupId) or a CIDR range (CidrIp or       CidrIpv6).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -201,10 +182,9 @@ pub struct Egress {
     #[serde(rename = "DestinationSecurityGroupId")]
     pub destination_security_group_id: Option<String>,
 
-
-    /// 
+    ///
     /// If the protocol is TCP or UDP, this is the start of the port range.     If the protocol is ICMP or ICMPv6, this is the type number. A value of -1 indicates all ICMP/ICMPv6 types.     If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -213,12 +193,11 @@ pub struct Egress {
     #[serde(rename = "FromPort")]
     pub from_port: Option<i64>,
 
-
-    /// 
+    ///
     /// The IP protocol name (tcp, udp, icmp, icmpv6)     or number (see Protocol Numbers).
-    /// 
+    ///
     /// Use -1 to specify all protocols. When authorizing     security group rules, specifying -1 or a protocol number other than     tcp, udp, icmp, or icmpv6 allows     traffic on all ports, regardless of any port range you specify. For tcp,     udp, and icmp, you must specify a port range. For icmpv6,     the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -227,10 +206,9 @@ pub struct Egress {
     #[serde(rename = "IpProtocol")]
     pub ip_protocol: String,
 
-
-    /// 
+    ///
     /// If the protocol is TCP or UDP, this is the end of the port range.      If the protocol is ICMP or ICMPv6, this is the code. A value of -1 indicates all ICMP/ICMPv6 codes.      If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -238,10 +216,7 @@ pub struct Egress {
     /// Update requires: No interruption
     #[serde(rename = "ToPort")]
     pub to_port: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Egress {
     fn type_string(&self) -> &'static str {
@@ -253,7 +228,6 @@ impl cfn_resources::CfnResource for Egress {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -277,15 +251,13 @@ impl cfn_resources::CfnResource for Egress {
 /// The EC2 Security Group Rule is an embedded property of the       AWS::EC2::SecurityGroup type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Ingress {
-
-
-    /// 
+    ///
     /// The IPv4 address range, in CIDR format.
-    /// 
+    ///
     /// You must specify a destination security group (DestinationPrefixListId or       DestinationSecurityGroupId) or a CIDR range (CidrIp or       CidrIpv6).
-    /// 
+    ///
     /// For examples of rules that you can add to security groups for specific access scenarios,     see Security group rules       for different use cases in the Amazon EC2 User       Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -294,14 +266,13 @@ pub struct Ingress {
     #[serde(rename = "CidrIp")]
     pub cidr_ip: Option<String>,
 
-
-    /// 
+    ///
     /// The IPv6 address range, in CIDR format.
-    /// 
+    ///
     /// You must specify a destination security group (DestinationPrefixListId or       DestinationSecurityGroupId) or a CIDR range (CidrIp or       CidrIpv6).
-    /// 
+    ///
     /// For examples of rules that you can add to security groups for specific access scenarios,     see Security group rules       for different use cases in the Amazon EC2 User       Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -310,12 +281,11 @@ pub struct Ingress {
     #[serde(rename = "CidrIpv6")]
     pub cidr_ipv6: Option<String>,
 
-
-    /// 
+    ///
     /// A description for the security group rule.
-    /// 
+    ///
     /// Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9,     spaces, and ._-:/()#,@[]+=;{}!$*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -324,10 +294,9 @@ pub struct Ingress {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// If the protocol is TCP or UDP, this is the start of the port range.     If the protocol is ICMP or ICMPv6, this is the type number. A value of -1 indicates all ICMP/ICMPv6 types.     If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -336,12 +305,11 @@ pub struct Ingress {
     #[serde(rename = "FromPort")]
     pub from_port: Option<i64>,
 
-
-    /// 
+    ///
     /// The IP protocol name (tcp, udp, icmp, icmpv6)     or number (see Protocol Numbers).
-    /// 
+    ///
     /// Use -1 to specify all protocols. When authorizing     security group rules, specifying -1 or a protocol number other than     tcp, udp, icmp, or icmpv6 allows     traffic on all ports, regardless of any port range you specify. For tcp,     udp, and icmp, you must specify a port range. For icmpv6,     the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -350,10 +318,9 @@ pub struct Ingress {
     #[serde(rename = "IpProtocol")]
     pub ip_protocol: String,
 
-
-    /// 
+    ///
     /// The ID of a prefix list.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -362,25 +329,21 @@ pub struct Ingress {
     #[serde(rename = "SourcePrefixListId")]
     pub source_prefix_list_id: Option<String>,
 
-
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupid
     #[serde(rename = "SourceSecurityGroupId")]
     pub source_security_group_id: Option<String>,
-
 
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupname
     #[serde(rename = "SourceSecurityGroupName")]
     pub source_security_group_name: Option<String>,
 
-
     /// Failed to resolve https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html#cfn-ec2-security-group-rule-sourcesecuritygroupownerid
     #[serde(rename = "SourceSecurityGroupOwnerId")]
     pub source_security_group_owner_id: Option<String>,
 
-
-    /// 
+    ///
     /// If the protocol is TCP or UDP, this is the end of the port range.      If the protocol is ICMP or ICMPv6, this is the code. A value of -1 indicates all ICMP/ICMPv6 codes.      If you specify all ICMP/ICMPv6 types, you must specify all ICMP/ICMPv6 codes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -388,10 +351,7 @@ pub struct Ingress {
     /// Update requires: No interruption
     #[serde(rename = "ToPort")]
     pub to_port: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Ingress {
     fn type_string(&self) -> &'static str {
@@ -403,7 +363,6 @@ impl cfn_resources::CfnResource for Ingress {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -417,32 +376,26 @@ impl cfn_resources::CfnResource for Ingress {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -454,7 +407,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

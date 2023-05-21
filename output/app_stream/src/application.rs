@@ -1,10 +1,6 @@
-
-
 /// This resource creates an application. Applications store the details about how to launch applications on streaming instances. This is only supported for Elastic fleets.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
-
-
     /// The app block ARN with which the application should be associated.
     ///
     /// Required: Yes
@@ -17,7 +13,6 @@ pub struct CfnApplication {
     #[serde(rename = "AppBlockArn")]
     pub app_block_arn: String,
 
-
     /// A list of attributes to delete from an application.
     ///
     /// Required: No
@@ -27,7 +22,6 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "AttributesToDelete")]
     pub attributes_to_delete: Option<Vec<String>>,
-
 
     /// The description of the application.
     ///
@@ -41,7 +35,6 @@ pub struct CfnApplication {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
     /// The display name of the application. This name is visible to users in the application catalog.
     ///
     /// Required: No
@@ -54,7 +47,6 @@ pub struct CfnApplication {
     #[serde(rename = "DisplayName")]
     pub display_name: Option<String>,
 
-
     /// The icon S3 location of the application.
     ///
     /// Required: Yes
@@ -64,7 +56,6 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "IconS3Location")]
     pub icon_s3_location: S3Location,
-
 
     /// The instance families the application supports.
     ///
@@ -78,7 +69,6 @@ pub struct CfnApplication {
     #[serde(rename = "InstanceFamilies")]
     pub instance_families: Vec<String>,
 
-
     /// The launch parameters of the application.
     ///
     /// Required: No
@@ -91,7 +81,6 @@ pub struct CfnApplication {
     #[serde(rename = "LaunchParameters")]
     pub launch_parameters: Option<String>,
 
-
     /// The launch path of the application.
     ///
     /// Required: Yes
@@ -103,7 +92,6 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "LaunchPath")]
     pub launch_path: String,
-
 
     /// The name of the application. This name is visible to users when a name is not specified in the     DisplayName property.
     ///
@@ -119,9 +107,8 @@ pub struct CfnApplication {
     #[serde(rename = "Name")]
     pub name: String,
 
-
     /// The platforms the application supports.
-    /// 
+    ///
     /// Allowed Values: WINDOWS_SERVER_2019 | AMAZON_LINUX2
     ///
     /// Required: Yes
@@ -134,7 +121,6 @@ pub struct CfnApplication {
     #[serde(rename = "Platforms")]
     pub platforms: Vec<String>,
 
-
     /// The tags of the application.
     ///
     /// Required: No
@@ -144,7 +130,6 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 
     /// The working directory of the application.
     ///
@@ -157,10 +142,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "WorkingDirectory")]
     pub working_directory: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string(&self) -> &'static str {
@@ -172,55 +154,62 @@ impl cfn_resources::CfnResource for CfnApplication {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.display_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'display_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'display_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         self.icon_s3_location.validate()?;
 
         if let Some(the_val) = &self.launch_parameters {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'launch_parameters'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'launch_parameters'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.launch_path;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'launch_path'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'launch_path'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.working_directory {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'working_directory'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'working_directory'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -228,11 +217,9 @@ impl cfn_resources::CfnResource for CfnApplication {
 /// The S3 location of the application icon.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Location {
-
-
-    /// 
+    ///
     /// The S3 bucket of the S3 object.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -241,10 +228,9 @@ pub struct S3Location {
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
 
-
-    /// 
+    ///
     /// The S3 key of the S3 object.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -252,10 +238,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
     pub s3_key: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3Location {
     fn type_string(&self) -> &'static str {
@@ -267,7 +250,6 @@ impl cfn_resources::CfnResource for S3Location {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -281,32 +263,26 @@ impl cfn_resources::CfnResource for S3Location {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -318,7 +294,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

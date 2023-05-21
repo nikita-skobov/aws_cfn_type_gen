@@ -1,23 +1,19 @@
-
-
 /// The AWS::RDS::DBClusterParameterGroup resource creates a new Amazon RDS       DB cluster parameter group.
 ///
 /// For information about configuring parameters for Amazon Aurora DB clusters, see       Working with parameter         groups in the Amazon Aurora User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBClusterParameterGroup {
-
-
-    /// 
+    ///
     /// The name of the DB cluster parameter group.
-    /// 
+    ///
     /// Constraints:
-    /// 
+    ///
     /// Must not match the name of an existing DB cluster parameter group.
-    /// 
+    ///
     /// If you don't specify a value for DBClusterParameterGroupName property, a name is automatically created for the DB cluster parameter group.
-    /// 
+    ///
     /// NoteThis value is stored as a lowercase string.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -26,10 +22,9 @@ pub struct CfnDBClusterParameterGroup {
     #[serde(rename = "DBClusterParameterGroupName")]
     pub dbcluster_parameter_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// A friendly description for this DB cluster parameter group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -38,20 +33,19 @@ pub struct CfnDBClusterParameterGroup {
     #[serde(rename = "Description")]
     pub description: String,
 
-
-    /// 
+    ///
     /// The DB cluster parameter group family name. A DB cluster parameter group can be       associated with one and only one DB cluster parameter group family, and can be applied       only to a DB cluster running a DB engine and engine version compatible with that DB       cluster parameter group family.
-    /// 
+    ///
     /// NoteThe DB cluster parameter group family can't be changed when updating a DB cluster         parameter group.
-    /// 
+    ///
     /// To list all of the available parameter group families, use the following       command:
-    /// 
+    ///
     /// aws rds describe-db-engine-versions --query         "DBEngineVersions[].DBParameterGroupFamily"
-    /// 
+    ///
     /// The output contains duplicates.
-    /// 
+    ///
     /// For more information, see CreateDBClusterParameterGroup.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -60,10 +54,9 @@ pub struct CfnDBClusterParameterGroup {
     #[serde(rename = "Family")]
     pub family: String,
 
-
-    /// 
+    ///
     /// Provides a list of parameters for the DB cluster parameter group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Json
@@ -72,10 +65,9 @@ pub struct CfnDBClusterParameterGroup {
     #[serde(rename = "Parameters")]
     pub parameters: serde_json::Value,
 
-
-    /// 
+    ///
     /// An optional array of key-value pairs to apply to this DB cluster parameter group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -83,10 +75,7 @@ pub struct CfnDBClusterParameterGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDBClusterParameterGroup {
     fn type_string(&self) -> &'static str {
@@ -98,7 +87,6 @@ impl cfn_resources::CfnResource for CfnDBClusterParameterGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -112,32 +100,26 @@ impl cfn_resources::CfnResource for CfnDBClusterParameterGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -149,7 +131,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

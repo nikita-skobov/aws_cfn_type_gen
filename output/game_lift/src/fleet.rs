@@ -1,10 +1,6 @@
-
-
 /// The AWS::GameLift::Fleet resource creates an Amazon GameLift (GameLift) fleet to host      custom game server or Realtime Servers. A fleet is a set of EC2 instances, configured with instructions to      run game servers on each instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFleet {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -15,10 +11,9 @@ pub struct CfnFleet {
     #[serde(rename = "AnywhereConfiguration")]
     pub anywhere_configuration: Option<AnywhereConfiguration>,
 
-
-    /// 
+    ///
     /// A unique identifier for a build to be deployed on the new fleet. If you are    deploying the fleet with a custom game build, you must specify this property. The build must    have been successfully uploaded to Amazon GameLift and be in a READY status. This    fleet setting cannot be changed once the fleet is created.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -29,14 +24,13 @@ pub struct CfnFleet {
     #[serde(rename = "BuildId")]
     pub build_id: Option<String>,
 
-
-    /// 
+    ///
     /// Prompts Amazon GameLift to generate a TLS/SSL certificate for the fleet. Amazon GameLift uses the       certificates to encrypt traffic between game clients and the game servers running on       Amazon GameLift. By default, the CertificateConfiguration is DISABLED.       You can't change this property after you create the fleet.
-    /// 
+    ///
     /// AWS Certificate Manager (ACM) certificates expire after 13 months.       Certificate expiration can cause fleets to fail, preventing players from connecting to       instances in the fleet. We recommend you replace fleets before 13 months, consider using       fleet aliases for a smooth transition.
-    /// 
+    ///
     /// NoteACM isn't available in all AWS regions. A fleet creation request         with certificate generation enabled in an unsupported Region, fails with a 4xx         error. For more information about the supported Regions, see Supported           Regions in the          AWS Certificate Manager User         Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CertificateConfiguration
@@ -45,10 +39,9 @@ pub struct CfnFleet {
     #[serde(rename = "CertificateConfiguration")]
     pub certificate_configuration: Option<CertificateConfiguration>,
 
-
-    /// 
+    ///
     /// The type of compute resource used to host your game servers. You can use your own       compute resources with Amazon GameLift Anywhere or use Amazon EC2 instances with managed       Amazon GameLift.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -59,10 +52,9 @@ pub struct CfnFleet {
     #[serde(rename = "ComputeType")]
     pub compute_type: Option<FleetComputeTypeEnum>,
 
-
-    /// 
+    ///
     /// A description for the fleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -75,10 +67,9 @@ pub struct CfnFleet {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The number of EC2 instances that you want this fleet to host. When creating a new    fleet, GameLift automatically sets this value to "1" and initiates a single instance. Once the    fleet is active, update this value to trigger GameLift to add or remove instances from the    fleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -89,10 +80,9 @@ pub struct CfnFleet {
     #[serde(rename = "DesiredEC2Instances")]
     pub desired_ec2_instances: Option<i64>,
 
-
-    /// 
+    ///
     /// The allowed IP address ranges and port settings that allow inbound traffic to access       game sessions on this fleet. If the fleet is hosting a custom game build, this property       must be set before players can connect to game sessions. For Realtime Servers fleets, Amazon GameLift       automatically sets TCP and UDP ranges.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of IpPermission
@@ -103,10 +93,9 @@ pub struct CfnFleet {
     #[serde(rename = "EC2InboundPermissions")]
     pub ec2_inbound_permissions: Option<Vec<IpPermission>>,
 
-
-    /// 
+    ///
     /// The Amazon GameLift-supported Amazon EC2 instance type to use for all fleet instances. Instance       type determines the computing resources that will be used to host your game servers,       including CPU, memory, storage, and networking capacity. See Amazon Elastic Compute Cloud Instance Types for detailed descriptions       of Amazon EC2 instance types.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -117,10 +106,9 @@ pub struct CfnFleet {
     #[serde(rename = "EC2InstanceType")]
     pub ec2_instance_type: Option<FleetEC2InstanceTypeEnum>,
 
-
-    /// 
+    ///
     /// Indicates whether to use On-Demand or Spot instances for this fleet. By default, this       property is set to ON_DEMAND. Learn more about when to use On-Demand versus Spot Instances. This property cannot be changed after the       fleet is created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -131,10 +119,9 @@ pub struct CfnFleet {
     #[serde(rename = "FleetType")]
     pub fleet_type: Option<FleetFleetTypeEnum>,
 
-
-    /// 
+    ///
     /// A unique identifier for an IAM role that manages access to your AWS services.     With an instance role ARN set, any application that runs on an instance in this fleet can assume the role,     including install scripts, server processes, and daemons (background processes). Create a role or look up a role's     ARN by using the IAM dashboard in the AWS Management Console.     Learn more about using on-box credentials for your game servers at          Access external resources from a game server. This property cannot be changed after the fleet is created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -145,12 +132,11 @@ pub struct CfnFleet {
     #[serde(rename = "InstanceRoleARN")]
     pub instance_role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// A set of remote locations to deploy additional instances to and manage as part of the       fleet. This parameter can only be used when creating fleets in AWS Regions that       support multiple locations. You can add any Amazon GameLift-supported AWS Region as a remote       location, in the form of an AWS Region code such as us-west-2. To create       a fleet with instances in the home Region only, don't use this parameter.
-    /// 
+    ///
     /// To use this parameter, Amazon GameLift requires you to use your home location in the       request.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of LocationConfiguration
@@ -161,10 +147,9 @@ pub struct CfnFleet {
     #[serde(rename = "Locations")]
     pub locations: Option<Vec<LocationConfiguration>>,
 
-
-    /// 
+    ///
     /// The maximum number of instances that are allowed in the specified fleet location. If       this parameter is not set, the default is 1.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -175,10 +160,9 @@ pub struct CfnFleet {
     #[serde(rename = "MaxSize")]
     pub max_size: Option<i64>,
 
-
-    /// 
+    ///
     /// The name of an AWS CloudWatch metric group to add this fleet to. A metric group is       used to aggregate the metrics for multiple fleets. You can specify an existing metric       group name or set a new name to create a new metric group. A fleet can be included in       only one metric group at a time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -189,10 +173,9 @@ pub struct CfnFleet {
     #[serde(rename = "MetricGroups")]
     pub metric_groups: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The minimum number of instances that are allowed in the specified fleet location. If       this parameter is not set, the default is 0.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -203,10 +186,9 @@ pub struct CfnFleet {
     #[serde(rename = "MinSize")]
     pub min_size: Option<i64>,
 
-
-    /// 
+    ///
     /// A descriptive label that is associated with a fleet. Fleet names do not need to be unique.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -219,12 +201,11 @@ pub struct CfnFleet {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The status of termination protection for active game sessions on the fleet. By    default, this property is set to NoProtection.
-    /// 
+    ///
     /// NoProtection - Game sessions can be terminated      during active gameplay as a result of a scale-down event.              FullProtection - Game sessions in      ACTIVE status cannot be terminated during a scale-down      event.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -235,10 +216,9 @@ pub struct CfnFleet {
     #[serde(rename = "NewGameSessionProtectionPolicy")]
     pub new_game_session_protection_policy: Option<FleetNewGameSessionProtectionPolicyEnum>,
 
-
-    /// 
+    ///
     /// Used when peering your Amazon GameLift fleet with a VPC, the unique identifier for the AWS       account that owns the VPC. You can find your account ID in the AWS Management Console under account       settings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -251,10 +231,9 @@ pub struct CfnFleet {
     #[serde(rename = "PeerVpcAwsAccountId")]
     pub peer_vpc_aws_account_id: Option<String>,
 
-
-    /// 
+    ///
     /// A unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The       VPC must be in the same Region as your fleet. To look up a VPC ID, use the       VPC Dashboard in the AWS Management Console.       Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -267,10 +246,9 @@ pub struct CfnFleet {
     #[serde(rename = "PeerVpcId")]
     pub peer_vpc_id: Option<String>,
 
-
-    /// 
+    ///
     /// A policy that limits the number of game sessions that an individual player can create       on instances in this fleet within a specified span of time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ResourceCreationLimitPolicy
@@ -279,12 +257,11 @@ pub struct CfnFleet {
     #[serde(rename = "ResourceCreationLimitPolicy")]
     pub resource_creation_limit_policy: Option<ResourceCreationLimitPolicy>,
 
-
-    /// 
+    ///
     /// Instructions for how to launch and maintain server processes on instances in the    fleet. The runtime configuration defines one or more server process configurations, each    identifying a build executable or Realtime script file and the number of processes of    that type to run concurrently.
-    /// 
+    ///
     /// NoteThe RuntimeConfiguration parameter is required unless the fleet is     being configured using the older parameters ServerLaunchPath and     ServerLaunchParameters, which are still supported for backward     compatibility.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: RuntimeConfiguration
@@ -293,12 +270,11 @@ pub struct CfnFleet {
     #[serde(rename = "RuntimeConfiguration")]
     pub runtime_configuration: Option<RuntimeConfiguration>,
 
-
-    /// 
+    ///
     /// The unique identifier for a Realtime configuration script to be deployed on fleet    instances. You can use either the script ID or ARN. Scripts must be uploaded to Amazon GameLift    prior to creating the fleet. This fleet property cannot be changed later.
-    /// 
+    ///
     /// NoteYou can't use the !Ref command to reference a     script created with a CloudFormation template for the fleet property ScriptId.     Instead, use Fn::GetAtt Script.Arn or Fn::GetAtt Script.Id to     retrieve either of these properties as input for ScriptId. Alternatively, enter a     ScriptId string manually.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -308,13 +284,10 @@ pub struct CfnFleet {
     /// Update requires: Replacement
     #[serde(rename = "ScriptId")]
     pub script_id: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum FleetComputeTypeEnum {
-
     /// ANYWHERE
     #[serde(rename = "ANYWHERE")]
     Anywhere,
@@ -322,7 +295,6 @@ pub enum FleetComputeTypeEnum {
     /// EC2
     #[serde(rename = "EC2")]
     Ec2,
-
 }
 
 impl Default for FleetComputeTypeEnum {
@@ -333,7 +305,6 @@ impl Default for FleetComputeTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum FleetEC2InstanceTypeEnum {
-
     /// c3.2xlarge
     #[serde(rename = "c3.2xlarge")]
     C32xlarge,
@@ -789,7 +760,6 @@ pub enum FleetEC2InstanceTypeEnum {
     /// t2.small
     #[serde(rename = "t2.small")]
     T2small,
-
 }
 
 impl Default for FleetEC2InstanceTypeEnum {
@@ -800,7 +770,6 @@ impl Default for FleetEC2InstanceTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum FleetFleetTypeEnum {
-
     /// ON_DEMAND
     #[serde(rename = "ON_DEMAND")]
     Ondemand,
@@ -808,7 +777,6 @@ pub enum FleetFleetTypeEnum {
     /// SPOT
     #[serde(rename = "SPOT")]
     Spot,
-
 }
 
 impl Default for FleetFleetTypeEnum {
@@ -819,7 +787,6 @@ impl Default for FleetFleetTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum FleetNewGameSessionProtectionPolicyEnum {
-
     /// FullProtection
     #[serde(rename = "FullProtection")]
     Fullprotection,
@@ -827,7 +794,6 @@ pub enum FleetNewGameSessionProtectionPolicyEnum {
     /// NoProtection
     #[serde(rename = "NoProtection")]
     Noprotection,
-
 }
 
 impl Default for FleetNewGameSessionProtectionPolicyEnum {
@@ -835,7 +801,6 @@ impl Default for FleetNewGameSessionProtectionPolicyEnum {
         FleetNewGameSessionProtectionPolicyEnum::Fullprotection
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnFleet {
     fn type_string(&self) -> &'static str {
@@ -847,132 +812,150 @@ impl cfn_resources::CfnResource for CfnFleet {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.anywhere_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.anywhere_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.certificate_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.certificate_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.desired_ec2_instances {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'desired_ec2_instances'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'desired_ec2_instances'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.ec2_inbound_permissions {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'ec2_inbound_permissions'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!("Max validation failed on field 'ec2_inbound_permissions'. {} is greater than 50", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.instance_role_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'instance_role_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_role_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.locations {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'locations'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'locations'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.max_size {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'max_size'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'max_size'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.metric_groups {
-
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'metric_groups'. {} is greater than 1", the_val.len()));
+            if the_val.len() > 1 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'metric_groups'. {} is greater than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.min_size {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'min_size'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'min_size'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.peer_vpc_aws_account_id {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'peer_vpc_aws_account_id'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!("Max validation failed on field 'peer_vpc_aws_account_id'. {} is greater than 1024", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.peer_vpc_aws_account_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'peer_vpc_aws_account_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'peer_vpc_aws_account_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.peer_vpc_id {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'peer_vpc_id'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'peer_vpc_id'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.peer_vpc_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'peer_vpc_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'peer_vpc_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.resource_creation_limit_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.resource_creation_limit_policy
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.runtime_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.runtime_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -981,11 +964,9 @@ impl cfn_resources::CfnResource for CfnFleet {
 /// Amazon GameLift Anywhere configuration options for your Anywhere fleets.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AnywhereConfiguration {
-
-
-    /// 
+    ///
     /// The cost to run your fleet per hour. Amazon GameLift uses the provided cost of your fleet to       balance usage in queues. For more information about queues, see Setting         up queues in the Amazon GameLift Developer Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -999,10 +980,7 @@ pub struct AnywhereConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Cost")]
     pub cost: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AnywhereConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1014,21 +992,24 @@ impl cfn_resources::CfnResource for AnywhereConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.cost;
 
         if the_val.len() > 11 as _ {
-            return Err(format!("Max validation failed on field 'cost'. {} is greater than 11", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'cost'. {} is greater than 11",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.cost;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'cost'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'cost'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1036,15 +1017,13 @@ impl cfn_resources::CfnResource for AnywhereConfiguration {
 /// Determines whether a TLS/SSL certificate is generated for a fleet. This feature must be       enabled when creating the fleet. All instances in a fleet share the same       certificate. The certificate can be retrieved by calling the         GameLift Server         SDK operation GetInstanceCertificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CertificateConfiguration {
-
-
-    /// 
+    ///
     /// Indicates whether a TLS/SSL certificate is generated for a fleet.
-    /// 
+    ///
     /// Valid values include:
-    /// 
+    ///
     /// GENERATED - Generate a TLS/SSL certificate           for this fleet.                        DISABLED - (default) Do not generate a           TLS/SSL certificate for this fleet.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1054,13 +1033,10 @@ pub struct CertificateConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "CertificateType")]
     pub certificate_type: CertificateConfigurationCertificateTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CertificateConfigurationCertificateTypeEnum {
-
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
@@ -1068,7 +1044,6 @@ pub enum CertificateConfigurationCertificateTypeEnum {
     /// GENERATED
     #[serde(rename = "GENERATED")]
     Generated,
-
 }
 
 impl Default for CertificateConfigurationCertificateTypeEnum {
@@ -1076,7 +1051,6 @@ impl Default for CertificateConfigurationCertificateTypeEnum {
         CertificateConfigurationCertificateTypeEnum::Disabled
     }
 }
-
 
 impl cfn_resources::CfnResource for CertificateConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1088,7 +1062,6 @@ impl cfn_resources::CfnResource for CertificateConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1096,15 +1069,13 @@ impl cfn_resources::CfnResource for CertificateConfiguration {
 /// A range of IP addresses and port settings that allow inbound traffic to connect to    server processes on an instance in a fleet. New game sessions are assigned an IP    address/port number combination, which must fall into the fleet's allowed ranges. Fleets    with custom game builds must have permissions explicitly set. For Realtime Servers fleets, GameLift    automatically opens two port ranges, one for TCP messaging and one for UDP.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IpPermission {
-
-
-    /// 
+    ///
     /// A starting value for a range of allowed port numbers.
-    /// 
+    ///
     /// For fleets using Linux builds, only ports 22 and 1026-60000 are valid.
-    /// 
+    ///
     /// For fleets using Windows builds, only ports 1026-60000 are valid.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1117,10 +1088,9 @@ pub struct IpPermission {
     #[serde(rename = "FromPort")]
     pub from_port: i64,
 
-
-    /// 
+    ///
     /// A range of allowed IP addresses. This value must be expressed in CIDR notation.       Example: "000.000.000.000/[subnet mask]" or optionally the shortened       version "0.0.0.0/[subnet mask]".
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1131,10 +1101,9 @@ pub struct IpPermission {
     #[serde(rename = "IpRange")]
     pub ip_range: String,
 
-
-    /// 
+    ///
     /// The network communication protocol used by the fleet.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1145,14 +1114,13 @@ pub struct IpPermission {
     #[serde(rename = "Protocol")]
     pub protocol: IpPermissionProtocolEnum,
 
-
-    /// 
+    ///
     /// An ending value for a range of allowed port numbers. Port numbers are end-inclusive.       This value must be equal to or greater than FromPort.
-    /// 
+    ///
     /// For fleets using Linux builds, only ports 22 and 1026-60000 are valid.
-    /// 
+    ///
     /// For fleets using Windows builds, only ports 1026-60000 are valid.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1164,13 +1132,10 @@ pub struct IpPermission {
     /// Update requires: No interruption
     #[serde(rename = "ToPort")]
     pub to_port: i64,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum IpPermissionProtocolEnum {
-
     /// TCP
     #[serde(rename = "TCP")]
     Tcp,
@@ -1178,7 +1143,6 @@ pub enum IpPermissionProtocolEnum {
     /// UDP
     #[serde(rename = "UDP")]
     Udp,
-
 }
 
 impl Default for IpPermissionProtocolEnum {
@@ -1186,7 +1150,6 @@ impl Default for IpPermissionProtocolEnum {
         IpPermissionProtocolEnum::Tcp
     }
 }
-
 
 impl cfn_resources::CfnResource for IpPermission {
     fn type_string(&self) -> &'static str {
@@ -1198,35 +1161,42 @@ impl cfn_resources::CfnResource for IpPermission {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.from_port;
 
         if *the_val > 60000 as _ {
-            return Err(format!("Max validation failed on field 'from_port'. {} is greater than 60000", the_val));
+            return Err(format!(
+                "Max validation failed on field 'from_port'. {} is greater than 60000",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.from_port;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'from_port'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'from_port'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.to_port;
 
         if *the_val > 60000 as _ {
-            return Err(format!("Max validation failed on field 'to_port'. {} is greater than 60000", the_val));
+            return Err(format!(
+                "Max validation failed on field 'to_port'. {} is greater than 60000",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.to_port;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'to_port'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'to_port'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1238,11 +1208,9 @@ impl cfn_resources::CfnResource for IpPermission {
 /// DescribeFleetCapacity | DescribeFleetLocationCapacity | UpdateFleetCapacity
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LocationCapacity {
-
-
-    /// 
+    ///
     /// The number of Amazon EC2 instances you want to maintain in the specified fleet location.       This value must fall between the minimum and maximum size limits.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1253,10 +1221,9 @@ pub struct LocationCapacity {
     #[serde(rename = "DesiredEC2Instances")]
     pub desired_ec2_instances: i64,
 
-
-    /// 
+    ///
     /// The maximum number of instances that are allowed in the specified fleet location. If       this parameter is not set, the default is 1.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1267,10 +1234,9 @@ pub struct LocationCapacity {
     #[serde(rename = "MaxSize")]
     pub max_size: i64,
 
-
-    /// 
+    ///
     /// The minimum number of instances that are allowed in the specified fleet location. If       this parameter is not set, the default is 0.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1280,10 +1246,7 @@ pub struct LocationCapacity {
     /// Update requires: No interruption
     #[serde(rename = "MinSize")]
     pub min_size: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LocationCapacity {
     fn type_string(&self) -> &'static str {
@@ -1295,28 +1258,33 @@ impl cfn_resources::CfnResource for LocationCapacity {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.desired_ec2_instances;
 
         if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'desired_ec2_instances'. {} is less than 0", the_val));
+            return Err(format!(
+                "Min validation failed on field 'desired_ec2_instances'. {} is less than 0",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.max_size;
 
         if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'max_size'. {} is less than 0", the_val));
+            return Err(format!(
+                "Min validation failed on field 'max_size'. {} is less than 0",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.min_size;
 
         if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'min_size'. {} is less than 0", the_val));
+            return Err(format!(
+                "Min validation failed on field 'min_size'. {} is less than 0",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1324,11 +1292,9 @@ impl cfn_resources::CfnResource for LocationCapacity {
 /// A remote location where a multi-location fleet can deploy game servers for game       hosting.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LocationConfiguration {
-
-
-    /// 
+    ///
     /// An AWS Region code, such as us-west-2.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1343,14 +1309,13 @@ pub struct LocationConfiguration {
     #[serde(rename = "Location")]
     pub location: String,
 
-
-    /// 
+    ///
     /// Current resource capacity settings in a specified fleet or location. The location       value might refer to a fleet's remote location or its home Region.
-    /// 
+    ///
     /// Related actions
-    /// 
+    ///
     /// DescribeFleetCapacity | DescribeFleetLocationCapacity | UpdateFleetCapacity
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LocationCapacity
@@ -1358,10 +1323,7 @@ pub struct LocationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LocationCapacity")]
     pub location_capacity: Option<LocationCapacity>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LocationConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1373,22 +1335,27 @@ impl cfn_resources::CfnResource for LocationConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.location;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'location'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'location'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.location;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'location'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'location'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.location_capacity.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.location_capacity
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1399,13 +1366,11 @@ impl cfn_resources::CfnResource for LocationConfiguration {
 /// The policy is evaluated when a player tries to create a new game session. For example,    assume you have a policy of 10 new game sessions and a time period of 60 minutes. On receiving    a CreateGameSession request, Amazon GameLift checks that the player (identified    by CreatorId) has created fewer than 10 game sessions in the past 60    minutes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceCreationLimitPolicy {
-
-
-    /// 
+    ///
     /// A policy that puts limits on the number of game sessions that a player can create       within a specified span of time. With this policy, you can control players' ability to       consume available resources.
-    /// 
+    ///
     /// The policy is evaluated when a player tries to create a new game session. On receiving       a CreateGameSession request, Amazon GameLift checks that the player (identified by         CreatorId) has created fewer than game session limit in the specified       time period.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1416,10 +1381,9 @@ pub struct ResourceCreationLimitPolicy {
     #[serde(rename = "NewGameSessionsPerCreator")]
     pub new_game_sessions_per_creator: Option<i64>,
 
-
-    /// 
+    ///
     /// The time span used in evaluating the resource creation limit policy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1429,10 +1393,7 @@ pub struct ResourceCreationLimitPolicy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyPeriodInMinutes")]
     pub policy_period_in_minutes: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ResourceCreationLimitPolicy {
     fn type_string(&self) -> &'static str {
@@ -1444,23 +1405,21 @@ impl cfn_resources::CfnResource for ResourceCreationLimitPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.new_game_sessions_per_creator {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'new_game_sessions_per_creator'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!("Min validation failed on field 'new_game_sessions_per_creator'. {} is less than 0", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.policy_period_in_minutes {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'policy_period_in_minutes'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'policy_period_in_minutes'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -1470,11 +1429,9 @@ impl cfn_resources::CfnResource for ResourceCreationLimitPolicy {
 /// A GameLift instance is limited to 50 processes running concurrently. To calculate the    total number of processes in a runtime configuration, add the values of the    ConcurrentExecutions parameter for each ServerProcess. Learn more about     Running Multiple     Processes on a Fleet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RuntimeConfiguration {
-
-
-    /// 
+    ///
     /// The maximum amount of time (in seconds) allowed to launch a new game session and have       it report ready to host players. During this time, the game session is in status         ACTIVATING. If the game session does not become active before the       timeout, it is ended and the game session status is changed to       TERMINATED.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1487,10 +1444,9 @@ pub struct RuntimeConfiguration {
     #[serde(rename = "GameSessionActivationTimeoutSeconds")]
     pub game_session_activation_timeout_seconds: Option<i64>,
 
-
-    /// 
+    ///
     /// The number of game sessions in status ACTIVATING to allow on an instance.       This setting limits the instance resources that can be used for new game activations at       any one time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1503,10 +1459,9 @@ pub struct RuntimeConfiguration {
     #[serde(rename = "MaxConcurrentGameSessionActivations")]
     pub max_concurrent_game_session_activations: Option<i64>,
 
-
-    /// 
+    ///
     /// A collection of server process configurations that identify what server processes to       run on each instance in a fleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ServerProcess
@@ -1516,10 +1471,7 @@ pub struct RuntimeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ServerProcesses")]
     pub server_processes: Option<Vec<ServerProcess>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RuntimeConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1531,47 +1483,39 @@ impl cfn_resources::CfnResource for RuntimeConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.game_session_activation_timeout_seconds {
+            if *the_val > 600 as _ {
+                return Err(format!("Max validation failed on field 'game_session_activation_timeout_seconds'. {} is greater than 600", the_val));
+            }
+        }
 
         if let Some(the_val) = &self.game_session_activation_timeout_seconds {
-
-        if *the_val > 600 as _ {
-            return Err(format!("Max validation failed on field 'game_session_activation_timeout_seconds'. {} is greater than 600", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!("Min validation failed on field 'game_session_activation_timeout_seconds'. {} is less than 1", the_val));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.game_session_activation_timeout_seconds {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'game_session_activation_timeout_seconds'. {} is less than 1", the_val));
-        }
-
-        }
-        
         if let Some(the_val) = &self.max_concurrent_game_session_activations {
-
-        if *the_val > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'max_concurrent_game_session_activations'. {} is greater than 2147483647", the_val));
+            if *the_val > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'max_concurrent_game_session_activations'. {} is greater than 2147483647", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.max_concurrent_game_session_activations {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'max_concurrent_game_session_activations'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!("Min validation failed on field 'max_concurrent_game_session_activations'. {} is less than 1", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.server_processes {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'server_processes'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'server_processes'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -1579,11 +1523,9 @@ impl cfn_resources::CfnResource for RuntimeConfiguration {
 /// A set of instructions for launching server processes on each instance in a fleet.       Server processes run either an executable in a custom game build or a Realtime Servers script.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServerProcess {
-
-
-    /// 
+    ///
     /// The number of server processes using this configuration that run concurrently on each       instance.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1594,12 +1536,11 @@ pub struct ServerProcess {
     #[serde(rename = "ConcurrentExecutions")]
     pub concurrent_executions: i64,
 
-
-    /// 
+    ///
     /// The location of a game build executable or the Realtime script file that contains the         Init() function. Game builds and Realtime scripts are installed on       instances at the root:
-    /// 
+    ///
     /// Windows (custom game builds only): C:\game. Example:             "C:\game\MyGame\server.exe"               Linux: /local/game. Examples:             "/local/game/MyGame/server.exe" or             "/local/game/MyRealtimeScript.js"
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1614,10 +1555,9 @@ pub struct ServerProcess {
     #[serde(rename = "LaunchPath")]
     pub launch_path: String,
 
-
-    /// 
+    ///
     /// An optional list of parameters to pass to the server executable or Realtime script on       launch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1631,10 +1571,7 @@ pub struct ServerProcess {
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
     pub parameters: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServerProcess {
     fn type_string(&self) -> &'static str {
@@ -1646,44 +1583,51 @@ impl cfn_resources::CfnResource for ServerProcess {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.concurrent_executions;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'concurrent_executions'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'concurrent_executions'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.launch_path;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'launch_path'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'launch_path'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.launch_path;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'launch_path'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'launch_path'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.parameters {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'parameters'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'parameters'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.parameters {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'parameters'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'parameters'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }

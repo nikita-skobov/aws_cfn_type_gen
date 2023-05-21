@@ -1,14 +1,10 @@
-
-
 /// Creates a new, empty repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRepository {
-
-
     /// Information about code to be committed to a repository after it is created in     an AWS CloudFormation stack. Information about code is only used in resource creation. Updates to a stack will not reflect changes made to code     properties after initial resource creation.
-    /// 
+    ///
     /// NoteYou can only use this property to add code when creating a repository with a AWS CloudFormation template at creation time.       This property cannot be used for updating code to an existing repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Code
@@ -17,12 +13,11 @@ pub struct CfnRepository {
     #[serde(rename = "Code")]
     pub code: Option<Code>,
 
-
-    /// 
+    ///
     /// A comment or description about the new repository.
-    /// 
+    ///
     /// NoteThe description field for a repository accepts all HTML characters and all valid         Unicode characters. Applications that do not HTML-encode the description and display         it in a webpage can expose users to potentially malicious code. Make sure that you         HTML-encode the description field in any application that uses this API to display         the repository description on a webpage.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -33,12 +28,11 @@ pub struct CfnRepository {
     #[serde(rename = "RepositoryDescription")]
     pub repository_description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the new repository to be created.
-    /// 
+    ///
     /// NoteThe repository name must be unique across the calling AWS account. Repository names         are limited to 100 alphanumeric, dash, and underscore characters, and cannot include         certain characters. For more information about the limits on repository names, see           Quotas in the          AWS CodeCommit User Guide. The         suffix .git is prohibited.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -53,10 +47,9 @@ pub struct CfnRepository {
     #[serde(rename = "RepositoryName")]
     pub repository_name: String,
 
-
-    /// 
+    ///
     /// One or more tag key-value pairs to use when tagging this repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -65,10 +58,9 @@ pub struct CfnRepository {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The JSON block of configuration information for each trigger.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of RepositoryTrigger
@@ -76,10 +68,7 @@ pub struct CfnRepository {
     /// Update requires: Some interruptions
     #[serde(rename = "Triggers")]
     pub triggers: Option<Vec<RepositoryTrigger>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRepository {
     fn type_string(&self) -> &'static str {
@@ -91,31 +80,32 @@ impl cfn_resources::CfnResource for CfnRepository {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.code.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.repository_description {
-
-        if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'repository_description'. {} is greater than 1000", the_val.len()));
+            if the_val.len() > 1000 as _ {
+                return Err(format!("Max validation failed on field 'repository_description'. {} is greater than 1000", the_val.len()));
+            }
         }
 
-        }
-        
         let the_val = &self.repository_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'repository_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'repository_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.repository_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'repository_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'repository_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -123,9 +113,7 @@ impl cfn_resources::CfnResource for CfnRepository {
 /// Information about code to be committed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Code {
-
-
-    /// 
+    ///
     /// Optional. Specifies a branch name to be used as the default branch when importing code into a repository on initial creation.       If this property is not set, the name main       will be used for the default branch for the repository. Changes to this property are ignored after initial resource creation.        We recommend using this parameter to set the name to main to align with the default behavior       of CodeCommit unless another name is needed.
     ///
     /// Required: No
@@ -136,7 +124,6 @@ pub struct Code {
     #[serde(rename = "BranchName")]
     pub branch_name: Option<String>,
 
-
     /// Information about the Amazon S3 bucket that contains a ZIP file of code     to be committed to the repository. Changes to this property are ignored after initial resource creation.
     ///
     /// Required: Yes
@@ -146,10 +133,7 @@ pub struct Code {
     /// Update requires: No interruption
     #[serde(rename = "S3")]
     pub s3: S3,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Code {
     fn type_string(&self) -> &'static str {
@@ -161,7 +145,6 @@ impl cfn_resources::CfnResource for Code {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.s3.validate()?;
 
         Ok(())
@@ -171,13 +154,11 @@ impl cfn_resources::CfnResource for Code {
 /// Information about a trigger for a repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RepositoryTrigger {
-
-
-    /// 
+    ///
     /// The branches to be included in the trigger configuration. If you specify an empty       array, the trigger applies to all branches.
-    /// 
+    ///
     /// NoteAlthough no content is required in the array, you must include the array itself.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -186,10 +167,9 @@ pub struct RepositoryTrigger {
     #[serde(rename = "Branches")]
     pub branches: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Any custom data associated with the trigger to be included in the information sent to       the target of the trigger.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -198,10 +178,9 @@ pub struct RepositoryTrigger {
     #[serde(rename = "CustomData")]
     pub custom_data: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the resource that is the target for a trigger (for example, the ARN of a       topic in Amazon SNS).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -210,12 +189,11 @@ pub struct RepositoryTrigger {
     #[serde(rename = "DestinationArn")]
     pub destination_arn: String,
 
-
-    /// 
+    ///
     /// The repository events that cause the trigger to run actions in another service, such       as sending a notification through Amazon SNS.
-    /// 
+    ///
     /// NoteThe valid value "all" cannot be used with any other values.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -224,10 +202,9 @@ pub struct RepositoryTrigger {
     #[serde(rename = "Events")]
     pub events: Vec<String>,
 
-
-    /// 
+    ///
     /// The name of the trigger.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -235,10 +212,7 @@ pub struct RepositoryTrigger {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RepositoryTrigger {
     fn type_string(&self) -> &'static str {
@@ -250,7 +224,6 @@ impl cfn_resources::CfnResource for RepositoryTrigger {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -258,8 +231,6 @@ impl cfn_resources::CfnResource for RepositoryTrigger {
 /// Information about the Amazon S3 bucket that contains the code that will be committed to the new repository.     Changes to this property are ignored after initial resource creation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3 {
-
-
     /// The name of the Amazon S3 bucket that contains the ZIP file with the content that       will be committed to the new repository. This can be specified using the name of the       bucket in the AWS account. Changes to this property are ignored after       initial resource creation.
     ///
     /// Required: Yes
@@ -269,7 +240,6 @@ pub struct S3 {
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
     pub bucket: String,
-
 
     /// The key to use for accessing the Amazon S3 bucket. Changes to this property are     ignored after initial resource creation. For more information, see Creating object key names     and Uploading objects in the Amazon S3 User Guide.
     ///
@@ -281,7 +251,6 @@ pub struct S3 {
     #[serde(rename = "Key")]
     pub key: String,
 
-
     /// The object version of the ZIP file, if versioning is enabled for the Amazon S3 bucket.     Changes to this property are ignored after initial resource creation.
     ///
     /// Required: No
@@ -291,10 +260,7 @@ pub struct S3 {
     /// Update requires: No interruption
     #[serde(rename = "ObjectVersion")]
     pub object_version: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3 {
     fn type_string(&self) -> &'static str {
@@ -306,7 +272,6 @@ impl cfn_resources::CfnResource for S3 {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -320,32 +285,26 @@ impl cfn_resources::CfnResource for S3 {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -357,7 +316,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

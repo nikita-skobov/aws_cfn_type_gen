@@ -1,13 +1,9 @@
-
-
 /// The AWS::ApiGateway::GatewayResponse resource creates a gateway response for your API. For more information, see API Gateway Responses in the API Gateway Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGatewayResponse {
-
-
-    /// 
+    ///
     /// Response parameters (paths, query strings and headers) of the GatewayResponse as a    string-to-string map of key-value pairs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -16,10 +12,9 @@ pub struct CfnGatewayResponse {
     #[serde(rename = "ResponseParameters")]
     pub response_parameters: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
+    ///
     /// Response templates of the GatewayResponse as a string-to-string map of key-value pairs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -28,10 +23,9 @@ pub struct CfnGatewayResponse {
     #[serde(rename = "ResponseTemplates")]
     pub response_templates: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
+    ///
     /// The response type of the associated GatewayResponse.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnGatewayResponse {
     #[serde(rename = "ResponseType")]
     pub response_type: GatewayResponseResponseTypeEnum,
 
-
-    /// 
+    ///
     /// The string identifier of the associated RestApi.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,10 +47,9 @@ pub struct CfnGatewayResponse {
     #[serde(rename = "RestApiId")]
     pub rest_api_id: String,
 
-
-    /// 
+    ///
     /// The HTTP status code for this GatewayResponse.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -65,13 +57,10 @@ pub struct CfnGatewayResponse {
     /// Update requires: No interruption
     #[serde(rename = "StatusCode")]
     pub status_code: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum GatewayResponseResponseTypeEnum {
-
     /// ACCESS_DENIED
     #[serde(rename = "ACCESS_DENIED")]
     Accessdenied,
@@ -151,7 +140,6 @@ pub enum GatewayResponseResponseTypeEnum {
     /// UNSUPPORTED_MEDIA_TYPE
     #[serde(rename = "UNSUPPORTED_MEDIA_TYPE")]
     Unsupportedmediatype,
-
 }
 
 impl Default for GatewayResponseResponseTypeEnum {
@@ -159,7 +147,6 @@ impl Default for GatewayResponseResponseTypeEnum {
         GatewayResponseResponseTypeEnum::Accessdenied
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnGatewayResponse {
     fn type_string(&self) -> &'static str {
@@ -171,7 +158,6 @@ impl cfn_resources::CfnResource for CfnGatewayResponse {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

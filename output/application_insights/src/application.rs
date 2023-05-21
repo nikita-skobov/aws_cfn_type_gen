@@ -1,13 +1,9 @@
-
-
 /// The AWS::ApplicationInsights::Application resource adds an application that is created from a resource group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
-
-
-    /// 
+    ///
     /// If set to true, the application components will be configured with the monitoring configuration recommended by Application Insights.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -16,10 +12,9 @@ pub struct CfnApplication {
     #[serde(rename = "AutoConfigurationEnabled")]
     pub auto_configuration_enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// Indicates whether Application Insights can listen to CloudWatch events for the application resources, such as instance terminated, failed deployment, and others.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -28,10 +23,9 @@ pub struct CfnApplication {
     #[serde(rename = "CWEMonitorEnabled")]
     pub cwemonitor_enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The monitoring settings of the components.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ComponentMonitoringSetting
@@ -40,10 +34,9 @@ pub struct CfnApplication {
     #[serde(rename = "ComponentMonitoringSettings")]
     pub component_monitoring_settings: Option<Vec<ComponentMonitoringSetting>>,
 
-
-    /// 
+    ///
     /// Describes a custom component by grouping similar standalone instances to monitor.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of CustomComponent
@@ -52,10 +45,9 @@ pub struct CfnApplication {
     #[serde(rename = "CustomComponents")]
     pub custom_components: Option<Vec<CustomComponent>>,
 
-
-    /// 
+    ///
     /// Application Insights can create applications based on a resource group or on an account.     To create an account-based application using all of the resources in the account, set this     parameter to ACCOUNT_BASED.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -66,10 +58,9 @@ pub struct CfnApplication {
     #[serde(rename = "GroupingType")]
     pub grouping_type: Option<ApplicationGroupingTypeEnum>,
 
-
-    /// 
+    ///
     /// The log pattern sets.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of LogPatternSet
@@ -78,10 +69,9 @@ pub struct CfnApplication {
     #[serde(rename = "LogPatternSets")]
     pub log_pattern_sets: Option<Vec<LogPatternSet>>,
 
-
-    /// 
+    ///
     /// Indicates whether Application Insights will create OpsItems for any problem that is       detected by Application Insights for an application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -90,10 +80,9 @@ pub struct CfnApplication {
     #[serde(rename = "OpsCenterEnabled")]
     pub ops_center_enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The SNS topic provided to Application Insights that is associated with the created       OpsItems to receive SNS notifications for opsItem updates.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -108,10 +97,9 @@ pub struct CfnApplication {
     #[serde(rename = "OpsItemSNSTopicArn")]
     pub ops_item_snstopic_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the resource group used for the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -126,10 +114,9 @@ pub struct CfnApplication {
     #[serde(rename = "ResourceGroupName")]
     pub resource_group_name: String,
 
-
-    /// 
+    ///
     /// An array of Tags.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -137,17 +124,13 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ApplicationGroupingTypeEnum {
-
     /// ACCOUNT_BASED
     #[serde(rename = "ACCOUNT_BASED")]
     Accountbased,
-
 }
 
 impl Default for ApplicationGroupingTypeEnum {
@@ -155,7 +138,6 @@ impl Default for ApplicationGroupingTypeEnum {
         ApplicationGroupingTypeEnum::Accountbased
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string(&self) -> &'static str {
@@ -167,37 +149,39 @@ impl cfn_resources::CfnResource for CfnApplication {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.ops_item_snstopic_arn {
+            if the_val.len() > 300 as _ {
+                return Err(format!("Max validation failed on field 'ops_item_snstopic_arn'. {} is greater than 300", the_val.len()));
+            }
+        }
 
         if let Some(the_val) = &self.ops_item_snstopic_arn {
-
-        if the_val.len() > 300 as _ {
-            return Err(format!("Max validation failed on field 'ops_item_snstopic_arn'. {} is greater than 300", the_val.len()));
+            if the_val.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'ops_item_snstopic_arn'. {} is less than 20",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.ops_item_snstopic_arn {
-
-        if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'ops_item_snstopic_arn'. {} is less than 20", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.resource_group_name;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'resource_group_name'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'resource_group_name'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.resource_group_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'resource_group_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'resource_group_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -205,11 +189,9 @@ impl cfn_resources::CfnResource for CfnApplication {
 /// The AWS::ApplicationInsights::Application Alarm property type defines a CloudWatch alarm to be monitored for the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Alarm {
-
-
-    /// 
+    ///
     /// The name of the CloudWatch alarm to be monitored for the component.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -218,10 +200,9 @@ pub struct Alarm {
     #[serde(rename = "AlarmName")]
     pub alarm_name: String,
 
-
-    /// 
+    ///
     /// Indicates the degree of outage when the alarm goes off.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -229,10 +210,7 @@ pub struct Alarm {
     /// Update requires: No interruption
     #[serde(rename = "Severity")]
     pub severity: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Alarm {
     fn type_string(&self) -> &'static str {
@@ -244,7 +222,6 @@ impl cfn_resources::CfnResource for Alarm {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -252,11 +229,9 @@ impl cfn_resources::CfnResource for Alarm {
 /// The AWS::ApplicationInsights::Application AlarmMetric property type defines a metric to monitor for the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AlarmMetric {
-
-
-    /// 
+    ///
     /// The name of the metric to be monitored for the component. For metrics supported by Application Insights, see Logs and metrics supported by Amazon CloudWatch Application Insights.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -264,10 +239,7 @@ pub struct AlarmMetric {
     /// Update requires: No interruption
     #[serde(rename = "AlarmMetricName")]
     pub alarm_metric_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AlarmMetric {
     fn type_string(&self) -> &'static str {
@@ -279,7 +251,6 @@ impl cfn_resources::CfnResource for AlarmMetric {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -287,11 +258,9 @@ impl cfn_resources::CfnResource for AlarmMetric {
 /// The AWS::ApplicationInsights::Application ComponentConfiguration property type defines the configuration settings of the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentConfiguration {
-
-
-    /// 
+    ///
     /// The configuration settings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConfigurationDetails
@@ -300,10 +269,9 @@ pub struct ComponentConfiguration {
     #[serde(rename = "ConfigurationDetails")]
     pub configuration_details: Option<ConfigurationDetails>,
 
-
-    /// 
+    ///
     /// Sub-component configurations of the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of SubComponentTypeConfiguration
@@ -311,10 +279,7 @@ pub struct ComponentConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SubComponentTypeConfigurations")]
     pub sub_component_type_configurations: Option<Vec<SubComponentTypeConfiguration>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentConfiguration {
     fn type_string(&self) -> &'static str {
@@ -326,8 +291,9 @@ impl cfn_resources::CfnResource for ComponentConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.configuration_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.configuration_details
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -336,11 +302,9 @@ impl cfn_resources::CfnResource for ComponentConfiguration {
 /// The AWS::ApplicationInsights::Application ComponentMonitoringSetting property type defines the monitoring setting of the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentMonitoringSetting {
-
-
-    /// 
+    ///
     /// The ARN of the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -349,12 +313,11 @@ pub struct ComponentMonitoringSetting {
     #[serde(rename = "ComponentARN")]
     pub component_arn: Option<String>,
 
-
-    /// 
+    ///
     /// Component monitoring can be configured in one of the following three modes:
-    /// 
+    ///
     /// DEFAULT: The component will be configured with the recommended default monitoring settings of the selected Tier.CUSTOM: The component will be configured with the customized monitoring settings           that are specified in CustomComponentConfiguration. If used,             CustomComponentConfiguration must be provided.DEFAULT_WITH_OVERWRITE: The component will be configured with the recommended           default monitoring settings of the selected Tier, and merged with           customized overwrite settings that are specified in             DefaultOverwriteComponentConfiguration. If used,             DefaultOverwriteComponentConfiguration must be provided.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -363,10 +326,9 @@ pub struct ComponentMonitoringSetting {
     #[serde(rename = "ComponentConfigurationMode")]
     pub component_configuration_mode: String,
 
-
-    /// 
+    ///
     /// The name of the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -375,10 +337,9 @@ pub struct ComponentMonitoringSetting {
     #[serde(rename = "ComponentName")]
     pub component_name: Option<String>,
 
-
-    /// 
+    ///
     /// Customized monitoring settings. Required if CUSTOM mode is configured in ComponentConfigurationMode.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentConfiguration
@@ -387,10 +348,9 @@ pub struct ComponentMonitoringSetting {
     #[serde(rename = "CustomComponentConfiguration")]
     pub custom_component_configuration: Option<ComponentConfiguration>,
 
-
-    /// 
+    ///
     /// Customized overwrite monitoring settings. Required if CUSTOM mode is configured in ComponentConfigurationMode.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentConfiguration
@@ -399,10 +359,9 @@ pub struct ComponentMonitoringSetting {
     #[serde(rename = "DefaultOverwriteComponentConfiguration")]
     pub default_overwrite_component_configuration: Option<ComponentConfiguration>,
 
-
-    /// 
+    ///
     /// The tier of the application component. Supported tiers include         DOT_NET_CORE, DOT_NET_WORKER, DOT_NET_WEB,         SQL_SERVER, SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP,         SQL_SERVER_FAILOVER_CLUSTER_INSTANCE, MYSQL,         POSTGRESQL, JAVA_JMX, ORACLE,         SAP_HANA_MULTI_NODE, SAP_HANA_SINGLE_NODE,         SAP_HANA_HIGH_AVAILABILITY, SHAREPOINT.         ACTIVE_DIRECTORY, and DEFAULT.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -410,10 +369,7 @@ pub struct ComponentMonitoringSetting {
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
     pub tier: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentMonitoringSetting {
     fn type_string(&self) -> &'static str {
@@ -425,10 +381,13 @@ impl cfn_resources::CfnResource for ComponentMonitoringSetting {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.custom_component_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.custom_component_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.default_overwrite_component_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.default_overwrite_component_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -437,11 +396,9 @@ impl cfn_resources::CfnResource for ComponentMonitoringSetting {
 /// The AWS::ApplicationInsights::Application ConfigurationDetails property type specifies the configuration settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfigurationDetails {
-
-
-    /// 
+    ///
     /// A list of metrics to monitor for the component. All component types can use AlarmMetrics.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AlarmMetric
@@ -450,10 +407,9 @@ pub struct ConfigurationDetails {
     #[serde(rename = "AlarmMetrics")]
     pub alarm_metrics: Option<Vec<AlarmMetric>>,
 
-
-    /// 
+    ///
     /// A list of alarms to monitor for the component. All component types can use         Alarm.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Alarm
@@ -462,10 +418,9 @@ pub struct ConfigurationDetails {
     #[serde(rename = "Alarms")]
     pub alarms: Option<Vec<Alarm>>,
 
-
-    /// 
+    ///
     /// The HA cluster Prometheus Exporter settings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: HAClusterPrometheusExporter
@@ -474,10 +429,9 @@ pub struct ConfigurationDetails {
     #[serde(rename = "HAClusterPrometheusExporter")]
     pub hacluster_prometheus_exporter: Option<HAClusterPrometheusExporter>,
 
-
-    /// 
+    ///
     /// The HANA DB Prometheus Exporter settings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: HANAPrometheusExporter
@@ -486,10 +440,9 @@ pub struct ConfigurationDetails {
     #[serde(rename = "HANAPrometheusExporter")]
     pub hanaprometheus_exporter: Option<HANAPrometheusExporter>,
 
-
-    /// 
+    ///
     /// A list of Java metrics to monitor for the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: JMXPrometheusExporter
@@ -498,10 +451,9 @@ pub struct ConfigurationDetails {
     #[serde(rename = "JMXPrometheusExporter")]
     pub jmxprometheus_exporter: Option<JMXPrometheusExporter>,
 
-
-    /// 
+    ///
     /// A list of logs to monitor for the component. Only Amazon EC2 instances can use         Logs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Log
@@ -510,10 +462,9 @@ pub struct ConfigurationDetails {
     #[serde(rename = "Logs")]
     pub logs: Option<Vec<Log>>,
 
-
-    /// 
+    ///
     /// A list of Windows Events to monitor for the component. Only Amazon EC2 instances       running on Windows can use WindowsEvents.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of WindowsEvent
@@ -521,10 +472,7 @@ pub struct ConfigurationDetails {
     /// Update requires: No interruption
     #[serde(rename = "WindowsEvents")]
     pub windows_events: Option<Vec<WindowsEvent>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConfigurationDetails {
     fn type_string(&self) -> &'static str {
@@ -536,12 +484,17 @@ impl cfn_resources::CfnResource for ConfigurationDetails {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.hacluster_prometheus_exporter
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.hacluster_prometheus_exporter.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.hanaprometheus_exporter
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.hanaprometheus_exporter.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.jmxprometheus_exporter.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.jmxprometheus_exporter
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -550,11 +503,9 @@ impl cfn_resources::CfnResource for ConfigurationDetails {
 /// The AWS::ApplicationInsights::Application CustomComponent property type describes a custom component by grouping similar standalone instances to monitor.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomComponent {
-
-
-    /// 
+    ///
     /// The name of the component.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -569,10 +520,9 @@ pub struct CustomComponent {
     #[serde(rename = "ComponentName")]
     pub component_name: String,
 
-
-    /// 
+    ///
     /// The list of resource ARNs that belong to the component.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -580,10 +530,7 @@ pub struct CustomComponent {
     /// Update requires: No interruption
     #[serde(rename = "ResourceList")]
     pub resource_list: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CustomComponent {
     fn type_string(&self) -> &'static str {
@@ -595,21 +542,24 @@ impl cfn_resources::CfnResource for CustomComponent {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.component_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'component_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'component_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.component_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'component_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'component_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -617,11 +567,9 @@ impl cfn_resources::CfnResource for CustomComponent {
 /// The AWS::ApplicationInsights::Application HAClusterPrometheusExporter       property type defines the HA cluster Prometheus Exporter settings. For more information,       see the component configuration in the CloudWatch Application Insights       documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HAClusterPrometheusExporter {
-
-
-    /// 
+    ///
     /// The target port to which Prometheus sends metrics. If not specified, the default port 9668 is used.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -629,10 +577,7 @@ pub struct HAClusterPrometheusExporter {
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
     pub prometheus_port: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for HAClusterPrometheusExporter {
     fn type_string(&self) -> &'static str {
@@ -644,7 +589,6 @@ impl cfn_resources::CfnResource for HAClusterPrometheusExporter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -652,11 +596,9 @@ impl cfn_resources::CfnResource for HAClusterPrometheusExporter {
 /// The AWS::ApplicationInsights::Application HANAPrometheusExporter property       type defines the HANA DB Prometheus Exporter settings. For more information, see the         component configuration in the CloudWatch Application Insights       documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HANAPrometheusExporter {
-
-
-    /// 
+    ///
     /// Designates whether you agree to install the HANA DB client.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -665,10 +607,9 @@ pub struct HANAPrometheusExporter {
     #[serde(rename = "AgreeToInstallHANADBClient")]
     pub agree_to_install_hanadbclient: bool,
 
-
-    /// 
+    ///
     /// The HANA database port by which the exporter will query HANA metrics.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -677,10 +618,9 @@ pub struct HANAPrometheusExporter {
     #[serde(rename = "HANAPort")]
     pub hanaport: String,
 
-
-    /// 
+    ///
     /// The three-character SAP system ID (SID) of the SAP HANA system.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -689,10 +629,9 @@ pub struct HANAPrometheusExporter {
     #[serde(rename = "HANASID")]
     pub hanasid: String,
 
-
-    /// 
+    ///
     /// The AWS Secrets Manager secret that stores HANA monitoring user credentials. The HANA Prometheus exporter uses these credentials to connect to the database and query HANA metrics.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -701,10 +640,9 @@ pub struct HANAPrometheusExporter {
     #[serde(rename = "HANASecretName")]
     pub hanasecret_name: String,
 
-
-    /// 
+    ///
     /// The target port to which Prometheus sends metrics. If not specified, the default port 9668 is used.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -712,10 +650,7 @@ pub struct HANAPrometheusExporter {
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
     pub prometheus_port: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for HANAPrometheusExporter {
     fn type_string(&self) -> &'static str {
@@ -727,7 +662,6 @@ impl cfn_resources::CfnResource for HANAPrometheusExporter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -735,11 +669,9 @@ impl cfn_resources::CfnResource for HANAPrometheusExporter {
 /// The AWS::ApplicationInsights::Application JMXPrometheusExporter property type       defines the JMXPrometheus Exporter configuration. For more information, see the      component configuration in the CloudWatch Application Insights    documentation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JMXPrometheusExporter {
-
-
-    /// 
+    ///
     /// The host and port to connect to through remote JMX. Only one of jmxURL and hostPort can be     specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -748,10 +680,9 @@ pub struct JMXPrometheusExporter {
     #[serde(rename = "HostPort")]
     pub host_port: Option<String>,
 
-
-    /// 
+    ///
     /// The complete JMX URL to connect to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -760,10 +691,9 @@ pub struct JMXPrometheusExporter {
     #[serde(rename = "JMXURL")]
     pub jmxurl: Option<String>,
 
-
-    /// 
+    ///
     /// The target port to send Prometheus metrics to. If not specified, the default port 9404 is used.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -771,10 +701,7 @@ pub struct JMXPrometheusExporter {
     /// Update requires: No interruption
     #[serde(rename = "PrometheusPort")]
     pub prometheus_port: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for JMXPrometheusExporter {
     fn type_string(&self) -> &'static str {
@@ -786,7 +713,6 @@ impl cfn_resources::CfnResource for JMXPrometheusExporter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -794,13 +720,11 @@ impl cfn_resources::CfnResource for JMXPrometheusExporter {
 /// The AWS::ApplicationInsights::Application Log property type specifies a log to monitor for the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Log {
-
-
-    /// 
+    ///
     /// The type of encoding of the logs to be monitored. The specified encoding should be included in the list of CloudWatch agent supported encodings. If not provided, CloudWatch Application Insights uses the default encoding type for the log type:
-    /// 
+    ///
     /// APPLICATION/DEFAULT: utf-8 encodingSQL_SERVER: utf-16 encodingIIS: ascii encoding
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -809,10 +733,9 @@ pub struct Log {
     #[serde(rename = "Encoding")]
     pub encoding: Option<String>,
 
-
-    /// 
+    ///
     /// The CloudWatch log group name to be associated with the monitored log.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -821,10 +744,9 @@ pub struct Log {
     #[serde(rename = "LogGroupName")]
     pub log_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// The path of the logs to be monitored. The log path must be an absolute Windows or Linux system file path. For more information, see CloudWatch Agent Configuration File: Logs Section.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -833,10 +755,9 @@ pub struct Log {
     #[serde(rename = "LogPath")]
     pub log_path: Option<String>,
 
-
-    /// 
+    ///
     /// The log type decides the log patterns against which Application Insights analyzes the       log. The log type is selected from the following: SQL_SERVER,         MYSQL, MYSQL_SLOW_QUERY, POSTGRESQL,         ORACLE_ALERT, ORACLE_LISTENER, IIS,         APPLICATION, WINDOWS_EVENTS,         WINDOWS_EVENTS_ACTIVE_DIRECTORY, WINDOWS_EVENTS_DNS ,         WINDOWS_EVENTS_IIS , WINDOWS_EVENTS_SHAREPOINT,         SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP,         SQL_SERVER_FAILOVER_CLUSTER_INSTANCE, STEP_FUNCTION,         API_GATEWAY_ACCESS, API_GATEWAY_EXECUTION,         SAP_HANA_LOGS, SAP_HANA_TRACE,         SAP_HANA_HIGH_AVAILABILITY, and DEFAULT.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -845,10 +766,9 @@ pub struct Log {
     #[serde(rename = "LogType")]
     pub log_type: String,
 
-
-    /// 
+    ///
     /// The log pattern set.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -856,10 +776,7 @@ pub struct Log {
     /// Update requires: No interruption
     #[serde(rename = "PatternSet")]
     pub pattern_set: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Log {
     fn type_string(&self) -> &'static str {
@@ -871,7 +788,6 @@ impl cfn_resources::CfnResource for Log {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -879,11 +795,9 @@ impl cfn_resources::CfnResource for Log {
 /// The AWS::ApplicationInsights::Application LogPattern property type       specifies an object that defines the log patterns that belong to a         LogPatternSet.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LogPattern {
-
-
-    /// 
+    ///
     /// A regular expression that defines the log pattern. A log pattern can contain up to 50       characters, and it cannot be empty.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -898,10 +812,9 @@ pub struct LogPattern {
     #[serde(rename = "Pattern")]
     pub pattern: String,
 
-
-    /// 
+    ///
     /// The name of the log pattern. A log pattern name can contain up to 50 characters, and       it cannot be empty. The characters can be Unicode letters, digits, or one of the       following symbols: period, dash, underscore.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -916,10 +829,9 @@ pub struct LogPattern {
     #[serde(rename = "PatternName")]
     pub pattern_name: String,
 
-
-    /// 
+    ///
     /// The rank of the log pattern.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -927,10 +839,7 @@ pub struct LogPattern {
     /// Update requires: No interruption
     #[serde(rename = "Rank")]
     pub rank: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LogPattern {
     fn type_string(&self) -> &'static str {
@@ -942,35 +851,42 @@ impl cfn_resources::CfnResource for LogPattern {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.pattern;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'pattern'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'pattern'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.pattern;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'pattern'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'pattern'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.pattern_name;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'pattern_name'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'pattern_name'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.pattern_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'pattern_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'pattern_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -978,11 +894,9 @@ impl cfn_resources::CfnResource for LogPattern {
 /// The AWS::ApplicationInsights::Application LogPatternSet property type specifies the log pattern set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LogPatternSet {
-
-
-    /// 
+    ///
     /// A list of objects that define the log patterns that belong to LogPatternSet.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of LogPattern
@@ -991,10 +905,9 @@ pub struct LogPatternSet {
     #[serde(rename = "LogPatterns")]
     pub log_patterns: Vec<LogPattern>,
 
-
-    /// 
+    ///
     /// The name of the log pattern. A log pattern name can contain up to 30 characters, and       it cannot be empty. The characters can be Unicode letters, digits, or one of the       following symbols: period, dash, underscore.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1008,10 +921,7 @@ pub struct LogPatternSet {
     /// Update requires: No interruption
     #[serde(rename = "PatternSetName")]
     pub pattern_set_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LogPatternSet {
     fn type_string(&self) -> &'static str {
@@ -1023,21 +933,24 @@ impl cfn_resources::CfnResource for LogPatternSet {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.pattern_set_name;
 
         if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'pattern_set_name'. {} is greater than 30", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'pattern_set_name'. {} is greater than 30",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.pattern_set_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'pattern_set_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'pattern_set_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1045,9 +958,7 @@ impl cfn_resources::CfnResource for LogPatternSet {
 /// The AWS::ApplicationInsights::Application SubComponentConfigurationDetails property type specifies the configuration settings of the sub-components.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SubComponentConfigurationDetails {
-
-
-    /// 
+    ///
     /// A list of metrics to monitor for the component. All component types can use AlarmMetrics.
     ///
     /// Required: No
@@ -1058,10 +969,9 @@ pub struct SubComponentConfigurationDetails {
     #[serde(rename = "AlarmMetrics")]
     pub alarm_metrics: Option<Vec<AlarmMetric>>,
 
-
-    /// 
+    ///
     /// A list of logs to monitor for the component. Only Amazon EC2 instances can use         Logs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Log
@@ -1070,10 +980,9 @@ pub struct SubComponentConfigurationDetails {
     #[serde(rename = "Logs")]
     pub logs: Option<Vec<Log>>,
 
-
-    /// 
+    ///
     /// A list of Windows Events to monitor for the component. Only Amazon EC2 instances running       on Windows can use WindowsEvents.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of WindowsEvent
@@ -1081,10 +990,7 @@ pub struct SubComponentConfigurationDetails {
     /// Update requires: No interruption
     #[serde(rename = "WindowsEvents")]
     pub windows_events: Option<Vec<WindowsEvent>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SubComponentConfigurationDetails {
     fn type_string(&self) -> &'static str {
@@ -1096,7 +1002,6 @@ impl cfn_resources::CfnResource for SubComponentConfigurationDetails {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1104,11 +1009,9 @@ impl cfn_resources::CfnResource for SubComponentConfigurationDetails {
 /// The AWS::ApplicationInsights::Application SubComponentTypeConfiguration property type specifies the sub-component configurations for a component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SubComponentTypeConfiguration {
-
-
-    /// 
+    ///
     /// The configuration settings of the sub-components.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: SubComponentConfigurationDetails
@@ -1117,10 +1020,9 @@ pub struct SubComponentTypeConfiguration {
     #[serde(rename = "SubComponentConfigurationDetails")]
     pub sub_component_configuration_details: SubComponentConfigurationDetails,
 
-
-    /// 
+    ///
     /// The sub-component type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1128,10 +1030,7 @@ pub struct SubComponentTypeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SubComponentType")]
     pub sub_component_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SubComponentTypeConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1143,7 +1042,6 @@ impl cfn_resources::CfnResource for SubComponentTypeConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.sub_component_configuration_details.validate()?;
 
         Ok(())
@@ -1159,32 +1057,26 @@ impl cfn_resources::CfnResource for SubComponentTypeConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -1196,7 +1088,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1204,11 +1095,9 @@ impl cfn_resources::CfnResource for Tag {
 /// The AWS::ApplicationInsights::Application WindowsEvent property type specifies a Windows Event to monitor for the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WindowsEvent {
-
-
-    /// 
+    ///
     /// The levels of event to log. You must specify each level to log. Possible values include INFORMATION, WARNING, ERROR, CRITICAL, and VERBOSE. This field is required for each type of Windows Event to log.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -1217,10 +1106,9 @@ pub struct WindowsEvent {
     #[serde(rename = "EventLevels")]
     pub event_levels: Vec<String>,
 
-
-    /// 
+    ///
     /// The type of Windows Events to log, equivalent to the Windows Event log channel name. For       example, System, Security, CustomEventName, and so on. This field is required for each       type of Windows event to log.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1229,10 +1117,9 @@ pub struct WindowsEvent {
     #[serde(rename = "EventName")]
     pub event_name: String,
 
-
-    /// 
+    ///
     /// The CloudWatch log group name to be associated with the monitored log.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1241,10 +1128,9 @@ pub struct WindowsEvent {
     #[serde(rename = "LogGroupName")]
     pub log_group_name: String,
 
-
-    /// 
+    ///
     /// The log pattern set.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1252,10 +1138,7 @@ pub struct WindowsEvent {
     /// Update requires: No interruption
     #[serde(rename = "PatternSet")]
     pub pattern_set: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WindowsEvent {
     fn type_string(&self) -> &'static str {
@@ -1267,7 +1150,6 @@ impl cfn_resources::CfnResource for WindowsEvent {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

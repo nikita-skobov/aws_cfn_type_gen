@@ -1,15 +1,11 @@
-
-
 /// The AWS::Logs::SubscriptionFilter resource specifies a subscription filter and associates it with the specified log    group. Subscription filters allow you to subscribe to a real-time stream of log events    and have them delivered to a specific    destination. Currently, the supported destinations are:
 ///
 /// There can be as many as two subscription filters associated with a log group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSubscriptionFilter {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the destination.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnSubscriptionFilter {
     #[serde(rename = "DestinationArn")]
     pub destination_arn: String,
 
-
-    /// 
+    ///
     /// The method used to distribute log data to the destination, which can be either    random or grouped by log stream.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -32,10 +27,9 @@ pub struct CfnSubscriptionFilter {
     #[serde(rename = "Distribution")]
     pub distribution: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the subscription filter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -50,10 +44,9 @@ pub struct CfnSubscriptionFilter {
     #[serde(rename = "FilterName")]
     pub filter_name: Option<String>,
 
-
-    /// 
+    ///
     /// The filtering expressions that restrict what gets delivered to the destination AWS resource.      For more information about the filter pattern syntax, see      Filter and Pattern Syntax.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -62,10 +55,9 @@ pub struct CfnSubscriptionFilter {
     #[serde(rename = "FilterPattern")]
     pub filter_pattern: String,
 
-
-    /// 
+    ///
     /// The log group to associate with the subscription filter. All log events that are     uploaded to this log group are filtered and delivered to the specified AWS resource if the filter pattern matches the log events.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -80,10 +72,9 @@ pub struct CfnSubscriptionFilter {
     #[serde(rename = "LogGroupName")]
     pub log_group_name: String,
 
-
-    /// 
+    ///
     /// The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination      stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -93,10 +84,7 @@ pub struct CfnSubscriptionFilter {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSubscriptionFilter {
     fn type_string(&self) -> &'static str {
@@ -108,52 +96,60 @@ impl cfn_resources::CfnResource for CfnSubscriptionFilter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.destination_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'destination_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'destination_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.filter_name {
-
-        if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'filter_name'. {} is greater than 512", the_val.len()));
+            if the_val.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'filter_name'. {} is greater than 512",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.filter_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'filter_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'filter_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.log_group_name;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'log_group_name'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'log_group_name'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.log_group_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'log_group_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'log_group_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.role_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }

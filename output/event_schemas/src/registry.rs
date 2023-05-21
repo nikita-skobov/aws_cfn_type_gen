@@ -1,13 +1,9 @@
-
-
 /// Use the AWS::EventSchemas::Registry to specify a schema registry. Schema       registries are containers for Schemas. Registries collect and organize schemas so that       your schemas are in logical groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRegistry {
-
-
-    /// 
+    ///
     /// A description of the registry to be created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnRegistry {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the schema registry.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnRegistry {
     #[serde(rename = "RegistryName")]
     pub registry_name: Option<String>,
 
-
-    /// 
+    ///
     /// Tags to associate with the registry.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of TagsEntry
@@ -39,10 +33,7 @@ pub struct CfnRegistry {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<TagsEntry>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRegistry {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnRegistry {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -62,11 +52,9 @@ impl cfn_resources::CfnResource for CfnRegistry {
 /// Tags to associate with the schema registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagsEntry {
-
-
-    /// 
+    ///
     /// They key of a key-value pair.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -75,10 +63,9 @@ pub struct TagsEntry {
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// They value of a key-value pair.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -86,10 +73,7 @@ pub struct TagsEntry {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TagsEntry {
     fn type_string(&self) -> &'static str {
@@ -101,7 +85,6 @@ impl cfn_resources::CfnResource for TagsEntry {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

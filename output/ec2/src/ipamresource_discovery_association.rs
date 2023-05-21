@@ -1,13 +1,9 @@
-
-
 /// An IPAM resource discovery association. An associated resource discovery is a resource discovery that has been associated with an IPAM. IPAM aggregates the resource CIDRs discovered by the associated resource discovery.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIPAMResourceDiscoveryAssociation {
-
-
-    /// 
+    ///
     /// The IPAM ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnIPAMResourceDiscoveryAssociation {
     #[serde(rename = "IpamId")]
     pub ipam_id: String,
 
-
-    /// 
+    ///
     /// The resource discovery ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnIPAMResourceDiscoveryAssociation {
     #[serde(rename = "IpamResourceDiscoveryId")]
     pub ipam_resource_discovery_id: String,
 
-
-    /// 
+    ///
     /// A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your AWS costs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -39,10 +33,7 @@ pub struct CfnIPAMResourceDiscoveryAssociation {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnIPAMResourceDiscoveryAssociation {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnIPAMResourceDiscoveryAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -68,32 +58,26 @@ impl cfn_resources::CfnResource for CfnIPAMResourceDiscoveryAssociation {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -105,7 +89,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

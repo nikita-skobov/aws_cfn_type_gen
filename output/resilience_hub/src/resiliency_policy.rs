@@ -1,13 +1,9 @@
-
-
 /// Defines a resiliency policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResiliencyPolicy {
-
-
-    /// 
+    ///
     /// Specifies a high-level geographical location constraint for where your resilience policy    data can be stored.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnResiliencyPolicy {
     #[serde(rename = "DataLocationConstraint")]
     pub data_location_constraint: Option<String>,
 
-
-    /// 
+    ///
     /// The resiliency policy.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Map of FailurePolicy
@@ -28,10 +23,9 @@ pub struct CfnResiliencyPolicy {
     #[serde(rename = "Policy")]
     pub policy: std::collections::HashMap<String, FailurePolicy>,
 
-
-    /// 
+    ///
     /// The description for the policy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,10 +34,9 @@ pub struct CfnResiliencyPolicy {
     #[serde(rename = "PolicyDescription")]
     pub policy_description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the policy
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -52,10 +45,9 @@ pub struct CfnResiliencyPolicy {
     #[serde(rename = "PolicyName")]
     pub policy_name: String,
 
-
-    /// 
+    ///
     /// The tags assigned to the resource. A tag is a label that you assign to an AWS resource. Each tag consists of a key/value pair.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -64,10 +56,9 @@ pub struct CfnResiliencyPolicy {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
+    ///
     /// The tier for this resiliency policy, ranging from the highest severity     (MissionCritical) to lowest (NonCritical).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -75,10 +66,7 @@ pub struct CfnResiliencyPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
     pub tier: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnResiliencyPolicy {
     fn type_string(&self) -> &'static str {
@@ -90,7 +78,6 @@ impl cfn_resources::CfnResource for CfnResiliencyPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -98,11 +85,9 @@ impl cfn_resources::CfnResource for CfnResiliencyPolicy {
 /// Defines a failure policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FailurePolicy {
-
-
-    /// 
+    ///
     /// The Recovery Point Objective (RPO), in seconds.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -111,10 +96,9 @@ pub struct FailurePolicy {
     #[serde(rename = "RpoInSecs")]
     pub rpo_in_secs: i64,
 
-
-    /// 
+    ///
     /// The Recovery Time Objective (RTO), in seconds.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -122,10 +106,7 @@ pub struct FailurePolicy {
     /// Update requires: No interruption
     #[serde(rename = "RtoInSecs")]
     pub rto_in_secs: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FailurePolicy {
     fn type_string(&self) -> &'static str {
@@ -137,7 +118,6 @@ impl cfn_resources::CfnResource for FailurePolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

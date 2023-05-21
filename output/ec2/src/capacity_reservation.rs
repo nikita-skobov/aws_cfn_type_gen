@@ -1,13 +1,9 @@
-
-
 /// Creates a new Capacity Reservation with the specified attributes. For more information,     see Capacity       Reservations in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCapacityReservation {
-
-
-    /// 
+    ///
     /// The Availability Zone in which to create the Capacity Reservation.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: String,
 
-
-    /// 
+    ///
     /// Indicates whether the Capacity Reservation supports EBS-optimized instances. This optimization provides 			dedicated throughput to Amazon EBS and an optimized configuration stack to provide 			optimal I/O performance. This optimization isn't available with all instance types. 			Additional usage charges apply when using an EBS- optimized instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -28,14 +23,13 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "EbsOptimized")]
     pub ebs_optimized: Option<bool>,
 
-
-    /// 
+    ///
     /// The date and time at which the Capacity Reservation expires. When a Capacity Reservation expires, the reserved capacity 			is released and you can no longer launch instances into it. The Capacity Reservation's state changes to 				expired when it reaches its end date and time.
-    /// 
+    ///
     /// You must provide an EndDate value if EndDateType is 				limited. Omit EndDate if EndDateType is 				unlimited.
-    /// 
+    ///
     /// If the EndDateType is limited, the Capacity Reservation is cancelled within an hour from the specified time. For example, if you specify 			5/31/2019, 13:30:55, the Capacity Reservation is guaranteed to end between 13:30:55 and 14:30:55 on 5/31/2019.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -44,12 +38,11 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "EndDate")]
     pub end_date: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates the way in which the Capacity Reservation ends. A Capacity Reservation can have one of the following end 			types:
-    /// 
+    ///
     /// unlimited - The Capacity Reservation remains active until you explicitly cancel it. Do not 					provide an EndDate if the EndDateType is 						unlimited.                        limited - The Capacity Reservation expires automatically at a specified date and time. You must 					provide an EndDate value if the EndDateType value is 						limited.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -60,10 +53,9 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "EndDateType")]
     pub end_date_type: Option<CapacityReservationEndDateTypeEnum>,
 
-
-    /// 
+    ///
     /// Deprecated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -72,12 +64,11 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "EphemeralStorage")]
     pub ephemeral_storage: Option<bool>,
 
-
-    /// 
+    ///
     /// The number of instances for which to reserve capacity.
-    /// 
+    ///
     /// Valid range: 1 - 1000
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -86,14 +77,13 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "InstanceCount")]
     pub instance_count: i64,
 
-
-    /// 
+    ///
     /// Indicates the type of instance launches that the Capacity Reservation accepts. The options 			include:
-    /// 
+    ///
     /// open - The Capacity Reservation automatically matches all instances that have matching attributes (instance type, platform, 				and Availability Zone). Instances that have matching attributes run in the Capacity Reservation automatically without specifying 				any additional parameters.                        targeted - The Capacity Reservation only accepts instances that have matching attributes 					(instance type, platform, and Availability Zone), and explicitly target the 					Capacity Reservation. This ensures that only permitted instances can use the reserved capacity.
-    /// 
+    ///
     /// Default: open
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -104,10 +94,9 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "InstanceMatchCriteria")]
     pub instance_match_criteria: Option<CapacityReservationInstanceMatchCriteriaEnum>,
 
-
-    /// 
+    ///
     /// The type of operating system for which to reserve capacity.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -118,10 +107,9 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "InstancePlatform")]
     pub instance_platform: CapacityReservationInstancePlatformEnum,
 
-
-    /// 
+    ///
     /// The instance type for which to reserve capacity. For more information, see Instance types in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -130,10 +118,9 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the Outpost on which to create the Capacity Reservation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -144,10 +131,9 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "OutPostArn")]
     pub out_post_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the cluster placement group in which 			to create the Capacity Reservation. For more information, see 			 				Capacity Reservations for cluster placement groups in the 			Amazon EC2 User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -158,10 +144,9 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "PlacementGroupArn")]
     pub placement_group_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The tags to apply to the Capacity Reservation during launch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of TagSpecification
@@ -170,12 +155,11 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "TagSpecifications")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
-
-    /// 
+    ///
     /// Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can have one of the following tenancy settings:
-    /// 
+    ///
     /// default - The Capacity Reservation is created on hardware that is shared with other AWS accounts.                        dedicated - The Capacity Reservation is created on single-tenant hardware that is dedicated to a single AWS account.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -185,13 +169,10 @@ pub struct CfnCapacityReservation {
     /// Update requires: Replacement
     #[serde(rename = "Tenancy")]
     pub tenancy: Option<CapacityReservationTenancyEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CapacityReservationEndDateTypeEnum {
-
     /// limited
     #[serde(rename = "limited")]
     Limited,
@@ -199,7 +180,6 @@ pub enum CapacityReservationEndDateTypeEnum {
     /// unlimited
     #[serde(rename = "unlimited")]
     Unlimited,
-
 }
 
 impl Default for CapacityReservationEndDateTypeEnum {
@@ -210,7 +190,6 @@ impl Default for CapacityReservationEndDateTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CapacityReservationInstanceMatchCriteriaEnum {
-
     /// open
     #[serde(rename = "open")]
     Open,
@@ -218,7 +197,6 @@ pub enum CapacityReservationInstanceMatchCriteriaEnum {
     /// targeted
     #[serde(rename = "targeted")]
     Targeted,
-
 }
 
 impl Default for CapacityReservationInstanceMatchCriteriaEnum {
@@ -229,7 +207,6 @@ impl Default for CapacityReservationInstanceMatchCriteriaEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CapacityReservationInstancePlatformEnum {
-
     /// Linux with SQL Server Enterprise
     #[serde(rename = "Linux with SQL Server Enterprise")]
     Linuxwithsqlserverenterprise,
@@ -297,7 +274,6 @@ pub enum CapacityReservationInstancePlatformEnum {
     /// Windows with SQL Server Web
     #[serde(rename = "Windows with SQL Server Web")]
     Windowswithsqlserverweb,
-
 }
 
 impl Default for CapacityReservationInstancePlatformEnum {
@@ -308,7 +284,6 @@ impl Default for CapacityReservationInstancePlatformEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CapacityReservationTenancyEnum {
-
     /// dedicated
     #[serde(rename = "dedicated")]
     Dedicated,
@@ -316,7 +291,6 @@ pub enum CapacityReservationTenancyEnum {
     /// default
     #[serde(rename = "default")]
     Default,
-
 }
 
 impl Default for CapacityReservationTenancyEnum {
@@ -324,7 +298,6 @@ impl Default for CapacityReservationTenancyEnum {
         CapacityReservationTenancyEnum::Dedicated
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnCapacityReservation {
     fn type_string(&self) -> &'static str {
@@ -336,7 +309,6 @@ impl cfn_resources::CfnResource for CfnCapacityReservation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -350,32 +322,26 @@ impl cfn_resources::CfnResource for CfnCapacityReservation {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -387,7 +353,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -397,11 +362,9 @@ impl cfn_resources::CfnResource for Tag {
 /// For more information, see Tag.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagSpecification {
-
-
-    /// 
+    ///
     /// The type of resource to tag. Specify capacity-reservation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -412,10 +375,9 @@ pub struct TagSpecification {
     #[serde(rename = "ResourceType")]
     pub resource_type: Option<TagSpecificationResourceTypeEnum>,
 
-
-    /// 
+    ///
     /// The tags to apply to the resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -423,13 +385,10 @@ pub struct TagSpecification {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TagSpecificationResourceTypeEnum {
-
     /// capacity-reservation
     #[serde(rename = "capacity-reservation")]
     Capacityreservation,
@@ -769,7 +728,6 @@ pub enum TagSpecificationResourceTypeEnum {
     /// vpn-gateway
     #[serde(rename = "vpn-gateway")]
     Vpngateway,
-
 }
 
 impl Default for TagSpecificationResourceTypeEnum {
@@ -777,7 +735,6 @@ impl Default for TagSpecificationResourceTypeEnum {
         TagSpecificationResourceTypeEnum::Capacityreservation
     }
 }
-
 
 impl cfn_resources::CfnResource for TagSpecification {
     fn type_string(&self) -> &'static str {
@@ -789,7 +746,6 @@ impl cfn_resources::CfnResource for TagSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

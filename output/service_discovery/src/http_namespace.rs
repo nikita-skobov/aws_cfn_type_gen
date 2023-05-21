@@ -1,15 +1,11 @@
-
-
 /// The HttpNamespace resource is an AWS Cloud Map resource type that contains information  about an HTTP namespace. Service instances that you register using an HTTP namespace can be discovered using a   DiscoverInstances request but can't be discovered using DNS.
 ///
 /// For the current quota on the number of namespaces that you can create using the same AWS  account, see AWS Cloud Map   quotas in the AWS Cloud Map Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnHttpNamespace {
-
-
-    /// 
+    ///
     /// A description for the namespace.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnHttpNamespace {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name that you want to assign to this namespace.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnHttpNamespace {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The tags for the namespace. Each tag consists of a key and an optional value, both of which you define. Tag keys  can have a maximum character length of 128 characters, and tag values can have a maximum length of 256  characters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -49,10 +43,7 @@ pub struct CfnHttpNamespace {
     /// Update requires: Updates are not supported.
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnHttpNamespace {
     fn type_string(&self) -> &'static str {
@@ -64,30 +55,33 @@ impl cfn_resources::CfnResource for CfnHttpNamespace {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -101,32 +95,26 @@ impl cfn_resources::CfnResource for CfnHttpNamespace {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -138,7 +126,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

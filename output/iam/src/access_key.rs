@@ -1,15 +1,11 @@
-
-
 /// Creates a new AWS secret access key and corresponding AWS     access key ID for the specified user. The default status for new keys is       Active.
 ///
 /// For information about quotas on the number of keys you can create, see IAM and        AWS STS quotas in the IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccessKey {
-
-
-    /// 
+    ///
     /// This value is specific to CloudFormation and can only be       incremented. Incrementing this value notifies CloudFormation that you want to rotate your access key. When you update your stack,       CloudFormation will replace the existing access key with a new key.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -18,10 +14,9 @@ pub struct CfnAccessKey {
     #[serde(rename = "Serial")]
     pub serial: Option<i64>,
 
-
-    /// 
+    ///
     /// The status of the access key. Active means that the key is valid for API     calls, while Inactive means it is not.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -32,12 +27,11 @@ pub struct CfnAccessKey {
     #[serde(rename = "Status")]
     pub status: Option<AccessKeyStatusEnum>,
 
-
-    /// 
+    ///
     /// The name of the IAM user that the new key will belong to.
-    /// 
+    ///
     /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -51,13 +45,10 @@ pub struct CfnAccessKey {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     pub user_name: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AccessKeyStatusEnum {
-
     /// Active
     #[serde(rename = "Active")]
     Active,
@@ -65,7 +56,6 @@ pub enum AccessKeyStatusEnum {
     /// Inactive
     #[serde(rename = "Inactive")]
     Inactive,
-
 }
 
 impl Default for AccessKeyStatusEnum {
@@ -73,7 +63,6 @@ impl Default for AccessKeyStatusEnum {
         AccessKeyStatusEnum::Active
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnAccessKey {
     fn type_string(&self) -> &'static str {
@@ -85,21 +74,24 @@ impl cfn_resources::CfnResource for CfnAccessKey {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.user_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'user_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'user_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'user_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'user_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

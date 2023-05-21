@@ -1,5 +1,3 @@
-
-
 /// Specifies a placement group in which to launch instances. The strategy of the placement     group determines how the instances are organized within the group.
 ///
 /// A cluster placement group is a logical grouping of instances within a     single Availability Zone that benefit from low network latency, high network throughput. A     spread placement group places instances on distinct hardware. A     partition placement group places groups of instances in different     partitions, where instances in one partition do not share the same hardware with instances     in another partition.
@@ -7,11 +5,9 @@
 /// For more information, see Placement Groups in the     Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPlacementGroup {
-
-
-    /// 
+    ///
     /// The number of partitions. Valid only when Strategy is       set to partition.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -20,12 +16,11 @@ pub struct CfnPlacementGroup {
     #[serde(rename = "PartitionCount")]
     pub partition_count: Option<i64>,
 
-
-    /// 
+    ///
     /// Determines how placement groups spread instances.
-    /// 
+    ///
     /// Host – You can use host only with Outpost placement           groups.               Rack – No usage restrictions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnPlacementGroup {
     #[serde(rename = "SpreadLevel")]
     pub spread_level: Option<PlacementGroupSpreadLevelEnum>,
 
-
-    /// 
+    ///
     /// The placement strategy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -50,10 +44,9 @@ pub struct CfnPlacementGroup {
     #[serde(rename = "Strategy")]
     pub strategy: Option<PlacementGroupStrategyEnum>,
 
-
-    /// 
+    ///
     /// The tags to apply to the new placement group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -61,13 +54,10 @@ pub struct CfnPlacementGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PlacementGroupSpreadLevelEnum {
-
     /// host
     #[serde(rename = "host")]
     Host,
@@ -75,7 +65,6 @@ pub enum PlacementGroupSpreadLevelEnum {
     /// rack
     #[serde(rename = "rack")]
     Rack,
-
 }
 
 impl Default for PlacementGroupSpreadLevelEnum {
@@ -86,7 +75,6 @@ impl Default for PlacementGroupSpreadLevelEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PlacementGroupStrategyEnum {
-
     /// cluster
     #[serde(rename = "cluster")]
     Cluster,
@@ -98,7 +86,6 @@ pub enum PlacementGroupStrategyEnum {
     /// spread
     #[serde(rename = "spread")]
     Spread,
-
 }
 
 impl Default for PlacementGroupStrategyEnum {
@@ -106,7 +93,6 @@ impl Default for PlacementGroupStrategyEnum {
         PlacementGroupStrategyEnum::Cluster
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnPlacementGroup {
     fn type_string(&self) -> &'static str {
@@ -118,7 +104,6 @@ impl cfn_resources::CfnResource for CfnPlacementGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -132,32 +117,26 @@ impl cfn_resources::CfnResource for CfnPlacementGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -169,7 +148,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

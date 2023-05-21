@@ -1,13 +1,9 @@
-
-
 /// Specifies a route table for a transit gateway.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayRouteTable {
-
-
-    /// 
+    ///
     /// Any tags assigned to the route table.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -16,10 +12,9 @@ pub struct CfnTransitGatewayRouteTable {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the transit gateway.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -27,10 +22,7 @@ pub struct CfnTransitGatewayRouteTable {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayId")]
     pub transit_gateway_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRouteTable {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnTransitGatewayRouteTable {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -56,32 +47,26 @@ impl cfn_resources::CfnResource for CfnTransitGatewayRouteTable {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -93,7 +78,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

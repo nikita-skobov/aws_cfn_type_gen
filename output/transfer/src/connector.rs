@@ -1,13 +1,9 @@
-
-
 /// Creates the connector, which captures the parameters for an outbound connection for the    AS2 protocol. The connector is required for sending files to an externally hosted AS2 server.    For more details about connectors, see Create AS2 connectors.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConnector {
-
-
-    /// 
+    ///
     /// With AS2, you can send files by calling StartFileTransfer and specifying the    file paths in the request parameter, SendFilePaths. We use the file’s parent    directory (for example, for --send-file-paths /bucket/dir/file.txt, parent    directory is /bucket/dir/) to temporarily store a processed AS2 message file,    store the MDN when we receive them from the partner, and write a final JSON file containing    relevant metadata of the transmission. So, the AccessRole needs to provide read    and write access to the parent directory of the file location used in the     StartFileTransfer request. Additionally, you need to provide read and write    access to the parent directory of the files that you intend to send with     StartFileTransfer.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnConnector {
     #[serde(rename = "AccessRole")]
     pub access_role: String,
 
-
-    /// 
+    ///
     /// A structure that contains the parameters for a connector object.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: As2Config
@@ -34,10 +29,9 @@ pub struct CfnConnector {
     #[serde(rename = "As2Config")]
     pub as2_config: As2Config,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that allows a connector to turn    on CloudWatch logging for Amazon S3 events. When set, you can view connector    activity in your CloudWatch logs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -52,10 +46,9 @@ pub struct CfnConnector {
     #[serde(rename = "LoggingRole")]
     pub logging_role: Option<String>,
 
-
-    /// 
+    ///
     /// Key-value pairs that can be used to group and search for connectors.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -66,10 +59,9 @@ pub struct CfnConnector {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The URL of the partner's AS2 endpoint.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -79,10 +71,7 @@ pub struct CfnConnector {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     pub url: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnConnector {
     fn type_string(&self) -> &'static str {
@@ -94,54 +83,62 @@ impl cfn_resources::CfnResource for CfnConnector {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.access_role;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'access_role'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'access_role'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.access_role;
 
         if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'access_role'. {} is less than 20", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'access_role'. {} is less than 20",
+                the_val.len()
+            ));
         }
 
-        
         self.as2_config.validate()?;
 
         if let Some(the_val) = &self.logging_role {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'logging_role'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'logging_role'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.logging_role {
-
-        if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'logging_role'. {} is less than 20", the_val.len()));
+            if the_val.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'logging_role'. {} is less than 20",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.url;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'url'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'url'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -149,11 +146,9 @@ impl cfn_resources::CfnResource for CfnConnector {
 /// A structure that contains the parameters for a connector object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct As2Config {
-
-
-    /// 
+    ///
     /// Specifies whether the AS2 file is compressed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -164,12 +159,11 @@ pub struct As2Config {
     #[serde(rename = "Compression")]
     pub compression: Option<As2ConfigCompressionEnum>,
 
-
-    /// 
+    ///
     /// The algorithm that is used to encrypt the file.
-    /// 
+    ///
     /// NoteYou can only specify NONE if the URL for your connector uses HTTPS. This ensures that     no traffic is sent in clear text.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -180,10 +174,9 @@ pub struct As2Config {
     #[serde(rename = "EncryptionAlgorithm")]
     pub encryption_algorithm: Option<As2ConfigEncryptionAlgorithmEnum>,
 
-
-    /// 
+    ///
     /// A unique identifier for the AS2 local profile.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -198,12 +191,11 @@ pub struct As2Config {
     #[serde(rename = "LocalProfileId")]
     pub local_profile_id: Option<String>,
 
-
-    /// 
+    ///
     /// Used for outbound requests (from an AWS Transfer Family server to a partner AS2 server) to determine whether    the partner response for transfers is synchronous or asynchronous. Specify either of the following values:
-    /// 
+    ///
     /// SYNC: The system expects a synchronous MDN response, confirming that the file was transferred successfully (or not).                        NONE: Specifies that no MDN response is required.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -214,12 +206,11 @@ pub struct As2Config {
     #[serde(rename = "MdnResponse")]
     pub mdn_response: Option<As2ConfigMdnResponseEnum>,
 
-
-    /// 
+    ///
     /// The signing algorithm for the MDN response.
-    /// 
+    ///
     /// NoteIf set to DEFAULT (or not set at all), the value for SigningAlgorithm is used.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -230,10 +221,9 @@ pub struct As2Config {
     #[serde(rename = "MdnSigningAlgorithm")]
     pub mdn_signing_algorithm: Option<As2ConfigMdnSigningAlgorithmEnum>,
 
-
-    /// 
+    ///
     /// Used as the Subject HTTP header attribute in AS2 messages that are being sent with the connector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -248,10 +238,9 @@ pub struct As2Config {
     #[serde(rename = "MessageSubject")]
     pub message_subject: Option<String>,
 
-
-    /// 
+    ///
     /// A unique identifier for the partner profile for the connector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -266,10 +255,9 @@ pub struct As2Config {
     #[serde(rename = "PartnerProfileId")]
     pub partner_profile_id: Option<String>,
 
-
-    /// 
+    ///
     /// The algorithm that is used to sign the AS2 messages sent with the connector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -279,13 +267,10 @@ pub struct As2Config {
     /// Update requires: No interruption
     #[serde(rename = "SigningAlgorithm")]
     pub signing_algorithm: Option<As2ConfigSigningAlgorithmEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum As2ConfigCompressionEnum {
-
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
@@ -293,7 +278,6 @@ pub enum As2ConfigCompressionEnum {
     /// ZLIB
     #[serde(rename = "ZLIB")]
     Zlib,
-
 }
 
 impl Default for As2ConfigCompressionEnum {
@@ -304,7 +288,6 @@ impl Default for As2ConfigCompressionEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum As2ConfigEncryptionAlgorithmEnum {
-
     /// AES128_CBC
     #[serde(rename = "AES128_CBC")]
     Aes128cbc,
@@ -320,7 +303,6 @@ pub enum As2ConfigEncryptionAlgorithmEnum {
     /// NONE
     #[serde(rename = "NONE")]
     None,
-
 }
 
 impl Default for As2ConfigEncryptionAlgorithmEnum {
@@ -331,7 +313,6 @@ impl Default for As2ConfigEncryptionAlgorithmEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum As2ConfigMdnResponseEnum {
-
     /// NONE
     #[serde(rename = "NONE")]
     None,
@@ -339,7 +320,6 @@ pub enum As2ConfigMdnResponseEnum {
     /// SYNC
     #[serde(rename = "SYNC")]
     Sync,
-
 }
 
 impl Default for As2ConfigMdnResponseEnum {
@@ -350,7 +330,6 @@ impl Default for As2ConfigMdnResponseEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum As2ConfigMdnSigningAlgorithmEnum {
-
     /// DEFAULT
     #[serde(rename = "DEFAULT")]
     Default,
@@ -374,7 +353,6 @@ pub enum As2ConfigMdnSigningAlgorithmEnum {
     /// SHA512
     #[serde(rename = "SHA512")]
     Sha512,
-
 }
 
 impl Default for As2ConfigMdnSigningAlgorithmEnum {
@@ -385,7 +363,6 @@ impl Default for As2ConfigMdnSigningAlgorithmEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum As2ConfigSigningAlgorithmEnum {
-
     /// NONE
     #[serde(rename = "NONE")]
     None,
@@ -405,7 +382,6 @@ pub enum As2ConfigSigningAlgorithmEnum {
     /// SHA512
     #[serde(rename = "SHA512")]
     Sha512,
-
 }
 
 impl Default for As2ConfigSigningAlgorithmEnum {
@@ -413,7 +389,6 @@ impl Default for As2ConfigSigningAlgorithmEnum {
         As2ConfigSigningAlgorithmEnum::None
     }
 }
-
 
 impl cfn_resources::CfnResource for As2Config {
     fn type_string(&self) -> &'static str {
@@ -425,55 +400,60 @@ impl cfn_resources::CfnResource for As2Config {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.local_profile_id {
+            if the_val.len() > 19 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'local_profile_id'. {} is greater than 19",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.local_profile_id {
-
-        if the_val.len() > 19 as _ {
-            return Err(format!("Max validation failed on field 'local_profile_id'. {} is greater than 19", the_val.len()));
+            if the_val.len() < 19 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'local_profile_id'. {} is less than 19",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.local_profile_id {
-
-        if the_val.len() < 19 as _ {
-            return Err(format!("Min validation failed on field 'local_profile_id'. {} is less than 19", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.message_subject {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'message_subject'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'message_subject'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.message_subject {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'message_subject'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'message_subject'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.partner_profile_id {
-
-        if the_val.len() > 19 as _ {
-            return Err(format!("Max validation failed on field 'partner_profile_id'. {} is greater than 19", the_val.len()));
+            if the_val.len() > 19 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'partner_profile_id'. {} is greater than 19",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.partner_profile_id {
-
-        if the_val.len() < 19 as _ {
-            return Err(format!("Min validation failed on field 'partner_profile_id'. {} is less than 19", the_val.len()));
+            if the_val.len() < 19 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'partner_profile_id'. {} is less than 19",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -487,32 +467,26 @@ impl cfn_resources::CfnResource for As2Config {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -524,7 +498,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

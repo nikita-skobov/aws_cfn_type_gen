@@ -1,10 +1,6 @@
-
-
 /// This resource associates the specified application with the specified fleet. This is only supported for Elastic fleets.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationFleetAssociation {
-
-
     /// The ARN of the application.
     ///
     /// Required: Yes
@@ -17,7 +13,6 @@ pub struct CfnApplicationFleetAssociation {
     #[serde(rename = "ApplicationArn")]
     pub application_arn: String,
 
-
     /// The name of the fleet.
     ///
     /// Required: Yes
@@ -29,10 +24,7 @@ pub struct CfnApplicationFleetAssociation {
     /// Update requires: Replacement
     #[serde(rename = "FleetName")]
     pub fleet_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnApplicationFleetAssociation {
     fn type_string(&self) -> &'static str {
@@ -44,14 +36,15 @@ impl cfn_resources::CfnResource for CfnApplicationFleetAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.fleet_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'fleet_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'fleet_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

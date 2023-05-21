@@ -1,13 +1,9 @@
-
-
 /// Specifies a domain configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDomainConfiguration {
-
-
-    /// 
+    ///
     /// An object that specifies the authorization service for a domain.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AuthorizerConfig
@@ -16,10 +12,9 @@ pub struct CfnDomainConfiguration {
     #[serde(rename = "AuthorizerConfig")]
     pub authorizer_config: Option<AuthorizerConfig>,
 
-
-    /// 
+    ///
     /// The name of the domain configuration. This value must be unique to a region.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,12 +23,11 @@ pub struct CfnDomainConfiguration {
     #[serde(rename = "DomainConfigurationName")]
     pub domain_configuration_name: Option<String>,
 
-
-    /// 
+    ///
     /// The status to which the domain configuration should be updated.
-    /// 
+    ///
     /// Valid values: ENABLED | DISABLED
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnDomainConfiguration {
     #[serde(rename = "DomainConfigurationStatus")]
     pub domain_configuration_status: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the domain.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -54,10 +47,9 @@ pub struct CfnDomainConfiguration {
     #[serde(rename = "DomainName")]
     pub domain_name: Option<String>,
 
-
-    /// 
+    ///
     /// The ARNs of the certificates that AWS IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN.    This value is not required for AWS-managed domains.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -66,12 +58,11 @@ pub struct CfnDomainConfiguration {
     #[serde(rename = "ServerCertificateArns")]
     pub server_certificate_arns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The type of service delivered by the endpoint.
-    /// 
+    ///
     /// Note        AWS IoT Core currently supports only the DATA service type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -80,12 +71,11 @@ pub struct CfnDomainConfiguration {
     #[serde(rename = "ServiceType")]
     pub service_type: Option<String>,
 
-
-    /// 
+    ///
     /// Metadata which can be used to manage the domain configuration.
-    /// 
+    ///
     /// NoteFor URI Request parameters use format: ...key1=value1&key2=value2...For the CLI command-line parameter use format: &&tags       "key1=value1&key2=value2..."For the cli-input-json file use format: "tags":       "key1=value1&key2=value2..."
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -93,7 +83,6 @@ pub struct CfnDomainConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 
     /// Property description not available.
     ///
@@ -105,10 +94,9 @@ pub struct CfnDomainConfiguration {
     #[serde(rename = "TlsConfig")]
     pub tls_config: Option<TlsConfig>,
 
-
-    /// 
+    ///
     /// The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority.      This value is not required for AWS-managed domains.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -116,10 +104,7 @@ pub struct CfnDomainConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "ValidationCertificateArn")]
     pub validation_certificate_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDomainConfiguration {
     fn type_string(&self) -> &'static str {
@@ -131,10 +116,13 @@ impl cfn_resources::CfnResource for CfnDomainConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.authorizer_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.authorizer_config.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.tls_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.tls_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -143,11 +131,9 @@ impl cfn_resources::CfnResource for CfnDomainConfiguration {
 /// An object that specifies the authorization service for a domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AuthorizerConfig {
-
-
-    /// 
+    ///
     /// A Boolean that specifies whether the domain configuration's authorization service can be overridden.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -156,10 +142,9 @@ pub struct AuthorizerConfig {
     #[serde(rename = "AllowAuthorizerOverride")]
     pub allow_authorizer_override: Option<bool>,
 
-
-    /// 
+    ///
     /// The name of the authorization service for a domain configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -167,10 +152,7 @@ pub struct AuthorizerConfig {
     /// Update requires: No interruption
     #[serde(rename = "DefaultAuthorizerName")]
     pub default_authorizer_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AuthorizerConfig {
     fn type_string(&self) -> &'static str {
@@ -182,7 +164,6 @@ impl cfn_resources::CfnResource for AuthorizerConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -190,11 +171,9 @@ impl cfn_resources::CfnResource for AuthorizerConfig {
 /// An object that contains information about a server certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServerCertificateSummary {
-
-
-    /// 
+    ///
     /// The ARN of the server certificate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -203,10 +182,9 @@ pub struct ServerCertificateSummary {
     #[serde(rename = "ServerCertificateArn")]
     pub server_certificate_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The status of the server certificate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -215,10 +193,9 @@ pub struct ServerCertificateSummary {
     #[serde(rename = "ServerCertificateStatus")]
     pub server_certificate_status: Option<String>,
 
-
-    /// 
+    ///
     /// Details that explain the status of the server certificate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -226,10 +203,7 @@ pub struct ServerCertificateSummary {
     /// Update requires: No interruption
     #[serde(rename = "ServerCertificateStatusDetail")]
     pub server_certificate_status_detail: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServerCertificateSummary {
     fn type_string(&self) -> &'static str {
@@ -241,7 +215,6 @@ impl cfn_resources::CfnResource for ServerCertificateSummary {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -255,32 +228,26 @@ impl cfn_resources::CfnResource for ServerCertificateSummary {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -292,7 +259,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -300,8 +266,6 @@ impl cfn_resources::CfnResource for Tag {
 /// The TlsConfig property type specifies Property description not available. for an AWS::IoT::DomainConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TlsConfig {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -311,10 +275,7 @@ pub struct TlsConfig {
     /// Update requires: No interruption
     #[serde(rename = "SecurityPolicy")]
     pub security_policy: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TlsConfig {
     fn type_string(&self) -> &'static str {
@@ -326,7 +287,6 @@ impl cfn_resources::CfnResource for TlsConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

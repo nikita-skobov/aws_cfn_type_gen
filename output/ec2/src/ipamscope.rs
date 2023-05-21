@@ -1,15 +1,11 @@
-
-
 /// In IPAM, a scope is the highest-level container within IPAM. An IPAM contains two default scopes. Each scope represents the IP space for a single network. The private scope is intended for all private IP address space. The public scope is intended for all public IP address space. Scopes enable you to reuse IP addresses across multiple unconnected networks without causing IP address overlap or conflict.
 ///
 /// For more information, see How IPAM works in the Amazon VPC IPAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIPAMScope {
-
-
-    /// 
+    ///
     /// The description of the scope.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnIPAMScope {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the IPAM for which you're creating this scope.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnIPAMScope {
     #[serde(rename = "IpamId")]
     pub ipam_id: String,
 
-
-    /// 
+    ///
     /// The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value.   For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -41,10 +35,7 @@ pub struct CfnIPAMScope {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnIPAMScope {
     fn type_string(&self) -> &'static str {
@@ -56,7 +47,6 @@ impl cfn_resources::CfnResource for CfnIPAMScope {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -70,32 +60,26 @@ impl cfn_resources::CfnResource for CfnIPAMScope {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -107,7 +91,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

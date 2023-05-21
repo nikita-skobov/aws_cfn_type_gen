@@ -1,13 +1,9 @@
-
-
 /// An AWS Verified Access endpoint specifies the application that AWS Verified Access provides access to. It must be     attached to an AWS Verified Access group. An AWS Verified Access endpoint must also have an attached access policy     before you attached it to a group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVerifiedAccessEndpoint {
-
-
-    /// 
+    ///
     /// The DNS name for users to reach your application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "ApplicationDomain")]
     pub application_domain: String,
 
-
-    /// 
+    ///
     /// The type of attachment used to provide connectivity between the AWS Verified Access endpoint and the     application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "AttachmentType")]
     pub attachment_type: VerifiedAccessEndpointAttachmentTypeEnum,
 
-
-    /// 
+    ///
     /// A description for the AWS Verified Access endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of a public TLS/SSL certificate imported into or created with ACM.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,10 +47,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "DomainCertificateArn")]
     pub domain_certificate_arn: String,
 
-
-    /// 
+    ///
     /// A custom identifier that is prepended to the DNS name that is generated for the     endpoint.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -66,10 +58,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "EndpointDomainPrefix")]
     pub endpoint_domain_prefix: String,
 
-
-    /// 
+    ///
     /// The type of AWS Verified Access endpoint. Incoming application requests will be sent to an IP     address, load balancer or a network interface depending on the endpoint type     specified.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -80,10 +71,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "EndpointType")]
     pub endpoint_type: VerifiedAccessEndpointEndpointTypeEnum,
 
-
-    /// 
+    ///
     /// The load balancer details if creating the AWS Verified Access endpoint as     load-balancertype.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LoadBalancerOptions
@@ -92,10 +82,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "LoadBalancerOptions")]
     pub load_balancer_options: Option<LoadBalancerOptions>,
 
-
-    /// 
+    ///
     /// The options for network-interface type endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NetworkInterfaceOptions
@@ -104,10 +93,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "NetworkInterfaceOptions")]
     pub network_interface_options: Option<NetworkInterfaceOptions>,
 
-
-    /// 
+    ///
     /// The Verified Access policy document.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -116,10 +104,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: Option<String>,
 
-
-    /// 
+    ///
     /// The status of the Verified Access policy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -128,10 +115,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "PolicyEnabled")]
     pub policy_enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The IDs of the security groups for the endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -140,10 +126,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The tags.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -152,10 +137,9 @@ pub struct CfnVerifiedAccessEndpoint {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the AWS Verified Access group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -163,17 +147,13 @@ pub struct CfnVerifiedAccessEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessGroupId")]
     pub verified_access_group_id: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessEndpointAttachmentTypeEnum {
-
     /// vpc
     #[serde(rename = "vpc")]
     Vpc,
-
 }
 
 impl Default for VerifiedAccessEndpointAttachmentTypeEnum {
@@ -184,7 +164,6 @@ impl Default for VerifiedAccessEndpointAttachmentTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessEndpointEndpointTypeEnum {
-
     /// load-balancer
     #[serde(rename = "load-balancer")]
     Loadbalancer,
@@ -192,7 +171,6 @@ pub enum VerifiedAccessEndpointEndpointTypeEnum {
     /// network-interface
     #[serde(rename = "network-interface")]
     Networkinterface,
-
 }
 
 impl Default for VerifiedAccessEndpointEndpointTypeEnum {
@@ -200,7 +178,6 @@ impl Default for VerifiedAccessEndpointEndpointTypeEnum {
         VerifiedAccessEndpointEndpointTypeEnum::Loadbalancer
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnVerifiedAccessEndpoint {
     fn type_string(&self) -> &'static str {
@@ -212,10 +189,13 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessEndpoint {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.load_balancer_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.load_balancer_options.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.network_interface_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.network_interface_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -224,11 +204,9 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessEndpoint {
 /// Describes the load balancer options when creating an AWS Verified Access endpoint using the       load-balancer type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LoadBalancerOptions {
-
-
-    /// 
+    ///
     /// The ARN of the load balancer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -237,10 +215,9 @@ pub struct LoadBalancerOptions {
     #[serde(rename = "LoadBalancerArn")]
     pub load_balancer_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The IP port number.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -253,10 +230,9 @@ pub struct LoadBalancerOptions {
     #[serde(rename = "Port")]
     pub port: Option<i64>,
 
-
-    /// 
+    ///
     /// The IP protocol.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -267,10 +243,9 @@ pub struct LoadBalancerOptions {
     #[serde(rename = "Protocol")]
     pub protocol: Option<LoadBalancerOptionsProtocolEnum>,
 
-
-    /// 
+    ///
     /// The IDs of the subnets.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -278,13 +253,10 @@ pub struct LoadBalancerOptions {
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Option<Vec<String>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum LoadBalancerOptionsProtocolEnum {
-
     /// http
     #[serde(rename = "http")]
     Http,
@@ -292,7 +264,6 @@ pub enum LoadBalancerOptionsProtocolEnum {
     /// https
     #[serde(rename = "https")]
     Https,
-
 }
 
 impl Default for LoadBalancerOptionsProtocolEnum {
@@ -300,7 +271,6 @@ impl Default for LoadBalancerOptionsProtocolEnum {
         LoadBalancerOptionsProtocolEnum::Http
     }
 }
-
 
 impl cfn_resources::CfnResource for LoadBalancerOptions {
     fn type_string(&self) -> &'static str {
@@ -312,23 +282,24 @@ impl cfn_resources::CfnResource for LoadBalancerOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.port {
+            if *the_val > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'port'. {} is greater than 65535",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.port {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'port'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.port {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -336,11 +307,9 @@ impl cfn_resources::CfnResource for LoadBalancerOptions {
 /// Describes the network interface options when creating an AWS Verified Access endpoint using the       network-interface type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkInterfaceOptions {
-
-
-    /// 
+    ///
     /// The ID of the network interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -349,10 +318,9 @@ pub struct NetworkInterfaceOptions {
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: Option<String>,
 
-
-    /// 
+    ///
     /// The IP port number.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -365,10 +333,9 @@ pub struct NetworkInterfaceOptions {
     #[serde(rename = "Port")]
     pub port: Option<i64>,
 
-
-    /// 
+    ///
     /// The IP protocol.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -378,13 +345,10 @@ pub struct NetworkInterfaceOptions {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     pub protocol: Option<NetworkInterfaceOptionsProtocolEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum NetworkInterfaceOptionsProtocolEnum {
-
     /// http
     #[serde(rename = "http")]
     Http,
@@ -392,7 +356,6 @@ pub enum NetworkInterfaceOptionsProtocolEnum {
     /// https
     #[serde(rename = "https")]
     Https,
-
 }
 
 impl Default for NetworkInterfaceOptionsProtocolEnum {
@@ -400,7 +363,6 @@ impl Default for NetworkInterfaceOptionsProtocolEnum {
         NetworkInterfaceOptionsProtocolEnum::Http
     }
 }
-
 
 impl cfn_resources::CfnResource for NetworkInterfaceOptions {
     fn type_string(&self) -> &'static str {
@@ -412,23 +374,24 @@ impl cfn_resources::CfnResource for NetworkInterfaceOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.port {
+            if *the_val > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'port'. {} is greater than 65535",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.port {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'port'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.port {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -442,32 +405,26 @@ impl cfn_resources::CfnResource for NetworkInterfaceOptions {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -479,7 +436,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

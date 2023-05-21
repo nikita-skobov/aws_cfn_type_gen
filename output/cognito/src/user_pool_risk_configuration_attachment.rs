@@ -1,15 +1,11 @@
-
-
 /// The AWS::Cognito::UserPoolRiskConfigurationAttachment resource sets the risk    configuration that is used for Amazon Cognito advanced security features.
 ///
 /// You can specify risk configuration for a single client (with a specific     clientId) or for all clients (by setting the clientId to     ALL). If you specify ALL, the default configuration is used for    every client that has had no risk configuration set previously. If you specify risk    configuration for a particular client, it no longer falls back to the ALL    configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserPoolRiskConfigurationAttachment {
-
-
-    /// 
+    ///
     /// The account takeover risk configuration object, including the         NotifyConfiguration object and Actions to take if there is       an account takeover.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AccountTakeoverRiskConfigurationType
@@ -18,10 +14,9 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     #[serde(rename = "AccountTakeoverRiskConfiguration")]
     pub account_takeover_risk_configuration: Option<AccountTakeoverRiskConfigurationType>,
 
-
-    /// 
+    ///
     /// The app client ID. You can specify the risk configuration for a single client (with a    specific ClientId) or for all clients (by setting the ClientId to ALL).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -36,22 +31,21 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     #[serde(rename = "ClientId")]
     pub client_id: String,
 
-
-    /// 
+    ///
     /// The compromised credentials risk configuration object, including the         EventFilter and the EventAction.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CompromisedCredentialsRiskConfigurationType
     ///
     /// Update requires: No interruption
     #[serde(rename = "CompromisedCredentialsRiskConfiguration")]
-    pub compromised_credentials_risk_configuration: Option<CompromisedCredentialsRiskConfigurationType>,
+    pub compromised_credentials_risk_configuration:
+        Option<CompromisedCredentialsRiskConfigurationType>,
 
-
-    /// 
+    ///
     /// The configuration to override the risk decision.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: RiskExceptionConfigurationType
@@ -60,10 +54,9 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     #[serde(rename = "RiskExceptionConfiguration")]
     pub risk_exception_configuration: Option<RiskExceptionConfigurationType>,
 
-
-    /// 
+    ///
     /// The user pool ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -77,10 +70,7 @@ pub struct CfnUserPoolRiskConfigurationAttachment {
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
     pub user_pool_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
     fn type_string(&self) -> &'static str {
@@ -92,41 +82,54 @@ impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.account_takeover_risk_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.account_takeover_risk_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.client_id;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'client_id'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.client_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'client_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'client_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.compromised_credentials_risk_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.compromised_credentials_risk_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.risk_exception_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.risk_exception_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.user_pool_id;
 
         if the_val.len() > 55 as _ {
-            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_pool_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -134,13 +137,11 @@ impl cfn_resources::CfnResource for CfnUserPoolRiskConfigurationAttachment {
 /// Account takeover action type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccountTakeoverActionType {
-
-
-    /// 
+    ///
     /// The action to take in response to the account takeover action. Valid values are as       follows:
-    /// 
+    ///
     /// BLOCK Choosing this action will block the request.                        MFA_IF_CONFIGURED Present an MFA challenge if user has configured           it, else allow the request.                        MFA_REQUIRED Present an MFA challenge if user has configured it,           else block the request.                        NO_ACTION Allow the user to sign in.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -151,10 +152,9 @@ pub struct AccountTakeoverActionType {
     #[serde(rename = "EventAction")]
     pub event_action: AccountTakeoverActionTypeEventActionEnum,
 
-
-    /// 
+    ///
     /// Flag specifying whether to send a notification.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -162,13 +162,10 @@ pub struct AccountTakeoverActionType {
     /// Update requires: No interruption
     #[serde(rename = "Notify")]
     pub notify: bool,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AccountTakeoverActionTypeEventActionEnum {
-
     /// BLOCK
     #[serde(rename = "BLOCK")]
     Block,
@@ -184,7 +181,6 @@ pub enum AccountTakeoverActionTypeEventActionEnum {
     /// NO_ACTION
     #[serde(rename = "NO_ACTION")]
     Noaction,
-
 }
 
 impl Default for AccountTakeoverActionTypeEventActionEnum {
@@ -192,7 +188,6 @@ impl Default for AccountTakeoverActionTypeEventActionEnum {
         AccountTakeoverActionTypeEventActionEnum::Block
     }
 }
-
 
 impl cfn_resources::CfnResource for AccountTakeoverActionType {
     fn type_string(&self) -> &'static str {
@@ -204,7 +199,6 @@ impl cfn_resources::CfnResource for AccountTakeoverActionType {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -212,11 +206,9 @@ impl cfn_resources::CfnResource for AccountTakeoverActionType {
 /// Account takeover actions type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccountTakeoverActionsType {
-
-
-    /// 
+    ///
     /// Action to take for a high risk.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AccountTakeoverActionType
@@ -225,10 +217,9 @@ pub struct AccountTakeoverActionsType {
     #[serde(rename = "HighAction")]
     pub high_action: Option<AccountTakeoverActionType>,
 
-
-    /// 
+    ///
     /// Action to take for a low risk.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AccountTakeoverActionType
@@ -237,10 +228,9 @@ pub struct AccountTakeoverActionsType {
     #[serde(rename = "LowAction")]
     pub low_action: Option<AccountTakeoverActionType>,
 
-
-    /// 
+    ///
     /// Action to take for a medium risk.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AccountTakeoverActionType
@@ -248,10 +238,7 @@ pub struct AccountTakeoverActionsType {
     /// Update requires: No interruption
     #[serde(rename = "MediumAction")]
     pub medium_action: Option<AccountTakeoverActionType>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AccountTakeoverActionsType {
     fn type_string(&self) -> &'static str {
@@ -263,12 +250,17 @@ impl cfn_resources::CfnResource for AccountTakeoverActionsType {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.high_action
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.high_action.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.low_action
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.low_action.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.medium_action.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.medium_action
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -277,11 +269,9 @@ impl cfn_resources::CfnResource for AccountTakeoverActionsType {
 /// Configuration for mitigation actions and notification for different levels of risk       detected for a potential account takeover.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccountTakeoverRiskConfigurationType {
-
-
-    /// 
+    ///
     /// Account takeover risk configuration actions.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: AccountTakeoverActionsType
@@ -290,10 +280,9 @@ pub struct AccountTakeoverRiskConfigurationType {
     #[serde(rename = "Actions")]
     pub actions: AccountTakeoverActionsType,
 
-
-    /// 
+    ///
     /// The notify configuration used to construct email notifications.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NotifyConfigurationType
@@ -301,10 +290,7 @@ pub struct AccountTakeoverRiskConfigurationType {
     /// Update requires: No interruption
     #[serde(rename = "NotifyConfiguration")]
     pub notify_configuration: Option<NotifyConfigurationType>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AccountTakeoverRiskConfigurationType {
     fn type_string(&self) -> &'static str {
@@ -316,10 +302,11 @@ impl cfn_resources::CfnResource for AccountTakeoverRiskConfigurationType {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.actions.validate()?;
 
-        self.notify_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.notify_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -328,11 +315,9 @@ impl cfn_resources::CfnResource for AccountTakeoverRiskConfigurationType {
 /// The compromised credentials actions type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CompromisedCredentialsActionsType {
-
-
-    /// 
+    ///
     /// The event action.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -342,13 +327,10 @@ pub struct CompromisedCredentialsActionsType {
     /// Update requires: No interruption
     #[serde(rename = "EventAction")]
     pub event_action: CompromisedCredentialsActionsTypeEventActionEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CompromisedCredentialsActionsTypeEventActionEnum {
-
     /// BLOCK
     #[serde(rename = "BLOCK")]
     Block,
@@ -356,7 +338,6 @@ pub enum CompromisedCredentialsActionsTypeEventActionEnum {
     /// NO_ACTION
     #[serde(rename = "NO_ACTION")]
     Noaction,
-
 }
 
 impl Default for CompromisedCredentialsActionsTypeEventActionEnum {
@@ -364,7 +345,6 @@ impl Default for CompromisedCredentialsActionsTypeEventActionEnum {
         CompromisedCredentialsActionsTypeEventActionEnum::Block
     }
 }
-
 
 impl cfn_resources::CfnResource for CompromisedCredentialsActionsType {
     fn type_string(&self) -> &'static str {
@@ -376,7 +356,6 @@ impl cfn_resources::CfnResource for CompromisedCredentialsActionsType {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -384,11 +363,9 @@ impl cfn_resources::CfnResource for CompromisedCredentialsActionsType {
 /// The compromised credentials risk configuration type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CompromisedCredentialsRiskConfigurationType {
-
-
-    /// 
+    ///
     /// The compromised credentials risk configuration actions.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: CompromisedCredentialsActionsType
@@ -397,10 +374,9 @@ pub struct CompromisedCredentialsRiskConfigurationType {
     #[serde(rename = "Actions")]
     pub actions: CompromisedCredentialsActionsType,
 
-
-    /// 
+    ///
     /// Perform the action for these events. The default is to perform all events if no event       filter is specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -408,10 +384,7 @@ pub struct CompromisedCredentialsRiskConfigurationType {
     /// Update requires: No interruption
     #[serde(rename = "EventFilter")]
     pub event_filter: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CompromisedCredentialsRiskConfigurationType {
     fn type_string(&self) -> &'static str {
@@ -423,7 +396,6 @@ impl cfn_resources::CfnResource for CompromisedCredentialsRiskConfigurationType 
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.actions.validate()?;
 
         Ok(())
@@ -433,11 +405,9 @@ impl cfn_resources::CfnResource for CompromisedCredentialsRiskConfigurationType 
 /// The notify configuration type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NotifyConfigurationType {
-
-
-    /// 
+    ///
     /// Email template used when a detected risk event is blocked.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NotifyEmailType
@@ -446,10 +416,9 @@ pub struct NotifyConfigurationType {
     #[serde(rename = "BlockEmail")]
     pub block_email: Option<NotifyEmailType>,
 
-
-    /// 
+    ///
     /// The email address that is sending the email. The address must be either individually       verified with Amazon Simple Email Service, or from a domain that has been verified with Amazon SES.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -458,10 +427,9 @@ pub struct NotifyConfigurationType {
     #[serde(rename = "From")]
     pub from: Option<String>,
 
-
-    /// 
+    ///
     /// The multi-factor authentication (MFA) email template used when MFA is challenged as       part of a detected risk.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NotifyEmailType
@@ -470,10 +438,9 @@ pub struct NotifyConfigurationType {
     #[serde(rename = "MfaEmail")]
     pub mfa_email: Option<NotifyEmailType>,
 
-
-    /// 
+    ///
     /// The email template used when a detected risk event is allowed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NotifyEmailType
@@ -482,10 +449,9 @@ pub struct NotifyConfigurationType {
     #[serde(rename = "NoActionEmail")]
     pub no_action_email: Option<NotifyEmailType>,
 
-
-    /// 
+    ///
     /// The destination to which the receiver of an email should reply to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -494,10 +460,9 @@ pub struct NotifyConfigurationType {
     #[serde(rename = "ReplyTo")]
     pub reply_to: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the identity that is associated with the sending       authorization policy. This identity permits Amazon Cognito to send for the email address       specified in the From parameter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -511,10 +476,7 @@ pub struct NotifyConfigurationType {
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
     pub source_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NotifyConfigurationType {
     fn type_string(&self) -> &'static str {
@@ -526,27 +488,36 @@ impl cfn_resources::CfnResource for NotifyConfigurationType {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.block_email
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.block_email.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.mfa_email
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.mfa_email.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.no_action_email.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.no_action_email
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.source_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'source_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'source_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.source_arn;
 
         if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'source_arn'. {} is less than 20", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'source_arn'. {} is less than 20",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -554,11 +525,9 @@ impl cfn_resources::CfnResource for NotifyConfigurationType {
 /// The notify email type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NotifyEmailType {
-
-
-    /// 
+    ///
     /// The email HTML body.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -573,10 +542,9 @@ pub struct NotifyEmailType {
     #[serde(rename = "HtmlBody")]
     pub html_body: Option<String>,
 
-
-    /// 
+    ///
     /// The email subject.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -591,10 +559,9 @@ pub struct NotifyEmailType {
     #[serde(rename = "Subject")]
     pub subject: String,
 
-
-    /// 
+    ///
     /// The email text body.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -608,10 +575,7 @@ pub struct NotifyEmailType {
     /// Update requires: No interruption
     #[serde(rename = "TextBody")]
     pub text_body: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NotifyEmailType {
     fn type_string(&self) -> &'static str {
@@ -623,53 +587,60 @@ impl cfn_resources::CfnResource for NotifyEmailType {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.html_body {
+            if the_val.len() > 20000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'html_body'. {} is greater than 20000",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.html_body {
-
-        if the_val.len() > 20000 as _ {
-            return Err(format!("Max validation failed on field 'html_body'. {} is greater than 20000", the_val.len()));
+            if the_val.len() < 6 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'html_body'. {} is less than 6",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.html_body {
-
-        if the_val.len() < 6 as _ {
-            return Err(format!("Min validation failed on field 'html_body'. {} is less than 6", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.subject;
 
         if the_val.len() > 140 as _ {
-            return Err(format!("Max validation failed on field 'subject'. {} is greater than 140", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'subject'. {} is greater than 140",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.subject;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'subject'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'subject'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.text_body {
-
-        if the_val.len() > 20000 as _ {
-            return Err(format!("Max validation failed on field 'text_body'. {} is greater than 20000", the_val.len()));
+            if the_val.len() > 20000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'text_body'. {} is greater than 20000",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.text_body {
-
-        if the_val.len() < 6 as _ {
-            return Err(format!("Min validation failed on field 'text_body'. {} is less than 6", the_val.len()));
+            if the_val.len() < 6 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'text_body'. {} is less than 6",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -677,11 +648,9 @@ impl cfn_resources::CfnResource for NotifyEmailType {
 /// The type of the configuration to override the risk decision.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RiskExceptionConfigurationType {
-
-
-    /// 
+    ///
     /// Overrides the risk decision to always block the pre-authentication requests. The IP       range is in CIDR notation, a compact representation of an IP address and its routing       prefix.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -692,10 +661,9 @@ pub struct RiskExceptionConfigurationType {
     #[serde(rename = "BlockedIPRangeList")]
     pub blocked_iprange_list: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Risk detection isn't performed on the IP addresses in this range list. The IP range is       in CIDR notation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -705,10 +673,7 @@ pub struct RiskExceptionConfigurationType {
     /// Update requires: No interruption
     #[serde(rename = "SkippedIPRangeList")]
     pub skipped_iprange_list: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RiskExceptionConfigurationType {
     fn type_string(&self) -> &'static str {
@@ -720,23 +685,24 @@ impl cfn_resources::CfnResource for RiskExceptionConfigurationType {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.blocked_iprange_list {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'blocked_iprange_list'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'blocked_iprange_list'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.skipped_iprange_list {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'skipped_iprange_list'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'skipped_iprange_list'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }

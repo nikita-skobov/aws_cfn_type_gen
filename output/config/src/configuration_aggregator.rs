@@ -1,13 +1,9 @@
-
-
 /// The details about the configuration aggregator, including 			information about source accounts, regions, and metadata of the 			aggregator.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConfigurationAggregator {
-
-
-    /// 
+    ///
     /// Provides a list of source accounts and regions to be 			aggregated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AccountAggregationSource
@@ -18,10 +14,9 @@ pub struct CfnConfigurationAggregator {
     #[serde(rename = "AccountAggregationSources")]
     pub account_aggregation_sources: Option<Vec<AccountAggregationSource>>,
 
-
-    /// 
+    ///
     /// The name of the aggregator.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnConfigurationAggregator {
     #[serde(rename = "ConfigurationAggregatorName")]
     pub configuration_aggregator_name: Option<String>,
 
-
-    /// 
+    ///
     /// Provides an organization and list of regions to be 			aggregated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: OrganizationAggregationSource
@@ -48,10 +42,9 @@ pub struct CfnConfigurationAggregator {
     #[serde(rename = "OrganizationAggregationSource")]
     pub organization_aggregation_source: Option<OrganizationAggregationSource>,
 
-
-    /// 
+    ///
     /// An array of tag object.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -61,10 +54,7 @@ pub struct CfnConfigurationAggregator {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnConfigurationAggregator {
     fn type_string(&self) -> &'static str {
@@ -76,41 +66,37 @@ impl cfn_resources::CfnResource for CfnConfigurationAggregator {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.account_aggregation_sources {
-
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'account_aggregation_sources'. {} is greater than 1", the_val.len()));
+            if the_val.len() > 1 as _ {
+                return Err(format!("Max validation failed on field 'account_aggregation_sources'. {} is greater than 1", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.configuration_aggregator_name {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'configuration_aggregator_name'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'configuration_aggregator_name'. {} is greater than 256", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.configuration_aggregator_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'configuration_aggregator_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!("Min validation failed on field 'configuration_aggregator_name'. {} is less than 1", the_val.len()));
+            }
         }
 
-        }
-        
-        self.organization_aggregation_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.organization_aggregation_source
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -118,11 +104,9 @@ impl cfn_resources::CfnResource for CfnConfigurationAggregator {
 /// A collection of accounts and regions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccountAggregationSource {
-
-
-    /// 
+    ///
     /// The 12-digit account ID of the account being aggregated.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -131,10 +115,9 @@ pub struct AccountAggregationSource {
     #[serde(rename = "AccountIds")]
     pub account_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// If true, aggregate existing AWS Config regions and future 			regions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -143,10 +126,9 @@ pub struct AccountAggregationSource {
     #[serde(rename = "AllAwsRegions")]
     pub all_aws_regions: Option<bool>,
 
-
-    /// 
+    ///
     /// The source regions being aggregated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -154,10 +136,7 @@ pub struct AccountAggregationSource {
     /// Update requires: No interruption
     #[serde(rename = "AwsRegions")]
     pub aws_regions: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AccountAggregationSource {
     fn type_string(&self) -> &'static str {
@@ -169,7 +148,6 @@ impl cfn_resources::CfnResource for AccountAggregationSource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -177,11 +155,9 @@ impl cfn_resources::CfnResource for AccountAggregationSource {
 /// This object contains regions to set up the aggregator and an IAM 			role to retrieve organization details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OrganizationAggregationSource {
-
-
-    /// 
+    ///
     /// If true, aggregate existing AWS Config regions and future 			regions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -190,10 +166,9 @@ pub struct OrganizationAggregationSource {
     #[serde(rename = "AllAwsRegions")]
     pub all_aws_regions: Option<bool>,
 
-
-    /// 
+    ///
     /// The source regions being aggregated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -202,10 +177,9 @@ pub struct OrganizationAggregationSource {
     #[serde(rename = "AwsRegions")]
     pub aws_regions: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// ARN of the IAM role used to retrieve AWS Organizations details 			associated with the aggregator account.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -213,10 +187,7 @@ pub struct OrganizationAggregationSource {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for OrganizationAggregationSource {
     fn type_string(&self) -> &'static str {
@@ -228,7 +199,6 @@ impl cfn_resources::CfnResource for OrganizationAggregationSource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -242,32 +212,26 @@ impl cfn_resources::CfnResource for OrganizationAggregationSource {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -279,7 +243,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

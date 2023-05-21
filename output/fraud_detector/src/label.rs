@@ -1,13 +1,9 @@
-
-
 /// Creates or updates label. A label classifies an event as fraudulent or legitimate. Labels are associated with event types and used to train supervised machine learning models in Amazon Fraud Detector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLabel {
-
-
-    /// 
+    ///
     /// The label description.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,12 +16,11 @@ pub struct CfnLabel {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The label name.
-    /// 
+    ///
     /// Pattern: ^[0-9a-z_-]+$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -34,12 +29,11 @@ pub struct CfnLabel {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -47,10 +41,7 @@ pub struct CfnLabel {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnLabel {
     fn type_string(&self) -> &'static str {
@@ -62,23 +53,24 @@ impl cfn_resources::CfnResource for CfnLabel {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -92,32 +84,26 @@ impl cfn_resources::CfnResource for CfnLabel {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -129,7 +115,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

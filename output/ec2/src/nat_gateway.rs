@@ -1,5 +1,3 @@
-
-
 /// Specifies a network address translation (NAT) gateway in the specified subnet. You can     create either a public NAT gateway or a private NAT gateway. The default is a public NAT     gateway. If you create a public NAT gateway, you must specify an elastic IP address.
 ///
 /// With a NAT gateway, instances in a private subnet can connect to the internet, other       AWS services, or an on-premises network using the IP address of the NAT     gateway.
@@ -9,11 +7,9 @@
 /// For more information, see NAT Gateways in the       Amazon VPC User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNatGateway {
-
-
-    /// 
+    ///
     /// [Public NAT gateway only] The allocation ID of the Elastic IP address that's associated with the NAT gateway.      This property is required for a public NAT gateway and cannot be specified with a private NAT gateway.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnNatGateway {
     #[serde(rename = "AllocationId")]
     pub allocation_id: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether the NAT gateway supports public or private connectivity.      The default is public connectivity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnNatGateway {
     #[serde(rename = "ConnectivityType")]
     pub connectivity_type: Option<NatGatewayConnectivityTypeEnum>,
 
-
-    /// 
+    ///
     /// The maximum amount of time to wait (in seconds) before forcibly releasing the IP addresses if connections are still in progress. Default value is 350 seconds.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -52,10 +46,9 @@ pub struct CfnNatGateway {
     #[serde(rename = "MaxDrainDurationSeconds")]
     pub max_drain_duration_seconds: Option<i64>,
 
-
-    /// 
+    ///
     /// The private IPv4 address to assign to the NAT gateway. If you don't provide an address, a private IPv4 address will be automatically assigned.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -64,10 +57,9 @@ pub struct CfnNatGateway {
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: Option<String>,
 
-
-    /// 
+    ///
     /// Secondary EIP allocation IDs. For more information, see Create a NAT gateway       in the Amazon VPC User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -76,12 +68,11 @@ pub struct CfnNatGateway {
     #[serde(rename = "SecondaryAllocationIds")]
     pub secondary_allocation_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// [Private NAT gateway only] The number of secondary private IPv4 addresses you want to assign to the NAT gateway. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
-    /// 
+    ///
     /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -94,12 +85,11 @@ pub struct CfnNatGateway {
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
     pub secondary_private_ip_address_count: Option<i64>,
 
-
-    /// 
+    ///
     /// Secondary private IPv4 addresses. For more information about secondary addresses, see Create a NAT gateway in the Amazon Virtual Private Cloud User Guide.
-    /// 
+    ///
     /// NoteSecondaryPrivateIpAddressCount and SecondaryPrivateIpAddresses cannot be set at the same time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -108,10 +98,9 @@ pub struct CfnNatGateway {
     #[serde(rename = "SecondaryPrivateIpAddresses")]
     pub secondary_private_ip_addresses: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The ID of the subnet in which the NAT gateway is located.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -120,10 +109,9 @@ pub struct CfnNatGateway {
     #[serde(rename = "SubnetId")]
     pub subnet_id: String,
 
-
-    /// 
+    ///
     /// The tags for the NAT gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -131,13 +119,10 @@ pub struct CfnNatGateway {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum NatGatewayConnectivityTypeEnum {
-
     /// private
     #[serde(rename = "private")]
     Private,
@@ -145,7 +130,6 @@ pub enum NatGatewayConnectivityTypeEnum {
     /// public
     #[serde(rename = "public")]
     Public,
-
 }
 
 impl Default for NatGatewayConnectivityTypeEnum {
@@ -153,7 +137,6 @@ impl Default for NatGatewayConnectivityTypeEnum {
         NatGatewayConnectivityTypeEnum::Private
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnNatGateway {
     fn type_string(&self) -> &'static str {
@@ -165,39 +148,30 @@ impl cfn_resources::CfnResource for CfnNatGateway {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.max_drain_duration_seconds {
+            if *the_val > 4000 as _ {
+                return Err(format!("Max validation failed on field 'max_drain_duration_seconds'. {} is greater than 4000", the_val));
+            }
+        }
 
         if let Some(the_val) = &self.max_drain_duration_seconds {
-
-        if *the_val > 4000 as _ {
-            return Err(format!("Max validation failed on field 'max_drain_duration_seconds'. {} is greater than 4000", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!("Min validation failed on field 'max_drain_duration_seconds'. {} is less than 1", the_val));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.max_drain_duration_seconds {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'max_drain_duration_seconds'. {} is less than 1", the_val));
-        }
-
-        }
-        
         if let Some(the_val) = &self.secondary_private_ip_address_count {
-
-        if *the_val > 31 as _ {
-            return Err(format!("Max validation failed on field 'secondary_private_ip_address_count'. {} is greater than 31", the_val));
+            if *the_val > 31 as _ {
+                return Err(format!("Max validation failed on field 'secondary_private_ip_address_count'. {} is greater than 31", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.secondary_private_ip_address_count {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'secondary_private_ip_address_count'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!("Min validation failed on field 'secondary_private_ip_address_count'. {} is less than 1", the_val));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -211,32 +185,26 @@ impl cfn_resources::CfnResource for CfnNatGateway {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -248,7 +216,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

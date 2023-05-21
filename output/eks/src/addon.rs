@@ -1,15 +1,11 @@
-
-
 /// Creates an Amazon EKS add-on.
 ///
 /// Amazon EKS add-ons help to automate the provisioning and lifecycle management       of common operational software for Amazon EKS clusters. For more information,       see Amazon EKS add-ons in the Amazon EKS User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAddon {
-
-
-    /// 
+    ///
     /// The name of the add-on.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnAddon {
     #[serde(rename = "AddonName")]
     pub addon_name: String,
 
-
-    /// 
+    ///
     /// The version of the add-on.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnAddon {
     #[serde(rename = "AddonVersion")]
     pub addon_version: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -48,10 +42,9 @@ pub struct CfnAddon {
     #[serde(rename = "ClusterName")]
     pub cluster_name: String,
 
-
-    /// 
+    ///
     /// The configuration values that you provided.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -60,10 +53,9 @@ pub struct CfnAddon {
     #[serde(rename = "ConfigurationValues")]
     pub configuration_values: Option<String>,
 
-
-    /// 
+    ///
     /// Specifying this option preserves the add-on software on your cluster but Amazon EKS stops managing any settings for the add-on. If an IAM       account is associated with the add-on, it isn't removed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -72,14 +64,13 @@ pub struct CfnAddon {
     #[serde(rename = "PreserveOnDelete")]
     pub preserve_on_delete: Option<bool>,
 
-
-    /// 
+    ///
     /// How to resolve field value conflicts for an Amazon EKS add-on. Conflicts are       handled based on the value you choose:
-    /// 
+    ///
     /// None – If the self-managed version of           the add-on is installed on your cluster, Amazon EKS doesn't change the           value. Creation of the add-on might fail.                        Overwrite – If the self-managed           version of the add-on is installed on your cluster and the Amazon EKS           default value is different than the existing value, Amazon EKS changes           the value to the Amazon EKS default value.                        Preserve – Not supported. You can set           this value when updating an add-on though. For more information, see UpdateAddon.
-    /// 
+    ///
     /// If you don't currently have the self-managed version of the add-on installed on your       cluster, the Amazon EKS add-on is installed. Amazon EKS sets all values       to default values, regardless of the option that you specify.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -90,12 +81,11 @@ pub struct CfnAddon {
     #[serde(rename = "ResolveConflicts")]
     pub resolve_conflicts: Option<AddonResolveConflictsEnum>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an existing IAM role to bind to the add-on's service account. The role must be assigned the IAM permissions required by the add-on. If you don't specify an existing IAM role, then the add-on uses the   permissions assigned to the node IAM role. For more information, see Amazon EKS node IAM role in the Amazon EKS User Guide.
-    /// 
+    ///
     /// NoteTo specify an existing IAM role, you must have an IAM OpenID Connect (OIDC) provider created for         your cluster. For more information, see Enabling           IAM roles for service accounts on your cluster in the         Amazon EKS User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -108,10 +98,9 @@ pub struct CfnAddon {
     #[serde(rename = "ServiceAccountRoleArn")]
     pub service_account_role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The metadata that you apply to the add-on to assist with categorization and       organization. Each tag consists of a key and an optional value, both of which you       define. Add-on tags do not propagate to any other resources associated with the       cluster.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -119,13 +108,10 @@ pub struct CfnAddon {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AddonResolveConflictsEnum {
-
     /// NONE
     #[serde(rename = "NONE")]
     None,
@@ -137,7 +123,6 @@ pub enum AddonResolveConflictsEnum {
     /// PRESERVE
     #[serde(rename = "PRESERVE")]
     Preserve,
-
 }
 
 impl Default for AddonResolveConflictsEnum {
@@ -145,7 +130,6 @@ impl Default for AddonResolveConflictsEnum {
         AddonResolveConflictsEnum::None
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnAddon {
     fn type_string(&self) -> &'static str {
@@ -157,37 +141,39 @@ impl cfn_resources::CfnResource for CfnAddon {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.cluster_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'cluster_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'cluster_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.cluster_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'cluster_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'cluster_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.service_account_role_arn {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'service_account_role_arn'. {} is greater than 255", the_val.len()));
+            if the_val.len() > 255 as _ {
+                return Err(format!("Max validation failed on field 'service_account_role_arn'. {} is greater than 255", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.service_account_role_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'service_account_role_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'service_account_role_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -201,32 +187,26 @@ impl cfn_resources::CfnResource for CfnAddon {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -238,7 +218,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

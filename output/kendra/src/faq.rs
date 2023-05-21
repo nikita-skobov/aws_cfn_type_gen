@@ -1,13 +1,9 @@
-
-
 /// Creates an new set of frequently asked question (FAQ) questions and answers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFaq {
-
-
-    /// 
+    ///
     /// A description for the FAQ.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,16 +12,15 @@ pub struct CfnFaq {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The format of the input file. You can choose between a basic CSV       format, a CSV format that includes customs attributes in a header,       and a JSON format that includes custom attributes.
-    /// 
+    ///
     /// The format must match the format of the file stored in the S3       bucket identified in the S3Path parameter.
-    /// 
+    ///
     /// Valid values are:
-    /// 
+    ///
     /// CSV               CSV_WITH_HEADER               JSON
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnFaq {
     #[serde(rename = "FileFormat")]
     pub file_format: Option<String>,
 
-
-    /// 
+    ///
     /// The identifier of the index that contains the FAQ.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -46,10 +40,9 @@ pub struct CfnFaq {
     #[serde(rename = "IndexId")]
     pub index_id: String,
 
-
-    /// 
+    ///
     /// The name that you assigned the FAQ when you created or updated the FAQ.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -64,10 +57,9 @@ pub struct CfnFaq {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of a role with permission to access       the S3 bucket that contains the FAQ.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -76,10 +68,9 @@ pub struct CfnFaq {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
-
-    /// 
+    ///
     /// The Amazon Simple Storage Service (Amazon S3) location of the FAQ       input data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: S3Path
@@ -88,12 +79,11 @@ pub struct CfnFaq {
     #[serde(rename = "S3Path")]
     pub s3_path: S3Path,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -101,10 +91,7 @@ pub struct CfnFaq {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnFaq {
     fn type_string(&self) -> &'static str {
@@ -116,21 +103,24 @@ impl cfn_resources::CfnResource for CfnFaq {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.s3_path.validate()?;
 
         Ok(())
@@ -140,11 +130,9 @@ impl cfn_resources::CfnResource for CfnFaq {
 /// Information required to find a specific file in an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Path {
-
-
-    /// 
+    ///
     /// The name of the S3 bucket that contains the file.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -159,10 +147,9 @@ pub struct S3Path {
     #[serde(rename = "Bucket")]
     pub bucket: String,
 
-
-    /// 
+    ///
     /// The name of the file.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -174,10 +161,7 @@ pub struct S3Path {
     /// Update requires: Replacement
     #[serde(rename = "Key")]
     pub key: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3Path {
     fn type_string(&self) -> &'static str {
@@ -189,35 +173,42 @@ impl cfn_resources::CfnResource for S3Path {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.bucket;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'bucket'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'bucket'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.bucket;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'bucket'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'bucket'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.key;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'key'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'key'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.key;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'key'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -231,32 +222,26 @@ impl cfn_resources::CfnResource for S3Path {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -268,7 +253,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

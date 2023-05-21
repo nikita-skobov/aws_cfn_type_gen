@@ -1,15 +1,11 @@
-
-
 /// Specifies a signaling channel.
 ///
 /// CreateSignalingChannel is an asynchronous operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSignalingChannel {
-
-
-    /// 
+    ///
     /// The period of time a signaling channel retains undelivered messages before they are       discarded.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -22,10 +18,9 @@ pub struct CfnSignalingChannel {
     #[serde(rename = "MessageTtlSeconds")]
     pub message_ttl_seconds: Option<i64>,
 
-
-    /// 
+    ///
     /// A name for the signaling channel that you are creating. It must be unique for each AWS account and AWS Region.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,12 +35,11 @@ pub struct CfnSignalingChannel {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -54,10 +48,9 @@ pub struct CfnSignalingChannel {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// A type of the signaling channel that you are creating. Currently,         SINGLE_MASTER is the only supported channel type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -67,13 +60,10 @@ pub struct CfnSignalingChannel {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: Option<SignalingChannelTypeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SignalingChannelTypeEnum {
-
     /// FULL_MESH
     #[serde(rename = "FULL_MESH")]
     Fullmesh,
@@ -81,7 +71,6 @@ pub enum SignalingChannelTypeEnum {
     /// SINGLE_MASTER
     #[serde(rename = "SINGLE_MASTER")]
     Singlemaster,
-
 }
 
 impl Default for SignalingChannelTypeEnum {
@@ -89,7 +78,6 @@ impl Default for SignalingChannelTypeEnum {
         SignalingChannelTypeEnum::Fullmesh
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnSignalingChannel {
     fn type_string(&self) -> &'static str {
@@ -101,39 +89,42 @@ impl cfn_resources::CfnResource for CfnSignalingChannel {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.message_ttl_seconds {
+            if *the_val > 120 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'message_ttl_seconds'. {} is greater than 120",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.message_ttl_seconds {
-
-        if *the_val > 120 as _ {
-            return Err(format!("Max validation failed on field 'message_ttl_seconds'. {} is greater than 120", the_val));
+            if *the_val < 5 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'message_ttl_seconds'. {} is less than 5",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.message_ttl_seconds {
-
-        if *the_val < 5 as _ {
-            return Err(format!("Min validation failed on field 'message_ttl_seconds'. {} is less than 5", the_val));
-        }
-
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -147,32 +138,26 @@ impl cfn_resources::CfnResource for CfnSignalingChannel {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -184,7 +169,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

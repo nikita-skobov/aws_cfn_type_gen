@@ -1,13 +1,9 @@
-
-
 /// The AWS::Rekognition::Project type creates an Amazon Rekognition Custom Labels     project. A project is a group of resources needed to create and manage versions of an      Amazon Rekognition Custom Labels model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProject {
-
-
-    /// 
+    ///
     /// The name of the project to create.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -21,10 +17,7 @@ pub struct CfnProject {
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
     pub project_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnProject {
     fn type_string(&self) -> &'static str {
@@ -36,21 +29,24 @@ impl cfn_resources::CfnResource for CfnProject {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.project_name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'project_name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'project_name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.project_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'project_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'project_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

@@ -1,15 +1,11 @@
-
-
 /// A combination of ByteMatchSet, IPSet, and/or SqlInjectionMatchSet objects that identify the web requests that you      want to allow, block, or count. For example, you might create a Rule that includes the following predicates:
 ///
 /// To match the settings in this Rule, a request must originate from 192.0.2.44 AND include a User-Agent     header for which the value is BadBot.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRule {
-
-
-    /// 
+    ///
     /// A name for the metrics for this Rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain     whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change MetricName after you create the Rule.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnRule {
     #[serde(rename = "MetricName")]
     pub metric_name: String,
 
-
-    /// 
+    ///
     /// The friendly name or description for the Rule. You can't change the name of a Rule after you create it.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -42,10 +37,9 @@ pub struct CfnRule {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The Predicates object contains one Predicate element for each ByteMatchSet, IPSet, or      SqlInjectionMatchSet object that you want to include in a Rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Predicate
@@ -53,10 +47,7 @@ pub struct CfnRule {
     /// Update requires: No interruption
     #[serde(rename = "Predicates")]
     pub predicates: Option<Vec<Predicate>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRule {
     fn type_string(&self) -> &'static str {
@@ -68,35 +59,42 @@ impl cfn_resources::CfnResource for CfnRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.metric_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'metric_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'metric_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.metric_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'metric_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'metric_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -104,11 +102,9 @@ impl cfn_resources::CfnResource for CfnRule {
 /// Specifies the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, and SizeConstraintSet objects      that you want to add to a Rule and, for each object, indicates whether you want to negate the settings, for example, requests that do      NOT originate from the IP address 192.0.2.44.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Predicate {
-
-
-    /// 
+    ///
     /// A unique identifier for a predicate in a Rule, such as ByteMatchSetId or IPSetId. 			The ID is returned by the corresponding Create or List command.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -123,12 +119,11 @@ pub struct Predicate {
     #[serde(rename = "DataId")]
     pub data_id: String,
 
-
-    /// 
+    ///
     /// Set Negated to False if you want AWS WAF to allow, block, or count requests based on the settings in the      specified ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, or SizeConstraintSet.       For example, if an IPSet includes the IP address 192.0.2.44, AWS WAF will allow or block requests based on that IP address.
-    /// 
+    ///
     /// Set Negated to True if you want AWS WAF to allow or block a request based on the negation      of the settings in the ByteMatchSet, IPSet, SqlInjectionMatchSet, XssMatchSet, RegexMatchSet, GeoMatchSet, or SizeConstraintSet.     For example, if an IPSet includes the IP address 192.0.2.44, AWS WAF will allow, block, or count requests based on      all IP addresses except      192.0.2.44.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -137,10 +132,9 @@ pub struct Predicate {
     #[serde(rename = "Negated")]
     pub negated: bool,
 
-
-    /// 
+    ///
     /// The type of predicate in a Rule, such as ByteMatch or IPSet.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -150,13 +144,10 @@ pub struct Predicate {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: PredicateTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PredicateTypeEnum {
-
     /// ByteMatch
     #[serde(rename = "ByteMatch")]
     Bytematch,
@@ -184,7 +175,6 @@ pub enum PredicateTypeEnum {
     /// XssMatch
     #[serde(rename = "XssMatch")]
     Xssmatch,
-
 }
 
 impl Default for PredicateTypeEnum {
@@ -192,7 +182,6 @@ impl Default for PredicateTypeEnum {
         PredicateTypeEnum::Bytematch
     }
 }
-
 
 impl cfn_resources::CfnResource for Predicate {
     fn type_string(&self) -> &'static str {
@@ -204,21 +193,24 @@ impl cfn_resources::CfnResource for Predicate {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.data_id;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'data_id'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'data_id'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.data_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'data_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'data_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

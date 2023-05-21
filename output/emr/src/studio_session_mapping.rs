@@ -1,13 +1,9 @@
-
-
 /// The AWS::EMR::StudioSessionMapping resource is an Amazon EMR resource type that maps a user or group to the Amazon EMR Studio specified by StudioId, and     applies a session policy that defines Studio permissions for that user or group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStudioSessionMapping {
-
-
-    /// 
+    ///
     /// The name of the user or group. For more information, see UserName and DisplayName in the IAM Identity Center Identity Store API Reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnStudioSessionMapping {
     #[serde(rename = "IdentityName")]
     pub identity_name: String,
 
-
-    /// 
+    ///
     /// Specifies whether the identity to map to the Amazon EMR Studio is a user or a     group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnStudioSessionMapping {
     #[serde(rename = "IdentityType")]
     pub identity_type: StudioSessionMappingIdentityTypeEnum,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) for the session policy that will be applied to the user     or group. Session policies refine Studio user permissions without the need to use multiple     IAM user roles. For more information, see Create an EMR Studio user role with session policies in the Amazon EMR Management Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,10 +48,9 @@ pub struct CfnStudioSessionMapping {
     #[serde(rename = "SessionPolicyArn")]
     pub session_policy_arn: String,
 
-
-    /// 
+    ///
     /// The ID of the Amazon EMR Studio to which the user or group will be     mapped.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -71,13 +64,10 @@ pub struct CfnStudioSessionMapping {
     /// Update requires: Replacement
     #[serde(rename = "StudioId")]
     pub studio_id: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum StudioSessionMappingIdentityTypeEnum {
-
     /// GROUP
     #[serde(rename = "GROUP")]
     Group,
@@ -85,7 +75,6 @@ pub enum StudioSessionMappingIdentityTypeEnum {
     /// USER
     #[serde(rename = "USER")]
     User,
-
 }
 
 impl Default for StudioSessionMappingIdentityTypeEnum {
@@ -93,7 +82,6 @@ impl Default for StudioSessionMappingIdentityTypeEnum {
         StudioSessionMappingIdentityTypeEnum::Group
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnStudioSessionMapping {
     fn type_string(&self) -> &'static str {
@@ -105,49 +93,60 @@ impl cfn_resources::CfnResource for CfnStudioSessionMapping {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.identity_name;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'identity_name'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'identity_name'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.identity_name;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'identity_name'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'identity_name'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.session_policy_arn;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'session_policy_arn'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'session_policy_arn'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.session_policy_arn;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'session_policy_arn'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'session_policy_arn'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.studio_id;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'studio_id'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'studio_id'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.studio_id;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'studio_id'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'studio_id'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

@@ -1,17 +1,13 @@
-
-
 /// Creates a cache subnet group. For more information about cache subnet groups, go to Cache Subnet Groups in the Amazon ElastiCache User Guide       or go to CreateCacheSubnetGroup in the Amazon ElastiCache API Reference Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSubnetGroup {
-
-
-    /// 
+    ///
     /// The name for the cache subnet group. This value is stored as a lowercase string.
-    /// 
+    ///
     /// Constraints: Must contain no more than 255 alphanumeric characters or hyphens.
-    /// 
+    ///
     /// Example: mysubnetgroup
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnSubnetGroup {
     #[serde(rename = "CacheSubnetGroupName")]
     pub cache_subnet_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// The description for the cache subnet group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -32,10 +27,9 @@ pub struct CfnSubnetGroup {
     #[serde(rename = "Description")]
     pub description: String,
 
-
-    /// 
+    ///
     /// The EC2 subnet IDs for the cache subnet group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -43,7 +37,6 @@ pub struct CfnSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
-
 
     /// A tag that can be added to an ElastiCache subnet group.    Tags are composed of a Key/Value pair. You can use tags to categorize and track all your subnet groups. A tag with a null Value is permitted.
     ///
@@ -54,10 +47,7 @@ pub struct CfnSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSubnetGroup {
     fn type_string(&self) -> &'static str {
@@ -69,7 +59,6 @@ impl cfn_resources::CfnResource for CfnSubnetGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -83,32 +72,26 @@ impl cfn_resources::CfnResource for CfnSubnetGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -120,7 +103,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

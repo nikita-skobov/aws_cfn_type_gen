@@ -1,15 +1,11 @@
-
-
 /// Specifies a set of DHCP options for your VPC.
 ///
 /// You must specify at least one of the following properties:     DomainNameServers, NetbiosNameServers,     NtpServers. If you specify NetbiosNameServers, you must specify     NetbiosNodeType.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDHCPOptions {
-
-
-    /// 
+    ///
     /// This value is used to complete unqualified DNS hostnames. If you're using     AmazonProvidedDNS in us-east-1, specify ec2.internal. If you're     using AmazonProvidedDNS in another Region, specify     region.compute.internal (for example,     ap-northeast-1.compute.internal). Otherwise, specify a domain name (for     example, MyCompany.com).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnDHCPOptions {
     #[serde(rename = "DomainName")]
     pub domain_name: Option<String>,
 
-
-    /// 
+    ///
     /// The IPv4 addresses of up to four domain name servers, or AmazonProvidedDNS.      The default is AmazonProvidedDNS. To have your instance receive a custom      DNS hostname as specified in DomainName, you must set this property to a      custom DNS server.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: List of String
@@ -30,10 +25,9 @@ pub struct CfnDHCPOptions {
     #[serde(rename = "DomainNameServers")]
     pub domain_name_servers: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The IPv4 addresses of up to four NetBIOS name servers.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: List of String
@@ -42,10 +36,9 @@ pub struct CfnDHCPOptions {
     #[serde(rename = "NetbiosNameServers")]
     pub netbios_name_servers: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (broadcast and     multicast are not currently supported).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -54,10 +47,9 @@ pub struct CfnDHCPOptions {
     #[serde(rename = "NetbiosNodeType")]
     pub netbios_node_type: Option<i64>,
 
-
-    /// 
+    ///
     /// The IPv4 addresses of up to four Network Time Protocol (NTP) servers.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: List of String
@@ -66,10 +58,9 @@ pub struct CfnDHCPOptions {
     #[serde(rename = "NtpServers")]
     pub ntp_servers: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Any tags assigned to the DHCP options set.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -77,10 +68,7 @@ pub struct CfnDHCPOptions {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDHCPOptions {
     fn type_string(&self) -> &'static str {
@@ -92,7 +80,6 @@ impl cfn_resources::CfnResource for CfnDHCPOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -106,32 +93,26 @@ impl cfn_resources::CfnResource for CfnDHCPOptions {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -143,7 +124,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

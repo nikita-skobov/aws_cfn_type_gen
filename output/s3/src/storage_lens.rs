@@ -1,13 +1,9 @@
-
-
 /// The AWS::S3::StorageLens resource creates an Amazon S3 Storage Lens    configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStorageLens {
-
-
-    /// 
+    ///
     /// This resource contains the details Amazon S3 Storage Lens configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: StorageLensConfiguration
@@ -16,10 +12,9 @@ pub struct CfnStorageLens {
     #[serde(rename = "StorageLensConfiguration")]
     pub storage_lens_configuration: StorageLensConfiguration,
 
-
-    /// 
+    ///
     /// A set of tags (key–value pairs) to associate with the Storage Lens configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -27,10 +22,7 @@ pub struct CfnStorageLens {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnStorageLens {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnStorageLens {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.storage_lens_configuration.validate()?;
 
         Ok(())
@@ -52,11 +43,9 @@ impl cfn_resources::CfnResource for CfnStorageLens {
 /// This resource contains the details of the account-level metrics for Amazon S3 Storage    Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccountLevel {
-
-
-    /// 
+    ///
     /// This property contains the details of account-level activity metrics for S3    Storage Lens.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ActivityMetrics
@@ -65,10 +54,9 @@ pub struct AccountLevel {
     #[serde(rename = "ActivityMetrics")]
     pub activity_metrics: Option<ActivityMetrics>,
 
-
-    /// 
+    ///
     /// This property contains the details of account-level advanced cost optimization metrics for S3    Storage Lens.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AdvancedCostOptimizationMetrics
@@ -77,10 +65,9 @@ pub struct AccountLevel {
     #[serde(rename = "AdvancedCostOptimizationMetrics")]
     pub advanced_cost_optimization_metrics: Option<AdvancedCostOptimizationMetrics>,
 
-
-    /// 
+    ///
     /// This property contains the details of account-level advanced data protection metrics for S3    Storage Lens.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AdvancedDataProtectionMetrics
@@ -89,10 +76,9 @@ pub struct AccountLevel {
     #[serde(rename = "AdvancedDataProtectionMetrics")]
     pub advanced_data_protection_metrics: Option<AdvancedDataProtectionMetrics>,
 
-
-    /// 
+    ///
     /// This property contains the details of the account-level bucket-level configurations for    Amazon S3 Storage Lens.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: BucketLevel
@@ -101,10 +87,9 @@ pub struct AccountLevel {
     #[serde(rename = "BucketLevel")]
     pub bucket_level: BucketLevel,
 
-
-    /// 
+    ///
     /// This property contains the details of account-level detailed status code metrics for S3    Storage Lens.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DetailedStatusCodesMetrics
@@ -112,10 +97,7 @@ pub struct AccountLevel {
     /// Update requires: No interruption
     #[serde(rename = "DetailedStatusCodesMetrics")]
     pub detailed_status_codes_metrics: Option<DetailedStatusCodesMetrics>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AccountLevel {
     fn type_string(&self) -> &'static str {
@@ -127,16 +109,23 @@ impl cfn_resources::CfnResource for AccountLevel {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.activity_metrics
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.activity_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.advanced_cost_optimization_metrics
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.advanced_cost_optimization_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.advanced_data_protection_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.advanced_data_protection_metrics
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.bucket_level.validate()?;
 
-        self.detailed_status_codes_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.detailed_status_codes_metrics
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -147,11 +136,9 @@ impl cfn_resources::CfnResource for AccountLevel {
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ActivityMetrics {
-
-
-    /// 
+    ///
     /// A property that indicates whether the activity metrics is enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -159,10 +146,7 @@ pub struct ActivityMetrics {
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
     pub is_enabled: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ActivityMetrics {
     fn type_string(&self) -> &'static str {
@@ -174,7 +158,6 @@ impl cfn_resources::CfnResource for ActivityMetrics {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -184,11 +167,9 @@ impl cfn_resources::CfnResource for ActivityMetrics {
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AdvancedCostOptimizationMetrics {
-
-
-    /// 
+    ///
     /// Indicates whether advanced cost optimization metrics are    enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -196,10 +177,7 @@ pub struct AdvancedCostOptimizationMetrics {
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
     pub is_enabled: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AdvancedCostOptimizationMetrics {
     fn type_string(&self) -> &'static str {
@@ -211,7 +189,6 @@ impl cfn_resources::CfnResource for AdvancedCostOptimizationMetrics {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -221,11 +198,9 @@ impl cfn_resources::CfnResource for AdvancedCostOptimizationMetrics {
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AdvancedDataProtectionMetrics {
-
-
-    /// 
+    ///
     /// Indicates whether advanced data protection metrics are enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -233,10 +208,7 @@ pub struct AdvancedDataProtectionMetrics {
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
     pub is_enabled: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AdvancedDataProtectionMetrics {
     fn type_string(&self) -> &'static str {
@@ -248,7 +220,6 @@ impl cfn_resources::CfnResource for AdvancedDataProtectionMetrics {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -256,11 +227,9 @@ impl cfn_resources::CfnResource for AdvancedDataProtectionMetrics {
 /// This resource contains the details of the AWS Organization for Amazon S3    Storage Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AwsOrg {
-
-
-    /// 
+    ///
     /// This resource contains the ARN of the AWS Organization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -268,10 +237,7 @@ pub struct AwsOrg {
     /// Update requires: No interruption
     #[serde(rename = "Arn")]
     pub arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AwsOrg {
     fn type_string(&self) -> &'static str {
@@ -283,7 +249,6 @@ impl cfn_resources::CfnResource for AwsOrg {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -291,11 +256,9 @@ impl cfn_resources::CfnResource for AwsOrg {
 /// A property for the bucket-level storage metrics for Amazon S3 Storage Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BucketLevel {
-
-
-    /// 
+    ///
     /// A property for bucket-level activity metrics for S3 Storage Lens.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ActivityMetrics
@@ -304,10 +267,9 @@ pub struct BucketLevel {
     #[serde(rename = "ActivityMetrics")]
     pub activity_metrics: Option<ActivityMetrics>,
 
-
-    /// 
+    ///
     /// A property for bucket-level advanced cost optimization metrics for S3 Storage Lens.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AdvancedCostOptimizationMetrics
@@ -316,10 +278,9 @@ pub struct BucketLevel {
     #[serde(rename = "AdvancedCostOptimizationMetrics")]
     pub advanced_cost_optimization_metrics: Option<AdvancedCostOptimizationMetrics>,
 
-
-    /// 
+    ///
     /// A property for bucket-level advanced data protection metrics for S3 Storage Lens.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AdvancedDataProtectionMetrics
@@ -328,10 +289,9 @@ pub struct BucketLevel {
     #[serde(rename = "AdvancedDataProtectionMetrics")]
     pub advanced_data_protection_metrics: Option<AdvancedDataProtectionMetrics>,
 
-
-    /// 
+    ///
     /// A property for bucket-level detailed status code metrics for S3 Storage Lens.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DetailedStatusCodesMetrics
@@ -340,10 +300,9 @@ pub struct BucketLevel {
     #[serde(rename = "DetailedStatusCodesMetrics")]
     pub detailed_status_codes_metrics: Option<DetailedStatusCodesMetrics>,
 
-
-    /// 
+    ///
     /// A property for bucket-level prefix-level storage metrics for S3 Storage Lens.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PrefixLevel
@@ -351,10 +310,7 @@ pub struct BucketLevel {
     /// Update requires: No interruption
     #[serde(rename = "PrefixLevel")]
     pub prefix_level: Option<PrefixLevel>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for BucketLevel {
     fn type_string(&self) -> &'static str {
@@ -366,16 +322,25 @@ impl cfn_resources::CfnResource for BucketLevel {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.activity_metrics
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.activity_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.advanced_cost_optimization_metrics
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.advanced_cost_optimization_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.advanced_data_protection_metrics
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.advanced_data_protection_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.detailed_status_codes_metrics
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.detailed_status_codes_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.prefix_level.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.prefix_level
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -384,11 +349,9 @@ impl cfn_resources::CfnResource for BucketLevel {
 /// This resource contains the details of the buckets and Regions for the Amazon S3 Storage    Lens configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BucketsAndRegions {
-
-
-    /// 
+    ///
     /// This property contains the details of the buckets for the Amazon S3 Storage Lens    configuration. This should be the bucket Amazon Resource Name(ARN). For valid values, see     Buckets ARN     format here in the Amazon S3 API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -397,10 +360,9 @@ pub struct BucketsAndRegions {
     #[serde(rename = "Buckets")]
     pub buckets: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// This property contains the details of the Regions for the S3 Storage Lens    configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -408,10 +370,7 @@ pub struct BucketsAndRegions {
     /// Update requires: No interruption
     #[serde(rename = "Regions")]
     pub regions: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for BucketsAndRegions {
     fn type_string(&self) -> &'static str {
@@ -423,7 +382,6 @@ impl cfn_resources::CfnResource for BucketsAndRegions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -433,11 +391,9 @@ impl cfn_resources::CfnResource for BucketsAndRegions {
 /// For more information, see Monitor S3     Storage Lens metrics in CloudWatch in the Amazon S3 User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchMetrics {
-
-
-    /// 
+    ///
     /// This property identifies whether the CloudWatch publishing option for S3 Storage    Lens is enabled.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -445,10 +401,7 @@ pub struct CloudWatchMetrics {
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
     pub is_enabled: bool,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CloudWatchMetrics {
     fn type_string(&self) -> &'static str {
@@ -460,7 +413,6 @@ impl cfn_resources::CfnResource for CloudWatchMetrics {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -468,11 +420,9 @@ impl cfn_resources::CfnResource for CloudWatchMetrics {
 /// This resource contains the details of the Amazon S3 Storage Lens metrics export.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataExport {
-
-
-    /// 
+    ///
     /// This property enables the Amazon CloudWatch publishing option for S3 Storage Lens    metrics.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CloudWatchMetrics
@@ -481,10 +431,9 @@ pub struct DataExport {
     #[serde(rename = "CloudWatchMetrics")]
     pub cloud_watch_metrics: Option<CloudWatchMetrics>,
 
-
-    /// 
+    ///
     /// This property contains the details of the bucket where the S3 Storage Lens metrics export    will be placed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3BucketDestination
@@ -492,10 +441,7 @@ pub struct DataExport {
     /// Update requires: No interruption
     #[serde(rename = "S3BucketDestination")]
     pub s3_bucket_destination: Option<S3BucketDestination>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataExport {
     fn type_string(&self) -> &'static str {
@@ -507,10 +453,13 @@ impl cfn_resources::CfnResource for DataExport {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.cloud_watch_metrics
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.cloud_watch_metrics.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.s3_bucket_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.s3_bucket_destination
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -521,11 +470,9 @@ impl cfn_resources::CfnResource for DataExport {
 /// For more information, see    Assessing your storage activity and usage with S3 Storage Lens in the Amazon S3 User Guide.    For a complete list of metrics, see     S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DetailedStatusCodesMetrics {
-
-
-    /// 
+    ///
     /// Indicates whether detailed status code metrics are enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -533,10 +480,7 @@ pub struct DetailedStatusCodesMetrics {
     /// Update requires: No interruption
     #[serde(rename = "IsEnabled")]
     pub is_enabled: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DetailedStatusCodesMetrics {
     fn type_string(&self) -> &'static str {
@@ -548,7 +492,6 @@ impl cfn_resources::CfnResource for DetailedStatusCodesMetrics {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -556,11 +499,9 @@ impl cfn_resources::CfnResource for DetailedStatusCodesMetrics {
 /// This resource contains the type of server-side encryption used to encrypt an Amazon S3    Storage Lens metrics export. For valid values, see the     StorageLensDataExportEncryption in the Amazon S3 API    Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Encryption {
-
-
-    /// 
+    ///
     /// Specifies the use of AWS Key Management Service keys (SSE-KMS) to encrypt the S3 Storage Lens metrics export file.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SSEKMS
@@ -569,10 +510,9 @@ pub struct Encryption {
     #[serde(rename = "SSEKMS")]
     pub ssekms: Option<SSEKMS>,
 
-
-    /// 
+    ///
     /// Specifies the use of an Amazon S3-managed key (SSE-S3) to encrypt the S3 Storage Lens metrics export file.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -580,10 +520,7 @@ pub struct Encryption {
     /// Update requires: No interruption
     #[serde(rename = "SSES3")]
     pub sses3: Option<serde_json::Value>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Encryption {
     fn type_string(&self) -> &'static str {
@@ -595,7 +532,6 @@ impl cfn_resources::CfnResource for Encryption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.ssekms.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
@@ -605,11 +541,9 @@ impl cfn_resources::CfnResource for Encryption {
 /// This resource contains the details of the prefix-level of the Amazon S3 Storage    Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PrefixLevel {
-
-
-    /// 
+    ///
     /// A property for the prefix-level storage metrics for Amazon S3 Storage Lens.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: PrefixLevelStorageMetrics
@@ -617,10 +551,7 @@ pub struct PrefixLevel {
     /// Update requires: No interruption
     #[serde(rename = "StorageMetrics")]
     pub storage_metrics: PrefixLevelStorageMetrics,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PrefixLevel {
     fn type_string(&self) -> &'static str {
@@ -632,7 +563,6 @@ impl cfn_resources::CfnResource for PrefixLevel {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.storage_metrics.validate()?;
 
         Ok(())
@@ -642,11 +572,9 @@ impl cfn_resources::CfnResource for PrefixLevel {
 /// This resource contains the details of the prefix-level storage metrics for Amazon S3    Storage Lens.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PrefixLevelStorageMetrics {
-
-
-    /// 
+    ///
     /// This property identifies whether the details of the prefix-level storage metrics for S3    Storage Lens are enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -655,10 +583,9 @@ pub struct PrefixLevelStorageMetrics {
     #[serde(rename = "IsEnabled")]
     pub is_enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// This property identifies whether the details of the prefix-level storage metrics for S3    Storage Lens are enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SelectionCriteria
@@ -666,10 +593,7 @@ pub struct PrefixLevelStorageMetrics {
     /// Update requires: No interruption
     #[serde(rename = "SelectionCriteria")]
     pub selection_criteria: Option<SelectionCriteria>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PrefixLevelStorageMetrics {
     fn type_string(&self) -> &'static str {
@@ -681,8 +605,9 @@ impl cfn_resources::CfnResource for PrefixLevelStorageMetrics {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.selection_criteria.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.selection_criteria
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -691,11 +616,9 @@ impl cfn_resources::CfnResource for PrefixLevelStorageMetrics {
 /// This resource contains the details of the bucket where the Amazon S3 Storage Lens metrics    export will be placed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3BucketDestination {
-
-
-    /// 
+    ///
     /// This property contains the details of the AWS account ID of the S3    Storage Lens export bucket destination.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -704,10 +627,9 @@ pub struct S3BucketDestination {
     #[serde(rename = "AccountId")]
     pub account_id: String,
 
-
-    /// 
+    ///
     /// This property contains the details of the ARN of the bucket destination of the S3 Storage    Lens export.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -716,10 +638,9 @@ pub struct S3BucketDestination {
     #[serde(rename = "Arn")]
     pub arn: String,
 
-
-    /// 
+    ///
     /// This property contains the details of the encryption of the bucket destination of the    Amazon S3 Storage Lens metrics export.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Encryption
@@ -728,10 +649,9 @@ pub struct S3BucketDestination {
     #[serde(rename = "Encryption")]
     pub encryption: Option<Encryption>,
 
-
-    /// 
+    ///
     /// This property contains the details of the format of the S3 Storage Lens export bucket    destination.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -740,10 +660,9 @@ pub struct S3BucketDestination {
     #[serde(rename = "Format")]
     pub format: String,
 
-
-    /// 
+    ///
     /// This property contains the details of the output schema version of the S3 Storage Lens    export bucket destination.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -752,10 +671,9 @@ pub struct S3BucketDestination {
     #[serde(rename = "OutputSchemaVersion")]
     pub output_schema_version: String,
 
-
-    /// 
+    ///
     /// This property contains the details of the prefix of the bucket destination of the S3    Storage Lens export .
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -763,10 +681,7 @@ pub struct S3BucketDestination {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     pub prefix: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3BucketDestination {
     fn type_string(&self) -> &'static str {
@@ -778,8 +693,9 @@ impl cfn_resources::CfnResource for S3BucketDestination {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.encryption
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -788,11 +704,9 @@ impl cfn_resources::CfnResource for S3BucketDestination {
 /// Specifies the use of server-side encryption using an AWS Key Management Service key (SSE-KMS) to    encrypt the delivered S3 Storage Lens metrics export file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SSEKMS {
-
-
-    /// 
+    ///
     /// Specifies the Amazon Resource Name (ARN) of the customer managed AWS KMS key to    use for encrypting the S3 Storage Lens metrics export file. Amazon S3 only supports symmetric    encryption keys. For more information, see Special-purpose keys in the      AWS Key Management Service Developer Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -800,10 +714,7 @@ pub struct SSEKMS {
     /// Update requires: No interruption
     #[serde(rename = "KeyId")]
     pub key_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SSEKMS {
     fn type_string(&self) -> &'static str {
@@ -815,7 +726,6 @@ impl cfn_resources::CfnResource for SSEKMS {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -823,11 +733,9 @@ impl cfn_resources::CfnResource for SSEKMS {
 /// This resource contains the details of the Amazon S3 Storage Lens selection    criteria.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SelectionCriteria {
-
-
-    /// 
+    ///
     /// This property contains the details of the S3 Storage Lens delimiter being used.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -836,10 +744,9 @@ pub struct SelectionCriteria {
     #[serde(rename = "Delimiter")]
     pub delimiter: Option<String>,
 
-
-    /// 
+    ///
     /// This property contains the details of the max depth that S3 Storage Lens will collect    metrics up to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -848,10 +755,9 @@ pub struct SelectionCriteria {
     #[serde(rename = "MaxDepth")]
     pub max_depth: Option<i64>,
 
-
-    /// 
+    ///
     /// This property contains the details of the minimum storage bytes percentage threshold that    S3 Storage Lens will collect metrics up to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -859,10 +765,7 @@ pub struct SelectionCriteria {
     /// Update requires: No interruption
     #[serde(rename = "MinStorageBytesPercentage")]
     pub min_storage_bytes_percentage: Option<f64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SelectionCriteria {
     fn type_string(&self) -> &'static str {
@@ -874,7 +777,6 @@ impl cfn_resources::CfnResource for SelectionCriteria {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -882,11 +784,9 @@ impl cfn_resources::CfnResource for SelectionCriteria {
 /// This is the property of the Amazon S3 Storage Lens configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StorageLensConfiguration {
-
-
-    /// 
+    ///
     /// This property contains the details of the account-level metrics for Amazon S3 Storage Lens    configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: AccountLevel
@@ -895,10 +795,9 @@ pub struct StorageLensConfiguration {
     #[serde(rename = "AccountLevel")]
     pub account_level: AccountLevel,
 
-
-    /// 
+    ///
     /// This property contains the details of the AWS Organization for the S3    Storage Lens configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AwsOrg
@@ -907,10 +806,9 @@ pub struct StorageLensConfiguration {
     #[serde(rename = "AwsOrg")]
     pub aws_org: Option<AwsOrg>,
 
-
-    /// 
+    ///
     /// This property contains the details of this S3 Storage Lens configuration's metrics    export.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataExport
@@ -919,10 +817,9 @@ pub struct StorageLensConfiguration {
     #[serde(rename = "DataExport")]
     pub data_export: Option<DataExport>,
 
-
-    /// 
+    ///
     /// This property contains the details of the bucket and or Regions excluded for Amazon S3    Storage Lens configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: BucketsAndRegions
@@ -931,10 +828,9 @@ pub struct StorageLensConfiguration {
     #[serde(rename = "Exclude")]
     pub exclude: Option<BucketsAndRegions>,
 
-
-    /// 
+    ///
     /// This property contains the details of the ID of the S3 Storage Lens configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -943,10 +839,9 @@ pub struct StorageLensConfiguration {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// This property contains the details of the bucket and or Regions included for Amazon S3    Storage Lens configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: BucketsAndRegions
@@ -955,10 +850,9 @@ pub struct StorageLensConfiguration {
     #[serde(rename = "Include")]
     pub include: Option<BucketsAndRegions>,
 
-
-    /// 
+    ///
     /// This property contains the details of whether the Amazon S3 Storage Lens configuration is    enabled.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -967,10 +861,9 @@ pub struct StorageLensConfiguration {
     #[serde(rename = "IsEnabled")]
     pub is_enabled: bool,
 
-
-    /// 
+    ///
     /// This property contains the details of the ARN of the S3 Storage Lens configuration. This    property is read-only.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -978,10 +871,7 @@ pub struct StorageLensConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "StorageLensArn")]
     pub storage_lens_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for StorageLensConfiguration {
     fn type_string(&self) -> &'static str {
@@ -993,12 +883,13 @@ impl cfn_resources::CfnResource for StorageLensConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.account_level.validate()?;
 
         self.aws_org.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.data_export.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.data_export
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.exclude.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -1017,32 +908,26 @@ impl cfn_resources::CfnResource for StorageLensConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -1054,7 +939,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

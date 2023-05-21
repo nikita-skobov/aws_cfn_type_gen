@@ -1,5 +1,3 @@
-
-
 /// A schedule group is an Amazon EventBridge Scheduler resource you use to organize your schedules.
 ///
 /// Your AWS account comes with a default scheduler group. You associate a new schedule with the default group or with schedule groups that     you create and manage. You can create up to 500 schedule groups in your AWS account.     With EventBridge Scheduler, you apply tags to schedule groups, not to individual schedules to organize your resources.
@@ -7,11 +5,9 @@
 /// For more information about managing schedule groups, see Managing a schedule group     in the EventBridge Scheduler User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnScheduleGroup {
-
-
-    /// 
+    ///
     /// The name of the schedule group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,12 +16,11 @@ pub struct CfnScheduleGroup {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -33,10 +28,7 @@ pub struct CfnScheduleGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnScheduleGroup {
     fn type_string(&self) -> &'static str {
@@ -48,7 +40,6 @@ impl cfn_resources::CfnResource for CfnScheduleGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -62,32 +53,26 @@ impl cfn_resources::CfnResource for CfnScheduleGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -99,7 +84,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

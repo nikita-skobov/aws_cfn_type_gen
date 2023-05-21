@@ -1,13 +1,9 @@
-
-
 /// Manages an event type. An event is a business activity that is evaluated for fraud risk. With Amazon Fraud Detector, you generate fraud predictions for events.       An event type defines the structure for an event sent to Amazon Fraud Detector. This includes the variables sent as part of the event, the entity performing the event       (such as a customer), and the labels that classify the event. Example event types include online payment transactions, account registrations, and authentications.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEventType {
-
-
-    /// 
+    ///
     /// The event type description.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnEventType {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The event type entity types.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of EntityType
@@ -32,10 +27,9 @@ pub struct CfnEventType {
     #[serde(rename = "EntityTypes")]
     pub entity_types: Vec<EntityType>,
 
-
-    /// 
+    ///
     /// The event type event variables.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of EventVariable
@@ -44,10 +38,9 @@ pub struct CfnEventType {
     #[serde(rename = "EventVariables")]
     pub event_variables: Vec<EventVariable>,
 
-
-    /// 
+    ///
     /// The event type labels.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Label
@@ -56,12 +49,11 @@ pub struct CfnEventType {
     #[serde(rename = "Labels")]
     pub labels: Vec<Label>,
 
-
-    /// 
+    ///
     /// The event type name.
-    /// 
+    ///
     /// Pattern : ^[0-9a-z_-]+$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -70,12 +62,11 @@ pub struct CfnEventType {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -83,10 +74,7 @@ pub struct CfnEventType {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnEventType {
     fn type_string(&self) -> &'static str {
@@ -98,23 +86,24 @@ impl cfn_resources::CfnResource for CfnEventType {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -122,11 +111,9 @@ impl cfn_resources::CfnResource for CfnEventType {
 /// The entity type details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EntityType {
-
-
-    /// 
+    ///
     /// The entity type ARN.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -141,10 +128,9 @@ pub struct EntityType {
     #[serde(rename = "Arn")]
     pub arn: Option<String>,
 
-
-    /// 
+    ///
     /// Timestamp of when the entity type was created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -157,10 +143,9 @@ pub struct EntityType {
     #[serde(rename = "CreatedTime")]
     pub created_time: Option<String>,
 
-
-    /// 
+    ///
     /// The entity type description.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -173,12 +158,11 @@ pub struct EntityType {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
-    /// 
+    ///
     /// For example, when creating AWS::FraudDetector::EventType you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your event type but not execute any      changes to the variables.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -187,10 +171,9 @@ pub struct EntityType {
     #[serde(rename = "Inline")]
     pub inline: Option<bool>,
 
-
-    /// 
+    ///
     /// Timestamp of when the entity type was last updated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -203,12 +186,11 @@ pub struct EntityType {
     #[serde(rename = "LastUpdatedTime")]
     pub last_updated_time: Option<String>,
 
-
-    /// 
+    ///
     /// The entity type name.
-    /// 
+    ///
     /// ^[0-9a-z_-]+$
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -217,12 +199,11 @@ pub struct EntityType {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -230,10 +211,7 @@ pub struct EntityType {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EntityType {
     fn type_string(&self) -> &'static str {
@@ -245,71 +223,78 @@ impl cfn_resources::CfnResource for EntityType {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.arn {
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'arn'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'arn'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.created_time {
-
-        if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'created_time'. {} is greater than 30", the_val.len()));
+            if the_val.len() > 30 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'created_time'. {} is greater than 30",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.created_time {
-
-        if the_val.len() < 11 as _ {
-            return Err(format!("Min validation failed on field 'created_time'. {} is less than 11", the_val.len()));
+            if the_val.len() < 11 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'created_time'. {} is less than 11",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.last_updated_time {
-
-        if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'last_updated_time'. {} is greater than 30", the_val.len()));
+            if the_val.len() > 30 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'last_updated_time'. {} is greater than 30",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.last_updated_time {
-
-        if the_val.len() < 11 as _ {
-            return Err(format!("Min validation failed on field 'last_updated_time'. {} is less than 11", the_val.len()));
+            if the_val.len() < 11 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'last_updated_time'. {} is less than 11",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -317,11 +302,9 @@ impl cfn_resources::CfnResource for EntityType {
 /// The variables associated with this event type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EventVariable {
-
-
-    /// 
+    ///
     /// The event variable ARN.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -330,10 +313,9 @@ pub struct EventVariable {
     #[serde(rename = "Arn")]
     pub arn: Option<String>,
 
-
-    /// 
+    ///
     /// Timestamp for when event variable was created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -342,14 +324,13 @@ pub struct EventVariable {
     #[serde(rename = "CreatedTime")]
     pub created_time: Option<String>,
 
-
-    /// 
+    ///
     /// The source of the event variable.
-    /// 
+    ///
     /// Valid values: EVENT | EXTERNAL_MODEL_SCORE
-    /// 
+    ///
     /// When defining a variable within a event type, you can only use the EVENT value for DataSource when the Inline property is set to true.      If the Inline property is set false, you can use either EVENT or MODEL_SCORE for DataSource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -358,10 +339,9 @@ pub struct EventVariable {
     #[serde(rename = "DataSource")]
     pub data_source: Option<String>,
 
-
-    /// 
+    ///
     /// The data type of the event variable. For more information, see Data types.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -370,10 +350,9 @@ pub struct EventVariable {
     #[serde(rename = "DataType")]
     pub data_type: Option<String>,
 
-
-    /// 
+    ///
     /// The default value of the event variable
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -382,10 +361,9 @@ pub struct EventVariable {
     #[serde(rename = "DefaultValue")]
     pub default_value: Option<String>,
 
-
-    /// 
+    ///
     /// The event variable description.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -394,12 +372,11 @@ pub struct EventVariable {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
-    /// 
+    ///
     /// For example, when creating AWS::FraudDetector::EventType you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the Variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your event type but not execute any      changes to the variables.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -408,10 +385,9 @@ pub struct EventVariable {
     #[serde(rename = "Inline")]
     pub inline: Option<bool>,
 
-
-    /// 
+    ///
     /// Timestamp for when the event variable was last updated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -420,10 +396,9 @@ pub struct EventVariable {
     #[serde(rename = "LastUpdatedTime")]
     pub last_updated_time: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the event variable.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -432,12 +407,11 @@ pub struct EventVariable {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -446,10 +420,9 @@ pub struct EventVariable {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of event variable. For more information, see Variable types.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -457,10 +430,7 @@ pub struct EventVariable {
     /// Update requires: No interruption
     #[serde(rename = "VariableType")]
     pub variable_type: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EventVariable {
     fn type_string(&self) -> &'static str {
@@ -472,7 +442,6 @@ impl cfn_resources::CfnResource for EventVariable {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -480,11 +449,9 @@ impl cfn_resources::CfnResource for EventVariable {
 /// The label associated with the event type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Label {
-
-
-    /// 
+    ///
     /// The label ARN.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -499,10 +466,9 @@ pub struct Label {
     #[serde(rename = "Arn")]
     pub arn: Option<String>,
 
-
-    /// 
+    ///
     /// Timestamp of when the event type was created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -515,10 +481,9 @@ pub struct Label {
     #[serde(rename = "CreatedTime")]
     pub created_time: Option<String>,
 
-
-    /// 
+    ///
     /// The label description.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -531,12 +496,11 @@ pub struct Label {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether the resource is defined within this CloudFormation template and impacts the create, update, and delete behavior of the stack. If the value is true,     CloudFormation will create/update/delete the resource when creating/updating/deleting the stack. If the value is false, CloudFormation will validate that the object exists and      then use it within the resource without making changes to the object.
-    /// 
+    ///
     /// For example, when creating AWS::FraudDetector::EventType you must define at least two variables. You can set Inline=true for these variables and CloudFormation will      create/update/delete the variables as part of stack operations. However, if you set Inline=false, CloudFormation will associate the variables to your EventType but not execute any      changes to the variables.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -545,10 +509,9 @@ pub struct Label {
     #[serde(rename = "Inline")]
     pub inline: Option<bool>,
 
-
-    /// 
+    ///
     /// Timestamp of when the label was last updated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -561,10 +524,9 @@ pub struct Label {
     #[serde(rename = "LastUpdatedTime")]
     pub last_updated_time: Option<String>,
 
-
-    /// 
+    ///
     /// The label name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -573,12 +535,11 @@ pub struct Label {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -586,10 +547,7 @@ pub struct Label {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Label {
     fn type_string(&self) -> &'static str {
@@ -601,71 +559,78 @@ impl cfn_resources::CfnResource for Label {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.arn {
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'arn'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'arn'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.created_time {
-
-        if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'created_time'. {} is greater than 30", the_val.len()));
+            if the_val.len() > 30 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'created_time'. {} is greater than 30",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.created_time {
-
-        if the_val.len() < 11 as _ {
-            return Err(format!("Min validation failed on field 'created_time'. {} is less than 11", the_val.len()));
+            if the_val.len() < 11 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'created_time'. {} is less than 11",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.last_updated_time {
-
-        if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'last_updated_time'. {} is greater than 30", the_val.len()));
+            if the_val.len() > 30 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'last_updated_time'. {} is greater than 30",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.last_updated_time {
-
-        if the_val.len() < 11 as _ {
-            return Err(format!("Min validation failed on field 'last_updated_time'. {} is less than 11", the_val.len()));
+            if the_val.len() < 11 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'last_updated_time'. {} is less than 11",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -679,32 +644,26 @@ impl cfn_resources::CfnResource for Label {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -716,7 +675,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

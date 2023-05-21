@@ -1,10 +1,6 @@
-
-
 /// Creates the definition for a model bias job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnModelBiasJobDefinition {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -15,10 +11,9 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "EndpointName")]
     pub endpoint_name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the bias job definition. The name must be unique within an AWS Region in the AWS account.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -27,10 +22,9 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "JobDefinitionName")]
     pub job_definition_name: Option<String>,
 
-
-    /// 
+    ///
     /// Identifies the resources to deploy for a monitoring job.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: MonitoringResources
@@ -39,10 +33,9 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "JobResources")]
     pub job_resources: MonitoringResources,
 
-
-    /// 
+    ///
     /// Configures the model bias job to run a specified Docker container image.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ModelBiasAppSpecification
@@ -51,10 +44,9 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "ModelBiasAppSpecification")]
     pub model_bias_app_specification: ModelBiasAppSpecification,
 
-
-    /// 
+    ///
     /// The baseline configuration for a model bias job.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ModelBiasBaselineConfig
@@ -63,10 +55,9 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "ModelBiasBaselineConfig")]
     pub model_bias_baseline_config: Option<ModelBiasBaselineConfig>,
 
-
-    /// 
+    ///
     /// Inputs for the model bias job.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ModelBiasJobInput
@@ -75,10 +66,9 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "ModelBiasJobInput")]
     pub model_bias_job_input: ModelBiasJobInput,
 
-
-    /// 
+    ///
     /// The output configuration for monitoring jobs.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: MonitoringOutputConfig
@@ -87,10 +77,9 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "ModelBiasJobOutputConfig")]
     pub model_bias_job_output_config: MonitoringOutputConfig,
 
-
-    /// 
+    ///
     /// Networking options for a model bias job.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NetworkConfig
@@ -99,10 +88,9 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "NetworkConfig")]
     pub network_config: Option<NetworkConfig>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can assume to       perform tasks on your behalf.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -111,10 +99,9 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
-
-    /// 
+    ///
     /// A time limit for how long the monitoring job is allowed to run before stopping.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: StoppingCondition
@@ -123,12 +110,11 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "StoppingCondition")]
     pub stopping_condition: Option<StoppingCondition>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -136,10 +122,7 @@ pub struct CfnModelBiasJobDefinition {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnModelBiasJobDefinition {
     fn type_string(&self) -> &'static str {
@@ -151,20 +134,25 @@ impl cfn_resources::CfnResource for CfnModelBiasJobDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.job_resources.validate()?;
 
         self.model_bias_app_specification.validate()?;
 
-        self.model_bias_baseline_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.model_bias_baseline_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.model_bias_job_input.validate()?;
 
         self.model_bias_job_output_config.validate()?;
 
-        self.network_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.network_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.stopping_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.stopping_condition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -173,8 +161,6 @@ impl cfn_resources::CfnResource for CfnModelBiasJobDefinition {
 /// The BatchTransformInput property type specifies Property description not available. for an AWS::SageMaker::ModelBiasJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BatchTransformInput {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -184,7 +170,6 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "DataCapturedDestinationS3Uri")]
     pub data_captured_destination_s3_uri: String,
-
 
     /// Property description not available.
     ///
@@ -196,7 +181,6 @@ pub struct BatchTransformInput {
     #[serde(rename = "DatasetFormat")]
     pub dataset_format: DatasetFormat,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -206,7 +190,6 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "EndTimeOffset")]
     pub end_time_offset: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -218,7 +201,6 @@ pub struct BatchTransformInput {
     #[serde(rename = "FeaturesAttribute")]
     pub features_attribute: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -228,7 +210,6 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "InferenceAttribute")]
     pub inference_attribute: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -240,7 +221,6 @@ pub struct BatchTransformInput {
     #[serde(rename = "LocalPath")]
     pub local_path: String,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -250,7 +230,6 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "ProbabilityAttribute")]
     pub probability_attribute: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -262,7 +241,6 @@ pub struct BatchTransformInput {
     #[serde(rename = "ProbabilityThresholdAttribute")]
     pub probability_threshold_attribute: Option<f64>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -272,7 +250,6 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "S3DataDistributionType")]
     pub s3_data_distribution_type: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -284,7 +261,6 @@ pub struct BatchTransformInput {
     #[serde(rename = "S3InputMode")]
     pub s3_input_mode: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -294,10 +270,7 @@ pub struct BatchTransformInput {
     /// Update requires: Replacement
     #[serde(rename = "StartTimeOffset")]
     pub start_time_offset: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for BatchTransformInput {
     fn type_string(&self) -> &'static str {
@@ -309,7 +282,6 @@ impl cfn_resources::CfnResource for BatchTransformInput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.dataset_format.validate()?;
 
         Ok(())
@@ -319,11 +291,9 @@ impl cfn_resources::CfnResource for BatchTransformInput {
 /// The configuration for the cluster resources used to run the processing job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClusterConfig {
-
-
-    /// 
+    ///
     /// The number of ML compute instances to use in the model monitoring job. For distributed       processing jobs, specify a value greater than 1. The default value is 1.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -332,10 +302,9 @@ pub struct ClusterConfig {
     #[serde(rename = "InstanceCount")]
     pub instance_count: i64,
 
-
-    /// 
+    ///
     /// The ML compute instance type for the processing job.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -344,10 +313,9 @@ pub struct ClusterConfig {
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
 
-
-    /// 
+    ///
     /// The AWS Key Management Service (AWS KMS) key that       Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute       instance(s) that run the model monitoring job.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -356,10 +324,9 @@ pub struct ClusterConfig {
     #[serde(rename = "VolumeKmsKeyId")]
     pub volume_kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// The size of the ML storage volume, in gigabytes, that you want to provision. You must       specify sufficient ML storage for your scenario.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -367,10 +334,7 @@ pub struct ClusterConfig {
     /// Update requires: Replacement
     #[serde(rename = "VolumeSizeInGB")]
     pub volume_size_in_gb: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClusterConfig {
     fn type_string(&self) -> &'static str {
@@ -382,7 +346,6 @@ impl cfn_resources::CfnResource for ClusterConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -390,11 +353,9 @@ impl cfn_resources::CfnResource for ClusterConfig {
 /// The constraints resource for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConstraintsResource {
-
-
-    /// 
+    ///
     /// The Amazon S3 URI for the constraints resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -402,10 +363,7 @@ pub struct ConstraintsResource {
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
     pub s3_uri: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConstraintsResource {
     fn type_string(&self) -> &'static str {
@@ -417,7 +375,6 @@ impl cfn_resources::CfnResource for ConstraintsResource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -425,8 +382,6 @@ impl cfn_resources::CfnResource for ConstraintsResource {
 /// The Csv property type specifies Property description not available. for an AWS::SageMaker::ModelBiasJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Csv {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -436,10 +391,7 @@ pub struct Csv {
     /// Update requires: Replacement
     #[serde(rename = "Header")]
     pub header: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Csv {
     fn type_string(&self) -> &'static str {
@@ -451,7 +403,6 @@ impl cfn_resources::CfnResource for Csv {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -459,8 +410,6 @@ impl cfn_resources::CfnResource for Csv {
 /// The DatasetFormat property type specifies Property description not available. for an AWS::SageMaker::ModelBiasJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatasetFormat {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -470,7 +419,6 @@ pub struct DatasetFormat {
     /// Update requires: Replacement
     #[serde(rename = "Csv")]
     pub csv: Option<Csv>,
-
 
     /// Property description not available.
     ///
@@ -482,7 +430,6 @@ pub struct DatasetFormat {
     #[serde(rename = "Json")]
     pub json: Option<Json>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -492,10 +439,7 @@ pub struct DatasetFormat {
     /// Update requires: Replacement
     #[serde(rename = "Parquet")]
     pub parquet: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DatasetFormat {
     fn type_string(&self) -> &'static str {
@@ -507,7 +451,6 @@ impl cfn_resources::CfnResource for DatasetFormat {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.csv.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         self.json.as_ref().map_or(Ok(()), |val| val.validate())?;
@@ -519,11 +462,9 @@ impl cfn_resources::CfnResource for DatasetFormat {
 /// Input object for the endpoint
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EndpointInput {
-
-
-    /// 
+    ///
     /// If specified, monitoring jobs substract this time from the end time. For information     about using offsets for scheduling monitoring jobs, see Schedule Model       Quality Monitoring Jobs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -538,10 +479,9 @@ pub struct EndpointInput {
     #[serde(rename = "EndTimeOffset")]
     pub end_time_offset: Option<String>,
 
-
-    /// 
+    ///
     /// An endpoint in customer's account which has enabled DataCaptureConfig     enabled.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -554,10 +494,9 @@ pub struct EndpointInput {
     #[serde(rename = "EndpointName")]
     pub endpoint_name: String,
 
-
-    /// 
+    ///
     /// The attributes of the input data that are the input features.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -566,10 +505,9 @@ pub struct EndpointInput {
     #[serde(rename = "FeaturesAttribute")]
     pub features_attribute: Option<String>,
 
-
-    /// 
+    ///
     /// The attribute of the input data that represents the ground truth label.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -578,10 +516,9 @@ pub struct EndpointInput {
     #[serde(rename = "InferenceAttribute")]
     pub inference_attribute: Option<String>,
 
-
-    /// 
+    ///
     /// Path to the filesystem where the endpoint data is available to the container.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -594,10 +531,9 @@ pub struct EndpointInput {
     #[serde(rename = "LocalPath")]
     pub local_path: String,
 
-
-    /// 
+    ///
     /// In a classification problem, the attribute that represents the class probability.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -606,10 +542,9 @@ pub struct EndpointInput {
     #[serde(rename = "ProbabilityAttribute")]
     pub probability_attribute: Option<String>,
 
-
-    /// 
+    ///
     /// The threshold for the class probability to be evaluated as a positive result.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -618,10 +553,9 @@ pub struct EndpointInput {
     #[serde(rename = "ProbabilityThresholdAttribute")]
     pub probability_threshold_attribute: Option<f64>,
 
-
-    /// 
+    ///
     /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key.     Defaults to FullyReplicated
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -632,10 +566,9 @@ pub struct EndpointInput {
     #[serde(rename = "S3DataDistributionType")]
     pub s3_data_distribution_type: Option<EndpointInputS3DataDistributionTypeEnum>,
 
-
-    /// 
+    ///
     /// Whether the Pipe or File is used as the input mode for     transferring data for the monitoring job. Pipe mode is recommended for large     datasets. File mode is useful for small files that fit in memory. Defaults to       File.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -646,10 +579,9 @@ pub struct EndpointInput {
     #[serde(rename = "S3InputMode")]
     pub s3_input_mode: Option<EndpointInputS3InputModeEnum>,
 
-
-    /// 
+    ///
     /// If specified, monitoring jobs substract this time from the start time. For information     about using offsets for scheduling monitoring jobs, see Schedule Model       Quality Monitoring Jobs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -663,13 +595,10 @@ pub struct EndpointInput {
     /// Update requires: Replacement
     #[serde(rename = "StartTimeOffset")]
     pub start_time_offset: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EndpointInputS3DataDistributionTypeEnum {
-
     /// FullyReplicated
     #[serde(rename = "FullyReplicated")]
     Fullyreplicated,
@@ -677,7 +606,6 @@ pub enum EndpointInputS3DataDistributionTypeEnum {
     /// ShardedByS3Key
     #[serde(rename = "ShardedByS3Key")]
     Shardedbys3key,
-
 }
 
 impl Default for EndpointInputS3DataDistributionTypeEnum {
@@ -688,7 +616,6 @@ impl Default for EndpointInputS3DataDistributionTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EndpointInputS3InputModeEnum {
-
     /// File
     #[serde(rename = "File")]
     File,
@@ -696,7 +623,6 @@ pub enum EndpointInputS3InputModeEnum {
     /// Pipe
     #[serde(rename = "Pipe")]
     Pipe,
-
 }
 
 impl Default for EndpointInputS3InputModeEnum {
@@ -704,7 +630,6 @@ impl Default for EndpointInputS3InputModeEnum {
         EndpointInputS3InputModeEnum::File
     }
 }
-
 
 impl cfn_resources::CfnResource for EndpointInput {
     fn type_string(&self) -> &'static str {
@@ -716,53 +641,60 @@ impl cfn_resources::CfnResource for EndpointInput {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.end_time_offset {
+            if the_val.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'end_time_offset'. {} is greater than 15",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.end_time_offset {
-
-        if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'end_time_offset'. {} is greater than 15", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'end_time_offset'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.end_time_offset {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'end_time_offset'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.endpoint_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'endpoint_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.local_path;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'local_path'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'local_path'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.start_time_offset {
-
-        if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'start_time_offset'. {} is greater than 15", the_val.len()));
+            if the_val.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'start_time_offset'. {} is greater than 15",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.start_time_offset {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'start_time_offset'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'start_time_offset'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -770,8 +702,6 @@ impl cfn_resources::CfnResource for EndpointInput {
 /// The Json property type specifies Property description not available. for an AWS::SageMaker::ModelBiasJobDefinition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Json {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -781,10 +711,7 @@ pub struct Json {
     /// Update requires: Replacement
     #[serde(rename = "Line")]
     pub line: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Json {
     fn type_string(&self) -> &'static str {
@@ -796,7 +723,6 @@ impl cfn_resources::CfnResource for Json {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -804,11 +730,9 @@ impl cfn_resources::CfnResource for Json {
 /// Docker container image configuration object for the model bias job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ModelBiasAppSpecification {
-
-
-    /// 
+    ///
     /// JSON formatted S3 file that defines bias parameters. For more information on this JSON     configuration file, see Configure bias     parameters.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -821,10 +745,9 @@ pub struct ModelBiasAppSpecification {
     #[serde(rename = "ConfigUri")]
     pub config_uri: String,
 
-
-    /// 
+    ///
     /// Sets the environment variables in the Docker container.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -833,10 +756,9 @@ pub struct ModelBiasAppSpecification {
     #[serde(rename = "Environment")]
     pub environment: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
+    ///
     /// The container image to be run by the model bias job.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -848,10 +770,7 @@ pub struct ModelBiasAppSpecification {
     /// Update requires: Replacement
     #[serde(rename = "ImageUri")]
     pub image_uri: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ModelBiasAppSpecification {
     fn type_string(&self) -> &'static str {
@@ -863,21 +782,24 @@ impl cfn_resources::CfnResource for ModelBiasAppSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.config_uri;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'config_uri'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'config_uri'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.image_uri;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'image_uri'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'image_uri'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -885,11 +807,9 @@ impl cfn_resources::CfnResource for ModelBiasAppSpecification {
 /// The configuration for a baseline model bias job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ModelBiasBaselineConfig {
-
-
-    /// 
+    ///
     /// The name of the baseline model bias job.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -904,10 +824,9 @@ pub struct ModelBiasBaselineConfig {
     #[serde(rename = "BaseliningJobName")]
     pub baselining_job_name: Option<String>,
 
-
-    /// 
+    ///
     /// The constraints resource for a monitoring job.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConstraintsResource
@@ -915,10 +834,7 @@ pub struct ModelBiasBaselineConfig {
     /// Update requires: Replacement
     #[serde(rename = "ConstraintsResource")]
     pub constraints_resource: Option<ConstraintsResource>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ModelBiasBaselineConfig {
     fn type_string(&self) -> &'static str {
@@ -930,24 +846,27 @@ impl cfn_resources::CfnResource for ModelBiasBaselineConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.baselining_job_name {
+            if the_val.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'baselining_job_name'. {} is greater than 63",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.baselining_job_name {
-
-        if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'baselining_job_name'. {} is greater than 63", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'baselining_job_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.baselining_job_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'baselining_job_name'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
-        self.constraints_resource.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.constraints_resource
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -956,8 +875,6 @@ impl cfn_resources::CfnResource for ModelBiasBaselineConfig {
 /// Inputs for the model bias job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ModelBiasJobInput {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -968,10 +885,9 @@ pub struct ModelBiasJobInput {
     #[serde(rename = "BatchTransformInput")]
     pub batch_transform_input: Option<BatchTransformInput>,
 
-
-    /// 
+    ///
     /// Input object for the endpoint
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EndpointInput
@@ -980,10 +896,9 @@ pub struct ModelBiasJobInput {
     #[serde(rename = "EndpointInput")]
     pub endpoint_input: Option<EndpointInput>,
 
-
-    /// 
+    ///
     /// Location of ground truth labels to use in model bias job.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: MonitoringGroundTruthS3Input
@@ -991,10 +906,7 @@ pub struct ModelBiasJobInput {
     /// Update requires: Replacement
     #[serde(rename = "GroundTruthS3Input")]
     pub ground_truth_s3_input: MonitoringGroundTruthS3Input,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ModelBiasJobInput {
     fn type_string(&self) -> &'static str {
@@ -1006,10 +918,13 @@ impl cfn_resources::CfnResource for ModelBiasJobInput {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.batch_transform_input
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.batch_transform_input.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.endpoint_input.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.endpoint_input
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.ground_truth_s3_input.validate()?;
 
@@ -1020,11 +935,9 @@ impl cfn_resources::CfnResource for ModelBiasJobInput {
 /// The ground truth labels for the dataset used for the monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MonitoringGroundTruthS3Input {
-
-
-    /// 
+    ///
     /// The address of the Amazon S3 location of the ground truth labels.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1036,10 +949,7 @@ pub struct MonitoringGroundTruthS3Input {
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
     pub s3_uri: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MonitoringGroundTruthS3Input {
     fn type_string(&self) -> &'static str {
@@ -1051,14 +961,15 @@ impl cfn_resources::CfnResource for MonitoringGroundTruthS3Input {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.s3_uri;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 's3_uri'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 's3_uri'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1066,11 +977,9 @@ impl cfn_resources::CfnResource for MonitoringGroundTruthS3Input {
 /// The output object for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MonitoringOutput {
-
-
-    /// 
+    ///
     /// The Amazon S3 storage location where the results of a monitoring job are saved.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: S3Output
@@ -1078,10 +987,7 @@ pub struct MonitoringOutput {
     /// Update requires: Replacement
     #[serde(rename = "S3Output")]
     pub s3_output: S3Output,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MonitoringOutput {
     fn type_string(&self) -> &'static str {
@@ -1093,7 +999,6 @@ impl cfn_resources::CfnResource for MonitoringOutput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.s3_output.validate()?;
 
         Ok(())
@@ -1103,11 +1008,9 @@ impl cfn_resources::CfnResource for MonitoringOutput {
 /// The output configuration for monitoring jobs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MonitoringOutputConfig {
-
-
-    /// 
+    ///
     /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model     artifacts at rest using Amazon S3 server-side encryption.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1120,10 +1023,9 @@ pub struct MonitoringOutputConfig {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// Monitoring outputs for monitoring jobs. This is where the output of the periodic     monitoring jobs is uploaded.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of MonitoringOutput
@@ -1133,10 +1035,7 @@ pub struct MonitoringOutputConfig {
     /// Update requires: Replacement
     #[serde(rename = "MonitoringOutputs")]
     pub monitoring_outputs: Vec<MonitoringOutput>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MonitoringOutputConfig {
     fn type_string(&self) -> &'static str {
@@ -1148,22 +1047,24 @@ impl cfn_resources::CfnResource for MonitoringOutputConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.kms_key_id {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.monitoring_outputs;
 
         if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'monitoring_outputs'. {} is greater than 1", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'monitoring_outputs'. {} is greater than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1171,11 +1072,9 @@ impl cfn_resources::CfnResource for MonitoringOutputConfig {
 /// Identifies the resources to deploy for a monitoring job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MonitoringResources {
-
-
-    /// 
+    ///
     /// The configuration for the cluster resources used to run the processing job.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ClusterConfig
@@ -1183,10 +1082,7 @@ pub struct MonitoringResources {
     /// Update requires: Replacement
     #[serde(rename = "ClusterConfig")]
     pub cluster_config: ClusterConfig,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MonitoringResources {
     fn type_string(&self) -> &'static str {
@@ -1198,7 +1094,6 @@ impl cfn_resources::CfnResource for MonitoringResources {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.cluster_config.validate()?;
 
         Ok(())
@@ -1208,11 +1103,9 @@ impl cfn_resources::CfnResource for MonitoringResources {
 /// Networking options for a job, such as network traffic encryption between containers,     whether to allow inbound and outbound network calls to and from containers, and the VPC     subnets and security groups to use for VPC-enabled jobs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkConfig {
-
-
-    /// 
+    ///
     /// Whether to encrypt all communications between distributed processing jobs. Choose       True to encrypt communications. Encryption provides greater security for distributed       processing jobs, but the processing might take longer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -1221,10 +1114,9 @@ pub struct NetworkConfig {
     #[serde(rename = "EnableInterContainerTrafficEncryption")]
     pub enable_inter_container_traffic_encryption: Option<bool>,
 
-
-    /// 
+    ///
     /// Whether to allow inbound and outbound network calls to and from the containers used for     the processing job.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -1233,10 +1125,9 @@ pub struct NetworkConfig {
     #[serde(rename = "EnableNetworkIsolation")]
     pub enable_network_isolation: Option<bool>,
 
-
-    /// 
+    ///
     /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: VpcConfig
@@ -1244,10 +1135,7 @@ pub struct NetworkConfig {
     /// Update requires: Replacement
     #[serde(rename = "VpcConfig")]
     pub vpc_config: Option<VpcConfig>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NetworkConfig {
     fn type_string(&self) -> &'static str {
@@ -1259,8 +1147,9 @@ impl cfn_resources::CfnResource for NetworkConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.vpc_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpc_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1269,11 +1158,9 @@ impl cfn_resources::CfnResource for NetworkConfig {
 /// The Amazon S3 storage location where the results of a monitoring job are saved.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Output {
-
-
-    /// 
+    ///
     /// The local path to the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job. LocalPath is an absolute path for the output       data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1282,10 +1169,9 @@ pub struct S3Output {
     #[serde(rename = "LocalPath")]
     pub local_path: String,
 
-
-    /// 
+    ///
     /// Whether to upload the results of the monitoring job continuously or after the job       completes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1294,10 +1180,9 @@ pub struct S3Output {
     #[serde(rename = "S3UploadMode")]
     pub s3_upload_mode: Option<String>,
 
-
-    /// 
+    ///
     /// A URI that identifies the Amazon S3 storage location where Amazon SageMaker saves the       results of a monitoring job.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1305,10 +1190,7 @@ pub struct S3Output {
     /// Update requires: Replacement
     #[serde(rename = "S3Uri")]
     pub s3_uri: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3Output {
     fn type_string(&self) -> &'static str {
@@ -1320,7 +1202,6 @@ impl cfn_resources::CfnResource for S3Output {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1332,17 +1213,15 @@ impl cfn_resources::CfnResource for S3Output {
 /// The training algorithms provided by SageMaker automatically save the intermediate results       of a model training job when possible. This attempt to save artifacts is only a best       effort case as model might not be in a state from which it can be saved. For example, if       training has just started, the model might not be ready to save. When saved, this       intermediate data is a valid model artifact. You can use it to create a model with         CreateModel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StoppingCondition {
-
-
-    /// 
+    ///
     /// The maximum length of time, in seconds, that a training or compilation job can run       before it is stopped.
-    /// 
+    ///
     /// For compilation jobs, if the job does not complete during this time, a         TimeOut error is generated. We recommend starting with 900 seconds and       increasing as necessary based on your model.
-    /// 
+    ///
     /// For all other jobs, if the job does not complete during this time, SageMaker ends the job.       When RetryStrategy is specified in the job request,         MaxRuntimeInSeconds specifies the maximum time for all of the attempts       in total, not each individual attempt. The default value is 1 day. The maximum value is       28 days.
-    /// 
+    ///
     /// The maximum time that a TrainingJob can run in total, including any time       spent publishing metrics or archiving and uploading models after it has been stopped, is       30 days.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1352,10 +1231,7 @@ pub struct StoppingCondition {
     /// Update requires: Replacement
     #[serde(rename = "MaxRuntimeInSeconds")]
     pub max_runtime_in_seconds: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for StoppingCondition {
     fn type_string(&self) -> &'static str {
@@ -1367,14 +1243,15 @@ impl cfn_resources::CfnResource for StoppingCondition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.max_runtime_in_seconds;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'max_runtime_in_seconds'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'max_runtime_in_seconds'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1388,32 +1265,26 @@ impl cfn_resources::CfnResource for StoppingCondition {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -1425,7 +1296,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1433,11 +1303,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcConfig {
-
-
-    /// 
+    ///
     /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -1448,10 +1316,9 @@ pub struct VpcConfig {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// The ID of the subnets in the VPC to which you want to connect your training job or       model. For information about the availability of specific instance types, see Supported         Instance Types and Availability Zones.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -1461,10 +1328,7 @@ pub struct VpcConfig {
     /// Update requires: Replacement
     #[serde(rename = "Subnets")]
     pub subnets: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VpcConfig {
     fn type_string(&self) -> &'static str {
@@ -1476,21 +1340,24 @@ impl cfn_resources::CfnResource for VpcConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.security_group_ids;
 
         if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'security_group_ids'. {} is greater than 5",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.subnets;
 
         if the_val.len() > 16 as _ {
-            return Err(format!("Max validation failed on field 'subnets'. {} is greater than 16", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'subnets'. {} is greater than 16",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

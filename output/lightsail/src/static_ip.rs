@@ -1,13 +1,9 @@
-
-
 /// The AWS::Lightsail::StaticIp resource specifies a static IP that can be     attached to an Amazon Lightsail instance that is in the same AWS Region and Availability Zone.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStaticIp {
-
-
-    /// 
+    ///
     /// The instance that the static IP is attached to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnStaticIp {
     #[serde(rename = "AttachedTo")]
     pub attached_to: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the static IP.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -27,10 +22,7 @@ pub struct CfnStaticIp {
     /// Update requires: Replacement
     #[serde(rename = "StaticIpName")]
     pub static_ip_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnStaticIp {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnStaticIp {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

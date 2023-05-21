@@ -1,5 +1,3 @@
-
-
 /// Adds an external destination to your SQL-based Amazon Kinesis Data Analytics       application.
 ///
 /// If you want Kinesis Data Analytics to deliver data from an in-application stream       within your application to an external destination (such as an Kinesis data stream, a       Kinesis Data Firehose delivery stream, or an Amazon Lambda function), you add the relevant       configuration to your application using this operation. You can configure one or more       outputs for your application. Each output configuration maps an in-application stream       and an external destination.
@@ -9,11 +7,9 @@
 /// Any configuration update, including adding a streaming source using this operation,       results in a new version of the application. You can use the DescribeApplication operation to find the current application       version.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationOutput {
-
-
-    /// 
+    ///
     /// The name of the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,12 +24,11 @@ pub struct CfnApplicationOutput {
     #[serde(rename = "ApplicationName")]
     pub application_name: String,
 
-
-    /// 
+    ///
     /// Describes a SQL-based Kinesis Data Analytics application's output configuration,    in which you identify an in-application stream and a destination where you want the    in-application stream data to be written. The destination can be a Kinesis data stream or a    Kinesis Data Firehose delivery stream.
-    /// 
-    /// 
-    /// 
+    ///
+    ///
+    ///
     /// Required: Yes
     ///
     /// Type: Output
@@ -41,10 +36,7 @@ pub struct CfnApplicationOutput {
     /// Update requires: No interruption
     #[serde(rename = "Output")]
     pub output: Output,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnApplicationOutput {
     fn type_string(&self) -> &'static str {
@@ -56,21 +48,24 @@ impl cfn_resources::CfnResource for CfnApplicationOutput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.application_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'application_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.application_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'application_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.output.validate()?;
 
         Ok(())
@@ -80,11 +75,9 @@ impl cfn_resources::CfnResource for CfnApplicationOutput {
 /// Describes the data format when records are written to the destination in a SQL-based Kinesis Data Analytics application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DestinationSchema {
-
-
-    /// 
+    ///
     /// Specifies the format of the records on the output stream.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -94,13 +87,10 @@ pub struct DestinationSchema {
     /// Update requires: No interruption
     #[serde(rename = "RecordFormatType")]
     pub record_format_type: Option<DestinationSchemaRecordFormatTypeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DestinationSchemaRecordFormatTypeEnum {
-
     /// CSV
     #[serde(rename = "CSV")]
     Csv,
@@ -108,7 +98,6 @@ pub enum DestinationSchemaRecordFormatTypeEnum {
     /// JSON
     #[serde(rename = "JSON")]
     Json,
-
 }
 
 impl Default for DestinationSchemaRecordFormatTypeEnum {
@@ -116,7 +105,6 @@ impl Default for DestinationSchemaRecordFormatTypeEnum {
         DestinationSchemaRecordFormatTypeEnum::Csv
     }
 }
-
 
 impl cfn_resources::CfnResource for DestinationSchema {
     fn type_string(&self) -> &'static str {
@@ -128,7 +116,6 @@ impl cfn_resources::CfnResource for DestinationSchema {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -136,11 +123,9 @@ impl cfn_resources::CfnResource for DestinationSchema {
 /// For a SQL-based Kinesis Data Analytics application, when configuring application    output, identifies a Kinesis Data Firehose delivery stream as the destination. You provide the    stream Amazon Resource Name (ARN) of the delivery stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KinesisFirehoseOutput {
-
-
-    /// 
+    ///
     /// The ARN of the destination delivery stream to write to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -154,10 +139,7 @@ pub struct KinesisFirehoseOutput {
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
     pub resource_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KinesisFirehoseOutput {
     fn type_string(&self) -> &'static str {
@@ -169,21 +151,24 @@ impl cfn_resources::CfnResource for KinesisFirehoseOutput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.resource_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.resource_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'resource_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -191,11 +176,9 @@ impl cfn_resources::CfnResource for KinesisFirehoseOutput {
 /// When you configure a SQL-based Kinesis Data Analytics application's output,    identifies a Kinesis data stream as the destination. You provide the stream Amazon Resource    Name (ARN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KinesisStreamsOutput {
-
-
-    /// 
+    ///
     /// The ARN of the destination Kinesis data stream to write to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -209,10 +192,7 @@ pub struct KinesisStreamsOutput {
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
     pub resource_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KinesisStreamsOutput {
     fn type_string(&self) -> &'static str {
@@ -224,21 +204,24 @@ impl cfn_resources::CfnResource for KinesisStreamsOutput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.resource_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.resource_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'resource_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -246,13 +229,11 @@ impl cfn_resources::CfnResource for KinesisStreamsOutput {
 /// When you configure a SQL-based Kinesis Data Analytics application's output,    identifies an Amazon Lambda function as the destination. You provide the function Amazon Resource    Name (ARN) of the Lambda function.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LambdaOutput {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the destination Lambda function to write to.
-    /// 
+    ///
     /// NoteTo specify an earlier version of the Lambda function than the latest, include the Lambda function version in the Lambda function ARN. For more information about Lambda ARNs, see Example ARNs: Amazon Lambda
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -266,10 +247,7 @@ pub struct LambdaOutput {
     /// Update requires: No interruption
     #[serde(rename = "ResourceARN")]
     pub resource_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LambdaOutput {
     fn type_string(&self) -> &'static str {
@@ -281,34 +259,35 @@ impl cfn_resources::CfnResource for LambdaOutput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.resource_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'resource_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.resource_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'resource_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
 
 /// Describes a SQL-based Kinesis Data Analytics application's output configuration,    in which you identify an in-application stream and a destination where you want the    in-application stream data to be written. The destination can be a Kinesis data stream or a    Kinesis Data Firehose delivery stream.
-/// 
+///
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Output {
-
-
-    /// 
+    ///
     /// Describes the data format when records are written to the destination.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: DestinationSchema
@@ -317,10 +296,9 @@ pub struct Output {
     #[serde(rename = "DestinationSchema")]
     pub destination_schema: DestinationSchema,
 
-
-    /// 
+    ///
     /// Identifies a Kinesis Data Firehose delivery stream as the destination.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: KinesisFirehoseOutput
@@ -329,10 +307,9 @@ pub struct Output {
     #[serde(rename = "KinesisFirehoseOutput")]
     pub kinesis_firehose_output: Option<KinesisFirehoseOutput>,
 
-
-    /// 
+    ///
     /// Identifies a Kinesis data stream    as the destination.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: KinesisStreamsOutput
@@ -341,10 +318,9 @@ pub struct Output {
     #[serde(rename = "KinesisStreamsOutput")]
     pub kinesis_streams_output: Option<KinesisStreamsOutput>,
 
-
-    /// 
+    ///
     /// Identifies an Amazon Lambda function as the destination.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LambdaOutput
@@ -353,10 +329,9 @@ pub struct Output {
     #[serde(rename = "LambdaOutput")]
     pub lambda_output: Option<LambdaOutput>,
 
-
-    /// 
+    ///
     /// The name of the in-application stream.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -370,10 +345,7 @@ pub struct Output {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Output {
     fn type_string(&self) -> &'static str {
@@ -385,31 +357,38 @@ impl cfn_resources::CfnResource for Output {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.destination_schema.validate()?;
 
-        self.kinesis_firehose_output.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.kinesis_firehose_output
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.kinesis_streams_output.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.kinesis_streams_output
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.lambda_output.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.lambda_output
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 32 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 32", the_val.len()));
+            if the_val.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 32",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// Use the AWS::EventSchemas::Discoverer resource to specify a         discoverer that is associated with an event bus. A discoverer       allows the Amazon EventBridge Schema Registry to automatically generate schemas based on       events on an event bus.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDiscoverer {
-
-
-    /// 
+    ///
     /// Allows for the discovery of the event schemas that are sent to the event bus from another account.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -16,10 +12,9 @@ pub struct CfnDiscoverer {
     #[serde(rename = "CrossAccount")]
     pub cross_account: Option<bool>,
 
-
-    /// 
+    ///
     /// A description for the discoverer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnDiscoverer {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the event bus.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -40,10 +34,9 @@ pub struct CfnDiscoverer {
     #[serde(rename = "SourceArn")]
     pub source_arn: String,
 
-
-    /// 
+    ///
     /// Tags associated with the resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of TagsEntry
@@ -51,10 +44,7 @@ pub struct CfnDiscoverer {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<TagsEntry>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDiscoverer {
     fn type_string(&self) -> &'static str {
@@ -66,7 +56,6 @@ impl cfn_resources::CfnResource for CfnDiscoverer {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -74,11 +63,9 @@ impl cfn_resources::CfnResource for CfnDiscoverer {
 /// Tags to associate with the discoverer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagsEntry {
-
-
-    /// 
+    ///
     /// They key of a key-value pair.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -87,10 +74,9 @@ pub struct TagsEntry {
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// They value of a key-value pair.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -98,10 +84,7 @@ pub struct TagsEntry {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TagsEntry {
     fn type_string(&self) -> &'static str {
@@ -113,7 +96,6 @@ impl cfn_resources::CfnResource for TagsEntry {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// The AWS::ECR::Repository resource specifies an Amazon Elastic Container       Registry (Amazon ECR) repository, where users can push and pull Docker images, Open       Container Initiative (OCI) images, and OCI compatible artifacts. For more information,       see Amazon ECR private repositories in the Amazon ECR User         Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRepository {
-
-
-    /// 
+    ///
     /// The encryption configuration for the repository. This determines how the contents of       your repository are encrypted at rest.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EncryptionConfiguration
@@ -16,10 +12,9 @@ pub struct CfnRepository {
     #[serde(rename = "EncryptionConfiguration")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
-
-    /// 
+    ///
     /// The image scanning configuration for the repository. This determines whether images       are scanned for known vulnerabilities after being pushed to the repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ImageScanningConfiguration
@@ -28,10 +23,9 @@ pub struct CfnRepository {
     #[serde(rename = "ImageScanningConfiguration")]
     pub image_scanning_configuration: Option<ImageScanningConfiguration>,
 
-
-    /// 
+    ///
     /// The tag mutability setting for the repository. If this parameter is omitted, the       default setting of MUTABLE will be used which will allow image tags to be       overwritten. If IMMUTABLE is specified, all image tags within the       repository will be immutable which will prevent them from being overwritten.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnRepository {
     #[serde(rename = "ImageTagMutability")]
     pub image_tag_mutability: Option<RepositoryImageTagMutabilityEnum>,
 
-
-    /// 
+    ///
     /// Creates or updates a lifecycle policy. For information about lifecycle policy syntax,       see Lifecycle policy template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LifecyclePolicy
@@ -54,14 +47,13 @@ pub struct CfnRepository {
     #[serde(rename = "LifecyclePolicy")]
     pub lifecycle_policy: Option<LifecyclePolicy>,
 
-
-    /// 
+    ///
     /// The name to use for the repository. The repository name may be specified on its own       (such as nginx-web-app) or it can be prepended with a namespace to group       the repository into a category (such as project-a/nginx-web-app). If you       don't specify a name, AWS CloudFormation generates a unique physical ID and uses       that ID for the repository name. For more information, see Name       type.
-    /// 
+    ///
     /// The repository name must start with a letter and can only contain lowercase letters,       numbers, hyphens, underscores, and forward slashes.
-    /// 
+    ///
     /// NoteIf you specify a name, you cannot perform updates that require replacement of this         resource. You can perform updates that require no or some interruption. If you must         replace the resource, specify a new name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -76,10 +68,9 @@ pub struct CfnRepository {
     #[serde(rename = "RepositoryName")]
     pub repository_name: Option<String>,
 
-
-    /// 
+    ///
     /// The JSON repository policy text to apply to the repository. For more information, see         Amazon ECR repository         policies in the Amazon Elastic Container Registry User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -92,10 +83,9 @@ pub struct CfnRepository {
     #[serde(rename = "RepositoryPolicyText")]
     pub repository_policy_text: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -103,13 +93,10 @@ pub struct CfnRepository {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RepositoryImageTagMutabilityEnum {
-
     /// IMMUTABLE
     #[serde(rename = "IMMUTABLE")]
     Immutable,
@@ -117,7 +104,6 @@ pub enum RepositoryImageTagMutabilityEnum {
     /// MUTABLE
     #[serde(rename = "MUTABLE")]
     Mutable,
-
 }
 
 impl Default for RepositoryImageTagMutabilityEnum {
@@ -125,7 +111,6 @@ impl Default for RepositoryImageTagMutabilityEnum {
         RepositoryImageTagMutabilityEnum::Immutable
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnRepository {
     fn type_string(&self) -> &'static str {
@@ -137,29 +122,36 @@ impl cfn_resources::CfnResource for CfnRepository {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.encryption_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.image_scanning_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.image_scanning_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.lifecycle_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.lifecycle_policy
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.repository_name {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'repository_name'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'repository_name'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.repository_name {
-
-        if the_val.len() < 2 as _ {
-            return Err(format!("Min validation failed on field 'repository_name'. {} is less than 2", the_val.len()));
+            if the_val.len() < 2 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'repository_name'. {} is less than 2",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -171,15 +163,13 @@ impl cfn_resources::CfnResource for CfnRepository {
 /// For more control over the encryption of the contents of your repository, you can use       server-side encryption with AWS Key Management Service key stored in AWS Key Management Service (AWS KMS) to encrypt your       images. For more information, see Amazon ECR encryption at         rest in the Amazon Elastic Container Registry User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EncryptionConfiguration {
-
-
-    /// 
+    ///
     /// The encryption type to use.
-    /// 
+    ///
     /// If you use the KMS encryption type, the contents of the repository will       be encrypted using server-side encryption with AWS Key Management Service key stored in AWS KMS. When you       use AWS KMS to encrypt your data, you can either use the default AWS managed AWS KMS key       for Amazon ECR, or specify your own AWS KMS key, which you already created. For more       information, see Protecting data using server-side         encryption with an AWS KMS key stored in AWS Key Management Service (SSE-KMS) in the         Amazon Simple Storage Service Console Developer Guide.
-    /// 
+    ///
     /// If you use the AES256 encryption type, Amazon ECR uses server-side encryption       with Amazon S3-managed encryption keys which encrypts the images in the repository using an       AES-256 encryption algorithm. For more information, see Protecting data using         server-side encryption with Amazon S3-managed encryption keys (SSE-S3) in the         Amazon Simple Storage Service Console Developer Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -190,10 +180,9 @@ pub struct EncryptionConfiguration {
     #[serde(rename = "EncryptionType")]
     pub encryption_type: EncryptionConfigurationEncryptionTypeEnum,
 
-
-    /// 
+    ///
     /// If you use the KMS encryption type, specify the AWS KMS key to use for       encryption. The alias, key ID, or full ARN of the AWS KMS key can be specified. The key       must exist in the same Region as the repository. If no key is specified, the default       AWS managed AWS KMS key for Amazon ECR will be used.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -205,13 +194,10 @@ pub struct EncryptionConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
     pub kms_key: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EncryptionConfigurationEncryptionTypeEnum {
-
     /// AES256
     #[serde(rename = "AES256")]
     Aes256,
@@ -219,7 +205,6 @@ pub enum EncryptionConfigurationEncryptionTypeEnum {
     /// KMS
     #[serde(rename = "KMS")]
     Kms,
-
 }
 
 impl Default for EncryptionConfigurationEncryptionTypeEnum {
@@ -227,7 +212,6 @@ impl Default for EncryptionConfigurationEncryptionTypeEnum {
         EncryptionConfigurationEncryptionTypeEnum::Aes256
     }
 }
-
 
 impl cfn_resources::CfnResource for EncryptionConfiguration {
     fn type_string(&self) -> &'static str {
@@ -239,23 +223,24 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.kms_key {
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kms_key'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.kms_key {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'kms_key'. {} is greater than 2048", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'kms_key'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.kms_key {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'kms_key'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -263,11 +248,9 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 /// The image scanning configuration for a repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ImageScanningConfiguration {
-
-
-    /// 
+    ///
     /// The setting that determines whether images are scanned after being pushed to a       repository. If set to true, images will be scanned after being pushed. If       this parameter is not specified, it will default to false and images will       not be scanned unless a scan is manually started.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -275,10 +258,7 @@ pub struct ImageScanningConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ScanOnPush")]
     pub scan_on_push: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ImageScanningConfiguration {
     fn type_string(&self) -> &'static str {
@@ -290,7 +270,6 @@ impl cfn_resources::CfnResource for ImageScanningConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -298,11 +277,9 @@ impl cfn_resources::CfnResource for ImageScanningConfiguration {
 /// The LifecyclePolicy property type specifies a lifecycle policy. For       information about lifecycle policy syntax, see Lifecycle policy         template in the Amazon ECR User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LifecyclePolicy {
-
-
-    /// 
+    ///
     /// The JSON repository policy text to apply to the repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -315,10 +292,9 @@ pub struct LifecyclePolicy {
     #[serde(rename = "LifecyclePolicyText")]
     pub lifecycle_policy_text: Option<String>,
 
-
-    /// 
+    ///
     /// The AWS account ID associated with the registry that contains the repository. If you       do  not specify a registry, the default registry is assumed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -328,10 +304,7 @@ pub struct LifecyclePolicy {
     /// Update requires: No interruption
     #[serde(rename = "RegistryId")]
     pub registry_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LifecyclePolicy {
     fn type_string(&self) -> &'static str {
@@ -343,23 +316,21 @@ impl cfn_resources::CfnResource for LifecyclePolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.lifecycle_policy_text {
+            if the_val.len() > 30720 as _ {
+                return Err(format!("Max validation failed on field 'lifecycle_policy_text'. {} is greater than 30720", the_val.len()));
+            }
+        }
 
         if let Some(the_val) = &self.lifecycle_policy_text {
-
-        if the_val.len() > 30720 as _ {
-            return Err(format!("Max validation failed on field 'lifecycle_policy_text'. {} is greater than 30720", the_val.len()));
+            if the_val.len() < 100 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'lifecycle_policy_text'. {} is less than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.lifecycle_policy_text {
-
-        if the_val.len() < 100 as _ {
-            return Err(format!("Min validation failed on field 'lifecycle_policy_text'. {} is less than 100", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -373,32 +344,26 @@ impl cfn_resources::CfnResource for LifecyclePolicy {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -410,7 +375,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

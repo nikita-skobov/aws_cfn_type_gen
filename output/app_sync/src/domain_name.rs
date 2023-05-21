@@ -1,13 +1,9 @@
-
-
 /// The AWS::AppSync::DomainName resource creates a DomainNameConfig object to     configure a custom domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDomainName {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the certificate. This will be an AWS Certificate Manager     certificate.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnDomainName {
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: String,
 
-
-    /// 
+    ///
     /// The decription for your domain name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnDomainName {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The domain name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -39,10 +33,7 @@ pub struct CfnDomainName {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     pub domain_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDomainName {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnDomainName {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

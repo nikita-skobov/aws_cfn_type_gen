@@ -1,13 +1,9 @@
-
-
 /// Creates an asset from an existing asset model. For more information, see Creating assets in the       AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAsset {
-
-
-    /// 
+    ///
     /// A description for the asset.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnAsset {
     #[serde(rename = "AssetDescription")]
     pub asset_description: Option<String>,
 
-
-    /// 
+    ///
     /// A list of asset hierarchies that each contain a hierarchyLogicalId. A hierarchy specifies allowed parent/child asset relationships.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AssetHierarchy
@@ -28,10 +23,9 @@ pub struct CfnAsset {
     #[serde(rename = "AssetHierarchies")]
     pub asset_hierarchies: Option<Vec<AssetHierarchy>>,
 
-
-    /// 
+    ///
     /// The ID of the asset model from which to create the asset.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -40,12 +34,11 @@ pub struct CfnAsset {
     #[serde(rename = "AssetModelId")]
     pub asset_model_id: String,
 
-
-    /// 
+    ///
     /// A unique, friendly name for the asset.
-    /// 
+    ///
     /// The maximum length is 256 characters with the pattern [^\u0000-\u001F\u007F]+.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,12 +47,11 @@ pub struct CfnAsset {
     #[serde(rename = "AssetName")]
     pub asset_name: String,
 
-
-    /// 
+    ///
     /// The list of asset properties for the asset.
-    /// 
+    ///
     /// This object doesn't include properties that you define in composite models. You can find    composite model properties in the assetCompositeModels object.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AssetProperty
@@ -68,10 +60,9 @@ pub struct CfnAsset {
     #[serde(rename = "AssetProperties")]
     pub asset_properties: Option<Vec<AssetProperty>>,
 
-
-    /// 
+    ///
     /// A list of key-value pairs that contain metadata for the asset. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -79,10 +70,7 @@ pub struct CfnAsset {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnAsset {
     fn type_string(&self) -> &'static str {
@@ -94,7 +82,6 @@ impl cfn_resources::CfnResource for CfnAsset {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -102,11 +89,9 @@ impl cfn_resources::CfnResource for CfnAsset {
 /// Describes an asset hierarchy that contains a childAssetId and hierarchyLogicalId.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AssetHierarchy {
-
-
-    /// 
+    ///
     /// The Id of the child asset.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -115,12 +100,11 @@ pub struct AssetHierarchy {
     #[serde(rename = "ChildAssetId")]
     pub child_asset_id: String,
 
-
-    /// 
+    ///
     /// The LogicalID of the hierarchy. This ID is a hierarchyLogicalId.
-    /// 
+    ///
     /// The maximum length is 256 characters, with the pattern [^\u0000-\u001F\u007F]+.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -128,10 +112,7 @@ pub struct AssetHierarchy {
     /// Update requires: No interruption
     #[serde(rename = "LogicalId")]
     pub logical_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AssetHierarchy {
     fn type_string(&self) -> &'static str {
@@ -143,7 +124,6 @@ impl cfn_resources::CfnResource for AssetHierarchy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -151,13 +131,11 @@ impl cfn_resources::CfnResource for AssetHierarchy {
 /// Contains asset property information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AssetProperty {
-
-
-    /// 
+    ///
     /// The property alias that identifies the property, such as an OPC-UA server data stream path     (for example, /company/windfarm/3/turbine/7/temperature). For more information, see     Mapping industrial data streams to asset properties in the       AWS IoT SiteWise User Guide.
-    /// 
+    ///
     /// The property alias must have 1-1000 characters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -166,12 +144,11 @@ pub struct AssetProperty {
     #[serde(rename = "Alias")]
     pub alias: Option<String>,
 
-
-    /// 
+    ///
     /// The LogicalID of the asset property.
-    /// 
+    ///
     /// The maximum length is 256 characters, with the pattern [^\u0000-\u001F\u007F]+.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -180,14 +157,13 @@ pub struct AssetProperty {
     #[serde(rename = "LogicalId")]
     pub logical_id: String,
 
-
-    /// 
+    ///
     /// The MQTT notification state (ENABLED or DISABLED) for this asset property.       When the notification state is ENABLED, AWS IoT SiteWise publishes property value       updates to a unique MQTT topic. For more information, see Interacting with other services in the AWS IoT SiteWise User Guide.
-    /// 
+    ///
     /// If you omit this parameter, the notification state is set to DISABLED.
-    /// 
+    ///
     /// NoteYou must use all caps for the NotificationState parameter. If you use lower case letters, you         will receive a schema validation error.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -196,10 +172,9 @@ pub struct AssetProperty {
     #[serde(rename = "NotificationState")]
     pub notification_state: Option<String>,
 
-
-    /// 
+    ///
     /// The unit (such as Newtons or RPM) of the asset property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -207,10 +182,7 @@ pub struct AssetProperty {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     pub unit: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AssetProperty {
     fn type_string(&self) -> &'static str {
@@ -222,7 +194,6 @@ impl cfn_resources::CfnResource for AssetProperty {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -236,32 +207,26 @@ impl cfn_resources::CfnResource for AssetProperty {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -273,7 +238,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

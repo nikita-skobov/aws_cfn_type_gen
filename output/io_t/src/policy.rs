@@ -1,13 +1,9 @@
-
-
 /// Use the AWS::IoT::Policy resource to declare an AWS IoT policy. For more     information about working with AWS IoT policies, see Authorization in the       AWS IoT Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPolicy {
-
-
-    /// 
+    ///
     /// The JSON document that describes the policy.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Json
@@ -16,10 +12,9 @@ pub struct CfnPolicy {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: serde_json::Value,
 
-
-    /// 
+    ///
     /// The policy name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -27,10 +22,7 @@ pub struct CfnPolicy {
     /// Update requires: Replacement
     #[serde(rename = "PolicyName")]
     pub policy_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnPolicy {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

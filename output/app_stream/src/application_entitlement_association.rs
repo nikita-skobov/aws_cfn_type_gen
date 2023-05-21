@@ -1,10 +1,6 @@
-
-
 /// Associates an application to an entitlement.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationEntitlementAssociation {
-
-
     /// The identifier of the application.
     ///
     /// Required: Yes
@@ -14,7 +10,6 @@ pub struct CfnApplicationEntitlementAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ApplicationIdentifier")]
     pub application_identifier: String,
-
 
     /// The name of the entitlement.
     ///
@@ -26,7 +21,6 @@ pub struct CfnApplicationEntitlementAssociation {
     #[serde(rename = "EntitlementName")]
     pub entitlement_name: String,
 
-
     /// The name of the stack.
     ///
     /// Required: Yes
@@ -36,10 +30,7 @@ pub struct CfnApplicationEntitlementAssociation {
     /// Update requires: Replacement
     #[serde(rename = "StackName")]
     pub stack_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnApplicationEntitlementAssociation {
     fn type_string(&self) -> &'static str {
@@ -51,7 +42,6 @@ impl cfn_resources::CfnResource for CfnApplicationEntitlementAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

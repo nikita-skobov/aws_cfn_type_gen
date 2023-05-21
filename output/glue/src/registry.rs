@@ -1,13 +1,9 @@
-
-
 /// The AWS::Glue::Registry is an AWS Glue resource type that manages registries of schemas in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRegistry {
-
-
-    /// 
+    ///
     /// A description of the registry.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnRegistry {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the registry.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnRegistry {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// AWS tags that contain a key value pair and may be searched by console, command line, or API.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -39,10 +33,7 @@ pub struct CfnRegistry {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRegistry {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnRegistry {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -68,32 +58,26 @@ impl cfn_resources::CfnResource for CfnRegistry {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -105,7 +89,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

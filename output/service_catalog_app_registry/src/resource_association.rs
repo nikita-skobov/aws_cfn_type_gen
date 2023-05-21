@@ -1,13 +1,9 @@
-
-
 /// Associates a resource      with an application.      Both the resource and the application can be specified either      by ID or name.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceAssociation {
-
-
-    /// 
+    ///
     /// The name or ID      of the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnResourceAssociation {
     #[serde(rename = "Application")]
     pub application: String,
 
-
-    /// 
+    ///
     /// The name or ID      of the resource      of which the application      will be associated.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnResourceAssociation {
     #[serde(rename = "Resource")]
     pub resource: String,
 
-
-    /// 
+    ///
     /// The type      of resource     of which the application will be associated.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -39,10 +33,7 @@ pub struct CfnResourceAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnResourceAssociation {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnResourceAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

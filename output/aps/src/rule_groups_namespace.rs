@@ -1,13 +1,9 @@
-
-
 /// The AWS::APS::RuleGroupsNamespace resource creates or updates a rule       groups namespace within a Amazon Managed Service for Prometheus workspace. For more information, see                 Recording rules and alerting rules.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRuleGroupsNamespace {
-
-
-    /// 
+    ///
     /// The rules definition file for this namespace.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnRuleGroupsNamespace {
     #[serde(rename = "Data")]
     pub data: String,
 
-
-    /// 
+    ///
     /// The name of the rule groups namespace. This property is required.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnRuleGroupsNamespace {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// A list of key and value pairs for the workspace resources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -40,10 +34,9 @@ pub struct CfnRuleGroupsNamespace {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ARN of the workspace that contains this rule groups namespace.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -51,10 +44,7 @@ pub struct CfnRuleGroupsNamespace {
     /// Update requires: No interruption
     #[serde(rename = "Workspace")]
     pub workspace: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRuleGroupsNamespace {
     fn type_string(&self) -> &'static str {
@@ -66,7 +56,6 @@ impl cfn_resources::CfnResource for CfnRuleGroupsNamespace {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -80,32 +69,26 @@ impl cfn_resources::CfnResource for CfnRuleGroupsNamespace {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -117,7 +100,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

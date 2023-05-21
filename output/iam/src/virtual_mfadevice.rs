@@ -1,19 +1,15 @@
-
-
 /// Creates a new virtual MFA device for the AWS account. After creating     the virtual MFA, use EnableMFADevice to attach     the MFA device to an IAM user. For more information about creating and     working with virtual MFA devices, see Using a virtual MFA device in     the IAM User Guide.
 ///
 /// For information about the maximum number of MFA devices you can create, see IAM and AWS STS quotas in the IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVirtualMFADevice {
-
-
-    /// 
+    ///
     /// The path for the virtual MFA device. For more information about paths, see IAM         identifiers in the IAM User Guide.
-    /// 
+    ///
     /// This parameter is optional. If it is not included, it defaults to a slash (/).
-    /// 
+    ///
     /// This parameter allows (through its regex pattern) a string of characters consisting   of either a forward slash (/) by itself or a string that must begin and end with forward slashes.   In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including   most punctuation characters, digits, and upper and lowercased letters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,12 +24,11 @@ pub struct CfnVirtualMFADevice {
     #[serde(rename = "Path")]
     pub path: Option<String>,
 
-
-    /// 
+    ///
     /// A list of tags that you want to attach to the new IAM virtual MFA device.    Each tag consists of a key name and an associated value. For more information about tagging, see Tagging IAM resources in the    IAM User Guide.
-    /// 
+    ///
     /// NoteIf any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request   fails and the resource is not created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -44,10 +39,9 @@ pub struct CfnVirtualMFADevice {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The IAM user associated with this virtual MFA device.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -56,12 +50,11 @@ pub struct CfnVirtualMFADevice {
     #[serde(rename = "Users")]
     pub users: Vec<String>,
 
-
-    /// 
+    ///
     /// The name of the virtual MFA device, which must be unique. Use with path to uniquely       identify a virtual MFA device.
-    /// 
+    ///
     /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -73,10 +66,7 @@ pub struct CfnVirtualMFADevice {
     /// Update requires: Replacement
     #[serde(rename = "VirtualMfaDeviceName")]
     pub virtual_mfa_device_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnVirtualMFADevice {
     fn type_string(&self) -> &'static str {
@@ -88,39 +78,42 @@ impl cfn_resources::CfnResource for CfnVirtualMFADevice {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.path {
+            if the_val.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'path'. {} is greater than 512",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.path {
-
-        if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'path'. {} is greater than 512", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'path'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.path {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'path'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.virtual_mfa_device_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'virtual_mfa_device_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'virtual_mfa_device_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -134,32 +127,26 @@ impl cfn_resources::CfnResource for CfnVirtualMFADevice {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -171,7 +158,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

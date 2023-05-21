@@ -1,5 +1,3 @@
-
-
 /// The AWS::KMS::ReplicaKey resource specifies a multi-Region replica key that    is based on a multi-Region primary key.
 ///
 /// Multi-Region keys are an AWS KMS feature that lets you    create multiple interoperable KMS keys in different AWS Regions. Because these    KMS keys have the same key ID, key material, and other metadata, you can use them to encrypt data    in one AWS Region and decrypt it in a different AWS Region    without making a cross-Region call or exposing the plaintext data. For more information, see     Multi-Region keys in the AWS Key Management Service Developer     Guide.
@@ -17,15 +15,13 @@
 /// AWS KMS CloudFormation resources are available in all AWS Regions in which AWS KMS and    AWS CloudFormation are supported. You can use the AWS::KMS::ReplicaKey    resource to create replica keys in all Regions that support multi-Region KMS keys. For    details, see Multi-Region keys in AWS KMS in the AWS Key Management Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnReplicaKey {
-
-
-    /// 
+    ///
     /// A description of the KMS key.
-    /// 
+    ///
     /// The default value is an empty string (no description).
-    /// 
+    ///
     /// The description is not a shared property of multi-Region keys. You can specify the same    description or a different description for each key in a set of related multi-Region keys. AWS Key Management Service does not synchronize this property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -38,16 +34,15 @@ pub struct CfnReplicaKey {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies whether the replica key is enabled. Disabled KMS keys cannot be used in    cryptographic operations.
-    /// 
+    ///
     /// When Enabled is true, the key state of the    KMS key is Enabled. When Enabled is false, the key state of    the KMS key is Disabled. The default value is true.
-    /// 
+    ///
     /// The actual key state of the replica might be affected by actions taken outside of    CloudFormation, such as running the EnableKey, DisableKey,    or ScheduleKeyDeletion operations. Also, while the replica key is being created, its    key state is Creating. When the process is complete, the key state of the replica    key changes to Enabled.
-    /// 
+    ///
     /// For information about the key states of a KMS key, see Key state: Effect on your KMS key in the      AWS Key Management Service Developer Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -56,24 +51,23 @@ pub struct CfnReplicaKey {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The key policy that authorizes use of the replica key.
-    /// 
+    ///
     /// The key policy is not a shared property of multi-Region keys. You can specify the same key    policy or a different key policy for each key in a set of related multi-Region keys. AWS KMS does not synchronize this property.
-    /// 
+    ///
     /// The key policy must conform to the following rules.
-    /// 
+    ///
     /// The key policy must give the caller PutKeyPolicy permission on      the KMS key. This reduces the risk that the KMS key becomes unmanageable. For more information,      refer to the scenario in the Default key policy section of the       AWS Key Management Service Developer Guide      .        Each statement in the key policy must contain one or more principals. The principals      in the key policy must exist and be visible to AWS KMS. When you create a new       AWSprincipal (for example, an IAM user or role), you might need to      enforce a delay before including the new principal in a key policy because the new      principal might not be immediately visible to AWS KMS. For more information,      see Changes that I make are not always immediately visible in the AWS Identity and Access Management User Guide.
-    /// 
+    ///
     /// A key policy document can include only the following characters:
-    /// 
+    ///
     /// Printable ASCII characters from the space character (\u0020) through the end of the ASCII character range.        Printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF).        The tab (\u0009), line feed (\u000A), and carriage return (\u000D) special characters
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 32768
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Json
@@ -82,24 +76,23 @@ pub struct CfnReplicaKey {
     #[serde(rename = "KeyPolicy")]
     pub key_policy: serde_json::Value,
 
-
-    /// 
+    ///
     /// Specifies the number of days in the waiting period before AWS KMS deletes a    replica key that has been removed from a CloudFormation stack. Enter a value between 7 and 30    days. The default value is 30 days.
-    /// 
+    ///
     /// When you remove a replica key from a CloudFormation stack, AWS KMS schedules    the replica key for deletion and starts the mandatory waiting period. The     PendingWindowInDays property determines the length of waiting period. During    the waiting period, the key state of replica key is Pending Deletion, which    prevents it from being used in cryptographic operations. When the waiting period expires,     AWS KMS permanently deletes the replica key.
-    /// 
+    ///
     /// If the KMS key is a multi-Region primary key with replica keys, the waiting period begins when    the last of its replica keys is deleted. Otherwise, the waiting period begins    immediately.
-    /// 
+    ///
     /// You cannot use a CloudFormation template to cancel deletion of the replica after you    remove it from the stack, regardless of the waiting period. However, if you specify a replica    key in your template that is based on the same primary key as the original replica key,    CloudFormation creates a new replica key with the same key ID, key material, and other shared    properties of the original replica key. This new replica key can decrypt ciphertext that was    encrypted under the original replica key, or any related multi-Region key.
-    /// 
+    ///
     /// For detailed information about deleting multi-Region keys, see Deleting multi-Region     keys in the AWS Key Management Service Developer Guide.
-    /// 
+    ///
     /// For information about the PendingDeletion key state, see Key state: Effect on     your KMS key in the AWS Key Management Service Developer Guide. For    more information about deleting KMS keys, see the ScheduleKeyDeletion    operation in the AWS Key Management Service API Reference and Deleting KMS     keys in the AWS Key Management Service Developer Guide.
-    /// 
+    ///
     /// Minimum: 7
-    /// 
+    ///
     /// Maximum: 30
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -108,14 +101,13 @@ pub struct CfnReplicaKey {
     #[serde(rename = "PendingWindowInDays")]
     pub pending_window_in_days: Option<i64>,
 
-
-    /// 
+    ///
     /// Specifies the multi-Region primary key to replicate. The primary key must be in a    different AWS Region of the same AWS partition. You can    create only one replica of a given primary key in each AWS Region .
-    /// 
+    ///
     /// ImportantIf you change the PrimaryKeyArn value of a replica key, the existing     replica key is scheduled for deletion and a new replica key is created based on the     specified primary key. While it is scheduled for deletion, the existing replica key becomes     unusable. You can cancel the scheduled deletion of the key outside of CloudFormation.However, if you inadvertently delete a replica key, you can decrypt ciphertext encrypted     by that replica key by using any related multi-Region key. If necessary, you can recreate     the replica in the same Region after the previous one is completely deleted. For details,     see Deleting multi-Region      keys in the AWS Key Management Service Developer Guide
-    /// 
+    ///
     /// Specify the key ARN of an existing multi-Region primary key. For example,     arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -128,18 +120,17 @@ pub struct CfnReplicaKey {
     #[serde(rename = "PrimaryKeyArn")]
     pub primary_key_arn: String,
 
-
-    /// 
+    ///
     /// Assigns one or more tags to the replica key.
-    /// 
+    ///
     /// NoteTagging or untagging a KMS key can allow or deny permission to the KMS key. For details, see      ABAC for       AWS KMS in the AWS Key Management Service Developer      Guide.
-    /// 
+    ///
     /// Tags are not a shared property of multi-Region keys. You can specify the same tags or    different tags for each key in a set of related multi-Region keys. AWS KMS does    not synchronize this property.
-    /// 
+    ///
     /// Each tag consists of a tag key and a tag value. Both the tag key and the tag value are    required, but the tag value can be an empty (null) string. You cannot have more than one tag    on a KMS key with the same tag key. If you specify an existing tag key with a different tag value,     AWS KMS replaces the current tag value with the specified one.
-    /// 
+    ///
     /// When you assign tags to an AWSresource, AWSgenerates a    cost allocation report with usage and costs aggregated by tags. Tags can also be used to    control access to a KMS key. For details, see Tagging keys.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -147,10 +138,7 @@ pub struct CfnReplicaKey {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnReplicaKey {
     fn type_string(&self) -> &'static str {
@@ -162,53 +150,57 @@ impl cfn_resources::CfnResource for CfnReplicaKey {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 8192 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 8192",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 8192 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 8192", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.pending_window_in_days {
-
-        if *the_val > 30 as _ {
-            return Err(format!("Max validation failed on field 'pending_window_in_days'. {} is greater than 30", the_val));
+            if *the_val > 30 as _ {
+                return Err(format!("Max validation failed on field 'pending_window_in_days'. {} is greater than 30", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.pending_window_in_days {
-
-        if *the_val < 7 as _ {
-            return Err(format!("Min validation failed on field 'pending_window_in_days'. {} is less than 7", the_val));
+            if *the_val < 7 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'pending_window_in_days'. {} is less than 7",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.primary_key_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'primary_key_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'primary_key_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.primary_key_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'primary_key_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'primary_key_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -222,32 +214,26 @@ impl cfn_resources::CfnResource for CfnReplicaKey {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -259,7 +245,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

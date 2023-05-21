@@ -1,13 +1,9 @@
-
-
 /// Creates or updates a launch of a given feature. Before you create a launch, you       must create the feature to use for the launch.
 ///
 /// You can use a launch to safely validate new features by serving them to a specified       percentage of your users while you roll out the feature. You can monitor the performance of       the new feature to help you decide when to ramp up traffic to more users. This helps you       reduce risk and identify unintended consequences before you fully launch the feature.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLaunch {
-
-
-    /// 
+    ///
     /// An optional description for the launch.
     ///
     /// Required: No
@@ -17,7 +13,6 @@ pub struct CfnLaunch {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
 
     /// A structure that you can use to start and stop     the launch.
     ///
@@ -29,8 +24,7 @@ pub struct CfnLaunch {
     #[serde(rename = "ExecutionStatus")]
     pub execution_status: Option<ExecutionStatusObject>,
 
-
-    /// 
+    ///
     /// An array of structures that contains the feature and variations that are to be used for the launch.     You can up to five launch groups in a launch.
     ///
     /// Required: Yes
@@ -41,8 +35,7 @@ pub struct CfnLaunch {
     #[serde(rename = "Groups")]
     pub groups: Vec<LaunchGroupObject>,
 
-
-    /// 
+    ///
     /// An array of structures that define the metrics that will be used to monitor       the launch performance. You can have up to three metric monitors in the array.
     ///
     /// Required: No
@@ -53,8 +46,7 @@ pub struct CfnLaunch {
     #[serde(rename = "MetricMonitors")]
     pub metric_monitors: Option<Vec<MetricDefinitionObject>>,
 
-
-    /// 
+    ///
     /// The name for the launch. It can include up to 127 characters.
     ///
     /// Required: Yes
@@ -65,8 +57,7 @@ pub struct CfnLaunch {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The name or ARN of the project that you want to create the launch in.
     ///
     /// Required: Yes
@@ -77,8 +68,7 @@ pub struct CfnLaunch {
     #[serde(rename = "Project")]
     pub project: String,
 
-
-    /// 
+    ///
     /// When Evidently assigns a particular user session to a launch, it must use a randomization ID       to determine which variation the user session is served. This randomization ID is a combination of the entity ID       and randomizationSalt. If you omit randomizationSalt, Evidently uses       the launch name as the randomizationsSalt.
     ///
     /// Required: No
@@ -89,8 +79,7 @@ pub struct CfnLaunch {
     #[serde(rename = "RandomizationSalt")]
     pub randomization_salt: Option<String>,
 
-
-    /// 
+    ///
     /// An array of structures that define the traffic allocation percentages among the feature       variations during each step of the launch.
     ///
     /// Required: Yes
@@ -101,16 +90,15 @@ pub struct CfnLaunch {
     #[serde(rename = "ScheduledSplitsConfig")]
     pub scheduled_splits_config: Vec<StepConfig>,
 
-
-    /// 
+    ///
     /// Assigns one or more tags (key-value pairs) to the launch.
-    /// 
+    ///
     /// Tags can help you organize and categorize your resources. You can also use them to scope user       permissions by granting a user       permission to access or change only resources with certain tag values.
-    /// 
+    ///
     /// Tags don't have any semantic meaning to AWS and are interpreted strictly as strings of characters.
-    /// 
+    ///
     /// You can associate as many as 50 tags with a launch.
-    /// 
+    ///
     /// For more information, see Tagging AWS resources.
     ///
     /// Required: No
@@ -120,10 +108,7 @@ pub struct CfnLaunch {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnLaunch {
     fn type_string(&self) -> &'static str {
@@ -135,8 +120,9 @@ impl cfn_resources::CfnResource for CfnLaunch {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.execution_status.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.execution_status
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -145,11 +131,9 @@ impl cfn_resources::CfnResource for CfnLaunch {
 /// Use this structure to start and stop     the launch.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ExecutionStatusObject {
-
-
-    /// 
+    ///
     /// If you are using AWS CloudFormation to stop this       launch, specify either COMPLETED or CANCELLED here to indicate how to classify this       experiment. If you omit this parameter, the default of COMPLETED is used.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -157,7 +141,6 @@ pub struct ExecutionStatusObject {
     /// Update requires: No interruption
     #[serde(rename = "DesiredState")]
     pub desired_state: Option<String>,
-
 
     /// If you are using AWS CloudFormation to stop this     launch, this is an optional field that you can use to record why the launch is being stopped or cancelled.
     ///
@@ -169,7 +152,6 @@ pub struct ExecutionStatusObject {
     #[serde(rename = "Reason")]
     pub reason: Option<String>,
 
-
     /// To start the launch now, specify START     for this parameter. If this launch is currently running and you want to stop it now, specify STOP.
     ///
     /// Required: Yes
@@ -179,10 +161,7 @@ pub struct ExecutionStatusObject {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     pub status: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ExecutionStatusObject {
     fn type_string(&self) -> &'static str {
@@ -194,7 +173,6 @@ impl cfn_resources::CfnResource for ExecutionStatusObject {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -202,9 +180,7 @@ impl cfn_resources::CfnResource for ExecutionStatusObject {
 /// A structure containing the percentage of launch traffic to allocate to one launch group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GroupToWeight {
-
-
-    /// 
+    ///
     /// The name of the launch group. It can include up to 127 characters.
     ///
     /// Required: Yes
@@ -215,10 +191,9 @@ pub struct GroupToWeight {
     #[serde(rename = "GroupName")]
     pub group_name: String,
 
-
-    /// 
+    ///
     /// The portion of launch traffic to allocate to this launch group.
-    /// 
+    ///
     /// This is represented in thousandths of a percent. For example, specify 20,000 to allocate 20% of the         launch audience to this launch group.
     ///
     /// Required: Yes
@@ -228,10 +203,7 @@ pub struct GroupToWeight {
     /// Update requires: No interruption
     #[serde(rename = "SplitWeight")]
     pub split_weight: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for GroupToWeight {
     fn type_string(&self) -> &'static str {
@@ -243,7 +215,6 @@ impl cfn_resources::CfnResource for GroupToWeight {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -251,9 +222,7 @@ impl cfn_resources::CfnResource for GroupToWeight {
 /// A structure that defines one launch group in a launch. A launch group is a variation of       the feature that you are including in the launch.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LaunchGroupObject {
-
-
-    /// 
+    ///
     /// A description of the launch group.
     ///
     /// Required: No
@@ -264,8 +233,7 @@ pub struct LaunchGroupObject {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The feature that this launch is using.
     ///
     /// Required: Yes
@@ -276,8 +244,7 @@ pub struct LaunchGroupObject {
     #[serde(rename = "Feature")]
     pub feature: String,
 
-
-    /// 
+    ///
     /// A name for this launch group. It can include up to 127 characters.
     ///
     /// Required: Yes
@@ -288,8 +255,7 @@ pub struct LaunchGroupObject {
     #[serde(rename = "GroupName")]
     pub group_name: String,
 
-
-    /// 
+    ///
     /// The feature variation to use for this launch group.
     ///
     /// Required: Yes
@@ -299,10 +265,7 @@ pub struct LaunchGroupObject {
     /// Update requires: No interruption
     #[serde(rename = "Variation")]
     pub variation: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LaunchGroupObject {
     fn type_string(&self) -> &'static str {
@@ -314,7 +277,6 @@ impl cfn_resources::CfnResource for LaunchGroupObject {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -322,9 +284,7 @@ impl cfn_resources::CfnResource for LaunchGroupObject {
 /// This structure defines a metric that you want to use to evaluate the variations       during a launch or experiment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MetricDefinitionObject {
-
-
-    /// 
+    ///
     /// The entity, such as a user or session, that does an action that causes a metric       value to be recorded. An example is userDetails.userID.
     ///
     /// Required: Yes
@@ -335,12 +295,11 @@ pub struct MetricDefinitionObject {
     #[serde(rename = "EntityIdKey")]
     pub entity_id_key: String,
 
-
-    /// 
+    ///
     /// The EventBridge event pattern that defines how the metric is recorded.
-    /// 
+    ///
     /// For more information about EventBridge event patterns, see       Amazon EventBridge event patterns.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -349,8 +308,7 @@ pub struct MetricDefinitionObject {
     #[serde(rename = "EventPattern")]
     pub event_pattern: Option<String>,
 
-
-    /// 
+    ///
     /// A name for the metric. It can include up to 255 characters.
     ///
     /// Required: Yes
@@ -361,8 +319,7 @@ pub struct MetricDefinitionObject {
     #[serde(rename = "MetricName")]
     pub metric_name: String,
 
-
-    /// 
+    ///
     /// A label for the units that the metric is measuring.
     ///
     /// Required: No
@@ -373,8 +330,7 @@ pub struct MetricDefinitionObject {
     #[serde(rename = "UnitLabel")]
     pub unit_label: Option<String>,
 
-
-    /// 
+    ///
     /// The value that is tracked to produce the metric.
     ///
     /// Required: Yes
@@ -384,10 +340,7 @@ pub struct MetricDefinitionObject {
     /// Update requires: No interruption
     #[serde(rename = "ValueKey")]
     pub value_key: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MetricDefinitionObject {
     fn type_string(&self) -> &'static str {
@@ -399,7 +352,6 @@ impl cfn_resources::CfnResource for MetricDefinitionObject {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -411,11 +363,9 @@ impl cfn_resources::CfnResource for MetricDefinitionObject {
 /// This sructure is an array of up to six segment override objects. Each of these objects specifies a       segment that you have already created, and defines the traffic split for that segment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SegmentOverride {
-
-
-    /// 
+    ///
     /// A number indicating the order to use to evaluate segment overrides, if there are more than       one. Segment overrides with lower numbers are evaluated first.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -424,10 +374,9 @@ pub struct SegmentOverride {
     #[serde(rename = "EvaluationOrder")]
     pub evaluation_order: i64,
 
-
-    /// 
+    ///
     /// The ARN of the segment to use for this override.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -436,10 +385,9 @@ pub struct SegmentOverride {
     #[serde(rename = "Segment")]
     pub segment: String,
 
-
-    /// 
+    ///
     /// The traffic allocation percentages among the feature variations to assign to this segment.       This is a set of key-value pairs. The keys are variation names. The values       represent the amount of traffic to allocate to that variation for this segment.       This is expressed in thousandths of a percent, so a weight of 50000 represents 50% of traffic.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of GroupToWeight
@@ -447,10 +395,7 @@ pub struct SegmentOverride {
     /// Update requires: No interruption
     #[serde(rename = "Weights")]
     pub weights: Vec<GroupToWeight>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SegmentOverride {
     fn type_string(&self) -> &'static str {
@@ -462,7 +407,6 @@ impl cfn_resources::CfnResource for SegmentOverride {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -470,9 +414,7 @@ impl cfn_resources::CfnResource for SegmentOverride {
 /// A structure that defines when each step of the launch is to start, and how much launch traffic     is to be allocated to each variation during each step.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StepConfig {
-
-
-    /// 
+    ///
     /// An array of structures that define how much launch traffic to allocate to each launch group     during this step of the launch.
     ///
     /// Required: Yes
@@ -483,12 +425,11 @@ pub struct StepConfig {
     #[serde(rename = "GroupWeights")]
     pub group_weights: Vec<GroupToWeight>,
 
-
-    /// 
+    ///
     /// An array of structures that you can use to specify different traffic splits for one or more audience segments. A       segment is a portion of your audience that share one or more characteristics. Examples could be       Chrome browser users, users in Europe, or Firefox browser users in Europe who also fit       other criteria that your application collects, such as age.
-    /// 
+    ///
     /// For more information,       see         Use segments to focus your audience.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of SegmentOverride
@@ -497,8 +438,7 @@ pub struct StepConfig {
     #[serde(rename = "SegmentOverrides")]
     pub segment_overrides: Option<Vec<SegmentOverride>>,
 
-
-    /// 
+    ///
     /// The date and time to start this step of the launch. Use UTC format, yyyy-MM-ddTHH:mm:ssZ. For example,       2025-11-25T23:59:59Z
     ///
     /// Required: Yes
@@ -508,10 +448,7 @@ pub struct StepConfig {
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
     pub start_time: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for StepConfig {
     fn type_string(&self) -> &'static str {
@@ -523,7 +460,6 @@ impl cfn_resources::CfnResource for StepConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -537,32 +473,26 @@ impl cfn_resources::CfnResource for StepConfig {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -574,7 +504,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

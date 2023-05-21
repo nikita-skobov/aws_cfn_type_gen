@@ -1,13 +1,9 @@
-
-
 /// Creates a connector using the specified properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConnector {
-
-
-    /// 
+    ///
     /// The connector's compute capacity settings.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Capacity
@@ -15,7 +11,6 @@ pub struct CfnConnector {
     /// Update requires: No interruption
     #[serde(rename = "Capacity")]
     pub capacity: Capacity,
-
 
     /// The configuration of the connector.
     ///
@@ -27,10 +22,9 @@ pub struct CfnConnector {
     #[serde(rename = "ConnectorConfiguration")]
     pub connector_configuration: std::collections::HashMap<String, String>,
 
-
-    /// 
+    ///
     /// The description of the connector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -39,10 +33,9 @@ pub struct CfnConnector {
     #[serde(rename = "ConnectorDescription")]
     pub connector_description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the connector.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -51,10 +44,9 @@ pub struct CfnConnector {
     #[serde(rename = "ConnectorName")]
     pub connector_name: String,
 
-
-    /// 
+    ///
     /// The details of the Apache Kafka cluster to which the connector is connected.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: KafkaCluster
@@ -63,10 +55,9 @@ pub struct CfnConnector {
     #[serde(rename = "KafkaCluster")]
     pub kafka_cluster: KafkaCluster,
 
-
-    /// 
+    ///
     /// The type of client authentication used to connect to the Apache Kafka cluster. The value     is NONE when no client authentication is used.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: KafkaClusterClientAuthentication
@@ -75,10 +66,9 @@ pub struct CfnConnector {
     #[serde(rename = "KafkaClusterClientAuthentication")]
     pub kafka_cluster_client_authentication: KafkaClusterClientAuthentication,
 
-
-    /// 
+    ///
     /// Details of encryption in transit to the Apache Kafka cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: KafkaClusterEncryptionInTransit
@@ -87,10 +77,9 @@ pub struct CfnConnector {
     #[serde(rename = "KafkaClusterEncryptionInTransit")]
     pub kafka_cluster_encryption_in_transit: KafkaClusterEncryptionInTransit,
 
-
-    /// 
+    ///
     /// The version of Kafka Connect. It has to be compatible with both the Apache Kafka     cluster's version and the plugins.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -99,10 +88,9 @@ pub struct CfnConnector {
     #[serde(rename = "KafkaConnectVersion")]
     pub kafka_connect_version: String,
 
-
-    /// 
+    ///
     /// The settings for delivering connector logs to Amazon CloudWatch Logs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LogDelivery
@@ -111,10 +99,9 @@ pub struct CfnConnector {
     #[serde(rename = "LogDelivery")]
     pub log_delivery: Option<LogDelivery>,
 
-
-    /// 
+    ///
     /// Specifies which plugin to use for the connector. You must specify a single-element list. Amazon MSK Connect does not currently support specifying multiple plugins.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Plugin
@@ -123,10 +110,9 @@ pub struct CfnConnector {
     #[serde(rename = "Plugins")]
     pub plugins: Vec<Plugin>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the IAM role used by the connector to access Amazon     Web Services resources.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -135,10 +121,9 @@ pub struct CfnConnector {
     #[serde(rename = "ServiceExecutionRoleArn")]
     pub service_execution_role_arn: String,
 
-
-    /// 
+    ///
     /// The worker configurations that are in use with the connector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: WorkerConfiguration
@@ -146,10 +131,7 @@ pub struct CfnConnector {
     /// Update requires: Replacement
     #[serde(rename = "WorkerConfiguration")]
     pub worker_configuration: Option<WorkerConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnConnector {
     fn type_string(&self) -> &'static str {
@@ -161,7 +143,6 @@ impl cfn_resources::CfnResource for CfnConnector {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.capacity.validate()?;
 
         self.kafka_cluster.validate()?;
@@ -170,9 +151,13 @@ impl cfn_resources::CfnResource for CfnConnector {
 
         self.kafka_cluster_encryption_in_transit.validate()?;
 
-        self.log_delivery.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.log_delivery
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.worker_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.worker_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -181,11 +166,9 @@ impl cfn_resources::CfnResource for CfnConnector {
 /// The details of the Apache Kafka cluster to which the connector is connected.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ApacheKafkaCluster {
-
-
-    /// 
+    ///
     /// The bootstrap servers of the cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -194,10 +177,9 @@ pub struct ApacheKafkaCluster {
     #[serde(rename = "BootstrapServers")]
     pub bootstrap_servers: String,
 
-
-    /// 
+    ///
     /// Details of an Amazon VPC which has network connectivity to the Apache Kafka     cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Vpc
@@ -205,10 +187,7 @@ pub struct ApacheKafkaCluster {
     /// Update requires: Replacement
     #[serde(rename = "Vpc")]
     pub vpc: Vpc,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ApacheKafkaCluster {
     fn type_string(&self) -> &'static str {
@@ -220,7 +199,6 @@ impl cfn_resources::CfnResource for ApacheKafkaCluster {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.vpc.validate()?;
 
         Ok(())
@@ -230,11 +208,9 @@ impl cfn_resources::CfnResource for ApacheKafkaCluster {
 /// Specifies how the connector scales.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoScaling {
-
-
-    /// 
+    ///
     /// The maximum number of workers allocated to the connector.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -243,10 +219,9 @@ pub struct AutoScaling {
     #[serde(rename = "MaxWorkerCount")]
     pub max_worker_count: i64,
 
-
-    /// 
+    ///
     /// The number of microcontroller units (MCUs) allocated to each connector worker. The valid     values are 1,2,4,8.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -255,10 +230,9 @@ pub struct AutoScaling {
     #[serde(rename = "McuCount")]
     pub mcu_count: i64,
 
-
-    /// 
+    ///
     /// The minimum number of workers allocated to the connector.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -267,10 +241,9 @@ pub struct AutoScaling {
     #[serde(rename = "MinWorkerCount")]
     pub min_worker_count: i64,
 
-
-    /// 
+    ///
     /// The sacle-in policy for the connector.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ScaleInPolicy
@@ -279,10 +252,9 @@ pub struct AutoScaling {
     #[serde(rename = "ScaleInPolicy")]
     pub scale_in_policy: ScaleInPolicy,
 
-
-    /// 
+    ///
     /// The sacle-out policy for the connector.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ScaleOutPolicy
@@ -290,10 +262,7 @@ pub struct AutoScaling {
     /// Update requires: No interruption
     #[serde(rename = "ScaleOutPolicy")]
     pub scale_out_policy: ScaleOutPolicy,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AutoScaling {
     fn type_string(&self) -> &'static str {
@@ -305,7 +274,6 @@ impl cfn_resources::CfnResource for AutoScaling {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.scale_in_policy.validate()?;
 
         self.scale_out_policy.validate()?;
@@ -317,11 +285,9 @@ impl cfn_resources::CfnResource for AutoScaling {
 /// Information about the capacity of the connector, whether it is auto scaled or     provisioned.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Capacity {
-
-
-    /// 
+    ///
     /// Information about the auto scaling parameters for the connector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AutoScaling
@@ -330,10 +296,9 @@ pub struct Capacity {
     #[serde(rename = "AutoScaling")]
     pub auto_scaling: Option<AutoScaling>,
 
-
-    /// 
+    ///
     /// Details about a fixed capacity allocated to a connector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ProvisionedCapacity
@@ -341,10 +306,7 @@ pub struct Capacity {
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedCapacity")]
     pub provisioned_capacity: Option<ProvisionedCapacity>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Capacity {
     fn type_string(&self) -> &'static str {
@@ -356,10 +318,13 @@ impl cfn_resources::CfnResource for Capacity {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.auto_scaling
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.auto_scaling.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.provisioned_capacity.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.provisioned_capacity
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -368,11 +333,9 @@ impl cfn_resources::CfnResource for Capacity {
 /// The settings for delivering connector logs to Amazon CloudWatch Logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchLogsLogDelivery {
-
-
-    /// 
+    ///
     /// Whether log delivery to Amazon CloudWatch Logs is enabled.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -381,10 +344,9 @@ pub struct CloudWatchLogsLogDelivery {
     #[serde(rename = "Enabled")]
     pub enabled: bool,
 
-
-    /// 
+    ///
     /// The name of the CloudWatch log group that is the destination for log delivery.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -392,10 +354,7 @@ pub struct CloudWatchLogsLogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "LogGroup")]
     pub log_group: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CloudWatchLogsLogDelivery {
     fn type_string(&self) -> &'static str {
@@ -407,7 +366,6 @@ impl cfn_resources::CfnResource for CloudWatchLogsLogDelivery {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -415,11 +373,9 @@ impl cfn_resources::CfnResource for CloudWatchLogsLogDelivery {
 /// A plugin is an AWS resource that contains the code that defines a connector's logic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomPlugin {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the custom plugin.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -428,10 +384,9 @@ pub struct CustomPlugin {
     #[serde(rename = "CustomPluginArn")]
     pub custom_plugin_arn: String,
 
-
-    /// 
+    ///
     /// The revision of the custom plugin.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -439,10 +394,7 @@ pub struct CustomPlugin {
     /// Update requires: Replacement
     #[serde(rename = "Revision")]
     pub revision: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CustomPlugin {
     fn type_string(&self) -> &'static str {
@@ -454,7 +406,6 @@ impl cfn_resources::CfnResource for CustomPlugin {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -462,11 +413,9 @@ impl cfn_resources::CfnResource for CustomPlugin {
 /// The settings for delivering logs to Amazon Kinesis Data Firehose.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FirehoseLogDelivery {
-
-
-    /// 
+    ///
     /// The name of the Kinesis Data Firehose delivery stream that is the destination for log     delivery.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -475,10 +424,9 @@ pub struct FirehoseLogDelivery {
     #[serde(rename = "DeliveryStream")]
     pub delivery_stream: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies whether connector logs get delivered to Amazon Kinesis Data Firehose.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -486,10 +434,7 @@ pub struct FirehoseLogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "Enabled")]
     pub enabled: bool,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FirehoseLogDelivery {
     fn type_string(&self) -> &'static str {
@@ -501,7 +446,6 @@ impl cfn_resources::CfnResource for FirehoseLogDelivery {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -509,11 +453,9 @@ impl cfn_resources::CfnResource for FirehoseLogDelivery {
 /// The details of the Apache Kafka cluster to which the connector is connected.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KafkaCluster {
-
-
-    /// 
+    ///
     /// The Apache Kafka cluster to which the connector is connected.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ApacheKafkaCluster
@@ -521,10 +463,7 @@ pub struct KafkaCluster {
     /// Update requires: Replacement
     #[serde(rename = "ApacheKafkaCluster")]
     pub apache_kafka_cluster: ApacheKafkaCluster,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KafkaCluster {
     fn type_string(&self) -> &'static str {
@@ -536,7 +475,6 @@ impl cfn_resources::CfnResource for KafkaCluster {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.apache_kafka_cluster.validate()?;
 
         Ok(())
@@ -546,11 +484,9 @@ impl cfn_resources::CfnResource for KafkaCluster {
 /// The client authentication information used in order to authenticate with the Apache     Kafka cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KafkaClusterClientAuthentication {
-
-
-    /// 
+    ///
     /// The type of client authentication used to connect to the Apache Kafka cluster. Value     NONE means that no client authentication is used.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -558,10 +494,7 @@ pub struct KafkaClusterClientAuthentication {
     /// Update requires: Replacement
     #[serde(rename = "AuthenticationType")]
     pub authentication_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KafkaClusterClientAuthentication {
     fn type_string(&self) -> &'static str {
@@ -573,7 +506,6 @@ impl cfn_resources::CfnResource for KafkaClusterClientAuthentication {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -581,11 +513,9 @@ impl cfn_resources::CfnResource for KafkaClusterClientAuthentication {
 /// Details of encryption in transit to the Apache Kafka cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KafkaClusterEncryptionInTransit {
-
-
-    /// 
+    ///
     /// The type of encryption in transit to the Apache Kafka cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -593,10 +523,7 @@ pub struct KafkaClusterEncryptionInTransit {
     /// Update requires: Replacement
     #[serde(rename = "EncryptionType")]
     pub encryption_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KafkaClusterEncryptionInTransit {
     fn type_string(&self) -> &'static str {
@@ -608,7 +535,6 @@ impl cfn_resources::CfnResource for KafkaClusterEncryptionInTransit {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -616,11 +542,9 @@ impl cfn_resources::CfnResource for KafkaClusterEncryptionInTransit {
 /// Details about log delivery.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LogDelivery {
-
-
-    /// 
+    ///
     /// The workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: WorkerLogDelivery
@@ -628,10 +552,7 @@ pub struct LogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "WorkerLogDelivery")]
     pub worker_log_delivery: WorkerLogDelivery,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LogDelivery {
     fn type_string(&self) -> &'static str {
@@ -643,7 +564,6 @@ impl cfn_resources::CfnResource for LogDelivery {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.worker_log_delivery.validate()?;
 
         Ok(())
@@ -653,11 +573,9 @@ impl cfn_resources::CfnResource for LogDelivery {
 /// A plugin is an AWS resource that contains the code that defines your connector logic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Plugin {
-
-
-    /// 
+    ///
     /// Details about a custom plugin.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: CustomPlugin
@@ -665,10 +583,7 @@ pub struct Plugin {
     /// Update requires: Replacement
     #[serde(rename = "CustomPlugin")]
     pub custom_plugin: CustomPlugin,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Plugin {
     fn type_string(&self) -> &'static str {
@@ -680,7 +595,6 @@ impl cfn_resources::CfnResource for Plugin {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.custom_plugin.validate()?;
 
         Ok(())
@@ -690,11 +604,9 @@ impl cfn_resources::CfnResource for Plugin {
 /// Details about a connector's provisioned capacity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisionedCapacity {
-
-
-    /// 
+    ///
     /// The number of microcontroller units (MCUs) allocated to each connector worker. The valid     values are 1,2,4,8.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -703,10 +615,9 @@ pub struct ProvisionedCapacity {
     #[serde(rename = "McuCount")]
     pub mcu_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The number of workers that are allocated to the connector.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -714,10 +625,7 @@ pub struct ProvisionedCapacity {
     /// Update requires: No interruption
     #[serde(rename = "WorkerCount")]
     pub worker_count: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ProvisionedCapacity {
     fn type_string(&self) -> &'static str {
@@ -729,7 +637,6 @@ impl cfn_resources::CfnResource for ProvisionedCapacity {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -737,11 +644,9 @@ impl cfn_resources::CfnResource for ProvisionedCapacity {
 /// Details about delivering logs to Amazon S3.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3LogDelivery {
-
-
-    /// 
+    ///
     /// The name of the S3 bucket that is the destination for log delivery.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -750,10 +655,9 @@ pub struct S3LogDelivery {
     #[serde(rename = "Bucket")]
     pub bucket: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies whether connector logs get sent to the specified Amazon S3 destination.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -762,10 +666,9 @@ pub struct S3LogDelivery {
     #[serde(rename = "Enabled")]
     pub enabled: bool,
 
-
-    /// 
+    ///
     /// The S3 prefix that is the destination for log delivery.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -773,10 +676,7 @@ pub struct S3LogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "Prefix")]
     pub prefix: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3LogDelivery {
     fn type_string(&self) -> &'static str {
@@ -788,7 +688,6 @@ impl cfn_resources::CfnResource for S3LogDelivery {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -796,11 +695,9 @@ impl cfn_resources::CfnResource for S3LogDelivery {
 /// The scale-in policy for the connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ScaleInPolicy {
-
-
-    /// 
+    ///
     /// Specifies the CPU utilization percentage threshold at which you want connector scale in     to be triggered.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -808,10 +705,7 @@ pub struct ScaleInPolicy {
     /// Update requires: No interruption
     #[serde(rename = "CpuUtilizationPercentage")]
     pub cpu_utilization_percentage: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ScaleInPolicy {
     fn type_string(&self) -> &'static str {
@@ -823,7 +717,6 @@ impl cfn_resources::CfnResource for ScaleInPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -831,11 +724,9 @@ impl cfn_resources::CfnResource for ScaleInPolicy {
 /// The scale-out policy for the connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ScaleOutPolicy {
-
-
-    /// 
+    ///
     /// The CPU utilization percentage threshold at which you want connector scale out to be     triggered.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -843,10 +734,7 @@ pub struct ScaleOutPolicy {
     /// Update requires: No interruption
     #[serde(rename = "CpuUtilizationPercentage")]
     pub cpu_utilization_percentage: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ScaleOutPolicy {
     fn type_string(&self) -> &'static str {
@@ -858,7 +746,6 @@ impl cfn_resources::CfnResource for ScaleOutPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -866,11 +753,9 @@ impl cfn_resources::CfnResource for ScaleOutPolicy {
 /// Information about the VPC in which the connector resides.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Vpc {
-
-
-    /// 
+    ///
     /// The security groups for the connector.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -879,10 +764,9 @@ pub struct Vpc {
     #[serde(rename = "SecurityGroups")]
     pub security_groups: Vec<String>,
 
-
-    /// 
+    ///
     /// The subnets for the connector.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -890,10 +774,7 @@ pub struct Vpc {
     /// Update requires: Replacement
     #[serde(rename = "Subnets")]
     pub subnets: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Vpc {
     fn type_string(&self) -> &'static str {
@@ -905,7 +786,6 @@ impl cfn_resources::CfnResource for Vpc {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -913,11 +793,9 @@ impl cfn_resources::CfnResource for Vpc {
 /// The configuration of the workers, which are the processes that run the connector     logic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WorkerConfiguration {
-
-
-    /// 
+    ///
     /// The revision of the worker configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -926,10 +804,9 @@ pub struct WorkerConfiguration {
     #[serde(rename = "Revision")]
     pub revision: i64,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the worker configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -937,10 +814,7 @@ pub struct WorkerConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "WorkerConfigurationArn")]
     pub worker_configuration_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WorkerConfiguration {
     fn type_string(&self) -> &'static str {
@@ -952,7 +826,6 @@ impl cfn_resources::CfnResource for WorkerConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -960,11 +833,9 @@ impl cfn_resources::CfnResource for WorkerConfiguration {
 /// Workers can send worker logs to different destination types. This configuration     specifies the details of these destinations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WorkerLogDelivery {
-
-
-    /// 
+    ///
     /// Details about delivering logs to Amazon CloudWatch Logs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CloudWatchLogsLogDelivery
@@ -973,10 +844,9 @@ pub struct WorkerLogDelivery {
     #[serde(rename = "CloudWatchLogs")]
     pub cloud_watch_logs: Option<CloudWatchLogsLogDelivery>,
 
-
-    /// 
+    ///
     /// Details about delivering logs to Amazon Kinesis Data Firehose.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FirehoseLogDelivery
@@ -985,10 +855,9 @@ pub struct WorkerLogDelivery {
     #[serde(rename = "Firehose")]
     pub firehose: Option<FirehoseLogDelivery>,
 
-
-    /// 
+    ///
     /// Details about delivering logs to Amazon S3.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3LogDelivery
@@ -996,10 +865,7 @@ pub struct WorkerLogDelivery {
     /// Update requires: Replacement
     #[serde(rename = "S3")]
     pub s3: Option<S3LogDelivery>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WorkerLogDelivery {
     fn type_string(&self) -> &'static str {
@@ -1011,10 +877,13 @@ impl cfn_resources::CfnResource for WorkerLogDelivery {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.cloud_watch_logs
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.cloud_watch_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.firehose.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.firehose
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.s3.as_ref().map_or(Ok(()), |val| val.validate())?;
 

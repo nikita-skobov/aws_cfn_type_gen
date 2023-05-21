@@ -1,13 +1,9 @@
-
-
 /// Creates a user profile. A user profile represents a single user within a domain, and       is the main way to reference a "person" for the purposes of sharing, reporting, and       other user-oriented features. This entity is created when a user onboards to Amazon       SageMaker Studio. If an administrator invites a person by email or imports them from         IAM Identity Center, a user profile is automatically created. A user profile is the       primary holder of settings for an individual user and has a reference to the user's       private Amazon Elastic File System (EFS) home directory.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserProfile {
-
-
-    /// 
+    ///
     /// The domain ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnUserProfile {
     #[serde(rename = "DomainId")]
     pub domain_id: String,
 
-
-    /// 
+    ///
     /// A specifier for the type of value specified in SingleSignOnUserValue. Currently, the       only supported value is "UserName". If the Domain's AuthMode is IAM Identity Center, this       field is required. If the Domain's AuthMode is not IAM Identity Center, this field cannot       be specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnUserProfile {
     #[serde(rename = "SingleSignOnUserIdentifier")]
     pub single_sign_on_user_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// The username of the associated AWS Single Sign-On User for this       UserProfile. If the Domain's AuthMode is IAM Identity Center, this field is required, and       must match a valid username of a user in your directory. If the Domain's AuthMode is not         IAM Identity Center, this field cannot be specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -42,14 +36,13 @@ pub struct CfnUserProfile {
     #[serde(rename = "SingleSignOnUserValue")]
     pub single_sign_on_user_value: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// Tags that you specify for the User Profile are also added to all apps that the User       Profile launches.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -58,10 +51,9 @@ pub struct CfnUserProfile {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The user profile name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -74,10 +66,9 @@ pub struct CfnUserProfile {
     #[serde(rename = "UserProfileName")]
     pub user_profile_name: String,
 
-
-    /// 
+    ///
     /// A collection of settings that apply to users of Amazon SageMaker Studio.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: UserSettings
@@ -85,10 +76,7 @@ pub struct CfnUserProfile {
     /// Update requires: No interruption
     #[serde(rename = "UserSettings")]
     pub user_settings: Option<UserSettings>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnUserProfile {
     fn type_string(&self) -> &'static str {
@@ -100,22 +88,27 @@ impl cfn_resources::CfnResource for CfnUserProfile {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.domain_id;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'domain_id'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'domain_id'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_profile_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'user_profile_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'user_profile_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
-        self.user_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.user_settings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -124,11 +117,9 @@ impl cfn_resources::CfnResource for CfnUserProfile {
 /// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomImage {
-
-
-    /// 
+    ///
     /// The name of the AppImageConfig.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -141,10 +132,9 @@ pub struct CustomImage {
     #[serde(rename = "AppImageConfigName")]
     pub app_image_config_name: String,
 
-
-    /// 
+    ///
     /// The name of the CustomImage. Must be unique to your account.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -159,10 +149,9 @@ pub struct CustomImage {
     #[serde(rename = "ImageName")]
     pub image_name: String,
 
-
-    /// 
+    ///
     /// The version number of the CustomImage.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -172,10 +161,7 @@ pub struct CustomImage {
     /// Update requires: No interruption
     #[serde(rename = "ImageVersionNumber")]
     pub image_version_number: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CustomImage {
     fn type_string(&self) -> &'static str {
@@ -187,36 +173,42 @@ impl cfn_resources::CfnResource for CustomImage {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.app_image_config_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'app_image_config_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'app_image_config_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.image_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'image_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'image_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.image_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'image_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'image_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.image_version_number {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'image_version_number'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'image_version_number'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -224,11 +216,9 @@ impl cfn_resources::CfnResource for CustomImage {
 /// The JupyterServer app settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JupyterServerAppSettings {
-
-
-    /// 
+    ///
     /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker       image used by the JupyterServer app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ResourceSpec
@@ -236,10 +226,7 @@ pub struct JupyterServerAppSettings {
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
     pub default_resource_spec: Option<ResourceSpec>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for JupyterServerAppSettings {
     fn type_string(&self) -> &'static str {
@@ -251,8 +238,9 @@ impl cfn_resources::CfnResource for JupyterServerAppSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.default_resource_spec
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -261,11 +249,9 @@ impl cfn_resources::CfnResource for JupyterServerAppSettings {
 /// The KernelGateway app settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KernelGatewayAppSettings {
-
-
-    /// 
+    ///
     /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of CustomImage
@@ -276,12 +262,11 @@ pub struct KernelGatewayAppSettings {
     #[serde(rename = "CustomImages")]
     pub custom_images: Option<Vec<CustomImage>>,
 
-
-    /// 
+    ///
     /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the KernelGateway app.
-    /// 
+    ///
     /// NoteThe Amazon SageMaker Studio UI does not use the default instance type value set here. The default      instance type set here is used when Apps are created using the AWS Command Line Interface or AWS CloudFormation       and the instance type parameter value is not passed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ResourceSpec
@@ -289,10 +274,7 @@ pub struct KernelGatewayAppSettings {
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
     pub default_resource_spec: Option<ResourceSpec>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KernelGatewayAppSettings {
     fn type_string(&self) -> &'static str {
@@ -304,16 +286,18 @@ impl cfn_resources::CfnResource for KernelGatewayAppSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.custom_images {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'custom_images'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'custom_images'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.default_resource_spec
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -322,11 +306,9 @@ impl cfn_resources::CfnResource for KernelGatewayAppSettings {
 /// A collection of settings that configure user interaction with the         RStudioServerPro app. RStudioServerProAppSettings cannot       be updated. The RStudioServerPro app must be deleted and a new one created       to make any changes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RStudioServerProAppSettings {
-
-
-    /// 
+    ///
     /// Indicates whether the current user has access to the RStudioServerPro       app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -337,10 +319,9 @@ pub struct RStudioServerProAppSettings {
     #[serde(rename = "AccessStatus")]
     pub access_status: Option<RStudioServerProAppSettingsAccessStatusEnum>,
 
-
-    /// 
+    ///
     /// The level of permissions that the user has within the RStudioServerPro       app. This value defaults to `User`. The `Admin` value allows the user access to the       RStudio Administrative Dashboard.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -350,13 +331,10 @@ pub struct RStudioServerProAppSettings {
     /// Update requires: Replacement
     #[serde(rename = "UserGroup")]
     pub user_group: Option<RStudioServerProAppSettingsUserGroupEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RStudioServerProAppSettingsAccessStatusEnum {
-
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
@@ -364,7 +342,6 @@ pub enum RStudioServerProAppSettingsAccessStatusEnum {
     /// ENABLED
     #[serde(rename = "ENABLED")]
     Enabled,
-
 }
 
 impl Default for RStudioServerProAppSettingsAccessStatusEnum {
@@ -375,7 +352,6 @@ impl Default for RStudioServerProAppSettingsAccessStatusEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RStudioServerProAppSettingsUserGroupEnum {
-
     /// R_STUDIO_ADMIN
     #[serde(rename = "R_STUDIO_ADMIN")]
     Rstudioadmin,
@@ -383,7 +359,6 @@ pub enum RStudioServerProAppSettingsUserGroupEnum {
     /// R_STUDIO_USER
     #[serde(rename = "R_STUDIO_USER")]
     Rstudiouser,
-
 }
 
 impl Default for RStudioServerProAppSettingsUserGroupEnum {
@@ -391,7 +366,6 @@ impl Default for RStudioServerProAppSettingsUserGroupEnum {
         RStudioServerProAppSettingsUserGroupEnum::Rstudioadmin
     }
 }
-
 
 impl cfn_resources::CfnResource for RStudioServerProAppSettings {
     fn type_string(&self) -> &'static str {
@@ -403,7 +377,6 @@ impl cfn_resources::CfnResource for RStudioServerProAppSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -411,13 +384,11 @@ impl cfn_resources::CfnResource for RStudioServerProAppSettings {
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceSpec {
-
-
-    /// 
+    ///
     /// The instance type that the image version runs on.
-    /// 
+    ///
     /// Note        JupyterServer apps only support the system value.For KernelGateway apps, the system       value is translated to ml.t3.medium. KernelGateway apps also support all other values for available       instance types.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -428,10 +399,9 @@ pub struct ResourceSpec {
     #[serde(rename = "InstanceType")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
 
-
-    /// 
+    ///
     /// The ARN of the SageMaker image that the image version belongs to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -444,10 +414,9 @@ pub struct ResourceSpec {
     #[serde(rename = "SageMakerImageArn")]
     pub sage_maker_image_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the image version created on the instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -459,13 +428,10 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
     pub sage_maker_image_version_arn: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ResourceSpecInstanceTypeEnum {
-
     /// ml.c5.12xlarge
     #[serde(rename = "ml.c5.12xlarge")]
     Mlc512xlarge,
@@ -705,7 +671,6 @@ pub enum ResourceSpecInstanceTypeEnum {
     /// system
     #[serde(rename = "system")]
     System,
-
 }
 
 impl Default for ResourceSpecInstanceTypeEnum {
@@ -713,7 +678,6 @@ impl Default for ResourceSpecInstanceTypeEnum {
         ResourceSpecInstanceTypeEnum::Mlc512xlarge
     }
 }
-
 
 impl cfn_resources::CfnResource for ResourceSpec {
     fn type_string(&self) -> &'static str {
@@ -725,23 +689,21 @@ impl cfn_resources::CfnResource for ResourceSpec {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.sage_maker_image_arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.sage_maker_image_version_arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -749,11 +711,9 @@ impl cfn_resources::CfnResource for ResourceSpec {
 /// Specifies options when sharing an Amazon SageMaker Studio notebook. These settings are       specified as part of DefaultUserSettings when the CreateDomain API is called, and as part of UserSettings when       the CreateUserProfile API is called.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SharingSettings {
-
-
-    /// 
+    ///
     /// Whether to include the notebook cell output when sharing the notebook. The default     is Disabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -764,10 +724,9 @@ pub struct SharingSettings {
     #[serde(rename = "NotebookOutputOption")]
     pub notebook_output_option: Option<SharingSettingsNotebookOutputOptionEnum>,
 
-
-    /// 
+    ///
     /// When NotebookOutputOption is Allowed, the AWS Key Management Service (KMS)     encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -780,10 +739,9 @@ pub struct SharingSettings {
     #[serde(rename = "S3KmsKeyId")]
     pub s3_kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// When NotebookOutputOption is Allowed, the Amazon S3 bucket used     to store the shared notebook snapshots.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -795,13 +753,10 @@ pub struct SharingSettings {
     /// Update requires: No interruption
     #[serde(rename = "S3OutputPath")]
     pub s3_output_path: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SharingSettingsNotebookOutputOptionEnum {
-
     /// Allowed
     #[serde(rename = "Allowed")]
     Allowed,
@@ -809,7 +764,6 @@ pub enum SharingSettingsNotebookOutputOptionEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
     Disabled,
-
 }
 
 impl Default for SharingSettingsNotebookOutputOptionEnum {
@@ -817,7 +771,6 @@ impl Default for SharingSettingsNotebookOutputOptionEnum {
         SharingSettingsNotebookOutputOptionEnum::Allowed
     }
 }
-
 
 impl cfn_resources::CfnResource for SharingSettings {
     fn type_string(&self) -> &'static str {
@@ -829,23 +782,24 @@ impl cfn_resources::CfnResource for SharingSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.s3_kms_key_id {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 's3_kms_key_id'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_kms_key_id'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.s3_output_path {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 's3_output_path'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_output_path'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -859,32 +813,26 @@ impl cfn_resources::CfnResource for SharingSettings {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -896,7 +844,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -906,11 +853,9 @@ impl cfn_resources::CfnResource for Tag {
 /// SecurityGroups is aggregated when specified in both calls. For all other       settings in UserSettings, the values specified in         CreateUserProfile take precedence over those specified in         CreateDomain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct UserSettings {
-
-
-    /// 
+    ///
     /// The execution role for the user.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -925,10 +870,9 @@ pub struct UserSettings {
     #[serde(rename = "ExecutionRole")]
     pub execution_role: Option<String>,
 
-
-    /// 
+    ///
     /// The Jupyter server's app settings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: JupyterServerAppSettings
@@ -937,10 +881,9 @@ pub struct UserSettings {
     #[serde(rename = "JupyterServerAppSettings")]
     pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
 
-
-    /// 
+    ///
     /// The kernel gateway app settings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: KernelGatewayAppSettings
@@ -949,10 +892,9 @@ pub struct UserSettings {
     #[serde(rename = "KernelGatewayAppSettings")]
     pub kernel_gateway_app_settings: Option<KernelGatewayAppSettings>,
 
-
-    /// 
+    ///
     /// A collection of settings that configure user interaction with the         RStudioServerPro app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: RStudioServerProAppSettings
@@ -961,16 +903,15 @@ pub struct UserSettings {
     #[serde(rename = "RStudioServerProAppSettings")]
     pub rstudio_server_pro_app_settings: Option<RStudioServerProAppSettings>,
 
-
-    /// 
+    ///
     /// The security groups for the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
-    /// 
+    ///
     /// Optional when the CreateDomain.AppNetworkAccessType parameter is set to     PublicInternetOnly.
-    /// 
+    ///
     /// Required when the CreateDomain.AppNetworkAccessType parameter is set to      VpcOnly, unless specified as part of the DefaultUserSettings for the domain.
-    /// 
+    ///
     /// Amazon SageMaker adds a security group to allow NFS traffic from SageMaker Studio. Therefore, the     number of security groups that you can specify is one less than the maximum number shown.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -981,10 +922,9 @@ pub struct UserSettings {
     #[serde(rename = "SecurityGroups")]
     pub security_groups: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Specifies options for sharing SageMaker Studio notebooks.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SharingSettings
@@ -992,10 +932,7 @@ pub struct UserSettings {
     /// Update requires: No interruption
     #[serde(rename = "SharingSettings")]
     pub sharing_settings: Option<SharingSettings>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for UserSettings {
     fn type_string(&self) -> &'static str {
@@ -1007,38 +944,48 @@ impl cfn_resources::CfnResource for UserSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.execution_role {
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'execution_role'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.execution_role {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'execution_role'. {} is greater than 2048", the_val.len()));
+            if the_val.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'execution_role'. {} is less than 20",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.execution_role {
+        self.jupyter_server_app_settings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'execution_role'. {} is less than 20", the_val.len()));
-        }
+        self.kernel_gateway_app_settings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        }
-        
-        self.jupyter_server_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.kernel_gateway_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.rstudio_server_pro_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.rstudio_server_pro_app_settings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.security_groups {
-
-        if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'security_groups'. {} is greater than 5", the_val.len()));
+            if the_val.len() > 5 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'security_groups'. {} is greater than 5",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.sharing_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.sharing_settings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }

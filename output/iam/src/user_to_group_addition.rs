@@ -1,15 +1,11 @@
-
-
 /// Adds the specified user to the specified group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserToGroupAddition {
-
-
-    /// 
+    ///
     /// The name of the group to update.
-    /// 
+    ///
     /// This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric   characters with no spaces. You can also include any of the following characters: _+=,.@-
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnUserToGroupAddition {
     #[serde(rename = "GroupName")]
     pub group_name: String,
 
-
-    /// 
+    ///
     /// A list of the names of the users that you want to add to the group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -35,10 +30,7 @@ pub struct CfnUserToGroupAddition {
     /// Update requires: No interruption
     #[serde(rename = "Users")]
     pub users: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnUserToGroupAddition {
     fn type_string(&self) -> &'static str {
@@ -50,21 +42,24 @@ impl cfn_resources::CfnResource for CfnUserToGroupAddition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.group_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'group_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'group_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.group_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'group_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'group_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

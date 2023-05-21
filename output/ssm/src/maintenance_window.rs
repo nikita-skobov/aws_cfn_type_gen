@@ -1,15 +1,11 @@
-
-
 /// The AWS::SSM::MaintenanceWindow resource represents general information about    a maintenance window for AWS Systems Manager. Maintenance Windows let you define a schedule    for when to perform potentially disruptive actions on your instances, such as patching an    operating system (OS), updating drivers, or installing software. Each maintenance window has a    schedule, a duration, a set of registered targets, and a set of registered tasks.
 ///
 /// For more information, see Systems Manager     Maintenance Windows in the AWS Systems Manager User Guide and         CreateMaintenanceWindow in the AWS Systems Manager API     Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMaintenanceWindow {
-
-
-    /// 
+    ///
     /// Enables a maintenance window task to run on managed instances, even if you have not    registered those instances as targets. If enabled, then you must specify the unregistered    instances (by instance ID) when you register a task with the maintenance window.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -18,10 +14,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "AllowUnassociatedTargets")]
     pub allow_unassociated_targets: bool,
 
-
-    /// 
+    ///
     /// The number of hours before the end of the maintenance window that AWS Systems Manager stops scheduling  new tasks for execution.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -34,10 +29,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "Cutoff")]
     pub cutoff: i64,
 
-
-    /// 
+    ///
     /// A description of the maintenance window.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -50,10 +44,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The duration of the maintenance window in hours.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -66,10 +59,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "Duration")]
     pub duration: i64,
 
-
-    /// 
+    ///
     /// The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled  to become inactive.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -78,10 +70,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "EndDate")]
     pub end_date: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the maintenance window.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -96,10 +87,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The schedule of the maintenance window in the form of a cron or rate expression.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -112,10 +102,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "Schedule")]
     pub schedule: String,
 
-
-    /// 
+    ///
     /// The number of days to wait to run a maintenance window after the scheduled cron expression  date and time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -128,10 +117,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "ScheduleOffset")]
     pub schedule_offset: Option<i64>,
 
-
-    /// 
+    ///
     /// The time zone that the scheduled maintenance window executions are based on, in Internet  Assigned Numbers Authority (IANA) format.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -140,10 +128,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "ScheduleTimezone")]
     pub schedule_timezone: Option<String>,
 
-
-    /// 
+    ///
     /// The date and time, in ISO-8601 Extended format, for when the maintenance window is    scheduled to become active. StartDate allows you to delay activation of the Maintenance Window    until the specified future date.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -152,10 +139,9 @@ pub struct CfnMaintenanceWindow {
     #[serde(rename = "StartDate")]
     pub start_date: Option<String>,
 
-
-    /// 
+    ///
     /// Optional metadata that you assign to a resource in the form of an arbitrary set of tags    (key-value pairs). Tags enable you to categorize a resource in different ways, such as by    purpose, owner, or environment. For example, you might want to tag a maintenance window to    identify the type of tasks it will run, the types of targets, and the environment it will run    in.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -165,10 +151,7 @@ pub struct CfnMaintenanceWindow {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnMaintenanceWindow {
     fn type_string(&self) -> &'static str {
@@ -180,103 +163,123 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindow {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.cutoff;
 
         if *the_val > 23 as _ {
-            return Err(format!("Max validation failed on field 'cutoff'. {} is greater than 23", the_val));
+            return Err(format!(
+                "Max validation failed on field 'cutoff'. {} is greater than 23",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.cutoff;
 
         if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'cutoff'. {} is less than 0", the_val));
+            return Err(format!(
+                "Min validation failed on field 'cutoff'. {} is less than 0",
+                the_val
+            ));
         }
 
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.duration;
 
         if *the_val > 24 as _ {
-            return Err(format!("Max validation failed on field 'duration'. {} is greater than 24", the_val));
+            return Err(format!(
+                "Max validation failed on field 'duration'. {} is greater than 24",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.duration;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'duration'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'duration'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.schedule;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'schedule'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'schedule'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.schedule;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'schedule'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'schedule'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.schedule_offset {
-
-        if *the_val > 6 as _ {
-            return Err(format!("Max validation failed on field 'schedule_offset'. {} is greater than 6", the_val));
+            if *the_val > 6 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'schedule_offset'. {} is greater than 6",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.schedule_offset {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'schedule_offset'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'schedule_offset'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 1000", the_val.len()));
+            if the_val.len() > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 1000",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -290,32 +293,26 @@ impl cfn_resources::CfnResource for CfnMaintenanceWindow {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -327,7 +324,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

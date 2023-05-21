@@ -1,15 +1,11 @@
-
-
 /// Creates a new thing type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnThingType {
-
-
-    /// 
+    ///
     /// Deprecates a thing type. You can not associate new things with deprecated thing 			type.
-    /// 
+    ///
     /// Requires permission to access the DeprecateThingType action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -18,10 +14,9 @@ pub struct CfnThingType {
     #[serde(rename = "DeprecateThingType")]
     pub deprecate_thing_type: Option<bool>,
 
-
-    /// 
+    ///
     /// Metadata which can be used to manage the thing type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -30,10 +25,9 @@ pub struct CfnThingType {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The name of the thing type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnThingType {
     #[serde(rename = "ThingTypeName")]
     pub thing_type_name: Option<String>,
 
-
-    /// 
+    ///
     /// The thing type properties for the thing type to create. It contains information about     the new thing type including a description, and a list of searchable thing attribute names.       ThingTypeProperties can't be updated after the initial creation of the       ThingType.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ThingTypeProperties
@@ -53,10 +46,7 @@ pub struct CfnThingType {
     /// Update requires: Replacement
     #[serde(rename = "ThingTypeProperties")]
     pub thing_type_properties: Option<ThingTypeProperties>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnThingType {
     fn type_string(&self) -> &'static str {
@@ -68,8 +58,9 @@ impl cfn_resources::CfnResource for CfnThingType {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.thing_type_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.thing_type_properties
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -84,32 +75,26 @@ impl cfn_resources::CfnResource for CfnThingType {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -121,7 +106,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -129,11 +113,9 @@ impl cfn_resources::CfnResource for Tag {
 /// The ThingTypeProperties contains information about the thing type including: a thing type description, 			and a list of searchable thing attribute names.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ThingTypeProperties {
-
-
-    /// 
+    ///
     /// A list of searchable thing attribute names.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -142,10 +124,9 @@ pub struct ThingTypeProperties {
     #[serde(rename = "SearchableAttributes")]
     pub searchable_attributes: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The description of the thing type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -153,10 +134,7 @@ pub struct ThingTypeProperties {
     /// Update requires: Replacement
     #[serde(rename = "ThingTypeDescription")]
     pub thing_type_description: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ThingTypeProperties {
     fn type_string(&self) -> &'static str {
@@ -168,7 +146,6 @@ impl cfn_resources::CfnResource for ThingTypeProperties {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

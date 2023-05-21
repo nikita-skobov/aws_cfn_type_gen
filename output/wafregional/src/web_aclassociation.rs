@@ -1,13 +1,9 @@
-
-
 /// The AWS::WAFRegional::WebACLAssociation resource associates an AWS WAF Regional web access control group (ACL) with a resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnWebACLAssociation {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the resource to protect with the web ACL.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnWebACLAssociation {
     #[serde(rename = "ResourceArn")]
     pub resource_arn: String,
 
-
-    /// 
+    ///
     /// A unique identifier (ID) for the web ACL.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -27,10 +22,7 @@ pub struct CfnWebACLAssociation {
     /// Update requires: Replacement
     #[serde(rename = "WebACLId")]
     pub web_aclid: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnWebACLAssociation {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnWebACLAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

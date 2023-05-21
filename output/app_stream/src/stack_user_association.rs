@@ -1,13 +1,9 @@
-
-
 /// The AWS::AppStream::StackUserAssociation resource associates the specified users with the specified stacks for Amazon AppStream 2.0. Users in an AppStream 2.0 user pool cannot be assigned to stacks with fleets that are joined to an Active Directory domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStackUserAssociation {
-
-
-    /// 
+    ///
     /// The authentication type for the user who is associated with the stack. You must specify USERPOOL.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnStackUserAssociation {
     #[serde(rename = "AuthenticationType")]
     pub authentication_type: StackUserAssociationAuthenticationTypeEnum,
 
-
-    /// 
+    ///
     /// Specifies whether a welcome email is sent to a user after the user is created in the user pool.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -30,10 +25,9 @@ pub struct CfnStackUserAssociation {
     #[serde(rename = "SendEmailNotification")]
     pub send_email_notification: Option<bool>,
 
-
-    /// 
+    ///
     /// The name of the stack that is associated with the user.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -44,12 +38,11 @@ pub struct CfnStackUserAssociation {
     #[serde(rename = "StackName")]
     pub stack_name: String,
 
-
-    /// 
+    ///
     /// The email address of the user who is associated with the stack.
-    /// 
+    ///
     /// NoteUsers' email addresses are case-sensitive.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -63,13 +56,10 @@ pub struct CfnStackUserAssociation {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     pub user_name: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum StackUserAssociationAuthenticationTypeEnum {
-
     /// API
     #[serde(rename = "API")]
     Api,
@@ -85,7 +75,6 @@ pub enum StackUserAssociationAuthenticationTypeEnum {
     /// USERPOOL
     #[serde(rename = "USERPOOL")]
     Userpool,
-
 }
 
 impl Default for StackUserAssociationAuthenticationTypeEnum {
@@ -93,7 +82,6 @@ impl Default for StackUserAssociationAuthenticationTypeEnum {
         StackUserAssociationAuthenticationTypeEnum::Api
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnStackUserAssociation {
     fn type_string(&self) -> &'static str {
@@ -105,28 +93,33 @@ impl cfn_resources::CfnResource for CfnStackUserAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.stack_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'stack_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'stack_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'user_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'user_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'user_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'user_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

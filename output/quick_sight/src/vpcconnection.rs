@@ -1,13 +1,9 @@
-
-
 /// Creates a new VPC connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPCConnection {
-
-
-    /// 
+    ///
     /// The availability status of the VPC connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnVPCConnection {
     #[serde(rename = "AvailabilityStatus")]
     pub availability_status: Option<VPCConnectionAvailabilityStatusEnum>,
 
-
-    /// 
+    ///
     /// The AWS account ID of the account where you want to create a new VPC 			connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnVPCConnection {
     #[serde(rename = "AwsAccountId")]
     pub aws_account_id: Option<String>,
 
-
-    /// 
+    ///
     /// A list of IP addresses of DNS resolver endpoints for the VPC connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -48,10 +42,9 @@ pub struct CfnVPCConnection {
     #[serde(rename = "DnsResolvers")]
     pub dns_resolvers: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The display name for the VPC connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -64,10 +57,9 @@ pub struct CfnVPCConnection {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the         IAM role associated with the VPC       connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -76,10 +68,9 @@ pub struct CfnVPCConnection {
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon EC2 security group IDs associated with the VPC connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -90,10 +81,9 @@ pub struct CfnVPCConnection {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of subnet IDs for the VPC connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -104,10 +94,9 @@ pub struct CfnVPCConnection {
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A map of the key-value pairs for the resource tag or tags assigned to the VPC 			connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -118,10 +107,9 @@ pub struct CfnVPCConnection {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the VPC connection that you're creating. This ID is a unique identifier for each AWS Region in an         AWS account.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -133,13 +121,10 @@ pub struct CfnVPCConnection {
     /// Update requires: Replacement
     #[serde(rename = "VPCConnectionId")]
     pub vpcconnection_id: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VPCConnectionAvailabilityStatusEnum {
-
     /// AVAILABLE
     #[serde(rename = "AVAILABLE")]
     Available,
@@ -151,7 +136,6 @@ pub enum VPCConnectionAvailabilityStatusEnum {
     /// UNAVAILABLE
     #[serde(rename = "UNAVAILABLE")]
     Unavailable,
-
 }
 
 impl Default for VPCConnectionAvailabilityStatusEnum {
@@ -159,7 +143,6 @@ impl Default for VPCConnectionAvailabilityStatusEnum {
         VPCConnectionAvailabilityStatusEnum::Available
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnVPCConnection {
     fn type_string(&self) -> &'static str {
@@ -171,79 +154,87 @@ impl cfn_resources::CfnResource for CfnVPCConnection {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.aws_account_id {
+            if the_val.len() > 12 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'aws_account_id'. {} is greater than 12",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.aws_account_id {
-
-        if the_val.len() > 12 as _ {
-            return Err(format!("Max validation failed on field 'aws_account_id'. {} is greater than 12", the_val.len()));
+            if the_val.len() < 12 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'aws_account_id'. {} is less than 12",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.aws_account_id {
-
-        if the_val.len() < 12 as _ {
-            return Err(format!("Min validation failed on field 'aws_account_id'. {} is less than 12", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.security_group_ids {
-
-        if the_val.len() > 16 as _ {
-            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 16", the_val.len()));
+            if the_val.len() > 16 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'security_group_ids'. {} is greater than 16",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.subnet_ids {
-
-        if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'subnet_ids'. {} is greater than 15", the_val.len()));
+            if the_val.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subnet_ids'. {} is greater than 15",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.vpcconnection_id {
-
-        if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'vpcconnection_id'. {} is greater than 1000", the_val.len()));
+            if the_val.len() > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'vpcconnection_id'. {} is greater than 1000",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.vpcconnection_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'vpcconnection_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpcconnection_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -251,11 +242,9 @@ impl cfn_resources::CfnResource for CfnVPCConnection {
 /// The structure that contains information about a network interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkInterface {
-
-
-    /// 
+    ///
     /// The availability zone that the network interface resides in.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -264,10 +253,9 @@ pub struct NetworkInterface {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// An error message.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -276,10 +264,9 @@ pub struct NetworkInterface {
     #[serde(rename = "ErrorMessage")]
     pub error_message: Option<String>,
 
-
-    /// 
+    ///
     /// The network interface ID.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -292,10 +279,9 @@ pub struct NetworkInterface {
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: Option<String>,
 
-
-    /// 
+    ///
     /// The status of the network interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -306,10 +292,9 @@ pub struct NetworkInterface {
     #[serde(rename = "Status")]
     pub status: Option<NetworkInterfaceStatusEnum>,
 
-
-    /// 
+    ///
     /// The subnet ID associated with the network interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -323,13 +308,10 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
     pub subnet_id: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum NetworkInterfaceStatusEnum {
-
     /// ATTACHMENT_FAILED_ROLLBACK_FAILED
     #[serde(rename = "ATTACHMENT_FAILED_ROLLBACK_FAILED")]
     Attachmentfailedrollbackfailed,
@@ -369,7 +351,6 @@ pub enum NetworkInterfaceStatusEnum {
     /// UPDATING
     #[serde(rename = "UPDATING")]
     Updating,
-
 }
 
 impl Default for NetworkInterfaceStatusEnum {
@@ -377,7 +358,6 @@ impl Default for NetworkInterfaceStatusEnum {
         NetworkInterfaceStatusEnum::Attachmentfailedrollbackfailed
     }
 }
-
 
 impl cfn_resources::CfnResource for NetworkInterface {
     fn type_string(&self) -> &'static str {
@@ -389,31 +369,33 @@ impl cfn_resources::CfnResource for NetworkInterface {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.network_interface_id {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'network_interface_id'. {} is greater than 255", the_val.len()));
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'network_interface_id'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.subnet_id {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'subnet_id'. {} is greater than 255", the_val.len()));
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subnet_id'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.subnet_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'subnet_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'subnet_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -427,32 +409,26 @@ impl cfn_resources::CfnResource for NetworkInterface {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -464,7 +440,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

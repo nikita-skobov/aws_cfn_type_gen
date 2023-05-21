@@ -1,13 +1,9 @@
-
-
 /// The AWS::CodeArtifact::Domain resource creates an AWS CodeArtifact domain.      CodeArtifact domains make it easier to manage multiple repositories across an       organization. You can use a domain to apply permissions across many repositories owned by different      AWS accounts. For more information about domains, see the       Domain concepts information      in the CodeArtifact User Guide. For more information about the CreateDomain API, see       CreateDomain      in the CodeArtifact API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDomain {
-
-
-    /// 
+    ///
     /// A string that specifies the name of the requested domain.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnDomain {
     #[serde(rename = "DomainName")]
     pub domain_name: String,
 
-
-    /// 
+    ///
     /// The key used to encrypt the domain.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,10 +35,9 @@ pub struct CfnDomain {
     #[serde(rename = "EncryptionKey")]
     pub encryption_key: Option<String>,
 
-
-    /// 
+    ///
     /// The document that defines the resource policy that is set on a domain.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -52,10 +46,9 @@ pub struct CfnDomain {
     #[serde(rename = "PermissionsPolicyDocument")]
     pub permissions_policy_document: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// A list of tags to be applied to the domain.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -63,10 +56,7 @@ pub struct CfnDomain {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDomain {
     fn type_string(&self) -> &'static str {
@@ -78,37 +68,42 @@ impl cfn_resources::CfnResource for CfnDomain {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.domain_name;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'domain_name'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'domain_name'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.domain_name;
 
         if the_val.len() < 2 as _ {
-            return Err(format!("Min validation failed on field 'domain_name'. {} is less than 2", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'domain_name'. {} is less than 2",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.encryption_key {
-
-        if the_val.len() > 1011 as _ {
-            return Err(format!("Max validation failed on field 'encryption_key'. {} is greater than 1011", the_val.len()));
+            if the_val.len() > 1011 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'encryption_key'. {} is greater than 1011",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.encryption_key {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'encryption_key'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'encryption_key'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -122,32 +117,26 @@ impl cfn_resources::CfnResource for CfnDomain {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -159,7 +148,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// The AWS::SageMaker::Device resource is an Amazon SageMaker resource type       that allows you to register your Devices against an existing SageMaker Edge Manager       DeviceFleet. Each device must be listed individually in the CFN specification.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDevice {
-
-
-    /// 
+    ///
     /// Edge device you want to create.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Device
@@ -16,10 +12,9 @@ pub struct CfnDevice {
     #[serde(rename = "Device")]
     pub device: Option<Box<Device>>,
 
-
-    /// 
+    ///
     /// The name of the fleet the device belongs to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnDevice {
     #[serde(rename = "DeviceFleetName")]
     pub device_fleet_name: String,
 
-
-    /// 
+    ///
     /// An array of key-value pairs that contain metadata to help you categorize and organize       your devices. Each tag consists of a key and a value, both of which you define.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -47,10 +41,7 @@ pub struct CfnDevice {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDevice {
     fn type_string(&self) -> &'static str {
@@ -62,31 +53,35 @@ impl cfn_resources::CfnResource for CfnDevice {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.device.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.device_fleet_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'device_fleet_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'device_fleet_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.device_fleet_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'device_fleet_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'device_fleet_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -94,11 +89,9 @@ impl cfn_resources::CfnResource for CfnDevice {
 /// Information of a particular device.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Device {
-
-
-    /// 
+    ///
     /// Description of the device.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -113,10 +106,9 @@ pub struct Device {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the device.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -131,10 +123,9 @@ pub struct Device {
     #[serde(rename = "DeviceName")]
     pub device_name: String,
 
-
-    /// 
+    ///
     /// AWS Internet of Things (IoT) object name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -146,10 +137,7 @@ pub struct Device {
     /// Update requires: No interruption
     #[serde(rename = "IotThingName")]
     pub iot_thing_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Device {
     fn type_string(&self) -> &'static str {
@@ -161,45 +149,51 @@ impl cfn_resources::CfnResource for Device {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 40 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 40",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 40 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 40", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.device_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'device_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'device_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.device_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'device_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'device_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.iot_thing_name {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'iot_thing_name'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'iot_thing_name'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -213,32 +207,26 @@ impl cfn_resources::CfnResource for Device {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -250,7 +238,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

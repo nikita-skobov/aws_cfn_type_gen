@@ -1,13 +1,9 @@
-
-
 /// IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts throughout your AWS Organization. For more information, see What is IPAM? in the Amazon VPC IPAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIPAM {
-
-
-    /// 
+    ///
     /// The IPAM's default resource discovery association ID.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnIPAM {
     #[serde(rename = "DefaultResourceDiscoveryAssociationId")]
     pub default_resource_discovery_association_id: Option<String>,
 
-
-    /// 
+    ///
     /// The IPAM's default resource discovery ID.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnIPAM {
     #[serde(rename = "DefaultResourceDiscoveryId")]
     pub default_resource_discovery_id: Option<String>,
 
-
-    /// 
+    ///
     /// The description for the IPAM.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,12 +34,11 @@ pub struct CfnIPAM {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The operating Regions for an IPAM. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
-    /// 
+    ///
     /// For more information about operating Regions, see Create an IPAM in the Amazon VPC IPAM User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of IpamOperatingRegion
@@ -54,10 +47,9 @@ pub struct CfnIPAM {
     #[serde(rename = "OperatingRegions")]
     pub operating_regions: Option<Vec<IpamOperatingRegion>>,
 
-
-    /// 
+    ///
     /// The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value.   For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -65,10 +57,7 @@ pub struct CfnIPAM {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnIPAM {
     fn type_string(&self) -> &'static str {
@@ -80,7 +69,6 @@ impl cfn_resources::CfnResource for CfnIPAM {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -90,11 +78,9 @@ impl cfn_resources::CfnResource for CfnIPAM {
 /// For more information about operating Regions, see Create an IPAM in the Amazon VPC IPAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IpamOperatingRegion {
-
-
-    /// 
+    ///
     /// The name of the operating Region.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -102,10 +88,7 @@ pub struct IpamOperatingRegion {
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
     pub region_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for IpamOperatingRegion {
     fn type_string(&self) -> &'static str {
@@ -117,7 +100,6 @@ impl cfn_resources::CfnResource for IpamOperatingRegion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -131,32 +113,26 @@ impl cfn_resources::CfnResource for IpamOperatingRegion {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -168,7 +144,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

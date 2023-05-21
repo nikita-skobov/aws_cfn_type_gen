@@ -1,17 +1,13 @@
-
-
 /// The AWS::AppRunner::Service resource is an AWS App Runner resource type that specifies an App Runner service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnService {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner    associates the latest revision of a default auto scaling configuration.
-    /// 
+    ///
     /// Specify an ARN with a name and a revision number to associate that revision. For example:      arn:aws:apprunner:us-east-1:123456789012:autoscalingconfiguration/high-availability/3
-    /// 
+    ///
     /// Specify just the name to associate the latest revision. For example:     arn:aws:apprunner:us-east-1:123456789012:autoscalingconfiguration/high-availability
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -26,10 +22,9 @@ pub struct CfnService {
     #[serde(rename = "AutoScalingConfigurationArn")]
     pub auto_scaling_configuration_arn: Option<String>,
 
-
-    /// 
+    ///
     /// An optional custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default,    App Runner uses an AWS managed key.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EncryptionConfiguration
@@ -38,10 +33,9 @@ pub struct CfnService {
     #[serde(rename = "EncryptionConfiguration")]
     pub encryption_configuration: Option<EncryptionConfiguration>,
 
-
-    /// 
+    ///
     /// The settings for the health check that AWS App Runner performs to monitor the health of the App Runner service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: HealthCheckConfiguration
@@ -50,10 +44,9 @@ pub struct CfnService {
     #[serde(rename = "HealthCheckConfiguration")]
     pub health_check_configuration: Option<HealthCheckConfiguration>,
 
-
-    /// 
+    ///
     /// The runtime configuration of instances (scaling units) of your service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: InstanceConfiguration
@@ -62,10 +55,9 @@ pub struct CfnService {
     #[serde(rename = "InstanceConfiguration")]
     pub instance_configuration: Option<InstanceConfiguration>,
 
-
-    /// 
+    ///
     /// Configuration settings related to network traffic of the web application that the App Runner service runs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NetworkConfiguration
@@ -74,10 +66,9 @@ pub struct CfnService {
     #[serde(rename = "NetworkConfiguration")]
     pub network_configuration: Option<NetworkConfiguration>,
 
-
-    /// 
+    ///
     /// The observability configuration of your service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ServiceObservabilityConfiguration
@@ -86,12 +77,11 @@ pub struct CfnService {
     #[serde(rename = "ObservabilityConfiguration")]
     pub observability_configuration: Option<ServiceObservabilityConfiguration>,
 
-
-    /// 
+    ///
     /// A name for the App Runner service. It must be unique across all the running App Runner services in your AWS account in the AWS Region.
-    /// 
+    ///
     /// If you don't specify a name, AWS CloudFormation generates a name for your service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -106,10 +96,9 @@ pub struct CfnService {
     #[serde(rename = "ServiceName")]
     pub service_name: Option<String>,
 
-
-    /// 
+    ///
     /// The source to deploy to the App Runner service. It can be a code or an image repository.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: SourceConfiguration
@@ -118,10 +107,9 @@ pub struct CfnService {
     #[serde(rename = "SourceConfiguration")]
     pub source_configuration: SourceConfiguration,
 
-
-    /// 
+    ///
     /// An optional list of metadata items that you can associate with the App Runner service resource. A tag is a key-value pair.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -129,10 +117,7 @@ pub struct CfnService {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnService {
     fn type_string(&self) -> &'static str {
@@ -144,49 +129,56 @@ impl cfn_resources::CfnResource for CfnService {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.auto_scaling_configuration_arn {
+            if the_val.len() > 1011 as _ {
+                return Err(format!("Max validation failed on field 'auto_scaling_configuration_arn'. {} is greater than 1011", the_val.len()));
+            }
+        }
 
         if let Some(the_val) = &self.auto_scaling_configuration_arn {
-
-        if the_val.len() > 1011 as _ {
-            return Err(format!("Max validation failed on field 'auto_scaling_configuration_arn'. {} is greater than 1011", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!("Min validation failed on field 'auto_scaling_configuration_arn'. {} is less than 1", the_val.len()));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.auto_scaling_configuration_arn {
+        self.encryption_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'auto_scaling_configuration_arn'. {} is less than 1", the_val.len()));
-        }
+        self.health_check_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        }
-        
-        self.encryption_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.instance_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.health_check_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.network_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.instance_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.observability_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.observability_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.service_name {
-
-        if the_val.len() > 40 as _ {
-            return Err(format!("Max validation failed on field 'service_name'. {} is greater than 40", the_val.len()));
+            if the_val.len() > 40 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'service_name'. {} is greater than 40",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.service_name {
-
-        if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'service_name'. {} is less than 4", the_val.len()));
+            if the_val.len() < 4 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'service_name'. {} is less than 4",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         self.source_configuration.validate()?;
 
         Ok(())
@@ -196,11 +188,9 @@ impl cfn_resources::CfnResource for CfnService {
 /// Describes resources needed to authenticate access to some source repositories. The specific resource depends on the repository provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AuthenticationConfiguration {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the IAM role that grants the App Runner service access to a source repository. It's required for ECR image repositories    (but not for ECR Public repositories).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -215,10 +205,9 @@ pub struct AuthenticationConfiguration {
     #[serde(rename = "AccessRoleArn")]
     pub access_role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the App Runner connection that enables the App Runner service to connect to a source repository. It's required for GitHub code    repositories.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -232,10 +221,7 @@ pub struct AuthenticationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ConnectionArn")]
     pub connection_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AuthenticationConfiguration {
     fn type_string(&self) -> &'static str {
@@ -247,39 +233,42 @@ impl cfn_resources::CfnResource for AuthenticationConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.access_role_arn {
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'access_role_arn'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.access_role_arn {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'access_role_arn'. {} is greater than 1024", the_val.len()));
+            if the_val.len() < 29 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'access_role_arn'. {} is less than 29",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.access_role_arn {
-
-        if the_val.len() < 29 as _ {
-            return Err(format!("Min validation failed on field 'access_role_arn'. {} is less than 29", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.connection_arn {
-
-        if the_val.len() > 1011 as _ {
-            return Err(format!("Max validation failed on field 'connection_arn'. {} is greater than 1011", the_val.len()));
+            if the_val.len() > 1011 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'connection_arn'. {} is greater than 1011",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.connection_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'connection_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'connection_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -287,11 +276,9 @@ impl cfn_resources::CfnResource for AuthenticationConfiguration {
 /// Describes the configuration that AWS App Runner uses to build and run an App Runner service from a source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CodeConfiguration {
-
-
-    /// 
+    ///
     /// The basic configuration for building and running the App Runner service. Use it to quickly launch an App Runner service without providing a     apprunner.yaml file in the source code repository (or ignoring the file if it exists).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CodeConfigurationValues
@@ -300,12 +287,11 @@ pub struct CodeConfiguration {
     #[serde(rename = "CodeConfigurationValues")]
     pub code_configuration_values: Option<CodeConfigurationValues>,
 
-
-    /// 
+    ///
     /// The source of the App Runner configuration. Values are interpreted as follows:
-    /// 
+    ///
     /// REPOSITORY – App Runner reads configuration values from the apprunner.yaml file in the source code repository and      ignores CodeConfigurationValues.                        API – App Runner uses configuration values provided in CodeConfigurationValues and ignores the       apprunner.yaml file in the source code repository.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -315,13 +301,10 @@ pub struct CodeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationSource")]
     pub configuration_source: CodeConfigurationConfigurationSourceEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CodeConfigurationConfigurationSourceEnum {
-
     /// API
     #[serde(rename = "API")]
     Api,
@@ -329,7 +312,6 @@ pub enum CodeConfigurationConfigurationSourceEnum {
     /// REPOSITORY
     #[serde(rename = "REPOSITORY")]
     Repository,
-
 }
 
 impl Default for CodeConfigurationConfigurationSourceEnum {
@@ -337,7 +319,6 @@ impl Default for CodeConfigurationConfigurationSourceEnum {
         CodeConfigurationConfigurationSourceEnum::Api
     }
 }
-
 
 impl cfn_resources::CfnResource for CodeConfiguration {
     fn type_string(&self) -> &'static str {
@@ -349,8 +330,9 @@ impl cfn_resources::CfnResource for CodeConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.code_configuration_values.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.code_configuration_values
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -359,11 +341,9 @@ impl cfn_resources::CfnResource for CodeConfiguration {
 /// Describes the basic configuration needed for building and running an AWS App Runner service. This type doesn't support the full set of possible    configuration options. Fur full configuration capabilities, use a apprunner.yaml file in the source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CodeConfigurationValues {
-
-
-    /// 
+    ///
     /// The command App Runner runs to build your application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -374,12 +354,11 @@ pub struct CodeConfigurationValues {
     #[serde(rename = "BuildCommand")]
     pub build_command: Option<String>,
 
-
-    /// 
+    ///
     /// The port that your application listens to in the container.
-    /// 
+    ///
     /// Default: 8080
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -394,10 +373,9 @@ pub struct CodeConfigurationValues {
     #[serde(rename = "Port")]
     pub port: Option<String>,
 
-
-    /// 
+    ///
     /// A runtime environment type for building and running an App Runner service.    It represents a    programming language runtime.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -407,7 +385,6 @@ pub struct CodeConfigurationValues {
     /// Update requires: No interruption
     #[serde(rename = "Runtime")]
     pub runtime: CodeConfigurationValuesRuntimeEnum,
-
 
     /// Property description not available.
     ///
@@ -419,10 +396,9 @@ pub struct CodeConfigurationValues {
     #[serde(rename = "RuntimeEnvironmentSecrets")]
     pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
 
-
-    /// 
+    ///
     /// The environment variables that are available to your running AWS App Runner service. An array of key-value pairs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of KeyValuePair
@@ -431,10 +407,9 @@ pub struct CodeConfigurationValues {
     #[serde(rename = "RuntimeEnvironmentVariables")]
     pub runtime_environment_variables: Option<Vec<KeyValuePair>>,
 
-
-    /// 
+    ///
     /// The command App Runner runs to start your application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -444,13 +419,10 @@ pub struct CodeConfigurationValues {
     /// Update requires: No interruption
     #[serde(rename = "StartCommand")]
     pub start_command: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CodeConfigurationValuesRuntimeEnum {
-
     /// CORRETTO_11
     #[serde(rename = "CORRETTO_11")]
     Corretto11,
@@ -490,7 +462,6 @@ pub enum CodeConfigurationValuesRuntimeEnum {
     /// RUBY_31
     #[serde(rename = "RUBY_31")]
     Ruby31,
-
 }
 
 impl Default for CodeConfigurationValuesRuntimeEnum {
@@ -498,7 +469,6 @@ impl Default for CodeConfigurationValuesRuntimeEnum {
         CodeConfigurationValuesRuntimeEnum::Corretto11
     }
 }
-
 
 impl cfn_resources::CfnResource for CodeConfigurationValues {
     fn type_string(&self) -> &'static str {
@@ -510,23 +480,24 @@ impl cfn_resources::CfnResource for CodeConfigurationValues {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.port {
+            if the_val.len() > 51200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'port'. {} is greater than 51200",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.port {
-
-        if the_val.len() > 51200 as _ {
-            return Err(format!("Max validation failed on field 'port'. {} is greater than 51200", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'port'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.port {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -534,13 +505,11 @@ impl cfn_resources::CfnResource for CodeConfigurationValues {
 /// Describes a source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CodeRepository {
-
-
-    /// 
+    ///
     /// Configuration for building and running the service from a source code repository.
-    /// 
+    ///
     /// Note        CodeConfiguration is required only for CreateService request.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CodeConfiguration
@@ -549,10 +518,9 @@ pub struct CodeRepository {
     #[serde(rename = "CodeConfiguration")]
     pub code_configuration: Option<CodeConfiguration>,
 
-
-    /// 
+    ///
     /// The location of the repository that contains the source code.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -567,10 +535,9 @@ pub struct CodeRepository {
     #[serde(rename = "RepositoryUrl")]
     pub repository_url: String,
 
-
-    /// 
+    ///
     /// The version that should be used within the source code repository.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: SourceCodeVersion
@@ -578,10 +545,7 @@ pub struct CodeRepository {
     /// Update requires: No interruption
     #[serde(rename = "SourceCodeVersion")]
     pub source_code_version: SourceCodeVersion,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CodeRepository {
     fn type_string(&self) -> &'static str {
@@ -593,23 +557,28 @@ impl cfn_resources::CfnResource for CodeRepository {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.code_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.code_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.repository_url;
 
         if the_val.len() > 51200 as _ {
-            return Err(format!("Max validation failed on field 'repository_url'. {} is greater than 51200", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'repository_url'. {} is greater than 51200",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.repository_url;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'repository_url'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'repository_url'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         self.source_code_version.validate()?;
 
         Ok(())
@@ -619,15 +588,13 @@ impl cfn_resources::CfnResource for CodeRepository {
 /// Describes configuration settings related to outbound network traffic of an AWS App Runner service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EgressConfiguration {
-
-
-    /// 
+    ///
     /// The type of egress configuration.
-    /// 
+    ///
     /// Set to DEFAULT for access to resources hosted on public networks.
-    /// 
+    ///
     /// Set to VPC to associate your service to a custom VPC specified by VpcConnectorArn.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -638,10 +605,9 @@ pub struct EgressConfiguration {
     #[serde(rename = "EgressType")]
     pub egress_type: EgressConfigurationEgressTypeEnum,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the App Runner VPC connector that you want to associate with your App Runner service. Only valid when EgressType =     VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -655,13 +621,10 @@ pub struct EgressConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VpcConnectorArn")]
     pub vpc_connector_arn: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EgressConfigurationEgressTypeEnum {
-
     /// DEFAULT
     #[serde(rename = "DEFAULT")]
     Default,
@@ -669,7 +632,6 @@ pub enum EgressConfigurationEgressTypeEnum {
     /// VPC
     #[serde(rename = "VPC")]
     Vpc,
-
 }
 
 impl Default for EgressConfigurationEgressTypeEnum {
@@ -677,7 +639,6 @@ impl Default for EgressConfigurationEgressTypeEnum {
         EgressConfigurationEgressTypeEnum::Default
     }
 }
-
 
 impl cfn_resources::CfnResource for EgressConfiguration {
     fn type_string(&self) -> &'static str {
@@ -689,23 +650,24 @@ impl cfn_resources::CfnResource for EgressConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.vpc_connector_arn {
+            if the_val.len() > 1011 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'vpc_connector_arn'. {} is greater than 1011",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.vpc_connector_arn {
-
-        if the_val.len() > 1011 as _ {
-            return Err(format!("Max validation failed on field 'vpc_connector_arn'. {} is greater than 1011", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'vpc_connector_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.vpc_connector_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'vpc_connector_arn'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -713,11 +675,9 @@ impl cfn_resources::CfnResource for EgressConfiguration {
 /// Describes a custom encryption key that AWS App Runner uses to encrypt copies of the source repository and service logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EncryptionConfiguration {
-
-
-    /// 
+    ///
     /// The ARN of the KMS key that's used for encryption.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -731,10 +691,7 @@ pub struct EncryptionConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "KmsKey")]
     pub kms_key: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EncryptionConfiguration {
     fn type_string(&self) -> &'static str {
@@ -746,21 +703,24 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.kms_key;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'kms_key'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'kms_key'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.kms_key;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'kms_key'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'kms_key'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -768,13 +728,11 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 /// Describes the settings for the health check that AWS App Runner performs to monitor the health of a service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HealthCheckConfiguration {
-
-
-    /// 
+    ///
     /// The number of consecutive checks that must succeed before App Runner decides that the service is healthy.
-    /// 
+    ///
     /// Default: 1
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -787,12 +745,11 @@ pub struct HealthCheckConfiguration {
     #[serde(rename = "HealthyThreshold")]
     pub healthy_threshold: Option<i64>,
 
-
-    /// 
+    ///
     /// The time interval, in seconds, between health checks.
-    /// 
+    ///
     /// Default: 5
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -805,14 +762,13 @@ pub struct HealthCheckConfiguration {
     #[serde(rename = "Interval")]
     pub interval: Option<i64>,
 
-
-    /// 
+    ///
     /// The URL that health check requests are sent to.
-    /// 
+    ///
     /// Path is only applicable when you set Protocol to HTTP.
-    /// 
+    ///
     /// Default: "/"
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -823,14 +779,13 @@ pub struct HealthCheckConfiguration {
     #[serde(rename = "Path")]
     pub path: Option<String>,
 
-
-    /// 
+    ///
     /// The IP protocol that App Runner uses to perform health checks for your service.
-    /// 
+    ///
     /// If you set Protocol to HTTP, App Runner sends health check requests to the HTTP path specified by Path.
-    /// 
+    ///
     /// Default: TCP
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -841,12 +796,11 @@ pub struct HealthCheckConfiguration {
     #[serde(rename = "Protocol")]
     pub protocol: Option<HealthCheckConfigurationProtocolEnum>,
 
-
-    /// 
+    ///
     /// The time, in seconds, to wait for a health check response before deciding it failed.
-    /// 
+    ///
     /// Default: 2
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -859,12 +813,11 @@ pub struct HealthCheckConfiguration {
     #[serde(rename = "Timeout")]
     pub timeout: Option<i64>,
 
-
-    /// 
+    ///
     /// The number of consecutive checks that must fail before App Runner decides that the service is unhealthy.
-    /// 
+    ///
     /// Default: 5
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -876,13 +829,10 @@ pub struct HealthCheckConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "UnhealthyThreshold")]
     pub unhealthy_threshold: Option<i64>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum HealthCheckConfigurationProtocolEnum {
-
     /// HTTP
     #[serde(rename = "HTTP")]
     Http,
@@ -890,7 +840,6 @@ pub enum HealthCheckConfigurationProtocolEnum {
     /// TCP
     #[serde(rename = "TCP")]
     Tcp,
-
 }
 
 impl Default for HealthCheckConfigurationProtocolEnum {
@@ -898,7 +847,6 @@ impl Default for HealthCheckConfigurationProtocolEnum {
         HealthCheckConfigurationProtocolEnum::Http
     }
 }
-
 
 impl cfn_resources::CfnResource for HealthCheckConfiguration {
     fn type_string(&self) -> &'static str {
@@ -910,79 +858,87 @@ impl cfn_resources::CfnResource for HealthCheckConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.healthy_threshold {
+            if *the_val > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'healthy_threshold'. {} is greater than 20",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.healthy_threshold {
-
-        if *the_val > 20 as _ {
-            return Err(format!("Max validation failed on field 'healthy_threshold'. {} is greater than 20", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'healthy_threshold'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.healthy_threshold {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'healthy_threshold'. {} is less than 1", the_val));
-        }
-
-        }
-        
         if let Some(the_val) = &self.interval {
-
-        if *the_val > 20 as _ {
-            return Err(format!("Max validation failed on field 'interval'. {} is greater than 20", the_val));
+            if *the_val > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'interval'. {} is greater than 20",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.interval {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'interval'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'interval'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.path {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'path'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'path'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.timeout {
-
-        if *the_val > 20 as _ {
-            return Err(format!("Max validation failed on field 'timeout'. {} is greater than 20", the_val));
+            if *the_val > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'timeout'. {} is greater than 20",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.timeout {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'timeout'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'timeout'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.unhealthy_threshold {
-
-        if *the_val > 20 as _ {
-            return Err(format!("Max validation failed on field 'unhealthy_threshold'. {} is greater than 20", the_val));
+            if *the_val > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'unhealthy_threshold'. {} is greater than 20",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.unhealthy_threshold {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'unhealthy_threshold'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'unhealthy_threshold'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -990,13 +946,11 @@ impl cfn_resources::CfnResource for HealthCheckConfiguration {
 /// Describes the configuration that AWS App Runner uses to run an App Runner service using an image pulled from a source image repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ImageConfiguration {
-
-
-    /// 
+    ///
     /// The port that your application listens to in the container.
-    /// 
+    ///
     /// Default: 8080
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1011,7 +965,6 @@ pub struct ImageConfiguration {
     #[serde(rename = "Port")]
     pub port: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -1022,10 +975,9 @@ pub struct ImageConfiguration {
     #[serde(rename = "RuntimeEnvironmentSecrets")]
     pub runtime_environment_secrets: Option<Vec<KeyValuePair>>,
 
-
-    /// 
+    ///
     /// Environment variables that are available to your running App Runner service. An array of key-value pairs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of KeyValuePair
@@ -1034,10 +986,9 @@ pub struct ImageConfiguration {
     #[serde(rename = "RuntimeEnvironmentVariables")]
     pub runtime_environment_variables: Option<Vec<KeyValuePair>>,
 
-
-    /// 
+    ///
     /// An optional command that App Runner runs to start the application in the source image. If specified, this command overrides the Docker image’s default start    command.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1047,10 +998,7 @@ pub struct ImageConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "StartCommand")]
     pub start_command: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ImageConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1062,23 +1010,24 @@ impl cfn_resources::CfnResource for ImageConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.port {
+            if the_val.len() > 51200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'port'. {} is greater than 51200",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.port {
-
-        if the_val.len() > 51200 as _ {
-            return Err(format!("Max validation failed on field 'port'. {} is greater than 51200", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'port'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.port {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -1086,11 +1035,9 @@ impl cfn_resources::CfnResource for ImageConfiguration {
 /// Describes a source image repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ImageRepository {
-
-
-    /// 
+    ///
     /// Configuration for running the identified image.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ImageConfiguration
@@ -1099,12 +1046,11 @@ pub struct ImageRepository {
     #[serde(rename = "ImageConfiguration")]
     pub image_configuration: Option<ImageConfiguration>,
 
-
-    /// 
+    ///
     /// The identifier of an image.
-    /// 
+    ///
     /// For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the image name format, see Pulling an image in the Amazon ECR User Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1119,10 +1065,9 @@ pub struct ImageRepository {
     #[serde(rename = "ImageIdentifier")]
     pub image_identifier: String,
 
-
-    /// 
+    ///
     /// The type of the image repository. This reflects the repository provider and whether the repository is private or public.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1132,13 +1077,10 @@ pub struct ImageRepository {
     /// Update requires: No interruption
     #[serde(rename = "ImageRepositoryType")]
     pub image_repository_type: ImageRepositoryImageRepositoryTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ImageRepositoryImageRepositoryTypeEnum {
-
     /// ECR
     #[serde(rename = "ECR")]
     Ecr,
@@ -1146,7 +1088,6 @@ pub enum ImageRepositoryImageRepositoryTypeEnum {
     /// ECR_PUBLIC
     #[serde(rename = "ECR_PUBLIC")]
     Ecrpublic,
-
 }
 
 impl Default for ImageRepositoryImageRepositoryTypeEnum {
@@ -1154,7 +1095,6 @@ impl Default for ImageRepositoryImageRepositoryTypeEnum {
         ImageRepositoryImageRepositoryTypeEnum::Ecr
     }
 }
-
 
 impl cfn_resources::CfnResource for ImageRepository {
     fn type_string(&self) -> &'static str {
@@ -1166,23 +1106,28 @@ impl cfn_resources::CfnResource for ImageRepository {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.image_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.image_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.image_identifier;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'image_identifier'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'image_identifier'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.image_identifier;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'image_identifier'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'image_identifier'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1190,11 +1135,9 @@ impl cfn_resources::CfnResource for ImageRepository {
 /// Network configuration settings for inbound network traffic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IngressConfiguration {
-
-
-    /// 
+    ///
     /// Specifies whether your App Runner service is publicly accessible. To make the service publicly accessible set it to True. To make the service    privately accessible, from only within an Amazon VPC set it to False.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -1202,10 +1145,7 @@ pub struct IngressConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "IsPubliclyAccessible")]
     pub is_publicly_accessible: bool,
-
 }
-
-
 
 impl cfn_resources::CfnResource for IngressConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1217,7 +1157,6 @@ impl cfn_resources::CfnResource for IngressConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1225,13 +1164,11 @@ impl cfn_resources::CfnResource for IngressConfiguration {
 /// Describes the runtime configuration of an AWS App Runner service instance (scaling unit).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InstanceConfiguration {
-
-
-    /// 
+    ///
     /// The number of CPU units reserved for each instance of your App Runner service.
-    /// 
+    ///
     /// Default: 1 vCPU
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1246,10 +1183,9 @@ pub struct InstanceConfiguration {
     #[serde(rename = "Cpu")]
     pub cpu: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an IAM role that provides permissions to your App Runner service. These are permissions that your code needs when it calls    any AWS APIs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1264,12 +1200,11 @@ pub struct InstanceConfiguration {
     #[serde(rename = "InstanceRoleArn")]
     pub instance_role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The amount of memory, in MB or GB, reserved for each instance of your App Runner service.
-    /// 
+    ///
     /// Default: 2 GB
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1283,10 +1218,7 @@ pub struct InstanceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
     pub memory: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InstanceConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1298,55 +1230,60 @@ impl cfn_resources::CfnResource for InstanceConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.cpu {
+            if the_val.len() > 9 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'cpu'. {} is greater than 9",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.cpu {
-
-        if the_val.len() > 9 as _ {
-            return Err(format!("Max validation failed on field 'cpu'. {} is greater than 9", the_val.len()));
+            if the_val.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'cpu'. {} is less than 3",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.cpu {
-
-        if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'cpu'. {} is less than 3", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.instance_role_arn {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'instance_role_arn'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_role_arn'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.instance_role_arn {
-
-        if the_val.len() < 29 as _ {
-            return Err(format!("Min validation failed on field 'instance_role_arn'. {} is less than 29", the_val.len()));
+            if the_val.len() < 29 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_role_arn'. {} is less than 29",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.memory {
-
-        if the_val.len() > 6 as _ {
-            return Err(format!("Max validation failed on field 'memory'. {} is greater than 6", the_val.len()));
+            if the_val.len() > 6 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'memory'. {} is greater than 6",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.memory {
-
-        if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'memory'. {} is less than 3", the_val.len()));
+            if the_val.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'memory'. {} is less than 3",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -1354,11 +1291,9 @@ impl cfn_resources::CfnResource for InstanceConfiguration {
 /// Describes a key-value pair, which is a string-to-string mapping.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KeyValuePair {
-
-
-    /// 
+    ///
     /// The key name string to map to a value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1367,10 +1302,9 @@ pub struct KeyValuePair {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The value string to which the key name is mapped.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1378,10 +1312,7 @@ pub struct KeyValuePair {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KeyValuePair {
     fn type_string(&self) -> &'static str {
@@ -1393,7 +1324,6 @@ impl cfn_resources::CfnResource for KeyValuePair {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1401,11 +1331,9 @@ impl cfn_resources::CfnResource for KeyValuePair {
 /// Describes configuration settings related to network traffic of an AWS App Runner service. Consists of embedded objects for each configurable network    feature.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkConfiguration {
-
-
-    /// 
+    ///
     /// Network configuration settings for outbound message traffic.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EgressConfiguration
@@ -1414,10 +1342,9 @@ pub struct NetworkConfiguration {
     #[serde(rename = "EgressConfiguration")]
     pub egress_configuration: Option<EgressConfiguration>,
 
-
-    /// 
+    ///
     /// Network configuration settings for inbound message traffic.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: IngressConfiguration
@@ -1425,10 +1352,7 @@ pub struct NetworkConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "IngressConfiguration")]
     pub ingress_configuration: Option<IngressConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NetworkConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1440,10 +1364,13 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.egress_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.egress_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.ingress_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.ingress_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1452,15 +1379,13 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 /// Describes the observability configuration of an AWS App Runner service. These are additional observability features, like tracing, that you choose to    enable. They're configured in a separate resource that you associate with your service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServiceObservabilityConfiguration {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the observability configuration that is associated with the service. Specified only when     ObservabilityEnabled is true.
-    /// 
+    ///
     /// Specify an ARN with a name and a revision number to associate that revision. For example:      arn:aws:apprunner:us-east-1:123456789012:observabilityconfiguration/xray-tracing/3
-    /// 
+    ///
     /// Specify just the name to associate the latest revision. For example:     arn:aws:apprunner:us-east-1:123456789012:observabilityconfiguration/xray-tracing
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1475,10 +1400,9 @@ pub struct ServiceObservabilityConfiguration {
     #[serde(rename = "ObservabilityConfigurationArn")]
     pub observability_configuration_arn: Option<String>,
 
-
-    /// 
+    ///
     /// When true, an observability configuration resource is associated with the service, and an ObservabilityConfigurationArn is    specified.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -1486,10 +1410,7 @@ pub struct ServiceObservabilityConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ObservabilityEnabled")]
     pub observability_enabled: bool,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServiceObservabilityConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1501,23 +1422,18 @@ impl cfn_resources::CfnResource for ServiceObservabilityConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.observability_configuration_arn {
+            if the_val.len() > 1011 as _ {
+                return Err(format!("Max validation failed on field 'observability_configuration_arn'. {} is greater than 1011", the_val.len()));
+            }
+        }
 
         if let Some(the_val) = &self.observability_configuration_arn {
-
-        if the_val.len() > 1011 as _ {
-            return Err(format!("Max validation failed on field 'observability_configuration_arn'. {} is greater than 1011", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!("Min validation failed on field 'observability_configuration_arn'. {} is less than 1", the_val.len()));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.observability_configuration_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'observability_configuration_arn'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -1525,13 +1441,11 @@ impl cfn_resources::CfnResource for ServiceObservabilityConfiguration {
 /// Identifies a version of code that AWS App Runner refers to within a source code repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SourceCodeVersion {
-
-
-    /// 
+    ///
     /// The type of version identifier.
-    /// 
+    ///
     /// For a git-based repository, branches represent versions.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1542,12 +1456,11 @@ pub struct SourceCodeVersion {
     #[serde(rename = "Type")]
     pub cfn_type: SourceCodeVersionTypeEnum,
 
-
-    /// 
+    ///
     /// A source code version.
-    /// 
+    ///
     /// For a git-based repository, a branch name maps to a specific version. App Runner uses the most recent commit to the branch.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1561,17 +1474,13 @@ pub struct SourceCodeVersion {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SourceCodeVersionTypeEnum {
-
     /// BRANCH
     #[serde(rename = "BRANCH")]
     Branch,
-
 }
 
 impl Default for SourceCodeVersionTypeEnum {
@@ -1579,7 +1488,6 @@ impl Default for SourceCodeVersionTypeEnum {
         SourceCodeVersionTypeEnum::Branch
     }
 }
-
 
 impl cfn_resources::CfnResource for SourceCodeVersion {
     fn type_string(&self) -> &'static str {
@@ -1591,21 +1499,24 @@ impl cfn_resources::CfnResource for SourceCodeVersion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.value;
 
         if the_val.len() > 51200 as _ {
-            return Err(format!("Max validation failed on field 'value'. {} is greater than 51200", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'value'. {} is greater than 51200",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.value;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'value'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'value'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1613,11 +1524,9 @@ impl cfn_resources::CfnResource for SourceCodeVersion {
 /// Describes the source deployed to an AWS App Runner service. It can be a code or an image repository.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SourceConfiguration {
-
-
-    /// 
+    ///
     /// Describes the resources that are needed to authenticate access to some source repositories.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AuthenticationConfiguration
@@ -1626,12 +1535,11 @@ pub struct SourceConfiguration {
     #[serde(rename = "AuthenticationConfiguration")]
     pub authentication_configuration: Option<AuthenticationConfiguration>,
 
-
-    /// 
+    ///
     /// If true, continuous integration from the source repository is enabled for the App Runner service. Each repository change (including any source    code commit or new image version) starts a deployment.
-    /// 
+    ///
     /// Default: App Runner sets to false for a source image that uses an ECR Public repository or an ECR repository that's in an AWS account other than the one that the service is in. App Runner sets to true in all other cases (which currently include a source code    repository or a source image using a same-account ECR repository).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -1640,12 +1548,11 @@ pub struct SourceConfiguration {
     #[serde(rename = "AutoDeploymentsEnabled")]
     pub auto_deployments_enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The description of a source code repository.
-    /// 
+    ///
     /// You must provide either this member or ImageRepository (but not both).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CodeRepository
@@ -1654,12 +1561,11 @@ pub struct SourceConfiguration {
     #[serde(rename = "CodeRepository")]
     pub code_repository: Option<CodeRepository>,
 
-
-    /// 
+    ///
     /// The description of a source image    repository.
-    /// 
+    ///
     /// You must provide either this member or CodeRepository (but not both).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ImageRepository
@@ -1667,10 +1573,7 @@ pub struct SourceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ImageRepository")]
     pub image_repository: Option<ImageRepository>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SourceConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1682,12 +1585,17 @@ impl cfn_resources::CfnResource for SourceConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.authentication_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.authentication_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.code_repository
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.code_repository.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.image_repository.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.image_repository
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1702,32 +1610,26 @@ impl cfn_resources::CfnResource for SourceConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -1739,7 +1641,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

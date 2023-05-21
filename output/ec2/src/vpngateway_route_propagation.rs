@@ -1,15 +1,11 @@
-
-
 /// Enables a virtual private gateway (VGW) to propagate routes to the specified route table     of a VPC.
 ///
 /// If you reference a VPN gateway that is in the same template as your VPN gateway route     propagation, you must explicitly declare a dependency on the VPN gateway attachment. The       AWS::EC2::VPNGatewayRoutePropagation resource cannot use the VPN gateway     until it has successfully attached to the VPC. Add a DependsOn       Attribute in the AWS::EC2::VPNGatewayRoutePropagation resource to     explicitly declare a dependency on the VPN gateway attachment.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPNGatewayRoutePropagation {
-
-
-    /// 
+    ///
     /// The ID of the route table. The routing table must be associated with the same VPC that       the virtual private gateway is attached to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -18,10 +14,9 @@ pub struct CfnVPNGatewayRoutePropagation {
     #[serde(rename = "RouteTableIds")]
     pub route_table_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// The ID of the virtual private gateway that is attached to a VPC. The virtual private       gateway must be attached to the same VPC that the routing tables are associated with.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -29,10 +24,7 @@ pub struct CfnVPNGatewayRoutePropagation {
     /// Update requires: No interruption
     #[serde(rename = "VpnGatewayId")]
     pub vpn_gateway_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnVPNGatewayRoutePropagation {
     fn type_string(&self) -> &'static str {
@@ -44,7 +36,6 @@ impl cfn_resources::CfnResource for CfnVPNGatewayRoutePropagation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

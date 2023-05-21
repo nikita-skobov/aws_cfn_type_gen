@@ -1,13 +1,9 @@
-
-
 /// Specifies a subnet group. A subnet group is a collection of subnets (typically private)     that you can designate for your clusters running in an Amazon Virtual Private Cloud (VPC) environment. When you create a cluster in an Amazon VPC,     you must specify a subnet group. MemoryDB uses that subnet group to choose a     subnet and IP addresses within that subnet to associate with your nodes. For more     information, see Subnets and subnet     groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSubnetGroup {
-
-
-    /// 
+    ///
     /// A description of the subnet group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnSubnetGroup {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the subnet group to be used for the cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnSubnetGroup {
     #[serde(rename = "SubnetGroupName")]
     pub subnet_group_name: String,
 
-
-    /// 
+    ///
     /// A list of Amazon VPC subnet IDs for the subnet group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -40,12 +34,11 @@ pub struct CfnSubnetGroup {
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -53,10 +46,7 @@ pub struct CfnSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSubnetGroup {
     fn type_string(&self) -> &'static str {
@@ -68,7 +58,6 @@ impl cfn_resources::CfnResource for CfnSubnetGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -82,32 +71,26 @@ impl cfn_resources::CfnResource for CfnSubnetGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -119,7 +102,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

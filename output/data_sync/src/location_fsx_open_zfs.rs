@@ -1,13 +1,9 @@
-
-
 /// The AWS::DataSync::LocationFSxOpenZFS resource specifies an endpoint for an Amazon FSx for OpenZFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocationFSxOpenZFS {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the FSx for OpenZFS file system.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnLocationFSxOpenZFS {
     #[serde(rename = "FsxFilesystemArn")]
     pub fsx_filesystem_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The type of protocol that AWS DataSync uses to access your file system.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Protocol
@@ -32,14 +27,13 @@ pub struct CfnLocationFSxOpenZFS {
     #[serde(rename = "Protocol")]
     pub protocol: Protocol,
 
-
-    /// 
+    ///
     /// The ARNs of the security groups that are used to configure the FSx for OpenZFS file system.
-    /// 
+    ///
     /// Pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
-    /// 
+    ///
     /// Length constraints: Maximum length of 128.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -50,10 +44,9 @@ pub struct CfnLocationFSxOpenZFS {
     #[serde(rename = "SecurityGroupArns")]
     pub security_group_arns: Vec<String>,
 
-
-    /// 
+    ///
     /// A subdirectory in the location's path that must begin with /fsx. DataSync uses this subdirectory to read or write data (depending on whether the file    system is a source or destination location).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -66,10 +59,9 @@ pub struct CfnLocationFSxOpenZFS {
     #[serde(rename = "Subdirectory")]
     pub subdirectory: Option<String>,
 
-
-    /// 
+    ///
     /// The key-value pair that represents a tag that you want to add to the resource. The value    can be an empty string. This value helps you manage, filter, and search for your resources. We    recommend that you create a name tag for your location.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -79,10 +71,7 @@ pub struct CfnLocationFSxOpenZFS {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
     fn type_string(&self) -> &'static str {
@@ -94,40 +83,44 @@ impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.fsx_filesystem_arn {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'fsx_filesystem_arn'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'fsx_filesystem_arn'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         self.protocol.validate()?;
 
         let the_val = &self.security_group_arns;
 
         if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'security_group_arns'. {} is greater than 5", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'security_group_arns'. {} is greater than 5",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.subdirectory {
-
-        if the_val.len() > 4096 as _ {
-            return Err(format!("Max validation failed on field 'subdirectory'. {} is greater than 4096", the_val.len()));
+            if the_val.len() > 4096 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -135,15 +128,13 @@ impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {
 /// Represents the mount options that are available for DataSync to access a Network File System (NFS) location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MountOptions {
-
-
-    /// 
+    ///
     /// The specific NFS version that you want DataSync to use to mount your NFS share. If the server refuses to use the version specified, the sync will fail. If you don't specify a version, DataSync defaults to AUTOMATIC. That is, DataSync automatically selects a version based on negotiation with the NFS server.
-    /// 
+    ///
     /// You can specify the following NFS versions:
-    /// 
+    ///
     /// NFSv3: Stateless protocol version that allows for asynchronous        writes on the server.            NFSv4.0: Stateful, firewall-friendly protocol version that supports        delegations and pseudo file systems.            NFSv4.1: Stateful protocol version that supports sessions,        directory delegations, and parallel data processing. Version 4.1 also includes all        features available in version 4.0.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -153,13 +144,10 @@ pub struct MountOptions {
     /// Update requires: Replacement
     #[serde(rename = "Version")]
     pub version: Option<MountOptionsVersionEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum MountOptionsVersionEnum {
-
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
     Automatic,
@@ -175,7 +163,6 @@ pub enum MountOptionsVersionEnum {
     /// NFS4_1
     #[serde(rename = "NFS4_1")]
     Nfs41,
-
 }
 
 impl Default for MountOptionsVersionEnum {
@@ -183,7 +170,6 @@ impl Default for MountOptionsVersionEnum {
         MountOptionsVersionEnum::Automatic
     }
 }
-
 
 impl cfn_resources::CfnResource for MountOptions {
     fn type_string(&self) -> &'static str {
@@ -195,7 +181,6 @@ impl cfn_resources::CfnResource for MountOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -203,11 +188,9 @@ impl cfn_resources::CfnResource for MountOptions {
 /// Represents the Network File System (NFS) protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NFS {
-
-
-    /// 
+    ///
     /// Represents the mount options that are available for DataSync to access an NFS location.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: MountOptions
@@ -215,10 +198,7 @@ pub struct NFS {
     /// Update requires: Replacement
     #[serde(rename = "MountOptions")]
     pub mount_options: MountOptions,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NFS {
     fn type_string(&self) -> &'static str {
@@ -230,7 +210,6 @@ impl cfn_resources::CfnResource for NFS {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.mount_options.validate()?;
 
         Ok(())
@@ -240,11 +219,9 @@ impl cfn_resources::CfnResource for NFS {
 /// Represents the protocol that AWS DataSync uses to access your Amazon FSx for OpenZFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Protocol {
-
-
-    /// 
+    ///
     /// Represents the Network File System (NFS) protocol that DataSync uses to access your FSx for OpenZFS file system.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NFS
@@ -252,10 +229,7 @@ pub struct Protocol {
     /// Update requires: Replacement
     #[serde(rename = "NFS")]
     pub nfs: Option<NFS>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Protocol {
     fn type_string(&self) -> &'static str {
@@ -267,7 +241,6 @@ impl cfn_resources::CfnResource for Protocol {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.nfs.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
@@ -283,32 +256,26 @@ impl cfn_resources::CfnResource for Protocol {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -320,7 +287,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

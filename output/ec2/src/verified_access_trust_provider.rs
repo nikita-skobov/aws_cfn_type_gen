@@ -1,13 +1,9 @@
-
-
 /// Describes a Verified Access trust provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVerifiedAccessTrustProvider {
-
-
-    /// 
+    ///
     /// A description for the AWS Verified Access trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnVerifiedAccessTrustProvider {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The options for device-identity trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DeviceOptions
@@ -28,10 +23,9 @@ pub struct CfnVerifiedAccessTrustProvider {
     #[serde(rename = "DeviceOptions")]
     pub device_options: Option<DeviceOptions>,
 
-
-    /// 
+    ///
     /// The type of device-based trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnVerifiedAccessTrustProvider {
     #[serde(rename = "DeviceTrustProviderType")]
     pub device_trust_provider_type: Option<VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum>,
 
-
-    /// 
+    ///
     /// The options for an OpenID Connect-compatible user-identity trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: OidcOptions
@@ -54,10 +47,9 @@ pub struct CfnVerifiedAccessTrustProvider {
     #[serde(rename = "OidcOptions")]
     pub oidc_options: Option<OidcOptions>,
 
-
-    /// 
+    ///
     /// The identifier to be used when working with policy rules.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -66,10 +58,9 @@ pub struct CfnVerifiedAccessTrustProvider {
     #[serde(rename = "PolicyReferenceName")]
     pub policy_reference_name: String,
 
-
-    /// 
+    ///
     /// The tags.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -78,10 +69,9 @@ pub struct CfnVerifiedAccessTrustProvider {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of Verified Access trust provider.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -92,10 +82,9 @@ pub struct CfnVerifiedAccessTrustProvider {
     #[serde(rename = "TrustProviderType")]
     pub trust_provider_type: VerifiedAccessTrustProviderTrustProviderTypeEnum,
 
-
-    /// 
+    ///
     /// The type of user-based trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -105,13 +94,10 @@ pub struct CfnVerifiedAccessTrustProvider {
     /// Update requires: Replacement
     #[serde(rename = "UserTrustProviderType")]
     pub user_trust_provider_type: Option<VerifiedAccessTrustProviderUserTrustProviderTypeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
-
     /// crowdstrike
     #[serde(rename = "crowdstrike")]
     Crowdstrike,
@@ -119,7 +105,6 @@ pub enum VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
     /// jamf
     #[serde(rename = "jamf")]
     Jamf,
-
 }
 
 impl Default for VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
@@ -130,7 +115,6 @@ impl Default for VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
-
     /// device
     #[serde(rename = "device")]
     Device,
@@ -138,7 +122,6 @@ pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
     /// user
     #[serde(rename = "user")]
     User,
-
 }
 
 impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
@@ -149,7 +132,6 @@ impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
-
     /// iam-identity-center
     #[serde(rename = "iam-identity-center")]
     Iamidentitycenter,
@@ -157,7 +139,6 @@ pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
     /// oidc
     #[serde(rename = "oidc")]
     Oidc,
-
 }
 
 impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
@@ -165,7 +146,6 @@ impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
         VerifiedAccessTrustProviderUserTrustProviderTypeEnum::Iamidentitycenter
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnVerifiedAccessTrustProvider {
     fn type_string(&self) -> &'static str {
@@ -177,10 +157,13 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessTrustProvider {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.device_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.device_options.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.oidc_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.oidc_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -189,11 +172,9 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessTrustProvider {
 /// Describes the options for an AWS Verified Access device-identity based trust provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DeviceOptions {
-
-
-    /// 
+    ///
     /// The ID of the tenant application with the device-identity provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -201,10 +182,7 @@ pub struct DeviceOptions {
     /// Update requires: Replacement
     #[serde(rename = "TenantId")]
     pub tenant_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DeviceOptions {
     fn type_string(&self) -> &'static str {
@@ -216,7 +194,6 @@ impl cfn_resources::CfnResource for DeviceOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -224,11 +201,9 @@ impl cfn_resources::CfnResource for DeviceOptions {
 /// Describes the options for an OpenID Connect-compatible user-identity trust     provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OidcOptions {
-
-
-    /// 
+    ///
     /// The OIDC authorization endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -237,10 +212,9 @@ pub struct OidcOptions {
     #[serde(rename = "AuthorizationEndpoint")]
     pub authorization_endpoint: Option<String>,
 
-
-    /// 
+    ///
     /// The client identifier.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -249,10 +223,9 @@ pub struct OidcOptions {
     #[serde(rename = "ClientId")]
     pub client_id: Option<String>,
 
-
-    /// 
+    ///
     /// The client secret.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -261,10 +234,9 @@ pub struct OidcOptions {
     #[serde(rename = "ClientSecret")]
     pub client_secret: Option<String>,
 
-
-    /// 
+    ///
     /// The OIDC issuer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -273,10 +245,9 @@ pub struct OidcOptions {
     #[serde(rename = "Issuer")]
     pub issuer: Option<String>,
 
-
-    /// 
+    ///
     /// The OpenID Connect (OIDC) scope specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -285,10 +256,9 @@ pub struct OidcOptions {
     #[serde(rename = "Scope")]
     pub scope: Option<String>,
 
-
-    /// 
+    ///
     /// The OIDC token endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -297,10 +267,9 @@ pub struct OidcOptions {
     #[serde(rename = "TokenEndpoint")]
     pub token_endpoint: Option<String>,
 
-
-    /// 
+    ///
     /// The OIDC user info endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -308,10 +277,7 @@ pub struct OidcOptions {
     /// Update requires: No interruption
     #[serde(rename = "UserInfoEndpoint")]
     pub user_info_endpoint: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for OidcOptions {
     fn type_string(&self) -> &'static str {
@@ -323,7 +289,6 @@ impl cfn_resources::CfnResource for OidcOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -337,32 +302,26 @@ impl cfn_resources::CfnResource for OidcOptions {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -374,7 +333,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

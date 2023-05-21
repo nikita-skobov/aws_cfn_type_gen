@@ -1,13 +1,9 @@
-
-
 /// The     AWS::Greengrass::LoggerDefinitionVersion resource represents a logger definition version for AWS IoT Greengrass.     A logger definition version contains a list of loggers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLoggerDefinitionVersion {
-
-
-    /// 
+    ///
     /// The ID of the logger definition associated with this version. This value is a GUID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnLoggerDefinitionVersion {
     #[serde(rename = "LoggerDefinitionId")]
     pub logger_definition_id: String,
 
-
-    /// 
+    ///
     /// The loggers in this version.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Logger
@@ -27,10 +22,7 @@ pub struct CfnLoggerDefinitionVersion {
     /// Update requires: Replacement
     #[serde(rename = "Loggers")]
     pub loggers: Vec<Logger>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnLoggerDefinitionVersion {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnLoggerDefinitionVersion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -52,11 +43,9 @@ impl cfn_resources::CfnResource for CfnLoggerDefinitionVersion {
 /// In an AWS CloudFormation template, the Loggers 		 property of the AWS::Greengrass::LoggerDefinitionVersion resource contains a      list of Logger property types.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Logger {
-
-
-    /// 
+    ///
     /// The source of the log event. Valid values are GreengrassSystem or Lambda. 				 When GreengrassSystem is used, events from Greengrass system components are logged. 				 When Lambda is used, events from user-defined Lambda functions are logged.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -65,10 +54,9 @@ pub struct Logger {
     #[serde(rename = "Component")]
     pub component: String,
 
-
-    /// 
+    ///
     /// A descriptive or arbitrary ID for the logger. This value must be unique within       the logger definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -77,10 +65,9 @@ pub struct Logger {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// The log-level threshold. Log events below this threshold are filtered out and aren't stored. 				 Valid values are DEBUG, INFO (recommended), WARN, 				 ERROR, or FATAL.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -89,10 +76,9 @@ pub struct Logger {
     #[serde(rename = "Level")]
     pub level: String,
 
-
-    /// 
+    ///
     /// The amount of file space (in KB) to use when writing logs to the local file system. 				 This property does not apply for CloudWatch Logs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -101,10 +87,9 @@ pub struct Logger {
     #[serde(rename = "Space")]
     pub space: Option<i64>,
 
-
-    /// 
+    ///
     /// The storage mechanism for log events. Valid values are FileSystem or AWSCloudWatch. 				 When AWSCloudWatch is used, log events are sent to CloudWatch Logs. 				 When FileSystem is used, log events are stored on the local file system.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -112,10 +97,7 @@ pub struct Logger {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Logger {
     fn type_string(&self) -> &'static str {
@@ -127,7 +109,6 @@ impl cfn_resources::CfnResource for Logger {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// For Redis engine version 6.0 onwards: Creates a Redis user group. For more information, see Using Role Based Access Control (RBAC)
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserGroup {
-
-
-    /// 
+    ///
     /// The current supported value is redis.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -17,7 +13,6 @@ pub struct CfnUserGroup {
     /// Update requires: Replacement
     #[serde(rename = "Engine")]
     pub engine: String,
-
 
     /// Property description not available.
     ///
@@ -29,10 +24,9 @@ pub struct CfnUserGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the user group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -41,10 +35,9 @@ pub struct CfnUserGroup {
     #[serde(rename = "UserGroupId")]
     pub user_group_id: String,
 
-
-    /// 
+    ///
     /// The list of user IDs that belong to the user group. A user named default must be included.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -52,10 +45,7 @@ pub struct CfnUserGroup {
     /// Update requires: No interruption
     #[serde(rename = "UserIds")]
     pub user_ids: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnUserGroup {
     fn type_string(&self) -> &'static str {
@@ -67,7 +57,6 @@ impl cfn_resources::CfnResource for CfnUserGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -81,32 +70,26 @@ impl cfn_resources::CfnResource for CfnUserGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -118,7 +101,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

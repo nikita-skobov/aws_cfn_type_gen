@@ -1,13 +1,9 @@
-
-
 /// The AWS::Lightsail::Database resource specifies an Amazon Lightsail database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDatabase {
-
-
-    /// 
+    ///
     /// The Availability Zone for the database.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnDatabase {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// A Boolean value indicating whether automated backup retention is enabled for the     database.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -28,10 +23,9 @@ pub struct CfnDatabase {
     #[serde(rename = "BackupRetention")]
     pub backup_retention: Option<bool>,
 
-
-    /// 
+    ///
     /// The certificate associated with the database.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,26 +34,25 @@ pub struct CfnDatabase {
     #[serde(rename = "CaCertificateIdentifier")]
     pub ca_certificate_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// The meaning of this parameter differs according to the database engine you use.
-    /// 
+    ///
     /// MySQL
-    /// 
+    ///
     /// The name of the database to create when the Lightsail database resource     is created. If this parameter isn't specified, no database is created in the database     resource.
-    /// 
+    ///
     /// Constraints:
-    /// 
+    ///
     /// Must contain 1-64 letters or numbers.            Must begin with a letter. Subsequent characters can be letters, underscores, or        numbers (0-9).            Can't be a word reserved by the specified database engine.       For more information about reserved words in MySQL, see the Keywords and Reserved        Words articles for MySQL 5.6, MySQL 5.7, and          MySQL          8.0.
-    /// 
+    ///
     /// PostgreSQL
-    /// 
+    ///
     /// The name of the database to create when the Lightsail database resource     is created. If this parameter isn't specified, a database named postgres is     created in the database resource.
-    /// 
+    ///
     /// Constraints:
-    /// 
+    ///
     /// Must contain 1-63 letters or numbers.            Must begin with a letter. Subsequent characters can be letters, underscores, or        numbers (0-9).            Can't be a word reserved by the specified database engine.       For more information about reserved words in PostgreSQL, see the SQL Key Words        articles for PostgreSQL          9.6, PostgreSQL          10, PostgreSQL          11, and PostgreSQL          12.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -68,20 +61,19 @@ pub struct CfnDatabase {
     #[serde(rename = "MasterDatabaseName")]
     pub master_database_name: String,
 
-
-    /// 
+    ///
     /// The password for the primary user of the database. The password can include any     printable ASCII character except the following: /, ", or @. It cannot contain     spaces.
-    /// 
+    ///
     /// NoteThe MasterUserPassword and RotateMasterUserPassword       parameters cannot be used together in the same template.
-    /// 
+    ///
     /// MySQL
-    /// 
+    ///
     /// Constraints: Must contain 8-41 characters.
-    /// 
+    ///
     /// PostgreSQL
-    /// 
+    ///
     /// Constraints: Must contain 8-128 characters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -90,22 +82,21 @@ pub struct CfnDatabase {
     #[serde(rename = "MasterUserPassword")]
     pub master_user_password: Option<String>,
 
-
-    /// 
+    ///
     /// The name for the primary user.
-    /// 
+    ///
     /// MySQL
-    /// 
+    ///
     /// Constraints:
-    /// 
+    ///
     /// Required for MySQL.            Must be 1-16 letters or numbers. Can contain underscores.            First character must be a letter.            Can't be a reserved word for the chosen database engine.       For more information about reserved words in MySQL 5.6 or 5.7, see the Keywords        and Reserved Words articles for MySQL 5.6,          MySQL          5.7, or MySQL 8.0.
-    /// 
+    ///
     /// PostgreSQL
-    /// 
+    ///
     /// Constraints:
-    /// 
+    ///
     /// Required for PostgreSQL.            Must be 1-63 letters or numbers. Can contain underscores.            First character must be a letter.            Can't be a reserved word for the chosen database engine.       For more information about reserved words in MySQL 5.6 or 5.7, see the Keywords        and Reserved Words articles for PostgreSQL          9.6, PostgreSQL          10, PostgreSQL          11, and PostgreSQL          12.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -114,10 +105,9 @@ pub struct CfnDatabase {
     #[serde(rename = "MasterUsername")]
     pub master_username: String,
 
-
-    /// 
+    ///
     /// The daily time range during which automated backups are created for the database (for     example, 16:00-16:30).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -126,10 +116,9 @@ pub struct CfnDatabase {
     #[serde(rename = "PreferredBackupWindow")]
     pub preferred_backup_window: Option<String>,
 
-
-    /// 
+    ///
     /// The weekly time range during which system maintenance can occur for the database,     formatted as follows: ddd:hh24:mi-ddd:hh24:mi. For example,       Tue:17:00-Tue:17:30.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -138,10 +127,9 @@ pub struct CfnDatabase {
     #[serde(rename = "PreferredMaintenanceWindow")]
     pub preferred_maintenance_window: Option<String>,
 
-
-    /// 
+    ///
     /// A Boolean value indicating whether the database is accessible to anyone on the     internet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -150,10 +138,9 @@ pub struct CfnDatabase {
     #[serde(rename = "PubliclyAccessible")]
     pub publicly_accessible: Option<bool>,
 
-
-    /// 
+    ///
     /// The blueprint ID for the database (for example, mysql_8_0).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -162,10 +149,9 @@ pub struct CfnDatabase {
     #[serde(rename = "RelationalDatabaseBlueprintId")]
     pub relational_database_blueprint_id: String,
 
-
-    /// 
+    ///
     /// The bundle ID for the database (for example, medium_1_0).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -174,10 +160,9 @@ pub struct CfnDatabase {
     #[serde(rename = "RelationalDatabaseBundleId")]
     pub relational_database_bundle_id: String,
 
-
-    /// 
+    ///
     /// The name of the instance.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -186,10 +171,9 @@ pub struct CfnDatabase {
     #[serde(rename = "RelationalDatabaseName")]
     pub relational_database_name: String,
 
-
-    /// 
+    ///
     /// An array of parameters for the database.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of RelationalDatabaseParameter
@@ -198,12 +182,11 @@ pub struct CfnDatabase {
     #[serde(rename = "RelationalDatabaseParameters")]
     pub relational_database_parameters: Option<Vec<RelationalDatabaseParameter>>,
 
-
-    /// 
+    ///
     /// A Boolean value indicating whether to change the primary user password to a new, strong     password generated by Lightsail.
-    /// 
+    ///
     /// NoteThe RotateMasterUserPassword and MasterUserPassword       parameters cannot be used together in the same template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -212,14 +195,13 @@ pub struct CfnDatabase {
     #[serde(rename = "RotateMasterUserPassword")]
     pub rotate_master_user_password: Option<bool>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag     in the AWS CloudFormation User Guide.
-    /// 
+    ///
     /// NoteThe Value of Tags is optional for Lightsail resources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -227,10 +209,7 @@ pub struct CfnDatabase {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDatabase {
     fn type_string(&self) -> &'static str {
@@ -242,7 +221,6 @@ impl cfn_resources::CfnResource for CfnDatabase {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -250,11 +228,9 @@ impl cfn_resources::CfnResource for CfnDatabase {
 /// RelationalDatabaseParameter is a property of the AWS::Lightsail::Database resource. It describes parameters for the     database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RelationalDatabaseParameter {
-
-
-    /// 
+    ///
     /// The valid range of values for the parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -263,12 +239,11 @@ pub struct RelationalDatabaseParameter {
     #[serde(rename = "AllowedValues")]
     pub allowed_values: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates when parameter updates are applied.
-    /// 
+    ///
     /// Can be immediate or pending-reboot.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -277,10 +252,9 @@ pub struct RelationalDatabaseParameter {
     #[serde(rename = "ApplyMethod")]
     pub apply_method: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the engine-specific parameter type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -289,10 +263,9 @@ pub struct RelationalDatabaseParameter {
     #[serde(rename = "ApplyType")]
     pub apply_type: Option<String>,
 
-
-    /// 
+    ///
     /// The valid data type of the parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -301,10 +274,9 @@ pub struct RelationalDatabaseParameter {
     #[serde(rename = "DataType")]
     pub data_type: Option<String>,
 
-
-    /// 
+    ///
     /// A description of the parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -313,10 +285,9 @@ pub struct RelationalDatabaseParameter {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// A Boolean value indicating whether the parameter can be modified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -325,10 +296,9 @@ pub struct RelationalDatabaseParameter {
     #[serde(rename = "IsModifiable")]
     pub is_modifiable: Option<bool>,
 
-
-    /// 
+    ///
     /// The name of the parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -337,10 +307,9 @@ pub struct RelationalDatabaseParameter {
     #[serde(rename = "ParameterName")]
     pub parameter_name: Option<String>,
 
-
-    /// 
+    ///
     /// The value for the parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -348,10 +317,7 @@ pub struct RelationalDatabaseParameter {
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
     pub parameter_value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RelationalDatabaseParameter {
     fn type_string(&self) -> &'static str {
@@ -363,7 +329,6 @@ impl cfn_resources::CfnResource for RelationalDatabaseParameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -377,32 +342,26 @@ impl cfn_resources::CfnResource for RelationalDatabaseParameter {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -414,7 +373,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

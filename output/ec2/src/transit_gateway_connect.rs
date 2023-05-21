@@ -1,17 +1,13 @@
-
-
 /// Creates a Connect attachment from a specified transit gateway attachment. A Connect attachment is a GRE-based tunnel attachment that you can use to establish a connection between a transit gateway and an appliance.
 ///
 /// A Connect attachment uses an existing VPC or AWS Direct Connect attachment as the underlying transport mechanism.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayConnect {
-
-
-    /// 
+    ///
     /// The Connect attachment options.
-    /// 
+    ///
     /// protocol (gre)
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: TransitGatewayConnectOptions
@@ -20,10 +16,9 @@ pub struct CfnTransitGatewayConnect {
     #[serde(rename = "Options")]
     pub options: TransitGatewayConnectOptions,
 
-
-    /// 
+    ///
     /// The tags for the attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -32,10 +27,9 @@ pub struct CfnTransitGatewayConnect {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the attachment from which the Connect attachment was created.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -43,10 +37,7 @@ pub struct CfnTransitGatewayConnect {
     /// Update requires: Replacement
     #[serde(rename = "TransportTransitGatewayAttachmentId")]
     pub transport_transit_gateway_attachment_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnTransitGatewayConnect {
     fn type_string(&self) -> &'static str {
@@ -58,7 +49,6 @@ impl cfn_resources::CfnResource for CfnTransitGatewayConnect {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.options.validate()?;
 
         Ok(())
@@ -74,32 +64,26 @@ impl cfn_resources::CfnResource for CfnTransitGatewayConnect {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -111,7 +95,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -119,11 +102,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Describes the Connect attachment options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TransitGatewayConnectOptions {
-
-
-    /// 
+    ///
     /// The tunnel protocol.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -133,17 +114,13 @@ pub struct TransitGatewayConnectOptions {
     /// Update requires: Replacement
     #[serde(rename = "Protocol")]
     pub protocol: Option<TransitGatewayConnectOptionsProtocolEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TransitGatewayConnectOptionsProtocolEnum {
-
     /// gre
     #[serde(rename = "gre")]
     Gre,
-
 }
 
 impl Default for TransitGatewayConnectOptionsProtocolEnum {
@@ -151,7 +128,6 @@ impl Default for TransitGatewayConnectOptionsProtocolEnum {
         TransitGatewayConnectOptionsProtocolEnum::Gre
     }
 }
-
 
 impl cfn_resources::CfnResource for TransitGatewayConnectOptions {
     fn type_string(&self) -> &'static str {
@@ -163,7 +139,6 @@ impl cfn_resources::CfnResource for TransitGatewayConnectOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

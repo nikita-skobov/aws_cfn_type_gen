@@ -1,13 +1,9 @@
-
-
 /// The AWS::AmplifyUIBuilder::Form resource specifies all of the information that is required to create a form.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnForm {
-
-
-    /// 
+    ///
     /// The unique ID of the Amplify app associated with the form.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnForm {
     #[serde(rename = "AppId")]
     pub app_id: Option<String>,
 
-
-    /// 
+    ///
     /// The FormCTA object that stores the call to action configuration for the    form.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FormCTA
@@ -28,10 +23,9 @@ pub struct CfnForm {
     #[serde(rename = "Cta")]
     pub cta: Option<FormCTA>,
 
-
-    /// 
+    ///
     /// The type of data source to use to create the form.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: FormDataTypeConfig
@@ -40,10 +34,9 @@ pub struct CfnForm {
     #[serde(rename = "DataType")]
     pub data_type: FormDataTypeConfig,
 
-
-    /// 
+    ///
     /// The name of the backend environment that is a part of the Amplify app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -52,10 +45,9 @@ pub struct CfnForm {
     #[serde(rename = "EnvironmentName")]
     pub environment_name: Option<String>,
 
-
-    /// 
+    ///
     /// The configuration information for the form's fields.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Map of FieldConfig
@@ -64,10 +56,9 @@ pub struct CfnForm {
     #[serde(rename = "Fields")]
     pub fields: std::collections::HashMap<String, FieldConfig>,
 
-
-    /// 
+    ///
     /// Specifies whether to perform a create or update action on the form.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -75,7 +66,6 @@ pub struct CfnForm {
     /// Update requires: No interruption
     #[serde(rename = "FormActionType")]
     pub form_action_type: String,
-
 
     /// Property description not available.
     ///
@@ -87,10 +77,9 @@ pub struct CfnForm {
     #[serde(rename = "LabelDecorator")]
     pub label_decorator: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the form.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -99,10 +88,9 @@ pub struct CfnForm {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The schema version of the form.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -111,10 +99,9 @@ pub struct CfnForm {
     #[serde(rename = "SchemaVersion")]
     pub schema_version: String,
 
-
-    /// 
+    ///
     /// The configuration information for the visual helper elements for the form. These elements    are not associated with any data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Map of SectionalElement
@@ -123,10 +110,9 @@ pub struct CfnForm {
     #[serde(rename = "SectionalElements")]
     pub sectional_elements: std::collections::HashMap<String, SectionalElement>,
 
-
-    /// 
+    ///
     /// The configuration for the form's style.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: FormStyle
@@ -135,10 +121,9 @@ pub struct CfnForm {
     #[serde(rename = "Style")]
     pub style: FormStyle,
 
-
-    /// 
+    ///
     /// One or more key-value pairs to use when tagging the form data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -146,10 +131,7 @@ pub struct CfnForm {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnForm {
     fn type_string(&self) -> &'static str {
@@ -161,7 +143,6 @@ impl cfn_resources::CfnResource for CfnForm {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.cta.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         self.data_type.validate()?;
@@ -175,11 +156,9 @@ impl cfn_resources::CfnResource for CfnForm {
 /// The FieldConfig property specifies the configuration information for a field in a table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FieldConfig {
-
-
-    /// 
+    ///
     /// Specifies whether to hide a field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -188,10 +167,9 @@ pub struct FieldConfig {
     #[serde(rename = "Excluded")]
     pub excluded: Option<bool>,
 
-
-    /// 
+    ///
     /// Describes the configuration for the default input value to display for a field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FieldInputConfig
@@ -200,10 +178,9 @@ pub struct FieldConfig {
     #[serde(rename = "InputType")]
     pub input_type: Option<FieldInputConfig>,
 
-
-    /// 
+    ///
     /// The label for the field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -212,10 +189,9 @@ pub struct FieldConfig {
     #[serde(rename = "Label")]
     pub label: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the field position.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FieldPosition
@@ -224,10 +200,9 @@ pub struct FieldConfig {
     #[serde(rename = "Position")]
     pub position: Option<FieldPosition>,
 
-
-    /// 
+    ///
     /// The validations to perform on the value in the field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of FieldValidationConfiguration
@@ -235,10 +210,7 @@ pub struct FieldConfig {
     /// Update requires: No interruption
     #[serde(rename = "Validations")]
     pub validations: Option<Vec<FieldValidationConfiguration>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FieldConfig {
     fn type_string(&self) -> &'static str {
@@ -250,10 +222,13 @@ impl cfn_resources::CfnResource for FieldConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.input_type
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.input_type.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.position.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.position
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -262,11 +237,9 @@ impl cfn_resources::CfnResource for FieldConfig {
 /// The FieldInputConfig property specifies the configuration for the default input values to display for a field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FieldInputConfig {
-
-
-    /// 
+    ///
     /// Specifies whether a field has a default value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -275,10 +248,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "DefaultChecked")]
     pub default_checked: Option<bool>,
 
-
-    /// 
+    ///
     /// The default country code for a phone number.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -287,10 +259,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "DefaultCountryCode")]
     pub default_country_code: Option<String>,
 
-
-    /// 
+    ///
     /// The default value for the field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -299,10 +270,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "DefaultValue")]
     pub default_value: Option<String>,
 
-
-    /// 
+    ///
     /// The text to display to describe the field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -310,7 +280,6 @@ pub struct FieldInputConfig {
     /// Update requires: No interruption
     #[serde(rename = "DescriptiveText")]
     pub descriptive_text: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -322,7 +291,6 @@ pub struct FieldInputConfig {
     #[serde(rename = "FileUploaderConfig")]
     pub file_uploader_config: Option<FileUploaderFieldConfig>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -333,10 +301,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "IsArray")]
     pub is_array: Option<bool>,
 
-
-    /// 
+    ///
     /// The maximum value to display for the field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -345,10 +312,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "MaxValue")]
     pub max_value: Option<f64>,
 
-
-    /// 
+    ///
     /// The minimum value to display for the field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -357,10 +323,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "MinValue")]
     pub min_value: Option<f64>,
 
-
-    /// 
+    ///
     /// The name of the field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -369,10 +334,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The text to display as a placeholder for the field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -381,10 +345,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "Placeholder")]
     pub placeholder: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies a read only field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -393,10 +356,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "ReadOnly")]
     pub read_only: Option<bool>,
 
-
-    /// 
+    ///
     /// Specifies a field that requires input.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -405,10 +367,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "Required")]
     pub required: Option<bool>,
 
-
-    /// 
+    ///
     /// The stepping increment for a numeric value in a field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -417,10 +378,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "Step")]
     pub step: Option<f64>,
 
-
-    /// 
+    ///
     /// The input type for the field.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -429,10 +389,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "Type")]
     pub cfn_type: String,
 
-
-    /// 
+    ///
     /// The value for the field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -441,10 +400,9 @@ pub struct FieldInputConfig {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 
-
-    /// 
+    ///
     /// The information to use to customize the input fields with data at runtime.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ValueMappings
@@ -452,10 +410,7 @@ pub struct FieldInputConfig {
     /// Update requires: No interruption
     #[serde(rename = "ValueMappings")]
     pub value_mappings: Option<ValueMappings>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FieldInputConfig {
     fn type_string(&self) -> &'static str {
@@ -467,10 +422,13 @@ impl cfn_resources::CfnResource for FieldInputConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.file_uploader_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.file_uploader_config.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.value_mappings.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.value_mappings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -479,8 +437,6 @@ impl cfn_resources::CfnResource for FieldInputConfig {
 /// The FieldPosition property specifies the field position.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FieldPosition {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -490,7 +446,6 @@ pub struct FieldPosition {
     /// Update requires: No interruption
     #[serde(rename = "Below")]
     pub below: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -502,7 +457,6 @@ pub struct FieldPosition {
     #[serde(rename = "Fixed")]
     pub fixed: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -512,10 +466,7 @@ pub struct FieldPosition {
     /// Update requires: No interruption
     #[serde(rename = "RightOf")]
     pub right_of: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FieldPosition {
     fn type_string(&self) -> &'static str {
@@ -527,7 +478,6 @@ impl cfn_resources::CfnResource for FieldPosition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -535,11 +485,9 @@ impl cfn_resources::CfnResource for FieldPosition {
 /// The FieldValidationConfiguration property specifies the validation configuration for a field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FieldValidationConfiguration {
-
-
-    /// 
+    ///
     /// The validation to perform on a number value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Double
@@ -548,10 +496,9 @@ pub struct FieldValidationConfiguration {
     #[serde(rename = "NumValues")]
     pub num_values: Option<Vec<f64>>,
 
-
-    /// 
+    ///
     /// The validation to perform on a string value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -560,10 +507,9 @@ pub struct FieldValidationConfiguration {
     #[serde(rename = "StrValues")]
     pub str_values: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The validation to perform on an object type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -572,10 +518,9 @@ pub struct FieldValidationConfiguration {
     #[serde(rename = "Type")]
     pub cfn_type: String,
 
-
-    /// 
+    ///
     /// The validation message to display.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -583,10 +528,7 @@ pub struct FieldValidationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ValidationMessage")]
     pub validation_message: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FieldValidationConfiguration {
     fn type_string(&self) -> &'static str {
@@ -598,7 +540,6 @@ impl cfn_resources::CfnResource for FieldValidationConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -606,8 +547,6 @@ impl cfn_resources::CfnResource for FieldValidationConfiguration {
 /// The FileUploaderFieldConfig property type specifies Property description not available. for an AWS::AmplifyUIBuilder::Form.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FileUploaderFieldConfig {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -617,7 +556,6 @@ pub struct FileUploaderFieldConfig {
     /// Update requires: No interruption
     #[serde(rename = "AcceptedFileTypes")]
     pub accepted_file_types: Vec<String>,
-
 
     /// Property description not available.
     ///
@@ -629,7 +567,6 @@ pub struct FileUploaderFieldConfig {
     #[serde(rename = "AccessLevel")]
     pub access_level: String,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -639,7 +576,6 @@ pub struct FileUploaderFieldConfig {
     /// Update requires: No interruption
     #[serde(rename = "IsResumable")]
     pub is_resumable: Option<bool>,
-
 
     /// Property description not available.
     ///
@@ -651,7 +587,6 @@ pub struct FileUploaderFieldConfig {
     #[serde(rename = "MaxFileCount")]
     pub max_file_count: Option<f64>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -662,7 +597,6 @@ pub struct FileUploaderFieldConfig {
     #[serde(rename = "MaxSize")]
     pub max_size: Option<f64>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -672,10 +606,7 @@ pub struct FileUploaderFieldConfig {
     /// Update requires: No interruption
     #[serde(rename = "ShowThumbnails")]
     pub show_thumbnails: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FileUploaderFieldConfig {
     fn type_string(&self) -> &'static str {
@@ -687,7 +618,6 @@ impl cfn_resources::CfnResource for FileUploaderFieldConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -695,11 +625,9 @@ impl cfn_resources::CfnResource for FileUploaderFieldConfig {
 /// The FormButton property specifies the configuration for a button UI element that is a part of a form.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FormButton {
-
-
-    /// 
+    ///
     /// Describes the button's properties.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -708,10 +636,9 @@ pub struct FormButton {
     #[serde(rename = "Children")]
     pub children: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies whether the button is visible on the form.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -720,10 +647,9 @@ pub struct FormButton {
     #[serde(rename = "Excluded")]
     pub excluded: Option<bool>,
 
-
-    /// 
+    ///
     /// The position of the button.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FieldPosition
@@ -731,10 +657,7 @@ pub struct FormButton {
     /// Update requires: No interruption
     #[serde(rename = "Position")]
     pub position: Option<FieldPosition>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FormButton {
     fn type_string(&self) -> &'static str {
@@ -746,8 +669,9 @@ impl cfn_resources::CfnResource for FormButton {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.position.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.position
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -756,11 +680,9 @@ impl cfn_resources::CfnResource for FormButton {
 /// The FormCTA property specifies the call to action button configuration for the form.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FormCTA {
-
-
-    /// 
+    ///
     /// Displays a cancel button.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FormButton
@@ -769,10 +691,9 @@ pub struct FormCTA {
     #[serde(rename = "Cancel")]
     pub cancel: Option<FormButton>,
 
-
-    /// 
+    ///
     /// Displays a clear button.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FormButton
@@ -781,10 +702,9 @@ pub struct FormCTA {
     #[serde(rename = "Clear")]
     pub clear: Option<FormButton>,
 
-
-    /// 
+    ///
     /// The position of the button.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -793,10 +713,9 @@ pub struct FormCTA {
     #[serde(rename = "Position")]
     pub position: Option<String>,
 
-
-    /// 
+    ///
     /// Displays a submit button.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FormButton
@@ -804,10 +723,7 @@ pub struct FormCTA {
     /// Update requires: No interruption
     #[serde(rename = "Submit")]
     pub submit: Option<FormButton>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FormCTA {
     fn type_string(&self) -> &'static str {
@@ -819,7 +735,6 @@ impl cfn_resources::CfnResource for FormCTA {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.cancel.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         self.clear.as_ref().map_or(Ok(()), |val| val.validate())?;
@@ -833,11 +748,9 @@ impl cfn_resources::CfnResource for FormCTA {
 /// The FormDataTypeConfig property specifies the data type configuration for the data source associated with a form.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FormDataTypeConfig {
-
-
-    /// 
+    ///
     /// The data source type, either an Amplify DataStore model or a custom data type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -846,10 +759,9 @@ pub struct FormDataTypeConfig {
     #[serde(rename = "DataSourceType")]
     pub data_source_type: String,
 
-
-    /// 
+    ///
     /// The unique name of the data type you are using as the data source for the form.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -857,10 +769,7 @@ pub struct FormDataTypeConfig {
     /// Update requires: No interruption
     #[serde(rename = "DataTypeName")]
     pub data_type_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FormDataTypeConfig {
     fn type_string(&self) -> &'static str {
@@ -872,7 +781,6 @@ impl cfn_resources::CfnResource for FormDataTypeConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -880,11 +788,9 @@ impl cfn_resources::CfnResource for FormDataTypeConfig {
 /// The FormInputValueProperty property specifies the configuration for an input field on a form. Use    FormInputValueProperty to specify the values to render or bind by    default.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FormInputValueProperty {
-
-
-    /// 
+    ///
     /// The value to assign to the input field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -892,10 +798,7 @@ pub struct FormInputValueProperty {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FormInputValueProperty {
     fn type_string(&self) -> &'static str {
@@ -907,7 +810,6 @@ impl cfn_resources::CfnResource for FormInputValueProperty {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -915,11 +817,9 @@ impl cfn_resources::CfnResource for FormInputValueProperty {
 /// The FormStyle property specifies the configuration for the form's style.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FormStyle {
-
-
-    /// 
+    ///
     /// The spacing for the horizontal gap.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FormStyleConfig
@@ -928,10 +828,9 @@ pub struct FormStyle {
     #[serde(rename = "HorizontalGap")]
     pub horizontal_gap: Option<FormStyleConfig>,
 
-
-    /// 
+    ///
     /// The size of the outer padding for the form.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FormStyleConfig
@@ -940,10 +839,9 @@ pub struct FormStyle {
     #[serde(rename = "OuterPadding")]
     pub outer_padding: Option<FormStyleConfig>,
 
-
-    /// 
+    ///
     /// The spacing for the vertical gap.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FormStyleConfig
@@ -951,10 +849,7 @@ pub struct FormStyle {
     /// Update requires: No interruption
     #[serde(rename = "VerticalGap")]
     pub vertical_gap: Option<FormStyleConfig>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FormStyle {
     fn type_string(&self) -> &'static str {
@@ -966,12 +861,17 @@ impl cfn_resources::CfnResource for FormStyle {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.horizontal_gap
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.horizontal_gap.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.outer_padding
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.outer_padding.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.vertical_gap.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vertical_gap
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -980,8 +880,6 @@ impl cfn_resources::CfnResource for FormStyle {
 /// The FormStyleConfig property specifies the configuration settings for the form's style properties.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FormStyleConfig {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -992,7 +890,6 @@ pub struct FormStyleConfig {
     #[serde(rename = "TokenReference")]
     pub token_reference: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -1002,10 +899,7 @@ pub struct FormStyleConfig {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FormStyleConfig {
     fn type_string(&self) -> &'static str {
@@ -1017,7 +911,6 @@ impl cfn_resources::CfnResource for FormStyleConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1025,8 +918,6 @@ impl cfn_resources::CfnResource for FormStyleConfig {
 /// The SectionalElement property specifies the configuration information for a visual helper element for a form. A sectional    element can be a header, a text block, or a divider. These elements are static and not    associated with any data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SectionalElement {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -1037,10 +928,9 @@ pub struct SectionalElement {
     #[serde(rename = "Excluded")]
     pub excluded: Option<bool>,
 
-
-    /// 
+    ///
     /// Specifies the size of the font for a Heading sectional element. Valid values    are 1 | 2 | 3 | 4 | 5 | 6.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -1049,10 +939,9 @@ pub struct SectionalElement {
     #[serde(rename = "Level")]
     pub level: Option<f64>,
 
-
-    /// 
+    ///
     /// Specifies the orientation for a Divider sectional element. Valid values are     horizontal or vertical.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1061,10 +950,9 @@ pub struct SectionalElement {
     #[serde(rename = "Orientation")]
     pub orientation: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the position of the text in a field for a Text sectional    element.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FieldPosition
@@ -1073,10 +961,9 @@ pub struct SectionalElement {
     #[serde(rename = "Position")]
     pub position: Option<FieldPosition>,
 
-
-    /// 
+    ///
     /// The text for a Text sectional element.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1085,10 +972,9 @@ pub struct SectionalElement {
     #[serde(rename = "Text")]
     pub text: Option<String>,
 
-
-    /// 
+    ///
     /// The type of sectional element. Valid values are Heading, Text,    and Divider.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1096,10 +982,7 @@ pub struct SectionalElement {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SectionalElement {
     fn type_string(&self) -> &'static str {
@@ -1111,8 +994,9 @@ impl cfn_resources::CfnResource for SectionalElement {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.position.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.position
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1121,11 +1005,9 @@ impl cfn_resources::CfnResource for SectionalElement {
 /// The ValueMapping property specifies the association between a complex object and a display value. Use ValueMapping to store    how to represent complex objects when they are displayed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ValueMapping {
-
-
-    /// 
+    ///
     /// The value to display for the complex object.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FormInputValueProperty
@@ -1134,10 +1016,9 @@ pub struct ValueMapping {
     #[serde(rename = "DisplayValue")]
     pub display_value: Option<FormInputValueProperty>,
 
-
-    /// 
+    ///
     /// The complex object.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: FormInputValueProperty
@@ -1145,10 +1026,7 @@ pub struct ValueMapping {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: FormInputValueProperty,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ValueMapping {
     fn type_string(&self) -> &'static str {
@@ -1160,8 +1038,9 @@ impl cfn_resources::CfnResource for ValueMapping {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.display_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.display_value
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.value.validate()?;
 
@@ -1172,11 +1051,9 @@ impl cfn_resources::CfnResource for ValueMapping {
 /// The ValueMappings property specifies the data binding configuration for a value map.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ValueMappings {
-
-
-    /// 
+    ///
     /// The value and display value pairs.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ValueMapping
@@ -1184,10 +1061,7 @@ pub struct ValueMappings {
     /// Update requires: No interruption
     #[serde(rename = "Values")]
     pub values: Vec<ValueMapping>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ValueMappings {
     fn type_string(&self) -> &'static str {
@@ -1199,7 +1073,6 @@ impl cfn_resources::CfnResource for ValueMappings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

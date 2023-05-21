@@ -1,11 +1,7 @@
-
-
 /// The AWS::AccessAnalyzer::Analyzer resource specifies a new analyzer. The analyzer is an object that represents the IAM Access Analyzer feature. An analyzer is required      for Access Analyzer to become operational.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAnalyzer {
-
-
-    /// 
+    ///
     /// The name of the analyzer.
     ///
     /// Required: No
@@ -16,8 +12,7 @@ pub struct CfnAnalyzer {
     #[serde(rename = "AnalyzerName")]
     pub analyzer_name: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the archive rules to add for the analyzer.
     ///
     /// Required: No
@@ -28,10 +23,9 @@ pub struct CfnAnalyzer {
     #[serde(rename = "ArchiveRules")]
     pub archive_rules: Option<Vec<ArchiveRule>>,
 
-
-    /// 
+    ///
     /// The tags to apply to the analyzer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -40,8 +34,7 @@ pub struct CfnAnalyzer {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type represents the zone of trust for the analyzer.
     ///
     /// Allowed Values: ACCOUNT | ORGANIZATION
@@ -53,13 +46,10 @@ pub struct CfnAnalyzer {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: AnalyzerTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AnalyzerTypeEnum {
-
     /// ACCOUNT
     #[serde(rename = "ACCOUNT")]
     Account,
@@ -67,7 +57,6 @@ pub enum AnalyzerTypeEnum {
     /// ORGANIZATION
     #[serde(rename = "ORGANIZATION")]
     Organization,
-
 }
 
 impl Default for AnalyzerTypeEnum {
@@ -75,7 +64,6 @@ impl Default for AnalyzerTypeEnum {
         AnalyzerTypeEnum::Account
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnAnalyzer {
     fn type_string(&self) -> &'static str {
@@ -87,7 +75,6 @@ impl cfn_resources::CfnResource for CfnAnalyzer {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -95,10 +82,8 @@ impl cfn_resources::CfnResource for CfnAnalyzer {
 /// The criteria for an archive rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ArchiveRule {
-
-
     /// The criteria for the rule.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Filter
@@ -106,7 +91,6 @@ pub struct ArchiveRule {
     /// Update requires: No interruption
     #[serde(rename = "Filter")]
     pub filter: Vec<Filter>,
-
 
     /// The name of the archive rule.
     ///
@@ -117,10 +101,7 @@ pub struct ArchiveRule {
     /// Update requires: No interruption
     #[serde(rename = "RuleName")]
     pub rule_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ArchiveRule {
     fn type_string(&self) -> &'static str {
@@ -132,7 +113,6 @@ impl cfn_resources::CfnResource for ArchiveRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -142,8 +122,6 @@ impl cfn_resources::CfnResource for ArchiveRule {
 /// To learn about filter keys that you can use to create an archive rule, see AWS Identity and Access Management Access Analyzer filter keys in the     AWS Identity and Access Management User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Filter {
-
-
     /// A "contains" condition to match for the rule.
     ///
     /// Required: No
@@ -153,7 +131,6 @@ pub struct Filter {
     /// Update requires: No interruption
     #[serde(rename = "Contains")]
     pub contains: Option<Vec<String>>,
-
 
     /// An "equals" condition to match for the rule.
     ///
@@ -165,7 +142,6 @@ pub struct Filter {
     #[serde(rename = "Eq")]
     pub eq: Option<Vec<String>>,
 
-
     /// An "exists" condition to match for the rule.
     ///
     /// Required: No
@@ -175,7 +151,6 @@ pub struct Filter {
     /// Update requires: No interruption
     #[serde(rename = "Exists")]
     pub exists: Option<bool>,
-
 
     /// A "not equal" condition to match for the rule.
     ///
@@ -187,7 +162,6 @@ pub struct Filter {
     #[serde(rename = "Neq")]
     pub neq: Option<Vec<String>>,
 
-
     /// The property used to define the criteria in the filter for the rule.
     ///
     /// Required: Yes
@@ -197,10 +171,7 @@ pub struct Filter {
     /// Update requires: No interruption
     #[serde(rename = "Property")]
     pub property: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Filter {
     fn type_string(&self) -> &'static str {
@@ -212,7 +183,6 @@ impl cfn_resources::CfnResource for Filter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -226,32 +196,26 @@ impl cfn_resources::CfnResource for Filter {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -263,7 +227,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

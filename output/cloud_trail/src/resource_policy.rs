@@ -1,13 +1,9 @@
-
-
 /// Attaches a resource-based permission policy to a CloudTrail channel that is used for an integration with an event source outside of AWS. For more information about resource-based policies, see      CloudTrail resource-based policy examples      in the CloudTrail User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourcePolicy {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the CloudTrail channel attached to the resource-based policy.      The following is the format of a resource ARN:      arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,14 +18,13 @@ pub struct CfnResourcePolicy {
     #[serde(rename = "ResourceArn")]
     pub resource_arn: String,
 
-
-    /// 
+    ///
     /// A JSON-formatted string for an AWS resource-based policy.
-    /// 
+    ///
     /// The following are requirements for the resource policy:
-    /// 
+    ///
     /// Contains only one action: cloudtrail-data:PutAuditEvents                             Contains at least one statement. The policy can have a maximum of 20 statements.                             Each statement contains at least one principal. A statement can have a maximum of 50 principals.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Json
@@ -41,10 +36,7 @@ pub struct CfnResourcePolicy {
     /// Update requires: No interruption
     #[serde(rename = "ResourcePolicy")]
     pub resource_policy: serde_json::Value,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {
     fn type_string(&self) -> &'static str {
@@ -56,21 +48,24 @@ impl cfn_resources::CfnResource for CfnResourcePolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.resource_arn;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'resource_arn'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'resource_arn'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.resource_arn;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'resource_arn'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'resource_arn'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

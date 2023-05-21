@@ -1,13 +1,9 @@
-
-
 /// Assigns access to a Principal for a specified AWS account using a specified permission     set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAssignment {
-
-
-    /// 
+    ///
     /// The ARN of the IAM Identity Center instance under which the operation will be executed. For more     information about ARNs, see Amazon Resource Names (ARNs) and       AWS Service Namespaces in the AWS General Reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnAssignment {
     #[serde(rename = "InstanceArn")]
     pub instance_arn: String,
 
-
-    /// 
+    ///
     /// The ARN of the permission set.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -40,10 +35,9 @@ pub struct CfnAssignment {
     #[serde(rename = "PermissionSetArn")]
     pub permission_set_arn: String,
 
-
-    /// 
+    ///
     /// An identifier for an object in IAM Identity Center, such as a user or group. PrincipalIds are GUIDs (For example, f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about PrincipalIds in IAM Identity Center, see the IAM Identity Center Identity Store API Reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -58,10 +52,9 @@ pub struct CfnAssignment {
     #[serde(rename = "PrincipalId")]
     pub principal_id: String,
 
-
-    /// 
+    ///
     /// The entity type for which the assignment will be created.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -72,10 +65,9 @@ pub struct CfnAssignment {
     #[serde(rename = "PrincipalType")]
     pub principal_type: AssignmentPrincipalTypeEnum,
 
-
-    /// 
+    ///
     /// TargetID is an AWS account identifier, (For example, 123456789012).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -90,10 +82,9 @@ pub struct CfnAssignment {
     #[serde(rename = "TargetId")]
     pub target_id: String,
 
-
-    /// 
+    ///
     /// The entity type for which the assignment will be created.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -103,13 +94,10 @@ pub struct CfnAssignment {
     /// Update requires: Replacement
     #[serde(rename = "TargetType")]
     pub target_type: AssignmentTargetTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AssignmentPrincipalTypeEnum {
-
     /// GROUP
     #[serde(rename = "GROUP")]
     Group,
@@ -117,7 +105,6 @@ pub enum AssignmentPrincipalTypeEnum {
     /// USER
     #[serde(rename = "USER")]
     User,
-
 }
 
 impl Default for AssignmentPrincipalTypeEnum {
@@ -128,11 +115,9 @@ impl Default for AssignmentPrincipalTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AssignmentTargetTypeEnum {
-
     /// AWS_ACCOUNT
     #[serde(rename = "AWS_ACCOUNT")]
     Awsaccount,
-
 }
 
 impl Default for AssignmentTargetTypeEnum {
@@ -140,7 +125,6 @@ impl Default for AssignmentTargetTypeEnum {
         AssignmentTargetTypeEnum::Awsaccount
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnAssignment {
     fn type_string(&self) -> &'static str {
@@ -152,63 +136,78 @@ impl cfn_resources::CfnResource for CfnAssignment {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.instance_arn;
 
         if the_val.len() > 1224 as _ {
-            return Err(format!("Max validation failed on field 'instance_arn'. {} is greater than 1224", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'instance_arn'. {} is greater than 1224",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.instance_arn;
 
         if the_val.len() < 10 as _ {
-            return Err(format!("Min validation failed on field 'instance_arn'. {} is less than 10", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'instance_arn'. {} is less than 10",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.permission_set_arn;
 
         if the_val.len() > 1224 as _ {
-            return Err(format!("Max validation failed on field 'permission_set_arn'. {} is greater than 1224", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'permission_set_arn'. {} is greater than 1224",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.permission_set_arn;
 
         if the_val.len() < 10 as _ {
-            return Err(format!("Min validation failed on field 'permission_set_arn'. {} is less than 10", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'permission_set_arn'. {} is less than 10",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.principal_id;
 
         if the_val.len() > 47 as _ {
-            return Err(format!("Max validation failed on field 'principal_id'. {} is greater than 47", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'principal_id'. {} is greater than 47",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.principal_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'principal_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'principal_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.target_id;
 
         if the_val.len() > 12 as _ {
-            return Err(format!("Max validation failed on field 'target_id'. {} is greater than 12", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'target_id'. {} is greater than 12",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.target_id;
 
         if the_val.len() < 12 as _ {
-            return Err(format!("Min validation failed on field 'target_id'. {} is less than 12", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'target_id'. {} is less than 12",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

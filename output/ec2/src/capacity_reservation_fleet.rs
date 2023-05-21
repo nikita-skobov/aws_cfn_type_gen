@@ -1,15 +1,11 @@
-
-
 /// Creates a new Capacity Reservation Fleet with the specified attributes. For more     information, see Capacity Reservation Fleets in the Amazon EC2 User     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCapacityReservationFleet {
-
-
-    /// 
+    ///
     /// The strategy used by the Capacity Reservation Fleet to determine which of the 			specified instance types to use. Currently, only the prioritized 			allocation strategy is supported. For more information, see 				Allocation strategy in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Valid values: prioritized
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,12 +14,11 @@ pub struct CfnCapacityReservationFleet {
     #[serde(rename = "AllocationStrategy")]
     pub allocation_strategy: Option<String>,
 
-
-    /// 
+    ///
     /// The date and time at which the Capacity Reservation Fleet expires. When the Capacity 			Reservation Fleet expires, its state changes to expired and all of the Capacity 			Reservations in the Fleet expire.
-    /// 
+    ///
     /// The Capacity Reservation Fleet expires within an hour after the specified time. For example, 			if you specify 5/31/2019, 13:30:55, the Capacity Reservation Fleet 			is guaranteed to expire between 13:30:55 and 14:30:55 on 			5/31/2019.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -32,12 +27,11 @@ pub struct CfnCapacityReservationFleet {
     #[serde(rename = "EndDate")]
     pub end_date: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates the type of instance launches that the Capacity Reservation Fleet accepts. All 			Capacity Reservations in the Fleet inherit this instance matching criteria.
-    /// 
+    ///
     /// Currently, Capacity Reservation Fleets support open instance matching criteria 			only. This means that instances that have matching attributes (instance type, platform, and 			Availability Zone) run in the Capacity Reservations automatically. Instances do not need to 			explicitly target a Capacity Reservation Fleet to use its reserved capacity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -48,10 +42,9 @@ pub struct CfnCapacityReservationFleet {
     #[serde(rename = "InstanceMatchCriteria")]
     pub instance_match_criteria: Option<CapacityReservationFleetInstanceMatchCriteriaEnum>,
 
-
-    /// 
+    ///
     /// Information about the instance types for which to reserve the capacity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of InstanceTypeSpecification
@@ -60,10 +53,9 @@ pub struct CfnCapacityReservationFleet {
     #[serde(rename = "InstanceTypeSpecifications")]
     pub instance_type_specifications: Option<Vec<InstanceTypeSpecification>>,
 
-
-    /// 
+    ///
     /// Used to add an end date to a Capacity Reservation Fleet that has no end date and      time. To add an end date to a Capacity Reservation Fleet, specify true      for this paramater and specify the end date and time (in UTC time format) for the      EndDate parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -72,10 +64,9 @@ pub struct CfnCapacityReservationFleet {
     #[serde(rename = "NoRemoveEndDate")]
     pub no_remove_end_date: Option<bool>,
 
-
-    /// 
+    ///
     /// Used to remove an end date from a Capacity Reservation Fleet that is configured      to end automatically at a specific date and time. To remove the end date from a      Capacity Reservation Fleet, specify true for this paramater and omit      the EndDate parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -84,10 +75,9 @@ pub struct CfnCapacityReservationFleet {
     #[serde(rename = "RemoveEndDate")]
     pub remove_end_date: Option<bool>,
 
-
-    /// 
+    ///
     /// The tags to assign to the Capacity Reservation Fleet. The tags are automatically assigned 			to the Capacity Reservations in the Fleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of TagSpecification
@@ -96,12 +86,11 @@ pub struct CfnCapacityReservationFleet {
     #[serde(rename = "TagSpecifications")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
-
-    /// 
+    ///
     /// Indicates the tenancy of the Capacity Reservation Fleet. All Capacity Reservations 			in the Fleet inherit this tenancy. The Capacity Reservation Fleet can have one of 			the following tenancy settings:
-    /// 
+    ///
     /// default - The Capacity Reservation Fleet is created on hardware 					that is shared with other AWS accounts.                        dedicated - The Capacity Reservations are created on single-tenant 					hardware that is dedicated to a single AWS account.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -112,10 +101,9 @@ pub struct CfnCapacityReservationFleet {
     #[serde(rename = "Tenancy")]
     pub tenancy: Option<CapacityReservationFleetTenancyEnum>,
 
-
-    /// 
+    ///
     /// The total number of capacity units to be reserved by the Capacity Reservation Fleet. This 			value, together with the instance type weights that you assign to each instance type used by 			the Fleet determine the number of instances for which the Fleet reserves capacity. Both values 			are based on units that make sense for your workload. For more information, see 				Total target capacity in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -123,17 +111,13 @@ pub struct CfnCapacityReservationFleet {
     /// Update requires: No interruption
     #[serde(rename = "TotalTargetCapacity")]
     pub total_target_capacity: Option<i64>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CapacityReservationFleetInstanceMatchCriteriaEnum {
-
     /// open
     #[serde(rename = "open")]
     Open,
-
 }
 
 impl Default for CapacityReservationFleetInstanceMatchCriteriaEnum {
@@ -144,11 +128,9 @@ impl Default for CapacityReservationFleetInstanceMatchCriteriaEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CapacityReservationFleetTenancyEnum {
-
     /// default
     #[serde(rename = "default")]
     Default,
-
 }
 
 impl Default for CapacityReservationFleetTenancyEnum {
@@ -156,7 +138,6 @@ impl Default for CapacityReservationFleetTenancyEnum {
         CapacityReservationFleetTenancyEnum::Default
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnCapacityReservationFleet {
     fn type_string(&self) -> &'static str {
@@ -168,7 +149,6 @@ impl cfn_resources::CfnResource for CfnCapacityReservationFleet {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -178,11 +158,9 @@ impl cfn_resources::CfnResource for CfnCapacityReservationFleet {
 /// InstanceTypeSpecification is a property of the       AWS::EC2::CapacityReservationFleet resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InstanceTypeSpecification {
-
-
-    /// 
+    ///
     /// The Availability Zone in which the Capacity Reservation Fleet reserves the capacity. A Capacity 			Reservation Fleet can't span Availability Zones. All instance type specifications that you specify 			for the Fleet must use the same Availability Zone.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -191,10 +169,9 @@ pub struct InstanceTypeSpecification {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the Availability Zone in which the Capacity Reservation Fleet reserves the capacity. A 			Capacity Reservation Fleet can't span Availability Zones. All instance type specifications that you 			specify for the Fleet must use the same Availability Zone.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -203,10 +180,9 @@ pub struct InstanceTypeSpecification {
     #[serde(rename = "AvailabilityZoneId")]
     pub availability_zone_id: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether the Capacity Reservation Fleet supports EBS-optimized instances types. This 			optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack 			to provide optimal I/O performance. This optimization isn't available with all instance types. Additional 			usage charges apply when using EBS-optimized instance types.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -215,10 +191,9 @@ pub struct InstanceTypeSpecification {
     #[serde(rename = "EbsOptimized")]
     pub ebs_optimized: Option<bool>,
 
-
-    /// 
+    ///
     /// The type of operating system for which the Capacity Reservation Fleet reserves capacity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -229,10 +204,9 @@ pub struct InstanceTypeSpecification {
     #[serde(rename = "InstancePlatform")]
     pub instance_platform: Option<InstanceTypeSpecificationInstancePlatformEnum>,
 
-
-    /// 
+    ///
     /// The instance type for which the Capacity Reservation Fleet reserves capacity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -243,10 +217,9 @@ pub struct InstanceTypeSpecification {
     #[serde(rename = "InstanceType")]
     pub instance_type: Option<InstanceTypeSpecificationInstanceTypeEnum>,
 
-
-    /// 
+    ///
     /// The priority to assign to the instance type. This value is used to determine which of the instance types 			specified for the Fleet should be prioritized for use. A lower value indicates a high priority. For more 			information, see Instance type priority 			in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -257,12 +230,11 @@ pub struct InstanceTypeSpecification {
     #[serde(rename = "Priority")]
     pub priority: Option<i64>,
 
-
-    /// 
+    ///
     /// The number of capacity units provided by the specified instance type. This value,     together with the total target capacity that you specify for the Fleet determine the number     of instances for which the Fleet reserves capacity. Both values are based on units that     make sense for your workload. For more information, see Total target       capacity in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Valid Range: Minimum value of 0.001. Maximum value of     99.999.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -270,13 +242,10 @@ pub struct InstanceTypeSpecification {
     /// Update requires: Replacement
     #[serde(rename = "Weight")]
     pub weight: Option<f64>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceTypeSpecificationInstancePlatformEnum {
-
     /// Linux with SQL Server Enterprise
     #[serde(rename = "Linux with SQL Server Enterprise")]
     Linuxwithsqlserverenterprise,
@@ -344,7 +313,6 @@ pub enum InstanceTypeSpecificationInstancePlatformEnum {
     /// Windows with SQL Server Web
     #[serde(rename = "Windows with SQL Server Web")]
     Windowswithsqlserverweb,
-
 }
 
 impl Default for InstanceTypeSpecificationInstancePlatformEnum {
@@ -355,7 +323,6 @@ impl Default for InstanceTypeSpecificationInstancePlatformEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceTypeSpecificationInstanceTypeEnum {
-
     /// a1.2xlarge
     #[serde(rename = "a1.2xlarge")]
     A12xlarge,
@@ -2895,7 +2862,6 @@ pub enum InstanceTypeSpecificationInstanceTypeEnum {
     /// z1d.xlarge
     #[serde(rename = "z1d.xlarge")]
     Z1dxlarge,
-
 }
 
 impl Default for InstanceTypeSpecificationInstanceTypeEnum {
@@ -2903,7 +2869,6 @@ impl Default for InstanceTypeSpecificationInstanceTypeEnum {
         InstanceTypeSpecificationInstanceTypeEnum::A12xlarge
     }
 }
-
 
 impl cfn_resources::CfnResource for InstanceTypeSpecification {
     fn type_string(&self) -> &'static str {
@@ -2915,15 +2880,15 @@ impl cfn_resources::CfnResource for InstanceTypeSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.priority {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'priority'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'priority'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -2937,32 +2902,26 @@ impl cfn_resources::CfnResource for InstanceTypeSpecification {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -2974,7 +2933,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -2982,13 +2940,11 @@ impl cfn_resources::CfnResource for Tag {
 /// The tags to apply to a resource when the resource is being created. When you specify a tag, you must     specify the resource type to tag, otherwise the request will fail.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagSpecification {
-
-
-    /// 
+    ///
     /// The type of resource to tag on creation. Specify     capacity-reservation-fleet.
-    /// 
+    ///
     /// To tag a resource after it has been created, see CreateTags.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2997,10 +2953,9 @@ pub struct TagSpecification {
     #[serde(rename = "ResourceType")]
     pub resource_type: Option<String>,
 
-
-    /// 
+    ///
     /// The tags to apply to the resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -3008,10 +2963,7 @@ pub struct TagSpecification {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TagSpecification {
     fn type_string(&self) -> &'static str {
@@ -3023,7 +2975,6 @@ impl cfn_resources::CfnResource for TagSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

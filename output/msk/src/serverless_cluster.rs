@@ -1,10 +1,6 @@
-
-
 /// The AWS::MSK::ServerlessCluster resource Property description not available. for MSK.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnServerlessCluster {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -14,7 +10,6 @@ pub struct CfnServerlessCluster {
     /// Update requires: Replacement
     #[serde(rename = "ClientAuthentication")]
     pub client_authentication: ClientAuthentication,
-
 
     /// Property description not available.
     ///
@@ -26,7 +21,6 @@ pub struct CfnServerlessCluster {
     #[serde(rename = "ClusterName")]
     pub cluster_name: String,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -37,7 +31,6 @@ pub struct CfnServerlessCluster {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -47,10 +40,7 @@ pub struct CfnServerlessCluster {
     /// Update requires: Replacement
     #[serde(rename = "VpcConfigs")]
     pub vpc_configs: Vec<VpcConfig>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnServerlessCluster {
     fn type_string(&self) -> &'static str {
@@ -62,7 +52,6 @@ impl cfn_resources::CfnResource for CfnServerlessCluster {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.client_authentication.validate()?;
 
         Ok(())
@@ -72,11 +61,9 @@ impl cfn_resources::CfnResource for CfnServerlessCluster {
 /// Includes all client authentication information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClientAuthentication {
-
-
-    /// 
+    ///
     /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Sasl
@@ -84,10 +71,7 @@ pub struct ClientAuthentication {
     /// Update requires: Replacement
     #[serde(rename = "Sasl")]
     pub sasl: Sasl,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClientAuthentication {
     fn type_string(&self) -> &'static str {
@@ -99,7 +83,6 @@ impl cfn_resources::CfnResource for ClientAuthentication {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.sasl.validate()?;
 
         Ok(())
@@ -109,11 +92,9 @@ impl cfn_resources::CfnResource for ClientAuthentication {
 /// Details for SASL/IAM client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Iam {
-
-
-    /// 
+    ///
     /// SASL/IAM authentication is enabled or not.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -121,10 +102,7 @@ pub struct Iam {
     /// Update requires: Replacement
     #[serde(rename = "Enabled")]
     pub enabled: bool,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Iam {
     fn type_string(&self) -> &'static str {
@@ -136,7 +114,6 @@ impl cfn_resources::CfnResource for Iam {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -144,11 +121,9 @@ impl cfn_resources::CfnResource for Iam {
 /// Details for client authentication using SASL. To turn on SASL, you must also turn on EncryptionInTransit by setting inCluster to true. You must set clientBroker to either TLS or TLS_PLAINTEXT. If you choose TLS_PLAINTEXT, then you must also set unauthenticated to true.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Sasl {
-
-
-    /// 
+    ///
     /// Details for ClientAuthentication using IAM.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Iam
@@ -156,10 +131,7 @@ pub struct Sasl {
     /// Update requires: Replacement
     #[serde(rename = "Iam")]
     pub iam: Iam,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Sasl {
     fn type_string(&self) -> &'static str {
@@ -171,7 +143,6 @@ impl cfn_resources::CfnResource for Sasl {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.iam.validate()?;
 
         Ok(())
@@ -181,8 +152,6 @@ impl cfn_resources::CfnResource for Sasl {
 /// The VpcConfig property type specifies Property description not available. for an AWS::MSK::ServerlessCluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcConfig {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -193,7 +162,6 @@ pub struct VpcConfig {
     #[serde(rename = "SecurityGroups")]
     pub security_groups: Option<Vec<String>>,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -203,10 +171,7 @@ pub struct VpcConfig {
     /// Update requires: Replacement
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VpcConfig {
     fn type_string(&self) -> &'static str {
@@ -218,7 +183,6 @@ impl cfn_resources::CfnResource for VpcConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

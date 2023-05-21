@@ -1,13 +1,9 @@
-
-
 /// Specifies a network insights analysis.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNetworkInsightsAnalysis {
-
-
-    /// 
+    ///
     /// The member accounts that contain resources that the path can traverse.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -16,10 +12,9 @@ pub struct CfnNetworkInsightsAnalysis {
     #[serde(rename = "AdditionalAccounts")]
     pub additional_accounts: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Names (ARN) of the resources that the path must traverse.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -28,10 +23,9 @@ pub struct CfnNetworkInsightsAnalysis {
     #[serde(rename = "FilterInArns")]
     pub filter_in_arns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The ID of the path.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -40,10 +34,9 @@ pub struct CfnNetworkInsightsAnalysis {
     #[serde(rename = "NetworkInsightsPathId")]
     pub network_insights_path_id: String,
 
-
-    /// 
+    ///
     /// The tags to apply.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -51,10 +44,7 @@ pub struct CfnNetworkInsightsAnalysis {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnNetworkInsightsAnalysis {
     fn type_string(&self) -> &'static str {
@@ -66,7 +56,6 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAnalysis {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -74,11 +63,9 @@ impl cfn_resources::CfnResource for CfnNetworkInsightsAnalysis {
 /// Describes an additional detail for a path analysis. For more information, see Reachability Analyzer additional detail codes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AdditionalDetail {
-
-
-    /// 
+    ///
     /// The additional detail code.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -87,10 +74,9 @@ pub struct AdditionalDetail {
     #[serde(rename = "AdditionalDetailType")]
     pub additional_detail_type: Option<String>,
 
-
-    /// 
+    ///
     /// The path component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -99,10 +85,9 @@ pub struct AdditionalDetail {
     #[serde(rename = "Component")]
     pub component: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The load balancers.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AnalysisComponent
@@ -111,10 +96,9 @@ pub struct AdditionalDetail {
     #[serde(rename = "LoadBalancers")]
     pub load_balancers: Option<Vec<AnalysisComponent>>,
 
-
-    /// 
+    ///
     /// The name of the VPC endpoint service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -122,10 +106,7 @@ pub struct AdditionalDetail {
     /// Update requires: No interruption
     #[serde(rename = "ServiceName")]
     pub service_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AdditionalDetail {
     fn type_string(&self) -> &'static str {
@@ -137,8 +118,9 @@ impl cfn_resources::CfnResource for AdditionalDetail {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.component.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.component
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -147,11 +129,9 @@ impl cfn_resources::CfnResource for AdditionalDetail {
 /// Describes an potential intermediate component of a feasible path.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AlternatePathHint {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -160,10 +140,9 @@ pub struct AlternatePathHint {
     #[serde(rename = "ComponentArn")]
     pub component_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -171,10 +150,7 @@ pub struct AlternatePathHint {
     /// Update requires: No interruption
     #[serde(rename = "ComponentId")]
     pub component_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AlternatePathHint {
     fn type_string(&self) -> &'static str {
@@ -186,7 +162,6 @@ impl cfn_resources::CfnResource for AlternatePathHint {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -194,11 +169,9 @@ impl cfn_resources::CfnResource for AlternatePathHint {
 /// Describes a network access control (ACL) rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AnalysisAclRule {
-
-
-    /// 
+    ///
     /// The IPv4 address range, in CIDR notation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -207,10 +180,9 @@ pub struct AnalysisAclRule {
     #[serde(rename = "Cidr")]
     pub cidr: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether the rule is an outbound rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -219,10 +191,9 @@ pub struct AnalysisAclRule {
     #[serde(rename = "Egress")]
     pub egress: Option<bool>,
 
-
-    /// 
+    ///
     /// The range of ports.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PortRange
@@ -231,10 +202,9 @@ pub struct AnalysisAclRule {
     #[serde(rename = "PortRange")]
     pub port_range: Option<PortRange>,
 
-
-    /// 
+    ///
     /// The protocol.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -243,10 +213,9 @@ pub struct AnalysisAclRule {
     #[serde(rename = "Protocol")]
     pub protocol: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether to allow or deny traffic that matches the rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -255,10 +224,9 @@ pub struct AnalysisAclRule {
     #[serde(rename = "RuleAction")]
     pub rule_action: Option<String>,
 
-
-    /// 
+    ///
     /// The rule number.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -266,10 +234,7 @@ pub struct AnalysisAclRule {
     /// Update requires: No interruption
     #[serde(rename = "RuleNumber")]
     pub rule_number: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AnalysisAclRule {
     fn type_string(&self) -> &'static str {
@@ -281,8 +246,9 @@ impl cfn_resources::CfnResource for AnalysisAclRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.port_range
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -291,11 +257,9 @@ impl cfn_resources::CfnResource for AnalysisAclRule {
 /// Describes a path component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AnalysisComponent {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -304,10 +268,9 @@ pub struct AnalysisComponent {
     #[serde(rename = "Arn")]
     pub arn: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -315,10 +278,7 @@ pub struct AnalysisComponent {
     /// Update requires: No interruption
     #[serde(rename = "Id")]
     pub id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AnalysisComponent {
     fn type_string(&self) -> &'static str {
@@ -330,7 +290,6 @@ impl cfn_resources::CfnResource for AnalysisComponent {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -338,11 +297,9 @@ impl cfn_resources::CfnResource for AnalysisComponent {
 /// Describes a load balancer listener.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AnalysisLoadBalancerListener {
-
-
-    /// 
+    ///
     /// [Classic Load Balancers] The back-end port for the listener.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -355,10 +312,9 @@ pub struct AnalysisLoadBalancerListener {
     #[serde(rename = "InstancePort")]
     pub instance_port: Option<i64>,
 
-
-    /// 
+    ///
     /// The port on which the load balancer is listening.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -370,10 +326,7 @@ pub struct AnalysisLoadBalancerListener {
     /// Update requires: No interruption
     #[serde(rename = "LoadBalancerPort")]
     pub load_balancer_port: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AnalysisLoadBalancerListener {
     fn type_string(&self) -> &'static str {
@@ -385,39 +338,42 @@ impl cfn_resources::CfnResource for AnalysisLoadBalancerListener {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.instance_port {
+            if *the_val > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'instance_port'. {} is greater than 65535",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.instance_port {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'instance_port'. {} is greater than 65535", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'instance_port'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.instance_port {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'instance_port'. {} is less than 0", the_val));
-        }
-
-        }
-        
         if let Some(the_val) = &self.load_balancer_port {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'load_balancer_port'. {} is greater than 65535", the_val));
+            if *the_val > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'load_balancer_port'. {} is greater than 65535",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.load_balancer_port {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'load_balancer_port'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'load_balancer_port'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -425,11 +381,9 @@ impl cfn_resources::CfnResource for AnalysisLoadBalancerListener {
 /// Describes a load balancer target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AnalysisLoadBalancerTarget {
-
-
-    /// 
+    ///
     /// The IP address.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -444,10 +398,9 @@ pub struct AnalysisLoadBalancerTarget {
     #[serde(rename = "Address")]
     pub address: Option<String>,
 
-
-    /// 
+    ///
     /// The Availability Zone.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -456,10 +409,9 @@ pub struct AnalysisLoadBalancerTarget {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// Information about the instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -468,10 +420,9 @@ pub struct AnalysisLoadBalancerTarget {
     #[serde(rename = "Instance")]
     pub instance: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The port on which the target is listening.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -483,10 +434,7 @@ pub struct AnalysisLoadBalancerTarget {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     pub port: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AnalysisLoadBalancerTarget {
     fn type_string(&self) -> &'static str {
@@ -498,41 +446,46 @@ impl cfn_resources::CfnResource for AnalysisLoadBalancerTarget {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.address {
+            if the_val.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'address'. {} is greater than 15",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.address {
-
-        if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'address'. {} is greater than 15", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'address'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.address {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'address'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
-        self.instance.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.instance
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.port {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+            if *the_val > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'port'. {} is greater than 65535",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.port {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'port'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -540,11 +493,9 @@ impl cfn_resources::CfnResource for AnalysisLoadBalancerTarget {
 /// Describes a header. Reflects any changes made by a component as traffic passes through.     The fields of an inbound header are null except for the first component of a path.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AnalysisPacketHeader {
-
-
-    /// 
+    ///
     /// The destination addresses.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -553,10 +504,9 @@ pub struct AnalysisPacketHeader {
     #[serde(rename = "DestinationAddresses")]
     pub destination_addresses: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The destination port ranges.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of PortRange
@@ -565,10 +515,9 @@ pub struct AnalysisPacketHeader {
     #[serde(rename = "DestinationPortRanges")]
     pub destination_port_ranges: Option<Vec<PortRange>>,
 
-
-    /// 
+    ///
     /// The protocol.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -577,10 +526,9 @@ pub struct AnalysisPacketHeader {
     #[serde(rename = "Protocol")]
     pub protocol: Option<String>,
 
-
-    /// 
+    ///
     /// The source addresses.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -589,10 +537,9 @@ pub struct AnalysisPacketHeader {
     #[serde(rename = "SourceAddresses")]
     pub source_addresses: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The source port ranges.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of PortRange
@@ -600,10 +547,7 @@ pub struct AnalysisPacketHeader {
     /// Update requires: No interruption
     #[serde(rename = "SourcePortRanges")]
     pub source_port_ranges: Option<Vec<PortRange>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AnalysisPacketHeader {
     fn type_string(&self) -> &'static str {
@@ -615,7 +559,6 @@ impl cfn_resources::CfnResource for AnalysisPacketHeader {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -623,11 +566,9 @@ impl cfn_resources::CfnResource for AnalysisPacketHeader {
 /// Describes a route table route.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AnalysisRouteTableRoute {
-
-
-    /// 
+    ///
     /// The ID of a NAT gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -636,10 +577,9 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "NatGatewayId")]
     pub nat_gateway_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of a network interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -648,12 +588,11 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: Option<String>,
 
-
-    /// 
+    ///
     /// Describes how the route was created. The following are the possible values:
-    /// 
+    ///
     /// CreateRouteTable - The route was automatically created when the route table was created.               CreateRoute - The route was manually added to the route table.               EnableVgwRoutePropagation - The route was propagated by route propagation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -662,12 +601,11 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "Origin")]
     pub origin: Option<String>,
 
-
-    /// 
+    ///
     /// The state. The following are the possible values:
-    /// 
+    ///
     /// active               blackhole
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -676,10 +614,9 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "State")]
     pub state: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of a transit gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -688,10 +625,9 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "TransitGatewayId")]
     pub transit_gateway_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of a VPC peering connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -700,10 +636,9 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "VpcPeeringConnectionId")]
     pub vpc_peering_connection_id: Option<String>,
 
-
-    /// 
+    ///
     /// The destination IPv4 address, in CIDR notation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -712,10 +647,9 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "destinationCidr")]
     pub destination_cidr: Option<String>,
 
-
-    /// 
+    ///
     /// The prefix of the AWS service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -724,10 +658,9 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "destinationPrefixListId")]
     pub destination_prefix_list_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of an egress-only internet gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -736,10 +669,9 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "egressOnlyInternetGatewayId")]
     pub egress_only_internet_gateway_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the gateway, such as an internet gateway or virtual private gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -748,10 +680,9 @@ pub struct AnalysisRouteTableRoute {
     #[serde(rename = "gatewayId")]
     pub gateway_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the instance, such as a NAT instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -759,10 +690,7 @@ pub struct AnalysisRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "instanceId")]
     pub instance_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AnalysisRouteTableRoute {
     fn type_string(&self) -> &'static str {
@@ -774,7 +702,6 @@ impl cfn_resources::CfnResource for AnalysisRouteTableRoute {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -782,11 +709,9 @@ impl cfn_resources::CfnResource for AnalysisRouteTableRoute {
 /// Describes a security group rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AnalysisSecurityGroupRule {
-
-
-    /// 
+    ///
     /// The IPv4 address range, in CIDR notation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -795,12 +720,11 @@ pub struct AnalysisSecurityGroupRule {
     #[serde(rename = "Cidr")]
     pub cidr: Option<String>,
 
-
-    /// 
+    ///
     /// The direction. The following are the possible values:
-    /// 
+    ///
     /// egress               ingress
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -809,10 +733,9 @@ pub struct AnalysisSecurityGroupRule {
     #[serde(rename = "Direction")]
     pub direction: Option<String>,
 
-
-    /// 
+    ///
     /// The port range.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PortRange
@@ -821,10 +744,9 @@ pub struct AnalysisSecurityGroupRule {
     #[serde(rename = "PortRange")]
     pub port_range: Option<PortRange>,
 
-
-    /// 
+    ///
     /// The prefix list ID.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -833,10 +755,9 @@ pub struct AnalysisSecurityGroupRule {
     #[serde(rename = "PrefixListId")]
     pub prefix_list_id: Option<String>,
 
-
-    /// 
+    ///
     /// The protocol name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -845,10 +766,9 @@ pub struct AnalysisSecurityGroupRule {
     #[serde(rename = "Protocol")]
     pub protocol: Option<String>,
 
-
-    /// 
+    ///
     /// The security group ID.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -856,10 +776,7 @@ pub struct AnalysisSecurityGroupRule {
     /// Update requires: No interruption
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AnalysisSecurityGroupRule {
     fn type_string(&self) -> &'static str {
@@ -871,8 +788,9 @@ impl cfn_resources::CfnResource for AnalysisSecurityGroupRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.port_range.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.port_range
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -881,11 +799,9 @@ impl cfn_resources::CfnResource for AnalysisSecurityGroupRule {
 /// Describes an explanation code for an unreachable path. For more information, see Reachability Analyzer explanation codes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Explanation {
-
-
-    /// 
+    ///
     /// The network ACL.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -894,10 +810,9 @@ pub struct Explanation {
     #[serde(rename = "Acl")]
     pub acl: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The network ACL rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisAclRule
@@ -906,10 +821,9 @@ pub struct Explanation {
     #[serde(rename = "AclRule")]
     pub acl_rule: Option<AnalysisAclRule>,
 
-
-    /// 
+    ///
     /// The IPv4 address, in CIDR notation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -924,10 +838,9 @@ pub struct Explanation {
     #[serde(rename = "Address")]
     pub address: Option<String>,
 
-
-    /// 
+    ///
     /// The IPv4 addresses, in CIDR notation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -936,10 +849,9 @@ pub struct Explanation {
     #[serde(rename = "Addresses")]
     pub addresses: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The resource to which the component is attached.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -948,10 +860,9 @@ pub struct Explanation {
     #[serde(rename = "AttachedTo")]
     pub attached_to: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The Availability Zones.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -960,10 +871,9 @@ pub struct Explanation {
     #[serde(rename = "AvailabilityZones")]
     pub availability_zones: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The CIDR ranges.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -972,10 +882,9 @@ pub struct Explanation {
     #[serde(rename = "Cidrs")]
     pub cidrs: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The listener for a Classic Load Balancer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisLoadBalancerListener
@@ -984,10 +893,9 @@ pub struct Explanation {
     #[serde(rename = "ClassicLoadBalancerListener")]
     pub classic_load_balancer_listener: Option<AnalysisLoadBalancerListener>,
 
-
-    /// 
+    ///
     /// The component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -996,10 +904,9 @@ pub struct Explanation {
     #[serde(rename = "Component")]
     pub component: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The AWS account for the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1010,10 +917,9 @@ pub struct Explanation {
     #[serde(rename = "ComponentAccount")]
     pub component_account: Option<String>,
 
-
-    /// 
+    ///
     /// The Region for the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1024,10 +930,9 @@ pub struct Explanation {
     #[serde(rename = "ComponentRegion")]
     pub component_region: Option<String>,
 
-
-    /// 
+    ///
     /// The customer gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1036,10 +941,9 @@ pub struct Explanation {
     #[serde(rename = "CustomerGateway")]
     pub customer_gateway: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The destination.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1048,10 +952,9 @@ pub struct Explanation {
     #[serde(rename = "Destination")]
     pub destination: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The destination VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1060,12 +963,11 @@ pub struct Explanation {
     #[serde(rename = "DestinationVpc")]
     pub destination_vpc: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The direction. The following are the possible values:
-    /// 
+    ///
     /// egress               ingress
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1074,10 +976,9 @@ pub struct Explanation {
     #[serde(rename = "Direction")]
     pub direction: Option<String>,
 
-
-    /// 
+    ///
     /// The load balancer listener.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1086,10 +987,9 @@ pub struct Explanation {
     #[serde(rename = "ElasticLoadBalancerListener")]
     pub elastic_load_balancer_listener: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The explanation code.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1098,10 +998,9 @@ pub struct Explanation {
     #[serde(rename = "ExplanationCode")]
     pub explanation_code: Option<String>,
 
-
-    /// 
+    ///
     /// The route table.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1110,10 +1009,9 @@ pub struct Explanation {
     #[serde(rename = "IngressRouteTable")]
     pub ingress_route_table: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The internet gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1122,10 +1020,9 @@ pub struct Explanation {
     #[serde(rename = "InternetGateway")]
     pub internet_gateway: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the load balancer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1138,10 +1035,9 @@ pub struct Explanation {
     #[serde(rename = "LoadBalancerArn")]
     pub load_balancer_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The listener port of the load balancer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1154,10 +1050,9 @@ pub struct Explanation {
     #[serde(rename = "LoadBalancerListenerPort")]
     pub load_balancer_listener_port: Option<i64>,
 
-
-    /// 
+    ///
     /// The target.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisLoadBalancerTarget
@@ -1166,10 +1061,9 @@ pub struct Explanation {
     #[serde(rename = "LoadBalancerTarget")]
     pub load_balancer_target: Option<AnalysisLoadBalancerTarget>,
 
-
-    /// 
+    ///
     /// The target group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1178,10 +1072,9 @@ pub struct Explanation {
     #[serde(rename = "LoadBalancerTargetGroup")]
     pub load_balancer_target_group: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The target groups.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AnalysisComponent
@@ -1190,10 +1083,9 @@ pub struct Explanation {
     #[serde(rename = "LoadBalancerTargetGroups")]
     pub load_balancer_target_groups: Option<Vec<AnalysisComponent>>,
 
-
-    /// 
+    ///
     /// The target port.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1206,10 +1098,9 @@ pub struct Explanation {
     #[serde(rename = "LoadBalancerTargetPort")]
     pub load_balancer_target_port: Option<i64>,
 
-
-    /// 
+    ///
     /// The missing component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1218,10 +1109,9 @@ pub struct Explanation {
     #[serde(rename = "MissingComponent")]
     pub missing_component: Option<String>,
 
-
-    /// 
+    ///
     /// The NAT gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1230,10 +1120,9 @@ pub struct Explanation {
     #[serde(rename = "NatGateway")]
     pub nat_gateway: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The network interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1242,10 +1131,9 @@ pub struct Explanation {
     #[serde(rename = "NetworkInterface")]
     pub network_interface: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The packet field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1254,10 +1142,9 @@ pub struct Explanation {
     #[serde(rename = "PacketField")]
     pub packet_field: Option<String>,
 
-
-    /// 
+    ///
     /// The port.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1270,10 +1157,9 @@ pub struct Explanation {
     #[serde(rename = "Port")]
     pub port: Option<i64>,
 
-
-    /// 
+    ///
     /// The port ranges.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of PortRange
@@ -1282,10 +1168,9 @@ pub struct Explanation {
     #[serde(rename = "PortRanges")]
     pub port_ranges: Option<Vec<PortRange>>,
 
-
-    /// 
+    ///
     /// The prefix list.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1294,10 +1179,9 @@ pub struct Explanation {
     #[serde(rename = "PrefixList")]
     pub prefix_list: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The protocols.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -1306,10 +1190,9 @@ pub struct Explanation {
     #[serde(rename = "Protocols")]
     pub protocols: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The route table.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1318,10 +1201,9 @@ pub struct Explanation {
     #[serde(rename = "RouteTable")]
     pub route_table: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The route table route.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisRouteTableRoute
@@ -1330,10 +1212,9 @@ pub struct Explanation {
     #[serde(rename = "RouteTableRoute")]
     pub route_table_route: Option<AnalysisRouteTableRoute>,
 
-
-    /// 
+    ///
     /// The security group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1342,10 +1223,9 @@ pub struct Explanation {
     #[serde(rename = "SecurityGroup")]
     pub security_group: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The security group rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisSecurityGroupRule
@@ -1354,10 +1234,9 @@ pub struct Explanation {
     #[serde(rename = "SecurityGroupRule")]
     pub security_group_rule: Option<AnalysisSecurityGroupRule>,
 
-
-    /// 
+    ///
     /// The security groups.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AnalysisComponent
@@ -1366,10 +1245,9 @@ pub struct Explanation {
     #[serde(rename = "SecurityGroups")]
     pub security_groups: Option<Vec<AnalysisComponent>>,
 
-
-    /// 
+    ///
     /// The source VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1378,10 +1256,9 @@ pub struct Explanation {
     #[serde(rename = "SourceVpc")]
     pub source_vpc: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The state.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1390,10 +1267,9 @@ pub struct Explanation {
     #[serde(rename = "State")]
     pub state: Option<String>,
 
-
-    /// 
+    ///
     /// The subnet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1402,10 +1278,9 @@ pub struct Explanation {
     #[serde(rename = "Subnet")]
     pub subnet: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The route table for the subnet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1414,10 +1289,9 @@ pub struct Explanation {
     #[serde(rename = "SubnetRouteTable")]
     pub subnet_route_table: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The transit gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1426,10 +1300,9 @@ pub struct Explanation {
     #[serde(rename = "TransitGateway")]
     pub transit_gateway: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The transit gateway attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1438,10 +1311,9 @@ pub struct Explanation {
     #[serde(rename = "TransitGatewayAttachment")]
     pub transit_gateway_attachment: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The transit gateway route table.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1450,10 +1322,9 @@ pub struct Explanation {
     #[serde(rename = "TransitGatewayRouteTable")]
     pub transit_gateway_route_table: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The transit gateway route table route.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: TransitGatewayRouteTableRoute
@@ -1462,10 +1333,9 @@ pub struct Explanation {
     #[serde(rename = "TransitGatewayRouteTableRoute")]
     pub transit_gateway_route_table_route: Option<TransitGatewayRouteTableRoute>,
 
-
-    /// 
+    ///
     /// The component VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1474,10 +1344,9 @@ pub struct Explanation {
     #[serde(rename = "Vpc")]
     pub vpc: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The VPC peering connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1486,10 +1355,9 @@ pub struct Explanation {
     #[serde(rename = "VpcPeeringConnection")]
     pub vpc_peering_connection: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The VPN connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1498,10 +1366,9 @@ pub struct Explanation {
     #[serde(rename = "VpnConnection")]
     pub vpn_connection: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The VPN gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1510,10 +1377,9 @@ pub struct Explanation {
     #[serde(rename = "VpnGateway")]
     pub vpn_gateway: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The VPC endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1521,10 +1387,7 @@ pub struct Explanation {
     /// Update requires: No interruption
     #[serde(rename = "vpcEndpoint")]
     pub vpc_endpoint: Option<AnalysisComponent>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Explanation {
     fn type_string(&self) -> &'static str {
@@ -1536,150 +1399,208 @@ impl cfn_resources::CfnResource for Explanation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.acl.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.acl_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.acl_rule
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.address {
-
-        if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'address'. {} is greater than 15", the_val.len()));
+            if the_val.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'address'. {} is greater than 15",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.address {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'address'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'address'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.attached_to.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.attached_to
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.classic_load_balancer_listener.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.classic_load_balancer_listener
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.component.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.component
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.customer_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.customer_gateway
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.destination
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.destination_vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.destination_vpc
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.elastic_load_balancer_listener.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.elastic_load_balancer_listener
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.ingress_route_table.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.ingress_route_table
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.internet_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.internet_gateway
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.load_balancer_arn {
-
-        if the_val.len() > 1283 as _ {
-            return Err(format!("Max validation failed on field 'load_balancer_arn'. {} is greater than 1283", the_val.len()));
+            if the_val.len() > 1283 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'load_balancer_arn'. {} is greater than 1283",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.load_balancer_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'load_balancer_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'load_balancer_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.load_balancer_listener_port {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'load_balancer_listener_port'. {} is greater than 65535", the_val));
+            if *the_val > 65535 as _ {
+                return Err(format!("Max validation failed on field 'load_balancer_listener_port'. {} is greater than 65535", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.load_balancer_listener_port {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'load_balancer_listener_port'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!("Min validation failed on field 'load_balancer_listener_port'. {} is less than 0", the_val));
+            }
         }
 
-        }
-        
-        self.load_balancer_target.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.load_balancer_target
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.load_balancer_target_group.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.load_balancer_target_group
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.load_balancer_target_port {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'load_balancer_target_port'. {} is greater than 65535", the_val));
+            if *the_val > 65535 as _ {
+                return Err(format!("Max validation failed on field 'load_balancer_target_port'. {} is greater than 65535", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.load_balancer_target_port {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'load_balancer_target_port'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'load_balancer_target_port'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        self.nat_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.nat_gateway
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.network_interface.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.network_interface
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.port {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+            if *the_val > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'port'. {} is greater than 65535",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.port {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'port'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        self.prefix_list.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.prefix_list
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.route_table.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.route_table
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.route_table_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.route_table_route
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.security_group.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.security_group
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.security_group_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.security_group_rule
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.source_vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.source_vpc
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.subnet.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.subnet_route_table.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.subnet_route_table
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.transit_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.transit_gateway
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.transit_gateway_attachment.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.transit_gateway_attachment
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.transit_gateway_route_table.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.transit_gateway_route_table
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.transit_gateway_route_table_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.transit_gateway_route_table_route
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.vpc_peering_connection.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpc_peering_connection
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.vpn_connection.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpn_connection
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.vpn_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpn_gateway
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.vpc_endpoint.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpc_endpoint
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1688,11 +1609,9 @@ impl cfn_resources::CfnResource for Explanation {
 /// Describes a path component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PathComponent {
-
-
-    /// 
+    ///
     /// The network ACL rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisAclRule
@@ -1701,10 +1620,9 @@ pub struct PathComponent {
     #[serde(rename = "AclRule")]
     pub acl_rule: Option<AnalysisAclRule>,
 
-
-    /// 
+    ///
     /// The additional details.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AdditionalDetail
@@ -1713,10 +1631,9 @@ pub struct PathComponent {
     #[serde(rename = "AdditionalDetails")]
     pub additional_details: Option<Vec<AdditionalDetail>>,
 
-
-    /// 
+    ///
     /// The component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1725,10 +1642,9 @@ pub struct PathComponent {
     #[serde(rename = "Component")]
     pub component: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The destination VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1737,10 +1653,9 @@ pub struct PathComponent {
     #[serde(rename = "DestinationVpc")]
     pub destination_vpc: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The load balancer listener.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1749,10 +1664,9 @@ pub struct PathComponent {
     #[serde(rename = "ElasticLoadBalancerListener")]
     pub elastic_load_balancer_listener: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The explanation codes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Explanation
@@ -1761,10 +1675,9 @@ pub struct PathComponent {
     #[serde(rename = "Explanations")]
     pub explanations: Option<Vec<Explanation>>,
 
-
-    /// 
+    ///
     /// The inbound header.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisPacketHeader
@@ -1773,10 +1686,9 @@ pub struct PathComponent {
     #[serde(rename = "InboundHeader")]
     pub inbound_header: Option<AnalysisPacketHeader>,
 
-
-    /// 
+    ///
     /// The outbound header.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisPacketHeader
@@ -1785,10 +1697,9 @@ pub struct PathComponent {
     #[serde(rename = "OutboundHeader")]
     pub outbound_header: Option<AnalysisPacketHeader>,
 
-
-    /// 
+    ///
     /// The route table route.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisRouteTableRoute
@@ -1797,10 +1708,9 @@ pub struct PathComponent {
     #[serde(rename = "RouteTableRoute")]
     pub route_table_route: Option<AnalysisRouteTableRoute>,
 
-
-    /// 
+    ///
     /// The security group rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisSecurityGroupRule
@@ -1809,10 +1719,9 @@ pub struct PathComponent {
     #[serde(rename = "SecurityGroupRule")]
     pub security_group_rule: Option<AnalysisSecurityGroupRule>,
 
-
-    /// 
+    ///
     /// The sequence number.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1821,10 +1730,9 @@ pub struct PathComponent {
     #[serde(rename = "SequenceNumber")]
     pub sequence_number: Option<i64>,
 
-
-    /// 
+    ///
     /// The name of the VPC endpoint service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1833,10 +1741,9 @@ pub struct PathComponent {
     #[serde(rename = "ServiceName")]
     pub service_name: Option<String>,
 
-
-    /// 
+    ///
     /// The source VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1845,10 +1752,9 @@ pub struct PathComponent {
     #[serde(rename = "SourceVpc")]
     pub source_vpc: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The subnet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1857,10 +1763,9 @@ pub struct PathComponent {
     #[serde(rename = "Subnet")]
     pub subnet: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The transit gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1869,10 +1774,9 @@ pub struct PathComponent {
     #[serde(rename = "TransitGateway")]
     pub transit_gateway: Option<AnalysisComponent>,
 
-
-    /// 
+    ///
     /// The route in a transit gateway route table.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: TransitGatewayRouteTableRoute
@@ -1881,10 +1785,9 @@ pub struct PathComponent {
     #[serde(rename = "TransitGatewayRouteTableRoute")]
     pub transit_gateway_route_table_route: Option<TransitGatewayRouteTableRoute>,
 
-
-    /// 
+    ///
     /// The component VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AnalysisComponent
@@ -1892,10 +1795,7 @@ pub struct PathComponent {
     /// Update requires: No interruption
     #[serde(rename = "Vpc")]
     pub vpc: Option<AnalysisComponent>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PathComponent {
     fn type_string(&self) -> &'static str {
@@ -1907,30 +1807,51 @@ impl cfn_resources::CfnResource for PathComponent {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.acl_rule
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.acl_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.component
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.component.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.destination_vpc
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.destination_vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.elastic_load_balancer_listener
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.elastic_load_balancer_listener.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.inbound_header
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.inbound_header.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.outbound_header
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.outbound_header.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.route_table_route
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.route_table_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.security_group_rule
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.security_group_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.source_vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.source_vpc
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.subnet.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.transit_gateway.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.transit_gateway
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.transit_gateway_route_table_route.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.transit_gateway_route_table_route
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.vpc.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -1941,11 +1862,9 @@ impl cfn_resources::CfnResource for PathComponent {
 /// Describes a range of ports.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PortRange {
-
-
-    /// 
+    ///
     /// The first port in the range.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1954,10 +1873,9 @@ pub struct PortRange {
     #[serde(rename = "From")]
     pub from: Option<i64>,
 
-
-    /// 
+    ///
     /// The last port in the range.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -1965,10 +1883,7 @@ pub struct PortRange {
     /// Update requires: No interruption
     #[serde(rename = "To")]
     pub to: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PortRange {
     fn type_string(&self) -> &'static str {
@@ -1980,7 +1895,6 @@ impl cfn_resources::CfnResource for PortRange {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1994,32 +1908,26 @@ impl cfn_resources::CfnResource for PortRange {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -2031,7 +1939,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -2039,11 +1946,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Describes a route in a transit gateway route table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TransitGatewayRouteTableRoute {
-
-
-    /// 
+    ///
     /// The ID of the route attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2052,10 +1957,9 @@ pub struct TransitGatewayRouteTableRoute {
     #[serde(rename = "AttachmentId")]
     pub attachment_id: Option<String>,
 
-
-    /// 
+    ///
     /// The CIDR block used for destination matches.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2064,10 +1968,9 @@ pub struct TransitGatewayRouteTableRoute {
     #[serde(rename = "DestinationCidr")]
     pub destination_cidr: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the prefix list.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2076,10 +1979,9 @@ pub struct TransitGatewayRouteTableRoute {
     #[serde(rename = "PrefixListId")]
     pub prefix_list_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the resource for the route attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2088,10 +1990,9 @@ pub struct TransitGatewayRouteTableRoute {
     #[serde(rename = "ResourceId")]
     pub resource_id: Option<String>,
 
-
-    /// 
+    ///
     /// The resource type for the route attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2100,12 +2001,11 @@ pub struct TransitGatewayRouteTableRoute {
     #[serde(rename = "ResourceType")]
     pub resource_type: Option<String>,
 
-
-    /// 
+    ///
     /// The route origin. The following are the possible values:
-    /// 
+    ///
     /// static               propagated
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2114,10 +2014,9 @@ pub struct TransitGatewayRouteTableRoute {
     #[serde(rename = "RouteOrigin")]
     pub route_origin: Option<String>,
 
-
-    /// 
+    ///
     /// The state of the route.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2125,10 +2024,7 @@ pub struct TransitGatewayRouteTableRoute {
     /// Update requires: No interruption
     #[serde(rename = "State")]
     pub state: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TransitGatewayRouteTableRoute {
     fn type_string(&self) -> &'static str {
@@ -2140,7 +2036,6 @@ impl cfn_resources::CfnResource for TransitGatewayRouteTableRoute {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

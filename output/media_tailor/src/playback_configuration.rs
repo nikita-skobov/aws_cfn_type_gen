@@ -1,10 +1,6 @@
-
-
 /// Adds a new playback configuration to AWS Elemental MediaTailor.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPlaybackConfiguration {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -14,7 +10,6 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AdDecisionServerUrl")]
     pub ad_decision_server_url: String,
-
 
     /// Property description not available.
     ///
@@ -26,7 +21,6 @@ pub struct CfnPlaybackConfiguration {
     #[serde(rename = "AvailSuppression")]
     pub avail_suppression: Option<AvailSuppression>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -36,7 +30,6 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Bumper")]
     pub bumper: Option<Bumper>,
-
 
     /// Property description not available.
     ///
@@ -48,10 +41,9 @@ pub struct CfnPlaybackConfiguration {
     #[serde(rename = "CdnConfiguration")]
     pub cdn_configuration: Option<CdnConfiguration>,
 
-
-    /// 
+    ///
     /// The player parameters and aliases used as dynamic variables during session initialization. For more information, see Domain Variables.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of Json
@@ -59,7 +51,6 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ConfigurationAliases")]
     pub configuration_aliases: Option<std::collections::HashMap<String, serde_json::Value>>,
-
 
     /// Property description not available.
     ///
@@ -71,10 +62,9 @@ pub struct CfnPlaybackConfiguration {
     #[serde(rename = "DashConfiguration")]
     pub dash_configuration: Option<DashConfiguration>,
 
-
-    /// 
+    ///
     /// The configuration for HLS content.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: HlsConfiguration
@@ -82,7 +72,6 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "HlsConfiguration")]
     pub hls_configuration: Option<HlsConfiguration>,
-
 
     /// Property description not available.
     ///
@@ -94,7 +83,6 @@ pub struct CfnPlaybackConfiguration {
     #[serde(rename = "LivePreRollConfiguration")]
     pub live_pre_roll_configuration: Option<LivePreRollConfiguration>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -104,7 +92,6 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ManifestProcessingRules")]
     pub manifest_processing_rules: Option<ManifestProcessingRules>,
-
 
     /// Property description not available.
     ///
@@ -116,7 +103,6 @@ pub struct CfnPlaybackConfiguration {
     #[serde(rename = "Name")]
     pub name: String,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -126,7 +112,6 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PersonalizationThresholdSeconds")]
     pub personalization_threshold_seconds: Option<i64>,
-
 
     /// Property description not available.
     ///
@@ -138,7 +123,6 @@ pub struct CfnPlaybackConfiguration {
     #[serde(rename = "SlateAdUrl")]
     pub slate_ad_url: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -148,7 +132,6 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 
     /// Property description not available.
     ///
@@ -160,7 +143,6 @@ pub struct CfnPlaybackConfiguration {
     #[serde(rename = "TranscodeProfileName")]
     pub transcode_profile_name: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -170,10 +152,7 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VideoContentSourceUrl")]
     pub video_content_source_url: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnPlaybackConfiguration {
     fn type_string(&self) -> &'static str {
@@ -185,20 +164,31 @@ impl cfn_resources::CfnResource for CfnPlaybackConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.avail_suppression.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.avail_suppression
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.bumper.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.cdn_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.cdn_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.dash_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.dash_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.hls_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.hls_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.live_pre_roll_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.live_pre_roll_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.manifest_processing_rules.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.manifest_processing_rules
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -207,8 +197,6 @@ impl cfn_resources::CfnResource for CfnPlaybackConfiguration {
 /// The AdMarkerPassthrough property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AdMarkerPassthrough {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -218,10 +206,7 @@ pub struct AdMarkerPassthrough {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AdMarkerPassthrough {
     fn type_string(&self) -> &'static str {
@@ -233,7 +218,6 @@ impl cfn_resources::CfnResource for AdMarkerPassthrough {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -241,8 +225,6 @@ impl cfn_resources::CfnResource for AdMarkerPassthrough {
 /// The AvailSuppression property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AvailSuppression {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -253,7 +235,6 @@ pub struct AvailSuppression {
     #[serde(rename = "Mode")]
     pub mode: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -263,10 +244,7 @@ pub struct AvailSuppression {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AvailSuppression {
     fn type_string(&self) -> &'static str {
@@ -278,7 +256,6 @@ impl cfn_resources::CfnResource for AvailSuppression {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -286,8 +263,6 @@ impl cfn_resources::CfnResource for AvailSuppression {
 /// The Bumper property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Bumper {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -298,7 +273,6 @@ pub struct Bumper {
     #[serde(rename = "EndUrl")]
     pub end_url: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -308,10 +282,7 @@ pub struct Bumper {
     /// Update requires: No interruption
     #[serde(rename = "StartUrl")]
     pub start_url: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Bumper {
     fn type_string(&self) -> &'static str {
@@ -323,7 +294,6 @@ impl cfn_resources::CfnResource for Bumper {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -331,8 +301,6 @@ impl cfn_resources::CfnResource for Bumper {
 /// The CdnConfiguration property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CdnConfiguration {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -343,7 +311,6 @@ pub struct CdnConfiguration {
     #[serde(rename = "AdSegmentUrlPrefix")]
     pub ad_segment_url_prefix: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -353,10 +320,7 @@ pub struct CdnConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ContentSegmentUrlPrefix")]
     pub content_segment_url_prefix: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CdnConfiguration {
     fn type_string(&self) -> &'static str {
@@ -368,7 +332,6 @@ impl cfn_resources::CfnResource for CdnConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -376,11 +339,9 @@ impl cfn_resources::CfnResource for CdnConfiguration {
 /// The configuration for DASH content.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DashConfiguration {
-
-
-    /// 
+    ///
     /// The URL generated by MediaTailor to initiate a playback session. The session uses server-side reporting. This setting is ignored in PUT operations.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -389,10 +350,9 @@ pub struct DashConfiguration {
     #[serde(rename = "ManifestEndpointPrefix")]
     pub manifest_endpoint_prefix: Option<String>,
 
-
-    /// 
+    ///
     /// The setting that controls whether MediaTailor includes the Location tag in DASH manifests. MediaTailor populates the Location tag with the URL for manifest update requests, to be used by players that don't support sticky redirects. Disable this if you have CDN routing rules set up for accessing MediaTailor manifests, and you are either using client-side reporting or your players support sticky HTTP redirects. Valid values are DISABLED and EMT_DEFAULT. The EMT_DEFAULT setting enables the inclusion of the tag and is the default value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -401,10 +361,9 @@ pub struct DashConfiguration {
     #[serde(rename = "MpdLocation")]
     pub mpd_location: Option<String>,
 
-
-    /// 
+    ///
     /// The setting that controls whether MediaTailor handles manifests from the origin server as multi-period manifests or single-period manifests. If your origin server produces single-period manifests, set this to SINGLE_PERIOD. The default setting is MULTI_PERIOD. For multi-period manifests, omit this setting or set it to MULTI_PERIOD.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -412,10 +371,7 @@ pub struct DashConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "OriginManifestType")]
     pub origin_manifest_type: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DashConfiguration {
     fn type_string(&self) -> &'static str {
@@ -427,7 +383,6 @@ impl cfn_resources::CfnResource for DashConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -435,11 +390,9 @@ impl cfn_resources::CfnResource for DashConfiguration {
 /// The configuration for HLS content.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HlsConfiguration {
-
-
-    /// 
+    ///
     /// The URL that is used to initiate a playback session for devices that support Apple HLS. The session uses server-side reporting.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -447,10 +400,7 @@ pub struct HlsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ManifestEndpointPrefix")]
     pub manifest_endpoint_prefix: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for HlsConfiguration {
     fn type_string(&self) -> &'static str {
@@ -462,7 +412,6 @@ impl cfn_resources::CfnResource for HlsConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -470,8 +419,6 @@ impl cfn_resources::CfnResource for HlsConfiguration {
 /// The LivePreRollConfiguration property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LivePreRollConfiguration {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -482,7 +429,6 @@ pub struct LivePreRollConfiguration {
     #[serde(rename = "AdDecisionServerUrl")]
     pub ad_decision_server_url: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -492,10 +438,7 @@ pub struct LivePreRollConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "MaxDurationSeconds")]
     pub max_duration_seconds: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LivePreRollConfiguration {
     fn type_string(&self) -> &'static str {
@@ -507,7 +450,6 @@ impl cfn_resources::CfnResource for LivePreRollConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -515,8 +457,6 @@ impl cfn_resources::CfnResource for LivePreRollConfiguration {
 /// The ManifestProcessingRules property type specifies Property description not available. for an AWS::MediaTailor::PlaybackConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ManifestProcessingRules {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -526,10 +466,7 @@ pub struct ManifestProcessingRules {
     /// Update requires: No interruption
     #[serde(rename = "AdMarkerPassthrough")]
     pub ad_marker_passthrough: Option<AdMarkerPassthrough>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ManifestProcessingRules {
     fn type_string(&self) -> &'static str {
@@ -541,8 +478,9 @@ impl cfn_resources::CfnResource for ManifestProcessingRules {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.ad_marker_passthrough.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.ad_marker_passthrough
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -557,32 +495,26 @@ impl cfn_resources::CfnResource for ManifestProcessingRules {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -594,7 +526,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

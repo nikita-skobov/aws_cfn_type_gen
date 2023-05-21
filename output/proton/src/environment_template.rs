@@ -1,15 +1,11 @@
-
-
 /// Create an environment template for AWS Proton. For more information, see Environment Templates in the AWS Proton User Guide.
 ///
 /// You can create an environment template in one of the two following ways:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEnvironmentTemplate {
-
-
-    /// 
+    ///
     /// A description of the environment template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnEnvironmentTemplate {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the environment template as displayed in the developer interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -38,10 +33,9 @@ pub struct CfnEnvironmentTemplate {
     #[serde(rename = "DisplayName")]
     pub display_name: Option<String>,
 
-
-    /// 
+    ///
     /// The customer provided encryption key for the environment template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -56,10 +50,9 @@ pub struct CfnEnvironmentTemplate {
     #[serde(rename = "EncryptionKey")]
     pub encryption_key: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the environment template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -74,10 +67,9 @@ pub struct CfnEnvironmentTemplate {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// When included, indicates that the environment template is for customer provisioned and managed infrastructure.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -88,12 +80,11 @@ pub struct CfnEnvironmentTemplate {
     #[serde(rename = "Provisioning")]
     pub provisioning: Option<EnvironmentTemplateProvisioningEnum>,
 
-
-    /// 
+    ///
     /// An optional list of metadata items that you can associate with the AWS Proton environment template. A tag is a key-value pair.
-    /// 
+    ///
     /// For more information, see AWS Proton resources and tagging in the     AWS Proton User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -103,17 +94,13 @@ pub struct CfnEnvironmentTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EnvironmentTemplateProvisioningEnum {
-
     /// CUSTOMER_MANAGED
     #[serde(rename = "CUSTOMER_MANAGED")]
     Customermanaged,
-
 }
 
 impl Default for EnvironmentTemplateProvisioningEnum {
@@ -121,7 +108,6 @@ impl Default for EnvironmentTemplateProvisioningEnum {
         EnvironmentTemplateProvisioningEnum::Customermanaged
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnEnvironmentTemplate {
     fn type_string(&self) -> &'static str {
@@ -133,79 +119,87 @@ impl cfn_resources::CfnResource for CfnEnvironmentTemplate {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 500 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 500",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 500 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 500", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.display_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'display_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'display_name'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.display_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'display_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'display_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.encryption_key {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'encryption_key'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'encryption_key'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.encryption_key {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'encryption_key'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'encryption_key'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -219,32 +213,26 @@ impl cfn_resources::CfnResource for CfnEnvironmentTemplate {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -256,7 +244,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

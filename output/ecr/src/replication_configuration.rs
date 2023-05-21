@@ -1,13 +1,9 @@
-
-
 /// The AWS::ECR::ReplicationConfiguration resource creates or updates the       replication configuration for a private registry. The first time a replication       configuration is applied to a private registry, a service-linked IAM role       is created in your account for the replication process. For more information, see Using         Service-Linked Roles for Amazon ECR in the Amazon Elastic         Container Registry User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnReplicationConfiguration {
-
-
-    /// 
+    ///
     /// The replication configuration for a registry.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ReplicationConfiguration
@@ -15,10 +11,7 @@ pub struct CfnReplicationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationConfiguration")]
     pub replication_configuration: Box<ReplicationConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnReplicationConfiguration {
     fn type_string(&self) -> &'static str {
@@ -30,7 +23,6 @@ impl cfn_resources::CfnResource for CfnReplicationConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.replication_configuration.validate()?;
 
         Ok(())
@@ -40,11 +32,9 @@ impl cfn_resources::CfnResource for CfnReplicationConfiguration {
 /// The replication configuration for a registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReplicationConfiguration {
-
-
-    /// 
+    ///
     /// An array of objects representing the replication destinations and repository filters       for a replication configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ReplicationRule
@@ -54,10 +44,7 @@ pub struct ReplicationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
     pub rules: Vec<ReplicationRule>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ReplicationConfiguration {
     fn type_string(&self) -> &'static str {
@@ -69,14 +56,15 @@ impl cfn_resources::CfnResource for ReplicationConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.rules;
 
         if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'rules'. {} is greater than 10", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'rules'. {} is greater than 10",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -84,11 +72,9 @@ impl cfn_resources::CfnResource for ReplicationConfiguration {
 /// An array of objects representing the destination for a replication rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReplicationDestination {
-
-
-    /// 
+    ///
     /// The Region to replicate to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -103,10 +89,9 @@ pub struct ReplicationDestination {
     #[serde(rename = "Region")]
     pub region: String,
 
-
-    /// 
+    ///
     /// The AWS account ID of the Amazon ECR private registry to replicate to. When configuring       cross-Region replication within your own registry, specify your own account ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -116,10 +101,7 @@ pub struct ReplicationDestination {
     /// Update requires: No interruption
     #[serde(rename = "RegistryId")]
     pub registry_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ReplicationDestination {
     fn type_string(&self) -> &'static str {
@@ -131,21 +113,24 @@ impl cfn_resources::CfnResource for ReplicationDestination {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.region;
 
         if the_val.len() > 25 as _ {
-            return Err(format!("Max validation failed on field 'region'. {} is greater than 25", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'region'. {} is greater than 25",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.region;
 
         if the_val.len() < 2 as _ {
-            return Err(format!("Min validation failed on field 'region'. {} is less than 2", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'region'. {} is less than 2",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -153,11 +138,9 @@ impl cfn_resources::CfnResource for ReplicationDestination {
 /// An array of objects representing the replication destinations and repository filters       for a replication configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReplicationRule {
-
-
-    /// 
+    ///
     /// An array of objects representing the destination for a replication rule.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ReplicationDestination
@@ -168,10 +151,9 @@ pub struct ReplicationRule {
     #[serde(rename = "Destinations")]
     pub destinations: Vec<ReplicationDestination>,
 
-
-    /// 
+    ///
     /// An array of objects representing the filters for a replication rule. Specifying a       repository filter for a replication rule provides a method for controlling which       repositories in a private registry are replicated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of RepositoryFilter
@@ -181,10 +163,7 @@ pub struct ReplicationRule {
     /// Update requires: No interruption
     #[serde(rename = "RepositoryFilters")]
     pub repository_filters: Option<Vec<RepositoryFilter>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ReplicationRule {
     fn type_string(&self) -> &'static str {
@@ -196,22 +175,24 @@ impl cfn_resources::CfnResource for ReplicationRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.destinations;
 
         if the_val.len() > 25 as _ {
-            return Err(format!("Max validation failed on field 'destinations'. {} is greater than 25", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'destinations'. {} is greater than 25",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.repository_filters {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'repository_filters'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'repository_filters'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -219,11 +200,9 @@ impl cfn_resources::CfnResource for ReplicationRule {
 /// The filter settings used with image replication. Specifying a repository filter to a       replication rule provides a method for controlling which repositories in a private       registry are replicated. If no filters are added, the contents of all repositories are       replicated.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RepositoryFilter {
-
-
-    /// 
+    ///
     /// The repository filter details. When the PREFIX_MATCH filter type is       specified, this value is required and should be the repository name prefix to configure       replication for.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -238,10 +217,9 @@ pub struct RepositoryFilter {
     #[serde(rename = "Filter")]
     pub filter: String,
 
-
-    /// 
+    ///
     /// The repository filter type. The only supported value is PREFIX_MATCH,       which is a repository name prefix specified with the filter       parameter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -251,17 +229,13 @@ pub struct RepositoryFilter {
     /// Update requires: No interruption
     #[serde(rename = "FilterType")]
     pub filter_type: RepositoryFilterFilterTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RepositoryFilterFilterTypeEnum {
-
     /// PREFIX_MATCH
     #[serde(rename = "PREFIX_MATCH")]
     Prefixmatch,
-
 }
 
 impl Default for RepositoryFilterFilterTypeEnum {
@@ -269,7 +243,6 @@ impl Default for RepositoryFilterFilterTypeEnum {
         RepositoryFilterFilterTypeEnum::Prefixmatch
     }
 }
-
 
 impl cfn_resources::CfnResource for RepositoryFilter {
     fn type_string(&self) -> &'static str {
@@ -281,21 +254,24 @@ impl cfn_resources::CfnResource for RepositoryFilter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.filter;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'filter'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'filter'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.filter;
 
         if the_val.len() < 2 as _ {
-            return Err(format!("Min validation failed on field 'filter'. {} is less than 2", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'filter'. {} is less than 2",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

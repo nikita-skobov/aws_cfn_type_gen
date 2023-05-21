@@ -1,10 +1,6 @@
-
-
 /// The AWS::MSK::BatchScramSecret resource Property description not available. for MSK.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBatchScramSecret {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -15,7 +11,6 @@ pub struct CfnBatchScramSecret {
     #[serde(rename = "ClusterArn")]
     pub cluster_arn: String,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -25,10 +20,7 @@ pub struct CfnBatchScramSecret {
     /// Update requires: No interruption
     #[serde(rename = "SecretArnList")]
     pub secret_arn_list: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnBatchScramSecret {
     fn type_string(&self) -> &'static str {
@@ -40,7 +32,6 @@ impl cfn_resources::CfnResource for CfnBatchScramSecret {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

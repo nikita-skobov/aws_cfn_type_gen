@@ -1,15 +1,11 @@
-
-
 /// Specifies an EC2 instance.
 ///
 /// If an Elastic IP address is attached to your instance, AWS CloudFormation     reattaches the Elastic IP address after it updates the instance. For more information about     updating stacks, see AWS CloudFormation Stacks Updates.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInstance {
-
-
-    /// 
+    ///
     /// This property is reserved for internal use. If you use it, the stack fails with this     error: Bad property set: [Testing this property] (Service: AmazonEC2; Status Code:       400; Error Code: InvalidParameterCombination; Request ID:       0XXXXXX-49c7-4b40-8bcc-76885dcXXXXX).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnInstance {
     #[serde(rename = "AdditionalInfo")]
     pub additional_info: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether the instance is associated with a dedicated host. If you want the     instance to always restart on the same host on which it was launched, specify       host. If you want the instance to restart on any available host, but try to     launch onto the last host it ran on (on a best-effort basis), specify     default.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -30,14 +25,13 @@ pub struct CfnInstance {
     #[serde(rename = "Affinity")]
     pub affinity: Option<String>,
 
-
-    /// 
+    ///
     /// The Availability Zone of the instance.
-    /// 
+    ///
     /// If not specified, an Availability Zone will be automatically chosen for you based on the     load balancing criteria for the Region.
-    /// 
+    ///
     /// This parameter is not supported by DescribeImageAttribute.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -46,14 +40,13 @@ pub struct CfnInstance {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// The block device mapping entries that defines the block devices to attach to the     instance at launch.
-    /// 
+    ///
     /// By default, the block devices specified in the block device mapping for the AMI are     used. You can override the AMI block device mapping using the instance block device     mapping. For the root volume, you can override only the volume size, volume type, volume     encryption settings, and the DeleteOnTermination setting.
-    /// 
+    ///
     /// ImportantAfter the instance is running, you can modify only the        DeleteOnTermination parameter for the attached volumes without       interrupting the instance. Modifying any other parameter results in instance replacement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of BlockDeviceMapping
@@ -62,10 +55,9 @@ pub struct CfnInstance {
     #[serde(rename = "BlockDeviceMappings")]
     pub block_device_mappings: Option<Vec<BlockDeviceMapping>>,
 
-
-    /// 
+    ///
     /// The CPU options for the instance. For more information, see Optimize CPU options in     the Amazon Elastic Compute Cloud User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CpuOptions
@@ -74,14 +66,13 @@ pub struct CfnInstance {
     #[serde(rename = "CpuOptions")]
     pub cpu_options: Option<CpuOptions>,
 
-
-    /// 
+    ///
     /// The credit option for CPU usage of the burstable performance instance. Valid values       are standard and unlimited. To change this attribute after       launch, use         ModifyInstanceCreditSpecification. For more information, see Burstable         performance instances in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Default: standard (T2 instances) or unlimited (T3/T3a/T4g       instances)
-    /// 
+    ///
     /// For T3 instances with host tenancy, only standard is       supported.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CreditSpecification
@@ -90,12 +81,11 @@ pub struct CfnInstance {
     #[serde(rename = "CreditSpecification")]
     pub credit_specification: Option<CreditSpecification>,
 
-
-    /// 
+    ///
     /// If you set this parameter to true, you can't terminate the instance using       the Amazon EC2 console, CLI, or API; otherwise, you can. To change this attribute after       launch, use ModifyInstanceAttribute. Alternatively, if you set         InstanceInitiatedShutdownBehavior to terminate, you can       terminate the instance by running the shutdown command from the instance.
-    /// 
+    ///
     /// Default: false
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -104,12 +94,11 @@ pub struct CfnInstance {
     #[serde(rename = "DisableApiTermination")]
     pub disable_api_termination: Option<bool>,
 
-
-    /// 
+    ///
     /// Indicates whether the instance is optimized for Amazon EBS I/O. This optimization       provides dedicated throughput to Amazon EBS and an optimized configuration stack to       provide optimal Amazon EBS I/O performance. This optimization isn't available with all       instance types. Additional usage charges apply when using an EBS-optimized       instance.
-    /// 
+    ///
     /// Default: false
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -118,10 +107,9 @@ pub struct CfnInstance {
     #[serde(rename = "EbsOptimized")]
     pub ebs_optimized: Option<bool>,
 
-
-    /// 
+    ///
     /// An elastic GPU to associate with the instance. An Elastic GPU is a GPU resource that       you can attach to your Windows instance to accelerate the graphics performance of your       applications. For more information, see Amazon EC2 Elastic GPUs in       the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ElasticGpuSpecification
@@ -130,14 +118,13 @@ pub struct CfnInstance {
     #[serde(rename = "ElasticGpuSpecifications")]
     pub elastic_gpu_specifications: Option<Vec<ElasticGpuSpecification>>,
 
-
-    /// 
+    ///
     /// An elastic inference accelerator to associate with the instance. Elastic inference       accelerators are a resource you can attach to your Amazon EC2 instances to accelerate       your Deep Learning (DL) inference workloads.
-    /// 
+    ///
     /// You cannot specify accelerators from different generations in the same request.
-    /// 
+    ///
     /// NoteStarting April 15, 2023, AWS will not onboard new customers to Amazon       Elastic Inference (EI), and will help current customers migrate their workloads to       options that offer better price and performance. After April 15, 2023, new customers       will not be able to launch instances with Amazon EI accelerators in Amazon SageMaker,       Amazon ECS, or Amazon EC2. However, customers who have used Amazon EI at least once during       the past 30-day period are considered current customers and will be able to continue       using the service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ElasticInferenceAccelerator
@@ -146,10 +133,9 @@ pub struct CfnInstance {
     #[serde(rename = "ElasticInferenceAccelerators")]
     pub elastic_inference_accelerators: Option<Vec<ElasticInferenceAccelerator>>,
 
-
-    /// 
+    ///
     /// Indicates whether the instance is enabled for AWS Nitro       Enclaves.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EnclaveOptions
@@ -158,12 +144,11 @@ pub struct CfnInstance {
     #[serde(rename = "EnclaveOptions")]
     pub enclave_options: Option<EnclaveOptions>,
 
-
-    /// 
+    ///
     /// Indicates whether an instance is enabled for hibernation. For more information, see         Hibernate         your instance in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// You can't enable hibernation and AWS Nitro Enclaves on the same       instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: HibernationOptions
@@ -172,10 +157,9 @@ pub struct CfnInstance {
     #[serde(rename = "HibernationOptions")]
     pub hibernation_options: Option<HibernationOptions>,
 
-
-    /// 
+    ///
     /// If you specify host for the Affinity property, the ID of a dedicated host     that the instance is associated with. If you don't specify an ID, Amazon EC2 launches the     instance onto any available, compatible dedicated host in your account. This type of launch     is called an untargeted launch. Note that for untargeted launches, you must have a     compatible, dedicated host available to successfully launch instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -184,10 +168,9 @@ pub struct CfnInstance {
     #[serde(rename = "HostId")]
     pub host_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the host resource group in which to launch the instances. If you specify a     host resource group ARN, omit the Tenancy parameter or set     it to host.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -196,10 +179,9 @@ pub struct CfnInstance {
     #[serde(rename = "HostResourceGroupArn")]
     pub host_resource_group_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The name of an IAM instance profile. To create a new IAM instance profile, use the       AWS::IAM::InstanceProfile resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -208,10 +190,9 @@ pub struct CfnInstance {
     #[serde(rename = "IamInstanceProfile")]
     pub iam_instance_profile: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the AMI. An AMI ID is required to launch an instance and must be specified       here or in a launch template.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -220,12 +201,11 @@ pub struct CfnInstance {
     #[serde(rename = "ImageId")]
     pub image_id: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether an instance stops or terminates when you initiate shutdown from the       instance (using the operating system command for system shutdown).
-    /// 
+    ///
     /// Default: stop
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -236,12 +216,11 @@ pub struct CfnInstance {
     #[serde(rename = "InstanceInitiatedShutdownBehavior")]
     pub instance_initiated_shutdown_behavior: Option<InstanceInstanceInitiatedShutdownBehaviorEnum>,
 
-
-    /// 
+    ///
     /// The instance type. For more information, see Instance types in the         Amazon EC2 User Guide.
-    /// 
+    ///
     /// Default: m1.small
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -252,12 +231,11 @@ pub struct CfnInstance {
     #[serde(rename = "InstanceType")]
     pub instance_type: Option<InstanceInstanceTypeEnum>,
 
-
-    /// 
+    ///
     /// The number of IPv6 addresses to associate with the primary network       interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet. You       cannot specify this option and the option to assign specific IPv6 addresses in the same       request. You can specify this option if you've specified a minimum number of instances       to launch.
-    /// 
+    ///
     /// You cannot specify this option and the network interfaces option in the same       request.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -266,12 +244,11 @@ pub struct CfnInstance {
     #[serde(rename = "Ipv6AddressCount")]
     pub ipv6_address_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The IPv6 addresses from the range of the subnet to associate with the       primary network interface. You cannot specify this option and the option to assign a       number of IPv6 addresses in the same request. You cannot specify this option if you've       specified a minimum number of instances to launch.
-    /// 
+    ///
     /// You cannot specify this option and the network interfaces option in the same       request.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of InstanceIpv6Address
@@ -280,12 +257,11 @@ pub struct CfnInstance {
     #[serde(rename = "Ipv6Addresses")]
     pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
 
-
-    /// 
+    ///
     /// The ID of the kernel.
-    /// 
+    ///
     /// ImportantWe recommend that you use PV-GRUB instead of kernels and RAM disks. For more         information, see PV-GRUB in the           Amazon EC2 User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -294,12 +270,11 @@ pub struct CfnInstance {
     #[serde(rename = "KernelId")]
     pub kernel_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the key pair. You can create a key pair using CreateKeyPair or         ImportKeyPair.
-    /// 
+    ///
     /// ImportantIf you do not specify a key pair, you can't connect to the instance unless you         choose an AMI that is configured to allow users another way to log in.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -308,10 +283,9 @@ pub struct CfnInstance {
     #[serde(rename = "KeyName")]
     pub key_name: Option<String>,
 
-
-    /// 
+    ///
     /// The launch template to use to launch the instances. Any parameters that you specify in     the AWS CloudFormation template override the same parameters in the launch template.     You can specify either the name or ID of a launch template, but not both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LaunchTemplateSpecification
@@ -320,10 +294,9 @@ pub struct CfnInstance {
     #[serde(rename = "LaunchTemplate")]
     pub launch_template: Option<LaunchTemplateSpecification>,
 
-
-    /// 
+    ///
     /// The license configurations.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of LicenseSpecification
@@ -332,10 +305,9 @@ pub struct CfnInstance {
     #[serde(rename = "LicenseSpecifications")]
     pub license_specifications: Option<Vec<LicenseSpecification>>,
 
-
-    /// 
+    ///
     /// Specifies whether detailed monitoring is enabled for the instance. Specify true to     enable detailed monitoring. Otherwise, basic monitoring is enabled. For more information     about detailed monitoring, see Enable or turn off detailed       monitoring for your instances in the Amazon EC2 User       Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -344,12 +316,11 @@ pub struct CfnInstance {
     #[serde(rename = "Monitoring")]
     pub monitoring: Option<bool>,
 
-
-    /// 
+    ///
     /// The network interfaces to associate with the instance.
-    /// 
+    ///
     /// NoteIf you use this property to point to a network interface, you must terminate the       original interface before attaching a new one to allow the update of the instance to       succeed.If this resource has a public IP address and is also in a VPC that is defined in the       same template, you must use the DependsOn        Attribute to declare a dependency on the VPC-gateway attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of NetworkInterface
@@ -358,10 +329,9 @@ pub struct CfnInstance {
     #[serde(rename = "NetworkInterfaces")]
     pub network_interfaces: Option<Vec<NetworkInterface>>,
 
-
-    /// 
+    ///
     /// The name of an existing placement group that you want to launch the instance into     (cluster | partition | spread).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -370,10 +340,9 @@ pub struct CfnInstance {
     #[serde(rename = "PlacementGroupName")]
     pub placement_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// The options for the instance hostname.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PrivateDnsNameOptions
@@ -382,16 +351,15 @@ pub struct CfnInstance {
     #[serde(rename = "PrivateDnsNameOptions")]
     pub private_dns_name_options: Option<PrivateDnsNameOptions>,
 
-
-    /// 
+    ///
     /// The primary IPv4 address. You must specify a value from the IPv4 address range     of the subnet.
-    /// 
+    ///
     /// Only one private IP address can be designated as primary. You can't specify this option     if you've specified the option to designate a private IP address as the primary IP address     in a network interface specification. You cannot specify this option if you're launching     more than one instance in the request.
-    /// 
+    ///
     /// You cannot specify this option and the network interfaces option in the same     request.
-    /// 
+    ///
     /// If you make an update to an instance that requires replacement, you must assign a new     private IP address. During a replacement, AWS CloudFormation creates a new instance     but doesn't delete the old instance until the stack has successfully updated. If the stack     update fails, AWS CloudFormation uses the old instance to roll back the stack to the     previous working state. The old and new instances cannot have the same private IP     address.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -400,10 +368,9 @@ pub struct CfnInstance {
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether to assign the tags from the instance to all of the volumes attached to     the instance at launch. If you specify true and you assign tags to the     instance, those tags are automatically assigned to all of the volumes that you attach to     the instance at launch. If you specify false, those tags are not assigned to     the attached volumes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -412,12 +379,11 @@ pub struct CfnInstance {
     #[serde(rename = "PropagateTagsToVolumeOnCreation")]
     pub propagate_tags_to_volume_on_creation: Option<bool>,
 
-
-    /// 
+    ///
     /// The ID of the RAM disk to select. Some kernels require additional drivers at launch.       Check the kernel requirements for information about whether you need to specify a RAM       disk. To find kernel requirements, go to the AWS Resource Center and       search for the kernel ID.
-    /// 
+    ///
     /// ImportantWe recommend that you use PV-GRUB instead of kernels and RAM disks. For more         information, see PV-GRUB in the           Amazon EC2 User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -426,12 +392,11 @@ pub struct CfnInstance {
     #[serde(rename = "RamdiskId")]
     pub ramdisk_id: Option<String>,
 
-
-    /// 
+    ///
     /// The IDs of the security groups. You can specify the IDs of existing security groups and       references to resources created by the stack template.
-    /// 
+    ///
     /// If you specify a network interface, you must specify any security groups as part of       the network interface.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: List of String
@@ -440,14 +405,13 @@ pub struct CfnInstance {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// [Default VPC] The names of the security groups. For a nondefault VPC, you     must use security group IDs instead.
-    /// 
+    ///
     /// You cannot specify this option and the network interfaces option in the same request.     The list can contain both the name of existing Amazon EC2 security groups or references to     AWS::EC2::SecurityGroup resources created in the template.
-    /// 
+    ///
     /// Default: Amazon EC2 uses the default security group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -456,10 +420,9 @@ pub struct CfnInstance {
     #[serde(rename = "SecurityGroups")]
     pub security_groups: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Enable or disable source/destination checks, which ensure that the instance       is either the source or the destination of any traffic that it receives.       If the value is true, source/destination checks are enabled;       otherwise, they are disabled. The default value is true.       You must disable source/destination checks if the instance runs services       such as network address translation, routing, or firewalls.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -468,12 +431,11 @@ pub struct CfnInstance {
     #[serde(rename = "SourceDestCheck")]
     pub source_dest_check: Option<bool>,
 
-
-    /// 
+    ///
     /// The SSM       document and parameter values in AWS Systems Manager to associate with this     instance. To use this property, you must specify an IAM instance profile role for the     instance. For more information, see Create an       IAM instance profile for Systems Manager in the AWS Systems Manager       User Guide.
-    /// 
+    ///
     /// NoteYou can currently associate only one document with an instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of SsmAssociation
@@ -482,12 +444,11 @@ pub struct CfnInstance {
     #[serde(rename = "SsmAssociations")]
     pub ssm_associations: Option<Vec<SsmAssociation>>,
 
-
-    /// 
+    ///
     /// The ID of the subnet to launch the instance into.
-    /// 
+    ///
     /// If you specify a network interface, you must specify any subnets as part of the       network interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -496,10 +457,9 @@ pub struct CfnInstance {
     #[serde(rename = "SubnetId")]
     pub subnet_id: Option<String>,
 
-
-    /// 
+    ///
     /// The tags to add to the instance. These tags are not applied to the EBS volumes, such as     the root volume, unless PropagateTagsToVolumeOnCreation     is true.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -508,10 +468,9 @@ pub struct CfnInstance {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The tenancy of the instance. An instance with a tenancy of dedicated      runs on single-tenant hardware.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -522,12 +481,11 @@ pub struct CfnInstance {
     #[serde(rename = "Tenancy")]
     pub tenancy: Option<InstanceTenancyEnum>,
 
-
-    /// 
+    ///
     /// The user data script to make available to the instance. User data is limited to 16 KB. 	   You must provide base64-encoded text. For more information, see Fn::Base64.
-    /// 
+    ///
     /// User data runs only at instance launch. For more information, see Run commands on your Linux instance at launch and Run commands on your Windows instance at launch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -536,10 +494,9 @@ pub struct CfnInstance {
     #[serde(rename = "UserData")]
     pub user_data: Option<String>,
 
-
-    /// 
+    ///
     /// The volumes to attach to the instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Volume
@@ -547,13 +504,10 @@ pub struct CfnInstance {
     /// Update requires: No interruption
     #[serde(rename = "Volumes")]
     pub volumes: Option<Vec<Volume>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceInstanceInitiatedShutdownBehaviorEnum {
-
     /// stop
     #[serde(rename = "stop")]
     Stop,
@@ -561,7 +515,6 @@ pub enum InstanceInstanceInitiatedShutdownBehaviorEnum {
     /// terminate
     #[serde(rename = "terminate")]
     Terminate,
-
 }
 
 impl Default for InstanceInstanceInitiatedShutdownBehaviorEnum {
@@ -572,7 +525,6 @@ impl Default for InstanceInstanceInitiatedShutdownBehaviorEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceInstanceTypeEnum {
-
     /// a1.2xlarge
     #[serde(rename = "a1.2xlarge")]
     A12xlarge,
@@ -3112,7 +3064,6 @@ pub enum InstanceInstanceTypeEnum {
     /// z1d.xlarge
     #[serde(rename = "z1d.xlarge")]
     Z1dxlarge,
-
 }
 
 impl Default for InstanceInstanceTypeEnum {
@@ -3123,7 +3074,6 @@ impl Default for InstanceInstanceTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceTenancyEnum {
-
     /// dedicated
     #[serde(rename = "dedicated")]
     Dedicated,
@@ -3135,7 +3085,6 @@ pub enum InstanceTenancyEnum {
     /// host
     #[serde(rename = "host")]
     Host,
-
 }
 
 impl Default for InstanceTenancyEnum {
@@ -3143,7 +3092,6 @@ impl Default for InstanceTenancyEnum {
         InstanceTenancyEnum::Dedicated
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnInstance {
     fn type_string(&self) -> &'static str {
@@ -3155,18 +3103,29 @@ impl cfn_resources::CfnResource for CfnInstance {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.cpu_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.cpu_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.credit_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.credit_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.enclave_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.enclave_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.hibernation_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.hibernation_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.launch_template
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.launch_template.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.private_dns_name_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.private_dns_name_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -3177,11 +3136,9 @@ impl cfn_resources::CfnResource for CfnInstance {
 /// AssociationParameter is a property of the Amazon EC2 Instance SsmAssociation property.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AssociationParameter {
-
-
-    /// 
+    ///
     /// The name of an input parameter that is in the associated SSM document.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3190,10 +3147,9 @@ pub struct AssociationParameter {
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value of an input parameter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -3201,10 +3157,7 @@ pub struct AssociationParameter {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AssociationParameter {
     fn type_string(&self) -> &'static str {
@@ -3216,7 +3169,6 @@ impl cfn_resources::CfnResource for AssociationParameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3226,13 +3178,11 @@ impl cfn_resources::CfnResource for AssociationParameter {
 /// BlockDeviceMapping is a property of the AWS::EC2::Instance resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BlockDeviceMapping {
-
-
-    /// 
+    ///
     /// The device name (for example, /dev/sdh or xvdh).
-    /// 
+    ///
     /// ImportantAfter the instance is running, this parameter is used to specify the device name of       the block device mapping to update.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3241,12 +3191,11 @@ pub struct BlockDeviceMapping {
     #[serde(rename = "DeviceName")]
     pub device_name: String,
 
-
-    /// 
+    ///
     /// Parameters used to automatically set up EBS volumes when the instance is     launched.
-    /// 
+    ///
     /// ImportantAfter the instance is running, you can modify only the        DeleteOnTermination parameter for the attached volumes without       interrupting the instance. Modifying any other parameter results in instance replacement.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: Ebs
@@ -3255,12 +3204,11 @@ pub struct BlockDeviceMapping {
     #[serde(rename = "Ebs")]
     pub ebs: Option<Ebs>,
 
-
-    /// 
+    ///
     /// To omit the device from the block device mapping, specify an empty string.
-    /// 
+    ///
     /// ImportantAfter the instance is running, modifying this parameter results in instance replacement.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: NoDevice
@@ -3269,16 +3217,15 @@ pub struct BlockDeviceMapping {
     #[serde(rename = "NoDevice")]
     pub no_device: Option<NoDevice>,
 
-
-    /// 
+    ///
     /// The virtual device name (ephemeralN). The name must be in the form       ephemeralX where X is a number     starting from zero (0). For example, an instance type with 2 available instance store     volumes can specify mappings for ephemeral0 and ephemeral1. The     number of available instance store volumes depends on the instance type. After you connect     to the instance, you must mount the volume.
-    /// 
+    ///
     /// NVMe instance store volumes are automatically enumerated and assigned a device name.     Including them in your block device mapping has no effect.
-    /// 
+    ///
     /// Constraints: For M3 instances, you must specify instance store volumes     in the block device mapping for the instance. When you launch an M3 instance, we ignore any     instance store volumes specified in the block device mapping for the AMI.
-    /// 
+    ///
     /// ImportantAfter the instance is running, modifying this parameter results in instance replacement.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -3286,10 +3233,7 @@ pub struct BlockDeviceMapping {
     /// Update requires: No interruption
     #[serde(rename = "VirtualName")]
     pub virtual_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for BlockDeviceMapping {
     fn type_string(&self) -> &'static str {
@@ -3301,10 +3245,11 @@ impl cfn_resources::CfnResource for BlockDeviceMapping {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.ebs.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.no_device.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.no_device
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -3315,11 +3260,9 @@ impl cfn_resources::CfnResource for BlockDeviceMapping {
 /// For more information, see Optimize CPU options in     the Amazon Elastic Compute Cloud User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CpuOptions {
-
-
-    /// 
+    ///
     /// The number of CPU cores for the instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -3328,10 +3271,9 @@ pub struct CpuOptions {
     #[serde(rename = "CoreCount")]
     pub core_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The number of threads per CPU core.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -3339,10 +3281,7 @@ pub struct CpuOptions {
     /// Update requires: No interruption
     #[serde(rename = "ThreadsPerCore")]
     pub threads_per_core: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CpuOptions {
     fn type_string(&self) -> &'static str {
@@ -3354,7 +3293,6 @@ impl cfn_resources::CfnResource for CpuOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3366,15 +3304,13 @@ impl cfn_resources::CfnResource for CpuOptions {
 /// For more information, see Burstable performance instances in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CreditSpecification {
-
-
-    /// 
+    ///
     /// The credit option for CPU usage of the instance.
-    /// 
+    ///
     /// Valid values: standard | unlimited
-    /// 
+    ///
     /// T3 instances with host tenancy do not support the unlimited       CPU credit option.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -3382,10 +3318,7 @@ pub struct CreditSpecification {
     /// Update requires: No interruption
     #[serde(rename = "CPUCredits")]
     pub cpucredits: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CreditSpecification {
     fn type_string(&self) -> &'static str {
@@ -3397,7 +3330,6 @@ impl cfn_resources::CfnResource for CreditSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3407,11 +3339,9 @@ impl cfn_resources::CfnResource for CreditSpecification {
 /// Ebs is a property of the       Amazon EC2 BlockDeviceMapping property.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Ebs {
-
-
-    /// 
+    ///
     /// Indicates whether the EBS volume is deleted on instance termination. For more     information, see Preserving Amazon EBS volumes on instance termination in the Amazon       EC2 User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3420,14 +3350,13 @@ pub struct Ebs {
     #[serde(rename = "DeleteOnTermination")]
     pub delete_on_termination: Option<bool>,
 
-
-    /// 
+    ///
     /// Indicates whether the volume should be encrypted. The effect of setting the encryption     state to true depends on the volume origin (new or from a snapshot), starting     encryption state, ownership, and whether encryption by default is enabled. For more     information, see Encryption by       default in the Amazon Elastic Compute Cloud User        Guide.
-    /// 
+    ///
     /// Encrypted Amazon EBS volumes must be attached to instances that support Amazon EBS     encryption. For more information, see Supported instance types.
-    /// 
+    ///
     /// ImportantAfter the instance is running, modifying this parameter results in instance replacement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3436,20 +3365,19 @@ pub struct Ebs {
     #[serde(rename = "Encrypted")]
     pub encrypted: Option<bool>,
 
-
-    /// 
+    ///
     /// The number of I/O operations per second (IOPS). For gp3, io1,     and io2 volumes, this represents the number of IOPS that are provisioned for     the volume. For gp2 volumes, this represents the baseline performance of the     volume and the rate at which the volume accumulates I/O credits for bursting.
-    /// 
+    ///
     /// The following are the supported values for each volume type:
-    /// 
+    ///
     /// gp3: 3,000-16,000 IOPS                    io1: 100-64,000 IOPS                    io2: 100-64,000 IOPS
-    /// 
+    ///
     /// For io1 and io2 volumes, we guarantee 64,000 IOPS only for     Instances built on       the Nitro System. Other instance families guarantee performance up to 32,000     IOPS.
-    /// 
+    ///
     /// This parameter is required for io1 and io2 volumes. The     default for gp3 volumes is 3,000 IOPS. This parameter is not supported for     gp2, st1, sc1, or standard     volumes.
-    /// 
+    ///
     /// ImportantAfter the instance is running, modifying this parameter results in instance replacement.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: Integer
@@ -3458,16 +3386,15 @@ pub struct Ebs {
     #[serde(rename = "Iops")]
     pub iops: Option<i64>,
 
-
-    /// 
+    ///
     /// The identifier of the AWS KMS key to use for Amazon EBS encryption. If     KmsKeyId is specified, the encrypted state must be true. If     the encrypted state is true but you do not specify KmsKeyId, your     KMS key for EBS is used.
-    /// 
+    ///
     /// You can specify the KMS key using any of the following:
-    /// 
+    ///
     /// Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.            Key alias. For example, alias/ExampleAlias.            Key ARN. For example,        arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab.            Alias ARN. For example,        arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias.
-    /// 
+    ///
     /// ImportantAfter the instance is running, modifying this parameter results in instance replacement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -3476,14 +3403,13 @@ pub struct Ebs {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the snapshot.
-    /// 
+    ///
     /// If you specify both SnapshotId and VolumeSize,     VolumeSize must be equal or greater than the size of the snapshot.
-    /// 
+    ///
     /// ImportantAfter the instance is running, modifying this parameter results in instance replacement.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -3492,16 +3418,15 @@ pub struct Ebs {
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: Option<String>,
 
-
-    /// 
+    ///
     /// The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.     If you specify a snapshot, the default is the snapshot size. You can specify a volume size     that is equal to or larger than the snapshot size.
-    /// 
+    ///
     /// The following are the supported volumes sizes for each volume type:
-    /// 
+    ///
     /// gp2 and gp3:1-16,384                    io1 and io2: 4-16,384                    st1 and sc1: 125-16,384                    standard: 1-1,024
-    /// 
+    ///
     /// ImportantAfter the instance is running, modifying this parameter results in instance replacement.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: Integer
@@ -3510,12 +3435,11 @@ pub struct Ebs {
     #[serde(rename = "VolumeSize")]
     pub volume_size: Option<i64>,
 
-
-    /// 
+    ///
     /// The volume type. For more information, see Amazon EBS volume types in the     Amazon EC2 User Guide. If the volume type is io1 or     io2, you must specify the IOPS that the volume supports.
-    /// 
+    ///
     /// ImportantAfter the instance is running, modifying this parameter results in instance replacement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -3525,13 +3449,10 @@ pub struct Ebs {
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
     pub volume_type: Option<EbsVolumeTypeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EbsVolumeTypeEnum {
-
     /// gp2
     #[serde(rename = "gp2")]
     Gp2,
@@ -3559,7 +3480,6 @@ pub enum EbsVolumeTypeEnum {
     /// standard
     #[serde(rename = "standard")]
     Standard,
-
 }
 
 impl Default for EbsVolumeTypeEnum {
@@ -3567,7 +3487,6 @@ impl Default for EbsVolumeTypeEnum {
         EbsVolumeTypeEnum::Gp2
     }
 }
-
 
 impl cfn_resources::CfnResource for Ebs {
     fn type_string(&self) -> &'static str {
@@ -3579,7 +3498,6 @@ impl cfn_resources::CfnResource for Ebs {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3589,11 +3507,9 @@ impl cfn_resources::CfnResource for Ebs {
 /// ElasticGpuSpecification is a property of the AWS::EC2::Instance resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ElasticGpuSpecification {
-
-
-    /// 
+    ///
     /// The type of Elastic Graphics accelerator. For more information about the values to specify for       Type, see Elastic Graphics Basics, specifically the Elastic Graphics accelerator column, in the       Amazon Elastic Compute Cloud User Guide for Windows Instances.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3601,10 +3517,7 @@ pub struct ElasticGpuSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ElasticGpuSpecification {
     fn type_string(&self) -> &'static str {
@@ -3616,7 +3529,6 @@ impl cfn_resources::CfnResource for ElasticGpuSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3626,11 +3538,9 @@ impl cfn_resources::CfnResource for ElasticGpuSpecification {
 /// ElasticInferenceAccelerator is a property of the AWS::EC2::Instance resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ElasticInferenceAccelerator {
-
-
-    /// 
+    ///
     /// The number of elastic inference accelerators to attach to the instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -3639,10 +3549,9 @@ pub struct ElasticInferenceAccelerator {
     #[serde(rename = "Count")]
     pub count: Option<i64>,
 
-
-    /// 
+    ///
     /// The type of elastic inference accelerator. The possible values are eia1.medium, eia1.large, eia1.xlarge, eia2.medium, eia2.large, and eia2.xlarge.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3650,10 +3559,7 @@ pub struct ElasticInferenceAccelerator {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ElasticInferenceAccelerator {
     fn type_string(&self) -> &'static str {
@@ -3665,7 +3571,6 @@ impl cfn_resources::CfnResource for ElasticInferenceAccelerator {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3673,11 +3578,9 @@ impl cfn_resources::CfnResource for ElasticInferenceAccelerator {
 /// Indicates whether the instance is enabled for AWS Nitro       Enclaves.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EnclaveOptions {
-
-
-    /// 
+    ///
     /// If this parameter is set to true, the instance is enabled for AWS Nitro Enclaves; otherwise, it is not enabled for AWS Nitro       Enclaves.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3685,10 +3588,7 @@ pub struct EnclaveOptions {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EnclaveOptions {
     fn type_string(&self) -> &'static str {
@@ -3700,7 +3600,6 @@ impl cfn_resources::CfnResource for EnclaveOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3710,13 +3609,11 @@ impl cfn_resources::CfnResource for EnclaveOptions {
 /// HibernationOptions is a property of the AWS::EC2::Instance resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HibernationOptions {
-
-
-    /// 
+    ///
     /// If you set this parameter to true, your instance is enabled for       hibernation.
-    /// 
+    ///
     /// Default: false
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3724,10 +3621,7 @@ pub struct HibernationOptions {
     /// Update requires: No interruption
     #[serde(rename = "Configured")]
     pub configured: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for HibernationOptions {
     fn type_string(&self) -> &'static str {
@@ -3739,7 +3633,6 @@ impl cfn_resources::CfnResource for HibernationOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3749,11 +3642,9 @@ impl cfn_resources::CfnResource for HibernationOptions {
 /// InstanceIpv6Address is a property of the AWS::EC2::Instance resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InstanceIpv6Address {
-
-
-    /// 
+    ///
     /// The IPv6 address.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3761,10 +3652,7 @@ pub struct InstanceIpv6Address {
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Address")]
     pub ipv6_address: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InstanceIpv6Address {
     fn type_string(&self) -> &'static str {
@@ -3776,7 +3664,6 @@ impl cfn_resources::CfnResource for InstanceIpv6Address {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3792,13 +3679,11 @@ impl cfn_resources::CfnResource for InstanceIpv6Address {
 /// For examples of launch templates, see Examples.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LaunchTemplateSpecification {
-
-
-    /// 
+    ///
     /// The ID of the launch template.
-    /// 
+    ///
     /// You must specify the LaunchTemplateId or the         LaunchTemplateName, but not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -3807,12 +3692,11 @@ pub struct LaunchTemplateSpecification {
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the launch template.
-    /// 
+    ///
     /// You must specify the LaunchTemplateName or the         LaunchTemplateId, but not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -3821,12 +3705,11 @@ pub struct LaunchTemplateSpecification {
     #[serde(rename = "LaunchTemplateName")]
     pub launch_template_name: Option<String>,
 
-
-    /// 
+    ///
     /// The version number of the launch template.
-    /// 
+    ///
     /// Specifying $Latest or $Default for the template version number     is not supported. However, you can specify       LatestVersionNumber or DefaultVersionNumber using the       Fn::GetAtt intrinsic function. For more information, see Fn::GetAtt.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3834,10 +3717,7 @@ pub struct LaunchTemplateSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     pub version: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LaunchTemplateSpecification {
     fn type_string(&self) -> &'static str {
@@ -3849,7 +3729,6 @@ impl cfn_resources::CfnResource for LaunchTemplateSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3859,11 +3738,9 @@ impl cfn_resources::CfnResource for LaunchTemplateSpecification {
 /// LicenseSpecification is a property of the AWS::EC2::Instance resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LicenseSpecification {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the license configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3871,10 +3748,7 @@ pub struct LicenseSpecification {
     /// Update requires: No interruption
     #[serde(rename = "LicenseConfigurationArn")]
     pub license_configuration_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LicenseSpecification {
     fn type_string(&self) -> &'static str {
@@ -3886,7 +3760,6 @@ impl cfn_resources::CfnResource for LicenseSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3898,13 +3771,11 @@ impl cfn_resources::CfnResource for LicenseSpecification {
 /// Alternatively, you can attach an existing network interface when launching an instance.     For an example, see the AWS::EC2:NetworkInterface examples.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkInterface {
-
-
-    /// 
+    ///
     /// Indicates whether to assign a carrier IP address to the network interface.
-    /// 
+    ///
     /// You can only assign a carrier IP address to a network interface that is in a subnet in       a Wavelength Zone. For more information about carrier IP addresses, see Carrier IP address in the         AWS Wavelength Developer         Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3913,10 +3784,9 @@ pub struct NetworkInterface {
     #[serde(rename = "AssociateCarrierIpAddress")]
     pub associate_carrier_ip_address: Option<bool>,
 
-
-    /// 
+    ///
     /// Indicates whether to assign a public IPv4 address to an instance. Applies only if     creating a network interface when launching an instance. The network interface must be the     primary network interface. If launching into a default subnet, the default value is       true.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3925,10 +3795,9 @@ pub struct NetworkInterface {
     #[serde(rename = "AssociatePublicIpAddress")]
     pub associate_public_ip_address: Option<bool>,
 
-
-    /// 
+    ///
     /// Indicates whether the network interface is deleted when the instance is terminated.     Applies only if creating a network interface when launching an instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3937,10 +3806,9 @@ pub struct NetworkInterface {
     #[serde(rename = "DeleteOnTermination")]
     pub delete_on_termination: Option<bool>,
 
-
-    /// 
+    ///
     /// The description of the network interface. Applies only if creating a network interface when launching an instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -3949,12 +3817,11 @@ pub struct NetworkInterface {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The position of the network interface in the attachment order. A primary network     interface has a device index of 0.
-    /// 
+    ///
     /// If you create a network interface when launching an instance, you must specify the     device index.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -3963,10 +3830,9 @@ pub struct NetworkInterface {
     #[serde(rename = "DeviceIndex")]
     pub device_index: String,
 
-
-    /// 
+    ///
     /// The IDs of the security groups for the network interface. Applies only if creating a network interface when launching an instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3975,10 +3841,9 @@ pub struct NetworkInterface {
     #[serde(rename = "GroupSet")]
     pub group_set: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A number of IPv6 addresses to assign to the network interface. Amazon EC2 chooses       the IPv6 addresses from the range of the subnet. You cannot specify this option and the       option to assign specific IPv6 addresses in the same request. You can specify this       option if you've specified a minimum number of instances to launch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -3987,10 +3852,9 @@ pub struct NetworkInterface {
     #[serde(rename = "Ipv6AddressCount")]
     pub ipv6_address_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The IPv6 addresses to assign to the network interface. You cannot specify       this option and the option to assign a number of IPv6 addresses in the same request. You       cannot specify this option if you've specified a minimum number of instances to       launch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of InstanceIpv6Address
@@ -3999,10 +3863,9 @@ pub struct NetworkInterface {
     #[serde(rename = "Ipv6Addresses")]
     pub ipv6_addresses: Option<Vec<InstanceIpv6Address>>,
 
-
-    /// 
+    ///
     /// The ID of the network interface, when attaching an existing network interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4011,10 +3874,9 @@ pub struct NetworkInterface {
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: Option<String>,
 
-
-    /// 
+    ///
     /// The private IPv4 address of the network interface. Applies only if creating a network     interface when launching an instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4023,10 +3885,9 @@ pub struct NetworkInterface {
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: Option<String>,
 
-
-    /// 
+    ///
     /// One or more private IPv4 addresses to assign to the network interface. Only one private     IPv4 address can be designated as primary.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of PrivateIpAddressSpecification
@@ -4035,10 +3896,9 @@ pub struct NetworkInterface {
     #[serde(rename = "PrivateIpAddresses")]
     pub private_ip_addresses: Option<Vec<PrivateIpAddressSpecification>>,
 
-
-    /// 
+    ///
     /// The number of secondary private IPv4 addresses. You can't specify this option and     specify more than one private IP address using the private IP addresses option.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -4047,10 +3907,9 @@ pub struct NetworkInterface {
     #[serde(rename = "SecondaryPrivateIpAddressCount")]
     pub secondary_private_ip_address_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The ID of the subnet associated with the network interface. Applies only if creating a network interface when launching an instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4058,10 +3917,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
     pub subnet_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NetworkInterface {
     fn type_string(&self) -> &'static str {
@@ -4073,7 +3929,6 @@ impl cfn_resources::CfnResource for NetworkInterface {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4082,11 +3937,7 @@ impl cfn_resources::CfnResource for NetworkInterface {
 ///
 /// NoDevice is a property of the       Amazon EC2 BlockDeviceMapping property.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct NoDevice {
-
-}
-
-
+pub struct NoDevice {}
 
 impl cfn_resources::CfnResource for NoDevice {
     fn type_string(&self) -> &'static str {
@@ -4098,7 +3949,6 @@ impl cfn_resources::CfnResource for NoDevice {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4106,11 +3956,9 @@ impl cfn_resources::CfnResource for NoDevice {
 /// The type of hostnames to assign to instances in the subnet at launch. For IPv4 only subnets, an     instance DNS name must be based on the instance IPv4 address. For IPv6 only subnets, an instance     DNS name must be based on the instance ID. For dual-stack subnets, you can specify whether DNS     names use the instance IPv4 address or the instance ID. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PrivateDnsNameOptions {
-
-
-    /// 
+    ///
     /// Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -4119,10 +3967,9 @@ pub struct PrivateDnsNameOptions {
     #[serde(rename = "EnableResourceNameDnsAAAARecord")]
     pub enable_resource_name_dns_aaaarecord: Option<bool>,
 
-
-    /// 
+    ///
     /// Indicates whether to respond to DNS queries for instance hostnames with DNS A records. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -4131,10 +3978,9 @@ pub struct PrivateDnsNameOptions {
     #[serde(rename = "EnableResourceNameDnsARecord")]
     pub enable_resource_name_dns_arecord: Option<bool>,
 
-
-    /// 
+    ///
     /// The type of hostnames to assign to instances in the subnet at launch. For IPv4 only subnets, an     instance DNS name must be based on the instance IPv4 address. For IPv6 only subnets, an instance     DNS name must be based on the instance ID. For dual-stack subnets, you can specify whether DNS     names use the instance IPv4 address or the instance ID. For more information, see Amazon EC2 instance hostname types in the Amazon Elastic Compute Cloud User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4144,13 +3990,10 @@ pub struct PrivateDnsNameOptions {
     /// Update requires: No interruption
     #[serde(rename = "HostnameType")]
     pub hostname_type: Option<PrivateDnsNameOptionsHostnameTypeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PrivateDnsNameOptionsHostnameTypeEnum {
-
     /// ip-name
     #[serde(rename = "ip-name")]
     Ipname,
@@ -4158,7 +4001,6 @@ pub enum PrivateDnsNameOptionsHostnameTypeEnum {
     /// resource-name
     #[serde(rename = "resource-name")]
     Resourcename,
-
 }
 
 impl Default for PrivateDnsNameOptionsHostnameTypeEnum {
@@ -4166,7 +4008,6 @@ impl Default for PrivateDnsNameOptionsHostnameTypeEnum {
         PrivateDnsNameOptionsHostnameTypeEnum::Ipname
     }
 }
-
 
 impl cfn_resources::CfnResource for PrivateDnsNameOptions {
     fn type_string(&self) -> &'static str {
@@ -4178,7 +4019,6 @@ impl cfn_resources::CfnResource for PrivateDnsNameOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4186,11 +4026,9 @@ impl cfn_resources::CfnResource for PrivateDnsNameOptions {
 /// Specifies a secondary private IPv4 address for a network interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PrivateIpAddressSpecification {
-
-
-    /// 
+    ///
     /// Indicates whether the private IPv4 address is the primary private IPv4 address. Only       one IPv4 address can be designated as primary.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -4199,10 +4037,9 @@ pub struct PrivateIpAddressSpecification {
     #[serde(rename = "Primary")]
     pub primary: bool,
 
-
-    /// 
+    ///
     /// The private IPv4 address.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4210,10 +4047,7 @@ pub struct PrivateIpAddressSpecification {
     /// Update requires: No interruption
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
     fn type_string(&self) -> &'static str {
@@ -4225,7 +4059,6 @@ impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4235,11 +4068,9 @@ impl cfn_resources::CfnResource for PrivateIpAddressSpecification {
 /// SsmAssociations is a property of the AWS::EC2::Instance resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SsmAssociation {
-
-
-    /// 
+    ///
     /// The input parameter values to use with the associated SSM document.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AssociationParameter
@@ -4248,10 +4079,9 @@ pub struct SsmAssociation {
     #[serde(rename = "AssociationParameters")]
     pub association_parameters: Option<Vec<AssociationParameter>>,
 
-
-    /// 
+    ///
     /// The name of an SSM document to associate with the instance.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4259,10 +4089,7 @@ pub struct SsmAssociation {
     /// Update requires: No interruption
     #[serde(rename = "DocumentName")]
     pub document_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SsmAssociation {
     fn type_string(&self) -> &'static str {
@@ -4274,7 +4101,6 @@ impl cfn_resources::CfnResource for SsmAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4288,32 +4114,26 @@ impl cfn_resources::CfnResource for SsmAssociation {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -4325,7 +4145,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4335,11 +4154,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Volume is an embedded property of the       AWS::EC2::Instance resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Volume {
-
-
-    /// 
+    ///
     /// The device name (for example, /dev/sdh or xvdh).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4348,10 +4165,9 @@ pub struct Volume {
     #[serde(rename = "Device")]
     pub device: String,
 
-
-    /// 
+    ///
     /// The ID of the EBS volume. The volume and instance must be within the same Availability    Zone.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4359,10 +4175,7 @@ pub struct Volume {
     /// Update requires: No interruption
     #[serde(rename = "VolumeId")]
     pub volume_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Volume {
     fn type_string(&self) -> &'static str {
@@ -4374,7 +4187,6 @@ impl cfn_resources::CfnResource for Volume {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

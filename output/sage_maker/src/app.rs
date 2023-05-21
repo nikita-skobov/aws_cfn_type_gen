@@ -1,13 +1,9 @@
-
-
 /// Creates a running app for the specified UserProfile. This operation is automatically    invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel    configurations are selected by the user. A user may have multiple Apps active simultaneously.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApp {
-
-
-    /// 
+    ///
     /// The name of the app.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -20,12 +16,11 @@ pub struct CfnApp {
     #[serde(rename = "AppName")]
     pub app_name: String,
 
-
-    /// 
+    ///
     /// The type of app.
-    /// 
+    ///
     /// Allowed Values: JupyterServer | KernelGateway |         RSessionGateway | RStudioServerPro | TensorBoard | Canvas
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnApp {
     #[serde(rename = "AppType")]
     pub app_type: AppAppTypeEnum,
 
-
-    /// 
+    ///
     /// The domain ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -48,10 +42,9 @@ pub struct CfnApp {
     #[serde(rename = "DomainId")]
     pub domain_id: String,
 
-
-    /// 
+    ///
     /// Specifies the ARNs of a SageMaker image and SageMaker image version, and the instance       type that the version runs on.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ResourceSpec
@@ -60,12 +53,11 @@ pub struct CfnApp {
     #[serde(rename = "ResourceSpec")]
     pub resource_spec: Option<ResourceSpec>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -74,10 +66,9 @@ pub struct CfnApp {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The user profile name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -89,13 +80,10 @@ pub struct CfnApp {
     /// Update requires: Replacement
     #[serde(rename = "UserProfileName")]
     pub user_profile_name: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AppAppTypeEnum {
-
     /// JupyterServer
     #[serde(rename = "JupyterServer")]
     Jupyterserver,
@@ -119,7 +107,6 @@ pub enum AppAppTypeEnum {
     /// Canvas
     #[serde(rename = "Canvas")]
     Canvas,
-
 }
 
 impl Default for AppAppTypeEnum {
@@ -127,7 +114,6 @@ impl Default for AppAppTypeEnum {
         AppAppTypeEnum::Jupyterserver
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnApp {
     fn type_string(&self) -> &'static str {
@@ -139,30 +125,37 @@ impl cfn_resources::CfnResource for CfnApp {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.app_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'app_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'app_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.domain_id;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'domain_id'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'domain_id'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
-        self.resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.resource_spec
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.user_profile_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'user_profile_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'user_profile_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -170,13 +163,11 @@ impl cfn_resources::CfnResource for CfnApp {
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceSpec {
-
-
-    /// 
+    ///
     /// The instance type that the image version runs on.
-    /// 
+    ///
     /// Note        JupyterServer apps only support the system value.For KernelGateway apps, the system       value is translated to ml.t3.medium. KernelGateway apps also support all other values for available       instance types.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -187,10 +178,9 @@ pub struct ResourceSpec {
     #[serde(rename = "InstanceType")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
 
-
-    /// 
+    ///
     /// The ARN of the SageMaker image that the image version belongs to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -203,10 +193,9 @@ pub struct ResourceSpec {
     #[serde(rename = "SageMakerImageArn")]
     pub sage_maker_image_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the image version created on the instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -218,13 +207,10 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
     pub sage_maker_image_version_arn: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ResourceSpecInstanceTypeEnum {
-
     /// ml.c5.12xlarge
     #[serde(rename = "ml.c5.12xlarge")]
     Mlc512xlarge,
@@ -464,7 +450,6 @@ pub enum ResourceSpecInstanceTypeEnum {
     /// system
     #[serde(rename = "system")]
     System,
-
 }
 
 impl Default for ResourceSpecInstanceTypeEnum {
@@ -472,7 +457,6 @@ impl Default for ResourceSpecInstanceTypeEnum {
         ResourceSpecInstanceTypeEnum::Mlc512xlarge
     }
 }
-
 
 impl cfn_resources::CfnResource for ResourceSpec {
     fn type_string(&self) -> &'static str {
@@ -484,23 +468,21 @@ impl cfn_resources::CfnResource for ResourceSpec {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.sage_maker_image_arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.sage_maker_image_version_arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -514,32 +496,26 @@ impl cfn_resources::CfnResource for ResourceSpec {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -551,7 +527,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

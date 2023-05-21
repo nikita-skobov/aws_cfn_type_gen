@@ -1,13 +1,9 @@
-
-
 /// Use the AWS::IoT::Dimension to limit the scope of a metric used in a     security profile for AWS IoT Device Defender. For example, using a       TOPIC_FILTER dimension, you can narrow down the scope of the metric to only     MQTT topics where the name matches the pattern specified in the dimension. For API     reference, see CreateDimension and for     general information, see Scoping metrics in       security profiles using dimensions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDimension {
-
-
-    /// 
+    ///
     /// A unique identifier for the dimension.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnDimension {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the value or list of values for the dimension. For TOPIC_FILTER dimensions, this is a pattern used to match the MQTT topic (for example, "admin/#").
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -28,10 +23,9 @@ pub struct CfnDimension {
     #[serde(rename = "StringValues")]
     pub string_values: Vec<String>,
 
-
-    /// 
+    ///
     /// Metadata that can be used to manage the dimension.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -40,10 +34,9 @@ pub struct CfnDimension {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// Specifies the type of dimension. Supported types: TOPIC_FILTER.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -51,10 +44,7 @@ pub struct CfnDimension {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDimension {
     fn type_string(&self) -> &'static str {
@@ -66,7 +56,6 @@ impl cfn_resources::CfnResource for CfnDimension {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -80,32 +69,26 @@ impl cfn_resources::CfnResource for CfnDimension {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -117,7 +100,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

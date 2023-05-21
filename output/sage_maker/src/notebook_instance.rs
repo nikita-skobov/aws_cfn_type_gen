@@ -1,15 +1,11 @@
-
-
 /// The AWS::SageMaker::NotebookInstance resource creates an Amazon SageMaker       notebook instance. A notebook instance is a machine learning (ML) compute instance       running on a Jupyter notebook. For more information, see Use Notebook Instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNotebookInstance {
-
-
-    /// 
+    ///
     /// A list of Amazon Elastic Inference (EI) instance types to associate with the notebook       instance. Currently, only one instance type can be associated with a notebook instance.       For more information, see Using Elastic Inference in Amazon SageMaker.
-    /// 
+    ///
     /// Valid Values:       ml.eia1.medium | ml.eia1.large | ml.eia1.xlarge | ml.eia2.medium | ml.eia2.large |         ml.eia2.xlarge.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -18,10 +14,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "AcceleratorTypes")]
     pub accelerator_types: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// An array of up to three Git repositories associated with the notebook instance. These       can be either the names of Git repositories stored as resources in your account, or the       URL of Git repositories in AWS CodeCommit       or in any other Git repository. These repositories are cloned at the same level as the       default repository of your notebook instance. For more information, see Associating Git         Repositories with SageMaker Notebook Instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -32,10 +27,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "AdditionalCodeRepositories")]
     pub additional_code_repositories: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The Git repository associated with the notebook instance as its default code       repository. This can be either the name of a Git repository stored as a resource in your       account, or the URL of a Git repository in AWS CodeCommit       or in any other Git repository. When you open a notebook instance, it opens in the       directory that contains this repository. For more information, see Associating Git         Repositories with SageMaker Notebook Instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -50,12 +44,11 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "DefaultCodeRepository")]
     pub default_code_repository: Option<String>,
 
-
-    /// 
+    ///
     /// Sets whether SageMaker provides internet access to the notebook instance. If you set this       to Disabled this notebook instance is able to access resources only in your       VPC, and is not be able to connect to SageMaker training and endpoint services unless you       configure a NAT Gateway in your VPC.
-    /// 
+    ///
     /// For more information, see Notebook Instances Are Internet-Enabled by Default. You can set the value       of this parameter to Disabled only if you set a value for the         SubnetId parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -66,10 +59,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "DirectInternetAccess")]
     pub direct_internet_access: Option<NotebookInstanceDirectInternetAccessEnum>,
 
-
-    /// 
+    ///
     /// Information on the IMDS configuration of the notebook instance
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: InstanceMetadataServiceConfiguration
@@ -78,12 +70,11 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "InstanceMetadataServiceConfiguration")]
     pub instance_metadata_service_configuration: Option<InstanceMetadataServiceConfiguration>,
 
-
-    /// 
+    ///
     /// The type of ML compute instance to launch for the notebook instance.
-    /// 
+    ///
     /// NoteExpect some interruption of service if this parameter is changed as CloudFormation         stops a notebook instance and starts it up again to update it.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -94,10 +85,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "InstanceType")]
     pub instance_type: NotebookInstanceInstanceTypeEnum,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of a AWS Key Management Service key that       SageMaker uses to encrypt data on the storage volume attached to your notebook instance. The       KMS key you provide must be enabled. For information, see Enabling and Disabling         Keys in the         AWS Key Management Service Developer         Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -110,10 +100,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of a lifecycle configuration to associate with the notebook instance. For       information about lifecycle configurations, see Customize a Notebook         Instance in the Amazon SageMaker Developer       Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -126,10 +115,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "LifecycleConfigName")]
     pub lifecycle_config_name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the new notebook instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -142,10 +130,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "NotebookInstanceName")]
     pub notebook_instance_name: Option<String>,
 
-
-    /// 
+    ///
     /// The platform identifier of the notebook instance runtime environment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -158,12 +145,11 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "PlatformIdentifier")]
     pub platform_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// When you send any requests to AWS resources from the notebook       instance, SageMaker assumes this role to perform tasks on your behalf. You must grant this       role necessary permissions so SageMaker can perform these tasks. The policy must allow the       SageMaker service principal (sagemaker.amazonaws.com) permissions to assume this role. For       more information, see SageMaker Roles.
-    /// 
+    ///
     /// NoteTo be able to pass this role to SageMaker, the caller of this API must have the           iam:PassRole permission.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -178,12 +164,11 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
-
-    /// 
+    ///
     /// Whether root access is enabled or disabled for users of the notebook instance. The       default value is Enabled.
-    /// 
+    ///
     /// NoteLifecycle configurations need root access to be able to set up a notebook         instance. Because of this, lifecycle configurations associated with a notebook         instance always run with root access even if you disable root access for         users.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -194,10 +179,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "RootAccess")]
     pub root_access: Option<NotebookInstanceRootAccessEnum>,
 
-
-    /// 
+    ///
     /// The VPC security group IDs, in the form sg-xxxxxxxx. The security groups must be       for the same VPC as specified in the subnet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -208,10 +192,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The ID of the subnet in a VPC to which you would like to have a connectivity from       your ML compute instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -224,14 +207,13 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "SubnetId")]
     pub subnet_id: Option<String>,
 
-
-    /// 
+    ///
     /// A list of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Resource         Tag and Using         Cost Allocation Tags.
-    /// 
+    ///
     /// You can add tags later by using the CreateTags API.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -242,12 +224,11 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The size, in GB, of the ML storage volume to attach to the notebook instance. The       default value is 5 GB.
-    /// 
+    ///
     /// NoteExpect some interruption of service if this parameter is changed as CloudFormation         stops a notebook instance and starts it up again to update it.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -259,13 +240,10 @@ pub struct CfnNotebookInstance {
     /// Update requires: No interruption
     #[serde(rename = "VolumeSizeInGB")]
     pub volume_size_in_gb: Option<i64>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum NotebookInstanceDirectInternetAccessEnum {
-
     /// Disabled
     #[serde(rename = "Disabled")]
     Disabled,
@@ -273,7 +251,6 @@ pub enum NotebookInstanceDirectInternetAccessEnum {
     /// Enabled
     #[serde(rename = "Enabled")]
     Enabled,
-
 }
 
 impl Default for NotebookInstanceDirectInternetAccessEnum {
@@ -284,7 +261,6 @@ impl Default for NotebookInstanceDirectInternetAccessEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum NotebookInstanceInstanceTypeEnum {
-
     /// ml.c4.2xlarge
     #[serde(rename = "ml.c4.2xlarge")]
     Mlc42xlarge,
@@ -560,7 +536,6 @@ pub enum NotebookInstanceInstanceTypeEnum {
     /// ml.t3.xlarge
     #[serde(rename = "ml.t3.xlarge")]
     Mlt3xlarge,
-
 }
 
 impl Default for NotebookInstanceInstanceTypeEnum {
@@ -571,7 +546,6 @@ impl Default for NotebookInstanceInstanceTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum NotebookInstanceRootAccessEnum {
-
     /// Disabled
     #[serde(rename = "Disabled")]
     Disabled,
@@ -579,7 +553,6 @@ pub enum NotebookInstanceRootAccessEnum {
     /// Enabled
     #[serde(rename = "Enabled")]
     Enabled,
-
 }
 
 impl Default for NotebookInstanceRootAccessEnum {
@@ -587,7 +560,6 @@ impl Default for NotebookInstanceRootAccessEnum {
         NotebookInstanceRootAccessEnum::Disabled
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnNotebookInstance {
     fn type_string(&self) -> &'static str {
@@ -599,119 +571,127 @@ impl cfn_resources::CfnResource for CfnNotebookInstance {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.additional_code_repositories {
-
-        if the_val.len() > 3 as _ {
-            return Err(format!("Max validation failed on field 'additional_code_repositories'. {} is greater than 3", the_val.len()));
+            if the_val.len() > 3 as _ {
+                return Err(format!("Max validation failed on field 'additional_code_repositories'. {} is greater than 3", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.default_code_repository {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'default_code_repository'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!("Max validation failed on field 'default_code_repository'. {} is greater than 1024", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.default_code_repository {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'default_code_repository'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'default_code_repository'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.instance_metadata_service_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.instance_metadata_service_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.kms_key_id {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.lifecycle_config_name {
-
-        if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'lifecycle_config_name'. {} is greater than 63", the_val.len()));
+            if the_val.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'lifecycle_config_name'. {} is greater than 63",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.notebook_instance_name {
-
-        if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'notebook_instance_name'. {} is greater than 63", the_val.len()));
+            if the_val.len() > 63 as _ {
+                return Err(format!("Max validation failed on field 'notebook_instance_name'. {} is greater than 63", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.platform_identifier {
-
-        if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'platform_identifier'. {} is greater than 15", the_val.len()));
+            if the_val.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'platform_identifier'. {} is greater than 15",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.role_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.role_arn;
 
         if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'role_arn'. {} is less than 20",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.security_group_ids {
-
-        if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+            if the_val.len() > 5 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'security_group_ids'. {} is greater than 5",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.subnet_id {
-
-        if the_val.len() > 32 as _ {
-            return Err(format!("Max validation failed on field 'subnet_id'. {} is greater than 32", the_val.len()));
+            if the_val.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subnet_id'. {} is greater than 32",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.volume_size_in_gb {
-
-        if *the_val > 16384 as _ {
-            return Err(format!("Max validation failed on field 'volume_size_in_gb'. {} is greater than 16384", the_val));
+            if *the_val > 16384 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'volume_size_in_gb'. {} is greater than 16384",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.volume_size_in_gb {
-
-        if *the_val < 5 as _ {
-            return Err(format!("Min validation failed on field 'volume_size_in_gb'. {} is less than 5", the_val));
+            if *the_val < 5 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'volume_size_in_gb'. {} is less than 5",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -719,11 +699,9 @@ impl cfn_resources::CfnResource for CfnNotebookInstance {
 /// Information on the IMDS configuration of the notebook instance
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InstanceMetadataServiceConfiguration {
-
-
-    /// 
+    ///
     /// Indicates the minimum IMDS version that the notebook instance supports. When passed as part of CreateNotebookInstance, if no value is selected, then it defaults to IMDSv1. This means that both IMDSv1 and IMDSv2 are supported. If passed as part of UpdateNotebookInstance, there is no default.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -735,10 +713,7 @@ pub struct InstanceMetadataServiceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "MinimumInstanceMetadataServiceVersion")]
     pub minimum_instance_metadata_service_version: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InstanceMetadataServiceConfiguration {
     fn type_string(&self) -> &'static str {
@@ -750,14 +725,12 @@ impl cfn_resources::CfnResource for InstanceMetadataServiceConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.minimum_instance_metadata_service_version;
 
         if the_val.len() > 1 as _ {
             return Err(format!("Max validation failed on field 'minimum_instance_metadata_service_version'. {} is greater than 1", the_val.len()));
         }
 
-        
         Ok(())
     }
 }
@@ -771,32 +744,26 @@ impl cfn_resources::CfnResource for InstanceMetadataServiceConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -808,7 +775,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

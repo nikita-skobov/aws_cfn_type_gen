@@ -1,15 +1,11 @@
-
-
 /// Specifies a managed prefix list. You can add one or more entries to the prefix list.     Each entry consists of a CIDR block and an optional description.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPrefixList {
-
-
-    /// 
+    ///
     /// The IP address type.
-    /// 
+    ///
     /// Valid Values: IPv4 | IPv6
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnPrefixList {
     #[serde(rename = "AddressFamily")]
     pub address_family: PrefixListAddressFamilyEnum,
 
-
-    /// 
+    ///
     /// One or more entries for the prefix list.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Entry
@@ -32,10 +27,9 @@ pub struct CfnPrefixList {
     #[serde(rename = "Entries")]
     pub entries: Option<Vec<Entry>>,
 
-
-    /// 
+    ///
     /// The maximum number of entries for the prefix list.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -44,12 +38,11 @@ pub struct CfnPrefixList {
     #[serde(rename = "MaxEntries")]
     pub max_entries: i64,
 
-
-    /// 
+    ///
     /// A name for the prefix list.
-    /// 
+    ///
     /// Constraints: Up to 255 characters in length. The name cannot start with com.amazonaws.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -58,10 +51,9 @@ pub struct CfnPrefixList {
     #[serde(rename = "PrefixListName")]
     pub prefix_list_name: String,
 
-
-    /// 
+    ///
     /// The tags for the prefix list.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -69,13 +61,10 @@ pub struct CfnPrefixList {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PrefixListAddressFamilyEnum {
-
     /// IPv4
     #[serde(rename = "IPv4")]
     Ipv4,
@@ -83,7 +72,6 @@ pub enum PrefixListAddressFamilyEnum {
     /// IPv6
     #[serde(rename = "IPv6")]
     Ipv6,
-
 }
 
 impl Default for PrefixListAddressFamilyEnum {
@@ -91,7 +79,6 @@ impl Default for PrefixListAddressFamilyEnum {
         PrefixListAddressFamilyEnum::Ipv4
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnPrefixList {
     fn type_string(&self) -> &'static str {
@@ -103,15 +90,15 @@ impl cfn_resources::CfnResource for CfnPrefixList {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.entries {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'entries'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'entries'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -119,11 +106,9 @@ impl cfn_resources::CfnResource for CfnPrefixList {
 /// An entry for a prefix list.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Entry {
-
-
-    /// 
+    ///
     /// The CIDR block.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -132,12 +117,11 @@ pub struct Entry {
     #[serde(rename = "Cidr")]
     pub cidr: String,
 
-
-    /// 
+    ///
     /// A description for the entry.
-    /// 
+    ///
     /// Constraints: Up to 255 characters in length.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -145,10 +129,7 @@ pub struct Entry {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Entry {
     fn type_string(&self) -> &'static str {
@@ -160,7 +141,6 @@ impl cfn_resources::CfnResource for Entry {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -174,32 +154,26 @@ impl cfn_resources::CfnResource for Entry {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -211,7 +185,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

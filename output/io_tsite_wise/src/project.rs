@@ -1,13 +1,9 @@
-
-
 /// Creates a project in the specified portal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProject {
-
-
-    /// 
+    ///
     /// A list that contains the IDs of each asset associated with the project.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -16,10 +12,9 @@ pub struct CfnProject {
     #[serde(rename = "AssetIds")]
     pub asset_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The ID of the portal in which to create the project.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnProject {
     #[serde(rename = "PortalId")]
     pub portal_id: String,
 
-
-    /// 
+    ///
     /// A description for the project.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,10 +34,9 @@ pub struct CfnProject {
     #[serde(rename = "ProjectDescription")]
     pub project_description: Option<String>,
 
-
-    /// 
+    ///
     /// A friendly name for the project.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -52,10 +45,9 @@ pub struct CfnProject {
     #[serde(rename = "ProjectName")]
     pub project_name: String,
 
-
-    /// 
+    ///
     /// A list of key-value pairs that contain metadata for the project. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -63,10 +55,7 @@ pub struct CfnProject {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnProject {
     fn type_string(&self) -> &'static str {
@@ -78,7 +67,6 @@ impl cfn_resources::CfnResource for CfnProject {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -92,32 +80,26 @@ impl cfn_resources::CfnResource for CfnProject {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -129,7 +111,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

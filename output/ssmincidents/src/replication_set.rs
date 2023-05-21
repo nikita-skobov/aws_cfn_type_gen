@@ -1,13 +1,9 @@
-
-
 /// The AWS::SSMIncidents::ReplicationSet resource specifies a set of Regions       that Incident Manager data is replicated to and the KMS key used to encrypt       the data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnReplicationSet {
-
-
-    /// 
+    ///
     /// Determines if the replication set deletion protection is enabled or not. If deletion       protection is enabled, you can't delete the last Region in the replication set.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -16,10 +12,9 @@ pub struct CfnReplicationSet {
     #[serde(rename = "DeletionProtected")]
     pub deletion_protected: Option<bool>,
 
-
-    /// 
+    ///
     /// Specifies the Regions of the replication set.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ReplicationRegion
@@ -28,10 +23,9 @@ pub struct CfnReplicationSet {
     #[serde(rename = "Regions")]
     pub regions: Vec<ReplicationRegion>,
 
-
-    /// 
+    ///
     /// A list of tags to add to the replication set.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -39,10 +33,7 @@ pub struct CfnReplicationSet {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnReplicationSet {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnReplicationSet {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -62,11 +52,9 @@ impl cfn_resources::CfnResource for CfnReplicationSet {
 /// The RegionConfiguration property specifies the Region and KMS key to add       to the replication set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RegionConfiguration {
-
-
-    /// 
+    ///
     /// The KMS key ID to use to encrypt your replication set.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -74,10 +62,7 @@ pub struct RegionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SseKmsKeyId")]
     pub sse_kms_key_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RegionConfiguration {
     fn type_string(&self) -> &'static str {
@@ -89,7 +74,6 @@ impl cfn_resources::CfnResource for RegionConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -97,11 +81,9 @@ impl cfn_resources::CfnResource for RegionConfiguration {
 /// The ReplicationRegion property type specifies the Region and KMS key to       add to the replication set.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReplicationRegion {
-
-
-    /// 
+    ///
     /// Specifies the Region configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: RegionConfiguration
@@ -110,10 +92,9 @@ pub struct ReplicationRegion {
     #[serde(rename = "RegionConfiguration")]
     pub region_configuration: Option<RegionConfiguration>,
 
-
-    /// 
+    ///
     /// Specifies the region name to add to the replication set.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -121,10 +102,7 @@ pub struct ReplicationRegion {
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
     pub region_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ReplicationRegion {
     fn type_string(&self) -> &'static str {
@@ -136,8 +114,9 @@ impl cfn_resources::CfnResource for ReplicationRegion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.region_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.region_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -152,32 +131,26 @@ impl cfn_resources::CfnResource for ReplicationRegion {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -189,7 +162,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,10 +1,6 @@
-
-
 /// The AWS::AmplifyUIBuilder::Component resource specifies a component within an Amplify app.    A component is a user interface (UI) element that you can customize. Use     ComponentChild to configure an instance of a Component. A     ComponentChild instance inherits the configuration of the main     Component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnComponent {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -15,12 +11,11 @@ pub struct CfnComponent {
     #[serde(rename = "AppId")]
     pub app_id: Option<String>,
 
-
-    /// 
+    ///
     /// The information to connect a component's properties to data at runtime. You can't specify     tags as a valid property for bindingProperties.
-    /// 
-    /// 
-    /// 
+    ///
+    ///
+    ///
     /// Required: Yes
     ///
     /// Type: Map of ComponentBindingPropertiesValue
@@ -29,10 +24,9 @@ pub struct CfnComponent {
     #[serde(rename = "BindingProperties")]
     pub binding_properties: std::collections::HashMap<String, ComponentBindingPropertiesValue>,
 
-
-    /// 
+    ///
     /// A list of the component's ComponentChild instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ComponentChild
@@ -41,22 +35,21 @@ pub struct CfnComponent {
     #[serde(rename = "Children")]
     pub children: Option<Vec<ComponentChild>>,
 
-
-    /// 
+    ///
     /// The data binding configuration for the component's properties. Use this for a collection    component. You can't specify tags as a valid property for     collectionProperties.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of ComponentDataConfiguration
     ///
     /// Update requires: No interruption
     #[serde(rename = "CollectionProperties")]
-    pub collection_properties: Option<std::collections::HashMap<String, ComponentDataConfiguration>>,
+    pub collection_properties:
+        Option<std::collections::HashMap<String, ComponentDataConfiguration>>,
 
-
-    /// 
+    ///
     /// The type of the component. This can be an Amplify custom UI component or    another custom component.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -64,7 +57,6 @@ pub struct CfnComponent {
     /// Update requires: No interruption
     #[serde(rename = "ComponentType")]
     pub component_type: String,
-
 
     /// Property description not available.
     ///
@@ -76,10 +68,9 @@ pub struct CfnComponent {
     #[serde(rename = "EnvironmentName")]
     pub environment_name: Option<String>,
 
-
-    /// 
+    ///
     /// Describes the events that can be raised on the component. Use for the workflow feature in     Amplify Studio that allows you to bind events and actions to    components.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of ComponentEvent
@@ -88,10 +79,9 @@ pub struct CfnComponent {
     #[serde(rename = "Events")]
     pub events: Option<std::collections::HashMap<String, ComponentEvent>>,
 
-
-    /// 
+    ///
     /// The name of the component.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -100,10 +90,9 @@ pub struct CfnComponent {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Describes the component's properties that can be overriden in a customized instance of the    component. You can't specify tags as a valid property for    overrides.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Json
@@ -112,10 +101,9 @@ pub struct CfnComponent {
     #[serde(rename = "Overrides")]
     pub overrides: serde_json::Value,
 
-
-    /// 
+    ///
     /// Describes the component's properties. You can't specify tags as a valid    property for properties.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Map of ComponentProperty
@@ -124,10 +112,9 @@ pub struct CfnComponent {
     #[serde(rename = "Properties")]
     pub properties: std::collections::HashMap<String, ComponentProperty>,
 
-
-    /// 
+    ///
     /// The schema version of the component when it was imported.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -136,10 +123,9 @@ pub struct CfnComponent {
     #[serde(rename = "SchemaVersion")]
     pub schema_version: Option<String>,
 
-
-    /// 
+    ///
     /// The unique ID of the component in its original source system, such as Figma.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -148,10 +134,9 @@ pub struct CfnComponent {
     #[serde(rename = "SourceId")]
     pub source_id: Option<String>,
 
-
-    /// 
+    ///
     /// One or more key-value pairs to use when tagging the component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -160,10 +145,9 @@ pub struct CfnComponent {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
+    ///
     /// A list of the component's variants. A variant is a unique style configuration of a main    component.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ComponentVariant
@@ -171,10 +155,7 @@ pub struct CfnComponent {
     /// Update requires: No interruption
     #[serde(rename = "Variants")]
     pub variants: Vec<ComponentVariant>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnComponent {
     fn type_string(&self) -> &'static str {
@@ -186,7 +167,6 @@ impl cfn_resources::CfnResource for CfnComponent {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -194,11 +174,9 @@ impl cfn_resources::CfnResource for CfnComponent {
 /// Represents the event action configuration for an element of a Component or     ComponentChild. Use for the workflow feature in Amplify Studio    that allows you to bind events and actions to components. ActionParameters    defines the action that is performed when an event occurs on the component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ActionParameters {
-
-
-    /// 
+    ///
     /// The HTML anchor link to the location to open. Specify this value for a navigation    action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentProperty
@@ -207,10 +185,9 @@ pub struct ActionParameters {
     #[serde(rename = "Anchor")]
     pub anchor: Option<ComponentProperty>,
 
-
-    /// 
+    ///
     /// A dictionary of key-value pairs mapping Amplify Studio properties to fields    in a data model. Use when the action performs an operation on an Amplify    DataStore model.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of ComponentProperty
@@ -219,10 +196,9 @@ pub struct ActionParameters {
     #[serde(rename = "Fields")]
     pub fields: Option<std::collections::HashMap<String, ComponentProperty>>,
 
-
-    /// 
+    ///
     /// Specifies whether the user should be signed out globally. Specify this value for an auth    sign out action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentProperty
@@ -231,10 +207,9 @@ pub struct ActionParameters {
     #[serde(rename = "Global")]
     pub global: Option<ComponentProperty>,
 
-
-    /// 
+    ///
     /// The unique ID of the component that the ActionParameters apply to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentProperty
@@ -243,10 +218,9 @@ pub struct ActionParameters {
     #[serde(rename = "Id")]
     pub id: Option<ComponentProperty>,
 
-
-    /// 
+    ///
     /// The name of the data model. Use when the action performs an operation on an Amplify DataStore model.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -255,10 +229,9 @@ pub struct ActionParameters {
     #[serde(rename = "Model")]
     pub model: Option<String>,
 
-
-    /// 
+    ///
     /// A key-value pair that specifies the state property name and its initial value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MutationActionSetStateParameter
@@ -267,10 +240,9 @@ pub struct ActionParameters {
     #[serde(rename = "State")]
     pub state: Option<MutationActionSetStateParameter>,
 
-
-    /// 
+    ///
     /// The element within the same component to modify when the action occurs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentProperty
@@ -279,10 +251,9 @@ pub struct ActionParameters {
     #[serde(rename = "Target")]
     pub target: Option<ComponentProperty>,
 
-
-    /// 
+    ///
     /// The type of navigation action. Valid values are url and anchor.    This value is required for a navigation action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentProperty
@@ -291,10 +262,9 @@ pub struct ActionParameters {
     #[serde(rename = "Type")]
     pub cfn_type: Option<ComponentProperty>,
 
-
-    /// 
+    ///
     /// The URL to the location to open. Specify this value for a navigation action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentProperty
@@ -302,10 +272,7 @@ pub struct ActionParameters {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     pub url: Option<ComponentProperty>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ActionParameters {
     fn type_string(&self) -> &'static str {
@@ -317,7 +284,6 @@ impl cfn_resources::CfnResource for ActionParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.anchor.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         self.global.as_ref().map_or(Ok(()), |val| val.validate())?;
@@ -328,7 +294,9 @@ impl cfn_resources::CfnResource for ActionParameters {
 
         self.target.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.cfn_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.cfn_type
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.url.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -339,11 +307,9 @@ impl cfn_resources::CfnResource for ActionParameters {
 /// The ComponentBindingPropertiesValue property specifies the data binding configuration for a component at runtime. You can use     ComponentBindingPropertiesValue to add exposed properties to a component to    allow different values to be entered when a component is reused in different places in an    app.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentBindingPropertiesValue {
-
-
-    /// 
+    ///
     /// Describes the properties to customize with data at runtime.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentBindingPropertiesValueProperties
@@ -352,10 +318,9 @@ pub struct ComponentBindingPropertiesValue {
     #[serde(rename = "BindingProperties")]
     pub binding_properties: Option<ComponentBindingPropertiesValueProperties>,
 
-
-    /// 
+    ///
     /// The default value of the property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -364,10 +329,9 @@ pub struct ComponentBindingPropertiesValue {
     #[serde(rename = "DefaultValue")]
     pub default_value: Option<String>,
 
-
-    /// 
+    ///
     /// The property type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -375,10 +339,7 @@ pub struct ComponentBindingPropertiesValue {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentBindingPropertiesValue {
     fn type_string(&self) -> &'static str {
@@ -390,8 +351,9 @@ impl cfn_resources::CfnResource for ComponentBindingPropertiesValue {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.binding_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.binding_properties
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -400,11 +362,9 @@ impl cfn_resources::CfnResource for ComponentBindingPropertiesValue {
 /// The ComponentBindingPropertiesValueProperties property specifies the data    binding configuration for a specific property using data stored in AWS. For     AWS connected properties, you can bind a property to data stored in an     Amazon S3 bucket, an Amplify DataStore model or an authenticated user    attribute.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentBindingPropertiesValueProperties {
-
-
-    /// 
+    ///
     /// An Amazon S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -413,10 +373,9 @@ pub struct ComponentBindingPropertiesValueProperties {
     #[serde(rename = "Bucket")]
     pub bucket: Option<String>,
 
-
-    /// 
+    ///
     /// The default value to assign to the property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -425,10 +384,9 @@ pub struct ComponentBindingPropertiesValueProperties {
     #[serde(rename = "DefaultValue")]
     pub default_value: Option<String>,
 
-
-    /// 
+    ///
     /// The field to bind the data to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -437,10 +395,9 @@ pub struct ComponentBindingPropertiesValueProperties {
     #[serde(rename = "Field")]
     pub field: Option<String>,
 
-
-    /// 
+    ///
     /// The storage key for an Amazon S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -449,10 +406,9 @@ pub struct ComponentBindingPropertiesValueProperties {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 
-
-    /// 
+    ///
     /// An Amplify DataStore model.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -461,10 +417,9 @@ pub struct ComponentBindingPropertiesValueProperties {
     #[serde(rename = "Model")]
     pub model: Option<String>,
 
-
-    /// 
+    ///
     /// A list of predicates for binding a component's properties to data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Predicate
@@ -473,10 +428,9 @@ pub struct ComponentBindingPropertiesValueProperties {
     #[serde(rename = "Predicates")]
     pub predicates: Option<Vec<Predicate>>,
 
-
-    /// 
+    ///
     /// An authenticated user attribute.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -484,10 +438,7 @@ pub struct ComponentBindingPropertiesValueProperties {
     /// Update requires: No interruption
     #[serde(rename = "UserAttribute")]
     pub user_attribute: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentBindingPropertiesValueProperties {
     fn type_string(&self) -> &'static str {
@@ -499,7 +450,6 @@ impl cfn_resources::CfnResource for ComponentBindingPropertiesValueProperties {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -507,11 +457,9 @@ impl cfn_resources::CfnResource for ComponentBindingPropertiesValueProperties {
 /// The ComponentChild property specifies a nested UI configuration within a    parent Component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentChild {
-
-
-    /// 
+    ///
     /// The list of ComponentChild instances for this component.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ComponentChild
@@ -520,10 +468,9 @@ pub struct ComponentChild {
     #[serde(rename = "Children")]
     pub children: Option<Vec<ComponentChild>>,
 
-
-    /// 
+    ///
     /// The type of the child component.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -532,10 +479,9 @@ pub struct ComponentChild {
     #[serde(rename = "ComponentType")]
     pub component_type: String,
 
-
-    /// 
+    ///
     /// Describes the events that can be raised on the child component. Use for the workflow    feature in Amplify Studio that allows you to bind events and actions to    components.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of ComponentEvent
@@ -544,10 +490,9 @@ pub struct ComponentChild {
     #[serde(rename = "Events")]
     pub events: Option<std::collections::HashMap<String, ComponentEvent>>,
 
-
-    /// 
+    ///
     /// The name of the child component.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -556,10 +501,9 @@ pub struct ComponentChild {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Describes the properties of the child component. You can't specify tags as a    valid property for properties.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Map of ComponentProperty
@@ -567,10 +511,7 @@ pub struct ComponentChild {
     /// Update requires: No interruption
     #[serde(rename = "Properties")]
     pub properties: std::collections::HashMap<String, ComponentProperty>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentChild {
     fn type_string(&self) -> &'static str {
@@ -582,7 +523,6 @@ impl cfn_resources::CfnResource for ComponentChild {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -590,11 +530,9 @@ impl cfn_resources::CfnResource for ComponentChild {
 /// The ComponentConditionProperty property specifies a conditional expression    for setting a component property. Use ComponentConditionProperty to set a    property to different values conditionally, based on the value of another property.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentConditionProperty {
-
-
-    /// 
+    ///
     /// The value to assign to the property if the condition is not met.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentProperty
@@ -603,10 +541,9 @@ pub struct ComponentConditionProperty {
     #[serde(rename = "Else")]
     pub cfn_else: Option<ComponentProperty>,
 
-
-    /// 
+    ///
     /// The name of a field. Specify this when the property is a data model.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -615,10 +552,9 @@ pub struct ComponentConditionProperty {
     #[serde(rename = "Field")]
     pub field: Option<String>,
 
-
-    /// 
+    ///
     /// The value of the property to evaluate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -627,10 +563,9 @@ pub struct ComponentConditionProperty {
     #[serde(rename = "Operand")]
     pub operand: Option<String>,
 
-
-    /// 
+    ///
     /// The type of the property to evaluate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -639,10 +574,9 @@ pub struct ComponentConditionProperty {
     #[serde(rename = "OperandType")]
     pub operand_type: Option<String>,
 
-
-    /// 
+    ///
     /// The operator to use to perform the evaluation, such as eq to represent    equals.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -651,10 +585,9 @@ pub struct ComponentConditionProperty {
     #[serde(rename = "Operator")]
     pub operator: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the conditional property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -663,10 +596,9 @@ pub struct ComponentConditionProperty {
     #[serde(rename = "Property")]
     pub property: Option<String>,
 
-
-    /// 
+    ///
     /// The value to assign to the property if the condition is met.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentProperty
@@ -674,10 +606,7 @@ pub struct ComponentConditionProperty {
     /// Update requires: No interruption
     #[serde(rename = "Then")]
     pub then: Option<ComponentProperty>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentConditionProperty {
     fn type_string(&self) -> &'static str {
@@ -689,8 +618,9 @@ impl cfn_resources::CfnResource for ComponentConditionProperty {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.cfn_else.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.cfn_else
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.then.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -701,11 +631,9 @@ impl cfn_resources::CfnResource for ComponentConditionProperty {
 /// The ComponentDataConfiguration property specifies the configuration for    binding a component's properties to data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentDataConfiguration {
-
-
-    /// 
+    ///
     /// A list of IDs to use to bind data to a component. Use this property to bind specifically    chosen data, rather than data retrieved from a query.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -714,10 +642,9 @@ pub struct ComponentDataConfiguration {
     #[serde(rename = "Identifiers")]
     pub identifiers: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The name of the data model to use to bind data to a component.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -726,10 +653,9 @@ pub struct ComponentDataConfiguration {
     #[serde(rename = "Model")]
     pub model: String,
 
-
-    /// 
+    ///
     /// Represents the conditional logic to use when binding data to a component. Use this    property to retrieve only a subset of the data in a collection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Predicate
@@ -738,10 +664,9 @@ pub struct ComponentDataConfiguration {
     #[serde(rename = "Predicate")]
     pub predicate: Option<Predicate>,
 
-
-    /// 
+    ///
     /// Describes how to sort the component's properties.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of SortProperty
@@ -749,10 +674,7 @@ pub struct ComponentDataConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Sort")]
     pub sort: Option<Vec<SortProperty>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentDataConfiguration {
     fn type_string(&self) -> &'static str {
@@ -764,8 +686,9 @@ impl cfn_resources::CfnResource for ComponentDataConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.predicate.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.predicate
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -774,11 +697,9 @@ impl cfn_resources::CfnResource for ComponentDataConfiguration {
 /// The ComponentEvent property specifies the configuration of an event. You can bind an event and a corresponding    action to a Component or a ComponentChild. A button click    is an example of an event.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentEvent {
-
-
-    /// 
+    ///
     /// The action to perform when a specific event is raised.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -787,10 +708,9 @@ pub struct ComponentEvent {
     #[serde(rename = "Action")]
     pub action: Option<String>,
 
-
-    /// 
+    ///
     /// Describes information about the action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ActionParameters
@@ -798,10 +718,7 @@ pub struct ComponentEvent {
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
     pub parameters: Option<ActionParameters>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentEvent {
     fn type_string(&self) -> &'static str {
@@ -813,8 +730,9 @@ impl cfn_resources::CfnResource for ComponentEvent {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.parameters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -823,11 +741,9 @@ impl cfn_resources::CfnResource for ComponentEvent {
 /// The ComponentProperty property specifies the configuration for all of a    component's properties. Use ComponentProperty to specify the values to render or    bind by default.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentProperty {
-
-
-    /// 
+    ///
     /// The information to bind the component property to data at runtime.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentPropertyBindingProperties
@@ -836,10 +752,9 @@ pub struct ComponentProperty {
     #[serde(rename = "BindingProperties")]
     pub binding_properties: Option<ComponentPropertyBindingProperties>,
 
-
-    /// 
+    ///
     /// The information to bind the component property to form data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of FormBindingElement
@@ -848,10 +763,9 @@ pub struct ComponentProperty {
     #[serde(rename = "Bindings")]
     pub bindings: Option<std::collections::HashMap<String, FormBindingElement>>,
 
-
-    /// 
+    ///
     /// The information to bind the component property to data at runtime. Use this for collection    components.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentPropertyBindingProperties
@@ -860,10 +774,9 @@ pub struct ComponentProperty {
     #[serde(rename = "CollectionBindingProperties")]
     pub collection_binding_properties: Option<ComponentPropertyBindingProperties>,
 
-
-    /// 
+    ///
     /// The name of the component that is affected by an event.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -872,10 +785,9 @@ pub struct ComponentProperty {
     #[serde(rename = "ComponentName")]
     pub component_name: Option<String>,
 
-
-    /// 
+    ///
     /// A list of component properties to concatenate to create the value to assign to this    component property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ComponentProperty
@@ -884,10 +796,9 @@ pub struct ComponentProperty {
     #[serde(rename = "Concat")]
     pub concat: Option<Vec<ComponentProperty>>,
 
-
-    /// 
+    ///
     /// The conditional expression to use to assign a value to the component property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ComponentConditionProperty
@@ -896,10 +807,9 @@ pub struct ComponentProperty {
     #[serde(rename = "Condition")]
     pub condition: Option<Box<ComponentConditionProperty>>,
 
-
-    /// 
+    ///
     /// Specifies whether the user configured the property in Amplify Studio after    importing it.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -908,10 +818,9 @@ pub struct ComponentProperty {
     #[serde(rename = "Configured")]
     pub configured: Option<bool>,
 
-
-    /// 
+    ///
     /// The default value to assign to the component property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -920,10 +829,9 @@ pub struct ComponentProperty {
     #[serde(rename = "DefaultValue")]
     pub default_value: Option<String>,
 
-
-    /// 
+    ///
     /// An event that occurs in your app. Use this for workflow data binding.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -932,10 +840,9 @@ pub struct ComponentProperty {
     #[serde(rename = "Event")]
     pub event: Option<String>,
 
-
-    /// 
+    ///
     /// The default value assigned to the property when the component is imported into an    app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -944,10 +851,9 @@ pub struct ComponentProperty {
     #[serde(rename = "ImportedValue")]
     pub imported_value: Option<String>,
 
-
-    /// 
+    ///
     /// The data model to use to assign a value to the component property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -956,10 +862,9 @@ pub struct ComponentProperty {
     #[serde(rename = "Model")]
     pub model: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the component's property that is affected by an event.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -968,10 +873,9 @@ pub struct ComponentProperty {
     #[serde(rename = "Property")]
     pub property: Option<String>,
 
-
-    /// 
+    ///
     /// The component type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -980,10 +884,9 @@ pub struct ComponentProperty {
     #[serde(rename = "Type")]
     pub cfn_type: Option<String>,
 
-
-    /// 
+    ///
     /// An authenticated user attribute to use to assign a value to the component property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -992,10 +895,9 @@ pub struct ComponentProperty {
     #[serde(rename = "UserAttribute")]
     pub user_attribute: Option<String>,
 
-
-    /// 
+    ///
     /// The value to assign to the component property.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1003,10 +905,7 @@ pub struct ComponentProperty {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentProperty {
     fn type_string(&self) -> &'static str {
@@ -1018,12 +917,17 @@ impl cfn_resources::CfnResource for ComponentProperty {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.binding_properties
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.binding_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.collection_binding_properties
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.collection_binding_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.condition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1032,11 +936,9 @@ impl cfn_resources::CfnResource for ComponentProperty {
 /// The ComponentPropertyBindingProperties property specifies a component    property to associate with a binding property. This enables exposed properties on the top    level component to propagate data to the component's property values.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentPropertyBindingProperties {
-
-
-    /// 
+    ///
     /// The data field to bind the property to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1045,10 +947,9 @@ pub struct ComponentPropertyBindingProperties {
     #[serde(rename = "Field")]
     pub field: Option<String>,
 
-
-    /// 
+    ///
     /// The component property to bind to the data field.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1056,10 +957,7 @@ pub struct ComponentPropertyBindingProperties {
     /// Update requires: No interruption
     #[serde(rename = "Property")]
     pub property: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentPropertyBindingProperties {
     fn type_string(&self) -> &'static str {
@@ -1071,7 +969,6 @@ impl cfn_resources::CfnResource for ComponentPropertyBindingProperties {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1079,11 +976,9 @@ impl cfn_resources::CfnResource for ComponentPropertyBindingProperties {
 /// The ComponentVariant property specifies the style configuration of a unique    variation of a main component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ComponentVariant {
-
-
-    /// 
+    ///
     /// The properties of the component variant that can be overriden when customizing an instance    of the component. You can't specify tags as a valid property for     overrides.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -1092,10 +987,9 @@ pub struct ComponentVariant {
     #[serde(rename = "Overrides")]
     pub overrides: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// The combination of variants that comprise this variant.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -1103,10 +997,7 @@ pub struct ComponentVariant {
     /// Update requires: No interruption
     #[serde(rename = "VariantValues")]
     pub variant_values: Option<std::collections::HashMap<String, String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ComponentVariant {
     fn type_string(&self) -> &'static str {
@@ -1118,7 +1009,6 @@ impl cfn_resources::CfnResource for ComponentVariant {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1126,8 +1016,6 @@ impl cfn_resources::CfnResource for ComponentVariant {
 /// The FormBindingElement property type specifies Property description not available. for an AWS::AmplifyUIBuilder::Component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FormBindingElement {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -1138,7 +1026,6 @@ pub struct FormBindingElement {
     #[serde(rename = "Element")]
     pub element: String,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -1148,10 +1035,7 @@ pub struct FormBindingElement {
     /// Update requires: No interruption
     #[serde(rename = "Property")]
     pub property: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FormBindingElement {
     fn type_string(&self) -> &'static str {
@@ -1163,7 +1047,6 @@ impl cfn_resources::CfnResource for FormBindingElement {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1171,11 +1054,9 @@ impl cfn_resources::CfnResource for FormBindingElement {
 /// Represents the state configuration when an action modifies a property of another element    within the same component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MutationActionSetStateParameter {
-
-
-    /// 
+    ///
     /// The name of the component that is being modified.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1184,10 +1065,9 @@ pub struct MutationActionSetStateParameter {
     #[serde(rename = "ComponentName")]
     pub component_name: String,
 
-
-    /// 
+    ///
     /// The name of the component property to apply the state configuration to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1196,10 +1076,9 @@ pub struct MutationActionSetStateParameter {
     #[serde(rename = "Property")]
     pub property: String,
 
-
-    /// 
+    ///
     /// The state configuration to assign to the property.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ComponentProperty
@@ -1207,10 +1086,7 @@ pub struct MutationActionSetStateParameter {
     /// Update requires: No interruption
     #[serde(rename = "Set")]
     pub set: ComponentProperty,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MutationActionSetStateParameter {
     fn type_string(&self) -> &'static str {
@@ -1222,7 +1098,6 @@ impl cfn_resources::CfnResource for MutationActionSetStateParameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.set.validate()?;
 
         Ok(())
@@ -1232,11 +1107,9 @@ impl cfn_resources::CfnResource for MutationActionSetStateParameter {
 /// The Predicate property specifies information for generating Amplify DataStore queries. Use Predicate to retrieve a subset of the    data in a collection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Predicate {
-
-
-    /// 
+    ///
     /// A list of predicates to combine logically.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Predicate
@@ -1245,10 +1118,9 @@ pub struct Predicate {
     #[serde(rename = "And")]
     pub and: Option<Vec<Predicate>>,
 
-
-    /// 
+    ///
     /// The field to query.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1257,10 +1129,9 @@ pub struct Predicate {
     #[serde(rename = "Field")]
     pub field: Option<String>,
 
-
-    /// 
+    ///
     /// The value to use when performing the evaluation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1269,10 +1140,9 @@ pub struct Predicate {
     #[serde(rename = "Operand")]
     pub operand: Option<String>,
 
-
-    /// 
+    ///
     /// The operator to use to perform the evaluation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1281,10 +1151,9 @@ pub struct Predicate {
     #[serde(rename = "Operator")]
     pub operator: Option<String>,
 
-
-    /// 
+    ///
     /// A list of predicates to combine logically.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Predicate
@@ -1292,10 +1161,7 @@ pub struct Predicate {
     /// Update requires: No interruption
     #[serde(rename = "Or")]
     pub or: Option<Vec<Predicate>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Predicate {
     fn type_string(&self) -> &'static str {
@@ -1307,7 +1173,6 @@ impl cfn_resources::CfnResource for Predicate {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1315,11 +1180,9 @@ impl cfn_resources::CfnResource for Predicate {
 /// The SortProperty property specifies how to sort the data that you bind to a    component.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SortProperty {
-
-
-    /// 
+    ///
     /// The direction of the sort, either ascending or descending.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1328,10 +1191,9 @@ pub struct SortProperty {
     #[serde(rename = "Direction")]
     pub direction: String,
 
-
-    /// 
+    ///
     /// The field to perform the sort on.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1339,10 +1201,7 @@ pub struct SortProperty {
     /// Update requires: No interruption
     #[serde(rename = "Field")]
     pub field: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SortProperty {
     fn type_string(&self) -> &'static str {
@@ -1354,7 +1213,6 @@ impl cfn_resources::CfnResource for SortProperty {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

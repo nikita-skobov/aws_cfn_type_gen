@@ -1,5 +1,3 @@
-
-
 /// This operation is used with the Amazon GameLift FleetIQ solution and game server groups.
 ///
 /// Creates a GameLift FleetIQ game server group for managing game hosting on a collection of       Amazon EC2 instances for game hosting. This operation creates the game server group,       creates an Auto Scaling group in your AWS account, and establishes a link between the       two groups. You can view the status of your game server groups in the GameLift console.       Game server group metrics and events are emitted to Amazon CloudWatch.
@@ -15,11 +13,9 @@
 /// GameLift FleetIQ Guide
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGameServerGroup {
-
-
-    /// 
+    ///
     /// Configuration settings to define a scaling policy for the Auto Scaling group that is       optimized for game hosting. The scaling policy uses the metric         "PercentUtilizedGameServers" to maintain a buffer of idle game servers       that can immediately accommodate new games and players. After the Auto Scaling group is       created, update this value directly in the Auto Scaling group using the AWS console or       APIs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AutoScalingPolicy
@@ -28,12 +24,11 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "AutoScalingPolicy")]
     pub auto_scaling_policy: Option<AutoScalingPolicy>,
 
-
-    /// 
+    ///
     /// Indicates how Amazon GameLift FleetIQ balances the use of Spot Instances and On-Demand Instances in the       game server group. Method options include the following:
-    /// 
+    ///
     /// SPOT_ONLY - Only Spot Instances are used in the game server group. If Spot           Instances are unavailable or not viable for game hosting, the game server group           provides no hosting capacity until Spot Instances can again be used. Until then,           no new instances are started, and the existing nonviable Spot Instances are           terminated (after current gameplay ends) and are not replaced.                        SPOT_PREFERRED - (default value) Spot Instances are used whenever available in           the game server group. If Spot Instances are unavailable, the game server group           continues to provide hosting capacity by falling back to On-Demand Instances.           Existing nonviable Spot Instances are terminated (after current gameplay ends)           and are replaced with new On-Demand Instances.                        ON_DEMAND_ONLY - Only On-Demand Instances are used in the game           server group. No Spot Instances are used, even when available, while this           balancing strategy is in force.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -44,12 +39,11 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "BalancingStrategy")]
     pub balancing_strategy: Option<GameServerGroupBalancingStrategyEnum>,
 
-
-    /// 
+    ///
     /// The type of delete to perform. To delete a game server group, specify the     DeleteOption. Options include the following:
-    /// 
+    ///
     /// SAFE_DELETE – (default) Terminates the game server group and           Amazon EC2 Auto Scaling group only when it has no game servers that are in             UTILIZED status.                         FORCE_DELETE – Terminates the game server group, including all           active game servers regardless of their utilization status, and the Amazon EC2 Auto           Scaling group.                         RETAIN – Does a safe delete of the game server group but retains           the Amazon EC2 Auto Scaling group as is.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -60,10 +54,9 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "DeleteOption")]
     pub delete_option: Option<GameServerGroupDeleteOptionEnum>,
 
-
-    /// 
+    ///
     /// A developer-defined identifier for the game server group. The name is unique for each       Region in each AWS account.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -78,10 +71,9 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "GameServerGroupName")]
     pub game_server_group_name: String,
 
-
-    /// 
+    ///
     /// A flag that indicates whether instances in the game server group are protected       from early termination. Unprotected instances that have active game servers running might       be terminated during a scale-down event, causing players to be dropped from the game.       Protected instances cannot be terminated while there are active game servers running except       in the event of a forced game server group deletion (see ). An exception to this is with Spot       Instances, which can be terminated by AWS regardless of protection status.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -92,10 +84,9 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "GameServerProtectionPolicy")]
     pub game_server_protection_policy: Option<GameServerGroupGameServerProtectionPolicyEnum>,
 
-
-    /// 
+    ///
     /// The set of Amazon EC2 instance types that Amazon GameLift FleetIQ can use when balancing and automatically       scaling instances in the corresponding Auto Scaling group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of InstanceDefinition
@@ -106,12 +97,11 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "InstanceDefinitions")]
     pub instance_definitions: Vec<InstanceDefinition>,
 
-
-    /// 
+    ///
     /// The Amazon EC2 launch template that contains configuration settings and game server code to       be deployed to all instances in the game server group. You can specify the template       using either the template name or ID. For help with creating a launch template, see         Creating a Launch         Template for an Auto Scaling Group in the Amazon Elastic Compute Cloud Auto Scaling         User Guide. After the Auto Scaling group is created, update this value       directly in the Auto Scaling group using the AWS console or APIs.
-    /// 
+    ///
     /// NoteIf you specify network interfaces in your launch template, you must explicitly set         the property AssociatePublicIpAddress to "true". If no network         interface is specified in the launch template, Amazon GameLift FleetIQ uses your account's default         VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LaunchTemplate
@@ -120,10 +110,9 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "LaunchTemplate")]
     pub launch_template: Option<LaunchTemplate>,
 
-
-    /// 
+    ///
     /// The maximum number of instances allowed in the Amazon EC2 Auto Scaling group. During       automatic scaling events, Amazon GameLift FleetIQ and EC2 do not scale up the group above this maximum.       After the Auto Scaling group is created, update this value directly in the Auto Scaling       group using the AWS console or APIs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -134,10 +123,9 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "MaxSize")]
     pub max_size: Option<f64>,
 
-
-    /// 
+    ///
     /// The minimum number of instances allowed in the Amazon EC2 Auto Scaling group. During       automatic scaling events, Amazon GameLift FleetIQ and Amazon EC2 do not scale down the group below this       minimum. In production, this value should be set to at least 1. After the Auto Scaling       group is created, update this value directly in the Auto Scaling group using the AWS       console or APIs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -148,10 +136,9 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "MinSize")]
     pub min_size: Option<f64>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) for an IAM role that       allows Amazon GameLift to access your Amazon EC2 Auto Scaling groups.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -166,10 +153,9 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
-
-    /// 
+    ///
     /// A list of labels to assign to the new game server group resource. Tags are    developer-defined key-value pairs. Tagging AWS resources is useful for resource    management, access management, and cost allocation. For more information, see Tagging AWS     Resources in the      AWS General Reference. Once the    resource is created, you can use TagResource, UntagResource, and ListTagsForResource to add, remove,    and view tags, respectively. The maximum tag limit may be lower than stated. See the    AWS General Reference for actual tagging limits.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -180,10 +166,9 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// A list of virtual private cloud (VPC) subnets to use with instances in the game server       group. By default, all Amazon GameLift FleetIQ-supported Availability Zones are used. You can use this       parameter to specify VPCs that you've set up. This property cannot be updated after the       game server group is created, and the corresponding Auto Scaling group will always use       the property value that is set with this request, even if the Auto Scaling group is       updated directly.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -193,13 +178,10 @@ pub struct CfnGameServerGroup {
     /// Update requires: No interruption
     #[serde(rename = "VpcSubnets")]
     pub vpc_subnets: Option<Vec<String>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum GameServerGroupBalancingStrategyEnum {
-
     /// ON_DEMAND_ONLY
     #[serde(rename = "ON_DEMAND_ONLY")]
     Ondemandonly,
@@ -211,7 +193,6 @@ pub enum GameServerGroupBalancingStrategyEnum {
     /// SPOT_PREFERRED
     #[serde(rename = "SPOT_PREFERRED")]
     Spotpreferred,
-
 }
 
 impl Default for GameServerGroupBalancingStrategyEnum {
@@ -222,7 +203,6 @@ impl Default for GameServerGroupBalancingStrategyEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum GameServerGroupDeleteOptionEnum {
-
     /// FORCE_DELETE
     #[serde(rename = "FORCE_DELETE")]
     Forcedelete,
@@ -234,7 +214,6 @@ pub enum GameServerGroupDeleteOptionEnum {
     /// SAFE_DELETE
     #[serde(rename = "SAFE_DELETE")]
     Safedelete,
-
 }
 
 impl Default for GameServerGroupDeleteOptionEnum {
@@ -245,7 +224,6 @@ impl Default for GameServerGroupDeleteOptionEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum GameServerGroupGameServerProtectionPolicyEnum {
-
     /// FULL_PROTECTION
     #[serde(rename = "FULL_PROTECTION")]
     Fullprotection,
@@ -253,7 +231,6 @@ pub enum GameServerGroupGameServerProtectionPolicyEnum {
     /// NO_PROTECTION
     #[serde(rename = "NO_PROTECTION")]
     Noprotection,
-
 }
 
 impl Default for GameServerGroupGameServerProtectionPolicyEnum {
@@ -261,7 +238,6 @@ impl Default for GameServerGroupGameServerProtectionPolicyEnum {
         GameServerGroupGameServerProtectionPolicyEnum::Fullprotection
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnGameServerGroup {
     fn type_string(&self) -> &'static str {
@@ -273,78 +249,95 @@ impl cfn_resources::CfnResource for CfnGameServerGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.auto_scaling_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.auto_scaling_policy
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.game_server_group_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'game_server_group_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'game_server_group_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.game_server_group_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'game_server_group_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'game_server_group_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.instance_definitions;
 
         if the_val.len() > 20 as _ {
-            return Err(format!("Max validation failed on field 'instance_definitions'. {} is greater than 20", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'instance_definitions'. {} is greater than 20",
+                the_val.len()
+            ));
         }
 
-        
-        self.launch_template.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.launch_template
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.max_size {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'max_size'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'max_size'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.min_size {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'min_size'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'min_size'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.role_arn;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'role_arn'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.role_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'role_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.vpc_subnets {
-
-        if the_val.len() > 20 as _ {
-            return Err(format!("Max validation failed on field 'vpc_subnets'. {} is greater than 20", the_val.len()));
+            if the_val.len() > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'vpc_subnets'. {} is greater than 20",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -354,11 +347,9 @@ impl cfn_resources::CfnResource for CfnGameServerGroup {
 /// Configuration settings for intelligent automatic scaling that uses target tracking.    After the Auto Scaling group is created, all updates to Auto Scaling policies, including    changing this policy and adding or removing other policies, is done directly on the Auto    Scaling group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoScalingPolicy {
-
-
-    /// 
+    ///
     /// Length of time, in seconds, it takes for a new instance to start new game server       processes and register with Amazon GameLift FleetIQ. Specifying a warm-up time can be useful, particularly       with game servers that take a long time to start up, because it avoids prematurely       starting new instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -369,10 +360,9 @@ pub struct AutoScalingPolicy {
     #[serde(rename = "EstimatedInstanceWarmup")]
     pub estimated_instance_warmup: Option<f64>,
 
-
-    /// 
+    ///
     /// Settings for a target-based scaling policy applied to Auto Scaling group.    These settings are used to create a target-based policy that tracks the GameLift    FleetIQ metric PercentUtilizedGameServers and specifies a target value    for the metric. As player usage changes, the policy triggers to adjust the game server group    capacity so that the metric returns to the target value.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: TargetTrackingConfiguration
@@ -380,10 +370,7 @@ pub struct AutoScalingPolicy {
     /// Update requires: No interruption
     #[serde(rename = "TargetTrackingConfiguration")]
     pub target_tracking_configuration: TargetTrackingConfiguration,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AutoScalingPolicy {
     fn type_string(&self) -> &'static str {
@@ -395,15 +382,15 @@ impl cfn_resources::CfnResource for AutoScalingPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.estimated_instance_warmup {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'estimated_instance_warmup'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'estimated_instance_warmup'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         self.target_tracking_configuration.validate()?;
 
         Ok(())
@@ -415,11 +402,9 @@ impl cfn_resources::CfnResource for AutoScalingPolicy {
 /// An allowed instance type for a GameServerGroup. All game server groups must have at least two    instance types defined for it. GameLift FleetIQ periodically evaluates each defined instance type    for viability. It then updates the Auto Scaling group with the list of viable instance    types.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InstanceDefinition {
-
-
-    /// 
+    ///
     /// An Amazon EC2 instance type designation.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -430,10 +415,9 @@ pub struct InstanceDefinition {
     #[serde(rename = "InstanceType")]
     pub instance_type: InstanceDefinitionInstanceTypeEnum,
 
-
-    /// 
+    ///
     /// Instance weighting that indicates how much this instance type contributes to the total       capacity of a game server group. Instance weights are used by Amazon GameLift FleetIQ to calculate the       instance type's cost per unit hour and better identify the most cost-effective options.       For detailed information on weighting instance capacity, see Instance         Weighting in the Amazon Elastic Compute Cloud Auto Scaling User Guide.       Default value is "1".
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -447,13 +431,10 @@ pub struct InstanceDefinition {
     /// Update requires: No interruption
     #[serde(rename = "WeightedCapacity")]
     pub weighted_capacity: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceDefinitionInstanceTypeEnum {
-
     /// c4.2xlarge
     #[serde(rename = "c4.2xlarge")]
     C42xlarge,
@@ -805,7 +786,6 @@ pub enum InstanceDefinitionInstanceTypeEnum {
     /// r6g.xlarge
     #[serde(rename = "r6g.xlarge")]
     R6gxlarge,
-
 }
 
 impl Default for InstanceDefinitionInstanceTypeEnum {
@@ -813,7 +793,6 @@ impl Default for InstanceDefinitionInstanceTypeEnum {
         InstanceDefinitionInstanceTypeEnum::C42xlarge
     }
 }
-
 
 impl cfn_resources::CfnResource for InstanceDefinition {
     fn type_string(&self) -> &'static str {
@@ -825,23 +804,24 @@ impl cfn_resources::CfnResource for InstanceDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.weighted_capacity {
+            if the_val.len() > 3 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'weighted_capacity'. {} is greater than 3",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.weighted_capacity {
-
-        if the_val.len() > 3 as _ {
-            return Err(format!("Max validation failed on field 'weighted_capacity'. {} is greater than 3", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'weighted_capacity'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.weighted_capacity {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'weighted_capacity'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -851,11 +831,9 @@ impl cfn_resources::CfnResource for InstanceDefinition {
 /// An Amazon EC2 launch template that contains configuration settings and game server code to    be deployed to all instances in a game server group. The launch template is specified    when creating a new game server group with GameServerGroup.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LaunchTemplate {
-
-
-    /// 
+    ///
     /// A unique identifier for an existing Amazon EC2 launch template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -870,10 +848,9 @@ pub struct LaunchTemplate {
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: Option<String>,
 
-
-    /// 
+    ///
     /// A readable identifier for an existing Amazon EC2 launch template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -888,10 +865,9 @@ pub struct LaunchTemplate {
     #[serde(rename = "LaunchTemplateName")]
     pub launch_template_name: Option<String>,
 
-
-    /// 
+    ///
     /// The version of the Amazon EC2 launch template to use. If no version is specified, the       default version will be used. With Amazon EC2, you can specify a default version for a launch       template. If none is set, the default is the first version created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -905,10 +881,7 @@ pub struct LaunchTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     pub version: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LaunchTemplate {
     fn type_string(&self) -> &'static str {
@@ -920,55 +893,60 @@ impl cfn_resources::CfnResource for LaunchTemplate {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.launch_template_id {
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'launch_template_id'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.launch_template_id {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'launch_template_id'. {} is greater than 255", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'launch_template_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.launch_template_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'launch_template_id'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.launch_template_name {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'launch_template_name'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'launch_template_name'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.launch_template_name {
-
-        if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'launch_template_name'. {} is less than 3", the_val.len()));
+            if the_val.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'launch_template_name'. {} is less than 3",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.version {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'version'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'version'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.version {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'version'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'version'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -982,32 +960,26 @@ impl cfn_resources::CfnResource for LaunchTemplate {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -1019,7 +991,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1029,11 +1000,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Settings for a target-based scaling policy as part of a GameServerGroupAutoScalingPolicy.    These settings are used to    create a target-based policy that tracks the GameLift FleetIQ metric    "PercentUtilizedGameServers" and specifies a target value for the    metric. As player usage changes, the policy triggers to adjust the game server group    capacity so that the metric returns to the target value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TargetTrackingConfiguration {
-
-
-    /// 
+    ///
     /// Desired value to use with a game server group target-based scaling policy.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Double
@@ -1041,10 +1010,7 @@ pub struct TargetTrackingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TargetValue")]
     pub target_value: f64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TargetTrackingConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1056,7 +1022,6 @@ impl cfn_resources::CfnResource for TargetTrackingConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

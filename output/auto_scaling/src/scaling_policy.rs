@@ -1,17 +1,13 @@
-
-
 /// The AWS::AutoScaling::ScalingPolicy resource specifies an Amazon EC2 Auto    Scaling scaling policy so that the Auto Scaling group can scale the number of instances    available for your application.
 ///
 /// For more information about using scaling policies to scale your Auto Scaling group    automatically, see Dynamic scaling and     Predictive     scaling in the Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnScalingPolicy {
-
-
-    /// 
+    ///
     /// Specifies how the scaling adjustment is interpreted (for example, an absolute number       or a percentage). The valid values are ChangeInCapacity,         ExactCapacity, and PercentChangeInCapacity.
-    /// 
+    ///
     /// Required if the policy type is StepScaling or SimpleScaling.       For more information, see Scaling adjustment types in the Amazon EC2 Auto Scaling User Guide.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "AdjustmentType")]
     pub adjustment_type: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the Auto Scaling group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -32,14 +27,13 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "AutoScalingGroupName")]
     pub auto_scaling_group_name: String,
 
-
-    /// 
+    ///
     /// A cooldown period, in seconds, that applies to a specific simple scaling policy. When       a cooldown period is specified here, it overrides the default cooldown.
-    /// 
+    ///
     /// Valid only if the policy type is SimpleScaling. For more information, see         Scaling         cooldowns for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide.
-    /// 
+    ///
     /// Default: None
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -48,16 +42,15 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "Cooldown")]
     pub cooldown: Option<String>,
 
-
-    /// 
+    ///
     /// Not needed if the default instance warmup is defined for the         group.
-    /// 
+    ///
     /// The estimated time, in seconds, until a newly launched instance can contribute to the       CloudWatch metrics. This warm-up period applies to instances launched due to a specific target       tracking or step scaling policy. When a warm-up period is specified here, it overrides       the default instance warmup.
-    /// 
+    ///
     /// Valid only if the policy type is TargetTrackingScaling or         StepScaling.
-    /// 
+    ///
     /// NoteThe default is to use the value for the default instance warmup defined for the         group. If default instance warmup is null, then EstimatedInstanceWarmup         falls back to the value of default cooldown.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -66,12 +59,11 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "EstimatedInstanceWarmup")]
     pub estimated_instance_warmup: Option<i64>,
 
-
-    /// 
+    ///
     /// The aggregation type for the CloudWatch metrics. The valid values are Minimum,         Maximum, and Average. If the aggregation type is null, the       value is treated as Average.
-    /// 
+    ///
     /// Valid only if the policy type is StepScaling.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -80,14 +72,13 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "MetricAggregationType")]
     pub metric_aggregation_type: Option<String>,
 
-
-    /// 
+    ///
     /// The minimum value to scale by when the adjustment type is         PercentChangeInCapacity. For example, suppose that you create a step       scaling policy to scale out an Auto Scaling group by 25 percent and you specify a         MinAdjustmentMagnitude of 2. If the group has 4 instances and the       scaling policy is performed, 25 percent of 4 is 1. However, because you specified a         MinAdjustmentMagnitude of 2, Amazon EC2 Auto Scaling scales out the group by 2       instances.
-    /// 
+    ///
     /// Valid only if the policy type is StepScaling or         SimpleScaling. For more information, see Scaling adjustment types in the Amazon EC2 Auto Scaling User       Guide.
-    /// 
+    ///
     /// NoteSome Auto Scaling groups use instance weights. In this case, set the           MinAdjustmentMagnitude to a value that is at least as large as your         largest instance weight.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -96,12 +87,11 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "MinAdjustmentMagnitude")]
     pub min_adjustment_magnitude: Option<i64>,
 
-
-    /// 
+    ///
     /// One of the following policy types:
-    /// 
+    ///
     /// TargetTrackingScaling                                StepScaling                                SimpleScaling (default)                        PredictiveScaling
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -110,14 +100,13 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "PolicyType")]
     pub policy_type: Option<String>,
 
-
-    /// 
+    ///
     /// A predictive scaling policy. Provides support for predefined and custom       metrics.
-    /// 
+    ///
     /// Predefined metrics include CPU utilization, network in/out, and the Application Load       Balancer request count.
-    /// 
+    ///
     /// Required if the policy type is PredictiveScaling.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: PredictiveScalingConfiguration
@@ -126,12 +115,11 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "PredictiveScalingConfiguration")]
     pub predictive_scaling_configuration: Option<PredictiveScalingConfiguration>,
 
-
-    /// 
+    ///
     /// The amount by which to scale, based on the specified adjustment type. A positive value       adds to the current capacity while a negative number removes from the current capacity.       For exact capacity, you must specify a non-negative value.
-    /// 
+    ///
     /// Required if the policy type is SimpleScaling. (Not used with any other       policy type.)
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: Integer
@@ -140,12 +128,11 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "ScalingAdjustment")]
     pub scaling_adjustment: Option<i64>,
 
-
-    /// 
+    ///
     /// A set of adjustments that enable you to scale based on the size of the alarm       breach.
-    /// 
+    ///
     /// Required if the policy type is StepScaling. (Not used with any other       policy type.)
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: List of StepAdjustment
@@ -154,18 +141,17 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "StepAdjustments")]
     pub step_adjustments: Option<Vec<StepAdjustment>>,
 
-
-    /// 
+    ///
     /// A target tracking scaling policy. Provides support for predefined or custom       metrics.
-    /// 
+    ///
     /// The following predefined metrics are available:
-    /// 
+    ///
     /// ASGAverageCPUUtilization                                ASGAverageNetworkIn                                ASGAverageNetworkOut                                ALBRequestCountPerTarget
-    /// 
+    ///
     /// If you specify ALBRequestCountPerTarget for the metric, you must specify       the ResourceLabel property with the         PredefinedMetricSpecification.
-    /// 
+    ///
     /// Required if the policy type is TargetTrackingScaling.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: TargetTrackingConfiguration
@@ -173,10 +159,7 @@ pub struct CfnScalingPolicy {
     /// Update requires: No interruption
     #[serde(rename = "TargetTrackingConfiguration")]
     pub target_tracking_configuration: Option<TargetTrackingConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnScalingPolicy {
     fn type_string(&self) -> &'static str {
@@ -188,10 +171,13 @@ impl cfn_resources::CfnResource for CfnScalingPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.predictive_scaling_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.predictive_scaling_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.target_tracking_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.target_tracking_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -206,13 +192,11 @@ impl cfn_resources::CfnResource for CfnScalingPolicy {
 /// CustomizedMetricSpecification is a property of the AWS::AutoScaling::ScalingPolicy TargetTrackingConfiguration property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomizedMetricSpecification {
-
-
-    /// 
+    ///
     /// The dimensions of the metric.
-    /// 
+    ///
     /// Conditional: If you published your metric with dimensions, you must specify the same       dimensions in your scaling policy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of MetricDimension
@@ -221,10 +205,9 @@ pub struct CustomizedMetricSpecification {
     #[serde(rename = "Dimensions")]
     pub dimensions: Option<Vec<MetricDimension>>,
 
-
-    /// 
+    ///
     /// The name of the metric. To get the exact metric name, namespace, and dimensions,       inspect the Metric object       that is returned by a call to ListMetrics.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -233,10 +216,9 @@ pub struct CustomizedMetricSpecification {
     #[serde(rename = "MetricName")]
     pub metric_name: String,
 
-
-    /// 
+    ///
     /// The namespace of the metric.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -245,10 +227,9 @@ pub struct CustomizedMetricSpecification {
     #[serde(rename = "Namespace")]
     pub namespace: String,
 
-
-    /// 
+    ///
     /// The statistic of the metric.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -259,10 +240,9 @@ pub struct CustomizedMetricSpecification {
     #[serde(rename = "Statistic")]
     pub statistic: CustomizedMetricSpecificationStatisticEnum,
 
-
-    /// 
+    ///
     /// The unit of the metric. For a complete list of the units that CloudWatch supports, see the         MetricDatum       data type in the Amazon CloudWatch API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -270,13 +250,10 @@ pub struct CustomizedMetricSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     pub unit: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CustomizedMetricSpecificationStatisticEnum {
-
     /// Average
     #[serde(rename = "Average")]
     Average,
@@ -296,7 +273,6 @@ pub enum CustomizedMetricSpecificationStatisticEnum {
     /// Sum
     #[serde(rename = "Sum")]
     Sum,
-
 }
 
 impl Default for CustomizedMetricSpecificationStatisticEnum {
@@ -304,7 +280,6 @@ impl Default for CustomizedMetricSpecificationStatisticEnum {
         CustomizedMetricSpecificationStatisticEnum::Average
     }
 }
-
 
 impl cfn_resources::CfnResource for CustomizedMetricSpecification {
     fn type_string(&self) -> &'static str {
@@ -316,7 +291,6 @@ impl cfn_resources::CfnResource for CustomizedMetricSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -326,13 +300,11 @@ impl cfn_resources::CfnResource for CustomizedMetricSpecification {
 /// Metric is a property of the AWS::AutoScaling::ScalingPolicy MetricStat property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Metric {
-
-
-    /// 
+    ///
     /// The dimensions for the metric. For the list of available dimensions, see the AWS       documentation available from the table in AWS         services that publish CloudWatch metrics in the Amazon CloudWatch User         Guide.
-    /// 
+    ///
     /// Conditional: If you published your metric with dimensions, you must specify the same       dimensions in your scaling policy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of MetricDimension
@@ -341,10 +313,9 @@ pub struct Metric {
     #[serde(rename = "Dimensions")]
     pub dimensions: Option<Vec<MetricDimension>>,
 
-
-    /// 
+    ///
     /// The name of the metric.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -353,10 +324,9 @@ pub struct Metric {
     #[serde(rename = "MetricName")]
     pub metric_name: String,
 
-
-    /// 
+    ///
     /// The namespace of the metric. For more information, see the table in AWS         services that publish CloudWatch metrics in the Amazon CloudWatch User         Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -364,10 +334,7 @@ pub struct Metric {
     /// Update requires: No interruption
     #[serde(rename = "Namespace")]
     pub namespace: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Metric {
     fn type_string(&self) -> &'static str {
@@ -379,7 +346,6 @@ impl cfn_resources::CfnResource for Metric {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -395,13 +361,11 @@ impl cfn_resources::CfnResource for Metric {
 /// For more information and examples, see Advanced predictive scaling policy configurations using custom metrics in the     Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MetricDataQuery {
-
-
-    /// 
+    ///
     /// The math expression to perform on the returned data, if this object is performing a       math expression. This expression can use the Id of the other metrics to       refer to those metrics, and can also use the Id of other expressions to use       the result of those expressions.
-    /// 
+    ///
     /// Conditional: Within each MetricDataQuery object, you must specify either         Expression or MetricStat, but not both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -416,10 +380,9 @@ pub struct MetricDataQuery {
     #[serde(rename = "Expression")]
     pub expression: Option<String>,
 
-
-    /// 
+    ///
     /// A short name that identifies the object's results in the response. This name must be       unique among all MetricDataQuery objects specified for a single scaling       policy. If you are performing math expressions on this set of data, this name represents       that data and can serve as a variable in the mathematical expression. The valid       characters are letters, numbers, and underscores. The first character must be a       lowercase letter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -434,10 +397,9 @@ pub struct MetricDataQuery {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// A human-readable label for this metric or expression. This is especially useful if       this is a math expression, so that you know what the value represents.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -450,12 +412,11 @@ pub struct MetricDataQuery {
     #[serde(rename = "Label")]
     pub label: Option<String>,
 
-
-    /// 
+    ///
     /// Information about the metric data to return.
-    /// 
+    ///
     /// Conditional: Within each MetricDataQuery object, you must specify either         Expression or MetricStat, but not both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MetricStat
@@ -464,14 +425,13 @@ pub struct MetricDataQuery {
     #[serde(rename = "MetricStat")]
     pub metric_stat: Option<MetricStat>,
 
-
-    /// 
+    ///
     /// Indicates whether to return the timestamps and raw data values of this metric.
-    /// 
+    ///
     /// If you use any math expressions, specify true for this value for only the       final math expression that the metric specification is based on. You must specify         false for ReturnData for all the other metrics and       expressions used in the metric specification.
-    /// 
+    ///
     /// If you are only retrieving metrics and not performing any math expressions, do not       specify anything for ReturnData. This sets it to its default         (true).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -479,10 +439,7 @@ pub struct MetricDataQuery {
     /// Update requires: No interruption
     #[serde(rename = "ReturnData")]
     pub return_data: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MetricDataQuery {
     fn type_string(&self) -> &'static str {
@@ -494,46 +451,54 @@ impl cfn_resources::CfnResource for MetricDataQuery {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.expression {
+            if the_val.len() > 1023 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'expression'. {} is greater than 1023",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.expression {
-
-        if the_val.len() > 1023 as _ {
-            return Err(format!("Max validation failed on field 'expression'. {} is greater than 1023", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'expression'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.expression {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'expression'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.id;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'id'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'id'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.label {
-
-        if the_val.len() > 2047 as _ {
-            return Err(format!("Max validation failed on field 'label'. {} is greater than 2047", the_val.len()));
+            if the_val.len() > 2047 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'label'. {} is greater than 2047",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.metric_stat.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.metric_stat
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -542,11 +507,9 @@ impl cfn_resources::CfnResource for MetricDataQuery {
 /// MetricDimension specifies a name/value pair that is part of the identity of a    CloudWatch metric for the Dimensions property of the AWS::AutoScaling::ScalingPolicy CustomizedMetricSpecification property type.    Duplicate dimensions are not allowed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MetricDimension {
-
-
-    /// 
+    ///
     /// The name of the dimension.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -555,10 +518,9 @@ pub struct MetricDimension {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The value of the dimension.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -566,10 +528,7 @@ pub struct MetricDimension {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MetricDimension {
     fn type_string(&self) -> &'static str {
@@ -581,7 +540,6 @@ impl cfn_resources::CfnResource for MetricDimension {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -593,11 +551,9 @@ impl cfn_resources::CfnResource for MetricDimension {
 /// For more information about the CloudWatch terminology below, see Amazon CloudWatch concepts in the Amazon CloudWatch User    Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MetricStat {
-
-
-    /// 
+    ///
     /// The CloudWatch metric to return, including the metric name, namespace, and dimensions. To       get the exact metric name, namespace, and dimensions, inspect the Metric object that is returned by a call to ListMetrics.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Metric
@@ -606,12 +562,11 @@ pub struct MetricStat {
     #[serde(rename = "Metric")]
     pub metric: Metric,
 
-
-    /// 
+    ///
     /// The statistic to return. It can include any CloudWatch statistic or extended statistic. For       a list of valid values, see the table in Statistics in the Amazon CloudWatch User Guide.
-    /// 
+    ///
     /// The most commonly used metrics for predictive scaling are Average and         Sum.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -626,10 +581,9 @@ pub struct MetricStat {
     #[serde(rename = "Stat")]
     pub stat: String,
 
-
-    /// 
+    ///
     /// The unit to use for the returned data points. For a complete list of the units that       CloudWatch supports, see the MetricDatum       data type in the Amazon CloudWatch API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -637,10 +591,7 @@ pub struct MetricStat {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     pub unit: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MetricStat {
     fn type_string(&self) -> &'static str {
@@ -652,23 +603,26 @@ impl cfn_resources::CfnResource for MetricStat {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.metric.validate()?;
 
         let the_val = &self.stat;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'stat'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'stat'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.stat;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'stat'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'stat'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -678,13 +632,11 @@ impl cfn_resources::CfnResource for MetricStat {
 /// PredefinedMetricSpecification is a property of the AWS::AutoScaling::ScalingPolicy TargetTrackingConfiguration property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PredefinedMetricSpecification {
-
-
-    /// 
+    ///
     /// The metric type. The following predefined metrics are available:
-    /// 
+    ///
     /// ASGAverageCPUUtilization - Average CPU utilization of the Auto Scaling           group.                        ASGAverageNetworkIn - Average number of bytes received on all           network interfaces by the Auto Scaling group.                        ASGAverageNetworkOut - Average number of bytes sent out on all           network interfaces by the Auto Scaling group.                        ALBRequestCountPerTarget - Average Application Load Balancer request count per target           for your Auto Scaling group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -695,20 +647,19 @@ pub struct PredefinedMetricSpecification {
     #[serde(rename = "PredefinedMetricType")]
     pub predefined_metric_type: PredefinedMetricSpecificationPredefinedMetricTypeEnum,
 
-
-    /// 
+    ///
     /// A label that uniquely identifies a specific Application Load Balancer target group       from which to determine the average request count served by your Auto Scaling group. You can't       specify a resource label unless the target group is attached to the Auto Scaling group.
-    /// 
+    ///
     /// You create the resource label by appending the final portion of the load balancer ARN       and the final portion of the target group ARN into a single value, separated by a forward       slash (/). The format of the resource label is:
-    /// 
+    ///
     /// app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff.
-    /// 
+    ///
     /// Where:
-    /// 
+    ///
     /// app/<load-balancer-name>/<load-balancer-id> is the final portion of           the load balancer ARN               targetgroup/<target-group-name>/<target-group-id> is the final portion           of the target group ARN.
-    /// 
+    ///
     /// To find the ARN for an Application Load Balancer, use the DescribeLoadBalancers API operation. To find the ARN for the target group, use       the DescribeTargetGroups API operation.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -722,13 +673,10 @@ pub struct PredefinedMetricSpecification {
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
     pub resource_label: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PredefinedMetricSpecificationPredefinedMetricTypeEnum {
-
     /// ALBRequestCountPerTarget
     #[serde(rename = "ALBRequestCountPerTarget")]
     Albrequestcountpertarget,
@@ -744,7 +692,6 @@ pub enum PredefinedMetricSpecificationPredefinedMetricTypeEnum {
     /// ASGAverageNetworkOut
     #[serde(rename = "ASGAverageNetworkOut")]
     Asgaveragenetworkout,
-
 }
 
 impl Default for PredefinedMetricSpecificationPredefinedMetricTypeEnum {
@@ -752,7 +699,6 @@ impl Default for PredefinedMetricSpecificationPredefinedMetricTypeEnum {
         PredefinedMetricSpecificationPredefinedMetricTypeEnum::Albrequestcountpertarget
     }
 }
-
 
 impl cfn_resources::CfnResource for PredefinedMetricSpecification {
     fn type_string(&self) -> &'static str {
@@ -764,23 +710,24 @@ impl cfn_resources::CfnResource for PredefinedMetricSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.resource_label {
+            if the_val.len() > 1023 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_label'. {} is greater than 1023",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.resource_label {
-
-        if the_val.len() > 1023 as _ {
-            return Err(format!("Max validation failed on field 'resource_label'. {} is greater than 1023", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_label'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.resource_label {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'resource_label'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -790,15 +737,13 @@ impl cfn_resources::CfnResource for PredefinedMetricSpecification {
 /// For more information, see Predictive     scaling in the Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PredictiveScalingConfiguration {
-
-
-    /// 
+    ///
     /// Defines the behavior that should be applied if the forecast capacity approaches or       exceeds the maximum capacity of the Auto Scaling group. Defaults to         HonorMaxCapacity if not specified.
-    /// 
+    ///
     /// The following are possible values:
-    /// 
+    ///
     /// HonorMaxCapacity - Amazon EC2 Auto Scaling cannot scale out capacity higher than           the maximum capacity. The maximum capacity is enforced as a hard limit.                         IncreaseMaxCapacity - Amazon EC2 Auto Scaling can scale out capacity higher than           the maximum capacity when the forecast capacity is close to or exceeds the           maximum capacity. The upper limit is determined by the forecasted capacity and           the value for MaxCapacityBuffer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -807,16 +752,16 @@ pub struct PredictiveScalingConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "MaxCapacityBreachBehavior")]
-    pub max_capacity_breach_behavior: Option<PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum>,
+    pub max_capacity_breach_behavior:
+        Option<PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum>,
 
-
-    /// 
+    ///
     /// The size of the capacity buffer to use when the forecast capacity is close to or       exceeds the maximum capacity. The value is specified as a percentage relative to the       forecast capacity. For example, if the buffer is 10, this means a 10 percent buffer,       such that if the forecast capacity is 50, and the maximum capacity is 40, then the       effective maximum capacity is 55.
-    /// 
+    ///
     /// If set to 0, Amazon EC2 Auto Scaling may scale capacity higher than the maximum capacity to equal but       not exceed forecast capacity.
-    /// 
+    ///
     /// Required if the MaxCapacityBreachBehavior property is set to         IncreaseMaxCapacity, and cannot be used otherwise.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -829,12 +774,11 @@ pub struct PredictiveScalingConfiguration {
     #[serde(rename = "MaxCapacityBuffer")]
     pub max_capacity_buffer: Option<i64>,
 
-
-    /// 
+    ///
     /// This structure includes the metrics and target utilization to use for predictive       scaling.
-    /// 
+    ///
     /// This is an array, but we currently only support a single metric specification. That       is, you can specify a target value and a single metric pair, or a target value and one       scaling metric and one load metric.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of PredictiveScalingMetricSpecification
@@ -843,10 +787,9 @@ pub struct PredictiveScalingConfiguration {
     #[serde(rename = "MetricSpecifications")]
     pub metric_specifications: Vec<PredictiveScalingMetricSpecification>,
 
-
-    /// 
+    ///
     /// The predictive scaling mode. Defaults to ForecastOnly if not       specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -857,12 +800,11 @@ pub struct PredictiveScalingConfiguration {
     #[serde(rename = "Mode")]
     pub mode: Option<PredictiveScalingConfigurationModeEnum>,
 
-
-    /// 
+    ///
     /// The amount of time, in seconds, by which the instance launch time can be advanced. For       example, the forecast says to add capacity at 10:00 AM, and you choose to pre-launch       instances by 5 minutes. In that case, the instances will be launched at 9:55 AM. The       intention is to give resources time to be provisioned. It can take a few minutes to       launch an EC2 instance. The actual amount of time required depends on several factors,       such as the size of the instance and whether there are startup scripts to complete.
-    /// 
+    ///
     /// The value must be less than the forecast interval duration of 3600 seconds (60       minutes). Defaults to 300 seconds if not specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -872,13 +814,10 @@ pub struct PredictiveScalingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SchedulingBufferTime")]
     pub scheduling_buffer_time: Option<i64>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum {
-
     /// HonorMaxCapacity
     #[serde(rename = "HonorMaxCapacity")]
     Honormaxcapacity,
@@ -886,7 +825,6 @@ pub enum PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum {
     /// IncreaseMaxCapacity
     #[serde(rename = "IncreaseMaxCapacity")]
     Increasemaxcapacity,
-
 }
 
 impl Default for PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum {
@@ -897,7 +835,6 @@ impl Default for PredictiveScalingConfigurationMaxCapacityBreachBehaviorEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PredictiveScalingConfigurationModeEnum {
-
     /// ForecastAndScale
     #[serde(rename = "ForecastAndScale")]
     Forecastandscale,
@@ -905,7 +842,6 @@ pub enum PredictiveScalingConfigurationModeEnum {
     /// ForecastOnly
     #[serde(rename = "ForecastOnly")]
     Forecastonly,
-
 }
 
 impl Default for PredictiveScalingConfigurationModeEnum {
@@ -913,7 +849,6 @@ impl Default for PredictiveScalingConfigurationModeEnum {
         PredictiveScalingConfigurationModeEnum::Forecastandscale
     }
 }
-
 
 impl cfn_resources::CfnResource for PredictiveScalingConfiguration {
     fn type_string(&self) -> &'static str {
@@ -925,31 +860,33 @@ impl cfn_resources::CfnResource for PredictiveScalingConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.max_capacity_buffer {
+            if *the_val > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'max_capacity_buffer'. {} is greater than 100",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.max_capacity_buffer {
-
-        if *the_val > 100 as _ {
-            return Err(format!("Max validation failed on field 'max_capacity_buffer'. {} is greater than 100", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'max_capacity_buffer'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.max_capacity_buffer {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'max_capacity_buffer'. {} is less than 0", the_val));
-        }
-
-        }
-        
         if let Some(the_val) = &self.scheduling_buffer_time {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'scheduling_buffer_time'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'scheduling_buffer_time'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -957,11 +894,9 @@ impl cfn_resources::CfnResource for PredictiveScalingConfiguration {
 /// Contains capacity metric information for the     CustomizedCapacityMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PredictiveScalingCustomizedCapacityMetric {
-
-
-    /// 
+    ///
     /// One or more metric data queries to provide the data points for a capacity metric. Use       multiple metric data queries only if you are performing a math expression on returned       data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of MetricDataQuery
@@ -969,10 +904,7 @@ pub struct PredictiveScalingCustomizedCapacityMetric {
     /// Update requires: No interruption
     #[serde(rename = "MetricDataQueries")]
     pub metric_data_queries: Vec<MetricDataQuery>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PredictiveScalingCustomizedCapacityMetric {
     fn type_string(&self) -> &'static str {
@@ -984,7 +916,6 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedCapacityMetric {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -992,11 +923,9 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedCapacityMetric {
 /// Contains load metric information for the CustomizedLoadMetricSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PredictiveScalingCustomizedLoadMetric {
-
-
-    /// 
+    ///
     /// One or more metric data queries to provide the data points for a load metric. Use       multiple metric data queries only if you are performing a math expression on returned       data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of MetricDataQuery
@@ -1004,10 +933,7 @@ pub struct PredictiveScalingCustomizedLoadMetric {
     /// Update requires: No interruption
     #[serde(rename = "MetricDataQueries")]
     pub metric_data_queries: Vec<MetricDataQuery>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PredictiveScalingCustomizedLoadMetric {
     fn type_string(&self) -> &'static str {
@@ -1019,7 +945,6 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedLoadMetric {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1027,11 +952,9 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedLoadMetric {
 /// Contains scaling metric information for the     CustomizedScalingMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PredictiveScalingCustomizedScalingMetric {
-
-
-    /// 
+    ///
     /// One or more metric data queries to provide the data points for a scaling metric. Use       multiple metric data queries only if you are performing a math expression on returned       data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of MetricDataQuery
@@ -1039,10 +962,7 @@ pub struct PredictiveScalingCustomizedScalingMetric {
     /// Update requires: No interruption
     #[serde(rename = "MetricDataQueries")]
     pub metric_data_queries: Vec<MetricDataQuery>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PredictiveScalingCustomizedScalingMetric {
     fn type_string(&self) -> &'static str {
@@ -1054,7 +974,6 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedScalingMetric {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1068,11 +987,9 @@ impl cfn_resources::CfnResource for PredictiveScalingCustomizedScalingMetric {
 /// For information about using custom metrics with predictive scaling, see Advanced predictive scaling policy configurations using custom metrics in the     Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PredictiveScalingMetricSpecification {
-
-
-    /// 
+    ///
     /// The customized capacity metric specification.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PredictiveScalingCustomizedCapacityMetric
@@ -1081,10 +998,9 @@ pub struct PredictiveScalingMetricSpecification {
     #[serde(rename = "CustomizedCapacityMetricSpecification")]
     pub customized_capacity_metric_specification: Option<PredictiveScalingCustomizedCapacityMetric>,
 
-
-    /// 
+    ///
     /// The customized load metric specification.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PredictiveScalingCustomizedLoadMetric
@@ -1093,10 +1009,9 @@ pub struct PredictiveScalingMetricSpecification {
     #[serde(rename = "CustomizedLoadMetricSpecification")]
     pub customized_load_metric_specification: Option<PredictiveScalingCustomizedLoadMetric>,
 
-
-    /// 
+    ///
     /// The customized scaling metric specification.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PredictiveScalingCustomizedScalingMetric
@@ -1105,10 +1020,9 @@ pub struct PredictiveScalingMetricSpecification {
     #[serde(rename = "CustomizedScalingMetricSpecification")]
     pub customized_scaling_metric_specification: Option<PredictiveScalingCustomizedScalingMetric>,
 
-
-    /// 
+    ///
     /// The predefined load metric specification.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PredictiveScalingPredefinedLoadMetric
@@ -1117,10 +1031,9 @@ pub struct PredictiveScalingMetricSpecification {
     #[serde(rename = "PredefinedLoadMetricSpecification")]
     pub predefined_load_metric_specification: Option<PredictiveScalingPredefinedLoadMetric>,
 
-
-    /// 
+    ///
     /// The predefined metric pair specification from which Amazon EC2 Auto Scaling determines the       appropriate scaling metric and load metric to use.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PredictiveScalingPredefinedMetricPair
@@ -1129,10 +1042,9 @@ pub struct PredictiveScalingMetricSpecification {
     #[serde(rename = "PredefinedMetricPairSpecification")]
     pub predefined_metric_pair_specification: Option<PredictiveScalingPredefinedMetricPair>,
 
-
-    /// 
+    ///
     /// The predefined scaling metric specification.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PredictiveScalingPredefinedScalingMetric
@@ -1141,12 +1053,11 @@ pub struct PredictiveScalingMetricSpecification {
     #[serde(rename = "PredefinedScalingMetricSpecification")]
     pub predefined_scaling_metric_specification: Option<PredictiveScalingPredefinedScalingMetric>,
 
-
-    /// 
+    ///
     /// Specifies the target utilization.
-    /// 
+    ///
     /// NoteSome metrics are based on a count instead of a percentage, such as the request         count for an Application Load Balancer or the number of messages in an SQS queue. If the scaling policy         specifies one of these metrics, specify the target utilization as the optimal         average request or message count per instance during any one-minute interval.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Double
@@ -1154,10 +1065,7 @@ pub struct PredictiveScalingMetricSpecification {
     /// Update requires: No interruption
     #[serde(rename = "TargetValue")]
     pub target_value: f64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PredictiveScalingMetricSpecification {
     fn type_string(&self) -> &'static str {
@@ -1169,18 +1077,29 @@ impl cfn_resources::CfnResource for PredictiveScalingMetricSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.customized_capacity_metric_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.customized_capacity_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.customized_load_metric_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.customized_load_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.customized_scaling_metric_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.customized_scaling_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.predefined_load_metric_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.predefined_load_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.predefined_metric_pair_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.predefined_metric_pair_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.predefined_scaling_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.predefined_scaling_metric_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1189,11 +1108,9 @@ impl cfn_resources::CfnResource for PredictiveScalingMetricSpecification {
 /// Contains load metric information for the PredefinedLoadMetricSpecification    property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PredictiveScalingPredefinedLoadMetric {
-
-
-    /// 
+    ///
     /// The metric type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1204,20 +1121,19 @@ pub struct PredictiveScalingPredefinedLoadMetric {
     #[serde(rename = "PredefinedMetricType")]
     pub predefined_metric_type: PredictiveScalingPredefinedLoadMetricPredefinedMetricTypeEnum,
 
-
-    /// 
+    ///
     /// A label that uniquely identifies a specific Application Load Balancer target group from which to determine       the request count served by your Auto Scaling group. You can't specify a resource label unless       the target group is attached to the Auto Scaling group.
-    /// 
+    ///
     /// You create the resource label by appending the final portion of the load balancer ARN       and the final portion of the target group ARN into a single value, separated by a forward       slash (/). The format of the resource label is:
-    /// 
+    ///
     /// app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff.
-    /// 
+    ///
     /// Where:
-    /// 
+    ///
     /// app/<load-balancer-name>/<load-balancer-id> is the final portion of           the load balancer ARN               targetgroup/<target-group-name>/<target-group-id> is the final portion           of the target group ARN.
-    /// 
+    ///
     /// To find the ARN for an Application Load Balancer, use the DescribeLoadBalancers API operation. To find the ARN for the target group, use       the DescribeTargetGroups API operation.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -1225,13 +1141,10 @@ pub struct PredictiveScalingPredefinedLoadMetric {
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
     pub resource_label: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PredictiveScalingPredefinedLoadMetricPredefinedMetricTypeEnum {
-
     /// ALBTargetGroupRequestCount
     #[serde(rename = "ALBTargetGroupRequestCount")]
     Albtargetgrouprequestcount,
@@ -1247,7 +1160,6 @@ pub enum PredictiveScalingPredefinedLoadMetricPredefinedMetricTypeEnum {
     /// ASGTotalNetworkOut
     #[serde(rename = "ASGTotalNetworkOut")]
     Asgtotalnetworkout,
-
 }
 
 impl Default for PredictiveScalingPredefinedLoadMetricPredefinedMetricTypeEnum {
@@ -1255,7 +1167,6 @@ impl Default for PredictiveScalingPredefinedLoadMetricPredefinedMetricTypeEnum {
         PredictiveScalingPredefinedLoadMetricPredefinedMetricTypeEnum::Albtargetgrouprequestcount
     }
 }
-
 
 impl cfn_resources::CfnResource for PredictiveScalingPredefinedLoadMetric {
     fn type_string(&self) -> &'static str {
@@ -1267,7 +1178,6 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedLoadMetric {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1277,11 +1187,9 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedLoadMetric {
 /// For more information, see Predictive     scaling in the Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PredictiveScalingPredefinedMetricPair {
-
-
-    /// 
+    ///
     /// Indicates which metrics to use. There are two different types of metrics for each       metric type: one is a load metric and one is a scaling metric. For example, if the       metric type is ASGCPUUtilization, the Auto Scaling group's total CPU metric is used       as the load metric, and the average CPU metric is used for the scaling metric.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1292,20 +1200,19 @@ pub struct PredictiveScalingPredefinedMetricPair {
     #[serde(rename = "PredefinedMetricType")]
     pub predefined_metric_type: PredictiveScalingPredefinedMetricPairPredefinedMetricTypeEnum,
 
-
-    /// 
+    ///
     /// A label that uniquely identifies a specific Application Load Balancer target group from    which to determine the total and average request count served by your Auto Scaling group. You    can't specify a resource label unless the target group is attached to the Auto Scaling    group.
-    /// 
+    ///
     /// You create the resource label by appending the final portion of the load balancer ARN and    the final portion of the target group ARN into a single value, separated by a forward slash    (/). The format of the resource label is:
-    /// 
+    ///
     /// app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff.
-    /// 
+    ///
     /// Where:
-    /// 
+    ///
     /// app/<load-balancer-name>/<load-balancer-id> is the final portion of the      load balancer ARN        targetgroup/<target-group-name>/<target-group-id> is the final portion of      the target group ARN.
-    /// 
+    ///
     /// To find the ARN for an Application Load Balancer, use the DescribeLoadBalancers API operation. To find the ARN for the target group, use the     DescribeTargetGroups API operation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1319,13 +1226,10 @@ pub struct PredictiveScalingPredefinedMetricPair {
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
     pub resource_label: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PredictiveScalingPredefinedMetricPairPredefinedMetricTypeEnum {
-
     /// ALBRequestCount
     #[serde(rename = "ALBRequestCount")]
     Albrequestcount,
@@ -1341,7 +1245,6 @@ pub enum PredictiveScalingPredefinedMetricPairPredefinedMetricTypeEnum {
     /// ASGNetworkOut
     #[serde(rename = "ASGNetworkOut")]
     Asgnetworkout,
-
 }
 
 impl Default for PredictiveScalingPredefinedMetricPairPredefinedMetricTypeEnum {
@@ -1349,7 +1252,6 @@ impl Default for PredictiveScalingPredefinedMetricPairPredefinedMetricTypeEnum {
         PredictiveScalingPredefinedMetricPairPredefinedMetricTypeEnum::Albrequestcount
     }
 }
-
 
 impl cfn_resources::CfnResource for PredictiveScalingPredefinedMetricPair {
     fn type_string(&self) -> &'static str {
@@ -1361,23 +1263,24 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedMetricPair {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.resource_label {
+            if the_val.len() > 1023 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resource_label'. {} is greater than 1023",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.resource_label {
-
-        if the_val.len() > 1023 as _ {
-            return Err(format!("Max validation failed on field 'resource_label'. {} is greater than 1023", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resource_label'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.resource_label {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'resource_label'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -1385,11 +1288,9 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedMetricPair {
 /// Contains scaling metric information for the     PredefinedScalingMetricSpecification property of the AWS::AutoScaling::ScalingPolicy PredictiveScalingMetricSpecification property    type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PredictiveScalingPredefinedScalingMetric {
-
-
-    /// 
+    ///
     /// The metric type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1400,20 +1301,19 @@ pub struct PredictiveScalingPredefinedScalingMetric {
     #[serde(rename = "PredefinedMetricType")]
     pub predefined_metric_type: PredictiveScalingPredefinedScalingMetricPredefinedMetricTypeEnum,
 
-
-    /// 
+    ///
     /// A label that uniquely identifies a specific Application Load Balancer target group from which to determine       the average request count served by your Auto Scaling group. You can't specify a resource label       unless the target group is attached to the Auto Scaling group.
-    /// 
+    ///
     /// You create the resource label by appending the final portion of the load balancer ARN       and the final portion of the target group ARN into a single value, separated by a forward       slash (/). The format of the resource label is:
-    /// 
+    ///
     /// app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff.
-    /// 
+    ///
     /// Where:
-    /// 
+    ///
     /// app/<load-balancer-name>/<load-balancer-id> is the final portion of           the load balancer ARN               targetgroup/<target-group-name>/<target-group-id> is the final portion           of the target group ARN.
-    /// 
+    ///
     /// To find the ARN for an Application Load Balancer, use the DescribeLoadBalancers API operation. To find the ARN for the target group, use       the DescribeTargetGroups API operation.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -1421,13 +1321,10 @@ pub struct PredictiveScalingPredefinedScalingMetric {
     /// Update requires: No interruption
     #[serde(rename = "ResourceLabel")]
     pub resource_label: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PredictiveScalingPredefinedScalingMetricPredefinedMetricTypeEnum {
-
     /// ALBRequestCountPerTarget
     #[serde(rename = "ALBRequestCountPerTarget")]
     Albrequestcountpertarget,
@@ -1443,7 +1340,6 @@ pub enum PredictiveScalingPredefinedScalingMetricPredefinedMetricTypeEnum {
     /// ASGAverageNetworkOut
     #[serde(rename = "ASGAverageNetworkOut")]
     Asgaveragenetworkout,
-
 }
 
 impl Default for PredictiveScalingPredefinedScalingMetricPredefinedMetricTypeEnum {
@@ -1451,7 +1347,6 @@ impl Default for PredictiveScalingPredefinedScalingMetricPredefinedMetricTypeEnu
         PredictiveScalingPredefinedScalingMetricPredefinedMetricTypeEnum::Albrequestcountpertarget
     }
 }
-
 
 impl cfn_resources::CfnResource for PredictiveScalingPredefinedScalingMetric {
     fn type_string(&self) -> &'static str {
@@ -1463,7 +1358,6 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedScalingMetric {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1479,11 +1373,9 @@ impl cfn_resources::CfnResource for PredictiveScalingPredefinedScalingMetric {
 /// You can find a sample template snippet in the Examples section of the AWS::AutoScaling::ScalingPolicy    resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StepAdjustment {
-
-
-    /// 
+    ///
     /// The lower bound for the difference between the alarm threshold and the CloudWatch metric. If       the metric value is above the breach threshold, the lower bound is inclusive (the metric       must be greater than or equal to the threshold plus the lower bound). Otherwise, it is       exclusive (the metric must be greater than the threshold plus the lower bound). A null       value indicates negative infinity.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: Double
@@ -1492,12 +1384,11 @@ pub struct StepAdjustment {
     #[serde(rename = "MetricIntervalLowerBound")]
     pub metric_interval_lower_bound: Option<f64>,
 
-
-    /// 
+    ///
     /// The upper bound for the difference between the alarm threshold and the CloudWatch metric. If       the metric value is above the breach threshold, the upper bound is exclusive (the metric       must be less than the threshold plus the upper bound). Otherwise, it is inclusive (the       metric must be less than or equal to the threshold plus the upper bound). A null value       indicates positive infinity.
-    /// 
+    ///
     /// The upper bound must be greater than the lower bound.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: Double
@@ -1506,10 +1397,9 @@ pub struct StepAdjustment {
     #[serde(rename = "MetricIntervalUpperBound")]
     pub metric_interval_upper_bound: Option<f64>,
 
-
-    /// 
+    ///
     /// The amount by which to scale, based on the specified adjustment type. A positive value       adds to the current capacity while a negative number removes from the current       capacity. For exact capacity, you must specify a non-negative value.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1517,10 +1407,7 @@ pub struct StepAdjustment {
     /// Update requires: No interruption
     #[serde(rename = "ScalingAdjustment")]
     pub scaling_adjustment: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for StepAdjustment {
     fn type_string(&self) -> &'static str {
@@ -1532,7 +1419,6 @@ impl cfn_resources::CfnResource for StepAdjustment {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -1542,11 +1428,9 @@ impl cfn_resources::CfnResource for StepAdjustment {
 /// For more information about scaling policies, see Dynamic scaling in the     Amazon EC2 Auto Scaling User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TargetTrackingConfiguration {
-
-
-    /// 
+    ///
     /// A customized metric. You must specify either a predefined metric or a customized       metric.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: CustomizedMetricSpecification
@@ -1555,10 +1439,9 @@ pub struct TargetTrackingConfiguration {
     #[serde(rename = "CustomizedMetricSpecification")]
     pub customized_metric_specification: Option<CustomizedMetricSpecification>,
 
-
-    /// 
+    ///
     /// Indicates whether scaling in by the target tracking scaling policy is disabled. If       scaling in is disabled, the target tracking scaling policy doesn't remove instances from       the Auto Scaling group. Otherwise, the target tracking scaling policy can remove instances from       the Auto Scaling group. The default is false.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -1567,10 +1450,9 @@ pub struct TargetTrackingConfiguration {
     #[serde(rename = "DisableScaleIn")]
     pub disable_scale_in: Option<bool>,
 
-
-    /// 
+    ///
     /// A predefined metric. You must specify either a predefined metric or a customized       metric.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: PredefinedMetricSpecification
@@ -1579,12 +1461,11 @@ pub struct TargetTrackingConfiguration {
     #[serde(rename = "PredefinedMetricSpecification")]
     pub predefined_metric_specification: Option<PredefinedMetricSpecification>,
 
-
-    /// 
+    ///
     /// The target value for the metric.
-    /// 
+    ///
     /// NoteSome metrics are based on a count instead of a percentage, such as the request         count for an Application Load Balancer or the number of messages in an SQS queue. If the scaling policy         specifies one of these metrics, specify the target utilization as the optimal         average request or message count per instance during any one-minute interval.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Double
@@ -1592,10 +1473,7 @@ pub struct TargetTrackingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TargetValue")]
     pub target_value: f64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TargetTrackingConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1607,10 +1485,13 @@ impl cfn_resources::CfnResource for TargetTrackingConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.customized_metric_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.customized_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.predefined_metric_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.predefined_metric_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }

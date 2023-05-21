@@ -1,15 +1,11 @@
-
-
 /// The AWS::DirectoryService::MicrosoftAD resource specifies a Microsoft Active    Directory in AWS so that your directory users and groups can access the AWS Management Console    and AWS applications using their existing credentials. For more information, see AWS Managed Microsoft AD in the AWS Directory Service Admin     Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMicrosoftAD {
-
-
-    /// 
+    ///
     /// Specifies an alias for a directory and assigns the alias to the directory. The alias is    used to construct the access URL for the directory, such as    http://<alias>.awsapps.com. By default, AWS CloudFormation does not    create an alias.
-    /// 
+    ///
     /// ImportantAfter an alias has been created, it cannot be deleted or reused, so this operation     should only be used when absolutely necessary.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -18,10 +14,9 @@ pub struct CfnMicrosoftAD {
     #[serde(rename = "CreateAlias")]
     pub create_alias: Option<bool>,
 
-
-    /// 
+    ///
     /// AWS Managed Microsoft AD is available in two editions: Standard and     Enterprise. Enterprise is the default.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -32,10 +27,9 @@ pub struct CfnMicrosoftAD {
     #[serde(rename = "Edition")]
     pub edition: Option<MicrosoftADEditionEnum>,
 
-
-    /// 
+    ///
     /// Whether to enable single sign-on for a Microsoft Active Directory in AWS. Single sign-on    allows users in your directory to access certain AWS services from a computer joined to the    directory without having to enter their credentials separately. If you don't specify a value,    AWS CloudFormation disables single sign-on by default.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -44,10 +38,9 @@ pub struct CfnMicrosoftAD {
     #[serde(rename = "EnableSso")]
     pub enable_sso: Option<bool>,
 
-
-    /// 
+    ///
     /// The fully qualified domain name for the AWS Managed Microsoft AD directory, such as     corp.example.com. This name will resolve inside your VPC only. It does not need    to be publicly resolvable.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -58,12 +51,11 @@ pub struct CfnMicrosoftAD {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The password for the default administrative user named Admin.
-    /// 
+    ///
     /// If you need to change the password for the administrator account, see the ResetUserPassword API call in the AWS Directory Service API     Reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -74,10 +66,9 @@ pub struct CfnMicrosoftAD {
     #[serde(rename = "Password")]
     pub password: String,
 
-
-    /// 
+    ///
     /// The NetBIOS name for your domain, such as CORP. If you don't specify a    NetBIOS name, it will default to the first part of your directory DNS. For example,     CORP for the directory DNS corp.example.com.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -88,10 +79,9 @@ pub struct CfnMicrosoftAD {
     #[serde(rename = "ShortName")]
     pub short_name: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the VPC settings of the Microsoft AD directory server in AWS.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: VpcSettings
@@ -99,13 +89,10 @@ pub struct CfnMicrosoftAD {
     /// Update requires: Replacement
     #[serde(rename = "VpcSettings")]
     pub vpc_settings: VpcSettings,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum MicrosoftADEditionEnum {
-
     /// Enterprise
     #[serde(rename = "Enterprise")]
     Enterprise,
@@ -113,7 +100,6 @@ pub enum MicrosoftADEditionEnum {
     /// Standard
     #[serde(rename = "Standard")]
     Standard,
-
 }
 
 impl Default for MicrosoftADEditionEnum {
@@ -121,7 +107,6 @@ impl Default for MicrosoftADEditionEnum {
         MicrosoftADEditionEnum::Enterprise
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnMicrosoftAD {
     fn type_string(&self) -> &'static str {
@@ -133,7 +118,6 @@ impl cfn_resources::CfnResource for CfnMicrosoftAD {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.vpc_settings.validate()?;
 
         Ok(())
@@ -143,11 +127,9 @@ impl cfn_resources::CfnResource for CfnMicrosoftAD {
 /// Contains VPC information for the CreateDirectory or     CreateMicrosoftAD    operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcSettings {
-
-
-    /// 
+    ///
     /// The identifiers of the subnets for the directory servers. The two subnets must be in    different Availability Zones. AWS Directory Service specifies a directory server and a DNS    server in each of these subnets.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -156,10 +138,9 @@ pub struct VpcSettings {
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// The identifier of the VPC in which to create the directory.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -169,10 +150,7 @@ pub struct VpcSettings {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VpcSettings {
     fn type_string(&self) -> &'static str {
@@ -184,7 +162,6 @@ impl cfn_resources::CfnResource for VpcSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

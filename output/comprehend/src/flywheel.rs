@@ -1,5 +1,3 @@
-
-
 /// A flywheel is an AWS resource that orchestrates the ongoing training of a model for custom classification     or custom entity recognition. You can create a flywheel to start with an existing trained model, or     Comprehend can create and train a new model.
 ///
 /// When you create the flywheel, Comprehend creates a data lake in your account. The data lake holds the training     data and test data for all versions of the model.
@@ -11,11 +9,9 @@
 /// For more information about flywheels, see   Flywheel overview in the Amazon Comprehend Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFlywheel {
-
-
-    /// 
+    ///
     /// The Amazon Resource Number (ARN) of the active model version.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +24,9 @@ pub struct CfnFlywheel {
     #[serde(rename = "ActiveModelArn")]
     pub active_model_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the IAM role that    grants Amazon Comprehend permission to access the flywheel data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -46,10 +41,9 @@ pub struct CfnFlywheel {
     #[serde(rename = "DataAccessRoleArn")]
     pub data_access_role_arn: String,
 
-
-    /// 
+    ///
     /// Amazon S3 URI of the data lake location.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -62,10 +56,9 @@ pub struct CfnFlywheel {
     #[serde(rename = "DataLakeS3Uri")]
     pub data_lake_s3_uri: String,
 
-
-    /// 
+    ///
     /// Data security configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataSecurityConfig
@@ -74,10 +67,9 @@ pub struct CfnFlywheel {
     #[serde(rename = "DataSecurityConfig")]
     pub data_security_config: Option<DataSecurityConfig>,
 
-
-    /// 
+    ///
     /// Name for the flywheel.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -90,10 +82,9 @@ pub struct CfnFlywheel {
     #[serde(rename = "FlywheelName")]
     pub flywheel_name: String,
 
-
-    /// 
+    ///
     /// Model type of the flywheel's model.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -104,10 +95,9 @@ pub struct CfnFlywheel {
     #[serde(rename = "ModelType")]
     pub model_type: Option<FlywheelModelTypeEnum>,
 
-
-    /// 
+    ///
     /// Tags associated with the endpoint being created. A tag is a key-value pair that adds    metadata to the endpoint. For example, a tag with "Sales" as the key might be added to an    endpoint to indicate its use by the sales department.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -116,10 +106,9 @@ pub struct CfnFlywheel {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// Configuration about the model associated with a flywheel.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: TaskConfig
@@ -127,13 +116,10 @@ pub struct CfnFlywheel {
     /// Update requires: Replacement
     #[serde(rename = "TaskConfig")]
     pub task_config: Option<TaskConfig>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum FlywheelModelTypeEnum {
-
     /// DOCUMENT_CLASSIFIER
     #[serde(rename = "DOCUMENT_CLASSIFIER")]
     Documentclassifier,
@@ -141,7 +127,6 @@ pub enum FlywheelModelTypeEnum {
     /// ENTITY_RECOGNIZER
     #[serde(rename = "ENTITY_RECOGNIZER")]
     Entityrecognizer,
-
 }
 
 impl Default for FlywheelModelTypeEnum {
@@ -149,7 +134,6 @@ impl Default for FlywheelModelTypeEnum {
         FlywheelModelTypeEnum::Documentclassifier
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnFlywheel {
     fn type_string(&self) -> &'static str {
@@ -161,46 +145,58 @@ impl cfn_resources::CfnResource for CfnFlywheel {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.active_model_arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'active_model_arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'active_model_arn'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.data_access_role_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'data_access_role_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'data_access_role_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.data_access_role_arn;
 
         if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'data_access_role_arn'. {} is less than 20", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'data_access_role_arn'. {} is less than 20",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.data_lake_s3_uri;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'data_lake_s3_uri'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'data_lake_s3_uri'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
-        self.data_security_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.data_security_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.flywheel_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'flywheel_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'flywheel_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
-        self.task_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.task_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -209,11 +205,9 @@ impl cfn_resources::CfnResource for CfnFlywheel {
 /// Data security configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataSecurityConfig {
-
-
-    /// 
+    ///
     /// ID for the AWS KMS key that Amazon Comprehend uses to encrypt the data in the data lake.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -226,12 +220,11 @@ pub struct DataSecurityConfig {
     #[serde(rename = "DataLakeKmsKeyId")]
     pub data_lake_kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// ID for the AWS KMS key that Amazon Comprehend uses to encrypt    trained custom models. The ModelKmsKeyId can be either of the following formats:
-    /// 
+    ///
     /// KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"                       Amazon Resource Name (ARN) of a KMS Key:       "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -244,10 +237,9 @@ pub struct DataSecurityConfig {
     #[serde(rename = "ModelKmsKeyId")]
     pub model_kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// ID for the AWS KMS key that Amazon Comprehend uses to encrypt the volume.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -260,10 +252,9 @@ pub struct DataSecurityConfig {
     #[serde(rename = "VolumeKmsKeyId")]
     pub volume_kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// Configuration parameters for an optional private Virtual Private Cloud (VPC) containing    the resources you are using for the job. For more information, see Amazon     VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: VpcConfig
@@ -271,10 +262,7 @@ pub struct DataSecurityConfig {
     /// Update requires: No interruption
     #[serde(rename = "VpcConfig")]
     pub vpc_config: Option<VpcConfig>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataSecurityConfig {
     fn type_string(&self) -> &'static str {
@@ -286,32 +274,33 @@ impl cfn_resources::CfnResource for DataSecurityConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.data_lake_kms_key_id {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'data_lake_kms_key_id'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!("Max validation failed on field 'data_lake_kms_key_id'. {} is greater than 2048", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.model_kms_key_id {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'model_kms_key_id'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'model_kms_key_id'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.volume_kms_key_id {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'volume_kms_key_id'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'volume_kms_key_id'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.vpc_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpc_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -320,11 +309,9 @@ impl cfn_resources::CfnResource for DataSecurityConfig {
 /// Configuration required for a document classification model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DocumentClassificationConfig {
-
-
-    /// 
+    ///
     /// One or more labels to associate with the custom classifier.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -335,10 +322,9 @@ pub struct DocumentClassificationConfig {
     #[serde(rename = "Labels")]
     pub labels: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Classification mode indicates whether the documents are MULTI_CLASS or MULTI_LABEL.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -348,13 +334,10 @@ pub struct DocumentClassificationConfig {
     /// Update requires: Replacement
     #[serde(rename = "Mode")]
     pub mode: DocumentClassificationConfigModeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DocumentClassificationConfigModeEnum {
-
     /// MULTI_CLASS
     #[serde(rename = "MULTI_CLASS")]
     Multiclass,
@@ -362,7 +345,6 @@ pub enum DocumentClassificationConfigModeEnum {
     /// MULTI_LABEL
     #[serde(rename = "MULTI_LABEL")]
     Multilabel,
-
 }
 
 impl Default for DocumentClassificationConfigModeEnum {
@@ -370,7 +352,6 @@ impl Default for DocumentClassificationConfigModeEnum {
         DocumentClassificationConfigModeEnum::Multiclass
     }
 }
-
 
 impl cfn_resources::CfnResource for DocumentClassificationConfig {
     fn type_string(&self) -> &'static str {
@@ -382,15 +363,15 @@ impl cfn_resources::CfnResource for DocumentClassificationConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.labels {
-
-        if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'labels'. {} is greater than 1000", the_val.len()));
+            if the_val.len() > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'labels'. {} is greater than 1000",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -398,11 +379,9 @@ impl cfn_resources::CfnResource for DocumentClassificationConfig {
 /// Configuration required for an entity recognition model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EntityRecognitionConfig {
-
-
-    /// 
+    ///
     /// Up to 25 entity types that the model is trained to recognize.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of EntityTypesListItem
@@ -410,10 +389,7 @@ pub struct EntityRecognitionConfig {
     /// Update requires: Replacement
     #[serde(rename = "EntityTypes")]
     pub entity_types: Option<Vec<EntityTypesListItem>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EntityRecognitionConfig {
     fn type_string(&self) -> &'static str {
@@ -425,7 +401,6 @@ impl cfn_resources::CfnResource for EntityRecognitionConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -433,13 +408,11 @@ impl cfn_resources::CfnResource for EntityRecognitionConfig {
 /// An entity type within a labeled training dataset that Amazon Comprehend uses to train a    custom entity recognizer.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EntityTypesListItem {
-
-
-    /// 
+    ///
     /// An entity type within a labeled training dataset that Amazon Comprehend uses to train a    custom entity recognizer.
-    /// 
+    ///
     /// Entity types must not contain the following invalid characters: \n (line break), \\n    (escaped line break, \r (carriage return), \\r (escaped carriage return), \t (tab), \\t    (escaped tab), space, and , (comma).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -451,10 +424,7 @@ pub struct EntityTypesListItem {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EntityTypesListItem {
     fn type_string(&self) -> &'static str {
@@ -466,14 +436,15 @@ impl cfn_resources::CfnResource for EntityTypesListItem {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.cfn_type;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'cfn_type'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'cfn_type'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -487,32 +458,26 @@ impl cfn_resources::CfnResource for EntityTypesListItem {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -524,7 +489,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -532,11 +496,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Configuration about the model associated with a flywheel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TaskConfig {
-
-
-    /// 
+    ///
     /// Configuration required for a document classification model.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DocumentClassificationConfig
@@ -545,10 +507,9 @@ pub struct TaskConfig {
     #[serde(rename = "DocumentClassificationConfig")]
     pub document_classification_config: Option<DocumentClassificationConfig>,
 
-
-    /// 
+    ///
     /// Configuration required for an entity recognition model.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EntityRecognitionConfig
@@ -557,10 +518,9 @@ pub struct TaskConfig {
     #[serde(rename = "EntityRecognitionConfig")]
     pub entity_recognition_config: Option<EntityRecognitionConfig>,
 
-
-    /// 
+    ///
     /// Language code for the language that the model supports.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -570,13 +530,10 @@ pub struct TaskConfig {
     /// Update requires: Replacement
     #[serde(rename = "LanguageCode")]
     pub language_code: TaskConfigLanguageCodeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TaskConfigLanguageCodeEnum {
-
     /// ar
     #[serde(rename = "ar")]
     Ar,
@@ -624,7 +581,6 @@ pub enum TaskConfigLanguageCodeEnum {
     /// zh-TW
     #[serde(rename = "zh-TW")]
     Zhtw,
-
 }
 
 impl Default for TaskConfigLanguageCodeEnum {
@@ -632,7 +588,6 @@ impl Default for TaskConfigLanguageCodeEnum {
         TaskConfigLanguageCodeEnum::Ar
     }
 }
-
 
 impl cfn_resources::CfnResource for TaskConfig {
     fn type_string(&self) -> &'static str {
@@ -644,10 +599,13 @@ impl cfn_resources::CfnResource for TaskConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.document_classification_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.document_classification_config.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.entity_recognition_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.entity_recognition_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -656,11 +614,9 @@ impl cfn_resources::CfnResource for TaskConfig {
 /// Configuration parameters for an optional private Virtual Private Cloud (VPC) containing    the resources you are using for the job. For more information, see Amazon     VPC.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcConfig {
-
-
-    /// 
+    ///
     /// The ID number for a security group on an instance of your private VPC. Security groups on    your VPC function serve as a virtual firewall to control inbound and outbound traffic and    provides security for the resources that you’ll be accessing on the VPC. This ID number is    preceded by "sg-", for instance: "sg-03b388029b0a285ea". For more information, see Security     Groups for your VPC.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -671,10 +627,9 @@ pub struct VpcConfig {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// The ID for each subnet being used in your private VPC. This subnet is a subset of the a    range of IPv4 addresses used by the VPC and is specific to a given availability zone in the    VPC’s Region. This ID number is preceded by "subnet-", for instance:    "subnet-04ccf456919e69055". For more information, see VPCs and     Subnets.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -684,10 +639,7 @@ pub struct VpcConfig {
     /// Update requires: No interruption
     #[serde(rename = "Subnets")]
     pub subnets: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VpcConfig {
     fn type_string(&self) -> &'static str {
@@ -699,21 +651,24 @@ impl cfn_resources::CfnResource for VpcConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.security_group_ids;
 
         if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'security_group_ids'. {} is greater than 5",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.subnets;
 
         if the_val.len() > 16 as _ {
-            return Err(format!("Max validation failed on field 'subnets'. {} is greater than 16", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'subnets'. {} is greater than 16",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

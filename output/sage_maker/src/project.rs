@@ -1,13 +1,9 @@
-
-
 /// Creates a machine learning (ML) project that can contain one or more templates that set       up an ML pipeline from training to deploying an approved model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProject {
-
-
-    /// 
+    ///
     /// The description of the project.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnProject {
     #[serde(rename = "ProjectDescription")]
     pub project_description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the project.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -38,10 +33,9 @@ pub struct CfnProject {
     #[serde(rename = "ProjectName")]
     pub project_name: String,
 
-
-    /// 
+    ///
     /// The product ID and provisioning artifact ID to provision a service catalog. For       information, see What is AWS Service Catalog.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ServiceCatalogProvisioningDetails
@@ -50,12 +44,11 @@ pub struct CfnProject {
     #[serde(rename = "ServiceCatalogProvisioningDetails")]
     pub service_catalog_provisioning_details: ServiceCatalogProvisioningDetails,
 
-
-    /// 
+    ///
     /// A list of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Resource         Tag and Using         Cost Allocation Tags in the         AWS Billing and Cost Management User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -63,10 +56,7 @@ pub struct CfnProject {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnProject {
     fn type_string(&self) -> &'static str {
@@ -78,29 +68,33 @@ impl cfn_resources::CfnResource for CfnProject {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.project_description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'project_description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'project_description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.project_name;
 
         if the_val.len() > 32 as _ {
-            return Err(format!("Max validation failed on field 'project_name'. {} is greater than 32", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'project_name'. {} is greater than 32",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.project_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'project_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'project_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.service_catalog_provisioning_details.validate()?;
 
         Ok(())
@@ -110,11 +104,9 @@ impl cfn_resources::CfnResource for CfnProject {
 /// A key value pair used when you provision a project as a service catalog product. For       information, see What is AWS Service         Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisioningParameter {
-
-
-    /// 
+    ///
     /// The key that identifies a provisioning parameter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -129,10 +121,9 @@ pub struct ProvisioningParameter {
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value of the provisioning parameter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -144,10 +135,7 @@ pub struct ProvisioningParameter {
     /// Update requires: Replacement
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ProvisioningParameter {
     fn type_string(&self) -> &'static str {
@@ -159,28 +147,33 @@ impl cfn_resources::CfnResource for ProvisioningParameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.key;
 
         if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'key'. {} is greater than 1000", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'key'. {} is greater than 1000",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.key;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'key'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.value;
 
         if the_val.len() > 4096 as _ {
-            return Err(format!("Max validation failed on field 'value'. {} is greater than 4096", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'value'. {} is greater than 4096",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -188,11 +181,9 @@ impl cfn_resources::CfnResource for ProvisioningParameter {
 /// Details of a provisioned service catalog product. For information about service catalog,       see What is AWS Service         Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServiceCatalogProvisionedProductDetails {
-
-
-    /// 
+    ///
     /// The ID of the provisioned product.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -207,12 +198,11 @@ pub struct ServiceCatalogProvisionedProductDetails {
     #[serde(rename = "ProvisionedProductId")]
     pub provisioned_product_id: Option<String>,
 
-
-    /// 
+    ///
     /// The current status of the product.
-    /// 
+    ///
     /// AVAILABLE - Stable state, ready to perform any operation. The most recent operation succeeded and completed.                        UNDER_CHANGE - Transitive state. Operations performed might not have valid results. Wait for an AVAILABLE status before performing operations.                        TAINTED - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.                        ERROR - An unexpected error occurred. The provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.                        PLAN_IN_PROGRESS - Transitive state. The plan operations were performed to provision a new product, but resources have not yet been created. After reviewing the list of resources to be created, execute the plan. Wait for an AVAILABLE status before performing operations.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -222,10 +212,7 @@ pub struct ServiceCatalogProvisionedProductDetails {
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedProductStatusMessage")]
     pub provisioned_product_status_message: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServiceCatalogProvisionedProductDetails {
     fn type_string(&self) -> &'static str {
@@ -237,23 +224,21 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisionedProductDetails {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.provisioned_product_id {
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'provisioned_product_id'. {} is greater than 100", the_val.len()));
+            }
+        }
 
         if let Some(the_val) = &self.provisioned_product_id {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'provisioned_product_id'. {} is greater than 100", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'provisioned_product_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.provisioned_product_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'provisioned_product_id'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -261,11 +246,9 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisionedProductDetails {
 /// Details that you specify to provision a service catalog product. For information about       service catalog, see What is AWS Service         Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServiceCatalogProvisioningDetails {
-
-
-    /// 
+    ///
     /// The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -280,10 +263,9 @@ pub struct ServiceCatalogProvisioningDetails {
     #[serde(rename = "PathId")]
     pub path_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the product to provision.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -298,10 +280,9 @@ pub struct ServiceCatalogProvisioningDetails {
     #[serde(rename = "ProductId")]
     pub product_id: String,
 
-
-    /// 
+    ///
     /// The ID of the provisioning artifact.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -316,10 +297,9 @@ pub struct ServiceCatalogProvisioningDetails {
     #[serde(rename = "ProvisioningArtifactId")]
     pub provisioning_artifact_id: Option<String>,
 
-
-    /// 
+    ///
     /// A list of key value pairs that you specify when you provision a product.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ProvisioningParameter
@@ -327,10 +307,7 @@ pub struct ServiceCatalogProvisioningDetails {
     /// Update requires: Replacement
     #[serde(rename = "ProvisioningParameters")]
     pub provisioning_parameters: Option<Vec<ProvisioningParameter>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServiceCatalogProvisioningDetails {
     fn type_string(&self) -> &'static str {
@@ -342,53 +319,57 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisioningDetails {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.path_id {
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'path_id'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.path_id {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'path_id'. {} is greater than 100", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'path_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.path_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'path_id'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.product_id;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'product_id'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'product_id'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.product_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'product_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'product_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.provisioning_artifact_id {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'provisioning_artifact_id'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'provisioning_artifact_id'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.provisioning_artifact_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'provisioning_artifact_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'provisioning_artifact_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -402,32 +383,26 @@ impl cfn_resources::CfnResource for ServiceCatalogProvisioningDetails {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -439,7 +414,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// A snapshot of an Amazon FSx for OpenZFS volume.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSnapshot {
-
-
-    /// 
+    ///
     /// The name of the snapshot.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,12 +18,11 @@ pub struct CfnSnapshot {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -36,10 +31,9 @@ pub struct CfnSnapshot {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the volume that the snapshot is of.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -53,10 +47,7 @@ pub struct CfnSnapshot {
     /// Update requires: Replacement
     #[serde(rename = "VolumeId")]
     pub volume_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSnapshot {
     fn type_string(&self) -> &'static str {
@@ -68,35 +59,42 @@ impl cfn_resources::CfnResource for CfnSnapshot {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 203 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 203", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 203",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.volume_id;
 
         if the_val.len() > 23 as _ {
-            return Err(format!("Max validation failed on field 'volume_id'. {} is greater than 23", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'volume_id'. {} is greater than 23",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.volume_id;
 
         if the_val.len() < 23 as _ {
-            return Err(format!("Min validation failed on field 'volume_id'. {} is less than 23", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'volume_id'. {} is less than 23",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -110,32 +108,26 @@ impl cfn_resources::CfnResource for CfnSnapshot {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -147,7 +139,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

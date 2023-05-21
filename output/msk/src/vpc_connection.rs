@@ -1,13 +1,9 @@
-
-
 /// Create remote VPC connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVpcConnection {
-
-
-    /// 
+    ///
     /// The type of private link authentication.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnVpcConnection {
     #[serde(rename = "Authentication")]
     pub authentication: String,
 
-
-    /// 
+    ///
     /// The list of subnets in the client VPC to connect to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -28,10 +23,9 @@ pub struct CfnVpcConnection {
     #[serde(rename = "ClientSubnets")]
     pub client_subnets: Vec<String>,
 
-
-    /// 
+    ///
     /// The security groups to attach to the ENIs for the broker nodes.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -40,10 +34,9 @@ pub struct CfnVpcConnection {
     #[serde(rename = "SecurityGroups")]
     pub security_groups: Vec<String>,
 
-
-    /// 
+    ///
     /// Create tags when creating the VPC connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -52,10 +45,9 @@ pub struct CfnVpcConnection {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -64,10 +56,9 @@ pub struct CfnVpcConnection {
     #[serde(rename = "TargetClusterArn")]
     pub target_cluster_arn: String,
 
-
-    /// 
+    ///
     /// The VPC id of the remote client.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -75,10 +66,7 @@ pub struct CfnVpcConnection {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnVpcConnection {
     fn type_string(&self) -> &'static str {
@@ -90,7 +78,6 @@ impl cfn_resources::CfnResource for CfnVpcConnection {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

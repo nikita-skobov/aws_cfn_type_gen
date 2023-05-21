@@ -1,13 +1,9 @@
-
-
 /// For Redis engine version 6.0 onwards: Creates a Redis user. For more information, see Using Role Based Access Control (RBAC).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUser {
-
-
-    /// 
+    ///
     /// Access permissions string used for this user.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,12 +14,11 @@ pub struct CfnUser {
     #[serde(rename = "AccessString")]
     pub access_string: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the authentication mode to use. Below is an example of the possible JSON values:
-    /// 
+    ///
     /// { Type: <iam | no-password-required | password> Passwords: ["*****", "******"] // If Type is password. }
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AuthenticationMode
@@ -32,10 +27,9 @@ pub struct CfnUser {
     #[serde(rename = "AuthenticationMode")]
     pub authentication_mode: Option<AuthenticationMode>,
 
-
-    /// 
+    ///
     /// The current supported value is redis.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -46,10 +40,9 @@ pub struct CfnUser {
     #[serde(rename = "Engine")]
     pub engine: String,
 
-
-    /// 
+    ///
     /// Indicates a password is not required for this user.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -58,10 +51,9 @@ pub struct CfnUser {
     #[serde(rename = "NoPasswordRequired")]
     pub no_password_required: Option<bool>,
 
-
-    /// 
+    ///
     /// Passwords used for this user. You can create up to two passwords for each user.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -69,7 +61,6 @@ pub struct CfnUser {
     /// Update requires: No interruption
     #[serde(rename = "Passwords")]
     pub passwords: Option<Vec<String>>,
-
 
     /// Property description not available.
     ///
@@ -81,10 +72,9 @@ pub struct CfnUser {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the user.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -97,10 +87,9 @@ pub struct CfnUser {
     #[serde(rename = "UserId")]
     pub user_id: String,
 
-
-    /// 
+    ///
     /// The username of the user.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -110,10 +99,7 @@ pub struct CfnUser {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     pub user_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnUser {
     fn type_string(&self) -> &'static str {
@@ -125,23 +111,28 @@ impl cfn_resources::CfnResource for CfnUser {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.authentication_mode.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.authentication_mode
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.user_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'user_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'user_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'user_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'user_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -149,11 +140,9 @@ impl cfn_resources::CfnResource for CfnUser {
 /// Specifies the authentication mode to use.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AuthenticationMode {
-
-
-    /// 
+    ///
     /// Specifies the passwords to use for authentication if Type is set to password.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -162,10 +151,9 @@ pub struct AuthenticationMode {
     #[serde(rename = "Passwords")]
     pub passwords: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Specifies the authentication type. Possible options are IAM authentication, password and no password.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -175,13 +163,10 @@ pub struct AuthenticationMode {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: AuthenticationModeTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AuthenticationModeTypeEnum {
-
     /// iam
     #[serde(rename = "iam")]
     Iam,
@@ -193,7 +178,6 @@ pub enum AuthenticationModeTypeEnum {
     /// password
     #[serde(rename = "password")]
     Password,
-
 }
 
 impl Default for AuthenticationModeTypeEnum {
@@ -201,7 +185,6 @@ impl Default for AuthenticationModeTypeEnum {
         AuthenticationModeTypeEnum::Iam
     }
 }
-
 
 impl cfn_resources::CfnResource for AuthenticationMode {
     fn type_string(&self) -> &'static str {
@@ -213,7 +196,6 @@ impl cfn_resources::CfnResource for AuthenticationMode {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -227,32 +209,26 @@ impl cfn_resources::CfnResource for AuthenticationMode {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -264,7 +240,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

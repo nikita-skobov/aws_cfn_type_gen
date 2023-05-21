@@ -1,15 +1,11 @@
-
-
 /// Creates a data source connector that you want to use with an Amazon Kendra index.
 ///
 /// You specify a name, data source connector type and description for your data source. You also specify configuration information for the data source connector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDataSource {
-
-
-    /// 
+    ///
     /// Configuration information for altering document metadata and content during the document ingestion process.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CustomDocumentEnrichmentConfiguration
@@ -18,14 +14,13 @@ pub struct CfnDataSource {
     #[serde(rename = "CustomDocumentEnrichmentConfiguration")]
     pub custom_document_enrichment_configuration: Option<CustomDocumentEnrichmentConfiguration>,
 
-
-    /// 
+    ///
     /// Configuration information for an Amazon Kendra data source. The       contents of the configuration depend on the type of data source. You       can only specify one type of data source in the configuration.
-    /// 
+    ///
     /// You can't specify the Configuration parameter when       the Type parameter is set to       CUSTOM.
-    /// 
+    ///
     /// The Configuration parameter is required for all other       data sources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataSourceConfiguration
@@ -34,10 +29,9 @@ pub struct CfnDataSource {
     #[serde(rename = "DataSourceConfiguration")]
     pub data_source_configuration: Option<DataSourceConfiguration>,
 
-
-    /// 
+    ///
     /// A description for the data source connector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -46,10 +40,9 @@ pub struct CfnDataSource {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The identifier of the index you want to use with the data source connector.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -58,10 +51,9 @@ pub struct CfnDataSource {
     #[serde(rename = "IndexId")]
     pub index_id: String,
 
-
-    /// 
+    ///
     /// The name of the data source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -76,14 +68,13 @@ pub struct CfnDataSource {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of a role with permission to access       the data source.
-    /// 
+    ///
     /// You can't specify the RoleArn parameter when the         Type parameter is set to       CUSTOM.
-    /// 
+    ///
     /// The RoleArn parameter is required for all other data       sources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -92,10 +83,9 @@ pub struct CfnDataSource {
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// Sets the frequency that Amazon Kendra checks the documents in your       data source and updates the index. If you don't set a schedule,       Amazon Kendra doesn't periodically update the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -104,12 +94,11 @@ pub struct CfnDataSource {
     #[serde(rename = "Schedule")]
     pub schedule: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -118,10 +107,9 @@ pub struct CfnDataSource {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of the data source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -131,13 +119,10 @@ pub struct CfnDataSource {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: DataSourceTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DataSourceTypeEnum {
-
     /// ALFRESCO
     #[serde(rename = "ALFRESCO")]
     Alfresco,
@@ -213,7 +198,6 @@ pub enum DataSourceTypeEnum {
     /// WORKDOCS
     #[serde(rename = "WORKDOCS")]
     Workdocs,
-
 }
 
 impl Default for DataSourceTypeEnum {
@@ -221,7 +205,6 @@ impl Default for DataSourceTypeEnum {
         DataSourceTypeEnum::Alfresco
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnDataSource {
     fn type_string(&self) -> &'static str {
@@ -233,25 +216,32 @@ impl cfn_resources::CfnResource for CfnDataSource {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.custom_document_enrichment_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.custom_document_enrichment_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.data_source_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.data_source_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.name;
 
         if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 1000", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 1000",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -259,11 +249,9 @@ impl cfn_resources::CfnResource for CfnDataSource {
 /// Specifies access control list files for the documents in a data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccessControlListConfiguration {
-
-
-    /// 
+    ///
     /// Path to the AWS S3 bucket that contains the access control list       files.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -275,10 +263,7 @@ pub struct AccessControlListConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "KeyPath")]
     pub key_path: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AccessControlListConfiguration {
     fn type_string(&self) -> &'static str {
@@ -290,23 +275,24 @@ impl cfn_resources::CfnResource for AccessControlListConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.key_path {
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key_path'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.key_path {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'key_path'. {} is greater than 1024", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key_path'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.key_path {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'key_path'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -314,11 +300,9 @@ impl cfn_resources::CfnResource for AccessControlListConfiguration {
 /// Provides information about the column that should be used for filtering the query       response by groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AclConfiguration {
-
-
-    /// 
+    ///
     /// A list of groups, separated by semi-colons, that filters a query       response based on user context. The document is only returned to       users that are in one of the groups specified in the         UserContext field of the Query operation.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -332,10 +316,7 @@ pub struct AclConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AllowedGroupsColumnName")]
     pub allowed_groups_column_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AclConfiguration {
     fn type_string(&self) -> &'static str {
@@ -347,21 +328,21 @@ impl cfn_resources::CfnResource for AclConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.allowed_groups_column_name;
 
         if the_val.len() > 100 as _ {
             return Err(format!("Max validation failed on field 'allowed_groups_column_name'. {} is greater than 100", the_val.len()));
         }
 
-        
         let the_val = &self.allowed_groups_column_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'allowed_groups_column_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'allowed_groups_column_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -369,11 +350,9 @@ impl cfn_resources::CfnResource for AclConfiguration {
 /// Provides information about how Amazon Kendra should use the columns of a database       in an index.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ColumnConfiguration {
-
-
-    /// 
+    ///
     /// One to five columns that indicate when a document in the database has changed.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -384,10 +363,9 @@ pub struct ColumnConfiguration {
     #[serde(rename = "ChangeDetectingColumns")]
     pub change_detecting_columns: Vec<String>,
 
-
-    /// 
+    ///
     /// The column that contains the contents of the document.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -402,10 +380,9 @@ pub struct ColumnConfiguration {
     #[serde(rename = "DocumentDataColumnName")]
     pub document_data_column_name: String,
 
-
-    /// 
+    ///
     /// The column that provides the document's identifier.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -420,10 +397,9 @@ pub struct ColumnConfiguration {
     #[serde(rename = "DocumentIdColumnName")]
     pub document_id_column_name: String,
 
-
-    /// 
+    ///
     /// The column that contains the title of the document.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -438,10 +414,9 @@ pub struct ColumnConfiguration {
     #[serde(rename = "DocumentTitleColumnName")]
     pub document_title_column_name: Option<String>,
 
-
-    /// 
+    ///
     /// An array of objects that map database column names to the       corresponding fields in an index. You must first create the fields       in the index using the UpdateIndex       operation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -451,10 +426,7 @@ pub struct ColumnConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ColumnConfiguration {
     fn type_string(&self) -> &'static str {
@@ -466,66 +438,69 @@ impl cfn_resources::CfnResource for ColumnConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.change_detecting_columns;
 
         if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'change_detecting_columns'. {} is greater than 5", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'change_detecting_columns'. {} is greater than 5",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.document_data_column_name;
 
         if the_val.len() > 100 as _ {
             return Err(format!("Max validation failed on field 'document_data_column_name'. {} is greater than 100", the_val.len()));
         }
 
-        
         let the_val = &self.document_data_column_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_data_column_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'document_data_column_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.document_id_column_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_id_column_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'document_id_column_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.document_id_column_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_id_column_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'document_id_column_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.document_title_column_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_title_column_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'document_title_column_name'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.document_title_column_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_title_column_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!("Min validation failed on field 'document_title_column_name'. {} is less than 1", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -533,13 +508,11 @@ impl cfn_resources::CfnResource for ColumnConfiguration {
 /// Configuration of attachment settings for the Confluence data source. Attachment       settings are optional, if you don't specify settings attachments, Amazon Kendra       won't index them.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfluenceAttachmentConfiguration {
-
-
-    /// 
+    ///
     /// Maps attributes or field names of Confluence attachments to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
-    /// 
+    ///
     /// If you specify the AttachentFieldMappings parameter, you must specify at       least one field mapping.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ConfluenceAttachmentToIndexFieldMapping
@@ -550,10 +523,9 @@ pub struct ConfluenceAttachmentConfiguration {
     #[serde(rename = "AttachmentFieldMappings")]
     pub attachment_field_mappings: Option<Vec<ConfluenceAttachmentToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// TRUE to index attachments of pages and blogs in Confluence.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -561,10 +533,7 @@ pub struct ConfluenceAttachmentConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "CrawlAttachments")]
     pub crawl_attachments: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConfluenceAttachmentConfiguration {
     fn type_string(&self) -> &'static str {
@@ -576,15 +545,12 @@ impl cfn_resources::CfnResource for ConfluenceAttachmentConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.attachment_field_mappings {
-
-        if the_val.len() > 11 as _ {
-            return Err(format!("Max validation failed on field 'attachment_field_mappings'. {} is greater than 11", the_val.len()));
+            if the_val.len() > 11 as _ {
+                return Err(format!("Max validation failed on field 'attachment_field_mappings'. {} is greater than 11", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -592,13 +558,11 @@ impl cfn_resources::CfnResource for ConfluenceAttachmentConfiguration {
 /// Maps attributes or field names of Confluence attachments to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Confluence fields. For more information, see Mapping data source fields. The       Confuence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfluenceAttachmentToIndexFieldMapping {
-
-
-    /// 
+    ///
     /// The name of the field in the data source.
-    /// 
+    ///
     /// You must first create the index field using the UpdateIndex API.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -609,10 +573,9 @@ pub struct ConfluenceAttachmentToIndexFieldMapping {
     #[serde(rename = "DataSourceFieldName")]
     pub data_source_field_name: ConfluenceAttachmentToIndexFieldMappingDataSourceFieldNameEnum,
 
-
-    /// 
+    ///
     /// The format for date fields in the data source. If the field specified in         DataSourceFieldName is a date field you must specify the date format.       If the field is not a date field, an exception is thrown.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -627,10 +590,9 @@ pub struct ConfluenceAttachmentToIndexFieldMapping {
     #[serde(rename = "DateFieldFormat")]
     pub date_field_format: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the index field to map to the Confluence data source field. The index       field type must match the Confluence field type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -644,13 +606,10 @@ pub struct ConfluenceAttachmentToIndexFieldMapping {
     /// Update requires: No interruption
     #[serde(rename = "IndexFieldName")]
     pub index_field_name: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ConfluenceAttachmentToIndexFieldMappingDataSourceFieldNameEnum {
-
     /// AUTHOR
     #[serde(rename = "AUTHOR")]
     Author,
@@ -694,7 +653,6 @@ pub enum ConfluenceAttachmentToIndexFieldMappingDataSourceFieldNameEnum {
     /// VERSION
     #[serde(rename = "VERSION")]
     Version,
-
 }
 
 impl Default for ConfluenceAttachmentToIndexFieldMappingDataSourceFieldNameEnum {
@@ -702,7 +660,6 @@ impl Default for ConfluenceAttachmentToIndexFieldMappingDataSourceFieldNameEnum 
         ConfluenceAttachmentToIndexFieldMappingDataSourceFieldNameEnum::Author
     }
 }
-
 
 impl cfn_resources::CfnResource for ConfluenceAttachmentToIndexFieldMapping {
     fn type_string(&self) -> &'static str {
@@ -714,37 +671,42 @@ impl cfn_resources::CfnResource for ConfluenceAttachmentToIndexFieldMapping {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.date_field_format {
+            if the_val.len() > 40 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'date_field_format'. {} is greater than 40",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() > 40 as _ {
-            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+            if the_val.len() < 4 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'date_field_format'. {} is less than 4",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'index_field_name'. {} is greater than 30",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'index_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -752,13 +714,11 @@ impl cfn_resources::CfnResource for ConfluenceAttachmentToIndexFieldMapping {
 /// Configuration of blog settings for the Confluence data source. Blogs are always       indexed unless filtered from the index by the ExclusionPatterns or         InclusionPatterns fields in the ConfluenceConfiguration       object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfluenceBlogConfiguration {
-
-
-    /// 
+    ///
     /// Maps attributes or field names of Confluence blogs to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
-    /// 
+    ///
     /// If you specify the BlogFieldMappings parameter, you must specify at least       one field mapping.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ConfluenceBlogToIndexFieldMapping
@@ -768,10 +728,7 @@ pub struct ConfluenceBlogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "BlogFieldMappings")]
     pub blog_field_mappings: Option<Vec<ConfluenceBlogToIndexFieldMapping>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConfluenceBlogConfiguration {
     fn type_string(&self) -> &'static str {
@@ -783,15 +740,15 @@ impl cfn_resources::CfnResource for ConfluenceBlogConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.blog_field_mappings {
-
-        if the_val.len() > 9 as _ {
-            return Err(format!("Max validation failed on field 'blog_field_mappings'. {} is greater than 9", the_val.len()));
+            if the_val.len() > 9 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'blog_field_mappings'. {} is greater than 9",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -799,11 +756,9 @@ impl cfn_resources::CfnResource for ConfluenceBlogConfiguration {
 /// Maps attributes or field names of Confluence blog to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfluenceBlogToIndexFieldMapping {
-
-
-    /// 
+    ///
     /// The name of the field in the data source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -814,10 +769,9 @@ pub struct ConfluenceBlogToIndexFieldMapping {
     #[serde(rename = "DataSourceFieldName")]
     pub data_source_field_name: ConfluenceBlogToIndexFieldMappingDataSourceFieldNameEnum,
 
-
-    /// 
+    ///
     /// The format for date fields in the data source. If the field specified in         DataSourceFieldName is a date field you must specify the date format.       If the field is not a date field, an exception is thrown.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -832,10 +786,9 @@ pub struct ConfluenceBlogToIndexFieldMapping {
     #[serde(rename = "DateFieldFormat")]
     pub date_field_format: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the index field to map to the Confluence data source field. The index       field type must match the Confluence field type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -849,13 +802,10 @@ pub struct ConfluenceBlogToIndexFieldMapping {
     /// Update requires: No interruption
     #[serde(rename = "IndexFieldName")]
     pub index_field_name: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ConfluenceBlogToIndexFieldMappingDataSourceFieldNameEnum {
-
     /// AUTHOR
     #[serde(rename = "AUTHOR")]
     Author,
@@ -891,7 +841,6 @@ pub enum ConfluenceBlogToIndexFieldMappingDataSourceFieldNameEnum {
     /// VERSION
     #[serde(rename = "VERSION")]
     Version,
-
 }
 
 impl Default for ConfluenceBlogToIndexFieldMappingDataSourceFieldNameEnum {
@@ -899,7 +848,6 @@ impl Default for ConfluenceBlogToIndexFieldMappingDataSourceFieldNameEnum {
         ConfluenceBlogToIndexFieldMappingDataSourceFieldNameEnum::Author
     }
 }
-
 
 impl cfn_resources::CfnResource for ConfluenceBlogToIndexFieldMapping {
     fn type_string(&self) -> &'static str {
@@ -911,37 +859,42 @@ impl cfn_resources::CfnResource for ConfluenceBlogToIndexFieldMapping {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.date_field_format {
+            if the_val.len() > 40 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'date_field_format'. {} is greater than 40",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() > 40 as _ {
-            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+            if the_val.len() < 4 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'date_field_format'. {} is less than 4",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'index_field_name'. {} is greater than 30",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'index_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -949,11 +902,9 @@ impl cfn_resources::CfnResource for ConfluenceBlogToIndexFieldMapping {
 /// Provides the configuration information to connect to Confluence as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfluenceConfiguration {
-
-
-    /// 
+    ///
     /// Configuration information for indexing attachments to Confluence blogs and       pages.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConfluenceAttachmentConfiguration
@@ -962,10 +913,9 @@ pub struct ConfluenceConfiguration {
     #[serde(rename = "AttachmentConfiguration")]
     pub attachment_configuration: Option<ConfluenceAttachmentConfiguration>,
 
-
-    /// 
+    ///
     /// Configuration information for indexing Confluence blogs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConfluenceBlogConfiguration
@@ -974,10 +924,9 @@ pub struct ConfluenceConfiguration {
     #[serde(rename = "BlogConfiguration")]
     pub blog_configuration: Option<ConfluenceBlogConfiguration>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to exclude certain blog posts, pages, spaces, or       attachments in your Confluence. Content that matches the patterns are excluded from the       index. Content that doesn't match the patterns is included in the index. If content       matches both an inclusion and exclusion pattern, the exclusion pattern takes precedence       and the content isn't included in the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -988,10 +937,9 @@ pub struct ConfluenceConfiguration {
     #[serde(rename = "ExclusionPatterns")]
     pub exclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to include certain blog posts, pages, spaces, or       attachments in your Confluence. Content that matches the patterns are included in the       index. Content that doesn't match the patterns is excluded from the index. If content       matches both an inclusion and exclusion pattern, the exclusion pattern takes precedence       and the content isn't included in the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -1002,10 +950,9 @@ pub struct ConfluenceConfiguration {
     #[serde(rename = "InclusionPatterns")]
     pub inclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Configuration information for indexing Confluence pages.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConfluencePageConfiguration
@@ -1014,12 +961,11 @@ pub struct ConfluenceConfiguration {
     #[serde(rename = "PageConfiguration")]
     pub page_configuration: Option<ConfluencePageConfiguration>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an AWS Secrets Manager secret that contains the       user name and password required to connect to the Confluence instance. If you use       Confluence Cloud, you use a generated API token as the password.
-    /// 
+    ///
     /// You can also provide authentication credentials in the form of a personal access       token. For more information, see Using a Confluence data         source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1034,10 +980,9 @@ pub struct ConfluenceConfiguration {
     #[serde(rename = "SecretArn")]
     pub secret_arn: String,
 
-
-    /// 
+    ///
     /// The URL of your Confluence instance. Use the full URL of the server. For example,         https://server.example.com:port/. You can also use an IP       address, for example, https://192.168.1.113/.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1052,10 +997,9 @@ pub struct ConfluenceConfiguration {
     #[serde(rename = "ServerUrl")]
     pub server_url: String,
 
-
-    /// 
+    ///
     /// Configuration information for indexing Confluence spaces.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConfluenceSpaceConfiguration
@@ -1064,10 +1008,9 @@ pub struct ConfluenceConfiguration {
     #[serde(rename = "SpaceConfiguration")]
     pub space_configuration: Option<ConfluenceSpaceConfiguration>,
 
-
-    /// 
+    ///
     /// The version or the type of Confluence installation to connect to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1078,10 +1021,9 @@ pub struct ConfluenceConfiguration {
     #[serde(rename = "Version")]
     pub version: ConfluenceConfigurationVersionEnum,
 
-
-    /// 
+    ///
     /// Configuration information for an Amazon Virtual Private Cloud to connect to your Confluence.       For more information, see Configuring a VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataSourceVpcConfiguration
@@ -1089,13 +1031,10 @@ pub struct ConfluenceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ConfluenceConfigurationVersionEnum {
-
     /// CLOUD
     #[serde(rename = "CLOUD")]
     Cloud,
@@ -1103,7 +1042,6 @@ pub enum ConfluenceConfigurationVersionEnum {
     /// SERVER
     #[serde(rename = "SERVER")]
     Server,
-
 }
 
 impl Default for ConfluenceConfigurationVersionEnum {
@@ -1111,7 +1049,6 @@ impl Default for ConfluenceConfigurationVersionEnum {
         ConfluenceConfigurationVersionEnum::Cloud
     }
 }
-
 
 impl cfn_resources::CfnResource for ConfluenceConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1123,60 +1060,79 @@ impl cfn_resources::CfnResource for ConfluenceConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.attachment_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.attachment_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.blog_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.blog_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.exclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'exclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.inclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'inclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.page_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.page_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.secret_arn;
 
         if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'secret_arn'. {} is greater than 1284",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'secret_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.server_url;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'server_url'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'server_url'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.server_url;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'server_url'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'server_url'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.space_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.space_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpc_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1185,13 +1141,11 @@ impl cfn_resources::CfnResource for ConfluenceConfiguration {
 /// Configuration of the page settings for the Confluence data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfluencePageConfiguration {
-
-
-    /// 
+    ///
     /// Maps attributes or field names of Confluence pages to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
-    /// 
+    ///
     /// If you specify the PageFieldMappings parameter, you must specify at least       one field mapping.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ConfluencePageToIndexFieldMapping
@@ -1201,10 +1155,7 @@ pub struct ConfluencePageConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PageFieldMappings")]
     pub page_field_mappings: Option<Vec<ConfluencePageToIndexFieldMapping>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConfluencePageConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1216,15 +1167,15 @@ impl cfn_resources::CfnResource for ConfluencePageConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.page_field_mappings {
-
-        if the_val.len() > 12 as _ {
-            return Err(format!("Max validation failed on field 'page_field_mappings'. {} is greater than 12", the_val.len()));
+            if the_val.len() > 12 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'page_field_mappings'. {} is greater than 12",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -1232,11 +1183,9 @@ impl cfn_resources::CfnResource for ConfluencePageConfiguration {
 /// Maps attributes or field names of Confluence pages to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfluencePageToIndexFieldMapping {
-
-
-    /// 
+    ///
     /// The name of the field in the data source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1247,10 +1196,9 @@ pub struct ConfluencePageToIndexFieldMapping {
     #[serde(rename = "DataSourceFieldName")]
     pub data_source_field_name: ConfluencePageToIndexFieldMappingDataSourceFieldNameEnum,
 
-
-    /// 
+    ///
     /// The format for date fields in the data source. If the field specified in         DataSourceFieldName is a date field you must specify the date format.       If the field is not a date field, an exception is thrown.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1265,10 +1213,9 @@ pub struct ConfluencePageToIndexFieldMapping {
     #[serde(rename = "DateFieldFormat")]
     pub date_field_format: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the index field to map to the Confluence data source field. The index       field type must match the Confluence field type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1282,13 +1229,10 @@ pub struct ConfluencePageToIndexFieldMapping {
     /// Update requires: No interruption
     #[serde(rename = "IndexFieldName")]
     pub index_field_name: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ConfluencePageToIndexFieldMappingDataSourceFieldNameEnum {
-
     /// AUTHOR
     #[serde(rename = "AUTHOR")]
     Author,
@@ -1336,7 +1280,6 @@ pub enum ConfluencePageToIndexFieldMappingDataSourceFieldNameEnum {
     /// VERSION
     #[serde(rename = "VERSION")]
     Version,
-
 }
 
 impl Default for ConfluencePageToIndexFieldMappingDataSourceFieldNameEnum {
@@ -1344,7 +1287,6 @@ impl Default for ConfluencePageToIndexFieldMappingDataSourceFieldNameEnum {
         ConfluencePageToIndexFieldMappingDataSourceFieldNameEnum::Author
     }
 }
-
 
 impl cfn_resources::CfnResource for ConfluencePageToIndexFieldMapping {
     fn type_string(&self) -> &'static str {
@@ -1356,37 +1298,42 @@ impl cfn_resources::CfnResource for ConfluencePageToIndexFieldMapping {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.date_field_format {
+            if the_val.len() > 40 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'date_field_format'. {} is greater than 40",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() > 40 as _ {
-            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+            if the_val.len() < 4 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'date_field_format'. {} is less than 4",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'index_field_name'. {} is greater than 30",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'index_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1394,11 +1341,9 @@ impl cfn_resources::CfnResource for ConfluencePageToIndexFieldMapping {
 /// Configuration information for indexing Confluence spaces.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfluenceSpaceConfiguration {
-
-
-    /// 
+    ///
     /// TRUE to index archived spaces.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -1407,10 +1352,9 @@ pub struct ConfluenceSpaceConfiguration {
     #[serde(rename = "CrawlArchivedSpaces")]
     pub crawl_archived_spaces: Option<bool>,
 
-
-    /// 
+    ///
     /// TRUE to index personal spaces. You can add restrictions to items in       personal spaces. If personal spaces are indexed, queries without user context       information may return restricted items from a personal space in their results. For more       information, see Filtering on user       context.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -1419,10 +1363,9 @@ pub struct ConfluenceSpaceConfiguration {
     #[serde(rename = "CrawlPersonalSpaces")]
     pub crawl_personal_spaces: Option<bool>,
 
-
-    /// 
+    ///
     /// A list of space keys of Confluence spaces. If you include a key, the blogs, documents,       and attachments in the space are not indexed. If a space is in both the         ExcludeSpaces and the IncludeSpaces list, the space is       excluded.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -1431,10 +1374,9 @@ pub struct ConfluenceSpaceConfiguration {
     #[serde(rename = "ExcludeSpaces")]
     pub exclude_spaces: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of space keys for Confluence spaces. If you include a key, the blogs,       documents, and attachments in the space are indexed. Spaces that aren't in the list       aren't indexed. A space in the list must exist. Otherwise, Amazon Kendra logs an       error when the data source is synchronized. If a space is in both the         IncludeSpaces and the ExcludeSpaces list, the space is       excluded.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -1443,12 +1385,11 @@ pub struct ConfluenceSpaceConfiguration {
     #[serde(rename = "IncludeSpaces")]
     pub include_spaces: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Maps attributes or field names of Confluence spaces to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
-    /// 
+    ///
     /// If you specify the SpaceFieldMappings parameter, you must specify at       least one field mapping.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ConfluenceSpaceToIndexFieldMapping
@@ -1458,10 +1399,7 @@ pub struct ConfluenceSpaceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SpaceFieldMappings")]
     pub space_field_mappings: Option<Vec<ConfluenceSpaceToIndexFieldMapping>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConfluenceSpaceConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1473,15 +1411,15 @@ impl cfn_resources::CfnResource for ConfluenceSpaceConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.space_field_mappings {
-
-        if the_val.len() > 4 as _ {
-            return Err(format!("Max validation failed on field 'space_field_mappings'. {} is greater than 4", the_val.len()));
+            if the_val.len() > 4 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'space_field_mappings'. {} is greater than 4",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -1489,11 +1427,9 @@ impl cfn_resources::CfnResource for ConfluenceSpaceConfiguration {
 /// Maps attributes or field names of Confluence spaces to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       Confluence fields. For more information, see Mapping data source fields. The       Confluence data source field names must exist in your Confluence custom metadata.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfluenceSpaceToIndexFieldMapping {
-
-
-    /// 
+    ///
     /// The name of the field in the data source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1504,10 +1440,9 @@ pub struct ConfluenceSpaceToIndexFieldMapping {
     #[serde(rename = "DataSourceFieldName")]
     pub data_source_field_name: ConfluenceSpaceToIndexFieldMappingDataSourceFieldNameEnum,
 
-
-    /// 
+    ///
     /// The format for date fields in the data source. If the field specified in         DataSourceFieldName is a date field you must specify the date format.       If the field is not a date field, an exception is thrown.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1522,10 +1457,9 @@ pub struct ConfluenceSpaceToIndexFieldMapping {
     #[serde(rename = "DateFieldFormat")]
     pub date_field_format: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the index field to map to the Confluence data source field. The index       field type must match the Confluence field type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1539,13 +1473,10 @@ pub struct ConfluenceSpaceToIndexFieldMapping {
     /// Update requires: No interruption
     #[serde(rename = "IndexFieldName")]
     pub index_field_name: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ConfluenceSpaceToIndexFieldMappingDataSourceFieldNameEnum {
-
     /// DISPLAY_URL
     #[serde(rename = "DISPLAY_URL")]
     Displayurl,
@@ -1561,7 +1492,6 @@ pub enum ConfluenceSpaceToIndexFieldMappingDataSourceFieldNameEnum {
     /// URL
     #[serde(rename = "URL")]
     Url,
-
 }
 
 impl Default for ConfluenceSpaceToIndexFieldMappingDataSourceFieldNameEnum {
@@ -1569,7 +1499,6 @@ impl Default for ConfluenceSpaceToIndexFieldMappingDataSourceFieldNameEnum {
         ConfluenceSpaceToIndexFieldMappingDataSourceFieldNameEnum::Displayurl
     }
 }
-
 
 impl cfn_resources::CfnResource for ConfluenceSpaceToIndexFieldMapping {
     fn type_string(&self) -> &'static str {
@@ -1581,37 +1510,42 @@ impl cfn_resources::CfnResource for ConfluenceSpaceToIndexFieldMapping {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.date_field_format {
+            if the_val.len() > 40 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'date_field_format'. {} is greater than 40",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() > 40 as _ {
-            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+            if the_val.len() < 4 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'date_field_format'. {} is less than 4",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'index_field_name'. {} is greater than 30",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'index_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1619,11 +1553,9 @@ impl cfn_resources::CfnResource for ConfluenceSpaceToIndexFieldMapping {
 /// Provides the configuration information that's required to connect to a       database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectionConfiguration {
-
-
-    /// 
+    ///
     /// The name of the host for the database. Can be either a string       (host.subdomain.domain.tld) or an IPv4 or IPv6 address.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1636,10 +1568,9 @@ pub struct ConnectionConfiguration {
     #[serde(rename = "DatabaseHost")]
     pub database_host: String,
 
-
-    /// 
+    ///
     /// The name of the database containing the document data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1654,10 +1585,9 @@ pub struct ConnectionConfiguration {
     #[serde(rename = "DatabaseName")]
     pub database_name: String,
 
-
-    /// 
+    ///
     /// The port that the database uses for connections.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1670,10 +1600,9 @@ pub struct ConnectionConfiguration {
     #[serde(rename = "DatabasePort")]
     pub database_port: i64,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of credentials stored in AWS Secrets Manager. The       credentials should be a user/password pair. For more information, see Using a         Database Data Source. For more information about AWS Secrets Manager, see         What         Is AWS Secrets Manager in the         AWS Secrets Manager       user guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1688,10 +1617,9 @@ pub struct ConnectionConfiguration {
     #[serde(rename = "SecretArn")]
     pub secret_arn: String,
 
-
-    /// 
+    ///
     /// The name of the table that contains the document data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1705,10 +1633,7 @@ pub struct ConnectionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TableName")]
     pub table_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConnectionConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1720,77 +1645,96 @@ impl cfn_resources::CfnResource for ConnectionConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.database_host;
 
         if the_val.len() > 253 as _ {
-            return Err(format!("Max validation failed on field 'database_host'. {} is greater than 253", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'database_host'. {} is greater than 253",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.database_host;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'database_host'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'database_host'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.database_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'database_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.database_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'database_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.database_port;
 
         if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'database_port'. {} is greater than 65535", the_val));
+            return Err(format!(
+                "Max validation failed on field 'database_port'. {} is greater than 65535",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.database_port;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'database_port'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'database_port'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'secret_arn'. {} is greater than 1284",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'secret_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.table_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'table_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.table_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'table_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1800,11 +1744,9 @@ impl cfn_resources::CfnResource for ConnectionConfiguration {
 /// For more information, see Customizing document metadata         during the ingestion process.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomDocumentEnrichmentConfiguration {
-
-
-    /// 
+    ///
     /// Configuration information to alter document attributes or metadata fields and content       when ingesting documents into Amazon Kendra.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of InlineCustomDocumentEnrichmentConfiguration
@@ -1815,10 +1757,9 @@ pub struct CustomDocumentEnrichmentConfiguration {
     #[serde(rename = "InlineConfigurations")]
     pub inline_configurations: Option<Vec<InlineCustomDocumentEnrichmentConfiguration>>,
 
-
-    /// 
+    ///
     /// Configuration information for invoking a Lambda function in AWS Lambda on       the structured documents with their metadata and text extracted. You can use a Lambda       function to apply advanced logic for creating, modifying, or deleting document metadata       and content. For more information, see Advanced data manipulation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: HookConfiguration
@@ -1827,10 +1768,9 @@ pub struct CustomDocumentEnrichmentConfiguration {
     #[serde(rename = "PostExtractionHookConfiguration")]
     pub post_extraction_hook_configuration: Option<HookConfiguration>,
 
-
-    /// 
+    ///
     /// Configuration information for invoking a Lambda function in AWS Lambda on       the original or raw documents before extracting their metadata and text. You can use a       Lambda function to apply advanced logic for creating, modifying, or deleting document       metadata and content. For more information, see Advanced data manipulation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: HookConfiguration
@@ -1839,10 +1779,9 @@ pub struct CustomDocumentEnrichmentConfiguration {
     #[serde(rename = "PreExtractionHookConfiguration")]
     pub pre_extraction_hook_configuration: Option<HookConfiguration>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of a role with permission to run         PreExtractionHookConfiguration and         PostExtractionHookConfiguration for altering document metadata and       content during the document ingestion process. For more information, see IAM roles for Amazon Kendra.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1856,10 +1795,7 @@ pub struct CustomDocumentEnrichmentConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CustomDocumentEnrichmentConfiguration {
     fn type_string(&self) -> &'static str {
@@ -1871,35 +1807,38 @@ impl cfn_resources::CfnResource for CustomDocumentEnrichmentConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.inline_configurations {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'inline_configurations'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'inline_configurations'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
-        self.post_extraction_hook_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.post_extraction_hook_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.pre_extraction_hook_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.pre_extraction_hook_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.role_arn {
-
-        if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1284", the_val.len()));
+            if the_val.len() > 1284 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 1284",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.role_arn {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -1907,11 +1846,9 @@ impl cfn_resources::CfnResource for CustomDocumentEnrichmentConfiguration {
 /// Provides the configuration information for an Amazon Kendra data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataSourceConfiguration {
-
-
-    /// 
+    ///
     /// Provides the configuration information to connect to Confluence as your data    source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConfluenceConfiguration
@@ -1920,10 +1857,9 @@ pub struct DataSourceConfiguration {
     #[serde(rename = "ConfluenceConfiguration")]
     pub confluence_configuration: Option<ConfluenceConfiguration>,
 
-
-    /// 
+    ///
     /// Provides the configuration information to connect to a database as your data    source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DatabaseConfiguration
@@ -1932,10 +1868,9 @@ pub struct DataSourceConfiguration {
     #[serde(rename = "DatabaseConfiguration")]
     pub database_configuration: Option<DatabaseConfiguration>,
 
-
-    /// 
+    ///
     /// Provides the configuration information to connect to Google Drive as your data    source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: GoogleDriveConfiguration
@@ -1944,10 +1879,9 @@ pub struct DataSourceConfiguration {
     #[serde(rename = "GoogleDriveConfiguration")]
     pub google_drive_configuration: Option<GoogleDriveConfiguration>,
 
-
-    /// 
+    ///
     /// Provides the configuration information to connect to Microsoft OneDrive as your data    source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: OneDriveConfiguration
@@ -1956,10 +1890,9 @@ pub struct DataSourceConfiguration {
     #[serde(rename = "OneDriveConfiguration")]
     pub one_drive_configuration: Option<OneDriveConfiguration>,
 
-
-    /// 
+    ///
     /// Provides the configuration information to connect to an Amazon S3 bucket as your    data source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3DataSourceConfiguration
@@ -1968,10 +1901,9 @@ pub struct DataSourceConfiguration {
     #[serde(rename = "S3Configuration")]
     pub s3_configuration: Option<S3DataSourceConfiguration>,
 
-
-    /// 
+    ///
     /// Provides the configuration information to connect to Salesforce as your data    source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SalesforceConfiguration
@@ -1980,10 +1912,9 @@ pub struct DataSourceConfiguration {
     #[serde(rename = "SalesforceConfiguration")]
     pub salesforce_configuration: Option<SalesforceConfiguration>,
 
-
-    /// 
+    ///
     /// Provides the configuration information to connect to ServiceNow as your data    source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ServiceNowConfiguration
@@ -1992,10 +1923,9 @@ pub struct DataSourceConfiguration {
     #[serde(rename = "ServiceNowConfiguration")]
     pub service_now_configuration: Option<ServiceNowConfiguration>,
 
-
-    /// 
+    ///
     /// Provides the configuration information to connect to Microsoft SharePoint as your data    source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SharePointConfiguration
@@ -2004,10 +1934,9 @@ pub struct DataSourceConfiguration {
     #[serde(rename = "SharePointConfiguration")]
     pub share_point_configuration: Option<SharePointConfiguration>,
 
-
-    /// 
+    ///
     /// Provides the configuration information required for Amazon Kendra       Web Crawler.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: WebCrawlerConfiguration
@@ -2016,10 +1945,9 @@ pub struct DataSourceConfiguration {
     #[serde(rename = "WebCrawlerConfiguration")]
     pub web_crawler_configuration: Option<WebCrawlerConfiguration>,
 
-
-    /// 
+    ///
     /// Provides the configuration information to connect to Amazon WorkDocs as your data    source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: WorkDocsConfiguration
@@ -2027,10 +1955,7 @@ pub struct DataSourceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "WorkDocsConfiguration")]
     pub work_docs_configuration: Option<WorkDocsConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataSourceConfiguration {
     fn type_string(&self) -> &'static str {
@@ -2042,26 +1967,45 @@ impl cfn_resources::CfnResource for DataSourceConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.confluence_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.confluence_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.database_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.database_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.google_drive_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.google_drive_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.one_drive_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.one_drive_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.s3_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.s3_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.salesforce_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.salesforce_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.service_now_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.service_now_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.share_point_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.share_point_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.web_crawler_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.web_crawler_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.work_docs_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.work_docs_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -2070,11 +2014,9 @@ impl cfn_resources::CfnResource for DataSourceConfiguration {
 /// Maps a column or attribute in the data source to an index field.       You must first create the fields in the index using the UpdateIndex operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataSourceToIndexFieldMapping {
-
-
-    /// 
+    ///
     /// The name of the column or attribute in the data source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -2089,10 +2031,9 @@ pub struct DataSourceToIndexFieldMapping {
     #[serde(rename = "DataSourceFieldName")]
     pub data_source_field_name: String,
 
-
-    /// 
+    ///
     /// The type of data stored in the column or attribute.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2107,10 +2048,9 @@ pub struct DataSourceToIndexFieldMapping {
     #[serde(rename = "DateFieldFormat")]
     pub date_field_format: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the field in the index.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -2124,10 +2064,7 @@ pub struct DataSourceToIndexFieldMapping {
     /// Update requires: No interruption
     #[serde(rename = "IndexFieldName")]
     pub index_field_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataSourceToIndexFieldMapping {
     fn type_string(&self) -> &'static str {
@@ -2139,51 +2076,60 @@ impl cfn_resources::CfnResource for DataSourceToIndexFieldMapping {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.data_source_field_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'data_source_field_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'data_source_field_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.data_source_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'data_source_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'data_source_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() > 40 as _ {
-            return Err(format!("Max validation failed on field 'date_field_format'. {} is greater than 40", the_val.len()));
+            if the_val.len() > 40 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'date_field_format'. {} is greater than 40",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.date_field_format {
-
-        if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'date_field_format'. {} is less than 4", the_val.len()));
+            if the_val.len() < 4 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'date_field_format'. {} is less than 4",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'index_field_name'. {} is greater than 30", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'index_field_name'. {} is greater than 30",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.index_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'index_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'index_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -2191,11 +2137,9 @@ impl cfn_resources::CfnResource for DataSourceToIndexFieldMapping {
 /// Provides the configuration information to connect to an Amazon VPC.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataSourceVpcConfiguration {
-
-
-    /// 
+    ///
     /// A list of identifiers of security groups within your Amazon VPC. The security groups    should enable Amazon Kendra to connect to the data source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -2206,10 +2150,9 @@ pub struct DataSourceVpcConfiguration {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// A list of identifiers for subnets within your Amazon VPC. The subnets should be able to    connect to each other in the VPC, and they should have outgoing access to the Internet through    a NAT device.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -2219,10 +2162,7 @@ pub struct DataSourceVpcConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataSourceVpcConfiguration {
     fn type_string(&self) -> &'static str {
@@ -2234,21 +2174,24 @@ impl cfn_resources::CfnResource for DataSourceVpcConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.security_group_ids;
 
         if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 10", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'security_group_ids'. {} is greater than 10",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.subnet_ids;
 
         if the_val.len() > 6 as _ {
-            return Err(format!("Max validation failed on field 'subnet_ids'. {} is greater than 6", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'subnet_ids'. {} is greater than 6",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -2256,11 +2199,9 @@ impl cfn_resources::CfnResource for DataSourceVpcConfiguration {
 /// Provides the configuration information to connect to a index.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatabaseConfiguration {
-
-
-    /// 
+    ///
     /// Information about the database column that provides information for user context       filtering.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AclConfiguration
@@ -2269,10 +2210,9 @@ pub struct DatabaseConfiguration {
     #[serde(rename = "AclConfiguration")]
     pub acl_configuration: Option<AclConfiguration>,
 
-
-    /// 
+    ///
     /// Information about where the index should get the document information from the       database.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ColumnConfiguration
@@ -2281,10 +2221,9 @@ pub struct DatabaseConfiguration {
     #[serde(rename = "ColumnConfiguration")]
     pub column_configuration: ColumnConfiguration,
 
-
-    /// 
+    ///
     /// Configuration information that's required to connect to a database.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ConnectionConfiguration
@@ -2293,10 +2232,9 @@ pub struct DatabaseConfiguration {
     #[serde(rename = "ConnectionConfiguration")]
     pub connection_configuration: ConnectionConfiguration,
 
-
-    /// 
+    ///
     /// The type of database engine that runs the database.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -2307,10 +2245,9 @@ pub struct DatabaseConfiguration {
     #[serde(rename = "DatabaseEngineType")]
     pub database_engine_type: DatabaseConfigurationDatabaseEngineTypeEnum,
 
-
-    /// 
+    ///
     /// Provides information about how Amazon Kendra uses quote marks       around SQL identifiers when querying a database data source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SqlConfiguration
@@ -2319,10 +2256,9 @@ pub struct DatabaseConfiguration {
     #[serde(rename = "SqlConfiguration")]
     pub sql_configuration: Option<SqlConfiguration>,
 
-
-    /// 
+    ///
     /// Provides information for connecting to an Amazon VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataSourceVpcConfiguration
@@ -2330,13 +2266,10 @@ pub struct DatabaseConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DatabaseConfigurationDatabaseEngineTypeEnum {
-
     /// RDS_AURORA_MYSQL
     #[serde(rename = "RDS_AURORA_MYSQL")]
     Rdsauroramysql,
@@ -2352,7 +2285,6 @@ pub enum DatabaseConfigurationDatabaseEngineTypeEnum {
     /// RDS_POSTGRESQL
     #[serde(rename = "RDS_POSTGRESQL")]
     Rdspostgresql,
-
 }
 
 impl Default for DatabaseConfigurationDatabaseEngineTypeEnum {
@@ -2360,7 +2292,6 @@ impl Default for DatabaseConfigurationDatabaseEngineTypeEnum {
         DatabaseConfigurationDatabaseEngineTypeEnum::Rdsauroramysql
     }
 }
-
 
 impl cfn_resources::CfnResource for DatabaseConfiguration {
     fn type_string(&self) -> &'static str {
@@ -2372,16 +2303,21 @@ impl cfn_resources::CfnResource for DatabaseConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.acl_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.acl_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.column_configuration.validate()?;
 
         self.connection_configuration.validate()?;
 
-        self.sql_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.sql_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpc_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -2394,15 +2330,13 @@ impl cfn_resources::CfnResource for DatabaseConfiguration {
 /// Amazon Kendra cannot create a target field if it has not already been created as       an index field. After you create your index field, you can create a document metadata       field using DocumentAttributeTarget. Amazon Kendra then will map your       newly created metadata field to your index field.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DocumentAttributeCondition {
-
-
-    /// 
+    ///
     /// The identifier of the document attribute used for the condition.
-    /// 
+    ///
     /// For example, 'Source_URI' could be an identifier for the attribute or metadata field       that contains source URIs associated with the documents.
-    /// 
+    ///
     /// Amazon Kendra currently does not support _document_body as an       attribute key used for the condition.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -2417,12 +2351,11 @@ pub struct DocumentAttributeCondition {
     #[serde(rename = "ConditionDocumentAttributeKey")]
     pub condition_document_attribute_key: String,
 
-
-    /// 
+    ///
     /// The value used by the operator.
-    /// 
+    ///
     /// For example, you can specify the value 'financial' for strings in the 'Source_URI'       field that partially match or contain this value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DocumentAttributeValue
@@ -2431,12 +2364,11 @@ pub struct DocumentAttributeCondition {
     #[serde(rename = "ConditionOnValue")]
     pub condition_on_value: Option<DocumentAttributeValue>,
 
-
-    /// 
+    ///
     /// The condition operator.
-    /// 
+    ///
     /// For example, you can use 'Contains' to partially match a string.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -2446,13 +2378,10 @@ pub struct DocumentAttributeCondition {
     /// Update requires: No interruption
     #[serde(rename = "Operator")]
     pub operator: DocumentAttributeConditionOperatorEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DocumentAttributeConditionOperatorEnum {
-
     /// BeginsWith
     #[serde(rename = "BeginsWith")]
     Beginswith,
@@ -2496,7 +2425,6 @@ pub enum DocumentAttributeConditionOperatorEnum {
     /// NotExists
     #[serde(rename = "NotExists")]
     Notexists,
-
 }
 
 impl Default for DocumentAttributeConditionOperatorEnum {
@@ -2504,7 +2432,6 @@ impl Default for DocumentAttributeConditionOperatorEnum {
         DocumentAttributeConditionOperatorEnum::Beginswith
     }
 }
-
 
 impl cfn_resources::CfnResource for DocumentAttributeCondition {
     fn type_string(&self) -> &'static str {
@@ -2516,22 +2443,21 @@ impl cfn_resources::CfnResource for DocumentAttributeCondition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.condition_document_attribute_key;
 
         if the_val.len() > 200 as _ {
             return Err(format!("Max validation failed on field 'condition_document_attribute_key'. {} is greater than 200", the_val.len()));
         }
 
-        
         let the_val = &self.condition_document_attribute_key;
 
         if the_val.len() < 1 as _ {
             return Err(format!("Min validation failed on field 'condition_document_attribute_key'. {} is less than 1", the_val.len()));
         }
 
-        
-        self.condition_on_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.condition_on_value
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -2546,13 +2472,11 @@ impl cfn_resources::CfnResource for DocumentAttributeCondition {
 /// You can also use this with DocumentAttributeCondition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DocumentAttributeTarget {
-
-
-    /// 
+    ///
     /// The identifier of the target document attribute or metadata field.
-    /// 
+    ///
     /// For example, 'Department' could be an identifier for the target attribute or metadata       field that includes the department names associated with the documents.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -2567,12 +2491,11 @@ pub struct DocumentAttributeTarget {
     #[serde(rename = "TargetDocumentAttributeKey")]
     pub target_document_attribute_key: String,
 
-
-    /// 
+    ///
     /// The target value you want to create for the target attribute.
-    /// 
+    ///
     /// For example, 'Finance' could be the target value for the target attribute key       'Department'.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DocumentAttributeValue
@@ -2581,10 +2504,9 @@ pub struct DocumentAttributeTarget {
     #[serde(rename = "TargetDocumentAttributeValue")]
     pub target_document_attribute_value: Option<DocumentAttributeValue>,
 
-
-    /// 
+    ///
     /// TRUE to delete the existing target value for your specified target       attribute key. You cannot create a target value and set this to TRUE. To       create a target value (TargetDocumentAttributeValue), set this to         FALSE.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -2592,10 +2514,7 @@ pub struct DocumentAttributeTarget {
     /// Update requires: No interruption
     #[serde(rename = "TargetDocumentAttributeValueDeletion")]
     pub target_document_attribute_value_deletion: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DocumentAttributeTarget {
     fn type_string(&self) -> &'static str {
@@ -2607,22 +2526,24 @@ impl cfn_resources::CfnResource for DocumentAttributeTarget {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.target_document_attribute_key;
 
         if the_val.len() > 200 as _ {
             return Err(format!("Max validation failed on field 'target_document_attribute_key'. {} is greater than 200", the_val.len()));
         }
 
-        
         let the_val = &self.target_document_attribute_key;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'target_document_attribute_key'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'target_document_attribute_key'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.target_document_attribute_value.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.target_document_attribute_value
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -2631,13 +2552,11 @@ impl cfn_resources::CfnResource for DocumentAttributeTarget {
 /// The value of a document attribute. You can only provide one value for a document       attribute.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DocumentAttributeValue {
-
-
-    /// 
+    ///
     /// A date expressed as an ISO 8601 string.
-    /// 
+    ///
     /// It is important for the time zone to be included in the ISO 8601 date-time format. For       example, 2012-03-25T12:30:10+01:00 is the ISO 8601 date-time format for March 25th 2012       at 12:30PM (plus 10 seconds) in Central European Time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2646,10 +2565,9 @@ pub struct DocumentAttributeValue {
     #[serde(rename = "DateValue")]
     pub date_value: Option<String>,
 
-
-    /// 
+    ///
     /// A long integer value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -2658,10 +2576,9 @@ pub struct DocumentAttributeValue {
     #[serde(rename = "LongValue")]
     pub long_value: Option<i64>,
 
-
-    /// 
+    ///
     /// A list of strings. The default maximum length or number of strings is 10.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -2670,10 +2587,9 @@ pub struct DocumentAttributeValue {
     #[serde(rename = "StringListValue")]
     pub string_list_value: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A string, such as "department".
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2685,10 +2601,7 @@ pub struct DocumentAttributeValue {
     /// Update requires: No interruption
     #[serde(rename = "StringValue")]
     pub string_value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DocumentAttributeValue {
     fn type_string(&self) -> &'static str {
@@ -2700,23 +2613,24 @@ impl cfn_resources::CfnResource for DocumentAttributeValue {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.string_value {
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'string_value'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.string_value {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'string_value'. {} is greater than 2048", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'string_value'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.string_value {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'string_value'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -2724,11 +2638,9 @@ impl cfn_resources::CfnResource for DocumentAttributeValue {
 /// Document metadata files that contain information such as the document access control       information, source URI, document author, and custom attributes. Each metadata file       contains metadata about a single document.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DocumentsMetadataConfiguration {
-
-
-    /// 
+    ///
     /// A prefix used to filter metadata configuration files in the AWS S3       bucket. The S3 bucket might contain multiple metadata files. Use S3Prefix       to include only the desired metadata files.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -2740,10 +2652,7 @@ pub struct DocumentsMetadataConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "S3Prefix")]
     pub s3_prefix: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DocumentsMetadataConfiguration {
     fn type_string(&self) -> &'static str {
@@ -2755,23 +2664,24 @@ impl cfn_resources::CfnResource for DocumentsMetadataConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.s3_prefix {
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 's3_prefix'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.s3_prefix {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 's3_prefix'. {} is greater than 1024", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 's3_prefix'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.s3_prefix {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 's3_prefix'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -2779,13 +2689,11 @@ impl cfn_resources::CfnResource for DocumentsMetadataConfiguration {
 /// Provides the configuration information to connect to Google Drive as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GoogleDriveConfiguration {
-
-
-    /// 
+    ///
     /// A list of MIME types to exclude from the index. All documents matching the specified       MIME type are excluded.
-    /// 
+    ///
     /// For a list of MIME types, see Using a         Google Workspace Drive data source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -2796,10 +2704,9 @@ pub struct GoogleDriveConfiguration {
     #[serde(rename = "ExcludeMimeTypes")]
     pub exclude_mime_types: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of identifiers or shared drives to exclude from the index. All files and       folders stored on the shared drive are excluded.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -2810,10 +2717,9 @@ pub struct GoogleDriveConfiguration {
     #[serde(rename = "ExcludeSharedDrives")]
     pub exclude_shared_drives: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of email addresses of the users. Documents owned by these users are excluded       from the index. Documents shared with excluded users are indexed unless they are       excluded in another way.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -2824,10 +2730,9 @@ pub struct GoogleDriveConfiguration {
     #[serde(rename = "ExcludeUserAccounts")]
     pub exclude_user_accounts: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to exclude certain items in your Google Drive,       including shared drives and users' My Drives. Items that match the patterns are excluded       from the index. Items that don't match the patterns are included in the index. If an       item matches both an inclusion and exclusion pattern, the exclusion pattern takes       precedence and the item isn't included in the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -2838,10 +2743,9 @@ pub struct GoogleDriveConfiguration {
     #[serde(rename = "ExclusionPatterns")]
     pub exclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Maps Google Drive data source attributes or field names to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Google Drive fields. For more information, see Mapping data source fields. The       Google Drive data source field names must exist in your Google Drive custom       metadata.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -2852,10 +2756,9 @@ pub struct GoogleDriveConfiguration {
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to include certain items in your Google Drive,       including shared drives and users' My Drives. Items that match the patterns are included       in the index. Items that don't match the patterns are excluded from the index. If an       item matches both an inclusion and exclusion pattern, the exclusion pattern takes       precedence and the item isn't included in the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -2866,10 +2769,9 @@ pub struct GoogleDriveConfiguration {
     #[serde(rename = "InclusionPatterns")]
     pub inclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of a AWS Secrets Managersecret that contains the       credentials required to connect to Google Drive. For more information, see Using a         Google Workspace Drive data source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -2883,10 +2785,7 @@ pub struct GoogleDriveConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SecretArn")]
     pub secret_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for GoogleDriveConfiguration {
     fn type_string(&self) -> &'static str {
@@ -2898,69 +2797,72 @@ impl cfn_resources::CfnResource for GoogleDriveConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.exclude_mime_types {
-
-        if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'exclude_mime_types'. {} is greater than 30", the_val.len()));
+            if the_val.len() > 30 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'exclude_mime_types'. {} is greater than 30",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.exclude_shared_drives {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'exclude_shared_drives'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'exclude_shared_drives'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.exclude_user_accounts {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'exclude_user_accounts'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'exclude_user_accounts'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.exclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'exclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.inclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'inclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'secret_arn'. {} is greater than 1284",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'secret_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -2970,13 +2872,11 @@ impl cfn_resources::CfnResource for GoogleDriveConfiguration {
 /// For more information, see Customizing document metadata         during the ingestion process.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HookConfiguration {
-
-
-    /// 
+    ///
     /// The condition used for when a Lambda function should be invoked.
-    /// 
+    ///
     /// For example, you can specify a condition that if there are empty date-time values,       then Amazon Kendra should invoke a function that inserts the current       date-time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DocumentAttributeCondition
@@ -2985,10 +2885,9 @@ pub struct HookConfiguration {
     #[serde(rename = "InvocationCondition")]
     pub invocation_condition: Option<DocumentAttributeCondition>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of a role with permission to run a Lambda function       during ingestion. For more information, see IAM roles for Amazon Kendra.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3003,10 +2902,9 @@ pub struct HookConfiguration {
     #[serde(rename = "LambdaArn")]
     pub lambda_arn: String,
 
-
-    /// 
+    ///
     /// Stores the original, raw documents or the structured, parsed documents before and       after altering them. For more information, see Data contracts for Lambda functions.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3020,10 +2918,7 @@ pub struct HookConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for HookConfiguration {
     fn type_string(&self) -> &'static str {
@@ -3035,37 +2930,46 @@ impl cfn_resources::CfnResource for HookConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.invocation_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.invocation_condition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.lambda_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'lambda_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'lambda_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.lambda_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'lambda_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'lambda_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.s3_bucket;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 's3_bucket'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.s3_bucket;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 's3_bucket'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 's3_bucket'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -3075,11 +2979,9 @@ impl cfn_resources::CfnResource for HookConfiguration {
 /// For more information, see Customizing document metadata         during the ingestion process.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InlineCustomDocumentEnrichmentConfiguration {
-
-
-    /// 
+    ///
     /// Configuration of the condition used for the target document attribute or metadata       field when ingesting documents into Amazon Kendra.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DocumentAttributeCondition
@@ -3088,10 +2990,9 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
     #[serde(rename = "Condition")]
     pub condition: Option<DocumentAttributeCondition>,
 
-
-    /// 
+    ///
     /// TRUE to delete content if the condition used for the target attribute is       met.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3100,10 +3001,9 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
     #[serde(rename = "DocumentContentDeletion")]
     pub document_content_deletion: Option<bool>,
 
-
-    /// 
+    ///
     /// Configuration of the target document attribute or metadata field when ingesting       documents into Amazon Kendra. You can also include a value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DocumentAttributeTarget
@@ -3111,10 +3011,7 @@ pub struct InlineCustomDocumentEnrichmentConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Target")]
     pub target: Option<DocumentAttributeTarget>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InlineCustomDocumentEnrichmentConfiguration {
     fn type_string(&self) -> &'static str {
@@ -3126,8 +3023,9 @@ impl cfn_resources::CfnResource for InlineCustomDocumentEnrichmentConfiguration 
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.condition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.target.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -3138,11 +3036,9 @@ impl cfn_resources::CfnResource for InlineCustomDocumentEnrichmentConfiguration 
 /// Provides the configuration information to connect to OneDrive as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OneDriveConfiguration {
-
-
-    /// 
+    ///
     /// TRUE to disable local groups information.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3151,12 +3047,11 @@ pub struct OneDriveConfiguration {
     #[serde(rename = "DisableLocalGroups")]
     pub disable_local_groups: Option<bool>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to exclude certain documents in your OneDrive.       Documents that match the patterns are excluded from the index. Documents that don't       match the patterns are included in the index. If a document matches both an inclusion       and exclusion pattern, the exclusion pattern takes precedence and the document isn't       included in the index.
-    /// 
+    ///
     /// The pattern is applied to the file name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3167,10 +3062,9 @@ pub struct OneDriveConfiguration {
     #[serde(rename = "ExclusionPatterns")]
     pub exclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of DataSourceToIndexFieldMapping objects that map OneDrive data       source attributes or field names to Amazon Kendra index field names. To create       custom fields, use the UpdateIndex API before you map to OneDrive fields.       For more information, see Mapping data source fields. The       OneDrive data source field names must exist in your OneDrive custom metadata.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -3181,12 +3075,11 @@ pub struct OneDriveConfiguration {
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to include certain documents in your OneDrive.       Documents that match the patterns are included in the index. Documents that don't match       the patterns are excluded from the index. If a document matches both an inclusion and       exclusion pattern, the exclusion pattern takes precedence and the document isn't       included in the index.
-    /// 
+    ///
     /// The pattern is applied to the file name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3197,10 +3090,9 @@ pub struct OneDriveConfiguration {
     #[serde(rename = "InclusionPatterns")]
     pub inclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of user accounts whose documents should be indexed.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: OneDriveUsers
@@ -3209,10 +3101,9 @@ pub struct OneDriveConfiguration {
     #[serde(rename = "OneDriveUsers")]
     pub one_drive_users: OneDriveUsers,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an AWS Secrets Manager secret       that contains the user name and password to connect to OneDrive. The       user name should be the application ID for the OneDrive       application, and the password is the application key for the       OneDrive application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3227,10 +3118,9 @@ pub struct OneDriveConfiguration {
     #[serde(rename = "SecretArn")]
     pub secret_arn: String,
 
-
-    /// 
+    ///
     /// The Azure Active Directory domain of the organization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3244,10 +3134,7 @@ pub struct OneDriveConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TenantDomain")]
     pub tenant_domain: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for OneDriveConfiguration {
     fn type_string(&self) -> &'static str {
@@ -3259,61 +3146,71 @@ impl cfn_resources::CfnResource for OneDriveConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.exclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'exclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.inclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'inclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         self.one_drive_users.validate()?;
 
         let the_val = &self.secret_arn;
 
         if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'secret_arn'. {} is greater than 1284",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'secret_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.tenant_domain;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'tenant_domain'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'tenant_domain'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.tenant_domain;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'tenant_domain'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'tenant_domain'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -3321,11 +3218,9 @@ impl cfn_resources::CfnResource for OneDriveConfiguration {
 /// User accounts whose documents should be indexed.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OneDriveUsers {
-
-
-    /// 
+    ///
     /// A list of users whose documents should be indexed. Specify the user names in email       format, for example, username@tenantdomain. If you need to index the       documents of more than 100 users, use the OneDriveUserS3Path field to       specify the location of a file containing a list of users.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3336,10 +3231,9 @@ pub struct OneDriveUsers {
     #[serde(rename = "OneDriveUserList")]
     pub one_drive_user_list: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The S3 bucket location of a file containing a list of users whose documents should be       indexed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3Path
@@ -3347,10 +3241,7 @@ pub struct OneDriveUsers {
     /// Update requires: No interruption
     #[serde(rename = "OneDriveUserS3Path")]
     pub one_drive_user_s3_path: Option<S3Path>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for OneDriveUsers {
     fn type_string(&self) -> &'static str {
@@ -3362,16 +3253,18 @@ impl cfn_resources::CfnResource for OneDriveUsers {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.one_drive_user_list {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'one_drive_user_list'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'one_drive_user_list'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.one_drive_user_s3_path.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.one_drive_user_s3_path
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -3380,13 +3273,11 @@ impl cfn_resources::CfnResource for OneDriveUsers {
 /// Provides the configuration information for a web proxy to connect to website       hosts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProxyConfiguration {
-
-
-    /// 
+    ///
     /// Your secret ARN, which you can create in AWS Secrets Manager
-    /// 
+    ///
     /// The credentials are optional. You use a secret if web proxy credentials are required       to connect to a website host. Amazon Kendra currently support basic authentication       to connect to a web proxy server. The secret stores your credentials.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -3401,12 +3292,11 @@ pub struct ProxyConfiguration {
     #[serde(rename = "Credentials")]
     pub credentials: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the website host you want to connect to via a web proxy server.
-    /// 
+    ///
     /// For example, the host name of https://a.example.com/page1.html is       "a.example.com".
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3421,12 +3311,11 @@ pub struct ProxyConfiguration {
     #[serde(rename = "Host")]
     pub host: String,
 
-
-    /// 
+    ///
     /// The port number of the website host you want to connect to via a web proxy server.
-    /// 
+    ///
     /// For example, the port for https://a.example.com/page1.html is 443, the standard port       for HTTPS.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -3438,10 +3327,7 @@ pub struct ProxyConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     pub port: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ProxyConfiguration {
     fn type_string(&self) -> &'static str {
@@ -3453,51 +3339,60 @@ impl cfn_resources::CfnResource for ProxyConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.credentials {
+            if the_val.len() > 1284 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'credentials'. {} is greater than 1284",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.credentials {
-
-        if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'credentials'. {} is greater than 1284", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'credentials'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.credentials {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'credentials'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.host;
 
         if the_val.len() > 253 as _ {
-            return Err(format!("Max validation failed on field 'host'. {} is greater than 253", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'host'. {} is greater than 253",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.host;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'host'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'host'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.port;
 
         if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+            return Err(format!(
+                "Max validation failed on field 'port'. {} is greater than 65535",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.port;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'port'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -3505,11 +3400,9 @@ impl cfn_resources::CfnResource for ProxyConfiguration {
 /// Provides the configuration information to connect to an Amazon S3       bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3DataSourceConfiguration {
-
-
-    /// 
+    ///
     /// Provides the path to the S3 bucket that contains the user context filtering files for       the data source. For the format of the file, see Access control for S3 data       sources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AccessControlListConfiguration
@@ -3518,10 +3411,9 @@ pub struct S3DataSourceConfiguration {
     #[serde(rename = "AccessControlListConfiguration")]
     pub access_control_list_configuration: Option<AccessControlListConfiguration>,
 
-
-    /// 
+    ///
     /// The name of the bucket that contains the documents.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3536,10 +3428,9 @@ pub struct S3DataSourceConfiguration {
     #[serde(rename = "BucketName")]
     pub bucket_name: String,
 
-
-    /// 
+    ///
     /// Specifies document metadata files that contain information such as       the document access control information, source URI, document       author, and custom attributes. Each metadata file contains metadata       about a single document.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DocumentsMetadataConfiguration
@@ -3548,14 +3439,13 @@ pub struct S3DataSourceConfiguration {
     #[serde(rename = "DocumentsMetadataConfiguration")]
     pub documents_metadata_configuration: Option<DocumentsMetadataConfiguration>,
 
-
-    /// 
+    ///
     /// A list of glob patterns for documents that should not be indexed. If a document that       matches an inclusion prefix or inclusion pattern also matches an exclusion pattern, the       document is not indexed.
-    /// 
+    ///
     /// Some examples       are:
-    /// 
+    ///
     /// *.png , *.jpg will exclude all PNG and JPEG image files           in a directory (files with the extensions .png and .jpg).                        *internal* will exclude all files in a directory that           contain 'internal' in the file name, such as 'internal', 'internal_only',           'company_internal'.                        **/*internal* will exclude all internal-related files in           a directory and its subdirectories.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3566,14 +3456,13 @@ pub struct S3DataSourceConfiguration {
     #[serde(rename = "ExclusionPatterns")]
     pub exclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of glob patterns for documents that should be indexed. If a document that       matches an inclusion pattern also matches an exclusion pattern, the document is not       indexed.
-    /// 
+    ///
     /// Some examples       are:
-    /// 
+    ///
     /// *.txt will include all text files in a directory (files           with the extension .txt).                        **/*.txt will include all text files in a directory and           its subdirectories.                        *tax* will include all files in a directory that contain           'tax' in the file name, such as 'tax', 'taxes', 'income_tax'.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3584,10 +3473,9 @@ pub struct S3DataSourceConfiguration {
     #[serde(rename = "InclusionPatterns")]
     pub inclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of S3 prefixes for the documents that should be included in the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3597,10 +3485,7 @@ pub struct S3DataSourceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "InclusionPrefixes")]
     pub inclusion_prefixes: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3DataSourceConfiguration {
     fn type_string(&self) -> &'static str {
@@ -3612,49 +3497,59 @@ impl cfn_resources::CfnResource for S3DataSourceConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.access_control_list_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.access_control_list_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.bucket_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.bucket_name;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'bucket_name'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
-        self.documents_metadata_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.documents_metadata_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.exclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'exclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.inclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'inclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.inclusion_prefixes {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'inclusion_prefixes'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'inclusion_prefixes'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -3662,11 +3557,9 @@ impl cfn_resources::CfnResource for S3DataSourceConfiguration {
 /// Information required to find a specific file in an Amazon S3 bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Path {
-
-
-    /// 
+    ///
     /// The name of the S3 bucket that contains the file.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3681,10 +3574,9 @@ pub struct S3Path {
     #[serde(rename = "Bucket")]
     pub bucket: String,
 
-
-    /// 
+    ///
     /// The name of the file.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3696,10 +3588,7 @@ pub struct S3Path {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3Path {
     fn type_string(&self) -> &'static str {
@@ -3711,35 +3600,42 @@ impl cfn_resources::CfnResource for S3Path {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.bucket;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'bucket'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'bucket'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.bucket;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'bucket'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'bucket'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.key;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'key'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'key'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.key;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'key'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -3747,11 +3643,9 @@ impl cfn_resources::CfnResource for S3Path {
 /// The configuration information for syncing a Salesforce chatter feed. The contents of       the object comes from the Salesforce FeedItem table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SalesforceChatterFeedConfiguration {
-
-
-    /// 
+    ///
     /// The name of the column in the Salesforce FeedItem table that contains the content to       index. Typically this is the Body column.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3766,10 +3660,9 @@ pub struct SalesforceChatterFeedConfiguration {
     #[serde(rename = "DocumentDataFieldName")]
     pub document_data_field_name: String,
 
-
-    /// 
+    ///
     /// The name of the column in the Salesforce FeedItem table that contains the title of the       document. This is typically the Title column.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -3784,10 +3677,9 @@ pub struct SalesforceChatterFeedConfiguration {
     #[serde(rename = "DocumentTitleFieldName")]
     pub document_title_field_name: Option<String>,
 
-
-    /// 
+    ///
     /// Maps fields from a Salesforce chatter feed into Amazon Kendra index       fields.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -3798,10 +3690,9 @@ pub struct SalesforceChatterFeedConfiguration {
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// Filters the documents in the feed based on status of the user. When you specify         ACTIVE_USERS only documents from users who have an active account are       indexed. When you specify STANDARD_USER only documents for Salesforce       standard users are documented. You can specify both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3811,10 +3702,7 @@ pub struct SalesforceChatterFeedConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "IncludeFilterTypes")]
     pub include_filter_types: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SalesforceChatterFeedConfiguration {
     fn type_string(&self) -> &'static str {
@@ -3826,53 +3714,57 @@ impl cfn_resources::CfnResource for SalesforceChatterFeedConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.document_data_field_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'document_data_field_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.document_data_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'document_data_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'document_title_field_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.include_filter_types {
-
-        if the_val.len() > 2 as _ {
-            return Err(format!("Max validation failed on field 'include_filter_types'. {} is greater than 2", the_val.len()));
+            if the_val.len() > 2 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'include_filter_types'. {} is greater than 2",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -3880,11 +3772,9 @@ impl cfn_resources::CfnResource for SalesforceChatterFeedConfiguration {
 /// Provides the configuration information to connect to Salesforce as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SalesforceConfiguration {
-
-
-    /// 
+    ///
     /// Configuration information for Salesforce chatter feeds.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SalesforceChatterFeedConfiguration
@@ -3893,10 +3783,9 @@ pub struct SalesforceConfiguration {
     #[serde(rename = "ChatterFeedConfiguration")]
     pub chatter_feed_configuration: Option<SalesforceChatterFeedConfiguration>,
 
-
-    /// 
+    ///
     /// Indicates whether Amazon Kendra should index attachments to Salesforce       objects.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3905,12 +3794,11 @@ pub struct SalesforceConfiguration {
     #[serde(rename = "CrawlAttachments")]
     pub crawl_attachments: Option<bool>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to exclude certain documents in your Salesforce.       Documents that match the patterns are excluded from the index. Documents that don't       match the patterns are included in the index. If a document matches both an inclusion       and exclusion pattern, the exclusion pattern takes precedence and the document isn't       included in the index.
-    /// 
+    ///
     /// The pattern is applied to the name of the attached file.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3921,12 +3809,11 @@ pub struct SalesforceConfiguration {
     #[serde(rename = "ExcludeAttachmentFilePatterns")]
     pub exclude_attachment_file_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to include certain documents in your Salesforce.       Documents that match the patterns are included in the index. Documents that don't match       the patterns are excluded from the index. If a document matches both an inclusion and       exclusion pattern, the exclusion pattern takes precedence and the document isn't       included in the index.
-    /// 
+    ///
     /// The pattern is applied to the name of the attached file.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3937,10 +3824,9 @@ pub struct SalesforceConfiguration {
     #[serde(rename = "IncludeAttachmentFilePatterns")]
     pub include_attachment_file_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Configuration information for the knowledge article types that Amazon Kendra       indexes. Amazon Kendra indexes standard knowledge articles and the standard fields       of knowledge articles, or the custom fields of custom knowledge articles, but not       both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SalesforceKnowledgeArticleConfiguration
@@ -3949,12 +3835,11 @@ pub struct SalesforceConfiguration {
     #[serde(rename = "KnowledgeArticleConfiguration")]
     pub knowledge_article_configuration: Option<SalesforceKnowledgeArticleConfiguration>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an AWS Secrets Managersecret that contains the       key/value pairs required to connect to your Salesforce instance. The secret must contain       a JSON structure with the following keys:
-    /// 
+    ///
     /// authenticationUrl - The OAUTH endpoint that Amazon Kendra connects to get           an OAUTH token.               consumerKey - The application public key generated when you created your           Salesforce application.               consumerSecret - The application private key generated when you created your           Salesforce application.               password - The password associated with the user logging in to the Salesforce           instance.               securityToken - The token associated with the user logging in to the           Salesforce instance.               username - The user name of the user logging in to the Salesforce           instance.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3969,10 +3854,9 @@ pub struct SalesforceConfiguration {
     #[serde(rename = "SecretArn")]
     pub secret_arn: String,
 
-
-    /// 
+    ///
     /// The instance URL for the Salesforce site that you want to index.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3987,22 +3871,21 @@ pub struct SalesforceConfiguration {
     #[serde(rename = "ServerUrl")]
     pub server_url: String,
 
-
-    /// 
+    ///
     /// Configuration information for processing attachments to Salesforce standard objects.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SalesforceStandardObjectAttachmentConfiguration
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandardObjectAttachmentConfiguration")]
-    pub standard_object_attachment_configuration: Option<SalesforceStandardObjectAttachmentConfiguration>,
+    pub standard_object_attachment_configuration:
+        Option<SalesforceStandardObjectAttachmentConfiguration>,
 
-
-    /// 
+    ///
     /// Configuration of the Salesforce standard objects that Amazon Kendra       indexes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of SalesforceStandardObjectConfiguration
@@ -4012,10 +3895,7 @@ pub struct SalesforceConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "StandardObjectConfigurations")]
     pub standard_object_configurations: Option<Vec<SalesforceStandardObjectConfiguration>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SalesforceConfiguration {
     fn type_string(&self) -> &'static str {
@@ -4027,65 +3907,72 @@ impl cfn_resources::CfnResource for SalesforceConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.chatter_feed_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.chatter_feed_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.exclude_attachment_file_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'exclude_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!("Max validation failed on field 'exclude_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.include_attachment_file_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'include_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!("Max validation failed on field 'include_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            }
         }
 
-        }
-        
-        self.knowledge_article_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.knowledge_article_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.secret_arn;
 
         if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'secret_arn'. {} is greater than 1284",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'secret_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.server_url;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'server_url'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'server_url'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.server_url;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'server_url'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'server_url'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.standard_object_attachment_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.standard_object_attachment_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.standard_object_configurations {
-
-        if the_val.len() > 17 as _ {
-            return Err(format!("Max validation failed on field 'standard_object_configurations'. {} is greater than 17", the_val.len()));
+            if the_val.len() > 17 as _ {
+                return Err(format!("Max validation failed on field 'standard_object_configurations'. {} is greater than 17", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -4093,11 +3980,9 @@ impl cfn_resources::CfnResource for SalesforceConfiguration {
 /// Provides the configuration information for indexing Salesforce custom articles.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
-
-
-    /// 
+    ///
     /// The name of the field in the custom knowledge article that contains the document data       to index.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4112,10 +3997,9 @@ pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     #[serde(rename = "DocumentDataFieldName")]
     pub document_data_field_name: String,
 
-
-    /// 
+    ///
     /// The name of the field in the custom knowledge article that contains the document       title.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4130,10 +4014,9 @@ pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     #[serde(rename = "DocumentTitleFieldName")]
     pub document_title_field_name: Option<String>,
 
-
-    /// 
+    ///
     /// Maps attributes or field names of the custom knowledge article to Amazon Kendra       index field names. To create custom fields, use the UpdateIndex API before       you map to Salesforce fields. For more information, see Mapping data source fields. The       Salesforce data source field names must exist in your Salesforce custom metadata.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -4144,10 +4027,9 @@ pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// The name of the configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4161,10 +4043,7 @@ pub struct SalesforceCustomKnowledgeArticleTypeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SalesforceCustomKnowledgeArticleTypeConfiguration {
     fn type_string(&self) -> &'static str {
@@ -4176,59 +4055,66 @@ impl cfn_resources::CfnResource for SalesforceCustomKnowledgeArticleTypeConfigur
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.document_data_field_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'document_data_field_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.document_data_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'document_data_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'document_title_field_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -4236,11 +4122,9 @@ impl cfn_resources::CfnResource for SalesforceCustomKnowledgeArticleTypeConfigur
 /// Provides the configuration information for the knowledge article types that Amazon Kendra indexes. Amazon Kendra indexes standard knowledge articles and the       standard fields of knowledge articles, or the custom fields of custom knowledge       articles, but not both
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SalesforceKnowledgeArticleConfiguration {
-
-
-    /// 
+    ///
     /// Configuration information for custom Salesforce knowledge articles.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of SalesforceCustomKnowledgeArticleTypeConfiguration
@@ -4249,12 +4133,12 @@ pub struct SalesforceKnowledgeArticleConfiguration {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CustomKnowledgeArticleTypeConfigurations")]
-    pub custom_knowledge_article_type_configurations: Option<Vec<SalesforceCustomKnowledgeArticleTypeConfiguration>>,
+    pub custom_knowledge_article_type_configurations:
+        Option<Vec<SalesforceCustomKnowledgeArticleTypeConfiguration>>,
 
-
-    /// 
+    ///
     /// Specifies the document states that should be included when Amazon Kendra indexes       knowledge articles. You must specify at least one state.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -4265,21 +4149,18 @@ pub struct SalesforceKnowledgeArticleConfiguration {
     #[serde(rename = "IncludedStates")]
     pub included_states: Vec<String>,
 
-
-    /// 
+    ///
     /// Configuration information for standard Salesforce knowledge articles.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SalesforceStandardKnowledgeArticleTypeConfiguration
     ///
     /// Update requires: No interruption
     #[serde(rename = "StandardKnowledgeArticleTypeConfiguration")]
-    pub standard_knowledge_article_type_configuration: Option<SalesforceStandardKnowledgeArticleTypeConfiguration>,
-
+    pub standard_knowledge_article_type_configuration:
+        Option<SalesforceStandardKnowledgeArticleTypeConfiguration>,
 }
-
-
 
 impl cfn_resources::CfnResource for SalesforceKnowledgeArticleConfiguration {
     fn type_string(&self) -> &'static str {
@@ -4291,23 +4172,24 @@ impl cfn_resources::CfnResource for SalesforceKnowledgeArticleConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.custom_knowledge_article_type_configurations {
-
-        if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'custom_knowledge_article_type_configurations'. {} is greater than 10", the_val.len()));
+            if the_val.len() > 10 as _ {
+                return Err(format!("Max validation failed on field 'custom_knowledge_article_type_configurations'. {} is greater than 10", the_val.len()));
+            }
         }
 
-        }
-        
         let the_val = &self.included_states;
 
         if the_val.len() > 3 as _ {
-            return Err(format!("Max validation failed on field 'included_states'. {} is greater than 3", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'included_states'. {} is greater than 3",
+                the_val.len()
+            ));
         }
 
-        
-        self.standard_knowledge_article_type_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.standard_knowledge_article_type_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -4316,11 +4198,9 @@ impl cfn_resources::CfnResource for SalesforceKnowledgeArticleConfiguration {
 /// Provides the configuration information for standard Salesforce knowledge       articles.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
-
-
-    /// 
+    ///
     /// The name of the field that contains the document data to index.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4335,10 +4215,9 @@ pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
     #[serde(rename = "DocumentDataFieldName")]
     pub document_data_field_name: String,
 
-
-    /// 
+    ///
     /// The name of the field that contains the document title.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4353,10 +4232,9 @@ pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
     #[serde(rename = "DocumentTitleFieldName")]
     pub document_title_field_name: Option<String>,
 
-
-    /// 
+    ///
     /// Maps attributes or field names of the knowledge article to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Salesforce fields. For more information, see Mapping data source fields. The       Salesforce data source field names must exist in your Salesforce custom metadata.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -4366,10 +4244,7 @@ pub struct SalesforceStandardKnowledgeArticleTypeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SalesforceStandardKnowledgeArticleTypeConfiguration {
     fn type_string(&self) -> &'static str {
@@ -4381,45 +4256,48 @@ impl cfn_resources::CfnResource for SalesforceStandardKnowledgeArticleTypeConfig
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.document_data_field_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'document_data_field_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.document_data_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'document_data_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'document_title_field_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -4427,11 +4305,9 @@ impl cfn_resources::CfnResource for SalesforceStandardKnowledgeArticleTypeConfig
 /// Provides the configuration information for processing attachments to Salesforce       standard objects.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SalesforceStandardObjectAttachmentConfiguration {
-
-
-    /// 
+    ///
     /// The name of the field used for the document title.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4446,10 +4322,9 @@ pub struct SalesforceStandardObjectAttachmentConfiguration {
     #[serde(rename = "DocumentTitleFieldName")]
     pub document_title_field_name: Option<String>,
 
-
-    /// 
+    ///
     /// One or more objects that map fields in attachments to Amazon Kendra index       fields.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -4459,10 +4334,7 @@ pub struct SalesforceStandardObjectAttachmentConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SalesforceStandardObjectAttachmentConfiguration {
     fn type_string(&self) -> &'static str {
@@ -4474,31 +4346,30 @@ impl cfn_resources::CfnResource for SalesforceStandardObjectAttachmentConfigurat
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.document_title_field_name {
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            }
+        }
 
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'document_title_field_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -4506,11 +4377,9 @@ impl cfn_resources::CfnResource for SalesforceStandardObjectAttachmentConfigurat
 /// Specifies configuration information for indexing a single standard       object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SalesforceStandardObjectConfiguration {
-
-
-    /// 
+    ///
     /// The name of the field in the standard object table that contains the document       contents.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4525,10 +4394,9 @@ pub struct SalesforceStandardObjectConfiguration {
     #[serde(rename = "DocumentDataFieldName")]
     pub document_data_field_name: String,
 
-
-    /// 
+    ///
     /// The name of the field in the standard object table that contains       the document title.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4543,10 +4411,9 @@ pub struct SalesforceStandardObjectConfiguration {
     #[serde(rename = "DocumentTitleFieldName")]
     pub document_title_field_name: Option<String>,
 
-
-    /// 
+    ///
     /// Maps attributes or field names of the standard object to Amazon Kendra index       field names. To create custom fields, use the UpdateIndex API before you       map to Salesforce fields. For more information, see Mapping data source fields. The       Salesforce data source field names must exist in your Salesforce custom metadata.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -4557,10 +4424,9 @@ pub struct SalesforceStandardObjectConfiguration {
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// The name of the standard object.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4570,13 +4436,10 @@ pub struct SalesforceStandardObjectConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: SalesforceStandardObjectConfigurationNameEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SalesforceStandardObjectConfigurationNameEnum {
-
     /// ACCOUNT
     #[serde(rename = "ACCOUNT")]
     Account,
@@ -4644,7 +4507,6 @@ pub enum SalesforceStandardObjectConfigurationNameEnum {
     /// USER
     #[serde(rename = "USER")]
     User,
-
 }
 
 impl Default for SalesforceStandardObjectConfigurationNameEnum {
@@ -4652,7 +4514,6 @@ impl Default for SalesforceStandardObjectConfigurationNameEnum {
         SalesforceStandardObjectConfigurationNameEnum::Account
     }
 }
-
 
 impl cfn_resources::CfnResource for SalesforceStandardObjectConfiguration {
     fn type_string(&self) -> &'static str {
@@ -4664,45 +4525,48 @@ impl cfn_resources::CfnResource for SalesforceStandardObjectConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.document_data_field_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'document_data_field_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.document_data_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'document_data_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'document_title_field_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -4710,13 +4574,11 @@ impl cfn_resources::CfnResource for SalesforceStandardObjectConfiguration {
 /// Provides the configuration information to connect to ServiceNow as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServiceNowConfiguration {
-
-
-    /// 
+    ///
     /// The type of authentication used to connect to the ServiceNow instance. If you choose         HTTP_BASIC, Amazon Kendra is authenticated using the user name and       password provided in the AWS Secrets Manager secret in the SecretArn       field. If you choose OAUTH2, Amazon Kendra is authenticated using the       credentials of client ID, client secret, user name and password.
-    /// 
+    ///
     /// When you use OAUTH2 authentication, you must generate a token and a       client secret using the ServiceNow console. For more information, see Using a         ServiceNow data source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4727,10 +4589,9 @@ pub struct ServiceNowConfiguration {
     #[serde(rename = "AuthenticationType")]
     pub authentication_type: Option<ServiceNowConfigurationAuthenticationTypeEnum>,
 
-
-    /// 
+    ///
     /// The ServiceNow instance that the data source connects to. The host endpoint should       look like the following: {instance}.service-now.com.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4745,10 +4606,9 @@ pub struct ServiceNowConfiguration {
     #[serde(rename = "HostUrl")]
     pub host_url: String,
 
-
-    /// 
+    ///
     /// Configuration information for crawling knowledge articles in the ServiceNow       site.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ServiceNowKnowledgeArticleConfiguration
@@ -4757,10 +4617,9 @@ pub struct ServiceNowConfiguration {
     #[serde(rename = "KnowledgeArticleConfiguration")]
     pub knowledge_article_configuration: Option<ServiceNowKnowledgeArticleConfiguration>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the AWS Secrets Manager secret that contains the       user name and password required to connect to the ServiceNow instance. You can also       provide OAuth authentication credentials of user name, password, client ID, and client       secret. For more information, see Using a ServiceNow data         source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4775,10 +4634,9 @@ pub struct ServiceNowConfiguration {
     #[serde(rename = "SecretArn")]
     pub secret_arn: String,
 
-
-    /// 
+    ///
     /// Configuration information for crawling service catalogs in the ServiceNow site.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ServiceNowServiceCatalogConfiguration
@@ -4787,10 +4645,9 @@ pub struct ServiceNowConfiguration {
     #[serde(rename = "ServiceCatalogConfiguration")]
     pub service_catalog_configuration: Option<ServiceNowServiceCatalogConfiguration>,
 
-
-    /// 
+    ///
     /// The identifier of the release that the ServiceNow host is running. If the host is not       running the LONDON release, use OTHERS.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4800,13 +4657,10 @@ pub struct ServiceNowConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ServiceNowBuildVersion")]
     pub service_now_build_version: ServiceNowConfigurationServiceNowBuildVersionEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ServiceNowConfigurationAuthenticationTypeEnum {
-
     /// HTTP_BASIC
     #[serde(rename = "HTTP_BASIC")]
     Httpbasic,
@@ -4814,7 +4668,6 @@ pub enum ServiceNowConfigurationAuthenticationTypeEnum {
     /// OAUTH2
     #[serde(rename = "OAUTH2")]
     Oauth2,
-
 }
 
 impl Default for ServiceNowConfigurationAuthenticationTypeEnum {
@@ -4825,7 +4678,6 @@ impl Default for ServiceNowConfigurationAuthenticationTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ServiceNowConfigurationServiceNowBuildVersionEnum {
-
     /// LONDON
     #[serde(rename = "LONDON")]
     London,
@@ -4833,7 +4685,6 @@ pub enum ServiceNowConfigurationServiceNowBuildVersionEnum {
     /// OTHERS
     #[serde(rename = "OTHERS")]
     Others,
-
 }
 
 impl Default for ServiceNowConfigurationServiceNowBuildVersionEnum {
@@ -4841,7 +4692,6 @@ impl Default for ServiceNowConfigurationServiceNowBuildVersionEnum {
         ServiceNowConfigurationServiceNowBuildVersionEnum::London
     }
 }
-
 
 impl cfn_resources::CfnResource for ServiceNowConfiguration {
     fn type_string(&self) -> &'static str {
@@ -4853,38 +4703,49 @@ impl cfn_resources::CfnResource for ServiceNowConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.host_url;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'host_url'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'host_url'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.host_url;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'host_url'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'host_url'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.knowledge_article_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.knowledge_article_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.secret_arn;
 
         if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'secret_arn'. {} is greater than 1284",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'secret_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.service_catalog_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.service_catalog_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -4893,11 +4754,9 @@ impl cfn_resources::CfnResource for ServiceNowConfiguration {
 /// Provides the configuration information for crawling knowledge articles in the       ServiceNow site.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServiceNowKnowledgeArticleConfiguration {
-
-
-    /// 
+    ///
     /// TRUE to index attachments to knowledge articles.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -4906,10 +4765,9 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     #[serde(rename = "CrawlAttachments")]
     pub crawl_attachments: Option<bool>,
 
-
-    /// 
+    ///
     /// The name of the ServiceNow field that is mapped to the index document contents field       in the Amazon Kendra index.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -4924,10 +4782,9 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     #[serde(rename = "DocumentDataFieldName")]
     pub document_data_field_name: String,
 
-
-    /// 
+    ///
     /// The name of the ServiceNow field that is mapped to the index document title       field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4942,12 +4799,11 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     #[serde(rename = "DocumentTitleFieldName")]
     pub document_title_field_name: Option<String>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to exclude certain attachments of knowledge       articles in your ServiceNow. Item that match the patterns are excluded from the index.       Items that don't match the patterns are included in the index. If an item matches both       an inclusion and exclusion pattern, the exclusion pattern takes precedence and the item       isn't included in the index.
-    /// 
+    ///
     /// The regex is applied to the field specified in the       PatternTargetField.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -4958,10 +4814,9 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     #[serde(rename = "ExcludeAttachmentFilePatterns")]
     pub exclude_attachment_file_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Maps attributes or field names of knoweldge articles to Amazon Kendra index field       names. To create custom fields, use the UpdateIndex API before you map to       ServiceNow fields. For more information, see Mapping data source fields. The       ServiceNow data source field names must exist in your ServiceNow custom metadata.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -4972,12 +4827,11 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// A query that selects the knowledge articles to index. The query can return articles       from multiple knowledge bases, and the knowledge bases can be public or private.
-    /// 
+    ///
     /// The query string must be one generated by the ServiceNow console. For more       information, see Specifying documents to index with a         query.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4992,12 +4846,11 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     #[serde(rename = "FilterQuery")]
     pub filter_query: Option<String>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to include certain attachments of knowledge       articles in your ServiceNow. Item that match the patterns are included in the index.       Items that don't match the patterns are excluded from the index. If an item matches both       an inclusion and exclusion pattern, the exclusion pattern takes precedence and the item       isn't included in the index.
-    /// 
+    ///
     /// The regex is applied to the field specified in the       PatternTargetField.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -5007,10 +4860,7 @@ pub struct ServiceNowKnowledgeArticleConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "IncludeAttachmentFilePatterns")]
     pub include_attachment_file_patterns: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServiceNowKnowledgeArticleConfiguration {
     fn type_string(&self) -> &'static str {
@@ -5022,77 +4872,78 @@ impl cfn_resources::CfnResource for ServiceNowKnowledgeArticleConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.document_data_field_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'document_data_field_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.document_data_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'document_data_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'document_title_field_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.exclude_attachment_file_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'exclude_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!("Max validation failed on field 'exclude_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.filter_query {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'filter_query'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'filter_query'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.filter_query {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'filter_query'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'filter_query'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.include_attachment_file_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'include_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!("Max validation failed on field 'include_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -5100,11 +4951,9 @@ impl cfn_resources::CfnResource for ServiceNowKnowledgeArticleConfiguration {
 /// Provides the configuration information for crawling service catalog items in the       ServiceNow site
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServiceNowServiceCatalogConfiguration {
-
-
-    /// 
+    ///
     /// TRUE to index attachments to service catalog items.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -5113,10 +4962,9 @@ pub struct ServiceNowServiceCatalogConfiguration {
     #[serde(rename = "CrawlAttachments")]
     pub crawl_attachments: Option<bool>,
 
-
-    /// 
+    ///
     /// The name of the ServiceNow field that is mapped to the index document contents field       in the Amazon Kendra index.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -5131,10 +4979,9 @@ pub struct ServiceNowServiceCatalogConfiguration {
     #[serde(rename = "DocumentDataFieldName")]
     pub document_data_field_name: String,
 
-
-    /// 
+    ///
     /// The name of the ServiceNow field that is mapped to the index document title       field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -5149,12 +4996,11 @@ pub struct ServiceNowServiceCatalogConfiguration {
     #[serde(rename = "DocumentTitleFieldName")]
     pub document_title_field_name: Option<String>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to exclude certain attachments of catalogs in       your ServiceNow. Item that match the patterns are excluded from the index. Items that       don't match the patterns are included in the index. If an item matches both an inclusion       and exclusion pattern, the exclusion pattern takes precedence and the item isn't       included in the index.
-    /// 
+    ///
     /// The regex is applied to the file name of the attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -5165,10 +5011,9 @@ pub struct ServiceNowServiceCatalogConfiguration {
     #[serde(rename = "ExcludeAttachmentFilePatterns")]
     pub exclude_attachment_file_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Maps attributes or field names of catalogs to Amazon Kendra index field names. To       create custom fields, use the UpdateIndex API before you map to ServiceNow       fields. For more information, see Mapping data source fields. The       ServiceNow data source field names must exist in your ServiceNow custom metadata.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -5179,12 +5024,11 @@ pub struct ServiceNowServiceCatalogConfiguration {
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to include certain attachments of catalogs in       your ServiceNow. Item that match the patterns are included in the index. Items that       don't match the patterns are excluded from the index. If an item matches both an       inclusion and exclusion pattern, the exclusion pattern takes precedence and the item       isn't included in the index.
-    /// 
+    ///
     /// The regex is applied to the file name of the attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -5194,10 +5038,7 @@ pub struct ServiceNowServiceCatalogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "IncludeAttachmentFilePatterns")]
     pub include_attachment_file_patterns: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServiceNowServiceCatalogConfiguration {
     fn type_string(&self) -> &'static str {
@@ -5209,61 +5050,60 @@ impl cfn_resources::CfnResource for ServiceNowServiceCatalogConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.document_data_field_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_data_field_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'document_data_field_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.document_data_field_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_data_field_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'document_data_field_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'document_title_field_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.exclude_attachment_file_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'exclude_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!("Max validation failed on field 'exclude_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.include_attachment_file_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'include_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!("Max validation failed on field 'include_attachment_file_patterns'. {} is greater than 250", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -5271,11 +5111,9 @@ impl cfn_resources::CfnResource for ServiceNowServiceCatalogConfiguration {
 /// Provides the configuration information to connect to Microsoft SharePoint as your data       source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SharePointConfiguration {
-
-
-    /// 
+    ///
     /// TRUE to index document attachments.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -5284,10 +5122,9 @@ pub struct SharePointConfiguration {
     #[serde(rename = "CrawlAttachments")]
     pub crawl_attachments: Option<bool>,
 
-
-    /// 
+    ///
     /// TRUE to disable local groups information.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -5296,10 +5133,9 @@ pub struct SharePointConfiguration {
     #[serde(rename = "DisableLocalGroups")]
     pub disable_local_groups: Option<bool>,
 
-
-    /// 
+    ///
     /// The Microsoft SharePoint attribute field that contains the title of the       document.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -5314,12 +5150,11 @@ pub struct SharePointConfiguration {
     #[serde(rename = "DocumentTitleFieldName")]
     pub document_title_field_name: Option<String>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns. Documents that match the       patterns are excluded from the index. Documents that don't match the       patterns are included in the index. If a document matches both an       exclusion pattern and an inclusion pattern, the document is not       included in the index.
-    /// 
+    ///
     /// The regex is applied to the display URL of the SharePoint       document.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -5330,10 +5165,9 @@ pub struct SharePointConfiguration {
     #[serde(rename = "ExclusionPatterns")]
     pub exclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of DataSourceToIndexFieldMapping objects that       map Microsoft SharePoint attributes or fields to Amazon       Kendra index fields. You must first create the index fields using the         UpdateIndex       operation before you map SharePoint attributes. For more       information, see Mapping Data Source         Fields.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -5344,12 +5178,11 @@ pub struct SharePointConfiguration {
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to include certain documents in your SharePoint.       Documents that match the patterns are included in the index. Documents that don't match       the patterns are excluded from the index. If a document matches both an inclusion and       exclusion pattern, the exclusion pattern takes precedence and the document isn't       included in the index.
-    /// 
+    ///
     /// The regex applies to the display URL of the SharePoint document.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -5360,10 +5193,9 @@ pub struct SharePointConfiguration {
     #[serde(rename = "InclusionPatterns")]
     pub inclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an AWS Secrets Manager secret that contains the       user name and password required to connect to the SharePoint instance. For more       information, see Microsoft       SharePoint.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -5378,10 +5210,9 @@ pub struct SharePointConfiguration {
     #[serde(rename = "SecretArn")]
     pub secret_arn: String,
 
-
-    /// 
+    ///
     /// The version of Microsoft SharePoint that you use.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -5392,10 +5223,9 @@ pub struct SharePointConfiguration {
     #[serde(rename = "SharePointVersion")]
     pub share_point_version: SharePointConfigurationSharePointVersionEnum,
 
-
-    /// 
+    ///
     /// Information required to find a specific file in an Amazon S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3Path
@@ -5404,10 +5234,9 @@ pub struct SharePointConfiguration {
     #[serde(rename = "SslCertificateS3Path")]
     pub ssl_certificate_s3_path: Option<S3Path>,
 
-
-    /// 
+    ///
     /// The Microsoft SharePoint site URLs for the documents you want to index.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -5418,10 +5247,9 @@ pub struct SharePointConfiguration {
     #[serde(rename = "Urls")]
     pub urls: Vec<String>,
 
-
-    /// 
+    ///
     /// TRUE to use the SharePoint change log to determine which documents       require updating in the index. Depending on the change log's size, it may take longer       for Amazon Kendra to use the change log than to scan all of your documents in       SharePoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -5429,7 +5257,6 @@ pub struct SharePointConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "UseChangeLog")]
     pub use_change_log: Option<bool>,
-
 
     /// Provides information for connecting to an Amazon VPC.
     ///
@@ -5440,13 +5267,10 @@ pub struct SharePointConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VpcConfiguration")]
     pub vpc_configuration: Option<DataSourceVpcConfiguration>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SharePointConfigurationSharePointVersionEnum {
-
     /// SHAREPOINT_2013
     #[serde(rename = "SHAREPOINT_2013")]
     Sharepoint2013,
@@ -5462,7 +5286,6 @@ pub enum SharePointConfigurationSharePointVersionEnum {
     /// SHAREPOINT_ONLINE
     #[serde(rename = "SHAREPOINT_ONLINE")]
     Sharepointonline,
-
 }
 
 impl Default for SharePointConfigurationSharePointVersionEnum {
@@ -5470,7 +5293,6 @@ impl Default for SharePointConfigurationSharePointVersionEnum {
         SharePointConfigurationSharePointVersionEnum::Sharepoint2013
     }
 }
-
 
 impl cfn_resources::CfnResource for SharePointConfiguration {
     fn type_string(&self) -> &'static str {
@@ -5482,71 +5304,82 @@ impl cfn_resources::CfnResource for SharePointConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.document_title_field_name {
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            }
+        }
 
         if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'document_title_field_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'document_title_field_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.document_title_field_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'document_title_field_name'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.exclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'exclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.inclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'inclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'secret_arn'. {} is greater than 1284", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'secret_arn'. {} is greater than 1284",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.secret_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'secret_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'secret_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.ssl_certificate_s3_path.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.ssl_certificate_s3_path
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.urls;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'urls'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'urls'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
-        self.vpc_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpc_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -5555,17 +5388,15 @@ impl cfn_resources::CfnResource for SharePointConfiguration {
 /// Provides information that configures Amazon Kendra to use a SQL       database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SqlConfiguration {
-
-
-    /// 
+    ///
     /// Determines whether Amazon Kendra encloses SQL identifiers for       tables and column names in double quotes (") when making a database       query. You can set the value to DOUBLE_QUOTES or         NONE.
-    /// 
+    ///
     /// By default, Amazon Kendra passes SQL identifiers the way that       they are entered into the data source configuration. It does not       change the case of identifiers or enclose them in quotes.
-    /// 
+    ///
     /// PostgreSQL internally converts uppercase characters to lower case       characters in identifiers unless they are quoted. Choosing this       option encloses identifiers in quotes so that PostgreSQL does not       convert the character's case.
-    /// 
+    ///
     /// For MySQL databases, you must enable the ansi_quotes option when       you set this field to DOUBLE_QUOTES.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -5573,10 +5404,7 @@ pub struct SqlConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "QueryIdentifiersEnclosingOption")]
     pub query_identifiers_enclosing_option: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SqlConfiguration {
     fn type_string(&self) -> &'static str {
@@ -5588,7 +5416,6 @@ impl cfn_resources::CfnResource for SqlConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -5602,32 +5429,26 @@ impl cfn_resources::CfnResource for SqlConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -5639,7 +5460,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -5647,13 +5467,11 @@ impl cfn_resources::CfnResource for Tag {
 /// Provides the configuration information to connect to websites that require 		  user authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WebCrawlerAuthenticationConfiguration {
-
-
-    /// 
+    ///
     /// The list of configuration information that's required to connect to and crawl a       website host using basic authentication credentials.
-    /// 
+    ///
     /// The list includes the name and port number of the website host.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of WebCrawlerBasicAuthentication
@@ -5663,10 +5481,7 @@ pub struct WebCrawlerAuthenticationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "BasicAuthentication")]
     pub basic_authentication: Option<Vec<WebCrawlerBasicAuthentication>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WebCrawlerAuthenticationConfiguration {
     fn type_string(&self) -> &'static str {
@@ -5678,15 +5493,15 @@ impl cfn_resources::CfnResource for WebCrawlerAuthenticationConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.basic_authentication {
-
-        if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'basic_authentication'. {} is greater than 10", the_val.len()));
+            if the_val.len() > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'basic_authentication'. {} is greater than 10",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -5694,13 +5509,11 @@ impl cfn_resources::CfnResource for WebCrawlerAuthenticationConfiguration {
 /// Provides the configuration information to connect to websites that require basic user       authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WebCrawlerBasicAuthentication {
-
-
-    /// 
+    ///
     /// Your secret ARN, which you can create in AWS Secrets Manager
-    /// 
+    ///
     /// You use a secret if basic authentication credentials are required to connect to a       website. The secret stores your credentials of user name and password.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -5715,12 +5528,11 @@ pub struct WebCrawlerBasicAuthentication {
     #[serde(rename = "Credentials")]
     pub credentials: String,
 
-
-    /// 
+    ///
     /// The name of the website host you want to connect to using authentication       credentials.
-    /// 
+    ///
     /// For example, the host name of https://a.example.com/page1.html is       "a.example.com".
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -5735,12 +5547,11 @@ pub struct WebCrawlerBasicAuthentication {
     #[serde(rename = "Host")]
     pub host: String,
 
-
-    /// 
+    ///
     /// The port number of the website host you want to connect to using authentication       credentials.
-    /// 
+    ///
     /// For example, the port for https://a.example.com/page1.html is 443, the standard port       for HTTPS.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -5752,10 +5563,7 @@ pub struct WebCrawlerBasicAuthentication {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     pub port: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WebCrawlerBasicAuthentication {
     fn type_string(&self) -> &'static str {
@@ -5767,49 +5575,60 @@ impl cfn_resources::CfnResource for WebCrawlerBasicAuthentication {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.credentials;
 
         if the_val.len() > 1284 as _ {
-            return Err(format!("Max validation failed on field 'credentials'. {} is greater than 1284", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'credentials'. {} is greater than 1284",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.credentials;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'credentials'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'credentials'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.host;
 
         if the_val.len() > 253 as _ {
-            return Err(format!("Max validation failed on field 'host'. {} is greater than 253", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'host'. {} is greater than 253",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.host;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'host'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'host'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.port;
 
         if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val));
+            return Err(format!(
+                "Max validation failed on field 'port'. {} is greater than 65535",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.port;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'port'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'port'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -5817,15 +5636,13 @@ impl cfn_resources::CfnResource for WebCrawlerBasicAuthentication {
 /// Provides the configuration information required for Amazon Kendra       Web Crawler.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WebCrawlerConfiguration {
-
-
-    /// 
+    ///
     /// Configuration information required to connect to websites using authentication.
-    /// 
+    ///
     /// You can connect to websites using basic authentication of user name and password. You       use a secret in AWS Secrets Manager to       store your authentication credentials.
-    /// 
+    ///
     /// You must provide the website host name and port number. For example, the host name of       https://a.example.com/page1.html is "a.example.com" and the port is 443, the standard       port for HTTPS.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: WebCrawlerAuthenticationConfiguration
@@ -5834,14 +5651,13 @@ pub struct WebCrawlerConfiguration {
     #[serde(rename = "AuthenticationConfiguration")]
     pub authentication_configuration: Option<WebCrawlerAuthenticationConfiguration>,
 
-
-    /// 
+    ///
     /// Specifies the number of levels in a website that you want to crawl.
-    /// 
+    ///
     /// The first level begins from the website seed or starting point URL. For example, if a       website has three levels—index level (the seed in this example), sections level, and       subsections level—and you are only interested in crawling information up to the       sections level (levels 0-1), you can set your depth to 1.
-    /// 
+    ///
     /// The default crawl depth is set to 2.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -5854,14 +5670,13 @@ pub struct WebCrawlerConfiguration {
     #[serde(rename = "CrawlDepth")]
     pub crawl_depth: Option<i64>,
 
-
-    /// 
+    ///
     /// The maximum size (in MB) of a web page or attachment to crawl.
-    /// 
+    ///
     /// Files larger than this size (in MB) are skipped/not crawled.
-    /// 
+    ///
     /// The default maximum size of a web page or attachment is set to 50 MB.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -5870,14 +5685,13 @@ pub struct WebCrawlerConfiguration {
     #[serde(rename = "MaxContentSizePerPageInMegaBytes")]
     pub max_content_size_per_page_in_mega_bytes: Option<f64>,
 
-
-    /// 
+    ///
     /// The maximum number of URLs on a web page to include when crawling a website. This       number is per web page.
-    /// 
+    ///
     /// As a website’s web pages are crawled, any URLs the web pages link to are also crawled.       URLs on a web page are crawled in order of appearance.
-    /// 
+    ///
     /// The default maximum links per page is 100.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -5890,14 +5704,13 @@ pub struct WebCrawlerConfiguration {
     #[serde(rename = "MaxLinksPerPage")]
     pub max_links_per_page: Option<i64>,
 
-
-    /// 
+    ///
     /// The maximum number of URLs crawled per website host per minute.
-    /// 
+    ///
     /// A minimum of one URL is required.
-    /// 
+    ///
     /// The default maximum number of URLs crawled per website host per minute is 300.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -5910,14 +5723,13 @@ pub struct WebCrawlerConfiguration {
     #[serde(rename = "MaxUrlsPerMinuteCrawlRate")]
     pub max_urls_per_minute_crawl_rate: Option<i64>,
 
-
-    /// 
+    ///
     /// Configuration information required to connect to your internal websites via a web       proxy.
-    /// 
+    ///
     /// You must provide the website host name and port number. For example, the host name of       https://a.example.com/page1.html is "a.example.com" and the port is 443, the standard       port for HTTPS.
-    /// 
+    ///
     /// Web proxy credentials are optional and you can use them to connect to a web proxy       server that requires basic authentication. To store web proxy credentials, you use a       secret in AWS Secrets Manager.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ProxyConfiguration
@@ -5926,10 +5738,9 @@ pub struct WebCrawlerConfiguration {
     #[serde(rename = "ProxyConfiguration")]
     pub proxy_configuration: Option<ProxyConfiguration>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to exclude certain URLs to crawl. URLs that       match the patterns are excluded from the index. URLs that don't match the patterns are       included in the index. If a URL matches both an inclusion and exclusion pattern, the       exclusion pattern takes precedence and the URL file isn't included in the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -5940,10 +5751,9 @@ pub struct WebCrawlerConfiguration {
     #[serde(rename = "UrlExclusionPatterns")]
     pub url_exclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to include certain URLs to crawl. URLs that       match the patterns are included in the index. URLs that don't match the patterns are       excluded from the index. If a URL matches both an inclusion and exclusion pattern, the       exclusion pattern takes precedence and the URL file isn't included in the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -5954,16 +5764,15 @@ pub struct WebCrawlerConfiguration {
     #[serde(rename = "UrlInclusionPatterns")]
     pub url_inclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Specifies the seed or starting point URLs of the       websites or the sitemap URLs of the websites you want to crawl.
-    /// 
+    ///
     /// You can include website subdomains. You can list up to 100 seed       URLs and up to three sitemap URLs.
-    /// 
+    ///
     /// You can only crawl websites that use the secure communication protocol,       Hypertext Transfer Protocol Secure (HTTPS). If you receive an error when       crawling a website, it could be that the website is blocked from crawling.
-    /// 
+    ///
     /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use Amazon Kendra       Web Crawler to index your own webpages, or webpages that you have       authorization to index.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: WebCrawlerUrls
@@ -5971,10 +5780,7 @@ pub struct WebCrawlerConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Urls")]
     pub urls: WebCrawlerUrls,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WebCrawlerConfiguration {
     fn type_string(&self) -> &'static str {
@@ -5986,75 +5792,74 @@ impl cfn_resources::CfnResource for WebCrawlerConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.authentication_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.authentication_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.crawl_depth {
-
-        if *the_val > 10 as _ {
-            return Err(format!("Max validation failed on field 'crawl_depth'. {} is greater than 10", the_val));
+            if *the_val > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'crawl_depth'. {} is greater than 10",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.crawl_depth {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'crawl_depth'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'crawl_depth'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.max_links_per_page {
-
-        if *the_val > 1000 as _ {
-            return Err(format!("Max validation failed on field 'max_links_per_page'. {} is greater than 1000", the_val));
+            if *the_val > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'max_links_per_page'. {} is greater than 1000",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.max_links_per_page {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'max_links_per_page'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'max_links_per_page'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.max_urls_per_minute_crawl_rate {
-
-        if *the_val > 300 as _ {
-            return Err(format!("Max validation failed on field 'max_urls_per_minute_crawl_rate'. {} is greater than 300", the_val));
+            if *the_val > 300 as _ {
+                return Err(format!("Max validation failed on field 'max_urls_per_minute_crawl_rate'. {} is greater than 300", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.max_urls_per_minute_crawl_rate {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'max_urls_per_minute_crawl_rate'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!("Min validation failed on field 'max_urls_per_minute_crawl_rate'. {} is less than 1", the_val));
+            }
         }
 
-        }
-        
-        self.proxy_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.proxy_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.url_exclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'url_exclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!("Max validation failed on field 'url_exclusion_patterns'. {} is greater than 250", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.url_inclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'url_inclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!("Max validation failed on field 'url_inclusion_patterns'. {} is greater than 250", the_val.len()));
+            }
         }
 
-        }
-        
         self.urls.validate()?;
 
         Ok(())
@@ -6066,13 +5871,11 @@ impl cfn_resources::CfnResource for WebCrawlerConfiguration {
 /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use the Amazon Kendra web       crawler to index your own webpages, or webpages that you have authorization       to index.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WebCrawlerSeedUrlConfiguration {
-
-
-    /// 
+    ///
     /// The list of seed or starting point URLs of the websites you want to crawl.
-    /// 
+    ///
     /// The list can include a maximum of 100 seed URLs.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -6083,14 +5886,13 @@ pub struct WebCrawlerSeedUrlConfiguration {
     #[serde(rename = "SeedUrls")]
     pub seed_urls: Vec<String>,
 
-
-    /// 
+    ///
     /// You can choose one of the following modes:
-    /// 
+    ///
     /// HOST_ONLY – crawl only the website host names. For           example, if the seed URL is "abc.example.com", then only URLs with host name           "abc.example.com" are crawled.                        SUBDOMAINS – crawl the website host names with subdomains.           For example, if the seed URL is "abc.example.com", then "a.abc.example.com" and           "b.abc.example.com" are also crawled.                        EVERYTHING – crawl the website host names with subdomains           and other domains that the web pages link to.
-    /// 
+    ///
     /// The default mode is set to HOST_ONLY.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -6100,13 +5902,10 @@ pub struct WebCrawlerSeedUrlConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "WebCrawlerMode")]
     pub web_crawler_mode: Option<WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum {
-
     /// EVERYTHING
     #[serde(rename = "EVERYTHING")]
     Everything,
@@ -6118,7 +5917,6 @@ pub enum WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum {
     /// SUBDOMAINS
     #[serde(rename = "SUBDOMAINS")]
     Subdomains,
-
 }
 
 impl Default for WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum {
@@ -6126,7 +5924,6 @@ impl Default for WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum {
         WebCrawlerSeedUrlConfigurationWebCrawlerModeEnum::Everything
     }
 }
-
 
 impl cfn_resources::CfnResource for WebCrawlerSeedUrlConfiguration {
     fn type_string(&self) -> &'static str {
@@ -6138,14 +5935,15 @@ impl cfn_resources::CfnResource for WebCrawlerSeedUrlConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.seed_urls;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'seed_urls'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'seed_urls'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -6155,13 +5953,11 @@ impl cfn_resources::CfnResource for WebCrawlerSeedUrlConfiguration {
 /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use the Amazon Kendra web       crawler to index your own webpages, or webpages that you have authorization       to index.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WebCrawlerSiteMapsConfiguration {
-
-
-    /// 
+    ///
     /// The list of sitemap URLs of the websites you want to crawl.
-    /// 
+    ///
     /// The list can include a maximum of three sitemap URLs.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -6171,10 +5967,7 @@ pub struct WebCrawlerSiteMapsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SiteMaps")]
     pub site_maps: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WebCrawlerSiteMapsConfiguration {
     fn type_string(&self) -> &'static str {
@@ -6186,14 +5979,15 @@ impl cfn_resources::CfnResource for WebCrawlerSiteMapsConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.site_maps;
 
         if the_val.len() > 3 as _ {
-            return Err(format!("Max validation failed on field 'site_maps'. {} is greater than 3", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'site_maps'. {} is greater than 3",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -6207,15 +6001,13 @@ impl cfn_resources::CfnResource for WebCrawlerSiteMapsConfiguration {
 /// When selecting websites to index, you must adhere to       the Amazon Acceptable Use Policy       and all other Amazon terms. Remember that you must only use the Amazon Kendra       web crawler to index your own webpages, or webpages that you have       authorization to index.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WebCrawlerUrls {
-
-
-    /// 
+    ///
     /// Configuration of the seed or starting point URLs of the websites you want to       crawl.
-    /// 
+    ///
     /// You can choose to crawl only the website host names, or the website host names with       subdomains, or the website host names with subdomains and other domains that the       web pages link to.
-    /// 
+    ///
     /// You can list up to 100 seed URLs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: WebCrawlerSeedUrlConfiguration
@@ -6224,12 +6016,11 @@ pub struct WebCrawlerUrls {
     #[serde(rename = "SeedUrlConfiguration")]
     pub seed_url_configuration: Option<WebCrawlerSeedUrlConfiguration>,
 
-
-    /// 
+    ///
     /// Configuration of the sitemap URLs of the websites you want to crawl.
-    /// 
+    ///
     /// Only URLs belonging to the same website host names are crawled. You can list up to       three sitemap URLs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: WebCrawlerSiteMapsConfiguration
@@ -6237,10 +6028,7 @@ pub struct WebCrawlerUrls {
     /// Update requires: No interruption
     #[serde(rename = "SiteMapsConfiguration")]
     pub site_maps_configuration: Option<WebCrawlerSiteMapsConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WebCrawlerUrls {
     fn type_string(&self) -> &'static str {
@@ -6252,10 +6040,13 @@ impl cfn_resources::CfnResource for WebCrawlerUrls {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.seed_url_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.seed_url_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.site_maps_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.site_maps_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -6266,13 +6057,11 @@ impl cfn_resources::CfnResource for WebCrawlerUrls {
 /// Amazon WorkDocs connector is available in Oregon, North Virginia, Sydney, Singapore and Ireland       regions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WorkDocsConfiguration {
-
-
-    /// 
+    ///
     /// TRUE to include comments on documents       in your index. Including comments in your index means each comment       is a document that can be searched on.
-    /// 
+    ///
     /// The default is set to FALSE.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -6281,10 +6070,9 @@ pub struct WorkDocsConfiguration {
     #[serde(rename = "CrawlComments")]
     pub crawl_comments: Option<bool>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to exclude certain files       in your Amazon WorkDocs site repository. Files that match the patterns       are excluded from the index. Files that don’t match the patterns       are included in the index. If a file matches both an inclusion and exclusion       pattern, the exclusion pattern takes precedence and the file isn't included       in the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -6295,10 +6083,9 @@ pub struct WorkDocsConfiguration {
     #[serde(rename = "ExclusionPatterns")]
     pub exclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of DataSourceToIndexFieldMapping objects that       map Amazon WorkDocs data source attributes or field names to Amazon Kendra       index field names. To create custom fields, use the       UpdateIndex API before you map to Amazon WorkDocs fields.       For more information, see Mapping         data source fields. The Amazon WorkDocs data source field names       must exist in your Amazon WorkDocs custom metadata.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DataSourceToIndexFieldMapping
@@ -6309,10 +6096,9 @@ pub struct WorkDocsConfiguration {
     #[serde(rename = "FieldMappings")]
     pub field_mappings: Option<Vec<DataSourceToIndexFieldMapping>>,
 
-
-    /// 
+    ///
     /// A list of regular expression patterns to include certain files       in your Amazon WorkDocs site repository. Files that match the patterns       are included in the index. Files that don't match the patterns are       excluded from the index. If a file matches both an inclusion and exclusion       pattern, the exclusion pattern takes precedence and the file isn't included       in the index.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -6323,12 +6109,11 @@ pub struct WorkDocsConfiguration {
     #[serde(rename = "InclusionPatterns")]
     pub inclusion_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The identifier of the directory corresponding to your       Amazon WorkDocs site repository.
-    /// 
+    ///
     /// You can find the organization ID in the       AWS Directory Service by going to       Active Directory, then       Directories. Your Amazon WorkDocs site directory has an       ID, which is the organization ID. You can also set up a new Amazon WorkDocs       directory in the AWS Directory Service console and enable a Amazon WorkDocs site       for the directory in the Amazon WorkDocs console.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -6343,10 +6128,9 @@ pub struct WorkDocsConfiguration {
     #[serde(rename = "OrganizationId")]
     pub organization_id: String,
 
-
-    /// 
+    ///
     /// TRUE to use the Amazon WorkDocs change log to determine       which documents require updating in the index. Depending on the change log's       size, it may take longer for Amazon Kendra to use the change log than to       scan all of your documents in Amazon WorkDocs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -6354,10 +6138,7 @@ pub struct WorkDocsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "UseChangeLog")]
     pub use_change_log: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WorkDocsConfiguration {
     fn type_string(&self) -> &'static str {
@@ -6369,45 +6150,51 @@ impl cfn_resources::CfnResource for WorkDocsConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.exclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'exclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'exclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.field_mappings {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'field_mappings'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'field_mappings'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.inclusion_patterns {
-
-        if the_val.len() > 250 as _ {
-            return Err(format!("Max validation failed on field 'inclusion_patterns'. {} is greater than 250", the_val.len()));
+            if the_val.len() > 250 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'inclusion_patterns'. {} is greater than 250",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.organization_id;
 
         if the_val.len() > 12 as _ {
-            return Err(format!("Max validation failed on field 'organization_id'. {} is greater than 12", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'organization_id'. {} is greater than 12",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.organization_id;
 
         if the_val.len() < 12 as _ {
-            return Err(format!("Min validation failed on field 'organization_id'. {} is less than 12", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'organization_id'. {} is less than 12",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

@@ -1,15 +1,11 @@
-
-
 /// The AWS::ApiGateway::DomainName resource specifies a custom domain name for your API in API Gateway.
 ///
 /// You can use a custom domain name to provide a URL that's more intuitive and easier to recall. For more information about using custom domain names, see Set up Custom Domain Name for an API in API Gateway in the API Gateway Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDomainName {
-
-
-    /// 
+    ///
     /// The reference to an AWS-managed certificate that will be used by edge-optimized endpoint for this domain name. AWS Certificate Manager is the only supported source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnDomainName {
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The custom domain name as an API host name, for example, my-api.example.com.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnDomainName {
     #[serde(rename = "DomainName")]
     pub domain_name: Option<String>,
 
-
-    /// 
+    ///
     /// The endpoint configuration of this DomainName showing the endpoint types of the domain name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EndpointConfiguration
@@ -42,10 +36,9 @@ pub struct CfnDomainName {
     #[serde(rename = "EndpointConfiguration")]
     pub endpoint_configuration: Option<EndpointConfiguration>,
 
-
-    /// 
+    ///
     /// The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway    performs two-way authentication between the client and the server. Clients must present a    trusted certificate to access your API.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MutualTlsAuthentication
@@ -53,7 +46,6 @@ pub struct CfnDomainName {
     /// Update requires: No interruption
     #[serde(rename = "MutualTlsAuthentication")]
     pub mutual_tls_authentication: Option<MutualTlsAuthentication>,
-
 
     /// The ARN of the public certificate issued by ACM to validate ownership of your custom domain. Only required when configuring mutual TLS and using an ACM imported or private CA certificate ARN as the RegionalCertificateArn.
     ///
@@ -65,10 +57,9 @@ pub struct CfnDomainName {
     #[serde(rename = "OwnershipVerificationCertificateArn")]
     pub ownership_verification_certificate_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The reference to an AWS-managed certificate that will be used for validating the regional domain name. AWS Certificate Manager is the only supported source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -77,10 +68,9 @@ pub struct CfnDomainName {
     #[serde(rename = "RegionalCertificateArn")]
     pub regional_certificate_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The Transport Layer Security (TLS) version + cipher suite for this DomainName. The valid values are TLS_1_0 and TLS_1_2.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -91,10 +81,9 @@ pub struct CfnDomainName {
     #[serde(rename = "SecurityPolicy")]
     pub security_policy: Option<DomainNameSecurityPolicyEnum>,
 
-
-    /// 
+    ///
     /// The collection of tags. Each tag element is associated with a given resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -102,13 +91,10 @@ pub struct CfnDomainName {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DomainNameSecurityPolicyEnum {
-
     /// TLS_1_0
     #[serde(rename = "TLS_1_0")]
     Tls10,
@@ -116,7 +102,6 @@ pub enum DomainNameSecurityPolicyEnum {
     /// TLS_1_2
     #[serde(rename = "TLS_1_2")]
     Tls12,
-
 }
 
 impl Default for DomainNameSecurityPolicyEnum {
@@ -124,7 +109,6 @@ impl Default for DomainNameSecurityPolicyEnum {
         DomainNameSecurityPolicyEnum::Tls10
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnDomainName {
     fn type_string(&self) -> &'static str {
@@ -136,10 +120,13 @@ impl cfn_resources::CfnResource for CfnDomainName {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.endpoint_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.endpoint_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.mutual_tls_authentication.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.mutual_tls_authentication
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -150,11 +137,9 @@ impl cfn_resources::CfnResource for CfnDomainName {
 /// EndpointConfiguration is a property of the AWS::ApiGateway::DomainName resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EndpointConfiguration {
-
-
-    /// 
+    ///
     /// A list of endpoint types of an API (RestApi) or its custom domain name (DomainName). For an edge-optimized API and its custom domain name, the endpoint type is "EDGE". For a regional API and its custom domain name, the endpoint type is REGIONAL. For a private API, the endpoint type is PRIVATE.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -162,10 +147,7 @@ pub struct EndpointConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Types")]
     pub types: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EndpointConfiguration {
     fn type_string(&self) -> &'static str {
@@ -177,7 +159,6 @@ impl cfn_resources::CfnResource for EndpointConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -185,11 +166,9 @@ impl cfn_resources::CfnResource for EndpointConfiguration {
 /// The mutual TLS authentication configuration for a custom domain name. If specified, API Gateway    performs two-way authentication between the client and the server. Clients must present a    trusted certificate to access your API.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MutualTlsAuthentication {
-
-
-    /// 
+    ///
     /// An Amazon S3 URL that specifies the truststore for mutual TLS authentication, for example    s3://bucket-name/key-name. The truststore can contain certificates from public or private    certificate authorities. To update the truststore, upload a new version to S3, and then update    your custom domain name to use the new version. To update the truststore, you must have    permissions to access the S3 object.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -198,10 +177,9 @@ pub struct MutualTlsAuthentication {
     #[serde(rename = "TruststoreUri")]
     pub truststore_uri: Option<String>,
 
-
-    /// 
+    ///
     /// The version of the S3 object that contains your truststore. To specify a version, you must have versioning enabled for the S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -209,10 +187,7 @@ pub struct MutualTlsAuthentication {
     /// Update requires: No interruption
     #[serde(rename = "TruststoreVersion")]
     pub truststore_version: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MutualTlsAuthentication {
     fn type_string(&self) -> &'static str {
@@ -224,7 +199,6 @@ impl cfn_resources::CfnResource for MutualTlsAuthentication {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -238,32 +212,26 @@ impl cfn_resources::CfnResource for MutualTlsAuthentication {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -275,7 +243,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

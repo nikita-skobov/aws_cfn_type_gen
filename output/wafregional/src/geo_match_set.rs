@@ -1,13 +1,9 @@
-
-
 /// Contains one or more countries that AWS WAF will search for.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGeoMatchSet {
-
-
-    /// 
+    ///
     /// An array of GeoMatchConstraint objects, which contain the country that you want AWS WAF to search for.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of GeoMatchConstraint
@@ -16,10 +12,9 @@ pub struct CfnGeoMatchSet {
     #[serde(rename = "GeoMatchConstraints")]
     pub geo_match_constraints: Option<Vec<GeoMatchConstraint>>,
 
-
-    /// 
+    ///
     /// A friendly name or description of the AWS::WAFRegional::GeoMatchSet. You can't change the name of an GeoMatchSet after you create it.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -33,10 +28,7 @@ pub struct CfnGeoMatchSet {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnGeoMatchSet {
     fn type_string(&self) -> &'static str {
@@ -48,21 +40,24 @@ impl cfn_resources::CfnResource for CfnGeoMatchSet {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -70,11 +65,9 @@ impl cfn_resources::CfnResource for CfnGeoMatchSet {
 /// The country from which web requests originate that you want AWS WAF to search for.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GeoMatchConstraint {
-
-
-    /// 
+    ///
     /// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -85,10 +78,9 @@ pub struct GeoMatchConstraint {
     #[serde(rename = "Type")]
     pub cfn_type: GeoMatchConstraintTypeEnum,
 
-
-    /// 
+    ///
     /// The country that you want AWS WAF to search for.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -98,17 +90,13 @@ pub struct GeoMatchConstraint {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: GeoMatchConstraintValueEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum GeoMatchConstraintTypeEnum {
-
     /// Country
     #[serde(rename = "Country")]
     Country,
-
 }
 
 impl Default for GeoMatchConstraintTypeEnum {
@@ -119,7 +107,6 @@ impl Default for GeoMatchConstraintTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum GeoMatchConstraintValueEnum {
-
     /// AD
     #[serde(rename = "AD")]
     Ad,
@@ -1115,7 +1102,6 @@ pub enum GeoMatchConstraintValueEnum {
     /// ZW
     #[serde(rename = "ZW")]
     Zw,
-
 }
 
 impl Default for GeoMatchConstraintValueEnum {
@@ -1123,7 +1109,6 @@ impl Default for GeoMatchConstraintValueEnum {
         GeoMatchConstraintValueEnum::Ad
     }
 }
-
 
 impl cfn_resources::CfnResource for GeoMatchConstraint {
     fn type_string(&self) -> &'static str {
@@ -1135,7 +1120,6 @@ impl cfn_resources::CfnResource for GeoMatchConstraint {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

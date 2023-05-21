@@ -1,13 +1,9 @@
-
-
 /// The AWS::SageMaker::Model resource to create a model to host at an Amazon       SageMaker endpoint. For more information, see Deploying a Model on Amazon         SageMaker Hosting Services in the Amazon SageMaker Developer         Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnModel {
-
-
-    /// 
+    ///
     /// Specifies the containers in the inference pipeline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ContainerDefinition
@@ -18,10 +14,9 @@ pub struct CfnModel {
     #[serde(rename = "Containers")]
     pub containers: Option<Vec<ContainerDefinition>>,
 
-
-    /// 
+    ///
     /// Isolates the model container. No inbound or outbound network calls can be made to or       from the model container.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -30,12 +25,11 @@ pub struct CfnModel {
     #[serde(rename = "EnableNetworkIsolation")]
     pub enable_network_isolation: Option<bool>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the IAM role that SageMaker can assume to access model       artifacts and docker image for deployment on ML compute instances or for batch transform       jobs. Deploying on ML compute instances is part of model hosting. For more information,       see SageMaker         Roles.
-    /// 
+    ///
     /// NoteTo be able to pass this role to SageMaker, the caller of this API must have the           iam:PassRole permission.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -50,10 +44,9 @@ pub struct CfnModel {
     #[serde(rename = "ExecutionRoleArn")]
     pub execution_role_arn: String,
 
-
-    /// 
+    ///
     /// Specifies details of how containers in a multi-container endpoint are called.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: InferenceExecutionConfig
@@ -62,10 +55,9 @@ pub struct CfnModel {
     #[serde(rename = "InferenceExecutionConfig")]
     pub inference_execution_config: Option<InferenceExecutionConfig>,
 
-
-    /// 
+    ///
     /// The name of the new model.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -78,10 +70,9 @@ pub struct CfnModel {
     #[serde(rename = "ModelName")]
     pub model_name: Option<String>,
 
-
-    /// 
+    ///
     /// The location of the primary docker image containing inference code, associated       artifacts, and custom environment map that the inference code uses when the model is       deployed for predictions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ContainerDefinition
@@ -90,12 +81,11 @@ pub struct CfnModel {
     #[serde(rename = "PrimaryContainer")]
     pub primary_container: Option<ContainerDefinition>,
 
-
-    /// 
+    ///
     /// A list of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Resource         Tag and Using         Cost Allocation Tags in the AWS Billing and Cost         Management User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -106,10 +96,9 @@ pub struct CfnModel {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// A VpcConfig object that specifies the VPC that you want your model to connect       to. Control access to and from your model container by configuring the VPC.         VpcConfig is used in hosting services and in batch transform. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Data in Batch         Transform Jobs by Using an Amazon Virtual Private Cloud.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: VpcConfig
@@ -117,10 +106,7 @@ pub struct CfnModel {
     /// Update requires: Replacement
     #[serde(rename = "VpcConfig")]
     pub vpc_config: Option<VpcConfig>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnModel {
     fn type_string(&self) -> &'static str {
@@ -132,50 +118,62 @@ impl cfn_resources::CfnResource for CfnModel {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.containers {
-
-        if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'containers'. {} is greater than 15", the_val.len()));
+            if the_val.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'containers'. {} is greater than 15",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.execution_role_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'execution_role_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'execution_role_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.execution_role_arn;
 
         if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'execution_role_arn'. {} is less than 20", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'execution_role_arn'. {} is less than 20",
+                the_val.len()
+            ));
         }
 
-        
-        self.inference_execution_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.inference_execution_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.model_name {
-
-        if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'model_name'. {} is greater than 63", the_val.len()));
+            if the_val.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'model_name'. {} is greater than 63",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.primary_container.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.primary_container
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.vpc_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vpc_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -184,13 +182,11 @@ impl cfn_resources::CfnResource for CfnModel {
 /// Describes the container, as part of model definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ContainerDefinition {
-
-
-    /// 
+    ///
     /// This parameter is ignored for models that contain only a       PrimaryContainer.
-    /// 
+    ///
     /// When a ContainerDefinition is part of an inference pipeline, the value of       the parameter uniquely identifies the container for the purposes of logging and metrics.       For information, see Use Logs and Metrics         to Monitor an Inference Pipeline. If you don't specify a value for this       parameter for a ContainerDefinition that is part of an inference pipeline,       a unique name is automatically assigned based on the position of the         ContainerDefinition in the pipeline. If you specify a value for the         ContainerHostName for any ContainerDefinition that is part       of an inference pipeline, you must specify a value for the         ContainerHostName parameter of every ContainerDefinition       in that pipeline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -203,10 +199,9 @@ pub struct ContainerDefinition {
     #[serde(rename = "ContainerHostname")]
     pub container_hostname: Option<String>,
 
-
-    /// 
+    ///
     /// The environment variables to set in the Docker container. Each key and value in the         Environment string to string map can have length of up to 1024. We       support up to 16 entries in the map.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -215,12 +210,11 @@ pub struct ContainerDefinition {
     #[serde(rename = "Environment")]
     pub environment: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// The path where inference code is stored. This can be either in Amazon EC2 Container Registry or in a       Docker registry that is accessible from the same VPC that you configure for your       endpoint. If you are using your own custom algorithm instead of an algorithm provided by       SageMaker, the inference code must meet SageMaker requirements. SageMaker supports both         registry/repository[:tag] and registry/repository[@digest]       image path formats. For more information, see Using Your Own Algorithms with       Amazon SageMaker.
-    /// 
+    ///
     /// NoteThe model artifacts in an Amazon S3 bucket and the Docker image for inference container         in Amazon EC2 Container Registry must be in the same region as the model or endpoint you are         creating.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -233,12 +227,11 @@ pub struct ContainerDefinition {
     #[serde(rename = "Image")]
     pub image: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC). For information about storing containers in a       private Docker registry, see Use a         Private Docker Registry for Real-Time Inference Containers.
-    /// 
+    ///
     /// NoteThe model artifacts in an Amazon S3 bucket and the Docker image for inference container         in Amazon EC2 Container Registry must be in the same region as the model or endpoint you are         creating.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ImageConfig
@@ -247,10 +240,9 @@ pub struct ContainerDefinition {
     #[serde(rename = "ImageConfig")]
     pub image_config: Option<ImageConfig>,
 
-
-    /// 
+    ///
     /// The inference specification name in the model package version.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -259,10 +251,9 @@ pub struct ContainerDefinition {
     #[serde(rename = "InferenceSpecificationName")]
     pub inference_specification_name: Option<String>,
 
-
-    /// 
+    ///
     /// Whether the container hosts a single model or multiple models.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -273,16 +264,15 @@ pub struct ContainerDefinition {
     #[serde(rename = "Mode")]
     pub mode: Option<ContainerDefinitionModeEnum>,
 
-
-    /// 
+    ///
     /// The S3 path where the model artifacts, which result from model training, are stored.       This path must point to a single gzip compressed tar archive (.tar.gz suffix). The S3       path is required for SageMaker built-in algorithms, but not if you use your own algorithms.       For more information on built-in algorithms, see Common         Parameters.
-    /// 
+    ///
     /// NoteThe model artifacts must be in an S3 bucket that is in the same region as the         model or endpoint you are creating.
-    /// 
+    ///
     /// If you provide a value for this parameter, SageMaker uses AWS Security Token       Service to download model artifacts from the S3 path you provide. AWS STS       is activated in your AWS account by default. If you previously       deactivated AWS STS for a region, you need to reactivate AWS STS for that region. For more information, see Activating and         Deactivating AWS STS in an AWS Region in the                   AWS Identity and Access Management User         Guide.
-    /// 
+    ///
     /// ImportantIf you use a built-in algorithm to create a model, SageMaker requires that you provide         a S3 path to the model artifacts in ModelDataUrl.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -295,10 +285,9 @@ pub struct ContainerDefinition {
     #[serde(rename = "ModelDataUrl")]
     pub model_data_url: Option<String>,
 
-
-    /// 
+    ///
     /// The name or Amazon Resource Name (ARN) of the model package to use to create the       model.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -313,10 +302,9 @@ pub struct ContainerDefinition {
     #[serde(rename = "ModelPackageName")]
     pub model_package_name: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies additional configuration for multi-model endpoints.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MultiModelConfig
@@ -324,13 +312,10 @@ pub struct ContainerDefinition {
     /// Update requires: Replacement
     #[serde(rename = "MultiModelConfig")]
     pub multi_model_config: Option<MultiModelConfig>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ContainerDefinitionModeEnum {
-
     /// MultiModel
     #[serde(rename = "MultiModel")]
     Multimodel,
@@ -338,7 +323,6 @@ pub enum ContainerDefinitionModeEnum {
     /// SingleModel
     #[serde(rename = "SingleModel")]
     Singlemodel,
-
 }
 
 impl Default for ContainerDefinitionModeEnum {
@@ -346,7 +330,6 @@ impl Default for ContainerDefinitionModeEnum {
         ContainerDefinitionModeEnum::Multimodel
     }
 }
-
 
 impl cfn_resources::CfnResource for ContainerDefinition {
     fn type_string(&self) -> &'static str {
@@ -358,50 +341,58 @@ impl cfn_resources::CfnResource for ContainerDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.container_hostname {
-
-        if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'container_hostname'. {} is greater than 63", the_val.len()));
+            if the_val.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'container_hostname'. {} is greater than 63",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.image {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'image'. {} is greater than 255", the_val.len()));
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'image'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.image_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.image_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.model_data_url {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'model_data_url'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'model_data_url'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.model_package_name {
-
-        if the_val.len() > 176 as _ {
-            return Err(format!("Max validation failed on field 'model_package_name'. {} is greater than 176", the_val.len()));
+            if the_val.len() > 176 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'model_package_name'. {} is greater than 176",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.model_package_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'model_package_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'model_package_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.multi_model_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.multi_model_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -410,13 +401,11 @@ impl cfn_resources::CfnResource for ContainerDefinition {
 /// Specifies whether the model container is in Amazon ECR or a private Docker registry       accessible from your Amazon Virtual Private Cloud (VPC).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ImageConfig {
-
-
-    /// 
+    ///
     /// Set this to one of the following values:
-    /// 
+    ///
     /// Platform - The model image is hosted in Amazon ECR.                        Vpc - The model image is hosted in a private Docker registry in           your VPC.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -427,10 +416,9 @@ pub struct ImageConfig {
     #[serde(rename = "RepositoryAccessMode")]
     pub repository_access_mode: ImageConfigRepositoryAccessModeEnum,
 
-
-    /// 
+    ///
     /// (Optional) Specifies an authentication configuration for the private docker registry       where your model image is hosted. Specify a value for this property only if you       specified Vpc as the value for the RepositoryAccessMode field,       and the private Docker registry where the model image is hosted requires       authentication.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: RepositoryAuthConfig
@@ -438,13 +426,10 @@ pub struct ImageConfig {
     /// Update requires: Replacement
     #[serde(rename = "RepositoryAuthConfig")]
     pub repository_auth_config: Option<RepositoryAuthConfig>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ImageConfigRepositoryAccessModeEnum {
-
     /// Platform
     #[serde(rename = "Platform")]
     Platform,
@@ -452,7 +437,6 @@ pub enum ImageConfigRepositoryAccessModeEnum {
     /// Vpc
     #[serde(rename = "Vpc")]
     Vpc,
-
 }
 
 impl Default for ImageConfigRepositoryAccessModeEnum {
@@ -460,7 +444,6 @@ impl Default for ImageConfigRepositoryAccessModeEnum {
         ImageConfigRepositoryAccessModeEnum::Platform
     }
 }
-
 
 impl cfn_resources::CfnResource for ImageConfig {
     fn type_string(&self) -> &'static str {
@@ -472,8 +455,9 @@ impl cfn_resources::CfnResource for ImageConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.repository_auth_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.repository_auth_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -482,13 +466,11 @@ impl cfn_resources::CfnResource for ImageConfig {
 /// Specifies details about how containers in a multi-container endpoint are run.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InferenceExecutionConfig {
-
-
-    /// 
+    ///
     /// How containers in a multi-container are run. The following values are valid.
-    /// 
+    ///
     /// Serial - Containers run as a serial pipeline.               Direct - Only the individual container that you specify is           run.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -496,10 +478,7 @@ pub struct InferenceExecutionConfig {
     /// Update requires: Replacement
     #[serde(rename = "Mode")]
     pub mode: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InferenceExecutionConfig {
     fn type_string(&self) -> &'static str {
@@ -511,7 +490,6 @@ impl cfn_resources::CfnResource for InferenceExecutionConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -519,11 +497,9 @@ impl cfn_resources::CfnResource for InferenceExecutionConfig {
 /// Specifies additional configuration for hosting multi-model endpoints.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MultiModelConfig {
-
-
-    /// 
+    ///
     /// Whether to cache models for a multi-model endpoint. By default, multi-model endpoints       cache models so that a model does not have to be loaded into memory each time it is       invoked. Some use cases do not benefit from model caching. For example, if an endpoint       hosts a large number of models that are each invoked infrequently, the endpoint might       perform better if you disable model caching. To disable model caching, set the value of       this parameter to Disabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -531,10 +507,7 @@ pub struct MultiModelConfig {
     /// Update requires: Replacement
     #[serde(rename = "ModelCacheSetting")]
     pub model_cache_setting: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MultiModelConfig {
     fn type_string(&self) -> &'static str {
@@ -546,7 +519,6 @@ impl cfn_resources::CfnResource for MultiModelConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -554,11 +526,9 @@ impl cfn_resources::CfnResource for MultiModelConfig {
 /// Specifies an authentication configuration for the private docker registry where your       model image is hosted. Specify a value for this property only if you specified         Vpc as the value for the RepositoryAccessMode field of the         ImageConfig object that you passed to a call to         CreateModel and the private Docker registry where the model image is       hosted requires authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RepositoryAuthConfig {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an AWS Lambda function that provides       credentials to authenticate to the private Docker registry where your model image is       hosted. For information about how to create an AWS Lambda function, see         Create a Lambda function         with the console in the         AWS Lambda Developer         Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -572,10 +542,7 @@ pub struct RepositoryAuthConfig {
     /// Update requires: Replacement
     #[serde(rename = "RepositoryCredentialsProviderArn")]
     pub repository_credentials_provider_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RepositoryAuthConfig {
     fn type_string(&self) -> &'static str {
@@ -587,21 +554,18 @@ impl cfn_resources::CfnResource for RepositoryAuthConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.repository_credentials_provider_arn;
 
         if the_val.len() > 2048 as _ {
             return Err(format!("Max validation failed on field 'repository_credentials_provider_arn'. {} is greater than 2048", the_val.len()));
         }
 
-        
         let the_val = &self.repository_credentials_provider_arn;
 
         if the_val.len() < 1 as _ {
             return Err(format!("Min validation failed on field 'repository_credentials_provider_arn'. {} is less than 1", the_val.len()));
         }
 
-        
         Ok(())
     }
 }
@@ -615,32 +579,26 @@ impl cfn_resources::CfnResource for RepositoryAuthConfig {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -652,7 +610,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -660,11 +617,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Specifies a VPC that your training jobs and hosted models have access to. Control       access to and from your training and model containers by configuring the VPC. For more       information, see Protect Endpoints by Using an Amazon Virtual Private Cloud and Protect Training Jobs         by Using an Amazon Virtual Private Cloud.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcConfig {
-
-
-    /// 
+    ///
     /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for       the VPC that is specified in the Subnets field.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -675,10 +630,9 @@ pub struct VpcConfig {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// The ID of the subnets in the VPC to which you want to connect your training job or       model. For information about the availability of specific instance types, see Supported         Instance Types and Availability Zones.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -688,10 +642,7 @@ pub struct VpcConfig {
     /// Update requires: Replacement
     #[serde(rename = "Subnets")]
     pub subnets: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VpcConfig {
     fn type_string(&self) -> &'static str {
@@ -703,21 +654,24 @@ impl cfn_resources::CfnResource for VpcConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.security_group_ids;
 
         if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 5", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'security_group_ids'. {} is greater than 5",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.subnets;
 
         if the_val.len() > 16 as _ {
-            return Err(format!("Max validation failed on field 'subnets'. {} is greater than 16", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'subnets'. {} is greater than 16",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

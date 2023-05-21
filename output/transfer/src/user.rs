@@ -1,15 +1,11 @@
-
-
 /// The AWS::Transfer::User resource creates a user and associates them with an     existing server. You can only create and associate users with servers that have the       IdentityProviderType set to SERVICE_MANAGED. Using parameters     for CreateUser, you can specify the user name, set the home directory, store     the user's public key, and assign the user's AWS Identity and Access Management (IAM) role.     You can also optionally add a session policy, and assign metadata with tags that can be     used to group and search for users.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUser {
-
-
-    /// 
+    ///
     /// The landing directory (folder) for a user when they log in to the server using the client.
-    /// 
+    ///
     /// A HomeDirectory example is /bucket_name/home/mydirectory.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -22,16 +18,15 @@ pub struct CfnUser {
     #[serde(rename = "HomeDirectory")]
     pub home_directory: Option<String>,
 
-
-    /// 
+    ///
     /// Logical directory mappings that specify what Amazon S3 paths and keys should be visible     to your user and how you want to make them visible. You will need to specify the       "Entry" and "Target" pair, where Entry shows how     the path is made visible and Target is the actual Amazon S3 path. If you only     specify a target, it will be displayed as is. You will need to also make sure that your IAM     role provides access to paths in Target. The following is an example.
-    /// 
+    ///
     /// '[ { "Entry": "/", "Target":       "/bucket3/customized-reports/" } ]'
-    /// 
+    ///
     /// In most cases, you can use this value instead of the session policy to lock your user     down to the designated home directory ("chroot"). To do this, you can set       Entry to '/' and set Target to the HomeDirectory parameter     value.
-    /// 
+    ///
     /// NoteIf the target of a logical directory entry does not exist in Amazon S3, the entry       will be ignored. As a workaround, you can use the Amazon S3 API to create 0 byte objects       as place holders for your directory. If using the CLI, use the s3api call       instead of s3 so you can use the put-object operation. For example, you use       the following: AWS s3api put-object --bucket bucketname --key        path/to/folder/. Make sure that the end of the key name ends in a '/' for it       to be considered a folder.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of HomeDirectoryMapEntry
@@ -42,10 +37,9 @@ pub struct CfnUser {
     #[serde(rename = "HomeDirectoryMappings")]
     pub home_directory_mappings: Option<Vec<HomeDirectoryMapEntry>>,
 
-
-    /// 
+    ///
     /// The type of landing directory (folder) that you want your users' home directory to be when they log in to the server.   If you set it to PATH, the user will see the absolute Amazon S3 bucket or EFS paths as is in their file transfer   protocol clients. If you set it LOGICAL, you need to provide mappings in the HomeDirectoryMappings for   how you want to make Amazon S3 or Amazon EFS paths visible to your users.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -56,12 +50,11 @@ pub struct CfnUser {
     #[serde(rename = "HomeDirectoryType")]
     pub home_directory_type: Option<UserHomeDirectoryTypeEnum>,
 
-
-    /// 
+    ///
     /// A session policy for your user so you can use the same IAM role across multiple     users. This policy restricts user access to portions of their Amazon S3 bucket. Variables     that you can use inside this policy include ${Transfer:UserName},       ${Transfer:HomeDirectory}, and ${Transfer:HomeBucket}.
-    /// 
+    ///
     /// NoteFor session policies, AWS Transfer Family stores the policy as a JSON blob,       instead of the Amazon Resource Name (ARN) of the policy. You save the policy as a JSON       blob and pass it in the Policy argument.For an example of a session policy, see Example session        policy.For more information, see AssumeRole in the        AWS Security Token Service API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -72,10 +65,9 @@ pub struct CfnUser {
     #[serde(rename = "Policy")]
     pub policy: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the full POSIX identity, including user ID (Uid), group ID     (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon Elastic File System (Amazon EFS) file systems. The POSIX    permissions that are set on files and directories in your file system determine the level of    access your users get when transferring files into and out of your Amazon EFS file    systems.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PosixProfile
@@ -84,10 +76,9 @@ pub struct CfnUser {
     #[serde(rename = "PosixProfile")]
     pub posix_profile: Option<PosixProfile>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that controls your users' access to your Amazon S3    bucket or Amazon EFS file system. The policies attached to this role determine the level of access that you want to provide your users    when transferring files into and out of your Amazon S3 bucket or Amazon EFS file system. The IAM role should also contain a trust    relationship that allows the server to access your resources when servicing your users' transfer requests.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -102,10 +93,9 @@ pub struct CfnUser {
     #[serde(rename = "Role")]
     pub role: String,
 
-
-    /// 
+    ///
     /// A system-assigned unique identifier for a server instance. This is the specific server    that you added your user to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -120,10 +110,9 @@ pub struct CfnUser {
     #[serde(rename = "ServerId")]
     pub server_id: String,
 
-
-    /// 
+    ///
     /// Specifies the public key portion of the Secure Shell (SSH) keys stored for the described    user.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of SshPublicKey
@@ -134,10 +123,9 @@ pub struct CfnUser {
     #[serde(rename = "SshPublicKeys")]
     pub ssh_public_keys: Option<Vec<SshPublicKey>>,
 
-
-    /// 
+    ///
     /// Key-value pairs that can be used to group and search for users. Tags are metadata attached    to users for any purpose.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -148,10 +136,9 @@ pub struct CfnUser {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// A unique string that identifies a user and is associated with a ServerId. This user name must be a minimum of 3 and a maximum of 100 characters    long. The following are valid characters: a-z, A-Z, 0-9, underscore '_', hyphen    '-', period '.', and at sign '@'. The user name can't start    with a hyphen, period, or at sign.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -165,13 +152,10 @@ pub struct CfnUser {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     pub user_name: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum UserHomeDirectoryTypeEnum {
-
     /// LOGICAL
     #[serde(rename = "LOGICAL")]
     Logical,
@@ -179,7 +163,6 @@ pub enum UserHomeDirectoryTypeEnum {
     /// PATH
     #[serde(rename = "PATH")]
     Path,
-
 }
 
 impl Default for UserHomeDirectoryTypeEnum {
@@ -187,7 +170,6 @@ impl Default for UserHomeDirectoryTypeEnum {
         UserHomeDirectoryTypeEnum::Logical
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnUser {
     fn type_string(&self) -> &'static str {
@@ -199,91 +181,106 @@ impl cfn_resources::CfnResource for CfnUser {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.home_directory {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'home_directory'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'home_directory'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.home_directory_mappings {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'home_directory_mappings'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!("Max validation failed on field 'home_directory_mappings'. {} is greater than 50", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.policy {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'policy'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'policy'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.posix_profile.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.posix_profile
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.role;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'role'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'role'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.role;
 
         if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'role'. {} is less than 20", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'role'. {} is less than 20",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.server_id;
 
         if the_val.len() > 19 as _ {
-            return Err(format!("Max validation failed on field 'server_id'. {} is greater than 19", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'server_id'. {} is greater than 19",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.server_id;
 
         if the_val.len() < 19 as _ {
-            return Err(format!("Min validation failed on field 'server_id'. {} is less than 19", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'server_id'. {} is less than 19",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.ssh_public_keys {
-
-        if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'ssh_public_keys'. {} is greater than 5", the_val.len()));
+            if the_val.len() > 5 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'ssh_public_keys'. {} is greater than 5",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.user_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'user_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'user_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_name;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'user_name'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'user_name'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -291,11 +288,9 @@ impl cfn_resources::CfnResource for CfnUser {
 /// Represents an object that contains entries and targets for       HomeDirectoryMappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HomeDirectoryMapEntry {
-
-
-    /// 
+    ///
     /// Represents an entry for HomeDirectoryMappings.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -308,10 +303,9 @@ pub struct HomeDirectoryMapEntry {
     #[serde(rename = "Entry")]
     pub entry: String,
 
-
-    /// 
+    ///
     /// Represents the map target that is used in a HomeDirectorymapEntry.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -323,10 +317,7 @@ pub struct HomeDirectoryMapEntry {
     /// Update requires: No interruption
     #[serde(rename = "Target")]
     pub target: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for HomeDirectoryMapEntry {
     fn type_string(&self) -> &'static str {
@@ -338,21 +329,24 @@ impl cfn_resources::CfnResource for HomeDirectoryMapEntry {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.entry;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'entry'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'entry'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.target;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'target'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'target'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -360,11 +354,9 @@ impl cfn_resources::CfnResource for HomeDirectoryMapEntry {
 /// The full POSIX identity, including user ID (Uid), group ID    (Gid), and any secondary groups IDs (SecondaryGids), that controls    your users' access to your Amazon EFS file systems. The POSIX permissions that are set on    files and directories in your file system determine the level of access your users get when    transferring files into and out of your Amazon EFS file systems.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PosixProfile {
-
-
-    /// 
+    ///
     /// The POSIX group ID used for all EFS operations by this user.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Double
@@ -373,10 +365,9 @@ pub struct PosixProfile {
     #[serde(rename = "Gid")]
     pub gid: f64,
 
-
-    /// 
+    ///
     /// The secondary POSIX group IDs used for all EFS operations by this user.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Double
@@ -387,10 +378,9 @@ pub struct PosixProfile {
     #[serde(rename = "SecondaryGids")]
     pub secondary_gids: Option<Vec<f64>>,
 
-
-    /// 
+    ///
     /// The POSIX user ID used for all EFS operations by this user.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Double
@@ -398,10 +388,7 @@ pub struct PosixProfile {
     /// Update requires: No interruption
     #[serde(rename = "Uid")]
     pub uid: f64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PosixProfile {
     fn type_string(&self) -> &'static str {
@@ -413,15 +400,15 @@ impl cfn_resources::CfnResource for PosixProfile {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.secondary_gids {
-
-        if the_val.len() > 16 as _ {
-            return Err(format!("Max validation failed on field 'secondary_gids'. {} is greater than 16", the_val.len()));
+            if the_val.len() > 16 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'secondary_gids'. {} is greater than 16",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -440,11 +427,7 @@ impl cfn_resources::CfnResource for PosixProfile {
 ///
 /// Required: Yes
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct SshPublicKey {
-
-}
-
-
+pub struct SshPublicKey {}
 
 impl cfn_resources::CfnResource for SshPublicKey {
     fn type_string(&self) -> &'static str {
@@ -456,7 +439,6 @@ impl cfn_resources::CfnResource for SshPublicKey {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -470,32 +452,26 @@ impl cfn_resources::CfnResource for SshPublicKey {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -507,7 +483,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

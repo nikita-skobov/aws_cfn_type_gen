@@ -1,13 +1,9 @@
-
-
 /// Describes a Verified Access instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVerifiedAccessInstance {
-
-
-    /// 
+    ///
     /// A description for the AWS Verified Access instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnVerifiedAccessInstance {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The current logging configuration for the Verified Access instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: VerifiedAccessLogs
@@ -28,10 +23,9 @@ pub struct CfnVerifiedAccessInstance {
     #[serde(rename = "LoggingConfigurations")]
     pub logging_configurations: Option<VerifiedAccessLogs>,
 
-
-    /// 
+    ///
     /// The tags.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -40,10 +34,9 @@ pub struct CfnVerifiedAccessInstance {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The IDs of the AWS Verified Access trust providers.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -52,10 +45,9 @@ pub struct CfnVerifiedAccessInstance {
     #[serde(rename = "VerifiedAccessTrustProviderIds")]
     pub verified_access_trust_provider_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The IDs of the AWS Verified Access trust providers.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of VerifiedAccessTrustProvider
@@ -63,10 +55,7 @@ pub struct CfnVerifiedAccessInstance {
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessTrustProviders")]
     pub verified_access_trust_providers: Option<Vec<VerifiedAccessTrustProvider>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnVerifiedAccessInstance {
     fn type_string(&self) -> &'static str {
@@ -78,8 +67,9 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessInstance {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.logging_configurations.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.logging_configurations
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -88,11 +78,9 @@ impl cfn_resources::CfnResource for CfnVerifiedAccessInstance {
 /// Options for CloudWatch Logs as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchLogs {
-
-
-    /// 
+    ///
     /// Indicates whether logging is enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -101,10 +89,9 @@ pub struct CloudWatchLogs {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The ID of the CloudWatch Logs log group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -112,10 +99,7 @@ pub struct CloudWatchLogs {
     /// Update requires: No interruption
     #[serde(rename = "LogGroup")]
     pub log_group: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CloudWatchLogs {
     fn type_string(&self) -> &'static str {
@@ -127,7 +111,6 @@ impl cfn_resources::CfnResource for CloudWatchLogs {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -135,11 +118,9 @@ impl cfn_resources::CfnResource for CloudWatchLogs {
 /// Options for Kinesis as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KinesisDataFirehose {
-
-
-    /// 
+    ///
     /// The ID of the delivery stream.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -148,10 +129,9 @@ pub struct KinesisDataFirehose {
     #[serde(rename = "DeliveryStream")]
     pub delivery_stream: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether logging is enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -159,10 +139,7 @@ pub struct KinesisDataFirehose {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KinesisDataFirehose {
     fn type_string(&self) -> &'static str {
@@ -174,7 +151,6 @@ impl cfn_resources::CfnResource for KinesisDataFirehose {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -182,11 +158,9 @@ impl cfn_resources::CfnResource for KinesisDataFirehose {
 /// Options for Amazon S3 as a logging destination.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3 {
-
-
-    /// 
+    ///
     /// The bucket name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -195,10 +169,9 @@ pub struct S3 {
     #[serde(rename = "BucketName")]
     pub bucket_name: Option<String>,
 
-
-    /// 
+    ///
     /// The AWS account number that owns the bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -207,10 +180,9 @@ pub struct S3 {
     #[serde(rename = "BucketOwner")]
     pub bucket_owner: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether logging is enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -219,10 +191,9 @@ pub struct S3 {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The bucket prefix.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -230,10 +201,7 @@ pub struct S3 {
     /// Update requires: No interruption
     #[serde(rename = "Prefix")]
     pub prefix: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3 {
     fn type_string(&self) -> &'static str {
@@ -245,7 +213,6 @@ impl cfn_resources::CfnResource for S3 {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -259,32 +226,26 @@ impl cfn_resources::CfnResource for S3 {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -296,7 +257,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -304,11 +264,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Describes the destinations for Verified Access logs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VerifiedAccessLogs {
-
-
-    /// 
+    ///
     /// CloudWatch Logs logging destination.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CloudWatchLogs
@@ -317,10 +275,9 @@ pub struct VerifiedAccessLogs {
     #[serde(rename = "CloudWatchLogs")]
     pub cloud_watch_logs: Option<CloudWatchLogs>,
 
-
-    /// 
+    ///
     /// Kinesis logging destination.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: KinesisDataFirehose
@@ -329,10 +286,9 @@ pub struct VerifiedAccessLogs {
     #[serde(rename = "KinesisDataFirehose")]
     pub kinesis_data_firehose: Option<KinesisDataFirehose>,
 
-
-    /// 
+    ///
     /// Amazon S3 logging options.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3
@@ -340,10 +296,7 @@ pub struct VerifiedAccessLogs {
     /// Update requires: No interruption
     #[serde(rename = "S3")]
     pub s3: Option<S3>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VerifiedAccessLogs {
     fn type_string(&self) -> &'static str {
@@ -355,10 +308,13 @@ impl cfn_resources::CfnResource for VerifiedAccessLogs {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.cloud_watch_logs
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.cloud_watch_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.kinesis_data_firehose.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.kinesis_data_firehose
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.s3.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -369,11 +325,9 @@ impl cfn_resources::CfnResource for VerifiedAccessLogs {
 /// Describes a Verified Access trust provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VerifiedAccessTrustProvider {
-
-
-    /// 
+    ///
     /// A description for the AWS Verified Access trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -382,10 +336,9 @@ pub struct VerifiedAccessTrustProvider {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The type of device-based trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -396,10 +349,9 @@ pub struct VerifiedAccessTrustProvider {
     #[serde(rename = "DeviceTrustProviderType")]
     pub device_trust_provider_type: Option<VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum>,
 
-
-    /// 
+    ///
     /// The type of Verified Access trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -410,10 +362,9 @@ pub struct VerifiedAccessTrustProvider {
     #[serde(rename = "TrustProviderType")]
     pub trust_provider_type: Option<VerifiedAccessTrustProviderTrustProviderTypeEnum>,
 
-
-    /// 
+    ///
     /// The type of user-based trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -424,10 +375,9 @@ pub struct VerifiedAccessTrustProvider {
     #[serde(rename = "UserTrustProviderType")]
     pub user_trust_provider_type: Option<VerifiedAccessTrustProviderUserTrustProviderTypeEnum>,
 
-
-    /// 
+    ///
     /// The ID of the AWS Verified Access trust provider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -435,13 +385,10 @@ pub struct VerifiedAccessTrustProvider {
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessTrustProviderId")]
     pub verified_access_trust_provider_id: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
-
     /// crowdstrike
     #[serde(rename = "crowdstrike")]
     Crowdstrike,
@@ -449,7 +396,6 @@ pub enum VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
     /// jamf
     #[serde(rename = "jamf")]
     Jamf,
-
 }
 
 impl Default for VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
@@ -460,7 +406,6 @@ impl Default for VerifiedAccessTrustProviderDeviceTrustProviderTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
-
     /// device
     #[serde(rename = "device")]
     Device,
@@ -468,7 +413,6 @@ pub enum VerifiedAccessTrustProviderTrustProviderTypeEnum {
     /// user
     #[serde(rename = "user")]
     User,
-
 }
 
 impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
@@ -479,7 +423,6 @@ impl Default for VerifiedAccessTrustProviderTrustProviderTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
-
     /// iam-identity-center
     #[serde(rename = "iam-identity-center")]
     Iamidentitycenter,
@@ -487,7 +430,6 @@ pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
     /// oidc
     #[serde(rename = "oidc")]
     Oidc,
-
 }
 
 impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
@@ -495,7 +437,6 @@ impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
         VerifiedAccessTrustProviderUserTrustProviderTypeEnum::Iamidentitycenter
     }
 }
-
 
 impl cfn_resources::CfnResource for VerifiedAccessTrustProvider {
     fn type_string(&self) -> &'static str {
@@ -507,7 +448,6 @@ impl cfn_resources::CfnResource for VerifiedAccessTrustProvider {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,15 +1,11 @@
-
-
 /// Creates a Kinesis stream that captures and transports data records that are emitted       from data sources. For information about creating streams, see CreateStream in the Amazon Kinesis API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStream {
-
-
-    /// 
+    ///
     /// The name of the Kinesis stream. If you don't specify a name, AWS       CloudFormation generates a unique physical ID and uses that ID for the stream name. For       more information, see Name Type.
-    /// 
+    ///
     /// If you specify a name, you cannot perform updates that require replacement of this       resource. You can perform updates that require no or some interruption. If you must       replace the resource, specify a new name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnStream {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The number of hours for the data records that are stored in shards to remain       accessible. The default value is 24. For more information about the stream retention       period, see Changing the Data Retention         Period in the Amazon Kinesis Developer Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -36,10 +31,9 @@ pub struct CfnStream {
     #[serde(rename = "RetentionPeriodHours")]
     pub retention_period_hours: Option<i64>,
 
-
-    /// 
+    ///
     /// The number of shards that the stream uses. For greater provisioned throughput,       increase the number of shards.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -50,10 +44,9 @@ pub struct CfnStream {
     #[serde(rename = "ShardCount")]
     pub shard_count: Option<i64>,
 
-
-    /// 
+    ///
     /// When specified, enables or updates server-side encryption using an AWS KMS key for a specified stream. Removing this property from your stack       template and updating your stack disables encryption.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: StreamEncryption
@@ -62,10 +55,9 @@ pub struct CfnStream {
     #[serde(rename = "StreamEncryption")]
     pub stream_encryption: Option<StreamEncryption>,
 
-
-    /// 
+    ///
     /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: StreamModeDetails
@@ -74,10 +66,9 @@ pub struct CfnStream {
     #[serde(rename = "StreamModeDetails")]
     pub stream_mode_details: Option<StreamModeDetails>,
 
-
-    /// 
+    ///
     /// An arbitrary set of tags (key–value pairs) to associate with the Kinesis stream.       For information about constraints for this property, see Tag Restrictions       in the Amazon Kinesis Developer Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -85,10 +76,7 @@ pub struct CfnStream {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnStream {
     fn type_string(&self) -> &'static str {
@@ -100,34 +88,40 @@ impl cfn_resources::CfnResource for CfnStream {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.name {
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.shard_count {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'shard_count'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'shard_count'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        self.stream_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.stream_encryption
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.stream_mode_details.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.stream_mode_details
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -142,11 +136,9 @@ impl cfn_resources::CfnResource for CfnStream {
 /// Note: It can take up to 5 seconds after the stream is in an ACTIVE status       before all records written to the stream are encrypted. After you enable encryption, you       can verify that encryption is applied by inspecting the API response from         PutRecord or PutRecords.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StreamEncryption {
-
-
-    /// 
+    ///
     /// The encryption type to use. The only valid value is KMS.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -155,12 +147,11 @@ pub struct StreamEncryption {
     #[serde(rename = "EncryptionType")]
     pub encryption_type: String,
 
-
-    /// 
+    ///
     /// The GUID for the customer-managed AWS KMS key to use for encryption.       This value can be a globally unique identifier, a fully specified Amazon Resource Name       (ARN) to either an alias or a key, or an alias name prefixed by "alias/".You can also       use a master key owned by Kinesis Data Streams by specifying the alias         aws/kinesis.
-    /// 
+    ///
     /// Key ARN example:             arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012                       Alias ARN example:             arn:aws:kms:us-east-1:123456789012:alias/MyAliasName                       Globally unique key ID example:             12345678-1234-1234-1234-123456789012                       Alias name example: alias/MyAliasName                       Master key owned by Kinesis Data Streams:           alias/aws/kinesis
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -172,10 +163,7 @@ pub struct StreamEncryption {
     /// Update requires: No interruption
     #[serde(rename = "KeyId")]
     pub key_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for StreamEncryption {
     fn type_string(&self) -> &'static str {
@@ -187,21 +175,24 @@ impl cfn_resources::CfnResource for StreamEncryption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.key_id;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'key_id'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'key_id'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.key_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'key_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'key_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -209,11 +200,9 @@ impl cfn_resources::CfnResource for StreamEncryption {
 /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StreamModeDetails {
-
-
-    /// 
+    ///
     /// Specifies the capacity mode to which you want to set your data stream. Currently, in       Kinesis Data Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your data streams.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -223,13 +212,10 @@ pub struct StreamModeDetails {
     /// Update requires: No interruption
     #[serde(rename = "StreamMode")]
     pub stream_mode: StreamModeDetailsStreamModeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum StreamModeDetailsStreamModeEnum {
-
     /// ON_DEMAND
     #[serde(rename = "ON_DEMAND")]
     Ondemand,
@@ -237,7 +223,6 @@ pub enum StreamModeDetailsStreamModeEnum {
     /// PROVISIONED
     #[serde(rename = "PROVISIONED")]
     Provisioned,
-
 }
 
 impl Default for StreamModeDetailsStreamModeEnum {
@@ -245,7 +230,6 @@ impl Default for StreamModeDetailsStreamModeEnum {
         StreamModeDetailsStreamModeEnum::Ondemand
     }
 }
-
 
 impl cfn_resources::CfnResource for StreamModeDetails {
     fn type_string(&self) -> &'static str {
@@ -257,7 +241,6 @@ impl cfn_resources::CfnResource for StreamModeDetails {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -271,32 +254,26 @@ impl cfn_resources::CfnResource for StreamModeDetails {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -308,7 +285,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

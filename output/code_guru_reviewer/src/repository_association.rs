@@ -1,13 +1,9 @@
-
-
 /// This resource configures how Amazon CodeGuru Reviewer retrieves the source code to be reviewed. You can use an      AWS CloudFormation template to create an association with the following repository types:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRepositoryAssociation {
-
-
-    /// 
+    ///
     /// The name of the bucket. This is required for your S3Bucket repository. The name must start with the prefix codeguru-reviewer-*.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,12 +12,11 @@ pub struct CfnRepositoryAssociation {
     #[serde(rename = "BucketName")]
     pub bucket_name: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is      arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see      Connection in      the AWS CodeStar Connections API Reference.
-    /// 
+    ///
     /// ConnectionArn must be specified for Bitbucket and GitHub Enterprise Server repositories. It has no effect if      it is specified for an AWS CodeCommit repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnRepositoryAssociation {
     #[serde(rename = "ConnectionArn")]
     pub connection_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the repository.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,12 +48,11 @@ pub struct CfnRepositoryAssociation {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The owner of the repository. For a GitHub Enterprise Server or Bitbucket repository, this is the username     for the account that owns the repository.
-    /// 
+    ///
     /// Owner must be specified for Bitbucket and GitHub Enterprise Server repositories. It has no effect if      it is specified for an AWS CodeCommit repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -74,12 +67,11 @@ pub struct CfnRepositoryAssociation {
     #[serde(rename = "Owner")]
     pub owner: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
-    /// 
+    ///
     /// A tag key (for example, CostCenter, 						Environment, Project, or Secret). Tag 						keys are case sensitive. 				 					An optional field known as a tag value (for example, 						111122223333, Production, or a team name). 						Omitting the tag value is the same as using an empty string. Like tag keys, tag 						values are case sensitive.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -88,12 +80,11 @@ pub struct CfnRepositoryAssociation {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of repository that contains the source code to be reviewed. The valid values are:
-    /// 
+    ///
     /// CodeCommit            Bitbucket            GitHubEnterpriseServer           S3Bucket
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -101,10 +92,7 @@ pub struct CfnRepositoryAssociation {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRepositoryAssociation {
     fn type_string(&self) -> &'static str {
@@ -116,53 +104,60 @@ impl cfn_resources::CfnResource for CfnRepositoryAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.connection_arn {
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'connection_arn'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.connection_arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'connection_arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'connection_arn'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.connection_arn {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'connection_arn'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.owner {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'owner'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'owner'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.owner {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'owner'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'owner'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -176,32 +171,26 @@ impl cfn_resources::CfnResource for CfnRepositoryAssociation {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -213,7 +202,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

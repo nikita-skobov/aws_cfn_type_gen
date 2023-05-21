@@ -1,15 +1,11 @@
-
-
 /// The AWS::CodeStarConnections::Connection resource can be used to connect external       source providers with services like AWS CodePipeline.
 ///
 /// Note: A connection created through AWS CloudFormation is in         PENDING status by default. You can make its status         AVAILABLE by updating the connection in the console.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConnection {
-
-
-    /// 
+    ///
     /// The name of the connection. Connection names must be unique in an AWS user account.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnConnection {
     #[serde(rename = "ConnectionName")]
     pub connection_name: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the host associated with the connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -42,10 +37,9 @@ pub struct CfnConnection {
     #[serde(rename = "HostArn")]
     pub host_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the external provider where your third-party code repository is    configured.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -56,10 +50,9 @@ pub struct CfnConnection {
     #[serde(rename = "ProviderType")]
     pub provider_type: Option<ConnectionProviderTypeEnum>,
 
-
-    /// 
+    ///
     /// Specifies the tags applied to the resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -69,13 +62,10 @@ pub struct CfnConnection {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ConnectionProviderTypeEnum {
-
     /// Bitbucket
     #[serde(rename = "Bitbucket")]
     Bitbucket,
@@ -87,7 +77,6 @@ pub enum ConnectionProviderTypeEnum {
     /// GitHubEnterpriseServer
     #[serde(rename = "GitHubEnterpriseServer")]
     Githubenterpriseserver,
-
 }
 
 impl Default for ConnectionProviderTypeEnum {
@@ -95,7 +84,6 @@ impl Default for ConnectionProviderTypeEnum {
         ConnectionProviderTypeEnum::Bitbucket
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnConnection {
     fn type_string(&self) -> &'static str {
@@ -107,45 +95,51 @@ impl cfn_resources::CfnResource for CfnConnection {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.connection_name;
 
         if the_val.len() > 32 as _ {
-            return Err(format!("Max validation failed on field 'connection_name'. {} is greater than 32", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'connection_name'. {} is greater than 32",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.connection_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'connection_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'connection_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.host_arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'host_arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'host_arn'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.host_arn {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'host_arn'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'host_arn'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -159,32 +153,26 @@ impl cfn_resources::CfnResource for CfnConnection {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -196,7 +184,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

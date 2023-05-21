@@ -1,15 +1,11 @@
-
-
 /// Creates a packaging group.
 ///
 /// The packaging group holds one or more packaging configurations. When you create an asset, you specify the packaging group associated with the asset. The asset has playback endpoints for each packaging configuration within the group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPackagingGroup {
-
-
-    /// 
+    ///
     /// Parameters for CDN authorization.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Authorization
@@ -18,10 +14,9 @@ pub struct CfnPackagingGroup {
     #[serde(rename = "Authorization")]
     pub authorization: Option<Authorization>,
 
-
-    /// 
+    ///
     /// The configuration parameters for egress access logging.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LogConfiguration
@@ -30,10 +25,9 @@ pub struct CfnPackagingGroup {
     #[serde(rename = "EgressAccessLogs")]
     pub egress_access_logs: Option<LogConfiguration>,
 
-
-    /// 
+    ///
     /// Unique identifier that you assign to the packaging group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnPackagingGroup {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// The tags to assign to the packaging group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -53,10 +46,7 @@ pub struct CfnPackagingGroup {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnPackagingGroup {
     fn type_string(&self) -> &'static str {
@@ -68,10 +58,13 @@ impl cfn_resources::CfnResource for CfnPackagingGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.authorization
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.authorization.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.egress_access_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.egress_access_logs
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -80,11 +73,9 @@ impl cfn_resources::CfnResource for CfnPackagingGroup {
 /// Parameters for enabling CDN authorization.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Authorization {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) for the secret in AWS Secrets Manager that is used for CDN authorization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -93,10 +84,9 @@ pub struct Authorization {
     #[serde(rename = "CdnIdentifierSecret")]
     pub cdn_identifier_secret: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) for the IAM role that allows AWS Elemental MediaPackage to communicate with AWS Secrets Manager.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -104,10 +94,7 @@ pub struct Authorization {
     /// Update requires: No interruption
     #[serde(rename = "SecretsRoleArn")]
     pub secrets_role_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Authorization {
     fn type_string(&self) -> &'static str {
@@ -119,7 +106,6 @@ impl cfn_resources::CfnResource for Authorization {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -127,11 +113,9 @@ impl cfn_resources::CfnResource for Authorization {
 /// Sets a custom Amazon CloudWatch log group name for egress logs. If a log group name isn't specified, the default name is used: /aws/MediaPackage/EgressAccessLogs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LogConfiguration {
-
-
-    /// 
+    ///
     /// Sets a custom Amazon CloudWatch log group name for egress logs. If a log group name isn't specified, the default name is used: /aws/MediaPackage/EgressAccessLogs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -139,10 +123,7 @@ pub struct LogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
     pub log_group_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LogConfiguration {
     fn type_string(&self) -> &'static str {
@@ -154,7 +135,6 @@ impl cfn_resources::CfnResource for LogConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -168,32 +148,26 @@ impl cfn_resources::CfnResource for LogConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -205,7 +179,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

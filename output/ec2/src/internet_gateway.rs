@@ -1,13 +1,9 @@
-
-
 /// Allocates an internet gateway for use with a VPC. After creating the Internet gateway,     you then attach it to a VPC.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInternetGateway {
-
-
-    /// 
+    ///
     /// Any tags to assign to the internet gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -15,10 +11,7 @@ pub struct CfnInternetGateway {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnInternetGateway {
     fn type_string(&self) -> &'static str {
@@ -30,7 +23,6 @@ impl cfn_resources::CfnResource for CfnInternetGateway {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -44,32 +36,26 @@ impl cfn_resources::CfnResource for CfnInternetGateway {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -81,7 +67,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

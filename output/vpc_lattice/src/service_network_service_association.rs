@@ -1,5 +1,3 @@
-
-
 /// Associates a service with a service network.
 ///
 /// You can't use this operation if the service and service network are already associated or if  there is a disassociation or deletion in progress. If the association fails, you can retry the  operation by deleting the association and recreating it.
@@ -9,8 +7,6 @@
 /// As a result of this operation, the association is created in the service network account and  the association owner account.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnServiceNetworkServiceAssociation {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -21,10 +17,9 @@ pub struct CfnServiceNetworkServiceAssociation {
     #[serde(rename = "DnsEntry")]
     pub dns_entry: Option<DnsEntry>,
 
-
-    /// 
+    ///
     /// The ID or Amazon Resource Name (ARN) of the service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -33,10 +28,9 @@ pub struct CfnServiceNetworkServiceAssociation {
     #[serde(rename = "ServiceIdentifier")]
     pub service_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// The ID or Amazon Resource Name (ARN) of the service network. You must use the ARN if the  resources specified in the operation are in different accounts.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -45,10 +39,9 @@ pub struct CfnServiceNetworkServiceAssociation {
     #[serde(rename = "ServiceNetworkIdentifier")]
     pub service_network_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// The tags for the association.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -56,10 +49,7 @@ pub struct CfnServiceNetworkServiceAssociation {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnServiceNetworkServiceAssociation {
     fn type_string(&self) -> &'static str {
@@ -71,8 +61,9 @@ impl cfn_resources::CfnResource for CfnServiceNetworkServiceAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.dns_entry.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.dns_entry
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -81,11 +72,9 @@ impl cfn_resources::CfnResource for CfnServiceNetworkServiceAssociation {
 /// DNS information about the service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DnsEntry {
-
-
-    /// 
+    ///
     /// The domain name of the service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -94,10 +83,9 @@ pub struct DnsEntry {
     #[serde(rename = "DomainName")]
     pub domain_name: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the hosted zone.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -105,10 +93,7 @@ pub struct DnsEntry {
     /// Update requires: No interruption
     #[serde(rename = "HostedZoneId")]
     pub hosted_zone_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DnsEntry {
     fn type_string(&self) -> &'static str {
@@ -120,7 +105,6 @@ impl cfn_resources::CfnResource for DnsEntry {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -134,32 +118,26 @@ impl cfn_resources::CfnResource for DnsEntry {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -171,7 +149,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// The AWS::RoboMaker::RobotApplication resource creates an AWS     RoboMaker robot application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRobotApplication {
-
-
-    /// 
+    ///
     /// The current revision id.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnRobotApplication {
     #[serde(rename = "CurrentRevisionId")]
     pub current_revision_id: Option<String>,
 
-
-    /// 
+    ///
     /// The environment of the robot application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnRobotApplication {
     #[serde(rename = "Environment")]
     pub environment: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the robot application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -46,10 +40,9 @@ pub struct CfnRobotApplication {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The robot software suite used by the robot application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: RobotSoftwareSuite
@@ -58,10 +51,9 @@ pub struct CfnRobotApplication {
     #[serde(rename = "RobotSoftwareSuite")]
     pub robot_software_suite: RobotSoftwareSuite,
 
-
-    /// 
+    ///
     /// The sources of the robot application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of SourceConfig
@@ -70,10 +62,9 @@ pub struct CfnRobotApplication {
     #[serde(rename = "Sources")]
     pub sources: Option<Vec<SourceConfig>>,
 
-
-    /// 
+    ///
     /// A map that contains tag keys and tag values that are attached to the robot     application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -81,10 +72,7 @@ pub struct CfnRobotApplication {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRobotApplication {
     fn type_string(&self) -> &'static str {
@@ -96,23 +84,24 @@ impl cfn_resources::CfnResource for CfnRobotApplication {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.name {
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         self.robot_software_suite.validate()?;
 
         Ok(())
@@ -122,11 +111,9 @@ impl cfn_resources::CfnResource for CfnRobotApplication {
 /// Information about a robot software suite.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RobotSoftwareSuite {
-
-
-    /// 
+    ///
     /// The name of the robot software suite. General is the only supported value.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -137,10 +124,9 @@ pub struct RobotSoftwareSuite {
     #[serde(rename = "Name")]
     pub name: RobotSoftwareSuiteNameEnum,
 
-
-    /// 
+    ///
     /// The version of the robot software suite. Not applicable for General software suite.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -150,13 +136,10 @@ pub struct RobotSoftwareSuite {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     pub version: Option<RobotSoftwareSuiteVersionEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RobotSoftwareSuiteNameEnum {
-
     /// General
     #[serde(rename = "General")]
     General,
@@ -168,7 +151,6 @@ pub enum RobotSoftwareSuiteNameEnum {
     /// ROS2
     #[serde(rename = "ROS2")]
     Ros2,
-
 }
 
 impl Default for RobotSoftwareSuiteNameEnum {
@@ -179,7 +161,6 @@ impl Default for RobotSoftwareSuiteNameEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RobotSoftwareSuiteVersionEnum {
-
     /// Dashing
     #[serde(rename = "Dashing")]
     Dashing,
@@ -195,7 +176,6 @@ pub enum RobotSoftwareSuiteVersionEnum {
     /// Melodic
     #[serde(rename = "Melodic")]
     Melodic,
-
 }
 
 impl Default for RobotSoftwareSuiteVersionEnum {
@@ -203,7 +183,6 @@ impl Default for RobotSoftwareSuiteVersionEnum {
         RobotSoftwareSuiteVersionEnum::Dashing
     }
 }
-
 
 impl cfn_resources::CfnResource for RobotSoftwareSuite {
     fn type_string(&self) -> &'static str {
@@ -215,7 +194,6 @@ impl cfn_resources::CfnResource for RobotSoftwareSuite {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -223,11 +201,9 @@ impl cfn_resources::CfnResource for RobotSoftwareSuite {
 /// Information about a source configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SourceConfig {
-
-
-    /// 
+    ///
     /// The target processor architecture for the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -238,10 +214,9 @@ pub struct SourceConfig {
     #[serde(rename = "Architecture")]
     pub architecture: SourceConfigArchitectureEnum,
 
-
-    /// 
+    ///
     /// The Amazon S3 bucket name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -256,10 +231,9 @@ pub struct SourceConfig {
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
 
-
-    /// 
+    ///
     /// The s3 object key.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -273,13 +247,10 @@ pub struct SourceConfig {
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
     pub s3_key: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SourceConfigArchitectureEnum {
-
     /// ARM64
     #[serde(rename = "ARM64")]
     Arm64,
@@ -291,7 +262,6 @@ pub enum SourceConfigArchitectureEnum {
     /// X86_64
     #[serde(rename = "X86_64")]
     X8664,
-
 }
 
 impl Default for SourceConfigArchitectureEnum {
@@ -299,7 +269,6 @@ impl Default for SourceConfigArchitectureEnum {
         SourceConfigArchitectureEnum::Arm64
     }
 }
-
 
 impl cfn_resources::CfnResource for SourceConfig {
     fn type_string(&self) -> &'static str {
@@ -311,35 +280,42 @@ impl cfn_resources::CfnResource for SourceConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.s3_bucket;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 's3_bucket'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.s3_bucket;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 's3_bucket'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 's3_bucket'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.s3_key;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 's3_key'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 's3_key'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.s3_key;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 's3_key'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 's3_key'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// The     AWS::Greengrass::SubscriptionDefinitionVersion resource represents a subscription definition version for AWS IoT Greengrass.     A subscription definition version contains a list of subscriptions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSubscriptionDefinitionVersion {
-
-
-    /// 
+    ///
     /// The ID of the subscription definition associated with this version. This value is a GUID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnSubscriptionDefinitionVersion {
     #[serde(rename = "SubscriptionDefinitionId")]
     pub subscription_definition_id: String,
 
-
-    /// 
+    ///
     /// The subscriptions in this version.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Subscription
@@ -27,10 +22,7 @@ pub struct CfnSubscriptionDefinitionVersion {
     /// Update requires: Replacement
     #[serde(rename = "Subscriptions")]
     pub subscriptions: Vec<Subscription>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSubscriptionDefinitionVersion {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnSubscriptionDefinitionVersion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -52,11 +43,9 @@ impl cfn_resources::CfnResource for CfnSubscriptionDefinitionVersion {
 /// In an AWS CloudFormation template, the Subscriptions 		 property of the AWS::Greengrass::SubscriptionDefinitionVersion resource contains a      list of Subscription property types.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Subscription {
-
-
-    /// 
+    ///
     /// A descriptive or arbitrary ID for the subscription. This value must be unique within       the subscription definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -65,10 +54,9 @@ pub struct Subscription {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// The originator of the message. The value can be a thing ARN, the ARN of a Lambda function alias (recommended) or version, a connector ARN, cloud (which represents the AWS IoT cloud), or GGShadowService.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -77,10 +65,9 @@ pub struct Subscription {
     #[serde(rename = "Source")]
     pub source: String,
 
-
-    /// 
+    ///
     /// The MQTT topic used to route the message.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -89,10 +76,9 @@ pub struct Subscription {
     #[serde(rename = "Subject")]
     pub subject: String,
 
-
-    /// 
+    ///
     /// The destination of the message. The value can be a thing ARN, the ARN of a Lambda function alias (recommended) or version, a connector ARN, cloud (which represents the AWS IoT cloud), or GGShadowService.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -100,10 +86,7 @@ pub struct Subscription {
     /// Update requires: Replacement
     #[serde(rename = "Target")]
     pub target: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Subscription {
     fn type_string(&self) -> &'static str {
@@ -115,7 +98,6 @@ impl cfn_resources::CfnResource for Subscription {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

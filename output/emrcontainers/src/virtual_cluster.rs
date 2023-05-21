@@ -1,13 +1,9 @@
-
-
 /// The AWS::EMRContainers::VirtualCluster resource specifies a virtual cluster. A virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list, and delete virtual clusters. They do not consume any additional resources in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVirtualCluster {
-
-
-    /// 
+    ///
     /// The container provider of the virtual cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ContainerProvider
@@ -16,10 +12,9 @@ pub struct CfnVirtualCluster {
     #[serde(rename = "ContainerProvider")]
     pub container_provider: ContainerProvider,
 
-
-    /// 
+    ///
     /// The name of the virtual cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -34,12 +29,11 @@ pub struct CfnVirtualCluster {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -47,10 +41,7 @@ pub struct CfnVirtualCluster {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnVirtualCluster {
     fn type_string(&self) -> &'static str {
@@ -62,23 +53,26 @@ impl cfn_resources::CfnResource for CfnVirtualCluster {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.container_provider.validate()?;
 
         let the_val = &self.name;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -86,11 +80,9 @@ impl cfn_resources::CfnResource for CfnVirtualCluster {
 /// The information about the container used for a job run or a managed endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ContainerInfo {
-
-
-    /// 
+    ///
     /// The information about the Amazon EKS cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: EksInfo
@@ -98,10 +90,7 @@ pub struct ContainerInfo {
     /// Update requires: Replacement
     #[serde(rename = "EksInfo")]
     pub eks_info: EksInfo,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ContainerInfo {
     fn type_string(&self) -> &'static str {
@@ -113,7 +102,6 @@ impl cfn_resources::CfnResource for ContainerInfo {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.eks_info.validate()?;
 
         Ok(())
@@ -123,17 +111,15 @@ impl cfn_resources::CfnResource for ContainerInfo {
 /// The information about the container provider.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ContainerProvider {
-
-
-    /// 
+    ///
     /// The ID of the container cluster.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 100
-    /// 
+    ///
     /// Pattern: ^[0-9A-Za-z][A-Za-z0-9\-_]*
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -142,10 +128,9 @@ pub struct ContainerProvider {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// The information about the container cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ContainerInfo
@@ -154,10 +139,9 @@ pub struct ContainerProvider {
     #[serde(rename = "Info")]
     pub info: ContainerInfo,
 
-
-    /// 
+    ///
     /// The type of the container provider. Amazon EKS is the only supported type as of now.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -167,17 +151,13 @@ pub struct ContainerProvider {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: ContainerProviderTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ContainerProviderTypeEnum {
-
     /// EKS
     #[serde(rename = "EKS")]
     Eks,
-
 }
 
 impl Default for ContainerProviderTypeEnum {
@@ -185,7 +165,6 @@ impl Default for ContainerProviderTypeEnum {
         ContainerProviderTypeEnum::Eks
     }
 }
-
 
 impl cfn_resources::CfnResource for ContainerProvider {
     fn type_string(&self) -> &'static str {
@@ -197,21 +176,24 @@ impl cfn_resources::CfnResource for ContainerProvider {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.id;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'id'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'id'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.info.validate()?;
 
         Ok(())
@@ -221,17 +203,15 @@ impl cfn_resources::CfnResource for ContainerProvider {
 /// The information about the Amazon EKS cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EksInfo {
-
-
-    /// 
+    ///
     /// The namespaces of the EKS cluster.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 63
-    /// 
+    ///
     /// Pattern: [a-z0-9]([-a-z0-9]*[a-z0-9])?
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -239,10 +219,7 @@ pub struct EksInfo {
     /// Update requires: Replacement
     #[serde(rename = "Namespace")]
     pub namespace: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EksInfo {
     fn type_string(&self) -> &'static str {
@@ -254,21 +231,24 @@ impl cfn_resources::CfnResource for EksInfo {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.namespace;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'namespace'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'namespace'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.namespace;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'namespace'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'namespace'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -282,32 +262,26 @@ impl cfn_resources::CfnResource for EksInfo {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -319,7 +293,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,5 +1,3 @@
-
-
 /// The AWS::Neptune::DBInstance type creates an Amazon Neptune DB instance.
 ///
 /// Updating DB Instances
@@ -11,13 +9,11 @@
 /// When properties labeled Update requires: Replacement are updated,      AWS CloudFormation first creates a       replacement DB instance, changes references from other dependent resources to point to       the replacement DB instance, and finally deletes the old DB instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBInstance {
-
-
-    /// 
+    ///
     /// Indicates that major version upgrades are allowed. Changing this    parameter doesn't result in an outage and the change is asynchronously    applied as soon as possible. This parameter must be set to true when specifying    a value for the EngineVersion parameter that is a different major version than    the DB instance's current version.
-    /// 
+    ///
     /// WarningWhen you change this parameter for an existing DB cluster, CloudFormation will replace your existing DB cluster    with a new, empty one that uses the engine version you specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -26,12 +22,11 @@ pub struct CfnDBInstance {
     #[serde(rename = "AllowMajorVersionUpgrade")]
     pub allow_major_version_upgrade: Option<bool>,
 
-
-    /// 
+    ///
     /// Indicates that minor version patches are applied automatically.
-    /// 
+    ///
     /// When updating this property, some interruptions may occur.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -40,10 +35,9 @@ pub struct CfnDBInstance {
     #[serde(rename = "AutoMinorVersionUpgrade")]
     pub auto_minor_version_upgrade: Option<bool>,
 
-
-    /// 
+    ///
     /// Specifies the name of the Availability Zone the DB instance is located in.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -52,10 +46,9 @@ pub struct CfnDBInstance {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// If the DB instance is a member of a DB cluster, contains the name of the DB cluster that    the DB instance is a member of.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -64,12 +57,11 @@ pub struct CfnDBInstance {
     #[serde(rename = "DBClusterIdentifier")]
     pub dbcluster_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// Contains the name of the compute and memory capacity class of the DB instance.
-    /// 
+    ///
     /// If you update this property, some interruptions may occur.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -78,10 +70,9 @@ pub struct CfnDBInstance {
     #[serde(rename = "DBInstanceClass")]
     pub dbinstance_class: String,
 
-
-    /// 
+    ///
     /// Contains a user-supplied database identifier. This identifier is the unique key that    identifies a DB instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -90,10 +81,9 @@ pub struct CfnDBInstance {
     #[serde(rename = "DBInstanceIdentifier")]
     pub dbinstance_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// The name of an existing DB parameter group or a reference to an        AWS::Neptune::DBParameterGroup resource created in the template.        If any of the data members of the referenced parameter          group are changed during an update, the DB instance might need to be restarted,          which causes some interruption. If the parameter group contains static parameters,          whether they were changed or not, an update triggers a reboot.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -102,14 +92,13 @@ pub struct CfnDBInstance {
     #[serde(rename = "DBParameterGroupName")]
     pub dbparameter_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// This parameter is not supported.
-    /// 
+    ///
     /// AWS::Neptune::DBInstance does not support restoring from snapshots.
-    /// 
+    ///
     /// AWS::Neptune::DBCluster does support restoring from snapshots.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -118,10 +107,9 @@ pub struct CfnDBInstance {
     #[serde(rename = "DBSnapshotIdentifier")]
     pub dbsnapshot_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// A DB subnet group to associate with the DB instance. If you update this value,          the new subnet group must be a subnet group in a new virtual private cloud          (VPC).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -130,10 +118,9 @@ pub struct CfnDBInstance {
     #[serde(rename = "DBSubnetGroupName")]
     pub dbsubnet_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the weekly time range during which system maintenance can occur, in Universal    Coordinated Time (UTC).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -142,10 +129,9 @@ pub struct CfnDBInstance {
     #[serde(rename = "PreferredMaintenanceWindow")]
     pub preferred_maintenance_window: Option<String>,
 
-
-    /// 
+    ///
     /// An arbitrary set of tags (key-value pairs) for this DB instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -153,10 +139,7 @@ pub struct CfnDBInstance {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDBInstance {
     fn type_string(&self) -> &'static str {
@@ -168,7 +151,6 @@ impl cfn_resources::CfnResource for CfnDBInstance {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -182,32 +164,26 @@ impl cfn_resources::CfnResource for CfnDBInstance {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -219,7 +195,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

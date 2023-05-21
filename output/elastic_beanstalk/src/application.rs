@@ -1,15 +1,11 @@
-
-
 /// The AWS::ElasticBeanstalk::Application resource is an AWS Elastic Beanstalk Beanstalk resource    type that specifies an Elastic Beanstalk application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
-
-
-    /// 
+    ///
     /// A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name. For    more information, see Name Type.
-    /// 
+    ///
     /// ImportantIf you specify a name, you cannot perform updates that require replacement of this     resource. You can perform updates that require no or some interruption. If you must replace     the resource, specify a new name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnApplication {
     #[serde(rename = "ApplicationName")]
     pub application_name: Option<String>,
 
-
-    /// 
+    ///
     /// Your description of the application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnApplication {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies an application resource lifecycle configuration to prevent your application    from accumulating too many versions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ApplicationResourceLifecycleConfig
@@ -47,10 +41,7 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "ResourceLifecycleConfig")]
     pub resource_lifecycle_config: Option<ApplicationResourceLifecycleConfig>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string(&self) -> &'static str {
@@ -62,32 +53,36 @@ impl cfn_resources::CfnResource for CfnApplication {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.application_name {
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.application_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.application_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.resource_lifecycle_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.resource_lifecycle_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -98,13 +93,11 @@ impl cfn_resources::CfnResource for CfnApplication {
 /// ApplicationResourceLifecycleConfig is a property of the AWS::ElasticBeanstalk::Application resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ApplicationResourceLifecycleConfig {
-
-
-    /// 
+    ///
     /// The ARN of an IAM service role that Elastic Beanstalk has permission to    assume.
-    /// 
+    ///
     /// The ServiceRole property is required the first time that you provide a ResourceLifecycleConfig for the application.    After you provide it once, Elastic Beanstalk persists the Service Role with the application, and you don't need to specify it again.    You can, however, specify it in subsequent updates to change the Service Role to another value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -113,10 +106,9 @@ pub struct ApplicationResourceLifecycleConfig {
     #[serde(rename = "ServiceRole")]
     pub service_role: Option<String>,
 
-
-    /// 
+    ///
     /// Defines lifecycle settings for application versions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ApplicationVersionLifecycleConfig
@@ -124,10 +116,7 @@ pub struct ApplicationResourceLifecycleConfig {
     /// Update requires: No interruption
     #[serde(rename = "VersionLifecycleConfig")]
     pub version_lifecycle_config: Option<ApplicationVersionLifecycleConfig>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ApplicationResourceLifecycleConfig {
     fn type_string(&self) -> &'static str {
@@ -139,8 +128,9 @@ impl cfn_resources::CfnResource for ApplicationResourceLifecycleConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.version_lifecycle_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.version_lifecycle_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -153,11 +143,9 @@ impl cfn_resources::CfnResource for ApplicationResourceLifecycleConfig {
 /// ApplicationVersionLifecycleConfig is a property of the ApplicationResourceLifecycleConfig    property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ApplicationVersionLifecycleConfig {
-
-
-    /// 
+    ///
     /// Specify a max age rule to restrict the length of time that application versions are    retained for an application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MaxAgeRule
@@ -166,10 +154,9 @@ pub struct ApplicationVersionLifecycleConfig {
     #[serde(rename = "MaxAgeRule")]
     pub max_age_rule: Option<MaxAgeRule>,
 
-
-    /// 
+    ///
     /// Specify a max count rule to restrict the number of application versions that are    retained for an application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MaxCountRule
@@ -177,10 +164,7 @@ pub struct ApplicationVersionLifecycleConfig {
     /// Update requires: No interruption
     #[serde(rename = "MaxCountRule")]
     pub max_count_rule: Option<MaxCountRule>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ApplicationVersionLifecycleConfig {
     fn type_string(&self) -> &'static str {
@@ -192,10 +176,13 @@ impl cfn_resources::CfnResource for ApplicationVersionLifecycleConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.max_age_rule
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.max_age_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.max_count_rule.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.max_count_rule
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -206,11 +193,9 @@ impl cfn_resources::CfnResource for ApplicationVersionLifecycleConfig {
 /// MaxAgeRule is a property of the ApplicationVersionLifecycleConfig    property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MaxAgeRule {
-
-
-    /// 
+    ///
     /// Set to true to delete a version's source bundle from Amazon S3 when    Elastic Beanstalk deletes the application version.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -219,10 +204,9 @@ pub struct MaxAgeRule {
     #[serde(rename = "DeleteSourceFromS3")]
     pub delete_source_from_s3: Option<bool>,
 
-
-    /// 
+    ///
     /// Specify true to apply the rule, or false to disable    it.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -231,10 +215,9 @@ pub struct MaxAgeRule {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// Specify the number of days to retain an application versions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -242,10 +225,7 @@ pub struct MaxAgeRule {
     /// Update requires: No interruption
     #[serde(rename = "MaxAgeInDays")]
     pub max_age_in_days: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MaxAgeRule {
     fn type_string(&self) -> &'static str {
@@ -257,7 +237,6 @@ impl cfn_resources::CfnResource for MaxAgeRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -267,11 +246,9 @@ impl cfn_resources::CfnResource for MaxAgeRule {
 /// MaxCountRule is a property of the ApplicationVersionLifecycleConfig    property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MaxCountRule {
-
-
-    /// 
+    ///
     /// Set to true to delete a version's source bundle from Amazon S3 when    Elastic Beanstalk deletes the application version.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -280,10 +257,9 @@ pub struct MaxCountRule {
     #[serde(rename = "DeleteSourceFromS3")]
     pub delete_source_from_s3: Option<bool>,
 
-
-    /// 
+    ///
     /// Specify true to apply the rule, or false to disable    it.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -292,10 +268,9 @@ pub struct MaxCountRule {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// Specify the maximum number of application versions to retain.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -303,10 +278,7 @@ pub struct MaxCountRule {
     /// Update requires: No interruption
     #[serde(rename = "MaxCount")]
     pub max_count: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MaxCountRule {
     fn type_string(&self) -> &'static str {
@@ -318,7 +290,6 @@ impl cfn_resources::CfnResource for MaxCountRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

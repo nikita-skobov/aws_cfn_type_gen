@@ -1,13 +1,9 @@
-
-
 /// The AWS::CertificateManager::Account resource defines the expiry event     configuration that determines the number of days prior to expiry when ACM starts generating     EventBridge events.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccount {
-
-
-    /// 
+    ///
     /// Object containing expiration events options associated with an AWS account. For more information, see ExpiryEventsConfiguration in the API reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ExpiryEventsConfiguration
@@ -15,10 +11,7 @@ pub struct CfnAccount {
     /// Update requires: No interruption
     #[serde(rename = "ExpiryEventsConfiguration")]
     pub expiry_events_configuration: ExpiryEventsConfiguration,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnAccount {
     fn type_string(&self) -> &'static str {
@@ -30,7 +23,6 @@ impl cfn_resources::CfnResource for CfnAccount {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.expiry_events_configuration.validate()?;
 
         Ok(())
@@ -40,11 +32,9 @@ impl cfn_resources::CfnResource for CfnAccount {
 /// Object containing expiration events options associated with an AWS account. For more information, see ExpiryEventsConfiguration in the API reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ExpiryEventsConfiguration {
-
-
-    /// 
+    ///
     /// This option specifies the number of days prior to certificate expiration when ACM starts     generating EventBridge events. ACM sends one event per day per certificate     until the certificate expires. By default, accounts receive events starting 45 days before     certificate expiration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -52,10 +42,7 @@ pub struct ExpiryEventsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "DaysBeforeExpiry")]
     pub days_before_expiry: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ExpiryEventsConfiguration {
     fn type_string(&self) -> &'static str {
@@ -67,7 +54,6 @@ impl cfn_resources::CfnResource for ExpiryEventsConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

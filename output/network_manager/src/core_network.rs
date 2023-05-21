@@ -1,13 +1,9 @@
-
-
 /// Describes a core network.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCoreNetwork {
-
-
-    /// 
+    ///
     /// The description of a core network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnCoreNetwork {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the global network that your core network is a part of.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -40,12 +35,11 @@ pub struct CfnCoreNetwork {
     #[serde(rename = "GlobalNetworkId")]
     pub global_network_id: String,
 
-
-    /// 
+    ///
     /// Describes a core network policy. For more information, see Core network policies.
-    /// 
+    ///
     /// If you update the policy document, CloudFormation will apply the core network change set generated from the updated policy document, and then set it as the LIVE policy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -54,10 +48,9 @@ pub struct CfnCoreNetwork {
     #[serde(rename = "PolicyDocument")]
     pub policy_document: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// The list of key-value tags associated with a core network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -65,10 +58,7 @@ pub struct CfnCoreNetwork {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCoreNetwork {
     fn type_string(&self) -> &'static str {
@@ -80,37 +70,42 @@ impl cfn_resources::CfnResource for CfnCoreNetwork {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.global_network_id;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'global_network_id'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'global_network_id'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.global_network_id;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'global_network_id'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'global_network_id'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -118,11 +113,9 @@ impl cfn_resources::CfnResource for CfnCoreNetwork {
 /// Describes a core network edge.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CoreNetworkEdge {
-
-
-    /// 
+    ///
     /// The ASN of a core network edge.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -131,10 +124,9 @@ pub struct CoreNetworkEdge {
     #[serde(rename = "Asn")]
     pub asn: Option<f64>,
 
-
-    /// 
+    ///
     /// The Region where a core network edge is located.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -149,10 +141,9 @@ pub struct CoreNetworkEdge {
     #[serde(rename = "EdgeLocation")]
     pub edge_location: Option<String>,
 
-
-    /// 
+    ///
     /// The inside IP addresses used for core network edges.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -160,10 +151,7 @@ pub struct CoreNetworkEdge {
     /// Update requires: No interruption
     #[serde(rename = "InsideCidrBlocks")]
     pub inside_cidr_blocks: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CoreNetworkEdge {
     fn type_string(&self) -> &'static str {
@@ -175,23 +163,24 @@ impl cfn_resources::CfnResource for CoreNetworkEdge {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.edge_location {
+            if the_val.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'edge_location'. {} is greater than 63",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.edge_location {
-
-        if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'edge_location'. {} is greater than 63", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'edge_location'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.edge_location {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'edge_location'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -199,11 +188,9 @@ impl cfn_resources::CfnResource for CoreNetworkEdge {
 /// Describes a core network segment, which are dedicated routes. Only attachments within this segment can communicate with each other.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CoreNetworkSegment {
-
-
-    /// 
+    ///
     /// The Regions where the edges are located.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -212,10 +199,9 @@ pub struct CoreNetworkSegment {
     #[serde(rename = "EdgeLocations")]
     pub edge_locations: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The name of a core network segment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -230,10 +216,9 @@ pub struct CoreNetworkSegment {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The shared segments of a core network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -241,10 +226,7 @@ pub struct CoreNetworkSegment {
     /// Update requires: No interruption
     #[serde(rename = "SharedSegments")]
     pub shared_segments: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CoreNetworkSegment {
     fn type_string(&self) -> &'static str {
@@ -256,23 +238,24 @@ impl cfn_resources::CfnResource for CoreNetworkSegment {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.name {
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.name {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -286,32 +269,26 @@ impl cfn_resources::CfnResource for CoreNetworkSegment {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -323,7 +300,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

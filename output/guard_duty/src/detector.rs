@@ -1,15 +1,11 @@
-
-
 /// The AWS::GuardDuty::Detector resource specifies a new detector. A detector is an object that          represents the service. A detector is          required for to become operational.
 ///
 /// Make sure you use either DataSources or          Features in a one request, and not both.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDetector {
-
-
-    /// 
+    ///
     /// Describes which data sources will be enabled for the detector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CFNDataSourceConfigurations
@@ -18,10 +14,9 @@ pub struct CfnDetector {
     #[serde(rename = "DataSources")]
     pub data_sources: Option<CFNDataSourceConfigurations>,
 
-
-    /// 
+    ///
     /// Specifies whether the detector is to be enabled on creation.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -30,10 +25,9 @@ pub struct CfnDetector {
     #[serde(rename = "Enable")]
     pub enable: bool,
 
-
-    /// 
+    ///
     /// A list of features that will be configured for the detector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of FeatureConfigurations
@@ -42,10 +36,9 @@ pub struct CfnDetector {
     #[serde(rename = "Features")]
     pub features: Option<Vec<FeatureConfigurations>>,
 
-
-    /// 
+    ///
     /// Specifies how frequently updated findings are exported.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -56,14 +49,13 @@ pub struct CfnDetector {
     #[serde(rename = "FindingPublishingFrequency")]
     pub finding_publishing_frequency: Option<DetectorFindingPublishingFrequencyEnum>,
 
-
-    /// 
+    ///
     /// Specifies tags added to a new detector resource. Each tag consists of a key and an          optional value, both of which you define.
-    /// 
+    ///
     /// Currently, support is available only for creating and deleting a tag. No support       exists for updating the tags.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -71,13 +63,10 @@ pub struct CfnDetector {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DetectorFindingPublishingFrequencyEnum {
-
     /// FIFTEEN_MINUTES
     #[serde(rename = "FIFTEEN_MINUTES")]
     Fifteenminutes,
@@ -89,7 +78,6 @@ pub enum DetectorFindingPublishingFrequencyEnum {
     /// SIX_HOURS
     #[serde(rename = "SIX_HOURS")]
     Sixhours,
-
 }
 
 impl Default for DetectorFindingPublishingFrequencyEnum {
@@ -97,7 +85,6 @@ impl Default for DetectorFindingPublishingFrequencyEnum {
         DetectorFindingPublishingFrequencyEnum::Fifteenminutes
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnDetector {
     fn type_string(&self) -> &'static str {
@@ -109,8 +96,9 @@ impl cfn_resources::CfnResource for CfnDetector {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.data_sources.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.data_sources
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -119,11 +107,9 @@ impl cfn_resources::CfnResource for CfnDetector {
 /// Describes whether S3 data event logs, Kubernetes audit logs, or Malware Protection          will be enabled as a data source when the detector is created.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CFNDataSourceConfigurations {
-
-
-    /// 
+    ///
     /// Describes which Kubernetes data sources are enabled for a detector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CFNKubernetesConfiguration
@@ -132,10 +118,9 @@ pub struct CFNDataSourceConfigurations {
     #[serde(rename = "Kubernetes")]
     pub kubernetes: Option<CFNKubernetesConfiguration>,
 
-
-    /// 
+    ///
     /// Describes whether Malware Protection will be enabled as a data source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CFNMalwareProtectionConfiguration
@@ -144,10 +129,9 @@ pub struct CFNDataSourceConfigurations {
     #[serde(rename = "MalwareProtection")]
     pub malware_protection: Option<CFNMalwareProtectionConfiguration>,
 
-
-    /// 
+    ///
     /// Describes whether S3 data event logs are enabled as a data source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CFNS3LogsConfiguration
@@ -155,10 +139,7 @@ pub struct CFNDataSourceConfigurations {
     /// Update requires: No interruption
     #[serde(rename = "S3Logs")]
     pub s3_logs: Option<CFNS3LogsConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CFNDataSourceConfigurations {
     fn type_string(&self) -> &'static str {
@@ -170,10 +151,13 @@ impl cfn_resources::CfnResource for CFNDataSourceConfigurations {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.kubernetes
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.kubernetes.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.malware_protection.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.malware_protection
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.s3_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -184,11 +168,9 @@ impl cfn_resources::CfnResource for CFNDataSourceConfigurations {
 /// Describes which optional data sources are enabled for a detector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CFNKubernetesAuditLogsConfiguration {
-
-
-    /// 
+    ///
     /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -196,10 +178,7 @@ pub struct CFNKubernetesAuditLogsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Enable")]
     pub enable: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CFNKubernetesAuditLogsConfiguration {
     fn type_string(&self) -> &'static str {
@@ -211,7 +190,6 @@ impl cfn_resources::CfnResource for CFNKubernetesAuditLogsConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -219,11 +197,9 @@ impl cfn_resources::CfnResource for CFNKubernetesAuditLogsConfiguration {
 /// Describes which Kubernetes protection data sources are enabled for the          detector.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CFNKubernetesConfiguration {
-
-
-    /// 
+    ///
     /// Describes whether Kubernetes audit logs are enabled as a data source for the          detector.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CFNKubernetesAuditLogsConfiguration
@@ -231,10 +207,7 @@ pub struct CFNKubernetesConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AuditLogs")]
     pub audit_logs: Option<CFNKubernetesAuditLogsConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CFNKubernetesConfiguration {
     fn type_string(&self) -> &'static str {
@@ -246,8 +219,9 @@ impl cfn_resources::CfnResource for CFNKubernetesConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.audit_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.audit_logs
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -256,11 +230,9 @@ impl cfn_resources::CfnResource for CFNKubernetesConfiguration {
 /// Describes whether Malware Protection will be enabled as a data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CFNMalwareProtectionConfiguration {
-
-
-    /// 
+    ///
     /// Describes the configuration of Malware Protection for EC2 instances with          findings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CFNScanEc2InstanceWithFindingsConfiguration
@@ -268,10 +240,7 @@ pub struct CFNMalwareProtectionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ScanEc2InstanceWithFindings")]
     pub scan_ec2_instance_with_findings: Option<CFNScanEc2InstanceWithFindingsConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CFNMalwareProtectionConfiguration {
     fn type_string(&self) -> &'static str {
@@ -283,8 +252,9 @@ impl cfn_resources::CfnResource for CFNMalwareProtectionConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.scan_ec2_instance_with_findings.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.scan_ec2_instance_with_findings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -293,11 +263,9 @@ impl cfn_resources::CfnResource for CFNMalwareProtectionConfiguration {
 /// Describes whether S3 data event logs will be enabled as a data source when the          detector is created.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CFNS3LogsConfiguration {
-
-
-    /// 
+    ///
     /// The status of S3 data event logs as a data source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -305,10 +273,7 @@ pub struct CFNS3LogsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Enable")]
     pub enable: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CFNS3LogsConfiguration {
     fn type_string(&self) -> &'static str {
@@ -320,7 +285,6 @@ impl cfn_resources::CfnResource for CFNS3LogsConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -328,11 +292,9 @@ impl cfn_resources::CfnResource for CFNS3LogsConfiguration {
 /// Describes whether Malware Protection for EC2 instances with findings will be          enabled as a data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CFNScanEc2InstanceWithFindingsConfiguration {
-
-
-    /// 
+    ///
     /// Describes the configuration for scanning EBS volumes as data source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -340,10 +302,7 @@ pub struct CFNScanEc2InstanceWithFindingsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "EbsVolumes")]
     pub ebs_volumes: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CFNScanEc2InstanceWithFindingsConfiguration {
     fn type_string(&self) -> &'static str {
@@ -355,7 +314,6 @@ impl cfn_resources::CfnResource for CFNScanEc2InstanceWithFindingsConfiguration 
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -365,11 +323,9 @@ impl cfn_resources::CfnResource for CFNScanEc2InstanceWithFindingsConfiguration 
 /// If you're providing additional configuration, ensure to provide the corresponding       FeatureConfigurations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FeatureAdditionalConfiguration {
-
-
-    /// 
+    ///
     /// Name of the additional configuration of a feature.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -378,10 +334,9 @@ pub struct FeatureAdditionalConfiguration {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// Status of the additional configuration of a feature.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -389,10 +344,7 @@ pub struct FeatureAdditionalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     pub status: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FeatureAdditionalConfiguration {
     fn type_string(&self) -> &'static str {
@@ -404,7 +356,6 @@ impl cfn_resources::CfnResource for FeatureAdditionalConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -414,11 +365,9 @@ impl cfn_resources::CfnResource for FeatureAdditionalConfiguration {
 /// Although the Required field associated with the following properties specifies          No, if you provide information for Name, you will need to          provide the information for Status too. For information about the available feature configurations, see          DetectorFeatureConfiguration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FeatureConfigurations {
-
-
-    /// 
+    ///
     /// Additional configuration of the feature.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of FeatureAdditionalConfiguration
@@ -427,10 +376,9 @@ pub struct FeatureConfigurations {
     #[serde(rename = "AdditionalConfiguration")]
     pub additional_configuration: Option<Vec<FeatureAdditionalConfiguration>>,
 
-
-    /// 
+    ///
     /// Name of the feature.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -439,10 +387,9 @@ pub struct FeatureConfigurations {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// Status of the feature.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -450,10 +397,7 @@ pub struct FeatureConfigurations {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     pub status: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FeatureConfigurations {
     fn type_string(&self) -> &'static str {
@@ -465,7 +409,6 @@ impl cfn_resources::CfnResource for FeatureConfigurations {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -479,32 +422,26 @@ impl cfn_resources::CfnResource for FeatureConfigurations {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -516,7 +453,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

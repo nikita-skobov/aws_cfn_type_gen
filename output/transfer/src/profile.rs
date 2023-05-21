@@ -1,13 +1,9 @@
-
-
 /// Creates the local or partner profile to use for AS2 transfers.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProfile {
-
-
-    /// 
+    ///
     /// The As2Id is the AS2-name, as defined in the   RFC 4130. For inbound transfers, this is the AS2-From header for the AS2 messages    sent from the partner. For outbound connectors, this is the AS2-To header for the    AS2 messages sent to the partner using the StartFileTransfer API operation. This ID cannot include spaces.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnProfile {
     #[serde(rename = "As2Id")]
     pub as2_id: String,
 
-
-    /// 
+    ///
     /// An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -34,10 +29,9 @@ pub struct CfnProfile {
     #[serde(rename = "CertificateIds")]
     pub certificate_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Indicates whether to list only LOCAL type profiles or only PARTNER type profiles.   If not supplied in the request, the command lists all types of profiles.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -48,10 +42,9 @@ pub struct CfnProfile {
     #[serde(rename = "ProfileType")]
     pub profile_type: ProfileProfileTypeEnum,
 
-
-    /// 
+    ///
     /// Key-value pairs that can be used to group and search for profiles.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -61,13 +54,10 @@ pub struct CfnProfile {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ProfileProfileTypeEnum {
-
     /// LOCAL
     #[serde(rename = "LOCAL")]
     Local,
@@ -75,7 +65,6 @@ pub enum ProfileProfileTypeEnum {
     /// PARTNER
     #[serde(rename = "PARTNER")]
     Partner,
-
 }
 
 impl Default for ProfileProfileTypeEnum {
@@ -83,7 +72,6 @@ impl Default for ProfileProfileTypeEnum {
         ProfileProfileTypeEnum::Local
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnProfile {
     fn type_string(&self) -> &'static str {
@@ -95,29 +83,33 @@ impl cfn_resources::CfnResource for CfnProfile {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.as2_id;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'as2_id'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'as2_id'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.as2_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'as2_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'as2_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -131,32 +123,26 @@ impl cfn_resources::CfnResource for CfnProfile {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -168,7 +154,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

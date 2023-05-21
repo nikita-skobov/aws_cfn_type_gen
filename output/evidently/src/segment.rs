@@ -1,5 +1,3 @@
-
-
 /// Creates or updates a segment of your audience. A segment    is a portion of your audience that share one or more characteristics. Examples could be Chrome browser users,    users in Europe, or Firefox browser users in Europe who also fit other criteria that your application collects,    such as age.
 ///
 /// Using a segment in an experiment limits that experiment to evaluate only the users who match the segment      criteria. Using one or more segments in a launch allow you to define different traffic splits for the different      audience segments.
@@ -9,8 +7,6 @@
 /// The pattern that you define for a segment is matched against the value of evaluationContext, which      is passed into Evidently in the EvaluateFeature operation,      when Evidently assigns a feature variation to a user.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSegment {
-
-
     /// An optional description for this segment.
     ///
     /// Required: No
@@ -20,7 +16,6 @@ pub struct CfnSegment {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
 
     /// A name for the segment.
     ///
@@ -32,8 +27,7 @@ pub struct CfnSegment {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The pattern to use for the segment. For more information about pattern syntax,     see       Segment rule pattern syntax.
     ///
     /// Required: No
@@ -44,16 +38,15 @@ pub struct CfnSegment {
     #[serde(rename = "Pattern")]
     pub pattern: Option<String>,
 
-
-    /// 
+    ///
     /// Assigns one or more tags (key-value pairs) to the feature.
-    /// 
+    ///
     /// Tags can help you organize and categorize your resources. You can also use them to scope user         permissions by granting a user         permission to access or change only resources with certain tag values.
-    /// 
+    ///
     /// Tags don't have any semantic meaning to AWS and are interpreted strictly as strings of characters.
-    /// 
+    ///
     /// You can associate as many as 50 tags with a feature.
-    /// 
+    ///
     /// For more information, see Tagging         AWS resources.
     ///
     /// Required: No
@@ -63,10 +56,7 @@ pub struct CfnSegment {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSegment {
     fn type_string(&self) -> &'static str {
@@ -78,7 +68,6 @@ impl cfn_resources::CfnResource for CfnSegment {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -92,32 +81,26 @@ impl cfn_resources::CfnResource for CfnSegment {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -129,7 +112,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

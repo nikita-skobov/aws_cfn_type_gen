@@ -1,5 +1,3 @@
-
-
 /// Specifies an Elastic IP (EIP) address and can, optionally, associate it with an Amazon       EC2 instance.
 ///
 /// You can allocate an Elastic IP address from an address pool owned by AWS or from an address pool created from a public IPv4 address range that you have brought       to AWS for use with your AWS resources using bring your       own IP addresses (BYOIP). For more information, see Bring Your Own IP Addresses (BYOIP)       in the Amazon EC2 User Guide.
@@ -7,13 +5,11 @@
 /// For more information, see Elastic IP Addresses       in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEIP {
-
-
-    /// 
+    ///
     /// The network (vpc).
-    /// 
+    ///
     /// If you define an Elastic IP address and associate it with a VPC that is defined in the       same template, you must declare a dependency on the VPC-gateway attachment by using the       DependsOn         Attribute on this resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -24,12 +20,11 @@ pub struct CfnEIP {
     #[serde(rename = "Domain")]
     pub domain: Option<EIPDomainEnum>,
 
-
-    /// 
+    ///
     /// The ID of the instance.
-    /// 
+    ///
     /// ImportantUpdates to the InstanceId property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -38,14 +33,13 @@ pub struct CfnEIP {
     #[serde(rename = "InstanceId")]
     pub instance_id: Option<String>,
 
-
-    /// 
+    ///
     /// A unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS    advertises IP addresses. Use this parameter to limit the IP address to this location. IP    addresses cannot move between network border groups.
-    /// 
+    ///
     /// Use DescribeAvailabilityZones to view the network border groups.
-    /// 
+    ///
     /// You cannot use a network border group with EC2 Classic. If you attempt this operation on EC2 Classic,    you receive an InvalidParameterCombination error.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -54,12 +48,11 @@ pub struct CfnEIP {
     #[serde(rename = "NetworkBorderGroup")]
     pub network_border_group: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of an address pool that you own. Use this parameter to let Amazon EC2 select an       address from the address pool.
-    /// 
+    ///
     /// ImportantUpdates to the PublicIpv4Pool property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -68,12 +61,11 @@ pub struct CfnEIP {
     #[serde(rename = "PublicIpv4Pool")]
     pub public_ipv4_pool: Option<String>,
 
-
-    /// 
+    ///
     /// Any tags assigned to the Elastic IP address.
-    /// 
+    ///
     /// ImportantUpdates to the Tags property may require some         interruptions. Updates on an EIP reassociates the address on its         associated resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -82,10 +74,9 @@ pub struct CfnEIP {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The Elastic IP address you are accepting for transfer. You can only accept one transferred address. For more information on Elastic IP address transfers, see Transfer Elastic IP addresses in the Amazon Virtual Private Cloud User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -93,13 +84,10 @@ pub struct CfnEIP {
     /// Update requires: Replacement
     #[serde(rename = "TransferAddress")]
     pub transfer_address: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EIPDomainEnum {
-
     /// standard
     #[serde(rename = "standard")]
     Standard,
@@ -107,7 +95,6 @@ pub enum EIPDomainEnum {
     /// vpc
     #[serde(rename = "vpc")]
     Vpc,
-
 }
 
 impl Default for EIPDomainEnum {
@@ -115,7 +102,6 @@ impl Default for EIPDomainEnum {
         EIPDomainEnum::Standard
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnEIP {
     fn type_string(&self) -> &'static str {
@@ -127,7 +113,6 @@ impl cfn_resources::CfnResource for CfnEIP {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -141,32 +126,26 @@ impl cfn_resources::CfnResource for CfnEIP {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -178,7 +157,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// The     AWS::Greengrass::CoreDefinitionVersion resource represents a core definition version for AWS IoT Greengrass.     A core definition version contains a Greengrass core.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCoreDefinitionVersion {
-
-
-    /// 
+    ///
     /// The ID of the core definition associated with this version. This value is a GUID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnCoreDefinitionVersion {
     #[serde(rename = "CoreDefinitionId")]
     pub core_definition_id: String,
 
-
-    /// 
+    ///
     /// The Greengrass core in this version. Currently, the Cores property for a core definition version can contain only one core.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Core
@@ -27,10 +22,7 @@ pub struct CfnCoreDefinitionVersion {
     /// Update requires: Replacement
     #[serde(rename = "Cores")]
     pub cores: Vec<Core>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCoreDefinitionVersion {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnCoreDefinitionVersion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -52,11 +43,9 @@ impl cfn_resources::CfnResource for CfnCoreDefinitionVersion {
 /// In an AWS CloudFormation template, the Cores 		 property of the AWS::Greengrass::CoreDefinitionVersion resource contains a      list of Core property types. Currently, the list can contain only one core.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Core {
-
-
-    /// 
+    ///
     /// The ARN of the device certificate for the core. This X.509 certificate is used to authenticate           the core with AWS IoT and AWS IoT Greengrass services.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -65,10 +54,9 @@ pub struct Core {
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: String,
 
-
-    /// 
+    ///
     /// A descriptive or arbitrary ID for the core. This value must be unique within the core definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -77,10 +65,9 @@ pub struct Core {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// Indicates whether the core's local shadow is synced with the cloud automatically. 				 The default is false.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -89,10 +76,9 @@ pub struct Core {
     #[serde(rename = "SyncShadow")]
     pub sync_shadow: Option<bool>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the core, which is an AWS IoT device (thing).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -100,10 +86,7 @@ pub struct Core {
     /// Update requires: Replacement
     #[serde(rename = "ThingArn")]
     pub thing_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Core {
     fn type_string(&self) -> &'static str {
@@ -115,7 +98,6 @@ impl cfn_resources::CfnResource for Core {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

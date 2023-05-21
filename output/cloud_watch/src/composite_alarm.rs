@@ -1,5 +1,3 @@
-
-
 /// The AWS::CloudWatch::CompositeAlarm type creates or updates a composite alarm. When you create       a composite alarm, you specify a rule expression for the alarm that takes into       account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state       only if all conditions of the rule are met.
 ///
 /// The alarms specified in a composite alarm's rule expression can include metric alarms and other composite alarms.
@@ -13,11 +11,9 @@
 /// When you update an existing alarm, its state is left unchanged, but the update completely overwrites the previous configuration of the alarm.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCompositeAlarm {
-
-
-    /// 
+    ///
     /// Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. The default is TRUE.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -26,10 +22,9 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "ActionsEnabled")]
     pub actions_enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// Actions will be suppressed       if the suppressor alarm is       in the ALARM state.       ActionsSuppressor can be an AlarmName or an Amazon Resource Name (ARN)       from an existing alarm.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -38,12 +33,11 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "ActionsSuppressor")]
     pub actions_suppressor: Option<String>,
 
-
-    /// 
+    ///
     /// The maximum time     in seconds     that the composite alarm waits     after suppressor alarm goes out     of the ALARM state.     After this time,     the composite alarm performs its actions.
-    /// 
+    ///
     /// Important         ExtensionPeriod         is required only         when ActionsSuppressor is specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -52,11 +46,10 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "ActionsSuppressorExtensionPeriod")]
     pub actions_suppressor_extension_period: Option<i64>,
 
-
     /// The maximum time     in seconds     that the composite alarm waits     for the suppressor alarm     to go     into the ALARM state.     After this time,     the composite alarm performs its actions.
-    /// 
+    ///
     /// Important         WaitPeriod         is required only         when ActionsSuppressor is specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -65,10 +58,9 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "ActionsSuppressorWaitPeriod")]
     pub actions_suppressor_wait_period: Option<i64>,
 
-
-    /// 
+    ///
     /// The actions to execute when this alarm transitions to the ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions     that you can specify, see PutCompositeAlarm in the     Amazon CloudWatch API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -77,10 +69,9 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "AlarmActions")]
     pub alarm_actions: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The description for the composite alarm.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -89,10 +80,9 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "AlarmDescription")]
     pub alarm_description: Option<String>,
 
-
-    /// 
+    ///
     /// The name for the composite alarm. This name must be unique within your AWS account.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -101,20 +91,19 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "AlarmName")]
     pub alarm_name: Option<String>,
 
-
-    /// 
+    ///
     /// An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state. For each       alarm that you reference, you designate a function that specifies whether that alarm needs to be in ALARM state, OK state,       or INSUFFICIENT_DATA state. You can use operators (AND, OR and NOT) to combine multiple functions in a       single expression. You can use parenthesis to logically group the functions in your expression.
-    /// 
+    ///
     /// You can use either alarm names or ARNs to reference the other alarms that are to be evaluated.
-    /// 
+    ///
     /// Functions can include the following:
-    /// 
+    ///
     /// ALARM("alarm-name or alarm-ARN") is TRUE if the named alarm is in ALARM state.                                  OK("alarm-name or alarm-ARN") is TRUE if the named alarm is in OK state.                                  INSUFFICIENT_DATA("alarm-name or alarm-ARN") is TRUE if the named alarm is in INSUFFICIENT_DATA state.                        TRUE always evaluates to TRUE.               FALSE always evaluates to FALSE.
-    /// 
+    ///
     /// TRUE and FALSE are useful for testing a complex AlarmRule structure, and for testing your alarm actions.
-    /// 
+    ///
     /// For more information about AlarmRule syntax, see PutCompositeAlarm in the     Amazon CloudWatch API Reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -123,10 +112,9 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "AlarmRule")]
     pub alarm_rule: String,
 
-
-    /// 
+    ///
     /// The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions       that you can specify, see PutCompositeAlarm in the       Amazon CloudWatch API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -135,10 +123,9 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "InsufficientDataActions")]
     pub insufficient_data_actions: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The actions to execute when this alarm transitions to the OK state from any other state. Each action is specified as an Amazon Resource Name (ARN).       For more information about creating alarms and the actions       that you can specify, see PutCompositeAlarm in the       Amazon CloudWatch API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -146,10 +133,7 @@ pub struct CfnCompositeAlarm {
     /// Update requires: No interruption
     #[serde(rename = "OKActions")]
     pub okactions: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCompositeAlarm {
     fn type_string(&self) -> &'static str {
@@ -161,7 +145,6 @@ impl cfn_resources::CfnResource for CfnCompositeAlarm {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

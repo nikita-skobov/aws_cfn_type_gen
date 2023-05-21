@@ -1,13 +1,9 @@
-
-
 /// Specifies an OpenSearch Serverless collection. For more information, see Creating and managing Amazon OpenSearch Serverless collections in the Amazon OpenSearch         Service Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCollection {
-
-
-    /// 
+    ///
     /// A description of the collection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,14 +12,13 @@ pub struct CfnCollection {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the collection.
-    /// 
+    ///
     /// Collection names must meet the following criteria:
-    /// 
+    ///
     /// Starts with a lowercase letterUnique to your account and AWS RegionContains between 3 and 28 charactersContains only lowercase letters a-z, the numbers 0-9, and the hyphen (-)
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -32,12 +27,11 @@ pub struct CfnCollection {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// An arbitrary set of tags (key–value pairs) to associate with the collection.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -46,10 +40,9 @@ pub struct CfnCollection {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of collection. Possible values are SEARCH and         TIMESERIES. For more information, see Choosing a collection type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -57,10 +50,7 @@ pub struct CfnCollection {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCollection {
     fn type_string(&self) -> &'static str {
@@ -72,7 +62,6 @@ impl cfn_resources::CfnResource for CfnCollection {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -86,32 +75,26 @@ impl cfn_resources::CfnResource for CfnCollection {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -123,7 +106,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,5 +1,3 @@
-
-
 /// Creates an inference experiment using the configurations specified in the request.
 ///
 /// Use this API to setup and schedule an experiment to compare model variants on a Amazon SageMaker inference endpoint. For      more information about inference experiments, see Shadow tests.
@@ -9,11 +7,9 @@
 /// While the experiment is in progress or after it has concluded, you can view metrics that compare your model      variants. For more information, see View, monitor, and edit shadow tests.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInferenceExperiment {
-
-
-    /// 
+    ///
     /// The Amazon S3 location and configuration for storing inference request and response data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataStorageConfig
@@ -22,10 +18,9 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "DataStorageConfig")]
     pub data_storage_config: Option<DataStorageConfig>,
 
-
-    /// 
+    ///
     /// The description of the inference experiment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -38,12 +33,11 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The desired state of the experiment after stopping. The possible states are the following:
-    /// 
+    ///
     /// Completed: The experiment completed successfully                        Cancelled: The experiment was canceled
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -54,10 +48,9 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "DesiredState")]
     pub desired_state: Option<InferenceExperimentDesiredStateEnum>,
 
-
-    /// 
+    ///
     /// The name of the endpoint.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -70,10 +63,9 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "EndpointName")]
     pub endpoint_name: String,
 
-
-    /// 
+    ///
     /// The AWS Key Management Service key that Amazon SageMaker uses to encrypt captured data at rest using Amazon S3      server-side encryption.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -86,10 +78,9 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "KmsKey")]
     pub kms_key: Option<String>,
 
-
-    /// 
+    ///
     /// An array of ModelVariantConfigSummary objects. There is one for each variant in the inference      experiment. Each ModelVariantConfigSummary object in the array describes the infrastructure      configuration for deploying the corresponding variant.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ModelVariantConfig
@@ -98,10 +89,9 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "ModelVariants")]
     pub model_variants: Vec<ModelVariantConfig>,
 
-
-    /// 
+    ///
     /// The name of the inference experiment.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -116,10 +106,9 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The ARN of the IAM role that Amazon SageMaker can assume to access model artifacts and container images, and manage      Amazon SageMaker Inference endpoints for model deployment.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -134,12 +123,11 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
-
-    /// 
+    ///
     /// The duration for which the inference experiment ran or will run.
-    /// 
+    ///
     /// The maximum duration that you can set for an inference experiment is 30 days.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: InferenceExperimentSchedule
@@ -148,10 +136,9 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "Schedule")]
     pub schedule: Option<InferenceExperimentSchedule>,
 
-
-    /// 
+    ///
     /// The configuration of ShadowMode inference experiment type, which shows the production variant      that takes all the inference requests, and the shadow variant to which Amazon SageMaker replicates a percentage of the      inference requests. For the shadow variant it also shows the percentage of requests that Amazon SageMaker replicates.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ShadowModeConfig
@@ -160,10 +147,9 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "ShadowModeConfig")]
     pub shadow_mode_config: Option<ShadowModeConfig>,
 
-
-    /// 
+    ///
     /// The error message for the inference experiment status result.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -176,12 +162,11 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "StatusReason")]
     pub status_reason: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -190,10 +175,9 @@ pub struct CfnInferenceExperiment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of the inference experiment.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -203,13 +187,10 @@ pub struct CfnInferenceExperiment {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: InferenceExperimentTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InferenceExperimentDesiredStateEnum {
-
     /// Cancelled
     #[serde(rename = "Cancelled")]
     Cancelled,
@@ -217,7 +198,6 @@ pub enum InferenceExperimentDesiredStateEnum {
     /// Completed
     #[serde(rename = "Completed")]
     Completed,
-
 }
 
 impl Default for InferenceExperimentDesiredStateEnum {
@@ -228,11 +208,9 @@ impl Default for InferenceExperimentDesiredStateEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InferenceExperimentTypeEnum {
-
     /// ShadowMode
     #[serde(rename = "ShadowMode")]
     Shadowmode,
-
 }
 
 impl Default for InferenceExperimentTypeEnum {
@@ -240,7 +218,6 @@ impl Default for InferenceExperimentTypeEnum {
         InferenceExperimentTypeEnum::Shadowmode
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnInferenceExperiment {
     fn type_string(&self) -> &'static str {
@@ -252,72 +229,90 @@ impl cfn_resources::CfnResource for CfnInferenceExperiment {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.data_storage_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.data_storage_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.endpoint_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'endpoint_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.kms_key {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'kms_key'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kms_key'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 120 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 120", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 120",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.role_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.role_arn;
 
         if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'role_arn'. {} is less than 20",
+                the_val.len()
+            ));
         }
 
-        
-        self.schedule.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.schedule
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.shadow_mode_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.shadow_mode_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.status_reason {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'status_reason'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'status_reason'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -325,11 +320,9 @@ impl cfn_resources::CfnResource for CfnInferenceExperiment {
 /// Configuration specifying how to treat different headers. If no headers are specified SageMaker      will by default base64 encode when capturing the data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CaptureContentTypeHeader {
-
-
-    /// 
+    ///
     /// The list of all content type headers that SageMaker will treat as CSV and capture accordingly.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -340,10 +333,9 @@ pub struct CaptureContentTypeHeader {
     #[serde(rename = "CsvContentTypes")]
     pub csv_content_types: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The list of all content type headers that SageMaker will treat as JSON and capture accordingly.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -353,10 +345,7 @@ pub struct CaptureContentTypeHeader {
     /// Update requires: No interruption
     #[serde(rename = "JsonContentTypes")]
     pub json_content_types: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CaptureContentTypeHeader {
     fn type_string(&self) -> &'static str {
@@ -368,23 +357,24 @@ impl cfn_resources::CfnResource for CaptureContentTypeHeader {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.csv_content_types {
-
-        if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'csv_content_types'. {} is greater than 10", the_val.len()));
+            if the_val.len() > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'csv_content_types'. {} is greater than 10",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.json_content_types {
-
-        if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'json_content_types'. {} is greater than 10", the_val.len()));
+            if the_val.len() > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'json_content_types'. {} is greater than 10",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -394,11 +384,9 @@ impl cfn_resources::CfnResource for CaptureContentTypeHeader {
 /// This is an optional parameter that you can use for data capture. For more information, see Capture data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataStorageConfig {
-
-
-    /// 
+    ///
     /// Configuration specifying how to treat different headers. If no headers are specified SageMaker will by default base64 encode when capturing the data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CaptureContentTypeHeader
@@ -407,10 +395,9 @@ pub struct DataStorageConfig {
     #[serde(rename = "ContentType")]
     pub content_type: Option<CaptureContentTypeHeader>,
 
-
-    /// 
+    ///
     /// The Amazon S3 bucket where the inference request and response data is stored.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -423,10 +410,9 @@ pub struct DataStorageConfig {
     #[serde(rename = "Destination")]
     pub destination: String,
 
-
-    /// 
+    ///
     /// The AWS Key Management Service key that Amazon SageMaker uses to encrypt captured data at rest using Amazon S3      server-side encryption.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -438,10 +424,7 @@ pub struct DataStorageConfig {
     /// Update requires: No interruption
     #[serde(rename = "KmsKey")]
     pub kms_key: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataStorageConfig {
     fn type_string(&self) -> &'static str {
@@ -453,24 +436,28 @@ impl cfn_resources::CfnResource for DataStorageConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.content_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.content_type
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.destination;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'destination'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'destination'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.kms_key {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'kms_key'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kms_key'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -478,11 +465,9 @@ impl cfn_resources::CfnResource for DataStorageConfig {
 /// The metadata of the endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EndpointMetadata {
-
-
-    /// 
+    ///
     /// The name of the endpoint configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -495,10 +480,9 @@ pub struct EndpointMetadata {
     #[serde(rename = "EndpointConfigName")]
     pub endpoint_config_name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the endpoint.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -511,10 +495,9 @@ pub struct EndpointMetadata {
     #[serde(rename = "EndpointName")]
     pub endpoint_name: String,
 
-
-    /// 
+    ///
     /// The status of the endpoint. For possible values of the status of an endpoint, see       https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferenceexperiment-endpointmetadata.html#cfn-sagemaker-inferenceexperiment-endpointmetadata-endpointstatus.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -524,13 +507,10 @@ pub struct EndpointMetadata {
     /// Update requires: No interruption
     #[serde(rename = "EndpointStatus")]
     pub endpoint_status: Option<EndpointMetadataEndpointStatusEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EndpointMetadataEndpointStatusEnum {
-
     /// Creating
     #[serde(rename = "Creating")]
     Creating,
@@ -562,7 +542,6 @@ pub enum EndpointMetadataEndpointStatusEnum {
     /// Updating
     #[serde(rename = "Updating")]
     Updating,
-
 }
 
 impl Default for EndpointMetadataEndpointStatusEnum {
@@ -570,7 +549,6 @@ impl Default for EndpointMetadataEndpointStatusEnum {
         EndpointMetadataEndpointStatusEnum::Creating
     }
 }
-
 
 impl cfn_resources::CfnResource for EndpointMetadata {
     fn type_string(&self) -> &'static str {
@@ -582,22 +560,24 @@ impl cfn_resources::CfnResource for EndpointMetadata {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.endpoint_config_name {
-
-        if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'endpoint_config_name'. {} is greater than 63", the_val.len()));
+            if the_val.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'endpoint_config_name'. {} is greater than 63",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.endpoint_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'endpoint_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'endpoint_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -607,11 +587,9 @@ impl cfn_resources::CfnResource for EndpointMetadata {
 /// The maximum duration that you can set for an inference experiment is 30 days.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InferenceExperimentSchedule {
-
-
-    /// 
+    ///
     /// The timestamp at which the inference experiment ended or will end.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -620,10 +598,9 @@ pub struct InferenceExperimentSchedule {
     #[serde(rename = "EndTime")]
     pub end_time: Option<String>,
 
-
-    /// 
+    ///
     /// The timestamp at which the inference experiment started or will start.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -631,10 +608,7 @@ pub struct InferenceExperimentSchedule {
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
     pub start_time: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InferenceExperimentSchedule {
     fn type_string(&self) -> &'static str {
@@ -646,7 +620,6 @@ impl cfn_resources::CfnResource for InferenceExperimentSchedule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -654,13 +627,11 @@ impl cfn_resources::CfnResource for InferenceExperimentSchedule {
 /// The configuration for the infrastructure that the model will be deployed to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ModelInfrastructureConfig {
-
-
-    /// 
+    ///
     /// The inference option to which to deploy your model. Possible values are the following:
-    /// 
+    ///
     /// RealTime: Deploy to real-time inference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -671,10 +642,9 @@ pub struct ModelInfrastructureConfig {
     #[serde(rename = "InfrastructureType")]
     pub infrastructure_type: ModelInfrastructureConfigInfrastructureTypeEnum,
 
-
-    /// 
+    ///
     /// The infrastructure configuration for deploying the model to real-time inference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: RealTimeInferenceConfig
@@ -682,17 +652,13 @@ pub struct ModelInfrastructureConfig {
     /// Update requires: No interruption
     #[serde(rename = "RealTimeInferenceConfig")]
     pub real_time_inference_config: RealTimeInferenceConfig,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ModelInfrastructureConfigInfrastructureTypeEnum {
-
     /// RealTimeInference
     #[serde(rename = "RealTimeInference")]
     Realtimeinference,
-
 }
 
 impl Default for ModelInfrastructureConfigInfrastructureTypeEnum {
@@ -700,7 +666,6 @@ impl Default for ModelInfrastructureConfigInfrastructureTypeEnum {
         ModelInfrastructureConfigInfrastructureTypeEnum::Realtimeinference
     }
 }
-
 
 impl cfn_resources::CfnResource for ModelInfrastructureConfig {
     fn type_string(&self) -> &'static str {
@@ -712,7 +677,6 @@ impl cfn_resources::CfnResource for ModelInfrastructureConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.real_time_inference_config.validate()?;
 
         Ok(())
@@ -722,11 +686,9 @@ impl cfn_resources::CfnResource for ModelInfrastructureConfig {
 /// Contains information about the deployment options of a model.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ModelVariantConfig {
-
-
-    /// 
+    ///
     /// The configuration for the infrastructure that the model will be deployed to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ModelInfrastructureConfig
@@ -735,10 +697,9 @@ pub struct ModelVariantConfig {
     #[serde(rename = "InfrastructureConfig")]
     pub infrastructure_config: ModelInfrastructureConfig,
 
-
-    /// 
+    ///
     /// The name of the Amazon SageMaker Model entity.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -751,10 +712,9 @@ pub struct ModelVariantConfig {
     #[serde(rename = "ModelName")]
     pub model_name: String,
 
-
-    /// 
+    ///
     /// The name of the variant.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -766,10 +726,7 @@ pub struct ModelVariantConfig {
     /// Update requires: No interruption
     #[serde(rename = "VariantName")]
     pub variant_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ModelVariantConfig {
     fn type_string(&self) -> &'static str {
@@ -781,23 +738,26 @@ impl cfn_resources::CfnResource for ModelVariantConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.infrastructure_config.validate()?;
 
         let the_val = &self.model_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'model_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'model_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.variant_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'variant_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'variant_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -805,11 +765,9 @@ impl cfn_resources::CfnResource for ModelVariantConfig {
 /// The infrastructure configuration for deploying the model to a real-time inference endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RealTimeInferenceConfig {
-
-
-    /// 
+    ///
     /// The number of instances of the type specified by InstanceType.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -820,10 +778,9 @@ pub struct RealTimeInferenceConfig {
     #[serde(rename = "InstanceCount")]
     pub instance_count: i64,
 
-
-    /// 
+    ///
     /// The instance type the model is deployed to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -833,13 +790,10 @@ pub struct RealTimeInferenceConfig {
     /// Update requires: No interruption
     #[serde(rename = "InstanceType")]
     pub instance_type: RealTimeInferenceConfigInstanceTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RealTimeInferenceConfigInstanceTypeEnum {
-
     /// ml.c4.2xlarge
     #[serde(rename = "ml.c4.2xlarge")]
     Mlc42xlarge,
@@ -1115,7 +1069,6 @@ pub enum RealTimeInferenceConfigInstanceTypeEnum {
     /// ml.t3.xlarge
     #[serde(rename = "ml.t3.xlarge")]
     Mlt3xlarge,
-
 }
 
 impl Default for RealTimeInferenceConfigInstanceTypeEnum {
@@ -1123,7 +1076,6 @@ impl Default for RealTimeInferenceConfigInstanceTypeEnum {
         RealTimeInferenceConfigInstanceTypeEnum::Mlc42xlarge
     }
 }
-
 
 impl cfn_resources::CfnResource for RealTimeInferenceConfig {
     fn type_string(&self) -> &'static str {
@@ -1135,14 +1087,15 @@ impl cfn_resources::CfnResource for RealTimeInferenceConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.instance_count;
 
         if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'instance_count'. {} is less than 0", the_val));
+            return Err(format!(
+                "Min validation failed on field 'instance_count'. {} is less than 0",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1150,11 +1103,9 @@ impl cfn_resources::CfnResource for RealTimeInferenceConfig {
 /// The configuration of ShadowMode inference experiment type, which specifies a production variant      to take all the inference requests, and a shadow variant to which Amazon SageMaker replicates a percentage of the      inference requests. For the shadow variant it also specifies the percentage of requests that Amazon SageMaker replicates.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ShadowModeConfig {
-
-
-    /// 
+    ///
     /// List of shadow variant configurations.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ShadowModelVariantConfig
@@ -1165,10 +1116,9 @@ pub struct ShadowModeConfig {
     #[serde(rename = "ShadowModelVariants")]
     pub shadow_model_variants: Vec<ShadowModelVariantConfig>,
 
-
-    /// 
+    ///
     /// The name of the production variant, which takes all the inference requests.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1180,10 +1130,7 @@ pub struct ShadowModeConfig {
     /// Update requires: No interruption
     #[serde(rename = "SourceModelVariantName")]
     pub source_model_variant_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ShadowModeConfig {
     fn type_string(&self) -> &'static str {
@@ -1195,21 +1142,24 @@ impl cfn_resources::CfnResource for ShadowModeConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.shadow_model_variants;
 
         if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'shadow_model_variants'. {} is greater than 1", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'shadow_model_variants'. {} is greater than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.source_model_variant_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'source_model_variant_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'source_model_variant_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1217,11 +1167,9 @@ impl cfn_resources::CfnResource for ShadowModeConfig {
 /// The name and sampling percentage of a shadow variant.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ShadowModelVariantConfig {
-
-
-    /// 
+    ///
     /// The percentage of inference requests that Amazon SageMaker replicates from the production variant to the shadow variant.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1232,10 +1180,9 @@ pub struct ShadowModelVariantConfig {
     #[serde(rename = "SamplingPercentage")]
     pub sampling_percentage: i64,
 
-
-    /// 
+    ///
     /// The name of the shadow variant.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1247,10 +1194,7 @@ pub struct ShadowModelVariantConfig {
     /// Update requires: No interruption
     #[serde(rename = "ShadowModelVariantName")]
     pub shadow_model_variant_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ShadowModelVariantConfig {
     fn type_string(&self) -> &'static str {
@@ -1262,21 +1206,24 @@ impl cfn_resources::CfnResource for ShadowModelVariantConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.sampling_percentage;
 
         if *the_val > 100 as _ {
-            return Err(format!("Max validation failed on field 'sampling_percentage'. {} is greater than 100", the_val));
+            return Err(format!(
+                "Max validation failed on field 'sampling_percentage'. {} is greater than 100",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.shadow_model_variant_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'shadow_model_variant_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'shadow_model_variant_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1290,32 +1237,26 @@ impl cfn_resources::CfnResource for ShadowModelVariantConfig {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -1327,7 +1268,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

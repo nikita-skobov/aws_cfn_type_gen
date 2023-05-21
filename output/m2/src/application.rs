@@ -1,17 +1,13 @@
-
-
 /// Specifies a new application with given parameters. Requires an existing runtime     environment and application definition file.
 ///
 /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
-
-
-    /// 
+    ///
     /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
-    /// 
+    ///
     /// For information about application definitions, see the AWS Mainframe Modernization User Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Definition
@@ -20,10 +16,9 @@ pub struct CfnApplication {
     #[serde(rename = "Definition")]
     pub definition: Definition,
 
-
-    /// 
+    ///
     /// The description of the application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnApplication {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The type of the target platform for this application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -50,10 +44,9 @@ pub struct CfnApplication {
     #[serde(rename = "EngineType")]
     pub engine_type: ApplicationEngineTypeEnum,
 
-
-    /// 
+    ///
     /// The identifier of a customer managed key.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -62,10 +55,9 @@ pub struct CfnApplication {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -76,12 +68,11 @@ pub struct CfnApplication {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -89,13 +80,10 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ApplicationEngineTypeEnum {
-
     /// bluage
     #[serde(rename = "bluage")]
     Bluage,
@@ -103,7 +91,6 @@ pub enum ApplicationEngineTypeEnum {
     /// microfocus
     #[serde(rename = "microfocus")]
     Microfocus,
-
 }
 
 impl Default for ApplicationEngineTypeEnum {
@@ -111,7 +98,6 @@ impl Default for ApplicationEngineTypeEnum {
         ApplicationEngineTypeEnum::Bluage
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string(&self) -> &'static str {
@@ -123,25 +109,26 @@ impl cfn_resources::CfnResource for CfnApplication {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.definition.validate()?;
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 500 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 500", the_val.len()));
+            if the_val.len() > 500 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 500",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -149,11 +136,9 @@ impl cfn_resources::CfnResource for CfnApplication {
 /// The application definition for a particular application. You can specify either inline     JSON or an Amazon S3 bucket location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Definition {
-
-
-    /// 
+    ///
     /// The content of the application definition. This is a JSON object that contains the     resource configuration/definitions that identify an application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -166,10 +151,9 @@ pub struct Definition {
     #[serde(rename = "Content")]
     pub content: Option<String>,
 
-
-    /// 
+    ///
     /// The S3 bucket that contains the application definition.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -179,10 +163,7 @@ pub struct Definition {
     /// Update requires: No interruption
     #[serde(rename = "S3Location")]
     pub s3_location: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Definition {
     fn type_string(&self) -> &'static str {
@@ -194,23 +175,24 @@ impl cfn_resources::CfnResource for Definition {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.content {
+            if the_val.len() > 65000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'content'. {} is greater than 65000",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.content {
-
-        if the_val.len() > 65000 as _ {
-            return Err(format!("Max validation failed on field 'content'. {} is greater than 65000", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'content'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.content {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'content'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }

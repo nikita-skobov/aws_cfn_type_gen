@@ -1,13 +1,9 @@
-
-
 /// Configure logging.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLogging {
-
-
-    /// 
+    ///
     /// The account ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnLogging {
     #[serde(rename = "AccountId")]
     pub account_id: String,
 
-
-    /// 
+    ///
     /// The default log level. Valid Values: DEBUG | INFO | ERROR | WARN | DISABLED
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnLogging {
     #[serde(rename = "DefaultLogLevel")]
     pub default_log_level: LoggingDefaultLogLevelEnum,
 
-
-    /// 
+    ///
     /// The role ARN used for the log.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -39,13 +33,10 @@ pub struct CfnLogging {
     /// Update requires: No interruption
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum LoggingDefaultLogLevelEnum {
-
     /// DEBUG
     #[serde(rename = "DEBUG")]
     Debug,
@@ -65,7 +56,6 @@ pub enum LoggingDefaultLogLevelEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
-
 }
 
 impl Default for LoggingDefaultLogLevelEnum {
@@ -73,7 +63,6 @@ impl Default for LoggingDefaultLogLevelEnum {
         LoggingDefaultLogLevelEnum::Debug
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnLogging {
     fn type_string(&self) -> &'static str {
@@ -85,7 +74,6 @@ impl cfn_resources::CfnResource for CfnLogging {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

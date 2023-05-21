@@ -1,15 +1,11 @@
-
-
 /// The AWS::DataSync::Agent resource activates an AWS DataSync     agent that you've deployed for storage discovery or data transfers. The activation process     associates the agent with your AWS account.
 ///
 /// For more information, see the following topics in the AWS DataSync       User Guide:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAgent {
-
-
-    /// 
+    ///
     /// Specifies your DataSync agent's activation key. If you don't have an    activation key, see Activate your agent.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnAgent {
     #[serde(rename = "ActivationKey")]
     pub activation_key: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies a name for your agent. You can see this name in the DataSync    console.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,12 +35,11 @@ pub struct CfnAgent {
     #[serde(rename = "AgentName")]
     pub agent_name: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Names (ARNs) of the security groups used to protect your data     transfer task subnets. See SecurityGroupArns.
-    /// 
+    ///
     /// Pattern:       ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):ec2:[a-z\-0-9]*:[0-9]{12}:security-group/.*$
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -56,10 +50,9 @@ pub struct CfnAgent {
     #[serde(rename = "SecurityGroupArns")]
     pub security_group_arns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Specifies the ARN of the subnet where you want to run your DataSync task when    using a VPC endpoint. This is the subnet where DataSync creates and manages the     network     interfaces for your transfer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -70,10 +63,9 @@ pub struct CfnAgent {
     #[serde(rename = "SubnetArns")]
     pub subnet_arns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Specifies labels that help you categorize, filter, and search for your AWS resources.    We recommend creating at least one tag for your agent.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -84,14 +76,13 @@ pub struct CfnAgent {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the virtual private cloud (VPC) endpoint that the agent has access to. This is     the client-side VPC endpoint, powered by AWS PrivateLink. If you don't have an     AWS PrivateLink VPC endpoint, see AWS PrivateLink and VPC endpoints in the Amazon VPC User     Guide.
-    /// 
+    ///
     /// For more information about activating your agent in a private network based on a VPC,     see Using        AWS DataSync in a Virtual Private Cloud in the AWS DataSync User Guide.
-    /// 
+    ///
     /// A VPC endpoint ID looks like this: vpce-01234d5aff67890e1.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -101,10 +92,7 @@ pub struct CfnAgent {
     /// Update requires: Replacement
     #[serde(rename = "VpcEndpointId")]
     pub vpc_endpoint_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnAgent {
     fn type_string(&self) -> &'static str {
@@ -116,55 +104,60 @@ impl cfn_resources::CfnResource for CfnAgent {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.activation_key {
-
-        if the_val.len() > 29 as _ {
-            return Err(format!("Max validation failed on field 'activation_key'. {} is greater than 29", the_val.len()));
+            if the_val.len() > 29 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'activation_key'. {} is greater than 29",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.agent_name {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'agent_name'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'agent_name'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.agent_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'agent_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'agent_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.security_group_arns {
-
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'security_group_arns'. {} is greater than 1", the_val.len()));
+            if the_val.len() > 1 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'security_group_arns'. {} is greater than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.subnet_arns {
-
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'subnet_arns'. {} is greater than 1", the_val.len()));
+            if the_val.len() > 1 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subnet_arns'. {} is greater than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -178,32 +171,26 @@ impl cfn_resources::CfnResource for CfnAgent {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -215,7 +202,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

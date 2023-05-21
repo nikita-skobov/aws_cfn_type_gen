@@ -1,12 +1,8 @@
-
-
 /// Consists of a primary cluster that accepts writes and an associated secondary cluster that resides in a different Amazon region. The secondary cluster accepts only reads. The primary     cluster automatically replicates updates to the secondary cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGlobalReplicationGroup {
-
-
     /// Specifies whether a read-only replica is automatically promoted to read/write primary if the existing primary fails.
-    /// 
+    ///
     /// AutomaticFailoverEnabled must be enabled for Redis (cluster mode enabled) replication groups.
     ///
     /// Required: No
@@ -17,10 +13,9 @@ pub struct CfnGlobalReplicationGroup {
     #[serde(rename = "AutomaticFailoverEnabled")]
     pub automatic_failover_enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The cache node type of the Global datastore
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,7 +23,6 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "CacheNodeType")]
     pub cache_node_type: Option<String>,
-
 
     /// The name of the cache parameter group to use with the Global datastore. It must be compatible with the major engine version used by the Global datastore.
     ///
@@ -40,10 +34,9 @@ pub struct CfnGlobalReplicationGroup {
     #[serde(rename = "CacheParameterGroupName")]
     pub cache_parameter_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// The Elasticache Redis engine version.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -51,7 +44,6 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "EngineVersion")]
     pub engine_version: Option<String>,
-
 
     /// The number of node groups that comprise the Global Datastore.
     ///
@@ -63,10 +55,9 @@ pub struct CfnGlobalReplicationGroup {
     #[serde(rename = "GlobalNodeGroupCount")]
     pub global_node_group_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The optional description of the Global datastore
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -74,7 +65,6 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "GlobalReplicationGroupDescription")]
     pub global_replication_group_description: Option<String>,
-
 
     /// The suffix name of a Global Datastore. The suffix guarantees uniqueness of the Global Datastore name across multiple regions.
     ///
@@ -86,10 +76,9 @@ pub struct CfnGlobalReplicationGroup {
     #[serde(rename = "GlobalReplicationGroupIdSuffix")]
     pub global_replication_group_id_suffix: Option<String>,
 
-
-    /// 
+    ///
     /// The replication groups that comprise the Global datastore.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of GlobalReplicationGroupMember
@@ -97,7 +86,6 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "Members")]
     pub members: Vec<GlobalReplicationGroupMember>,
-
 
     /// The Regions that comprise the Global Datastore.
     ///
@@ -108,10 +96,7 @@ pub struct CfnGlobalReplicationGroup {
     /// Update requires: No interruption
     #[serde(rename = "RegionalConfigurations")]
     pub regional_configurations: Option<Vec<RegionalConfiguration>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnGlobalReplicationGroup {
     fn type_string(&self) -> &'static str {
@@ -123,7 +108,6 @@ impl cfn_resources::CfnResource for CfnGlobalReplicationGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -131,11 +115,9 @@ impl cfn_resources::CfnResource for CfnGlobalReplicationGroup {
 /// A member of a Global datastore. It contains the Replication Group Id, the Amazon region and the role of the replication group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GlobalReplicationGroupMember {
-
-
-    /// 
+    ///
     /// The replication group id of the Global datastore member.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -144,10 +126,9 @@ pub struct GlobalReplicationGroupMember {
     #[serde(rename = "ReplicationGroupId")]
     pub replication_group_id: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon region of the Global datastore member.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -156,10 +137,9 @@ pub struct GlobalReplicationGroupMember {
     #[serde(rename = "ReplicationGroupRegion")]
     pub replication_group_region: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates the role of the replication group, PRIMARY or SECONDARY.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -167,10 +147,7 @@ pub struct GlobalReplicationGroupMember {
     /// Update requires: No interruption
     #[serde(rename = "Role")]
     pub role: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for GlobalReplicationGroupMember {
     fn type_string(&self) -> &'static str {
@@ -182,7 +159,6 @@ impl cfn_resources::CfnResource for GlobalReplicationGroupMember {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -190,11 +166,9 @@ impl cfn_resources::CfnResource for GlobalReplicationGroupMember {
 /// A list of the replication groups
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RegionalConfiguration {
-
-
-    /// 
+    ///
     /// The name of the secondary cluster
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -203,10 +177,9 @@ pub struct RegionalConfiguration {
     #[serde(rename = "ReplicationGroupId")]
     pub replication_group_id: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon region where the cluster is stored
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -215,9 +188,8 @@ pub struct RegionalConfiguration {
     #[serde(rename = "ReplicationGroupRegion")]
     pub replication_group_region: Option<String>,
 
-
     /// A list of PreferredAvailabilityZones objects that specifies the configuration of a node group in the resharded cluster.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ReshardingConfiguration
@@ -225,10 +197,7 @@ pub struct RegionalConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ReshardingConfigurations")]
     pub resharding_configurations: Option<Vec<ReshardingConfiguration>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RegionalConfiguration {
     fn type_string(&self) -> &'static str {
@@ -240,7 +209,6 @@ impl cfn_resources::CfnResource for RegionalConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -248,11 +216,9 @@ impl cfn_resources::CfnResource for RegionalConfiguration {
 /// A list of PreferredAvailabilityZones objects that specifies       the configuration of a node group in the resharded cluster.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReshardingConfiguration {
-
-
-    /// 
+    ///
     /// Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these       configuration values apply to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -267,10 +233,9 @@ pub struct ReshardingConfiguration {
     #[serde(rename = "NodeGroupId")]
     pub node_group_id: Option<String>,
 
-
-    /// 
+    ///
     /// A list of preferred availability zones for the nodes in this cluster.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -278,10 +243,7 @@ pub struct ReshardingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PreferredAvailabilityZones")]
     pub preferred_availability_zones: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ReshardingConfiguration {
     fn type_string(&self) -> &'static str {
@@ -293,23 +255,24 @@ impl cfn_resources::CfnResource for ReshardingConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.node_group_id {
+            if the_val.len() > 4 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'node_group_id'. {} is greater than 4",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.node_group_id {
-
-        if the_val.len() > 4 as _ {
-            return Err(format!("Max validation failed on field 'node_group_id'. {} is greater than 4", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'node_group_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.node_group_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'node_group_id'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }

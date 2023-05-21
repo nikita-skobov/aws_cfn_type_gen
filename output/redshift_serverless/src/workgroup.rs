@@ -1,13 +1,9 @@
-
-
 /// The collection of compute resources in Amazon Redshift Serverless.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnWorkgroup {
-
-
-    /// 
+    ///
     /// The base compute capacity of the workgroup in Redshift Processing Units (RPUs).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -16,10 +12,9 @@ pub struct CfnWorkgroup {
     #[serde(rename = "BaseCapacity")]
     pub base_capacity: Option<i64>,
 
-
-    /// 
+    ///
     /// A list of parameters to set for finer control over a database. Available   options are datestyle, enable_user_activity_logging,   query_group, search_path, and max_query_execution_time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ConfigParameter
@@ -28,10 +23,9 @@ pub struct CfnWorkgroup {
     #[serde(rename = "ConfigParameters")]
     pub config_parameters: Option<Vec<ConfigParameter>>,
 
-
-    /// 
+    ///
     /// The value that specifies whether to enable enhanced virtual   private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -40,10 +34,9 @@ pub struct CfnWorkgroup {
     #[serde(rename = "EnhancedVpcRouting")]
     pub enhanced_vpc_routing: Option<bool>,
 
-
-    /// 
+    ///
     /// The namespace the workgroup is associated with.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -52,10 +45,9 @@ pub struct CfnWorkgroup {
     #[serde(rename = "NamespaceName")]
     pub namespace_name: Option<String>,
 
-
-    /// 
+    ///
     /// The custom port to use when connecting to a workgroup. Valid port ranges are 5431-5455 and 8191-8215.    The default is 5439.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -64,10 +56,9 @@ pub struct CfnWorkgroup {
     #[serde(rename = "Port")]
     pub port: Option<i64>,
 
-
-    /// 
+    ///
     /// A value that specifies whether the workgroup   can be accessible from a public network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -76,10 +67,9 @@ pub struct CfnWorkgroup {
     #[serde(rename = "PubliclyAccessible")]
     pub publicly_accessible: Option<bool>,
 
-
-    /// 
+    ///
     /// A list of security group IDs to associate with the workgroup.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -88,10 +78,9 @@ pub struct CfnWorkgroup {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of subnet IDs the workgroup is associated with.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -100,10 +89,9 @@ pub struct CfnWorkgroup {
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The map of the key-value pairs used to tag the workgroup.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -112,10 +100,9 @@ pub struct CfnWorkgroup {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The name of the workgroup.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -123,10 +110,7 @@ pub struct CfnWorkgroup {
     /// Update requires: Replacement
     #[serde(rename = "WorkgroupName")]
     pub workgroup_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnWorkgroup {
     fn type_string(&self) -> &'static str {
@@ -138,7 +122,6 @@ impl cfn_resources::CfnResource for CfnWorkgroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -146,11 +129,9 @@ impl cfn_resources::CfnResource for CfnWorkgroup {
 /// A array of parameters to set for more control over a serverless database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfigParameter {
-
-
-    /// 
+    ///
     /// The key of the parameter. The   options are datestyle, enable_user_activity_logging,   query_group, search_path, and max_query_execution_time.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -159,10 +140,9 @@ pub struct ConfigParameter {
     #[serde(rename = "ParameterKey")]
     pub parameter_key: Option<String>,
 
-
-    /// 
+    ///
     /// The value of the parameter to set.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -170,10 +150,7 @@ pub struct ConfigParameter {
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
     pub parameter_value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConfigParameter {
     fn type_string(&self) -> &'static str {
@@ -185,7 +162,6 @@ impl cfn_resources::CfnResource for ConfigParameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -193,11 +169,9 @@ impl cfn_resources::CfnResource for ConfigParameter {
 /// The VPC endpoint object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Endpoint {
-
-
-    /// 
+    ///
     /// The DNS address of the VPC endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -206,10 +180,9 @@ pub struct Endpoint {
     #[serde(rename = "Address")]
     pub address: Option<String>,
 
-
-    /// 
+    ///
     /// The port that Amazon Redshift Serverless listens on.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -218,10 +191,9 @@ pub struct Endpoint {
     #[serde(rename = "Port")]
     pub port: Option<i64>,
 
-
-    /// 
+    ///
     /// An array of VpcEndpoint objects.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of VpcEndpoint
@@ -229,10 +201,7 @@ pub struct Endpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcEndpoints")]
     pub vpc_endpoints: Option<Vec<VpcEndpoint>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Endpoint {
     fn type_string(&self) -> &'static str {
@@ -244,7 +213,6 @@ impl cfn_resources::CfnResource for Endpoint {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -252,11 +220,9 @@ impl cfn_resources::CfnResource for Endpoint {
 /// Contains information about a network interface      in an Amazon Redshift Serverless managed VPC endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkInterface {
-
-
-    /// 
+    ///
     /// The availability Zone.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -265,10 +231,9 @@ pub struct NetworkInterface {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// The unique identifier of the network interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -277,10 +242,9 @@ pub struct NetworkInterface {
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: Option<String>,
 
-
-    /// 
+    ///
     /// The IPv4 address of the network interface within the subnet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -289,10 +253,9 @@ pub struct NetworkInterface {
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: Option<String>,
 
-
-    /// 
+    ///
     /// The unique identifier of the subnet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -300,10 +263,7 @@ pub struct NetworkInterface {
     /// Update requires: No interruption
     #[serde(rename = "SubnetId")]
     pub subnet_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NetworkInterface {
     fn type_string(&self) -> &'static str {
@@ -315,7 +275,6 @@ impl cfn_resources::CfnResource for NetworkInterface {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -329,32 +288,26 @@ impl cfn_resources::CfnResource for NetworkInterface {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -366,7 +319,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -374,11 +326,9 @@ impl cfn_resources::CfnResource for Tag {
 /// The connection endpoint for connecting to Amazon Redshift Serverless through the proxy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpcEndpoint {
-
-
-    /// 
+    ///
     /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of NetworkInterface
@@ -387,10 +337,9 @@ pub struct VpcEndpoint {
     #[serde(rename = "NetworkInterfaces")]
     pub network_interfaces: Option<Vec<NetworkInterface>>,
 
-
-    /// 
+    ///
     /// The connection endpoint ID for connecting to Amazon Redshift Serverless.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -399,10 +348,9 @@ pub struct VpcEndpoint {
     #[serde(rename = "VpcEndpointId")]
     pub vpc_endpoint_id: Option<String>,
 
-
-    /// 
+    ///
     /// The VPC identifier that the endpoint is associated with.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -410,10 +358,7 @@ pub struct VpcEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     pub vpc_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VpcEndpoint {
     fn type_string(&self) -> &'static str {
@@ -425,7 +370,6 @@ impl cfn_resources::CfnResource for VpcEndpoint {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -433,11 +377,9 @@ impl cfn_resources::CfnResource for VpcEndpoint {
 /// The collection of computing resources from which an endpoint is created.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Workgroup {
-
-
-    /// 
+    ///
     /// The base data warehouse capacity of the workgroup in Redshift Processing Units (RPUs).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -446,10 +388,9 @@ pub struct Workgroup {
     #[serde(rename = "BaseCapacity")]
     pub base_capacity: Option<i64>,
 
-
-    /// 
+    ///
     /// An array of parameters to set for advanced control over a database. The     options are auto_mv, datestyle, enable_case_sensitivity_identifier, enable_user_activity_logging,     query_group, , search_path, and query monitoring metrics that let you define performance boundaries.     For more information about query monitoring rules and available metrics, see Query monitoring metrics for Amazon Redshift Serverless.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ConfigParameter
@@ -458,10 +399,9 @@ pub struct Workgroup {
     #[serde(rename = "ConfigParameters")]
     pub config_parameters: Option<Vec<ConfigParameter>>,
 
-
-    /// 
+    ///
     /// The creation date of the workgroup.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -470,10 +410,9 @@ pub struct Workgroup {
     #[serde(rename = "CreationDate")]
     pub creation_date: Option<String>,
 
-
-    /// 
+    ///
     /// The endpoint that is created from the workgroup.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Endpoint
@@ -482,10 +421,9 @@ pub struct Workgroup {
     #[serde(rename = "Endpoint")]
     pub endpoint: Option<Endpoint>,
 
-
-    /// 
+    ///
     /// The value that specifies whether to enable enhanced virtual    private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -494,10 +432,9 @@ pub struct Workgroup {
     #[serde(rename = "EnhancedVpcRouting")]
     pub enhanced_vpc_routing: Option<bool>,
 
-
-    /// 
+    ///
     /// The namespace the workgroup is associated with.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -506,10 +443,9 @@ pub struct Workgroup {
     #[serde(rename = "NamespaceName")]
     pub namespace_name: Option<String>,
 
-
-    /// 
+    ///
     /// A value that specifies whether the workgroup    can be accessible from a public network
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -518,10 +454,9 @@ pub struct Workgroup {
     #[serde(rename = "PubliclyAccessible")]
     pub publicly_accessible: Option<bool>,
 
-
-    /// 
+    ///
     /// An array of security group IDs to associate with the workgroup.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -530,10 +465,9 @@ pub struct Workgroup {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The status of the workgroup.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -542,10 +476,9 @@ pub struct Workgroup {
     #[serde(rename = "Status")]
     pub status: Option<String>,
 
-
-    /// 
+    ///
     /// An array of subnet IDs the workgroup is associated with.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -554,10 +487,9 @@ pub struct Workgroup {
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) that links to the workgroup.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -566,10 +498,9 @@ pub struct Workgroup {
     #[serde(rename = "WorkgroupArn")]
     pub workgroup_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The unique identifier of the workgroup.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -578,10 +509,9 @@ pub struct Workgroup {
     #[serde(rename = "WorkgroupId")]
     pub workgroup_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the workgroup.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -589,10 +519,7 @@ pub struct Workgroup {
     /// Update requires: No interruption
     #[serde(rename = "WorkgroupName")]
     pub workgroup_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Workgroup {
     fn type_string(&self) -> &'static str {
@@ -604,8 +531,9 @@ impl cfn_resources::CfnResource for Workgroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.endpoint.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.endpoint
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }

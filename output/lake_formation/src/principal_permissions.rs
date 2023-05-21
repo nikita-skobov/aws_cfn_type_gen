@@ -1,13 +1,9 @@
-
-
 /// The AWS::LakeFormation::PrincipalPermissions resource represents the permissions that a principal has on a Data Catalog resource (such as AWS Glue databases or AWS Glue tables).     When you create a PrincipalPermissions resource, the permissions are granted via the AWS Lake Formation GrantPermissions API operation. When you delete a PrincipalPermissions resource, the permissions on principal-resource pair are revoked via the AWS Lake Formation RevokePermissions API operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPrincipalPermissions {
-
-
-    /// 
+    ///
     /// The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store.     It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnPrincipalPermissions {
     #[serde(rename = "Catalog")]
     pub catalog: Option<String>,
 
-
-    /// 
+    ///
     /// The permissions granted or revoked.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -28,10 +23,9 @@ pub struct CfnPrincipalPermissions {
     #[serde(rename = "Permissions")]
     pub permissions: Vec<String>,
 
-
-    /// 
+    ///
     /// Indicates the ability to grant permissions (as a subset of permissions granted).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -40,10 +34,9 @@ pub struct CfnPrincipalPermissions {
     #[serde(rename = "PermissionsWithGrantOption")]
     pub permissions_with_grant_option: Vec<String>,
 
-
-    /// 
+    ///
     /// The principal to be granted a permission.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: DataLakePrincipal
@@ -52,10 +45,9 @@ pub struct CfnPrincipalPermissions {
     #[serde(rename = "Principal")]
     pub principal: DataLakePrincipal,
 
-
-    /// 
+    ///
     /// The resource to be granted or revoked permissions.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Resource
@@ -63,10 +55,7 @@ pub struct CfnPrincipalPermissions {
     /// Update requires: Replacement
     #[serde(rename = "Resource")]
     pub resource: Resource,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnPrincipalPermissions {
     fn type_string(&self) -> &'static str {
@@ -78,7 +67,6 @@ impl cfn_resources::CfnResource for CfnPrincipalPermissions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.principal.validate()?;
 
         self.resource.validate()?;
@@ -90,11 +78,9 @@ impl cfn_resources::CfnResource for CfnPrincipalPermissions {
 /// A wildcard object, consisting of an optional list of excluded column names or indexes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ColumnWildcard {
-
-
-    /// 
+    ///
     /// Excludes column names. Any column with this name will be excluded.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -102,10 +88,7 @@ pub struct ColumnWildcard {
     /// Update requires: Replacement
     #[serde(rename = "ExcludedColumnNames")]
     pub excluded_column_names: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ColumnWildcard {
     fn type_string(&self) -> &'static str {
@@ -117,7 +100,6 @@ impl cfn_resources::CfnResource for ColumnWildcard {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -125,11 +107,9 @@ impl cfn_resources::CfnResource for ColumnWildcard {
 /// A structure that describes certain columns on certain rows.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataCellsFilterResource {
-
-
-    /// 
+    ///
     /// A database in the Data Catalog.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -138,10 +118,9 @@ pub struct DataCellsFilterResource {
     #[serde(rename = "DatabaseName")]
     pub database_name: String,
 
-
-    /// 
+    ///
     /// The name given by the user to the data filter cell.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -150,10 +129,9 @@ pub struct DataCellsFilterResource {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The ID of the catalog to which the table belongs.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -162,10 +140,9 @@ pub struct DataCellsFilterResource {
     #[serde(rename = "TableCatalogId")]
     pub table_catalog_id: String,
 
-
-    /// 
+    ///
     /// The name of the table.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -173,10 +150,7 @@ pub struct DataCellsFilterResource {
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
     pub table_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataCellsFilterResource {
     fn type_string(&self) -> &'static str {
@@ -188,7 +162,6 @@ impl cfn_resources::CfnResource for DataCellsFilterResource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -196,11 +169,9 @@ impl cfn_resources::CfnResource for DataCellsFilterResource {
 /// The AWS Lake Formation principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataLakePrincipal {
-
-
-    /// 
+    ///
     /// An identifier for the AWS Lake Formation principal.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -208,10 +179,7 @@ pub struct DataLakePrincipal {
     /// Update requires: Replacement
     #[serde(rename = "DataLakePrincipalIdentifier")]
     pub data_lake_principal_identifier: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataLakePrincipal {
     fn type_string(&self) -> &'static str {
@@ -223,7 +191,6 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -231,11 +198,9 @@ impl cfn_resources::CfnResource for DataLakePrincipal {
 /// A structure for a data location object where permissions are granted or revoked.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataLocationResource {
-
-
-    /// 
+    ///
     /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -244,10 +209,9 @@ pub struct DataLocationResource {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) that uniquely identifies the data location resource.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -255,10 +219,7 @@ pub struct DataLocationResource {
     /// Update requires: Replacement
     #[serde(rename = "ResourceArn")]
     pub resource_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataLocationResource {
     fn type_string(&self) -> &'static str {
@@ -270,7 +231,6 @@ impl cfn_resources::CfnResource for DataLocationResource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -278,11 +238,9 @@ impl cfn_resources::CfnResource for DataLocationResource {
 /// A structure for the database object.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatabaseResource {
-
-
-    /// 
+    ///
     /// The identifier for the Data Catalog. By default, it is the account ID of the caller.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -291,10 +249,9 @@ pub struct DatabaseResource {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
-
-    /// 
+    ///
     /// The name of the database resource. Unique to the Data Catalog.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -302,10 +259,7 @@ pub struct DatabaseResource {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DatabaseResource {
     fn type_string(&self) -> &'static str {
@@ -317,7 +271,6 @@ impl cfn_resources::CfnResource for DatabaseResource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -325,11 +278,9 @@ impl cfn_resources::CfnResource for DatabaseResource {
 /// The LF-tag key and values attached to a resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LFTag {
-
-
-    /// 
+    ///
     /// The key-name for the LF-tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -338,10 +289,9 @@ pub struct LFTag {
     #[serde(rename = "TagKey")]
     pub tag_key: Option<String>,
 
-
-    /// 
+    ///
     /// A list of possible values of the corresponding TagKey of an LF-tag key-value pair.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -349,10 +299,7 @@ pub struct LFTag {
     /// Update requires: Replacement
     #[serde(rename = "TagValues")]
     pub tag_values: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LFTag {
     fn type_string(&self) -> &'static str {
@@ -364,7 +311,6 @@ impl cfn_resources::CfnResource for LFTag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -372,11 +318,9 @@ impl cfn_resources::CfnResource for LFTag {
 /// A structure containing an LF-tag key and values for a resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LFTagKeyResource {
-
-
-    /// 
+    ///
     /// The identifier for the Data Catalog where the location is registered with Data Catalog.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -385,10 +329,9 @@ pub struct LFTagKeyResource {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
-
-    /// 
+    ///
     /// The key-name for the LF-tag.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -397,10 +340,9 @@ pub struct LFTagKeyResource {
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 
-
-    /// 
+    ///
     /// A list of possible values for the corresponding TagKey of an LF-tag key-value pair.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -408,10 +350,7 @@ pub struct LFTagKeyResource {
     /// Update requires: Replacement
     #[serde(rename = "TagValues")]
     pub tag_values: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LFTagKeyResource {
     fn type_string(&self) -> &'static str {
@@ -423,7 +362,6 @@ impl cfn_resources::CfnResource for LFTagKeyResource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -433,11 +371,9 @@ impl cfn_resources::CfnResource for LFTagKeyResource {
 /// A structure that allows an admin to grant user permissions on certain conditions. For example, granting a role access to all columns that do not have the LF-tag 'PII' in tables that have the LF-tag 'Prod'.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LFTagPolicyResource {
-
-
-    /// 
+    ///
     /// The identifier for the Data Catalog. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -446,10 +382,9 @@ pub struct LFTagPolicyResource {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
-
-    /// 
+    ///
     /// A list of LF-tag conditions that apply to the resource's LF-tag policy.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of LFTag
@@ -458,10 +393,9 @@ pub struct LFTagPolicyResource {
     #[serde(rename = "Expression")]
     pub expression: Vec<LFTag>,
 
-
-    /// 
+    ///
     /// The resource type for which the LF-tag policy applies.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -469,10 +403,7 @@ pub struct LFTagPolicyResource {
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LFTagPolicyResource {
     fn type_string(&self) -> &'static str {
@@ -484,7 +415,6 @@ impl cfn_resources::CfnResource for LFTagPolicyResource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -492,11 +422,9 @@ impl cfn_resources::CfnResource for LFTagPolicyResource {
 /// A structure for the resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Resource {
-
-
-    /// 
+    ///
     /// The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your AWS Lake Formation environment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -505,10 +433,9 @@ pub struct Resource {
     #[serde(rename = "Catalog")]
     pub catalog: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// A data cell filter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataCellsFilterResource
@@ -517,10 +444,9 @@ pub struct Resource {
     #[serde(rename = "DataCellsFilter")]
     pub data_cells_filter: Option<DataCellsFilterResource>,
 
-
-    /// 
+    ///
     /// The location of an Amazon S3 path where permissions are granted or revoked.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataLocationResource
@@ -529,10 +455,9 @@ pub struct Resource {
     #[serde(rename = "DataLocation")]
     pub data_location: Option<DataLocationResource>,
 
-
-    /// 
+    ///
     /// The database for the resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database permissions to a principal.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DatabaseResource
@@ -541,10 +466,9 @@ pub struct Resource {
     #[serde(rename = "Database")]
     pub database: Option<DatabaseResource>,
 
-
-    /// 
+    ///
     /// The LF-tag key and values attached to a resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LFTagKeyResource
@@ -553,10 +477,9 @@ pub struct Resource {
     #[serde(rename = "LFTag")]
     pub lftag: Option<LFTagKeyResource>,
 
-
-    /// 
+    ///
     /// A list of LF-tag conditions that define a resource's LF-tag policy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LFTagPolicyResource
@@ -565,10 +488,9 @@ pub struct Resource {
     #[serde(rename = "LFTagPolicy")]
     pub lftag_policy: Option<LFTagPolicyResource>,
 
-
-    /// 
+    ///
     /// The table for the resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: TableResource
@@ -577,10 +499,9 @@ pub struct Resource {
     #[serde(rename = "Table")]
     pub table: Option<TableResource>,
 
-
-    /// 
+    ///
     /// The table with columns for the resource. A principal with permissions to this resource can select metadata from the columns of a table in the Data Catalog and the underlying data in Amazon S3.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: TableWithColumnsResource
@@ -588,10 +509,7 @@ pub struct Resource {
     /// Update requires: Replacement
     #[serde(rename = "TableWithColumns")]
     pub table_with_columns: Option<TableWithColumnsResource>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Resource {
     fn type_string(&self) -> &'static str {
@@ -603,20 +521,29 @@ impl cfn_resources::CfnResource for Resource {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.data_cells_filter
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.data_cells_filter.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.data_location
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.data_location.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.database.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.database
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.lftag.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.lftag_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.lftag_policy
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.table.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.table_with_columns.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.table_with_columns
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -625,8 +552,6 @@ impl cfn_resources::CfnResource for Resource {
 /// A structure for the table object. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TableResource {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -637,10 +562,9 @@ pub struct TableResource {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
-
-    /// 
+    ///
     /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -649,10 +573,9 @@ pub struct TableResource {
     #[serde(rename = "DatabaseName")]
     pub database_name: String,
 
-
-    /// 
+    ///
     /// The name of the table.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -661,12 +584,11 @@ pub struct TableResource {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// A wildcard object representing every table under a database.
-    /// 
+    ///
     /// At least one of TableResource$Name or TableResource$TableWildcard is required.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -674,10 +596,7 @@ pub struct TableResource {
     /// Update requires: Replacement
     #[serde(rename = "TableWildcard")]
     pub table_wildcard: Option<serde_json::Value>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TableResource {
     fn type_string(&self) -> &'static str {
@@ -689,7 +608,6 @@ impl cfn_resources::CfnResource for TableResource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -699,11 +617,9 @@ impl cfn_resources::CfnResource for TableResource {
 /// This object must take a value for at least one of ColumnsNames, ColumnsIndexes, or ColumnsWildcard.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TableWithColumnsResource {
-
-
-    /// 
+    ///
     /// The identifier for the Data Catalog where the location is registered with AWS Lake Formation.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -712,10 +628,9 @@ pub struct TableWithColumnsResource {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
-
-    /// 
+    ///
     /// The list of column names for the table. At least one of ColumnNames or ColumnWildcard is required.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -724,10 +639,9 @@ pub struct TableWithColumnsResource {
     #[serde(rename = "ColumnNames")]
     pub column_names: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ColumnWildcard
@@ -736,10 +650,9 @@ pub struct TableWithColumnsResource {
     #[serde(rename = "ColumnWildcard")]
     pub column_wildcard: Option<ColumnWildcard>,
 
-
-    /// 
+    ///
     /// The name of the database for the table with columns resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -748,10 +661,9 @@ pub struct TableWithColumnsResource {
     #[serde(rename = "DatabaseName")]
     pub database_name: String,
 
-
-    /// 
+    ///
     /// The name of the table resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -759,10 +671,7 @@ pub struct TableWithColumnsResource {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TableWithColumnsResource {
     fn type_string(&self) -> &'static str {
@@ -774,8 +683,9 @@ impl cfn_resources::CfnResource for TableWithColumnsResource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.column_wildcard.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.column_wildcard
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }

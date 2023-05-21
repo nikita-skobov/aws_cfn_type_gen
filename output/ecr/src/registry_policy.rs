@@ -1,15 +1,11 @@
-
-
 /// The AWS::ECR::RegistryPolicy resource creates or updates the permissions       policy for a private registry.
 ///
 /// A private registry policy is used to specify permissions for another AWS account and is used when configuring cross-account replication. For       more information, see Registry         permissions in the Amazon Elastic Container Registry User         Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRegistryPolicy {
-
-
-    /// 
+    ///
     /// The JSON policy text for your registry.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Json
@@ -17,10 +13,7 @@ pub struct CfnRegistryPolicy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyText")]
     pub policy_text: serde_json::Value,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRegistryPolicy {
     fn type_string(&self) -> &'static str {
@@ -32,7 +25,6 @@ impl cfn_resources::CfnResource for CfnRegistryPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

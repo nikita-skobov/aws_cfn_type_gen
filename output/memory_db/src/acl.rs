@@ -1,13 +1,9 @@
-
-
 /// Specifies an Access Control List. For more information, see Authenticating users with Access       Contol Lists (ACLs).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnACL {
-
-
-    /// 
+    ///
     /// The name of the Access Control List.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,12 +12,11 @@ pub struct CfnACL {
     #[serde(rename = "ACLName")]
     pub aclname: String,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -30,10 +25,9 @@ pub struct CfnACL {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The list of users that belong to the Access Control List.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -41,10 +35,7 @@ pub struct CfnACL {
     /// Update requires: No interruption
     #[serde(rename = "UserNames")]
     pub user_names: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnACL {
     fn type_string(&self) -> &'static str {
@@ -56,7 +47,6 @@ impl cfn_resources::CfnResource for CfnACL {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -70,32 +60,26 @@ impl cfn_resources::CfnResource for CfnACL {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -107,7 +91,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

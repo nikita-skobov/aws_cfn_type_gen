@@ -1,15 +1,11 @@
-
-
 /// Creates an AWS Migration Hub Refactor Spaces application. The account that owns the environment also owns the    applications created inside the environment, regardless of the account that creates the    application. Refactor Spaces provisions an Amazon API Gateway, API Gateway VPC link, and     Network Load Balancer for the application proxy inside your account.
 ///
 /// In environments created with a CreateEnvironment:NetworkFabricType of NONE you need to configure     VPC to VPC connectivity between your service VPC and the application proxy VPC to    route traffic through the application proxy to a service with a private URL endpoint. For more    information, see     Create an application in the Refactor Spaces User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
-
-
-    /// 
+    ///
     /// The endpoint URL of the Amazon API Gateway proxy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ApiGatewayProxyInput
@@ -18,10 +14,9 @@ pub struct CfnApplication {
     #[serde(rename = "ApiGatewayProxy")]
     pub api_gateway_proxy: Option<ApiGatewayProxyInput>,
 
-
-    /// 
+    ///
     /// The unique identifier of the environment.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnApplication {
     #[serde(rename = "EnvironmentIdentifier")]
     pub environment_identifier: String,
 
-
-    /// 
+    ///
     /// The name of the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnApplication {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The proxy type of the proxy created within the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,10 +47,9 @@ pub struct CfnApplication {
     #[serde(rename = "ProxyType")]
     pub proxy_type: String,
 
-
-    /// 
+    ///
     /// The tags assigned to the application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -66,10 +58,9 @@ pub struct CfnApplication {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the virtual private cloud (VPC).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -77,10 +68,7 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string(&self) -> &'static str {
@@ -92,8 +80,9 @@ impl cfn_resources::CfnResource for CfnApplication {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.api_gateway_proxy.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.api_gateway_proxy
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -102,13 +91,11 @@ impl cfn_resources::CfnResource for CfnApplication {
 /// A wrapper object holding the Amazon API Gateway endpoint input.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ApiGatewayProxyInput {
-
-
-    /// 
+    ///
     /// The type of endpoint to use for the API Gateway proxy. If no value is specified in    the request, the value is set to REGIONAL by default.
-    /// 
+    ///
     /// If the value is set to PRIVATE in the request, this creates a private API    endpoint that is isolated from the public internet. The private endpoint can only be accessed    by using Amazon Virtual Private Cloud (Amazon VPC) interface endpoints for the Amazon API Gateway that has been granted access.   For more information about creating a private connection with Refactor Spaces and interface   endpoint (AWS PrivateLink) availability, see Access    Refactor Spaces using an interface endpoint (AWS PrivateLink).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -117,10 +104,9 @@ pub struct ApiGatewayProxyInput {
     #[serde(rename = "EndpointType")]
     pub endpoint_type: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the API Gateway stage. The name defaults to prod.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -128,10 +114,7 @@ pub struct ApiGatewayProxyInput {
     /// Update requires: Replacement
     #[serde(rename = "StageName")]
     pub stage_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ApiGatewayProxyInput {
     fn type_string(&self) -> &'static str {
@@ -143,7 +126,6 @@ impl cfn_resources::CfnResource for ApiGatewayProxyInput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -157,32 +139,26 @@ impl cfn_resources::CfnResource for ApiGatewayProxyInput {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -194,7 +170,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

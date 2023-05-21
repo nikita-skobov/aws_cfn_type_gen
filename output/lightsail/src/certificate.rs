@@ -1,13 +1,9 @@
-
-
 /// The AWS::Lightsail::Certificate resource specifies an SSL/TLS certificate     that you can use with a content delivery network (CDN) distribution and a container     service.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCertificate {
-
-
-    /// 
+    ///
     /// The name of the certificate.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnCertificate {
     #[serde(rename = "CertificateName")]
     pub certificate_name: String,
 
-
-    /// 
+    ///
     /// The domain name of the certificate.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnCertificate {
     #[serde(rename = "DomainName")]
     pub domain_name: String,
 
-
-    /// 
+    ///
     /// An array of strings that specify the alternate domains (such as example.org)     and subdomains (such as blog.example.com) of the certificate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -40,14 +34,13 @@ pub struct CfnCertificate {
     #[serde(rename = "SubjectAlternativeNames")]
     pub subject_alternative_names: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag     in the AWS CloudFormation User Guide.
-    /// 
+    ///
     /// NoteThe Value of Tags is optional for Lightsail resources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -55,10 +48,7 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCertificate {
     fn type_string(&self) -> &'static str {
@@ -70,7 +60,6 @@ impl cfn_resources::CfnResource for CfnCertificate {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -84,32 +73,26 @@ impl cfn_resources::CfnResource for CfnCertificate {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -121,7 +104,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

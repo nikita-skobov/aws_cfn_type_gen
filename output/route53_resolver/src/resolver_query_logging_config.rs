@@ -1,13 +1,9 @@
-
-
 /// The AWS::Route53Resolver::ResolverQueryLoggingConfig resource is a complex type that contains settings for one query logging configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResolverQueryLoggingConfig {
-
-
-    /// 
+    ///
     /// The ARN of the resource that you want Resolver to send query logs: an Amazon S3 bucket, a CloudWatch Logs log group, or 			a Kinesis Data Firehose delivery stream.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnResolverQueryLoggingConfig {
     #[serde(rename = "DestinationArn")]
     pub destination_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the query logging configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -37,10 +32,7 @@ pub struct CfnResolverQueryLoggingConfig {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnResolverQueryLoggingConfig {
     fn type_string(&self) -> &'static str {
@@ -52,39 +44,42 @@ impl cfn_resources::CfnResource for CfnResolverQueryLoggingConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.destination_arn {
+            if the_val.len() > 600 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'destination_arn'. {} is greater than 600",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.destination_arn {
-
-        if the_val.len() > 600 as _ {
-            return Err(format!("Max validation failed on field 'destination_arn'. {} is greater than 600", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'destination_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.destination_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'destination_arn'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+            if the_val.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }

@@ -1,15 +1,11 @@
-
-
 /// Specifies a rotation in an on-call schedule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRotation {
-
-
-    /// 
+    ///
     /// The Amazon Resource Names (ARNs) of the contacts to add to the rotation.
-    /// 
+    ///
     /// The order in which you list the contacts is their shift order in the rotation       schedule.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -20,10 +16,9 @@ pub struct CfnRotation {
     #[serde(rename = "ContactIds")]
     pub contact_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// The name for the rotation.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -38,10 +33,9 @@ pub struct CfnRotation {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Information about the rule that specifies when shift team members rotate.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: RecurrenceSettings
@@ -50,10 +44,9 @@ pub struct CfnRotation {
     #[serde(rename = "Recurrence")]
     pub recurrence: RecurrenceSettings,
 
-
-    /// 
+    ///
     /// The date and time the rotation goes into effect.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -62,10 +55,9 @@ pub struct CfnRotation {
     #[serde(rename = "StartTime")]
     pub start_time: String,
 
-
-    /// 
+    ///
     /// Optional metadata to assign to the rotation. Tags enable you to categorize a resource       in different ways, such as by purpose, owner, or environment. For more information, see         Tagging Incident Manager resources in the Incident Manager User         Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -74,10 +66,9 @@ pub struct CfnRotation {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The time zone to base the rotation’s activity on, in Internet Assigned Numbers       Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For       more information, see the Time Zone         Database on the IANA website.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -91,10 +82,7 @@ pub struct CfnRotation {
     /// Update requires: No interruption
     #[serde(rename = "TimeZoneId")]
     pub time_zone_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRotation {
     fn type_string(&self) -> &'static str {
@@ -106,44 +94,53 @@ impl cfn_resources::CfnResource for CfnRotation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.contact_ids;
 
         if the_val.len() > 25 as _ {
-            return Err(format!("Max validation failed on field 'contact_ids'. {} is greater than 25", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'contact_ids'. {} is greater than 25",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.recurrence.validate()?;
 
         let the_val = &self.time_zone_id;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'time_zone_id'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'time_zone_id'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.time_zone_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'time_zone_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'time_zone_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -151,11 +148,9 @@ impl cfn_resources::CfnResource for CfnRotation {
 /// Information about when an on-call shift begins and ends.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CoverageTime {
-
-
-    /// 
+    ///
     /// Information about when an on-call rotation shift ends.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -164,10 +159,9 @@ pub struct CoverageTime {
     #[serde(rename = "EndTime")]
     pub end_time: String,
 
-
-    /// 
+    ///
     /// Information about when an on-call rotation shift begins.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -175,10 +169,7 @@ pub struct CoverageTime {
     /// Update requires: No interruption
     #[serde(rename = "StartTime")]
     pub start_time: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CoverageTime {
     fn type_string(&self) -> &'static str {
@@ -190,7 +181,6 @@ impl cfn_resources::CfnResource for CoverageTime {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -198,11 +188,9 @@ impl cfn_resources::CfnResource for CoverageTime {
 /// Information about on-call rotations that recur monthly.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MonthlySetting {
-
-
-    /// 
+    ///
     /// The day of the month when monthly recurring on-call rotations begin.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -215,10 +203,9 @@ pub struct MonthlySetting {
     #[serde(rename = "DayOfMonth")]
     pub day_of_month: i64,
 
-
-    /// 
+    ///
     /// The time of day when a monthly recurring on-call shift rotation begins.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -226,10 +213,7 @@ pub struct MonthlySetting {
     /// Update requires: No interruption
     #[serde(rename = "HandOffTime")]
     pub hand_off_time: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MonthlySetting {
     fn type_string(&self) -> &'static str {
@@ -241,21 +225,24 @@ impl cfn_resources::CfnResource for MonthlySetting {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.day_of_month;
 
         if *the_val > 31 as _ {
-            return Err(format!("Max validation failed on field 'day_of_month'. {} is greater than 31", the_val));
+            return Err(format!(
+                "Max validation failed on field 'day_of_month'. {} is greater than 31",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.day_of_month;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'day_of_month'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'day_of_month'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -263,11 +250,9 @@ impl cfn_resources::CfnResource for MonthlySetting {
 /// Information about when an on-call rotation is in effect and how long the rotation       period lasts.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RecurrenceSettings {
-
-
-    /// 
+    ///
     /// Information about on-call rotations that recur daily.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -276,10 +261,9 @@ pub struct RecurrenceSettings {
     #[serde(rename = "DailySettings")]
     pub daily_settings: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Information about on-call rotations that recur monthly.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of MonthlySetting
@@ -288,10 +272,9 @@ pub struct RecurrenceSettings {
     #[serde(rename = "MonthlySettings")]
     pub monthly_settings: Option<Vec<MonthlySetting>>,
 
-
-    /// 
+    ///
     /// The number of contacts, or shift team members designated to be on call concurrently       during a shift. For example, in an on-call schedule that contains ten contacts, a value of         2 designates that two of them are on call at any given time.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -302,10 +285,9 @@ pub struct RecurrenceSettings {
     #[serde(rename = "NumberOfOnCalls")]
     pub number_of_on_calls: i64,
 
-
-    /// 
+    ///
     /// The number of days, weeks, or months a single rotation lasts.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -318,10 +300,9 @@ pub struct RecurrenceSettings {
     #[serde(rename = "RecurrenceMultiplier")]
     pub recurrence_multiplier: i64,
 
-
-    /// 
+    ///
     /// Information about the days of the week included in on-call rotation coverage.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ShiftCoverage
@@ -330,10 +311,9 @@ pub struct RecurrenceSettings {
     #[serde(rename = "ShiftCoverages")]
     pub shift_coverages: Option<Vec<ShiftCoverage>>,
 
-
-    /// 
+    ///
     /// Information about on-call rotations that recur weekly.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of WeeklySetting
@@ -341,10 +321,7 @@ pub struct RecurrenceSettings {
     /// Update requires: No interruption
     #[serde(rename = "WeeklySettings")]
     pub weekly_settings: Option<Vec<WeeklySetting>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RecurrenceSettings {
     fn type_string(&self) -> &'static str {
@@ -356,28 +333,33 @@ impl cfn_resources::CfnResource for RecurrenceSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.number_of_on_calls;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'number_of_on_calls'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'number_of_on_calls'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.recurrence_multiplier;
 
         if *the_val > 100 as _ {
-            return Err(format!("Max validation failed on field 'recurrence_multiplier'. {} is greater than 100", the_val));
+            return Err(format!(
+                "Max validation failed on field 'recurrence_multiplier'. {} is greater than 100",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.recurrence_multiplier;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'recurrence_multiplier'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'recurrence_multiplier'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -385,11 +367,9 @@ impl cfn_resources::CfnResource for RecurrenceSettings {
 /// Information about the days of the week that the on-call rotation coverage includes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ShiftCoverage {
-
-
-    /// 
+    ///
     /// The start and end times of the shift.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of CoverageTime
@@ -398,10 +378,9 @@ pub struct ShiftCoverage {
     #[serde(rename = "CoverageTimes")]
     pub coverage_times: Vec<CoverageTime>,
 
-
-    /// 
+    ///
     /// A list of days on which the schedule is active.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -409,10 +388,7 @@ pub struct ShiftCoverage {
     /// Update requires: No interruption
     #[serde(rename = "DayOfWeek")]
     pub day_of_week: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ShiftCoverage {
     fn type_string(&self) -> &'static str {
@@ -424,7 +400,6 @@ impl cfn_resources::CfnResource for ShiftCoverage {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -438,32 +413,26 @@ impl cfn_resources::CfnResource for ShiftCoverage {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -475,7 +444,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -483,11 +451,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Information about rotations that recur weekly.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WeeklySetting {
-
-
-    /// 
+    ///
     /// The day of the week when weekly recurring on-call shift rotations begins.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -498,10 +464,9 @@ pub struct WeeklySetting {
     #[serde(rename = "DayOfWeek")]
     pub day_of_week: WeeklySettingDayOfWeekEnum,
 
-
-    /// 
+    ///
     /// The time of day when a weekly recurring on-call shift rotation begins.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -509,13 +474,10 @@ pub struct WeeklySetting {
     /// Update requires: No interruption
     #[serde(rename = "HandOffTime")]
     pub hand_off_time: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum WeeklySettingDayOfWeekEnum {
-
     /// FRI
     #[serde(rename = "FRI")]
     Fri,
@@ -543,7 +505,6 @@ pub enum WeeklySettingDayOfWeekEnum {
     /// WED
     #[serde(rename = "WED")]
     Wed,
-
 }
 
 impl Default for WeeklySettingDayOfWeekEnum {
@@ -551,7 +512,6 @@ impl Default for WeeklySettingDayOfWeekEnum {
         WeeklySettingDayOfWeekEnum::Fri
     }
 }
-
 
 impl cfn_resources::CfnResource for WeeklySetting {
     fn type_string(&self) -> &'static str {
@@ -563,7 +523,6 @@ impl cfn_resources::CfnResource for WeeklySetting {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

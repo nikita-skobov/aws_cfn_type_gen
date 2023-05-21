@@ -1,13 +1,9 @@
-
-
 /// The     AWS::Greengrass::DeviceDefinitionVersion resource represents a device definition version for AWS IoT Greengrass.      A device definition version contains a list of devices.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDeviceDefinitionVersion {
-
-
-    /// 
+    ///
     /// The ID of the device definition associated with this version. This value is a GUID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnDeviceDefinitionVersion {
     #[serde(rename = "DeviceDefinitionId")]
     pub device_definition_id: String,
 
-
-    /// 
+    ///
     /// The devices in this version.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Device
@@ -27,10 +22,7 @@ pub struct CfnDeviceDefinitionVersion {
     /// Update requires: Replacement
     #[serde(rename = "Devices")]
     pub devices: Vec<Device>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDeviceDefinitionVersion {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnDeviceDefinitionVersion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -52,11 +43,9 @@ impl cfn_resources::CfnResource for CfnDeviceDefinitionVersion {
 /// In an AWS CloudFormation template, the Devices 		 property of the AWS::Greengrass::DeviceDefinitionVersion resource contains a      list of Device property types.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Device {
-
-
-    /// 
+    ///
     /// The ARN of the device certificate for the device. This X.509 certificate is used to authenticate           the device with AWS IoT and AWS IoT Greengrass services.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -65,10 +54,9 @@ pub struct Device {
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: String,
 
-
-    /// 
+    ///
     /// A descriptive or arbitrary ID for the device. This value must be unique within       the device definition version. Maximum length is 128 characters with pattern [a-zA-Z0-9:_-]+.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -77,10 +65,9 @@ pub struct Device {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// Indicates whether the device's local shadow is synced       with the cloud automatically.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -89,10 +76,9 @@ pub struct Device {
     #[serde(rename = "SyncShadow")]
     pub sync_shadow: Option<bool>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the device, which is an AWS IoT device (thing).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -100,10 +86,7 @@ pub struct Device {
     /// Update requires: Replacement
     #[serde(rename = "ThingArn")]
     pub thing_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Device {
     fn type_string(&self) -> &'static str {
@@ -115,7 +98,6 @@ impl cfn_resources::CfnResource for Device {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,5 +1,3 @@
-
-
 /// Associates a VPC with a service network. When you associate a VPC with the service network,  it enables all the resources within that VPC to be clients and communicate with other services in  the service network. For more information, see Manage VPC associations in the Amazon VPC Lattice User Guide.
 ///
 /// You can't use this operation if there is a disassociation in progress. If the association  fails, retry by deleting the association and recreating it.
@@ -9,11 +7,9 @@
 /// If you add a security group to the service network and VPC association, the association must  continue to always have at least one security group. You can add or edit security groups at any  time. However, to remove all security groups, you must first delete the association and recreate  it without security groups.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnServiceNetworkVpcAssociation {
-
-
-    /// 
+    ///
     /// The IDs of the security groups. Security groups aren't added by default. You can add a  security group to apply network level controls to control which resources in a VPC are allowed to  access the service network and its services. For more information, see Control traffic to   resources using security groups in the Amazon VPC User  Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -22,10 +18,9 @@ pub struct CfnServiceNetworkVpcAssociation {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The ID or Amazon Resource Name (ARN) of the service network. You must use the ARN when the  resources specified in the operation are in different accounts.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnServiceNetworkVpcAssociation {
     #[serde(rename = "ServiceNetworkIdentifier")]
     pub service_network_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// The tags for the association.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -46,10 +40,9 @@ pub struct CfnServiceNetworkVpcAssociation {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the VPC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -57,10 +50,7 @@ pub struct CfnServiceNetworkVpcAssociation {
     /// Update requires: Replacement
     #[serde(rename = "VpcIdentifier")]
     pub vpc_identifier: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnServiceNetworkVpcAssociation {
     fn type_string(&self) -> &'static str {
@@ -72,7 +62,6 @@ impl cfn_resources::CfnResource for CfnServiceNetworkVpcAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -86,32 +75,26 @@ impl cfn_resources::CfnResource for CfnServiceNetworkVpcAssociation {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -123,7 +106,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

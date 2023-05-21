@@ -1,10 +1,6 @@
-
-
 /// Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance.     The peer address and transit gateway address must be the same IP address family (IPv4 or IPv6).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConnectPeer {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -15,10 +11,9 @@ pub struct CfnConnectPeer {
     #[serde(rename = "BgpOptions")]
     pub bgp_options: Option<BgpOptions>,
 
-
-    /// 
+    ///
     /// The ID of the attachment to connect.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -33,10 +28,9 @@ pub struct CfnConnectPeer {
     #[serde(rename = "ConnectAttachmentId")]
     pub connect_attachment_id: String,
 
-
-    /// 
+    ///
     /// The IP address of a core network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -51,10 +45,9 @@ pub struct CfnConnectPeer {
     #[serde(rename = "CoreNetworkAddress")]
     pub core_network_address: Option<String>,
 
-
-    /// 
+    ///
     /// The inside IP addresses used for a Connect peer configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -63,10 +56,9 @@ pub struct CfnConnectPeer {
     #[serde(rename = "InsideCidrBlocks")]
     pub inside_cidr_blocks: Vec<String>,
 
-
-    /// 
+    ///
     /// The IP address of the Connect peer.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -81,10 +73,9 @@ pub struct CfnConnectPeer {
     #[serde(rename = "PeerAddress")]
     pub peer_address: String,
 
-
-    /// 
+    ///
     /// The list of key-value tags associated with the Connect peer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -92,10 +83,7 @@ pub struct CfnConnectPeer {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnConnectPeer {
     fn type_string(&self) -> &'static str {
@@ -107,53 +95,64 @@ impl cfn_resources::CfnResource for CfnConnectPeer {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.bgp_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.bgp_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.connect_attachment_id;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'connect_attachment_id'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'connect_attachment_id'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.connect_attachment_id;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'connect_attachment_id'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'connect_attachment_id'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.core_network_address {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'core_network_address'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'core_network_address'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.core_network_address {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'core_network_address'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'core_network_address'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.peer_address;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'peer_address'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'peer_address'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.peer_address;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'peer_address'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'peer_address'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -161,11 +160,9 @@ impl cfn_resources::CfnResource for CfnConnectPeer {
 /// Describes the BGP options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BgpOptions {
-
-
-    /// 
+    ///
     /// The Peer ASN of the BGP.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -173,10 +170,7 @@ pub struct BgpOptions {
     /// Update requires: Replacement
     #[serde(rename = "PeerAsn")]
     pub peer_asn: Option<f64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for BgpOptions {
     fn type_string(&self) -> &'static str {
@@ -188,7 +182,6 @@ impl cfn_resources::CfnResource for BgpOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -196,11 +189,9 @@ impl cfn_resources::CfnResource for BgpOptions {
 /// Describes a core network BGP configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectPeerBgpConfiguration {
-
-
-    /// 
+    ///
     /// The address of a core network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -215,10 +206,9 @@ pub struct ConnectPeerBgpConfiguration {
     #[serde(rename = "CoreNetworkAddress")]
     pub core_network_address: Option<String>,
 
-
-    /// 
+    ///
     /// The ASN of the Coret Network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -227,10 +217,9 @@ pub struct ConnectPeerBgpConfiguration {
     #[serde(rename = "CoreNetworkAsn")]
     pub core_network_asn: Option<f64>,
 
-
-    /// 
+    ///
     /// The address of a core network Connect peer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -245,10 +234,9 @@ pub struct ConnectPeerBgpConfiguration {
     #[serde(rename = "PeerAddress")]
     pub peer_address: Option<String>,
 
-
-    /// 
+    ///
     /// The ASN of the Connect peer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -256,10 +244,7 @@ pub struct ConnectPeerBgpConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "PeerAsn")]
     pub peer_asn: Option<f64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConnectPeerBgpConfiguration {
     fn type_string(&self) -> &'static str {
@@ -271,39 +256,42 @@ impl cfn_resources::CfnResource for ConnectPeerBgpConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.core_network_address {
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'core_network_address'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.core_network_address {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'core_network_address'. {} is greater than 50", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'core_network_address'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.core_network_address {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'core_network_address'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.peer_address {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'peer_address'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'peer_address'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.peer_address {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'peer_address'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'peer_address'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -311,11 +299,9 @@ impl cfn_resources::CfnResource for ConnectPeerBgpConfiguration {
 /// Describes a core network Connect peer configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectPeerConfiguration {
-
-
-    /// 
+    ///
     /// The Connect peer BGP configurations.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ConnectPeerBgpConfiguration
@@ -324,10 +310,9 @@ pub struct ConnectPeerConfiguration {
     #[serde(rename = "BgpConfigurations")]
     pub bgp_configurations: Option<Vec<ConnectPeerBgpConfiguration>>,
 
-
-    /// 
+    ///
     /// The IP address of a core network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -342,10 +327,9 @@ pub struct ConnectPeerConfiguration {
     #[serde(rename = "CoreNetworkAddress")]
     pub core_network_address: Option<String>,
 
-
-    /// 
+    ///
     /// The inside IP addresses used for a Connect peer configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -354,10 +338,9 @@ pub struct ConnectPeerConfiguration {
     #[serde(rename = "InsideCidrBlocks")]
     pub inside_cidr_blocks: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The IP address of the Connect peer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -372,10 +355,9 @@ pub struct ConnectPeerConfiguration {
     #[serde(rename = "PeerAddress")]
     pub peer_address: Option<String>,
 
-
-    /// 
+    ///
     /// The protocol used for a Connect peer configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -385,17 +367,13 @@ pub struct ConnectPeerConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     pub protocol: Option<ConnectPeerConfigurationProtocolEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ConnectPeerConfigurationProtocolEnum {
-
     /// GRE
     #[serde(rename = "GRE")]
     Gre,
-
 }
 
 impl Default for ConnectPeerConfigurationProtocolEnum {
@@ -403,7 +381,6 @@ impl Default for ConnectPeerConfigurationProtocolEnum {
         ConnectPeerConfigurationProtocolEnum::Gre
     }
 }
-
 
 impl cfn_resources::CfnResource for ConnectPeerConfiguration {
     fn type_string(&self) -> &'static str {
@@ -415,39 +392,42 @@ impl cfn_resources::CfnResource for ConnectPeerConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.core_network_address {
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'core_network_address'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.core_network_address {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'core_network_address'. {} is greater than 50", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'core_network_address'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.core_network_address {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'core_network_address'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.peer_address {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'peer_address'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'peer_address'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.peer_address {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'peer_address'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'peer_address'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -461,32 +441,26 @@ impl cfn_resources::CfnResource for ConnectPeerConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -498,7 +472,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// The AWS::DataSync::LocationObjectStorage resource specifies an endpoint for     a self-managed object storage bucket. For more information about self-managed object     storage locations, see Creating a Location for       Object Storage.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocationObjectStorage {
-
-
-    /// 
+    ///
     /// Specifies the access key (for example, a user name) if credentials are required to    authenticate with the object storage server.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "AccessKey")]
     pub access_key: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the Amazon Resource Names (ARNs) of the DataSync agents that can    securely connect with your location.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -36,10 +31,9 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "AgentArns")]
     pub agent_arns: Vec<String>,
 
-
-    /// 
+    ///
     /// Specifies the name of the object storage bucket involved in the transfer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -54,10 +48,9 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "BucketName")]
     pub bucket_name: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the secret key (for example, a password) if credentials are required to    authenticate with the object storage server.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -72,16 +65,15 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "SecretKey")]
     pub secret_key: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies a file with the certificates that are used to sign the object storage server's    certificate (for example, file:///home/user/.ssh/storage_sys_certificate.pem).    The file you specify must include the following:
-    /// 
+    ///
     /// The certificate of the signing certificate authority (CA)               Any intermediate certificates               base64 encoding               A .pem extension
-    /// 
+    ///
     /// The file can be up to 32768 bytes (before base64 encoding).
-    /// 
+    ///
     /// To use this parameter, configure ServerProtocol to HTTPS.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -90,10 +82,9 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "ServerCertificate")]
     pub server_certificate: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the domain name or IP address of the object storage server. A DataSync    agent uses this hostname to mount the object storage server in a network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -106,10 +97,9 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "ServerHostname")]
     pub server_hostname: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the port that your object storage server accepts inbound network traffic on (for    example, port 443).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -122,10 +112,9 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "ServerPort")]
     pub server_port: Option<i64>,
 
-
-    /// 
+    ///
     /// Specifies the protocol that your object storage server uses to communicate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -136,10 +125,9 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "ServerProtocol")]
     pub server_protocol: Option<LocationObjectStorageServerProtocolEnum>,
 
-
-    /// 
+    ///
     /// Specifies the object prefix for your object storage server. If this is a source location,     DataSync only copies objects with this prefix. If this is a destination location,     DataSync writes all objects with this prefix.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -152,10 +140,9 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "Subdirectory")]
     pub subdirectory: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the key-value pair that represents a tag that you want to add to the resource.    Tags can help you manage, filter, and search for your resources. We recommend creating a name    tag for your location.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -165,13 +152,10 @@ pub struct CfnLocationObjectStorage {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum LocationObjectStorageServerProtocolEnum {
-
     /// HTTP
     #[serde(rename = "HTTP")]
     Http,
@@ -179,7 +163,6 @@ pub enum LocationObjectStorageServerProtocolEnum {
     /// HTTPS
     #[serde(rename = "HTTPS")]
     Https,
-
 }
 
 impl Default for LocationObjectStorageServerProtocolEnum {
@@ -187,7 +170,6 @@ impl Default for LocationObjectStorageServerProtocolEnum {
         LocationObjectStorageServerProtocolEnum::Http
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnLocationObjectStorage {
     fn type_string(&self) -> &'static str {
@@ -199,102 +181,114 @@ impl cfn_resources::CfnResource for CfnLocationObjectStorage {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.access_key {
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'access_key'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.access_key {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'access_key'. {} is greater than 200", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'access_key'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.access_key {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'access_key'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.agent_arns;
 
         if the_val.len() > 4 as _ {
-            return Err(format!("Max validation failed on field 'agent_arns'. {} is greater than 4", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'agent_arns'. {} is greater than 4",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.bucket_name {
-
-        if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 63", the_val.len()));
+            if the_val.len() > 63 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_name'. {} is greater than 63",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.bucket_name {
-
-        if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 3", the_val.len()));
+            if the_val.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket_name'. {} is less than 3",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.secret_key {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'secret_key'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'secret_key'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.secret_key {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'secret_key'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'secret_key'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.server_hostname {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'server_hostname'. {} is greater than 255", the_val.len()));
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'server_hostname'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.server_port {
-
-        if *the_val > 65536 as _ {
-            return Err(format!("Max validation failed on field 'server_port'. {} is greater than 65536", the_val));
+            if *the_val > 65536 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'server_port'. {} is greater than 65536",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.server_port {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'server_port'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'server_port'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.subdirectory {
-
-        if the_val.len() > 4096 as _ {
-            return Err(format!("Max validation failed on field 'subdirectory'. {} is greater than 4096", the_val.len()));
+            if the_val.len() > 4096 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -308,32 +302,26 @@ impl cfn_resources::CfnResource for CfnLocationObjectStorage {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -345,7 +333,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

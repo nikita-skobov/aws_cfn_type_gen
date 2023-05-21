@@ -1,13 +1,9 @@
-
-
 /// Creates a gateway, which is a virtual or edge device that delivers industrial data streams       from local servers to AWS IoT SiteWise. For more information, see Ingesting data using a gateway in the       AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGateway {
-
-
-    /// 
+    ///
     /// A list of gateway capability summaries that each contain a namespace and status. Each    gateway capability defines data sources for the gateway. To retrieve a capability    configuration's definition, use DescribeGatewayCapabilityConfiguration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of GatewayCapabilitySummary
@@ -16,12 +12,11 @@ pub struct CfnGateway {
     #[serde(rename = "GatewayCapabilitySummaries")]
     pub gateway_capability_summaries: Option<Vec<GatewayCapabilitySummary>>,
 
-
-    /// 
+    ///
     /// A unique, friendly name for the gateway.
-    /// 
+    ///
     /// The maximum length is 256 characters with the pattern [^\u0000-\u001F\u007F]+.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnGateway {
     #[serde(rename = "GatewayName")]
     pub gateway_name: String,
 
-
-    /// 
+    ///
     /// The gateway's platform. You can only specify one platform in a gateway.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: GatewayPlatform
@@ -42,10 +36,9 @@ pub struct CfnGateway {
     #[serde(rename = "GatewayPlatform")]
     pub gateway_platform: GatewayPlatform,
 
-
-    /// 
+    ///
     /// A list of key-value pairs that contain metadata for the gateway. For more information, see       Tagging your AWS IoT SiteWise resources in the       AWS IoT SiteWise User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -53,10 +46,7 @@ pub struct CfnGateway {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnGateway {
     fn type_string(&self) -> &'static str {
@@ -68,7 +58,6 @@ impl cfn_resources::CfnResource for CfnGateway {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.gateway_platform.validate()?;
 
         Ok(())
@@ -78,11 +67,9 @@ impl cfn_resources::CfnResource for CfnGateway {
 /// Contains a summary of a gateway capability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GatewayCapabilitySummary {
-
-
-    /// 
+    ///
     /// The JSON document that defines the configuration for the gateway capability. For more       information, see Configuring data sources (CLI) in the AWS IoT SiteWise User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -91,12 +78,11 @@ pub struct GatewayCapabilitySummary {
     #[serde(rename = "CapabilityConfiguration")]
     pub capability_configuration: Option<String>,
 
-
-    /// 
+    ///
     /// The namespace of the capability configuration.    For example, if you configure OPC-UA    sources from the AWS IoT SiteWise console, your OPC-UA capability configuration has the namespace     iotsitewise:opcuacollector:version, where version is a number such as     1.
-    /// 
+    ///
     /// The maximum length is 512 characters with the pattern ^[a-zA-Z]+:[a-zA-Z]+:[0-9]+$.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -104,10 +90,7 @@ pub struct GatewayCapabilitySummary {
     /// Update requires: No interruption
     #[serde(rename = "CapabilityNamespace")]
     pub capability_namespace: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for GatewayCapabilitySummary {
     fn type_string(&self) -> &'static str {
@@ -119,7 +102,6 @@ impl cfn_resources::CfnResource for GatewayCapabilitySummary {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -127,11 +109,9 @@ impl cfn_resources::CfnResource for GatewayCapabilitySummary {
 /// Contains a gateway's platform information.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GatewayPlatform {
-
-
-    /// 
+    ///
     /// A gateway that runs on AWS IoT Greengrass.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Greengrass
@@ -140,10 +120,9 @@ pub struct GatewayPlatform {
     #[serde(rename = "Greengrass")]
     pub greengrass: Option<Greengrass>,
 
-
-    /// 
+    ///
     /// A gateway that runs on AWS IoT Greengrass V2.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: GreengrassV2
@@ -151,10 +130,7 @@ pub struct GatewayPlatform {
     /// Update requires: Replacement
     #[serde(rename = "GreengrassV2")]
     pub greengrass_v2: Option<GreengrassV2>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for GatewayPlatform {
     fn type_string(&self) -> &'static str {
@@ -166,10 +142,13 @@ impl cfn_resources::CfnResource for GatewayPlatform {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.greengrass
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.greengrass.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.greengrass_v2.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.greengrass_v2
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -178,11 +157,9 @@ impl cfn_resources::CfnResource for GatewayPlatform {
 /// Contains details for a gateway that runs on AWS IoT Greengrass. To create a gateway that runs on AWS IoT Greengrass,    you must add the IoT SiteWise connector to a Greengrass group and deploy it. Your Greengrass    group must also have permissions to upload data to AWS IoT SiteWise. For more information, see Ingesting data using a gateway in the      AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Greengrass {
-
-
-    /// 
+    ///
     /// The ARN of the Greengrass group. For more information about how to find a group's    ARN, see ListGroups and GetGroup in       the AWS IoT Greengrass API Reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -190,10 +167,7 @@ pub struct Greengrass {
     /// Update requires: Replacement
     #[serde(rename = "GroupArn")]
     pub group_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Greengrass {
     fn type_string(&self) -> &'static str {
@@ -205,7 +179,6 @@ impl cfn_resources::CfnResource for Greengrass {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -213,11 +186,9 @@ impl cfn_resources::CfnResource for Greengrass {
 /// Contains details for a gateway that runs on AWS IoT Greengrass V2. To create a gateway that runs on AWS IoT Greengrass    V2, you must deploy the IoT SiteWise Edge component to your gateway device. Your Greengrass     device role must use the AWSIoTSiteWiseEdgeAccess policy. For more    information, see Using AWS IoT SiteWise at the edge in the             AWS IoT SiteWise User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct GreengrassV2 {
-
-
-    /// 
+    ///
     /// The name of the AWS IoT thing for your AWS IoT Greengrass V2 core device.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -225,10 +196,7 @@ pub struct GreengrassV2 {
     /// Update requires: Replacement
     #[serde(rename = "CoreDeviceThingName")]
     pub core_device_thing_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for GreengrassV2 {
     fn type_string(&self) -> &'static str {
@@ -240,7 +208,6 @@ impl cfn_resources::CfnResource for GreengrassV2 {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -254,32 +221,26 @@ impl cfn_resources::CfnResource for GreengrassV2 {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -291,7 +252,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

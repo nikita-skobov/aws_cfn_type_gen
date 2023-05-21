@@ -1,13 +1,9 @@
-
-
 /// Creates a connection. A connection defines the authorization type and credentials to use    for authorization with an API destination HTTP endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConnection {
-
-
-    /// 
+    ///
     /// A CreateConnectionAuthRequestParameters object that contains the    authorization parameters to use to authorize with the endpoint.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: AuthParameters
@@ -16,12 +12,11 @@ pub struct CfnConnection {
     #[serde(rename = "AuthParameters")]
     pub auth_parameters: AuthParameters,
 
-
-    /// 
+    ///
     /// The type of authorization to use for the connection.
-    /// 
+    ///
     /// NoteOAUTH tokens are refreshed when a 401 or 407 response is returned.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -32,10 +27,9 @@ pub struct CfnConnection {
     #[serde(rename = "AuthorizationType")]
     pub authorization_type: ConnectionAuthorizationTypeEnum,
 
-
-    /// 
+    ///
     /// A description for the connection to create.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -48,10 +42,9 @@ pub struct CfnConnection {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name for the connection to create.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -65,13 +58,10 @@ pub struct CfnConnection {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ConnectionAuthorizationTypeEnum {
-
     /// API_KEY
     #[serde(rename = "API_KEY")]
     Apikey,
@@ -83,7 +73,6 @@ pub enum ConnectionAuthorizationTypeEnum {
     /// OAUTH_CLIENT_CREDENTIALS
     #[serde(rename = "OAUTH_CLIENT_CREDENTIALS")]
     Oauthclientcredentials,
-
 }
 
 impl Default for ConnectionAuthorizationTypeEnum {
@@ -91,7 +80,6 @@ impl Default for ConnectionAuthorizationTypeEnum {
         ConnectionAuthorizationTypeEnum::Apikey
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnConnection {
     fn type_string(&self) -> &'static str {
@@ -103,33 +91,35 @@ impl cfn_resources::CfnResource for CfnConnection {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.auth_parameters.validate()?;
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 512", the_val.len()));
+            if the_val.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 512",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+            if the_val.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -137,11 +127,9 @@ impl cfn_resources::CfnResource for CfnConnection {
 /// Contains the API key authorization parameters for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ApiKeyAuthParameters {
-
-
-    /// 
+    ///
     /// The name of the API key to use for authorization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -156,10 +144,9 @@ pub struct ApiKeyAuthParameters {
     #[serde(rename = "ApiKeyName")]
     pub api_key_name: String,
 
-
-    /// 
+    ///
     /// The value for the API key to use for authorization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -173,10 +160,7 @@ pub struct ApiKeyAuthParameters {
     /// Update requires: No interruption
     #[serde(rename = "ApiKeyValue")]
     pub api_key_value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ApiKeyAuthParameters {
     fn type_string(&self) -> &'static str {
@@ -188,35 +172,42 @@ impl cfn_resources::CfnResource for ApiKeyAuthParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.api_key_name;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'api_key_name'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'api_key_name'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.api_key_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'api_key_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'api_key_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.api_key_value;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'api_key_value'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'api_key_value'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.api_key_value;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'api_key_value'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'api_key_value'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -224,11 +215,9 @@ impl cfn_resources::CfnResource for ApiKeyAuthParameters {
 /// Contains the authorization parameters to use for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AuthParameters {
-
-
-    /// 
+    ///
     /// The API Key parameters to use for authorization.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ApiKeyAuthParameters
@@ -237,10 +226,9 @@ pub struct AuthParameters {
     #[serde(rename = "ApiKeyAuthParameters")]
     pub api_key_auth_parameters: Option<ApiKeyAuthParameters>,
 
-
-    /// 
+    ///
     /// The authorization parameters for Basic authorization.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: BasicAuthParameters
@@ -249,10 +237,9 @@ pub struct AuthParameters {
     #[serde(rename = "BasicAuthParameters")]
     pub basic_auth_parameters: Option<BasicAuthParameters>,
 
-
-    /// 
+    ///
     /// Additional parameters for the connection that are passed through with every invocation to    the HTTP endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConnectionHttpParameters
@@ -261,10 +248,9 @@ pub struct AuthParameters {
     #[serde(rename = "InvocationHttpParameters")]
     pub invocation_http_parameters: Option<ConnectionHttpParameters>,
 
-
-    /// 
+    ///
     /// The OAuth parameters to use for authorization.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: OAuthParameters
@@ -272,10 +258,7 @@ pub struct AuthParameters {
     /// Update requires: No interruption
     #[serde(rename = "OAuthParameters")]
     pub oauth_parameters: Option<OAuthParameters>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AuthParameters {
     fn type_string(&self) -> &'static str {
@@ -287,14 +270,21 @@ impl cfn_resources::CfnResource for AuthParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.api_key_auth_parameters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.api_key_auth_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.basic_auth_parameters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.basic_auth_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.invocation_http_parameters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.invocation_http_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.oauth_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.oauth_parameters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -303,11 +293,9 @@ impl cfn_resources::CfnResource for AuthParameters {
 /// Contains the Basic authorization parameters for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BasicAuthParameters {
-
-
-    /// 
+    ///
     /// The password associated with the user name to use for Basic authorization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -322,10 +310,9 @@ pub struct BasicAuthParameters {
     #[serde(rename = "Password")]
     pub password: String,
 
-
-    /// 
+    ///
     /// The user name to use for Basic authorization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -339,10 +326,7 @@ pub struct BasicAuthParameters {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     pub username: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for BasicAuthParameters {
     fn type_string(&self) -> &'static str {
@@ -354,35 +338,42 @@ impl cfn_resources::CfnResource for BasicAuthParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.password;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'password'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'password'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.password;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'password'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'password'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.username;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'username'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'username'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.username;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'username'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'username'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -390,11 +381,9 @@ impl cfn_resources::CfnResource for BasicAuthParameters {
 /// Contains the OAuth authorization parameters to use for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClientParameters {
-
-
-    /// 
+    ///
     /// The client ID to use for OAuth authorization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -409,10 +398,9 @@ pub struct ClientParameters {
     #[serde(rename = "ClientID")]
     pub client_id: String,
 
-
-    /// 
+    ///
     /// The client secret assciated with the client ID to use for OAuth authorization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -426,10 +414,7 @@ pub struct ClientParameters {
     /// Update requires: No interruption
     #[serde(rename = "ClientSecret")]
     pub client_secret: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClientParameters {
     fn type_string(&self) -> &'static str {
@@ -441,35 +426,42 @@ impl cfn_resources::CfnResource for ClientParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.client_id;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'client_id'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'client_id'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.client_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'client_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'client_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.client_secret;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'client_secret'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'client_secret'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.client_secret;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'client_secret'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'client_secret'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -477,11 +469,9 @@ impl cfn_resources::CfnResource for ClientParameters {
 /// Contains additional parameters for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectionHttpParameters {
-
-
-    /// 
+    ///
     /// Contains additional body string parameters for the connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Parameter
@@ -492,10 +482,9 @@ pub struct ConnectionHttpParameters {
     #[serde(rename = "BodyParameters")]
     pub body_parameters: Option<Vec<Parameter>>,
 
-
-    /// 
+    ///
     /// Contains additional header parameters for the connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Parameter
@@ -506,10 +495,9 @@ pub struct ConnectionHttpParameters {
     #[serde(rename = "HeaderParameters")]
     pub header_parameters: Option<Vec<Parameter>>,
 
-
-    /// 
+    ///
     /// Contains additional query string parameters for the connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Parameter
@@ -519,10 +507,7 @@ pub struct ConnectionHttpParameters {
     /// Update requires: No interruption
     #[serde(rename = "QueryStringParameters")]
     pub query_string_parameters: Option<Vec<Parameter>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConnectionHttpParameters {
     fn type_string(&self) -> &'static str {
@@ -534,31 +519,30 @@ impl cfn_resources::CfnResource for ConnectionHttpParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.body_parameters {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'body_parameters'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'body_parameters'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.header_parameters {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'header_parameters'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'header_parameters'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.query_string_parameters {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'query_string_parameters'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'query_string_parameters'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -566,11 +550,9 @@ impl cfn_resources::CfnResource for ConnectionHttpParameters {
 /// Contains the OAuth authorization parameters to use for the connection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OAuthParameters {
-
-
-    /// 
+    ///
     /// The URL to the authorization endpoint when OAuth is specified as the authorization    type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -585,10 +567,9 @@ pub struct OAuthParameters {
     #[serde(rename = "AuthorizationEndpoint")]
     pub authorization_endpoint: String,
 
-
-    /// 
+    ///
     /// A CreateConnectionOAuthClientRequestParameters object that contains the    client parameters for OAuth authorization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ClientParameters
@@ -597,10 +578,9 @@ pub struct OAuthParameters {
     #[serde(rename = "ClientParameters")]
     pub client_parameters: ClientParameters,
 
-
-    /// 
+    ///
     /// The method to use for the authorization request.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -611,10 +591,9 @@ pub struct OAuthParameters {
     #[serde(rename = "HttpMethod")]
     pub http_method: OAuthParametersHttpMethodEnum,
 
-
-    /// 
+    ///
     /// A ConnectionHttpParameters object that contains details about the additional    parameters to use for the connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConnectionHttpParameters
@@ -622,13 +601,10 @@ pub struct OAuthParameters {
     /// Update requires: No interruption
     #[serde(rename = "OAuthHttpParameters")]
     pub oauth_http_parameters: Option<ConnectionHttpParameters>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum OAuthParametersHttpMethodEnum {
-
     /// GET
     #[serde(rename = "GET")]
     Get,
@@ -640,7 +616,6 @@ pub enum OAuthParametersHttpMethodEnum {
     /// PUT
     #[serde(rename = "PUT")]
     Put,
-
 }
 
 impl Default for OAuthParametersHttpMethodEnum {
@@ -648,7 +623,6 @@ impl Default for OAuthParametersHttpMethodEnum {
         OAuthParametersHttpMethodEnum::Get
     }
 }
-
 
 impl cfn_resources::CfnResource for OAuthParameters {
     fn type_string(&self) -> &'static str {
@@ -660,24 +634,29 @@ impl cfn_resources::CfnResource for OAuthParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.authorization_endpoint;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'authorization_endpoint'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'authorization_endpoint'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.authorization_endpoint;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'authorization_endpoint'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'authorization_endpoint'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.client_parameters.validate()?;
 
-        self.oauth_http_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.oauth_http_parameters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -686,11 +665,9 @@ impl cfn_resources::CfnResource for OAuthParameters {
 /// Additional query string parameter for the connection. You can include up to 100 additional    query string parameters per request. Each additional parameter counts towards the event    payload size, which cannot exceed 64 KB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Parameter {
-
-
-    /// 
+    ///
     /// Specifies whether the value is secret.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -699,10 +676,9 @@ pub struct Parameter {
     #[serde(rename = "IsValueSecret")]
     pub is_value_secret: Option<bool>,
 
-
-    /// 
+    ///
     /// The key for a query string parameter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -715,10 +691,9 @@ pub struct Parameter {
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value associated with the key for the query string parameter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -730,10 +705,7 @@ pub struct Parameter {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Parameter {
     fn type_string(&self) -> &'static str {
@@ -745,21 +717,24 @@ impl cfn_resources::CfnResource for Parameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.key;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'key'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'key'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.value;
 
         if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'value'. {} is greater than 512", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'value'. {} is greater than 512",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

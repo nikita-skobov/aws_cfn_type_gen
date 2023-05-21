@@ -1,5 +1,3 @@
-
-
 /// Specifies the default version of a module. The default version of the module will be used in CloudFormation operations for this account and Region.
 ///
 /// To register a module version, use the AWS::CloudFormation::ModuleVersion resource.
@@ -7,13 +5,11 @@
 /// For more information using modules, see Using modules to encapsulate and reuse resource   configurations and Registering extensions in the   AWS CloudFormation User Guide. For information on developing modules, see Developing modules in the  AWS CloudFormation CLI User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnModuleDefaultVersion {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the module version to set as the default version.
-    /// 
+    ///
     /// Conditional: You must specify either Arn, or ModuleName and  VersionId.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -26,12 +22,11 @@ pub struct CfnModuleDefaultVersion {
     #[serde(rename = "Arn")]
     pub arn: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the module.
-    /// 
+    ///
     /// Conditional: You must specify either Arn, or ModuleName and  VersionId.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -46,12 +41,11 @@ pub struct CfnModuleDefaultVersion {
     #[serde(rename = "ModuleName")]
     pub module_name: Option<String>,
 
-
-    /// 
+    ///
     /// The ID for the specific version of the module.
-    /// 
+    ///
     /// Conditional: You must specify either Arn, or ModuleName and  VersionId.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -65,10 +59,7 @@ pub struct CfnModuleDefaultVersion {
     /// Update requires: Replacement
     #[serde(rename = "VersionId")]
     pub version_id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnModuleDefaultVersion {
     fn type_string(&self) -> &'static str {
@@ -80,47 +71,51 @@ impl cfn_resources::CfnResource for CfnModuleDefaultVersion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.arn {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'arn'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'arn'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.module_name {
-
-        if the_val.len() > 204 as _ {
-            return Err(format!("Max validation failed on field 'module_name'. {} is greater than 204", the_val.len()));
+            if the_val.len() > 204 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'module_name'. {} is greater than 204",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.module_name {
-
-        if the_val.len() < 10 as _ {
-            return Err(format!("Min validation failed on field 'module_name'. {} is less than 10", the_val.len()));
+            if the_val.len() < 10 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'module_name'. {} is less than 10",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.version_id {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'version_id'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'version_id'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.version_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'version_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'version_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }

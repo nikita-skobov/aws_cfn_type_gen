@@ -1,5 +1,3 @@
-
-
 /// The AWS::RDS::DBParameterGroup resource creates a custom parameter group       for an RDS database family.
 ///
 /// This type can be declared in a template and referenced in the         DBParameterGroupName property of an         AWS::RDS::DBInstance resource.
@@ -9,19 +7,17 @@
 /// For information about configuring parameters for Amazon Aurora DB instances, see       Working with parameter         groups in the Amazon Aurora User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDBParameterGroup {
-
-
-    /// 
+    ///
     /// The name of the DB parameter group.
-    /// 
+    ///
     /// Constraints:
-    /// 
+    ///
     /// Must be 1 to 255 letters, numbers, or hyphens.               First character must be a letter               Can't end with a hyphen or contain two consecutive hyphens
-    /// 
+    ///
     /// If you don't specify a value for DBParameterGroupName property, a name is automatically created for the DB parameter group.
-    /// 
+    ///
     /// NoteThis value is stored as a lowercase string.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -30,10 +26,9 @@ pub struct CfnDBParameterGroup {
     #[serde(rename = "DBParameterGroupName")]
     pub dbparameter_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// Provides the customer-specified description for this DB parameter group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -42,20 +37,19 @@ pub struct CfnDBParameterGroup {
     #[serde(rename = "Description")]
     pub description: String,
 
-
-    /// 
+    ///
     /// The DB parameter group family name. A DB parameter group can be associated with one       and only one DB parameter group family, and can be applied only to a DB instance running       a DB engine and engine version compatible with that DB parameter group family.
-    /// 
+    ///
     /// NoteThe DB parameter group family can't be changed when updating a DB parameter         group.
-    /// 
+    ///
     /// To list all of the available parameter group families, use the following       command:
-    /// 
+    ///
     /// aws rds describe-db-engine-versions --query         "DBEngineVersions[].DBParameterGroupFamily"
-    /// 
+    ///
     /// The output contains duplicates.
-    /// 
+    ///
     /// For more information, see CreateDBParameterGroup.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -64,16 +58,15 @@ pub struct CfnDBParameterGroup {
     #[serde(rename = "Family")]
     pub family: String,
 
-
-    /// 
+    ///
     /// An array of parameter names and values for the parameter update. At least one       parameter name and value must be supplied. Subsequent arguments are optional.
-    /// 
+    ///
     /// For more information about DB parameters and DB parameter groups for Amazon RDS DB       engines, see Working with DB         Parameter Groups in the Amazon RDS User Guide.
-    /// 
+    ///
     /// For more information about DB cluster and DB instance parameters and parameter groups       for Amazon Aurora DB engines, see Working         with DB Parameter Groups and DB Cluster Parameter Groups in the         Amazon Aurora User Guide.
-    /// 
+    ///
     /// NoteAWS CloudFormation doesn't support specifying an apply method for each individual parameter. The default         apply method for each parameter is used.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -82,12 +75,11 @@ pub struct CfnDBParameterGroup {
     #[serde(rename = "Parameters")]
     pub parameters: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// An optional array of key-value pairs to apply to this DB parameter group.
-    /// 
+    ///
     /// NoteCurrently, this is the only property that supports drift detection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -95,10 +87,7 @@ pub struct CfnDBParameterGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDBParameterGroup {
     fn type_string(&self) -> &'static str {
@@ -110,7 +99,6 @@ impl cfn_resources::CfnResource for CfnDBParameterGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -124,32 +112,26 @@ impl cfn_resources::CfnResource for CfnDBParameterGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -161,7 +143,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

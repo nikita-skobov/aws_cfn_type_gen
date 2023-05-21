@@ -1,10 +1,6 @@
-
-
 /// Creates an Amazon Web Services site-to-site VPN attachment on an edge location of a core network.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSiteToSiteVpnAttachment {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -14,7 +10,6 @@ pub struct CfnSiteToSiteVpnAttachment {
     /// Update requires: Replacement
     #[serde(rename = "CoreNetworkId")]
     pub core_network_id: String,
-
 
     /// Property description not available.
     ///
@@ -26,10 +21,9 @@ pub struct CfnSiteToSiteVpnAttachment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ARN of the site-to-site VPN attachment.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -43,10 +37,7 @@ pub struct CfnSiteToSiteVpnAttachment {
     /// Update requires: Replacement
     #[serde(rename = "VpnConnectionArn")]
     pub vpn_connection_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSiteToSiteVpnAttachment {
     fn type_string(&self) -> &'static str {
@@ -58,21 +49,24 @@ impl cfn_resources::CfnResource for CfnSiteToSiteVpnAttachment {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.vpn_connection_arn;
 
         if the_val.len() > 500 as _ {
-            return Err(format!("Max validation failed on field 'vpn_connection_arn'. {} is greater than 500", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'vpn_connection_arn'. {} is greater than 500",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.vpn_connection_arn;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'vpn_connection_arn'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'vpn_connection_arn'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -80,11 +74,9 @@ impl cfn_resources::CfnResource for CfnSiteToSiteVpnAttachment {
 /// Describes a proposed segment change. In some cases, the segment change must first be evaluated and accepted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProposedSegmentChange {
-
-
-    /// 
+    ///
     /// The rule number in the policy document that applies to this change.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -93,10 +85,9 @@ pub struct ProposedSegmentChange {
     #[serde(rename = "AttachmentPolicyRuleNumber")]
     pub attachment_policy_rule_number: Option<i64>,
 
-
-    /// 
+    ///
     /// The name of the segment to change.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -111,10 +102,9 @@ pub struct ProposedSegmentChange {
     #[serde(rename = "SegmentName")]
     pub segment_name: Option<String>,
 
-
-    /// 
+    ///
     /// The list of key-value tags that changed for the segment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -122,10 +112,7 @@ pub struct ProposedSegmentChange {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ProposedSegmentChange {
     fn type_string(&self) -> &'static str {
@@ -137,23 +124,24 @@ impl cfn_resources::CfnResource for ProposedSegmentChange {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.segment_name {
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'segment_name'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.segment_name {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'segment_name'. {} is greater than 256", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'segment_name'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.segment_name {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'segment_name'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -167,32 +155,26 @@ impl cfn_resources::CfnResource for ProposedSegmentChange {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -204,7 +186,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

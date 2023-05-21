@@ -1,13 +1,9 @@
-
-
 /// Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVolume {
-
-
-    /// 
+    ///
     /// Specifies the ID of the volume backup to use to create a new volume.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnVolume {
     #[serde(rename = "BackupId")]
     pub backup_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the volume.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnVolume {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The configuration of an Amazon FSx for NetApp ONTAP volume.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: OntapConfiguration
@@ -46,10 +40,9 @@ pub struct CfnVolume {
     #[serde(rename = "OntapConfiguration")]
     pub ontap_configuration: Option<OntapConfiguration>,
 
-
-    /// 
+    ///
     /// The configuration of an Amazon FSx for OpenZFS volume.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: OpenZFSConfiguration
@@ -58,12 +51,11 @@ pub struct CfnVolume {
     #[serde(rename = "OpenZFSConfiguration")]
     pub open_zfsconfiguration: Option<OpenZFSConfiguration>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -72,10 +64,9 @@ pub struct CfnVolume {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of the volume.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -85,13 +76,10 @@ pub struct CfnVolume {
     /// Update requires: Replacement
     #[serde(rename = "VolumeType")]
     pub volume_type: Option<VolumeVolumeTypeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VolumeVolumeTypeEnum {
-
     /// ONTAP
     #[serde(rename = "ONTAP")]
     Ontap,
@@ -99,7 +87,6 @@ pub enum VolumeVolumeTypeEnum {
     /// OPENZFS
     #[serde(rename = "OPENZFS")]
     Openzfs,
-
 }
 
 impl Default for VolumeVolumeTypeEnum {
@@ -107,7 +94,6 @@ impl Default for VolumeVolumeTypeEnum {
         VolumeVolumeTypeEnum::Ontap
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnVolume {
     fn type_string(&self) -> &'static str {
@@ -119,24 +105,31 @@ impl cfn_resources::CfnResource for CfnVolume {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 203 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 203", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 203",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.ontap_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.ontap_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.open_zfsconfiguration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.open_zfsconfiguration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -145,11 +138,9 @@ impl cfn_resources::CfnResource for CfnVolume {
 /// Specifies who can mount an OpenZFS file system and the options available while       mounting the file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClientConfigurations {
-
-
-    /// 
+    ///
     /// A value that specifies who can mount the file system. You can provide a wildcard       character (*), an IP address (0.0.0.0), or a CIDR address         (192.0.2.0/24). By default, Amazon FSx uses the wildcard       character when specifying the client.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -164,12 +155,11 @@ pub struct ClientConfigurations {
     #[serde(rename = "Clients")]
     pub clients: String,
 
-
-    /// 
+    ///
     /// The options to use when mounting the file system. For a list of options that you can       use with Network File System (NFS), see the exports(5) - Linux man page. When       choosing your options, consider the following:
-    /// 
+    ///
     /// crossmnt is used by default. If you don't specify           crossmnt when changing the client configuration, you won't be           able to see or access snapshots in your file system's snapshot directory.                        sync is used by default. If you instead specify             async, the system acknowledges writes before writing to disk.           If the system crashes before the writes are finished, you lose the unwritten           data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -179,10 +169,7 @@ pub struct ClientConfigurations {
     /// Update requires: No interruption
     #[serde(rename = "Options")]
     pub options: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClientConfigurations {
     fn type_string(&self) -> &'static str {
@@ -194,28 +181,33 @@ impl cfn_resources::CfnResource for ClientConfigurations {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.clients;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'clients'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'clients'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.clients;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'clients'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'clients'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.options;
 
         if the_val.len() > 20 as _ {
-            return Err(format!("Max validation failed on field 'options'. {} is greater than 20", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'options'. {} is greater than 20",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -223,11 +215,9 @@ impl cfn_resources::CfnResource for ClientConfigurations {
 /// The configuration object for mounting a Network File System (NFS) file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NfsExports {
-
-
-    /// 
+    ///
     /// A list of configuration objects that contain the client and options for mounting the       OpenZFS file system.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ClientConfigurations
@@ -237,10 +227,7 @@ pub struct NfsExports {
     /// Update requires: No interruption
     #[serde(rename = "ClientConfigurations")]
     pub client_configurations: Vec<ClientConfigurations>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NfsExports {
     fn type_string(&self) -> &'static str {
@@ -252,14 +239,15 @@ impl cfn_resources::CfnResource for NfsExports {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.client_configurations;
 
         if the_val.len() > 25 as _ {
-            return Err(format!("Max validation failed on field 'client_configurations'. {} is greater than 25", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'client_configurations'. {} is greater than 25",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -267,11 +255,9 @@ impl cfn_resources::CfnResource for NfsExports {
 /// Specifies the configuration of the ONTAP volume that you are creating.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OntapConfiguration {
-
-
-    /// 
+    ///
     /// A boolean flag indicating whether tags for the volume should be copied to backups. This value defaults to       false. If it's set to true, all tags for the volume are copied to all automatic and user-initiated backups       where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the       specified tags are copied to backups. If you specify one or more tags when creating a user-initiated       backup, no tags are copied from the volume, regardless of this value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -280,10 +266,9 @@ pub struct OntapConfiguration {
     #[serde(rename = "CopyTagsToBackups")]
     pub copy_tags_to_backups: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the location in the SVM's namespace where the volume is mounted.       This parameter is required. The JunctionPath must have a leading       forward slash, such as /vol3.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -298,14 +283,13 @@ pub struct OntapConfiguration {
     #[serde(rename = "JunctionPath")]
     pub junction_path: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the type of volume you are creating. Valid values are the following:
-    /// 
+    ///
     /// RW specifies a read/write volume. RW is the default.                        DP specifies a data-protection volume. A DP volume         is read-only and can be used as the destination of a NetApp SnapMirror relationship.
-    /// 
+    ///
     /// For more information, see Volume types       in the Amazon FSx for NetApp ONTAP User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -316,12 +300,11 @@ pub struct OntapConfiguration {
     #[serde(rename = "OntapVolumeType")]
     pub ontap_volume_type: Option<OntapConfigurationOntapVolumeTypeEnum>,
 
-
-    /// 
+    ///
     /// Specifies the security style for the volume. If a volume's security style is not specified,       it is automatically set to the root volume's security style. The security style determines the type of permissions       that FSx for ONTAP uses to control data access. For more information, see       Volume security style       in the Amazon FSx for NetApp ONTAP User Guide.       Specify one of the following values:
-    /// 
+    ///
     /// UNIX if the file system is managed by a UNIX         administrator, the majority of users are NFS clients, and an application         accessing the data uses a UNIX user as the service account.                                NTFS if the file system is managed by a Windows         administrator, the majority of users are SMB clients, and an application         accessing the data uses a Windows user as the service account.                        MIXED if the file system is managed by both UNIX         and Windows administrators and users consist of both NFS and SMB clients.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -332,10 +315,9 @@ pub struct OntapConfiguration {
     #[serde(rename = "SecurityStyle")]
     pub security_style: Option<OntapConfigurationSecurityStyleEnum>,
 
-
-    /// 
+    ///
     /// Specifies the size of the volume, in megabytes (MB), that you are creating.       Provide any whole number in the range of 20–104857600 to specify the size of       the volume.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -348,16 +330,15 @@ pub struct OntapConfiguration {
     #[serde(rename = "SizeInMegabytes")]
     pub size_in_megabytes: String,
 
-
-    /// 
+    ///
     /// Specifies the snapshot policy for the volume. There are three built-in snapshot policies:
-    /// 
+    ///
     /// default: This is the default policy. A maximum of six hourly snapshots taken five minutes past       the hour. A maximum of two daily snapshots taken Monday through Saturday at 10 minutes after       midnight. A maximum of two weekly snapshots taken every Sunday at 15 minutes after midnight.                        default-1weekly: This policy is the same as the default policy except       that it only retains one snapshot from the weekly schedule.                        none: This policy does not take any snapshots. This policy can be assigned to volumes to       prevent automatic snapshots from being taken.
-    /// 
+    ///
     /// You can also provide the name of a custom policy that you created with the ONTAP CLI or REST API.
-    /// 
+    ///
     /// For more information, see Snapshot policies       in the Amazon FSx for NetApp ONTAP User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -370,10 +351,9 @@ pub struct OntapConfiguration {
     #[serde(rename = "SnapshotPolicy")]
     pub snapshot_policy: Option<String>,
 
-
-    /// 
+    ///
     /// Set to true to enable deduplication, compression, and compaction storage       efficiency features on the volume, or set to false to disable them.       This parameter is required.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -382,10 +362,9 @@ pub struct OntapConfiguration {
     #[serde(rename = "StorageEfficiencyEnabled")]
     pub storage_efficiency_enabled: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the ONTAP SVM in which to create the volume.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -400,20 +379,19 @@ pub struct OntapConfiguration {
     #[serde(rename = "StorageVirtualMachineId")]
     pub storage_virtual_machine_id: String,
 
-
-    /// 
+    ///
     /// Describes the data tiering policy for an ONTAP volume. When enabled, Amazon FSx for ONTAP's intelligent       tiering automatically transitions a volume's data between the file system's primary storage and capacity       pool storage based on your access patterns.
-    /// 
+    ///
     /// Valid tiering policies are the following:
-    /// 
+    ///
     /// SNAPSHOT_ONLY - (Default value) moves cold snapshots to the capacity pool storage tier.
-    /// 
+    ///
     /// AUTO - moves cold user data and snapshots to the capacity pool storage tier based on your access patterns.
-    /// 
+    ///
     /// ALL - moves all user data blocks in both the active file system and Snapshot copies to the storage pool tier.
-    /// 
+    ///
     /// NONE - keeps a volume's data in the primary storage tier, preventing it from being moved to the capacity pool tier.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: TieringPolicy
@@ -421,13 +399,10 @@ pub struct OntapConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "TieringPolicy")]
     pub tiering_policy: Option<TieringPolicy>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum OntapConfigurationOntapVolumeTypeEnum {
-
     /// DP
     #[serde(rename = "DP")]
     Dp,
@@ -435,7 +410,6 @@ pub enum OntapConfigurationOntapVolumeTypeEnum {
     /// RW
     #[serde(rename = "RW")]
     Rw,
-
 }
 
 impl Default for OntapConfigurationOntapVolumeTypeEnum {
@@ -446,7 +420,6 @@ impl Default for OntapConfigurationOntapVolumeTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum OntapConfigurationSecurityStyleEnum {
-
     /// MIXED
     #[serde(rename = "MIXED")]
     Mixed,
@@ -458,7 +431,6 @@ pub enum OntapConfigurationSecurityStyleEnum {
     /// UNIX
     #[serde(rename = "UNIX")]
     Unix,
-
 }
 
 impl Default for OntapConfigurationSecurityStyleEnum {
@@ -466,7 +438,6 @@ impl Default for OntapConfigurationSecurityStyleEnum {
         OntapConfigurationSecurityStyleEnum::Mixed
     }
 }
-
 
 impl cfn_resources::CfnResource for OntapConfiguration {
     fn type_string(&self) -> &'static str {
@@ -478,68 +449,78 @@ impl cfn_resources::CfnResource for OntapConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.junction_path {
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'junction_path'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.junction_path {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'junction_path'. {} is greater than 255", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'junction_path'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.junction_path {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'junction_path'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.size_in_megabytes;
 
         if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'size_in_megabytes'. {} is greater than 2147483647", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'size_in_megabytes'. {} is greater than 2147483647",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.size_in_megabytes;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'size_in_megabytes'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'size_in_megabytes'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.snapshot_policy {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'snapshot_policy'. {} is greater than 255", the_val.len()));
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'snapshot_policy'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.snapshot_policy {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'snapshot_policy'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'snapshot_policy'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.storage_virtual_machine_id;
 
         if the_val.len() > 21 as _ {
             return Err(format!("Max validation failed on field 'storage_virtual_machine_id'. {} is greater than 21", the_val.len()));
         }
 
-        
         let the_val = &self.storage_virtual_machine_id;
 
         if the_val.len() < 21 as _ {
-            return Err(format!("Min validation failed on field 'storage_virtual_machine_id'. {} is less than 21", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'storage_virtual_machine_id'. {} is less than 21",
+                the_val.len()
+            ));
         }
 
-        
-        self.tiering_policy.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.tiering_policy
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -548,11 +529,9 @@ impl cfn_resources::CfnResource for OntapConfiguration {
 /// Specifies the configuration of the Amazon FSx for OpenZFS volume that you are creating.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OpenZFSConfiguration {
-
-
-    /// 
+    ///
     /// A Boolean value indicating whether tags for the volume should be copied to snapshots.       This value defaults to false. If it's set to true, all tags       for the volume are copied to snapshots where the user doesn't specify tags. If this       value is true, and you specify one or more tags, only the specified tags       are copied to snapshots. If you specify one or more tags when creating the snapshot, no       tags are copied from the volume, regardless of this value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -561,12 +540,11 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "CopyTagsToSnapshots")]
     pub copy_tags_to_snapshots: Option<bool>,
 
-
-    /// 
+    ///
     /// Specifies the method used to compress the data on the volume. The compression       type is NONE by default.
-    /// 
+    ///
     /// NONE - Doesn't compress the data on the volume.           NONE is the default.                        ZSTD - Compresses the data in the volume using the Zstandard           (ZSTD) compression algorithm. Compared to LZ4, Z-Standard provides a better           compression ratio to minimize on-disk storage utilization.                        LZ4 - Compresses the data in the volume using the LZ4           compression algorithm. Compared to Z-Standard, LZ4 is less compute-intensive           and delivers higher write throughput speeds.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -577,10 +555,9 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "DataCompressionType")]
     pub data_compression_type: Option<OpenZFSConfigurationDataCompressionTypeEnum>,
 
-
-    /// 
+    ///
     /// The configuration object for mounting a Network File System (NFS) file system.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of NfsExports
@@ -591,10 +568,9 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "NfsExports")]
     pub nfs_exports: Option<Vec<NfsExports>>,
 
-
-    /// 
+    ///
     /// To delete the volume's child volumes, snapshots, and clones, use the string        DELETE_CHILD_VOLUMES_AND_SNAPSHOTS.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -605,10 +581,9 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "Options")]
     pub options: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The configuration object that specifies the snapshot to use as the origin of the data       for the volume.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: OriginSnapshot
@@ -617,10 +592,9 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "OriginSnapshot")]
     pub origin_snapshot: Option<OriginSnapshot>,
 
-
-    /// 
+    ///
     /// The ID of the volume to use as the parent volume of the volume that you are creating.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -635,10 +609,9 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "ParentVolumeId")]
     pub parent_volume_id: String,
 
-
-    /// 
+    ///
     /// A Boolean value indicating whether the volume is read-only.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -647,10 +620,9 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "ReadOnly")]
     pub read_only: Option<bool>,
 
-
-    /// 
+    ///
     /// Specifies the suggested block size for a volume in a ZFS dataset, in kibibytes (KiB). Valid values are 4, 8,       16, 32, 64, 128, 256, 512, or 1024 KiB. The default is 128 KiB.       We recommend using the default setting for the majority of use cases.       Generally, workloads that write in fixed small or large record sizes       may benefit from setting a custom record size, like database workloads       (small record size) or media streaming workloads (large record size).       For additional guidance on when       to set a custom record size, see              ZFS Record size in the Amazon FSx for OpenZFS User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -663,12 +635,11 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "RecordSizeKiB")]
     pub record_size_ki_b: Option<i64>,
 
-
-    /// 
+    ///
     /// Sets the maximum storage size in gibibytes (GiB) for the volume. You can specify       a quota that is larger than the storage on the parent volume. A volume quota limits       the amount of storage that the volume can consume to the configured amount, but does not       guarantee the space will be available on the parent volume. To guarantee quota space, you must also set       StorageCapacityReservationGiB. To not specify a storage capacity quota, set this to -1.
-    /// 
+    ///
     /// For more information, see       Volume properties       in the Amazon FSx for OpenZFS User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -681,10 +652,9 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "StorageCapacityQuotaGiB")]
     pub storage_capacity_quota_gi_b: Option<i64>,
 
-
-    /// 
+    ///
     /// Specifies the amount of storage in gibibytes (GiB) to reserve from the parent volume. Setting       StorageCapacityReservationGiB guarantees that the specified amount of storage space       on the parent volume will always be available for the volume.       You can't reserve more storage than the parent volume has. To not specify a storage capacity       reservation, set this to 0 or -1. For more information, see       Volume properties       in the Amazon FSx for OpenZFS User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -697,10 +667,9 @@ pub struct OpenZFSConfiguration {
     #[serde(rename = "StorageCapacityReservationGiB")]
     pub storage_capacity_reservation_gi_b: Option<i64>,
 
-
-    /// 
+    ///
     /// An object specifying how much storage users or groups can use on the volume.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of UserAndGroupQuotas
@@ -710,13 +679,10 @@ pub struct OpenZFSConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "UserAndGroupQuotas")]
     pub user_and_group_quotas: Option<Vec<UserAndGroupQuotas>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum OpenZFSConfigurationDataCompressionTypeEnum {
-
     /// LZ4
     #[serde(rename = "LZ4")]
     Lz4,
@@ -728,7 +694,6 @@ pub enum OpenZFSConfigurationDataCompressionTypeEnum {
     /// ZSTD
     #[serde(rename = "ZSTD")]
     Zstd,
-
 }
 
 impl Default for OpenZFSConfigurationDataCompressionTypeEnum {
@@ -736,7 +701,6 @@ impl Default for OpenZFSConfigurationDataCompressionTypeEnum {
         OpenZFSConfigurationDataCompressionTypeEnum::Lz4
     }
 }
-
 
 impl cfn_resources::CfnResource for OpenZFSConfiguration {
     fn type_string(&self) -> &'static str {
@@ -748,95 +712,94 @@ impl cfn_resources::CfnResource for OpenZFSConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.nfs_exports {
-
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'nfs_exports'. {} is greater than 1", the_val.len()));
+            if the_val.len() > 1 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'nfs_exports'. {} is greater than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.options {
-
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'options'. {} is greater than 1", the_val.len()));
+            if the_val.len() > 1 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'options'. {} is greater than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.origin_snapshot.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.origin_snapshot
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.parent_volume_id;
 
         if the_val.len() > 23 as _ {
-            return Err(format!("Max validation failed on field 'parent_volume_id'. {} is greater than 23", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'parent_volume_id'. {} is greater than 23",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.parent_volume_id;
 
         if the_val.len() < 23 as _ {
-            return Err(format!("Min validation failed on field 'parent_volume_id'. {} is less than 23", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'parent_volume_id'. {} is less than 23",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.record_size_ki_b {
-
-        if *the_val > 1024 as _ {
-            return Err(format!("Max validation failed on field 'record_size_ki_b'. {} is greater than 1024", the_val));
+            if *the_val > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'record_size_ki_b'. {} is greater than 1024",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.record_size_ki_b {
-
-        if *the_val < 4 as _ {
-            return Err(format!("Min validation failed on field 'record_size_ki_b'. {} is less than 4", the_val));
+            if *the_val < 4 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'record_size_ki_b'. {} is less than 4",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.storage_capacity_quota_gi_b {
-
-        if *the_val > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'storage_capacity_quota_gi_b'. {} is greater than 2147483647", the_val));
+            if *the_val > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'storage_capacity_quota_gi_b'. {} is greater than 2147483647", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.storage_capacity_quota_gi_b {
-
-        if *the_val < -1 as _ {
-            return Err(format!("Min validation failed on field 'storage_capacity_quota_gi_b'. {} is less than -1", the_val));
+            if *the_val < -1 as _ {
+                return Err(format!("Min validation failed on field 'storage_capacity_quota_gi_b'. {} is less than -1", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.storage_capacity_reservation_gi_b {
-
-        if *the_val > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'storage_capacity_reservation_gi_b'. {} is greater than 2147483647", the_val));
+            if *the_val > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'storage_capacity_reservation_gi_b'. {} is greater than 2147483647", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.storage_capacity_reservation_gi_b {
-
-        if *the_val < -1 as _ {
-            return Err(format!("Min validation failed on field 'storage_capacity_reservation_gi_b'. {} is less than -1", the_val));
+            if *the_val < -1 as _ {
+                return Err(format!("Min validation failed on field 'storage_capacity_reservation_gi_b'. {} is less than -1", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.user_and_group_quotas {
-
-        if the_val.len() > 500 as _ {
-            return Err(format!("Max validation failed on field 'user_and_group_quotas'. {} is greater than 500", the_val.len()));
+            if the_val.len() > 500 as _ {
+                return Err(format!("Max validation failed on field 'user_and_group_quotas'. {} is greater than 500", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -844,13 +807,11 @@ impl cfn_resources::CfnResource for OpenZFSConfiguration {
 /// The configuration object that specifies the snapshot to use as the origin of the data       for the volume.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OriginSnapshot {
-
-
-    /// 
+    ///
     /// The strategy used when copying data from the snapshot to the new volume.
-    /// 
+    ///
     /// CLONE - The new volume references the data in the origin           snapshot. Cloning a snapshot is faster than copying data from the snapshot to a           new volume and doesn't consume disk throughput. However, the origin snapshot           can't be deleted if there is a volume using its copied data.                         FULL_COPY - Copies all data from the snapshot to the new volume.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -861,10 +822,9 @@ pub struct OriginSnapshot {
     #[serde(rename = "CopyStrategy")]
     pub copy_strategy: OriginSnapshotCopyStrategyEnum,
 
-
-    /// 
+    ///
     /// Specifies the snapshot to use when creating an OpenZFS volume from a snapshot.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -872,13 +832,10 @@ pub struct OriginSnapshot {
     /// Update requires: Replacement
     #[serde(rename = "SnapshotARN")]
     pub snapshot_arn: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum OriginSnapshotCopyStrategyEnum {
-
     /// CLONE
     #[serde(rename = "CLONE")]
     Clone,
@@ -886,7 +843,6 @@ pub enum OriginSnapshotCopyStrategyEnum {
     /// FULL_COPY
     #[serde(rename = "FULL_COPY")]
     Fullcopy,
-
 }
 
 impl Default for OriginSnapshotCopyStrategyEnum {
@@ -894,7 +850,6 @@ impl Default for OriginSnapshotCopyStrategyEnum {
         OriginSnapshotCopyStrategyEnum::Clone
     }
 }
-
 
 impl cfn_resources::CfnResource for OriginSnapshot {
     fn type_string(&self) -> &'static str {
@@ -906,7 +861,6 @@ impl cfn_resources::CfnResource for OriginSnapshot {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -920,32 +874,26 @@ impl cfn_resources::CfnResource for OriginSnapshot {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -957,7 +905,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -967,11 +914,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Valid tiering policies are the following:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TieringPolicy {
-
-
-    /// 
+    ///
     /// Specifies the number of days that user data in a volume must remain inactive before it is considered "cold"       and moved to the capacity pool. Used with the AUTO and SNAPSHOT_ONLY tiering policies.       Enter a whole number between 2 and 183. Default values are 31 days for AUTO and 2 days for       SNAPSHOT_ONLY.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -984,12 +929,11 @@ pub struct TieringPolicy {
     #[serde(rename = "CoolingPeriod")]
     pub cooling_period: Option<i64>,
 
-
-    /// 
+    ///
     /// Specifies the tiering policy used to transition data. Default value is SNAPSHOT_ONLY.
-    /// 
+    ///
     /// SNAPSHOT_ONLY - moves cold snapshots to the capacity pool storage tier.                        AUTO - moves cold user data and snapshots to the capacity pool storage tier         based on your access patterns.                        ALL - moves all user data blocks in both the active file system and Snapshot copies to the         storage pool tier.                        NONE - keeps a volume's data in the primary storage tier, preventing it from being moved to         the capacity pool tier.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -999,13 +943,10 @@ pub struct TieringPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: Option<TieringPolicyNameEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TieringPolicyNameEnum {
-
     /// ALL
     #[serde(rename = "ALL")]
     All,
@@ -1021,7 +962,6 @@ pub enum TieringPolicyNameEnum {
     /// SNAPSHOT_ONLY
     #[serde(rename = "SNAPSHOT_ONLY")]
     Snapshotonly,
-
 }
 
 impl Default for TieringPolicyNameEnum {
@@ -1029,7 +969,6 @@ impl Default for TieringPolicyNameEnum {
         TieringPolicyNameEnum::All
     }
 }
-
 
 impl cfn_resources::CfnResource for TieringPolicy {
     fn type_string(&self) -> &'static str {
@@ -1041,23 +980,24 @@ impl cfn_resources::CfnResource for TieringPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.cooling_period {
+            if *the_val > 183 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'cooling_period'. {} is greater than 183",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.cooling_period {
-
-        if *the_val > 183 as _ {
-            return Err(format!("Max validation failed on field 'cooling_period'. {} is greater than 183", the_val));
+            if *the_val < 2 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'cooling_period'. {} is less than 2",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.cooling_period {
-
-        if *the_val < 2 as _ {
-            return Err(format!("Min validation failed on field 'cooling_period'. {} is less than 2", the_val));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -1065,11 +1005,9 @@ impl cfn_resources::CfnResource for TieringPolicy {
 /// An object specifying how much storage users or groups can use on the volume.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct UserAndGroupQuotas {
-
-
-    /// 
+    ///
     /// The ID of the user or group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1082,10 +1020,9 @@ pub struct UserAndGroupQuotas {
     #[serde(rename = "Id")]
     pub id: i64,
 
-
-    /// 
+    ///
     /// The amount of storage that the user or group can use in gibibytes (GiB).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -1098,10 +1035,9 @@ pub struct UserAndGroupQuotas {
     #[serde(rename = "StorageCapacityQuotaGiB")]
     pub storage_capacity_quota_gi_b: i64,
 
-
-    /// 
+    ///
     /// A value that specifies whether the quota applies to a user or group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1111,13 +1047,10 @@ pub struct UserAndGroupQuotas {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: UserAndGroupQuotasTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum UserAndGroupQuotasTypeEnum {
-
     /// GROUP
     #[serde(rename = "GROUP")]
     Group,
@@ -1125,7 +1058,6 @@ pub enum UserAndGroupQuotasTypeEnum {
     /// USER
     #[serde(rename = "USER")]
     User,
-
 }
 
 impl Default for UserAndGroupQuotasTypeEnum {
@@ -1133,7 +1065,6 @@ impl Default for UserAndGroupQuotasTypeEnum {
         UserAndGroupQuotasTypeEnum::Group
     }
 }
-
 
 impl cfn_resources::CfnResource for UserAndGroupQuotas {
     fn type_string(&self) -> &'static str {
@@ -1145,35 +1076,39 @@ impl cfn_resources::CfnResource for UserAndGroupQuotas {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.id;
 
         if *the_val > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'id'. {} is greater than 2147483647", the_val));
+            return Err(format!(
+                "Max validation failed on field 'id'. {} is greater than 2147483647",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.id;
 
         if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'id'. {} is less than 0", the_val));
+            return Err(format!(
+                "Min validation failed on field 'id'. {} is less than 0",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.storage_capacity_quota_gi_b;
 
         if *the_val > 2147483647 as _ {
             return Err(format!("Max validation failed on field 'storage_capacity_quota_gi_b'. {} is greater than 2147483647", the_val));
         }
 
-        
         let the_val = &self.storage_capacity_quota_gi_b;
 
         if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'storage_capacity_quota_gi_b'. {} is less than 0", the_val));
+            return Err(format!(
+                "Min validation failed on field 'storage_capacity_quota_gi_b'. {} is less than 0",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }

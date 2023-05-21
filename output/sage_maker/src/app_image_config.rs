@@ -1,13 +1,9 @@
-
-
 /// Creates a configuration for running a SageMaker image as a KernelGateway app. The     configuration specifies the Amazon Elastic File System (EFS) storage volume on the image, and a list of the     kernels in the image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAppImageConfig {
-
-
-    /// 
+    ///
     /// The name of the AppImageConfig. Must be unique to your account.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnAppImageConfig {
     #[serde(rename = "AppImageConfigName")]
     pub app_image_config_name: String,
 
-
-    /// 
+    ///
     /// The configuration for the file system and kernels in the SageMaker image.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: KernelGatewayImageConfig
@@ -32,12 +27,11 @@ pub struct CfnAppImageConfig {
     #[serde(rename = "KernelGatewayImageConfig")]
     pub kernel_gateway_image_config: Option<KernelGatewayImageConfig>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -45,10 +39,7 @@ pub struct CfnAppImageConfig {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnAppImageConfig {
     fn type_string(&self) -> &'static str {
@@ -60,15 +51,18 @@ impl cfn_resources::CfnResource for CfnAppImageConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.app_image_config_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'app_image_config_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'app_image_config_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
-        self.kernel_gateway_image_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.kernel_gateway_image_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -77,11 +71,9 @@ impl cfn_resources::CfnResource for CfnAppImageConfig {
 /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FileSystemConfig {
-
-
-    /// 
+    ///
     /// The default POSIX group ID (GID). If not specified, defaults to 100.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -94,10 +86,9 @@ pub struct FileSystemConfig {
     #[serde(rename = "DefaultGid")]
     pub default_gid: Option<i64>,
 
-
-    /// 
+    ///
     /// The default POSIX user ID (UID). If not specified, defaults to 1000.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -110,10 +101,9 @@ pub struct FileSystemConfig {
     #[serde(rename = "DefaultUid")]
     pub default_uid: Option<i64>,
 
-
-    /// 
+    ///
     /// The path within the image to mount the user's EFS home directory. The directory     should be empty. If not specified, defaults to /home/sagemaker-user.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -125,10 +115,7 @@ pub struct FileSystemConfig {
     /// Update requires: No interruption
     #[serde(rename = "MountPath")]
     pub mount_path: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FileSystemConfig {
     fn type_string(&self) -> &'static str {
@@ -140,47 +127,51 @@ impl cfn_resources::CfnResource for FileSystemConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.default_gid {
+            if *the_val > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'default_gid'. {} is greater than 65535",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.default_gid {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'default_gid'. {} is greater than 65535", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'default_gid'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.default_gid {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'default_gid'. {} is less than 0", the_val));
-        }
-
-        }
-        
         if let Some(the_val) = &self.default_uid {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'default_uid'. {} is greater than 65535", the_val));
+            if *the_val > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'default_uid'. {} is greater than 65535",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.default_uid {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'default_uid'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'default_uid'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.mount_path {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'mount_path'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'mount_path'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -188,11 +179,9 @@ impl cfn_resources::CfnResource for FileSystemConfig {
 /// The configuration for the file system and kernels in a SageMaker image running as a     KernelGateway app.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KernelGatewayImageConfig {
-
-
-    /// 
+    ///
     /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FileSystemConfig
@@ -201,10 +190,9 @@ pub struct KernelGatewayImageConfig {
     #[serde(rename = "FileSystemConfig")]
     pub file_system_config: Option<FileSystemConfig>,
 
-
-    /// 
+    ///
     /// The specification of the Jupyter kernels in the image.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of KernelSpec
@@ -214,10 +202,7 @@ pub struct KernelGatewayImageConfig {
     /// Update requires: No interruption
     #[serde(rename = "KernelSpecs")]
     pub kernel_specs: Vec<KernelSpec>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KernelGatewayImageConfig {
     fn type_string(&self) -> &'static str {
@@ -229,16 +214,19 @@ impl cfn_resources::CfnResource for KernelGatewayImageConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.file_system_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.file_system_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.kernel_specs;
 
         if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'kernel_specs'. {} is greater than 1", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'kernel_specs'. {} is greater than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -246,11 +234,9 @@ impl cfn_resources::CfnResource for KernelGatewayImageConfig {
 /// The specification of a Jupyter kernel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KernelSpec {
-
-
-    /// 
+    ///
     /// The display name of the kernel.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -261,10 +247,9 @@ pub struct KernelSpec {
     #[serde(rename = "DisplayName")]
     pub display_name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the Jupyter kernel in the image. This value is case sensitive.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -274,10 +259,7 @@ pub struct KernelSpec {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KernelSpec {
     fn type_string(&self) -> &'static str {
@@ -289,22 +271,24 @@ impl cfn_resources::CfnResource for KernelSpec {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.display_name {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'display_name'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'display_name'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -318,32 +302,26 @@ impl cfn_resources::CfnResource for KernelSpec {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -355,7 +333,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

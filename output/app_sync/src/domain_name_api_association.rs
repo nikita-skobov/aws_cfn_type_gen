@@ -1,13 +1,9 @@
-
-
 /// The AWS::AppSync::DomainNameApiAssociation resource represents the mapping of your custom     domain name to the assigned API URL.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDomainNameApiAssociation {
-
-
-    /// 
+    ///
     /// The API ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnDomainNameApiAssociation {
     #[serde(rename = "ApiId")]
     pub api_id: String,
 
-
-    /// 
+    ///
     /// The domain name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -27,10 +22,7 @@ pub struct CfnDomainNameApiAssociation {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     pub domain_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDomainNameApiAssociation {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnDomainNameApiAssociation {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

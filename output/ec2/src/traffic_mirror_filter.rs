@@ -1,5 +1,3 @@
-
-
 /// Specifies a Traffic Mirror filter.
 ///
 /// A Traffic Mirror filter is a set of rules that defines the traffic to mirror.
@@ -7,11 +5,9 @@
 /// By default, no traffic is mirrored. To mirror traffic, use AWS::EC2::TrafficMirrorFilterRule to add Traffic Mirror rules to the filter.     The rules you add define what traffic gets mirrored.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTrafficMirrorFilter {
-
-
-    /// 
+    ///
     /// The description of the Traffic Mirror filter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,12 +16,11 @@ pub struct CfnTrafficMirrorFilter {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The network service traffic that is associated with the Traffic Mirror filter.
-    /// 
+    ///
     /// Valid values are amazon-dns.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -34,10 +29,9 @@ pub struct CfnTrafficMirrorFilter {
     #[serde(rename = "NetworkServices")]
     pub network_services: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The tags to assign to a Traffic Mirror filter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -45,10 +39,7 @@ pub struct CfnTrafficMirrorFilter {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnTrafficMirrorFilter {
     fn type_string(&self) -> &'static str {
@@ -60,7 +51,6 @@ impl cfn_resources::CfnResource for CfnTrafficMirrorFilter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -74,32 +64,26 @@ impl cfn_resources::CfnResource for CfnTrafficMirrorFilter {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -111,7 +95,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

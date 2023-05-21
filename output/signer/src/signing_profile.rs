@@ -1,13 +1,9 @@
-
-
 /// Creates a signing profile. A signing profile is a code signing template that can be used to 			carry out a pre-defined signing job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSigningProfile {
-
-
-    /// 
+    ///
     /// The ID of a platform that is available for use by a signing profile.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnSigningProfile {
     #[serde(rename = "PlatformId")]
     pub platform_id: String,
 
-
-    /// 
+    ///
     /// The validity period override for any signature generated using this signing             profile. If unspecified, the default is 135 months.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SignatureValidityPeriod
@@ -28,10 +23,9 @@ pub struct CfnSigningProfile {
     #[serde(rename = "SignatureValidityPeriod")]
     pub signature_validity_period: Option<SignatureValidityPeriod>,
 
-
-    /// 
+    ///
     /// A list of tags associated with the signing profile.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -39,10 +33,7 @@ pub struct CfnSigningProfile {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSigningProfile {
     fn type_string(&self) -> &'static str {
@@ -54,8 +45,9 @@ impl cfn_resources::CfnResource for CfnSigningProfile {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.signature_validity_period.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.signature_validity_period
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -64,11 +56,9 @@ impl cfn_resources::CfnResource for CfnSigningProfile {
 /// The validity period for the signing job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SignatureValidityPeriod {
-
-
-    /// 
+    ///
     /// The time unit for signature validity: DAYS | MONTHS | YEARS.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -77,10 +67,9 @@ pub struct SignatureValidityPeriod {
     #[serde(rename = "Type")]
     pub cfn_type: Option<String>,
 
-
-    /// 
+    ///
     /// The numerical value of the time unit for signature validity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -88,10 +77,7 @@ pub struct SignatureValidityPeriod {
     /// Update requires: Replacement
     #[serde(rename = "Value")]
     pub value: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SignatureValidityPeriod {
     fn type_string(&self) -> &'static str {
@@ -103,7 +89,6 @@ impl cfn_resources::CfnResource for SignatureValidityPeriod {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -117,32 +102,26 @@ impl cfn_resources::CfnResource for SignatureValidityPeriod {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -154,7 +133,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

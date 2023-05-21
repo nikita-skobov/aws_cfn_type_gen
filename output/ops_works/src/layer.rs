@@ -1,17 +1,13 @@
-
-
 /// Creates a layer. For more information, see How to     Create a Layer.
 ///
 /// Required Permissions: To use this action, an IAM user must      have a Manage permissions    level for the stack, or an attached policy that explicitly grants permissions. For more    information on user permissions, see Managing User     Permissions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLayer {
-
-
-    /// 
+    ///
     /// One or more user-defined key-value pairs to be added to the stack attributes.
-    /// 
+    ///
     /// To create a cluster layer, set the EcsClusterArn attribute to the cluster's ARN.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -20,10 +16,9 @@ pub struct CfnLayer {
     #[serde(rename = "Attributes")]
     pub attributes: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
+    ///
     /// Whether to automatically assign an Elastic IP     address to the layer's instances. For more information, see How to Edit     a Layer.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -32,10 +27,9 @@ pub struct CfnLayer {
     #[serde(rename = "AutoAssignElasticIps")]
     pub auto_assign_elastic_ips: bool,
 
-
-    /// 
+    ///
     /// For stacks that are running in a VPC, whether to automatically assign a public IP address to    the layer's instances. For more information, see How to Edit     a Layer.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -44,10 +38,9 @@ pub struct CfnLayer {
     #[serde(rename = "AutoAssignPublicIps")]
     pub auto_assign_public_ips: bool,
 
-
-    /// 
+    ///
     /// The ARN of an IAM profile to be used for the layer's EC2 instances. For more information      about IAM ARNs, see Using Identifiers.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -56,10 +49,9 @@ pub struct CfnLayer {
     #[serde(rename = "CustomInstanceProfileArn")]
     pub custom_instance_profile_arn: Option<String>,
 
-
-    /// 
+    ///
     /// A JSON-formatted string containing custom stack configuration and deployment attributes   to be installed on the layer's instances. For more information, see         Using Custom JSON. This feature is supported as of version 1.7.42 of the AWS CLI.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -68,10 +60,9 @@ pub struct CfnLayer {
     #[serde(rename = "CustomJson")]
     pub custom_json: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// A LayerCustomRecipes object that specifies the layer custom recipes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Recipes
@@ -80,10 +71,9 @@ pub struct CfnLayer {
     #[serde(rename = "CustomRecipes")]
     pub custom_recipes: Option<Recipes>,
 
-
-    /// 
+    ///
     /// An array containing the layer custom security group IDs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -92,10 +82,9 @@ pub struct CfnLayer {
     #[serde(rename = "CustomSecurityGroupIds")]
     pub custom_security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Whether to disable auto healing for the layer.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -104,12 +93,11 @@ pub struct CfnLayer {
     #[serde(rename = "EnableAutoHealing")]
     pub enable_auto_healing: bool,
 
-
-    /// 
+    ///
     /// Whether to install operating system and package updates when the instance boots. The default    value is true. To control when updates are installed, set this value to     false. You must then update your instances manually by using     CreateDeployment to run the update_dependencies stack command or    by manually running yum (Amazon Linux) or apt-get (Ubuntu) on the    instances.
-    /// 
+    ///
     /// NoteTo ensure that your     instances have the latest security updates, we strongly recommend using the default value of true.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -118,10 +106,9 @@ pub struct CfnLayer {
     #[serde(rename = "InstallUpdatesOnBoot")]
     pub install_updates_on_boot: Option<bool>,
 
-
-    /// 
+    ///
     /// A LifeCycleEventConfiguration object that you can use to configure the Shutdown event to    specify an execution timeout and enable or disable Elastic Load Balancer connection    draining.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LifecycleEventConfiguration
@@ -130,10 +117,9 @@ pub struct CfnLayer {
     #[serde(rename = "LifecycleEventConfiguration")]
     pub lifecycle_event_configuration: Option<LifecycleEventConfiguration>,
 
-
-    /// 
+    ///
     /// The load-based scaling configuration for the AWS OpsWorks layer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LoadBasedAutoScaling
@@ -142,10 +128,9 @@ pub struct CfnLayer {
     #[serde(rename = "LoadBasedAutoScaling")]
     pub load_based_auto_scaling: Option<LoadBasedAutoScaling>,
 
-
-    /// 
+    ///
     /// The layer name, which is used by the console. Layer names can be a maximum of 32 characters.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -154,10 +139,9 @@ pub struct CfnLayer {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// An array of Package objects that describes the layer packages.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -166,12 +150,11 @@ pub struct CfnLayer {
     #[serde(rename = "Packages")]
     pub packages: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// For custom layers only, use this parameter to specify the layer's short name, which is used internally by      AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your      app files are installed. It can have a maximum of 32 characters, which are limited to the alphanumeric      characters, '-', '_', and '.'.
-    /// 
+    ///
     /// Built-in layer short names are defined by AWS OpsWorks Stacks. For more information, see the      Layer Reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -180,10 +163,9 @@ pub struct CfnLayer {
     #[serde(rename = "Shortname")]
     pub shortname: String,
 
-
-    /// 
+    ///
     /// The layer stack ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -192,10 +174,9 @@ pub struct CfnLayer {
     #[serde(rename = "StackId")]
     pub stack_id: String,
 
-
-    /// 
+    ///
     /// Specifies one or more sets of tags (key–value pairs) to associate with this AWS OpsWorks layer.      Use tags to manage your resources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -204,10 +185,9 @@ pub struct CfnLayer {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The layer type. A stack cannot have more than one built-in layer of the same type. It can have any number of custom layers.      Built-in layers are not available in Chef 12 stacks.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -218,10 +198,9 @@ pub struct CfnLayer {
     #[serde(rename = "Type")]
     pub cfn_type: LayerTypeEnum,
 
-
-    /// 
+    ///
     /// Whether to use Amazon EBS-optimized instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -230,10 +209,9 @@ pub struct CfnLayer {
     #[serde(rename = "UseEbsOptimizedInstances")]
     pub use_ebs_optimized_instances: Option<bool>,
 
-
-    /// 
+    ///
     /// A VolumeConfigurations object that describes the layer's Amazon EBS volumes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of VolumeConfiguration
@@ -241,13 +219,10 @@ pub struct CfnLayer {
     /// Update requires: No interruption
     #[serde(rename = "VolumeConfigurations")]
     pub volume_configurations: Option<Vec<VolumeConfiguration>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum LayerTypeEnum {
-
     /// aws-flow-ruby
     #[serde(rename = "aws-flow-ruby")]
     Awsflowruby,
@@ -295,7 +270,6 @@ pub enum LayerTypeEnum {
     /// web
     #[serde(rename = "web")]
     Web,
-
 }
 
 impl Default for LayerTypeEnum {
@@ -303,7 +277,6 @@ impl Default for LayerTypeEnum {
         LayerTypeEnum::Awsflowruby
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnLayer {
     fn type_string(&self) -> &'static str {
@@ -315,12 +288,17 @@ impl cfn_resources::CfnResource for CfnLayer {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.custom_recipes
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.custom_recipes.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.lifecycle_event_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.lifecycle_event_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.load_based_auto_scaling.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.load_based_auto_scaling
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -329,11 +307,9 @@ impl cfn_resources::CfnResource for CfnLayer {
 /// Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or      stops load-based instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoScalingThresholds {
-
-
-    /// 
+    ///
     /// The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -342,10 +318,9 @@ pub struct AutoScalingThresholds {
     #[serde(rename = "CpuThreshold")]
     pub cpu_threshold: Option<f64>,
 
-
-    /// 
+    ///
     /// The amount of time (in minutes) after a scaling event occurs that AWS OpsWorks Stacks should ignore metrics      and suppress additional scaling events. For example, AWS OpsWorks Stacks adds new instances following    an upscaling event but the instances won't start reducing the load until they have been booted    and configured. There is no point in raising additional scaling events during that operation,    which typically takes several minutes. IgnoreMetricsTime allows you to direct      AWS OpsWorks Stacks to suppress scaling events long enough to get the new instances online.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -358,10 +333,9 @@ pub struct AutoScalingThresholds {
     #[serde(rename = "IgnoreMetricsTime")]
     pub ignore_metrics_time: Option<i64>,
 
-
-    /// 
+    ///
     /// The number of instances to add or remove when the load exceeds a threshold.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -370,10 +344,9 @@ pub struct AutoScalingThresholds {
     #[serde(rename = "InstanceCount")]
     pub instance_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The load threshold. A value of -1 disables the threshold. For more information about how load is computed,      see Load (computing).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -382,10 +355,9 @@ pub struct AutoScalingThresholds {
     #[serde(rename = "LoadThreshold")]
     pub load_threshold: Option<f64>,
 
-
-    /// 
+    ///
     /// The memory utilization threshold, as a percent of the available memory. A value of -1 disables the threshold.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -394,10 +366,9 @@ pub struct AutoScalingThresholds {
     #[serde(rename = "MemoryThreshold")]
     pub memory_threshold: Option<f64>,
 
-
-    /// 
+    ///
     /// The amount of time, in minutes, that the load must exceed a threshold before more instances are added or removed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -409,10 +380,7 @@ pub struct AutoScalingThresholds {
     /// Update requires: No interruption
     #[serde(rename = "ThresholdsWaitTime")]
     pub thresholds_wait_time: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AutoScalingThresholds {
     fn type_string(&self) -> &'static str {
@@ -424,39 +392,42 @@ impl cfn_resources::CfnResource for AutoScalingThresholds {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.ignore_metrics_time {
+            if *the_val > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'ignore_metrics_time'. {} is greater than 100",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.ignore_metrics_time {
-
-        if *the_val > 100 as _ {
-            return Err(format!("Max validation failed on field 'ignore_metrics_time'. {} is greater than 100", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'ignore_metrics_time'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.ignore_metrics_time {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'ignore_metrics_time'. {} is less than 1", the_val));
-        }
-
-        }
-        
         if let Some(the_val) = &self.thresholds_wait_time {
-
-        if *the_val > 100 as _ {
-            return Err(format!("Max validation failed on field 'thresholds_wait_time'. {} is greater than 100", the_val));
+            if *the_val > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'thresholds_wait_time'. {} is greater than 100",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.thresholds_wait_time {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'thresholds_wait_time'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'thresholds_wait_time'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -464,11 +435,9 @@ impl cfn_resources::CfnResource for AutoScalingThresholds {
 /// Specifies the lifecycle event configuration
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LifecycleEventConfiguration {
-
-
-    /// 
+    ///
     /// The Shutdown event configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ShutdownEventConfiguration
@@ -476,10 +445,7 @@ pub struct LifecycleEventConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ShutdownEventConfiguration")]
     pub shutdown_event_configuration: Option<ShutdownEventConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LifecycleEventConfiguration {
     fn type_string(&self) -> &'static str {
@@ -491,8 +457,9 @@ impl cfn_resources::CfnResource for LifecycleEventConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.shutdown_event_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.shutdown_event_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -501,11 +468,9 @@ impl cfn_resources::CfnResource for LifecycleEventConfiguration {
 /// Describes a layer's load-based auto scaling configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LoadBasedAutoScaling {
-
-
-    /// 
+    ///
     /// An AutoScalingThresholds object that describes the downscaling configuration,      which defines how and when AWS OpsWorks Stacks reduces the number of instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AutoScalingThresholds
@@ -514,10 +479,9 @@ pub struct LoadBasedAutoScaling {
     #[serde(rename = "DownScaling")]
     pub down_scaling: Option<AutoScalingThresholds>,
 
-
-    /// 
+    ///
     /// Whether load-based auto scaling is enabled for the layer.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -526,10 +490,9 @@ pub struct LoadBasedAutoScaling {
     #[serde(rename = "Enable")]
     pub enable: Option<bool>,
 
-
-    /// 
+    ///
     /// An AutoScalingThresholds object that describes the upscaling configuration,      which defines how and when AWS OpsWorks Stacks increases the number of instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AutoScalingThresholds
@@ -537,10 +500,7 @@ pub struct LoadBasedAutoScaling {
     /// Update requires: No interruption
     #[serde(rename = "UpScaling")]
     pub up_scaling: Option<AutoScalingThresholds>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LoadBasedAutoScaling {
     fn type_string(&self) -> &'static str {
@@ -552,10 +512,13 @@ impl cfn_resources::CfnResource for LoadBasedAutoScaling {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.down_scaling
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.down_scaling.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.up_scaling.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.up_scaling
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -566,11 +529,9 @@ impl cfn_resources::CfnResource for LoadBasedAutoScaling {
 /// To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name,      which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb recipe in      the repository's phpapp2 folder.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Recipes {
-
-
-    /// 
+    ///
     /// An array of custom recipe names to be run following a configure event.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -579,10 +540,9 @@ pub struct Recipes {
     #[serde(rename = "Configure")]
     pub configure: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// An array of custom recipe names to be run following a deploy event.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -591,10 +551,9 @@ pub struct Recipes {
     #[serde(rename = "Deploy")]
     pub deploy: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// An array of custom recipe names to be run following a setup event.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -603,10 +562,9 @@ pub struct Recipes {
     #[serde(rename = "Setup")]
     pub setup: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// An array of custom recipe names to be run following a shutdown event.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -615,10 +573,9 @@ pub struct Recipes {
     #[serde(rename = "Shutdown")]
     pub shutdown: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// An array of custom recipe names to be run following a undeploy event.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -626,10 +583,7 @@ pub struct Recipes {
     /// Update requires: No interruption
     #[serde(rename = "Undeploy")]
     pub undeploy: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Recipes {
     fn type_string(&self) -> &'static str {
@@ -641,7 +595,6 @@ impl cfn_resources::CfnResource for Recipes {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -649,11 +602,9 @@ impl cfn_resources::CfnResource for Recipes {
 /// The Shutdown event configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ShutdownEventConfiguration {
-
-
-    /// 
+    ///
     /// Whether to enable Elastic Load Balancing connection draining. For more information, see Connection Draining
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -662,10 +613,9 @@ pub struct ShutdownEventConfiguration {
     #[serde(rename = "DelayUntilElbConnectionsDrained")]
     pub delay_until_elb_connections_drained: Option<bool>,
 
-
-    /// 
+    ///
     /// The time, in seconds, that AWS OpsWorks Stacks waits after triggering a Shutdown event before      shutting down an instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -673,10 +623,7 @@ pub struct ShutdownEventConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ExecutionTimeout")]
     pub execution_timeout: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ShutdownEventConfiguration {
     fn type_string(&self) -> &'static str {
@@ -688,7 +635,6 @@ impl cfn_resources::CfnResource for ShutdownEventConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -702,32 +648,26 @@ impl cfn_resources::CfnResource for ShutdownEventConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -739,7 +679,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -747,11 +686,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Describes an Amazon EBS volume configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VolumeConfiguration {
-
-
-    /// 
+    ///
     /// Specifies whether an Amazon EBS volume is encrypted. For more information,       see Amazon EBS Encryption.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -760,12 +697,11 @@ pub struct VolumeConfiguration {
     #[serde(rename = "Encrypted")]
     pub encrypted: Option<bool>,
 
-
-    /// 
+    ///
     /// The number of I/O operations per second (IOPS) to provision for the volume. For PIOPS volumes, the IOPS per disk.
-    /// 
+    ///
     /// If you specify io1 for the volume type, you must specify this property.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: Integer
@@ -774,10 +710,9 @@ pub struct VolumeConfiguration {
     #[serde(rename = "Iops")]
     pub iops: Option<i64>,
 
-
-    /// 
+    ///
     /// The volume mount point. For example "/dev/sdh".
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -786,10 +721,9 @@ pub struct VolumeConfiguration {
     #[serde(rename = "MountPoint")]
     pub mount_point: Option<String>,
 
-
-    /// 
+    ///
     /// The number of disks in the volume.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -798,10 +732,9 @@ pub struct VolumeConfiguration {
     #[serde(rename = "NumberOfDisks")]
     pub number_of_disks: Option<i64>,
 
-
-    /// 
+    ///
     /// The volume RAID level.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -810,10 +743,9 @@ pub struct VolumeConfiguration {
     #[serde(rename = "RaidLevel")]
     pub raid_level: Option<i64>,
 
-
-    /// 
+    ///
     /// The volume size.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -822,12 +754,11 @@ pub struct VolumeConfiguration {
     #[serde(rename = "Size")]
     pub size: Option<i64>,
 
-
-    /// 
+    ///
     /// The volume type. For more information, see      Amazon EBS Volume Types.
-    /// 
+    ///
     /// standard - Magnetic. Magnetic volumes must have a minimum size of 1 GiB and a maximum size of 1024 GiB.                        io1 - Provisioned IOPS (SSD). PIOPS volumes must have a minimum size of 4 GiB and a maximum size of 16384 GiB.                        gp2 - General Purpose (SSD). General purpose volumes must have a minimum size of 1 GiB and a maximum size        of 16384 GiB.                        st1 - Throughput Optimized hard disk drive (HDD). Throughput optimized HDD volumes must have a          minimum size of 500 GiB and a maximum size of 16384 GiB.                        sc1 - Cold HDD. Cold HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -835,10 +766,7 @@ pub struct VolumeConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VolumeType")]
     pub volume_type: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VolumeConfiguration {
     fn type_string(&self) -> &'static str {
@@ -850,7 +778,6 @@ impl cfn_resources::CfnResource for VolumeConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

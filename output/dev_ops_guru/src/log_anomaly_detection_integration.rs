@@ -1,12 +1,6 @@
-
-
 /// Information about the integration of DevOps Guru with CloudWatch log groups for log anomaly detection.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct CfnLogAnomalyDetectionIntegration {
-
-}
-
-
+pub struct CfnLogAnomalyDetectionIntegration {}
 
 impl cfn_resources::CfnResource for CfnLogAnomalyDetectionIntegration {
     fn type_string(&self) -> &'static str {
@@ -18,7 +12,6 @@ impl cfn_resources::CfnResource for CfnLogAnomalyDetectionIntegration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// Contains information about a returned CloudTrail channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnChannel {
-
-
-    /// 
+    ///
     /// One or more event data stores to which events arriving through a channel will be logged.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Destination
@@ -18,10 +14,9 @@ pub struct CfnChannel {
     #[serde(rename = "Destinations")]
     pub destinations: Option<Vec<Destination>>,
 
-
-    /// 
+    ///
     /// The name of the channel.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,12 +31,11 @@ pub struct CfnChannel {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the partner or external event source. You cannot change this name after you create the      channel. A maximum of one channel is allowed per source.
-    /// 
+    ///
     /// A source can be either Custom for all valid non-AWS     events, or the name of a partner event source. For information about the source names for available partners, see Additional information about integration partners in the CloudTrail User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -56,10 +50,9 @@ pub struct CfnChannel {
     #[serde(rename = "Source")]
     pub source: Option<String>,
 
-
-    /// 
+    ///
     /// A list of tags.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -69,10 +62,7 @@ pub struct CfnChannel {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnChannel {
     fn type_string(&self) -> &'static str {
@@ -84,55 +74,60 @@ impl cfn_resources::CfnResource for CfnChannel {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.destinations {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'destinations'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'destinations'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 3", the_val.len()));
+            if the_val.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 3",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.source {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'source'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'source'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.source {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'source'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'source'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -140,11 +135,9 @@ impl cfn_resources::CfnResource for CfnChannel {
 /// Contains information about the destination receiving events.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Destination {
-
-
-    /// 
+    ///
     /// For channels used for a CloudTrail Lake integration, the location is the ARN of an event data store that receives events from a channel.      For service-linked channels, the location is the name of the AWS service.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -159,10 +152,9 @@ pub struct Destination {
     #[serde(rename = "Location")]
     pub location: String,
 
-
-    /// 
+    ///
     /// The type of destination for events arriving from a channel. For channels used for a CloudTrail Lake integration, the value is EventDataStore. For service-linked channels,      the value is AWS_SERVICE.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -172,13 +164,10 @@ pub struct Destination {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: DestinationTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DestinationTypeEnum {
-
     /// AWS_SERVICE
     #[serde(rename = "AWS_SERVICE")]
     Awsservice,
@@ -186,7 +175,6 @@ pub enum DestinationTypeEnum {
     /// EVENT_DATA_STORE
     #[serde(rename = "EVENT_DATA_STORE")]
     Eventdatastore,
-
 }
 
 impl Default for DestinationTypeEnum {
@@ -194,7 +182,6 @@ impl Default for DestinationTypeEnum {
         DestinationTypeEnum::Awsservice
     }
 }
-
 
 impl cfn_resources::CfnResource for Destination {
     fn type_string(&self) -> &'static str {
@@ -206,21 +193,24 @@ impl cfn_resources::CfnResource for Destination {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.location;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'location'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'location'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.location;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'location'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'location'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -234,32 +224,26 @@ impl cfn_resources::CfnResource for Destination {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -271,7 +255,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

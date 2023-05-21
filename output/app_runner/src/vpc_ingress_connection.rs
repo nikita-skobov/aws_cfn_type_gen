@@ -1,15 +1,11 @@
-
-
 /// The AWS::AppRunner::VpcIngressConnection resource is an AWS App Runner resource type that specifies an App Runner VPC    Ingress Connection.
 ///
 /// App Runner requires this resource when you want to associate your App Runner service to an Amazon VPC endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVpcIngressConnection {
-
-
-    /// 
+    ///
     /// Specifications for the customer’s Amazon VPC and the related AWS PrivateLink VPC endpoint that are used to create the VPC Ingress Connection    resource.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: IngressVpcConfiguration
@@ -18,10 +14,9 @@ pub struct CfnVpcIngressConnection {
     #[serde(rename = "IngressVpcConfiguration")]
     pub ingress_vpc_configuration: IngressVpcConfiguration,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) for this App Runner service that is used to create the VPC Ingress Connection resource.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnVpcIngressConnection {
     #[serde(rename = "ServiceArn")]
     pub service_arn: String,
 
-
-    /// 
+    ///
     /// An optional list of metadata items that you can associate with the VPC Ingress Connection resource. A tag is a key-value pair.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -48,10 +42,9 @@ pub struct CfnVpcIngressConnection {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The customer-provided VPC Ingress Connection name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -65,10 +58,7 @@ pub struct CfnVpcIngressConnection {
     /// Update requires: Replacement
     #[serde(rename = "VpcIngressConnectionName")]
     pub vpc_ingress_connection_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnVpcIngressConnection {
     fn type_string(&self) -> &'static str {
@@ -80,39 +70,38 @@ impl cfn_resources::CfnResource for CfnVpcIngressConnection {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.ingress_vpc_configuration.validate()?;
 
         let the_val = &self.service_arn;
 
         if the_val.len() > 1011 as _ {
-            return Err(format!("Max validation failed on field 'service_arn'. {} is greater than 1011", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'service_arn'. {} is greater than 1011",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.service_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'service_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'service_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.vpc_ingress_connection_name {
-
-        if the_val.len() > 40 as _ {
-            return Err(format!("Max validation failed on field 'vpc_ingress_connection_name'. {} is greater than 40", the_val.len()));
+            if the_val.len() > 40 as _ {
+                return Err(format!("Max validation failed on field 'vpc_ingress_connection_name'. {} is greater than 40", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.vpc_ingress_connection_name {
-
-        if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'vpc_ingress_connection_name'. {} is less than 4", the_val.len()));
+            if the_val.len() < 4 as _ {
+                return Err(format!("Min validation failed on field 'vpc_ingress_connection_name'. {} is less than 4", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -120,11 +109,9 @@ impl cfn_resources::CfnResource for CfnVpcIngressConnection {
 /// Specifications for the customer’s VPC and related PrivateLink VPC endpoint that are used to associate with the VPC Ingress Connection resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IngressVpcConfiguration {
-
-
-    /// 
+    ///
     /// The ID of the VPC endpoint that your App Runner service connects to.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -139,10 +126,9 @@ pub struct IngressVpcConfiguration {
     #[serde(rename = "VpcEndpointId")]
     pub vpc_endpoint_id: String,
 
-
-    /// 
+    ///
     /// The ID of the VPC that is used for the VPC endpoint.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -156,10 +142,7 @@ pub struct IngressVpcConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for IngressVpcConfiguration {
     fn type_string(&self) -> &'static str {
@@ -171,35 +154,42 @@ impl cfn_resources::CfnResource for IngressVpcConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.vpc_endpoint_id;
 
         if the_val.len() > 51200 as _ {
-            return Err(format!("Max validation failed on field 'vpc_endpoint_id'. {} is greater than 51200", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'vpc_endpoint_id'. {} is greater than 51200",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.vpc_endpoint_id;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'vpc_endpoint_id'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'vpc_endpoint_id'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.vpc_id;
 
         if the_val.len() > 51200 as _ {
-            return Err(format!("Max validation failed on field 'vpc_id'. {} is greater than 51200", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'vpc_id'. {} is greater than 51200",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.vpc_id;
 
         if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'vpc_id'. {} is less than 0", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'vpc_id'. {} is less than 0",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -213,32 +203,26 @@ impl cfn_resources::CfnResource for IngressVpcConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -250,7 +234,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

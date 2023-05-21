@@ -1,5 +1,3 @@
-
-
 /// Requests a VPC peering connection between two VPCs: a requester VPC that you own and an     accepter VPC with which to create the connection. The accepter VPC can belong to a different       AWS account and can be in a different Region than the requester VPC.
 ///
 /// The requester VPC and accepter VPC cannot have overlapping CIDR blocks. If you create a     VPC peering connection request between VPCs with overlapping CIDR blocks, the VPC peering     connection has a status of failed.
@@ -9,13 +7,11 @@
 /// If the requester and acceptor VPCs are in the same account, the peering request is      accepted without a peering role.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPCPeeringConnection {
-
-
-    /// 
+    ///
     /// The AWS account ID of the owner of the accepter VPC.
-    /// 
+    ///
     /// Default: Your AWS account ID
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -24,12 +20,11 @@ pub struct CfnVPCPeeringConnection {
     #[serde(rename = "PeerOwnerId")]
     pub peer_owner_id: Option<String>,
 
-
-    /// 
+    ///
     /// The Region code for the accepter VPC, if the accepter VPC is located in a Region       other than the Region in which you make the request.
-    /// 
+    ///
     /// Default: The Region in which you make the request.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -38,12 +33,11 @@ pub struct CfnVPCPeeringConnection {
     #[serde(rename = "PeerRegion")]
     pub peer_region: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the VPC peer role for the peering connection in     another AWS account.
-    /// 
+    ///
     /// This is required when you are peering a VPC in a different AWS     account.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -52,10 +46,9 @@ pub struct CfnVPCPeeringConnection {
     #[serde(rename = "PeerRoleArn")]
     pub peer_role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the VPC with which you are creating the VPC peering connection. You must 			specify this parameter in the request.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -64,10 +57,9 @@ pub struct CfnVPCPeeringConnection {
     #[serde(rename = "PeerVpcId")]
     pub peer_vpc_id: String,
 
-
-    /// 
+    ///
     /// Any tags assigned to the resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -76,10 +68,9 @@ pub struct CfnVPCPeeringConnection {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the VPC.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -87,10 +78,7 @@ pub struct CfnVPCPeeringConnection {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnVPCPeeringConnection {
     fn type_string(&self) -> &'static str {
@@ -102,7 +90,6 @@ impl cfn_resources::CfnResource for CfnVPCPeeringConnection {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -116,32 +103,26 @@ impl cfn_resources::CfnResource for CfnVPCPeeringConnection {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -153,7 +134,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

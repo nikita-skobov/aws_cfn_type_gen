@@ -1,13 +1,9 @@
-
-
 /// Specifies a new DataBrew dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDataset {
-
-
-    /// 
+    ///
     /// The file format of a dataset that is created from an Amazon S3 file or folder.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnDataset {
     #[serde(rename = "Format")]
     pub format: Option<DatasetFormatEnum>,
 
-
-    /// 
+    ///
     /// A set of options that define how DataBrew interprets the data in the       dataset.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FormatOptions
@@ -30,10 +25,9 @@ pub struct CfnDataset {
     #[serde(rename = "FormatOptions")]
     pub format_options: Option<FormatOptions>,
 
-
-    /// 
+    ///
     /// Information on how DataBrew can find the dataset, in either the AWS Glue Data Catalog or Amazon S3.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Input
@@ -42,10 +36,9 @@ pub struct CfnDataset {
     #[serde(rename = "Input")]
     pub input: Input,
 
-
-    /// 
+    ///
     /// The unique name of the dataset.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -58,10 +51,9 @@ pub struct CfnDataset {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// A set of options that defines how DataBrew interprets an Amazon S3 path of the dataset.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PathOptions
@@ -70,10 +62,9 @@ pub struct CfnDataset {
     #[serde(rename = "PathOptions")]
     pub path_options: Option<PathOptions>,
 
-
-    /// 
+    ///
     /// Metadata tags that have been applied to the dataset.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -81,13 +72,10 @@ pub struct CfnDataset {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DatasetFormatEnum {
-
     /// CSV
     #[serde(rename = "CSV")]
     Csv,
@@ -107,7 +95,6 @@ pub enum DatasetFormatEnum {
     /// PARQUET
     #[serde(rename = "PARQUET")]
     Parquet,
-
 }
 
 impl Default for DatasetFormatEnum {
@@ -115,7 +102,6 @@ impl Default for DatasetFormatEnum {
         DatasetFormatEnum::Csv
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnDataset {
     fn type_string(&self) -> &'static str {
@@ -127,26 +113,33 @@ impl cfn_resources::CfnResource for CfnDataset {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.format_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.format_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.input.validate()?;
 
         let the_val = &self.name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.path_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.path_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -155,11 +148,9 @@ impl cfn_resources::CfnResource for CfnDataset {
 /// Represents a set of options that define how DataBrew will read a       comma-separated value (CSV) file when creating a dataset from that file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CsvOptions {
-
-
-    /// 
+    ///
     /// A single character that specifies the delimiter being used in the CSV file.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -172,10 +163,9 @@ pub struct CsvOptions {
     #[serde(rename = "Delimiter")]
     pub delimiter: Option<String>,
 
-
-    /// 
+    ///
     /// A variable that specifies whether the first row in the file is parsed as the       header. If this value is false, column names are auto-generated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -183,10 +173,7 @@ pub struct CsvOptions {
     /// Update requires: No interruption
     #[serde(rename = "HeaderRow")]
     pub header_row: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CsvOptions {
     fn type_string(&self) -> &'static str {
@@ -198,23 +185,24 @@ impl cfn_resources::CfnResource for CsvOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.delimiter {
+            if the_val.len() > 1 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'delimiter'. {} is greater than 1",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.delimiter {
-
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'delimiter'. {} is greater than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'delimiter'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.delimiter {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'delimiter'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -222,11 +210,9 @@ impl cfn_resources::CfnResource for CsvOptions {
 /// Represents how metadata stored in the AWS Glue Data Catalog is defined in a DataBrew       dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataCatalogInputDefinition {
-
-
-    /// 
+    ///
     /// The unique identifier of the AWS account that holds the Data Catalog that stores the       data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -239,10 +225,9 @@ pub struct DataCatalogInputDefinition {
     #[serde(rename = "CatalogId")]
     pub catalog_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of a database in the Data Catalog.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -255,10 +240,9 @@ pub struct DataCatalogInputDefinition {
     #[serde(rename = "DatabaseName")]
     pub database_name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of a database table in the Data Catalog. This table corresponds to a DataBrew       dataset.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -271,10 +255,9 @@ pub struct DataCatalogInputDefinition {
     #[serde(rename = "TableName")]
     pub table_name: Option<String>,
 
-
-    /// 
+    ///
     /// An Amazon location that AWS Glue Data Catalog can use as a temporary       directory.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3Location
@@ -282,10 +265,7 @@ pub struct DataCatalogInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
     pub temp_directory: Option<S3Location>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataCatalogInputDefinition {
     fn type_string(&self) -> &'static str {
@@ -297,56 +277,63 @@ impl cfn_resources::CfnResource for DataCatalogInputDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.catalog_id {
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'catalog_id'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.catalog_id {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'catalog_id'. {} is greater than 255", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'catalog_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.catalog_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'catalog_id'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.database_name {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 255", the_val.len()));
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'database_name'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.database_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'database_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.table_name {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 255", the_val.len()));
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'table_name'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.table_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'table_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.temp_directory.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.temp_directory
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -355,11 +342,9 @@ impl cfn_resources::CfnResource for DataCatalogInputDefinition {
 /// Connection information for dataset input files stored in a database.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatabaseInputDefinition {
-
-
-    /// 
+    ///
     /// The table within the target database.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -368,10 +353,9 @@ pub struct DatabaseInputDefinition {
     #[serde(rename = "DatabaseTableName")]
     pub database_table_name: Option<String>,
 
-
-    /// 
+    ///
     /// The AWS Glue Connection that stores the connection information for       the target database.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -380,10 +364,9 @@ pub struct DatabaseInputDefinition {
     #[serde(rename = "GlueConnectionName")]
     pub glue_connection_name: String,
 
-
-    /// 
+    ///
     /// Custom SQL to run against the provided AWS Glue connection. This SQL will be used as       the input for DataBrew projects and jobs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -392,10 +375,9 @@ pub struct DatabaseInputDefinition {
     #[serde(rename = "QueryString")]
     pub query_string: Option<String>,
 
-
-    /// 
+    ///
     /// An Amazon location that AWS Glue Data Catalog can use as a temporary       directory.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3Location
@@ -403,10 +385,7 @@ pub struct DatabaseInputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "TempDirectory")]
     pub temp_directory: Option<S3Location>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DatabaseInputDefinition {
     fn type_string(&self) -> &'static str {
@@ -418,8 +397,9 @@ impl cfn_resources::CfnResource for DatabaseInputDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.temp_directory.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.temp_directory
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -428,11 +408,9 @@ impl cfn_resources::CfnResource for DatabaseInputDefinition {
 /// Represents a dataset paramater that defines type and conditions for a parameter in the         Amazon S3 path of the dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatasetParameter {
-
-
-    /// 
+    ///
     /// Optional boolean value that defines whether the captured value of this parameter       should be loaded as an additional column in the dataset.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -441,10 +419,9 @@ pub struct DatasetParameter {
     #[serde(rename = "CreateColumn")]
     pub create_column: Option<bool>,
 
-
-    /// 
+    ///
     /// Additional parameter options such as a format and a timezone. Required for datetime       parameters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DatetimeOptions
@@ -453,10 +430,9 @@ pub struct DatasetParameter {
     #[serde(rename = "DatetimeOptions")]
     pub datetime_options: Option<DatetimeOptions>,
 
-
-    /// 
+    ///
     /// The optional filter expression structure to apply additional matching criteria to the       parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FilterExpression
@@ -465,10 +441,9 @@ pub struct DatasetParameter {
     #[serde(rename = "Filter")]
     pub filter: Option<FilterExpression>,
 
-
-    /// 
+    ///
     /// The name of the parameter that is used in the dataset's Amazon S3       path.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -477,10 +452,9 @@ pub struct DatasetParameter {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The type of the dataset parameter, can be one of a 'String', 'Number' or       'Datetime'.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -488,10 +462,7 @@ pub struct DatasetParameter {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DatasetParameter {
     fn type_string(&self) -> &'static str {
@@ -503,8 +474,9 @@ impl cfn_resources::CfnResource for DatasetParameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.datetime_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.datetime_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.filter.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -515,11 +487,9 @@ impl cfn_resources::CfnResource for DatasetParameter {
 /// Represents additional options for correct interpretation of datetime parameters used       in the Amazon S3 path of a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DatetimeOptions {
-
-
-    /// 
+    ///
     /// Required option, that defines the datetime format used for a date parameter in the         Amazon S3 path. Should use only supported datetime specifiers and       separation characters, all litera a-z or A-Z character should be escaped with single       quotes. E.g. "MM.dd.yyyy-'at'-HH:mm".
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -528,10 +498,9 @@ pub struct DatetimeOptions {
     #[serde(rename = "Format")]
     pub format: String,
 
-
-    /// 
+    ///
     /// Optional value for a non-US locale code, needed for correct interpretation of some       date formats.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -540,10 +509,9 @@ pub struct DatetimeOptions {
     #[serde(rename = "LocaleCode")]
     pub locale_code: Option<String>,
 
-
-    /// 
+    ///
     /// Optional value for a timezone offset of the datetime parameter value in the Amazon S3 path. Shouldn't be used if Format for this parameter includes timezone       fields. If no offset specified, UTC is assumed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -551,10 +519,7 @@ pub struct DatetimeOptions {
     /// Update requires: No interruption
     #[serde(rename = "TimezoneOffset")]
     pub timezone_offset: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DatetimeOptions {
     fn type_string(&self) -> &'static str {
@@ -566,7 +531,6 @@ impl cfn_resources::CfnResource for DatetimeOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -574,11 +538,9 @@ impl cfn_resources::CfnResource for DatetimeOptions {
 /// Represents a set of options that define how DataBrew will interpret a Microsoft Excel file when       creating a dataset from that file.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ExcelOptions {
-
-
-    /// 
+    ///
     /// A variable that specifies whether the first row in the file is parsed as the       header. If this value is false, column names are auto-generated.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -587,10 +549,9 @@ pub struct ExcelOptions {
     #[serde(rename = "HeaderRow")]
     pub header_row: Option<bool>,
 
-
-    /// 
+    ///
     /// One or more sheet numbers in the Excel file that will be included in the       dataset.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Integer
@@ -601,10 +562,9 @@ pub struct ExcelOptions {
     #[serde(rename = "SheetIndexes")]
     pub sheet_indexes: Option<Vec<i64>>,
 
-
-    /// 
+    ///
     /// One or more named sheets in the Excel file that will be included in the dataset.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -614,10 +574,7 @@ pub struct ExcelOptions {
     /// Update requires: No interruption
     #[serde(rename = "SheetNames")]
     pub sheet_names: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ExcelOptions {
     fn type_string(&self) -> &'static str {
@@ -629,23 +586,24 @@ impl cfn_resources::CfnResource for ExcelOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.sheet_indexes {
-
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'sheet_indexes'. {} is greater than 1", the_val.len()));
+            if the_val.len() > 1 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sheet_indexes'. {} is greater than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.sheet_names {
-
-        if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'sheet_names'. {} is greater than 1", the_val.len()));
+            if the_val.len() > 1 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sheet_names'. {} is greater than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -653,11 +611,9 @@ impl cfn_resources::CfnResource for ExcelOptions {
 /// Represents a limit imposed on number of Amazon S3 files that should be       selected for a dataset from a connected Amazon S3 path.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FilesLimit {
-
-
-    /// 
+    ///
     /// The number of Amazon S3 files to select.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -666,10 +622,9 @@ pub struct FilesLimit {
     #[serde(rename = "MaxFiles")]
     pub max_files: i64,
 
-
-    /// 
+    ///
     /// A criteria to use for Amazon S3 files sorting before their selection. By       default uses DESCENDING order, i.e. most recent files are selected first.       Anotherpossible value is ASCENDING.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -678,10 +633,9 @@ pub struct FilesLimit {
     #[serde(rename = "Order")]
     pub order: Option<String>,
 
-
-    /// 
+    ///
     /// A criteria to use for Amazon S3 files sorting before their selection. By       default uses LAST_MODIFIED_DATE as a sorting criteria. Currently it's the only allowed       value.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -689,10 +643,7 @@ pub struct FilesLimit {
     /// Update requires: No interruption
     #[serde(rename = "OrderedBy")]
     pub ordered_by: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FilesLimit {
     fn type_string(&self) -> &'static str {
@@ -704,7 +655,6 @@ impl cfn_resources::CfnResource for FilesLimit {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -712,11 +662,9 @@ impl cfn_resources::CfnResource for FilesLimit {
 /// Represents a structure for defining parameter conditions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FilterExpression {
-
-
-    /// 
+    ///
     /// The expression which includes condition names followed by substitution variables,       possibly grouped and combined with other conditions. For example, "(starts_with :prefix1       or starts_with :prefix2) and (ends_with :suffix1 or ends_with :suffix2)". Substitution       variables should start with ':' symbol.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -725,10 +673,9 @@ pub struct FilterExpression {
     #[serde(rename = "Expression")]
     pub expression: String,
 
-
-    /// 
+    ///
     /// The map of substitution variable names to their values used in this filter       expression.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of FilterValue
@@ -736,10 +683,7 @@ pub struct FilterExpression {
     /// Update requires: No interruption
     #[serde(rename = "ValuesMap")]
     pub values_map: Vec<FilterValue>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FilterExpression {
     fn type_string(&self) -> &'static str {
@@ -751,7 +695,6 @@ impl cfn_resources::CfnResource for FilterExpression {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -759,11 +702,9 @@ impl cfn_resources::CfnResource for FilterExpression {
 /// Represents a single entry in the ValuesMap of a         FilterExpression. A FilterValue associates the name of a       substitution variable in an expression to its value.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FilterValue {
-
-
-    /// 
+    ///
     /// The value to be associated with the substitution variable.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -772,10 +713,9 @@ pub struct FilterValue {
     #[serde(rename = "Value")]
     pub value: String,
 
-
-    /// 
+    ///
     /// The substitution variable reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -783,10 +723,7 @@ pub struct FilterValue {
     /// Update requires: No interruption
     #[serde(rename = "ValueReference")]
     pub value_reference: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FilterValue {
     fn type_string(&self) -> &'static str {
@@ -798,7 +735,6 @@ impl cfn_resources::CfnResource for FilterValue {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -806,11 +742,9 @@ impl cfn_resources::CfnResource for FilterValue {
 /// Represents a set of options that define the structure of either comma-separated value (CSV),       Excel, or JSON input.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FormatOptions {
-
-
-    /// 
+    ///
     /// Options that define how CSV input is to be interpreted by DataBrew.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CsvOptions
@@ -819,10 +753,9 @@ pub struct FormatOptions {
     #[serde(rename = "Csv")]
     pub csv: Option<CsvOptions>,
 
-
-    /// 
+    ///
     /// Options that define how Excel input is to be interpreted by DataBrew.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ExcelOptions
@@ -831,10 +764,9 @@ pub struct FormatOptions {
     #[serde(rename = "Excel")]
     pub excel: Option<ExcelOptions>,
 
-
-    /// 
+    ///
     /// Options that define how JSON input is to be interpreted by DataBrew.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: JsonOptions
@@ -842,10 +774,7 @@ pub struct FormatOptions {
     /// Update requires: No interruption
     #[serde(rename = "Json")]
     pub json: Option<JsonOptions>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FormatOptions {
     fn type_string(&self) -> &'static str {
@@ -857,7 +786,6 @@ impl cfn_resources::CfnResource for FormatOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.csv.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         self.excel.as_ref().map_or(Ok(()), |val| val.validate())?;
@@ -871,11 +799,9 @@ impl cfn_resources::CfnResource for FormatOptions {
 /// Represents information on how DataBrew can find data, in either the AWS Glue Data Catalog or       Amazon S3.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Input {
-
-
-    /// 
+    ///
     /// The AWS Glue Data Catalog parameters for the data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DataCatalogInputDefinition
@@ -884,10 +810,9 @@ pub struct Input {
     #[serde(rename = "DataCatalogInputDefinition")]
     pub data_catalog_input_definition: Option<DataCatalogInputDefinition>,
 
-
-    /// 
+    ///
     /// Connection information for dataset input files stored in a database.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DatabaseInputDefinition
@@ -896,10 +821,9 @@ pub struct Input {
     #[serde(rename = "DatabaseInputDefinition")]
     pub database_input_definition: Option<DatabaseInputDefinition>,
 
-
-    /// 
+    ///
     /// Contains additional resource information needed for specific datasets.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Metadata
@@ -908,10 +832,9 @@ pub struct Input {
     #[serde(rename = "Metadata")]
     pub metadata: Option<Metadata>,
 
-
-    /// 
+    ///
     /// The Amazon S3 location where the data is stored.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3Location
@@ -919,10 +842,7 @@ pub struct Input {
     /// Update requires: No interruption
     #[serde(rename = "S3InputDefinition")]
     pub s3_input_definition: Option<S3Location>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Input {
     fn type_string(&self) -> &'static str {
@@ -934,14 +854,21 @@ impl cfn_resources::CfnResource for Input {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.data_catalog_input_definition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.data_catalog_input_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.database_input_definition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.database_input_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.metadata
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.metadata.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.s3_input_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.s3_input_definition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -950,11 +877,9 @@ impl cfn_resources::CfnResource for Input {
 /// Represents the JSON-specific options that define how input is to be interpreted by AWS Glue DataBrew.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JsonOptions {
-
-
-    /// 
+    ///
     /// A value that specifies whether JSON input contains embedded new line       characters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -962,10 +887,7 @@ pub struct JsonOptions {
     /// Update requires: No interruption
     #[serde(rename = "MultiLine")]
     pub multi_line: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for JsonOptions {
     fn type_string(&self) -> &'static str {
@@ -977,7 +899,6 @@ impl cfn_resources::CfnResource for JsonOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -985,11 +906,9 @@ impl cfn_resources::CfnResource for JsonOptions {
 /// Contains additional resource information needed for specific datasets.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Metadata {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) associated with the dataset. Currently, DataBrew       only supports ARNs from Amazon AppFlow.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1001,10 +920,7 @@ pub struct Metadata {
     /// Update requires: No interruption
     #[serde(rename = "SourceArn")]
     pub source_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Metadata {
     fn type_string(&self) -> &'static str {
@@ -1016,23 +932,24 @@ impl cfn_resources::CfnResource for Metadata {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.source_arn {
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'source_arn'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.source_arn {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'source_arn'. {} is greater than 2048", the_val.len()));
+            if the_val.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'source_arn'. {} is less than 20",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.source_arn {
-
-        if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'source_arn'. {} is less than 20", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -1040,11 +957,9 @@ impl cfn_resources::CfnResource for Metadata {
 /// Represents a set of options that define how DataBrew selects files for a       given Amazon S3 path in a dataset.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PathOptions {
-
-
-    /// 
+    ///
     /// If provided, this structure imposes a limit on a number of files that should be       selected.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FilesLimit
@@ -1053,10 +968,9 @@ pub struct PathOptions {
     #[serde(rename = "FilesLimit")]
     pub files_limit: Option<FilesLimit>,
 
-
-    /// 
+    ///
     /// If provided, this structure defines a date range for matching Amazon S3       objects based on their LastModifiedDate attribute in Amazon S3.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FilterExpression
@@ -1065,10 +979,9 @@ pub struct PathOptions {
     #[serde(rename = "LastModifiedDateCondition")]
     pub last_modified_date_condition: Option<FilterExpression>,
 
-
-    /// 
+    ///
     /// A structure that maps names of parameters used in the Amazon S3 path of a       dataset to their definitions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of PathParameter
@@ -1076,10 +989,7 @@ pub struct PathOptions {
     /// Update requires: No interruption
     #[serde(rename = "Parameters")]
     pub parameters: Option<Vec<PathParameter>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PathOptions {
     fn type_string(&self) -> &'static str {
@@ -1091,10 +1001,13 @@ impl cfn_resources::CfnResource for PathOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.files_limit
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.files_limit.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.last_modified_date_condition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.last_modified_date_condition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -1103,11 +1016,9 @@ impl cfn_resources::CfnResource for PathOptions {
 /// Represents a single entry in the path parameters of a dataset. Each         PathParameter consists of a name and a parameter definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PathParameter {
-
-
-    /// 
+    ///
     /// The path parameter definition.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: DatasetParameter
@@ -1116,10 +1027,9 @@ pub struct PathParameter {
     #[serde(rename = "DatasetParameter")]
     pub dataset_parameter: DatasetParameter,
 
-
-    /// 
+    ///
     /// The name of the path parameter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1127,10 +1037,7 @@ pub struct PathParameter {
     /// Update requires: No interruption
     #[serde(rename = "PathParameterName")]
     pub path_parameter_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PathParameter {
     fn type_string(&self) -> &'static str {
@@ -1142,7 +1049,6 @@ impl cfn_resources::CfnResource for PathParameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.dataset_parameter.validate()?;
 
         Ok(())
@@ -1152,11 +1058,9 @@ impl cfn_resources::CfnResource for PathParameter {
 /// Represents an Amazon S3 location (bucket name, bucket owner, and object key) where DataBrew can read       input data, or write output from a job.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Location {
-
-
-    /// 
+    ///
     /// The Amazon S3 bucket name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1169,10 +1073,9 @@ pub struct S3Location {
     #[serde(rename = "Bucket")]
     pub bucket: String,
 
-
-    /// 
+    ///
     /// The unique name of the object in the bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -1184,10 +1087,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Key")]
     pub key: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3Location {
     fn type_string(&self) -> &'static str {
@@ -1199,37 +1099,42 @@ impl cfn_resources::CfnResource for S3Location {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.bucket;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'bucket'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'bucket'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.bucket;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'bucket'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'bucket'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.key {
-
-        if the_val.len() > 1280 as _ {
-            return Err(format!("Max validation failed on field 'key'. {} is greater than 1280", the_val.len()));
+            if the_val.len() > 1280 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'key'. {} is greater than 1280",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.key {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'key'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -1243,32 +1148,26 @@ impl cfn_resources::CfnResource for S3Location {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -1280,7 +1179,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

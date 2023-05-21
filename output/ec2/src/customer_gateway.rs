@@ -1,15 +1,11 @@
-
-
 /// Specifies a customer gateway.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCustomerGateway {
-
-
-    /// 
+    ///
     /// For devices that support BGP, the customer gateway's BGP ASN.
-    /// 
+    ///
     /// Default: 65000
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -18,10 +14,9 @@ pub struct CfnCustomerGateway {
     #[serde(rename = "BgpAsn")]
     pub bgp_asn: i64,
 
-
-    /// 
+    ///
     /// The name of customer gateway device.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnCustomerGateway {
     #[serde(rename = "DeviceName")]
     pub device_name: Option<String>,
 
-
-    /// 
+    ///
     /// IPv4 address for the customer gateway device's outside interface. The address must be static.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnCustomerGateway {
     #[serde(rename = "IpAddress")]
     pub ip_address: String,
 
-
-    /// 
+    ///
     /// One or more tags for the customer gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -54,10 +47,9 @@ pub struct CfnCustomerGateway {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of VPN connection that this customer gateway supports       (ipsec.1).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -67,17 +59,13 @@ pub struct CfnCustomerGateway {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: CustomerGatewayTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CustomerGatewayTypeEnum {
-
     /// ipsec.1
     #[serde(rename = "ipsec.1")]
     Ipsec1,
-
 }
 
 impl Default for CustomerGatewayTypeEnum {
@@ -85,7 +73,6 @@ impl Default for CustomerGatewayTypeEnum {
         CustomerGatewayTypeEnum::Ipsec1
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnCustomerGateway {
     fn type_string(&self) -> &'static str {
@@ -97,7 +84,6 @@ impl cfn_resources::CfnResource for CfnCustomerGateway {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -111,32 +97,26 @@ impl cfn_resources::CfnResource for CfnCustomerGateway {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -148,7 +128,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

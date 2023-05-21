@@ -1,5 +1,3 @@
-
-
 /// Attaches a VPC to a transit gateway.
 ///
 /// If you attach a VPC with a CIDR range that overlaps the CIDR range of a VPC that is     already attached, the new VPC CIDR range is not propagated to the default propagation route     table.
@@ -9,13 +7,11 @@
 /// To update tags for a VPC attachment after creation without replacing the attachment, use      AWS::EC2::TransitGatewayVpcAttachment instead.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayAttachment {
-
-
-    /// 
+    ///
     /// The VPC attachment options, in JSON or YAML.
-    /// 
+    ///
     /// ApplianceModeSupport - Set to enable or disable. The default is disable.            DnsSupport - Set to enable or disable. The default is enable.            Ipv6Support - Set to enable or disable. The default is disable.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Options
@@ -24,10 +20,9 @@ pub struct CfnTransitGatewayAttachment {
     #[serde(rename = "Options")]
     pub options: Option<Options>,
 
-
-    /// 
+    ///
     /// The IDs of one or more subnets. You can specify only one subnet per Availability Zone.      You must specify at least one subnet, but we recommend that you specify two subnets for better availability.     The transit gateway uses one IP address from each specified subnet.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -36,10 +31,9 @@ pub struct CfnTransitGatewayAttachment {
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// The tags for the attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -48,10 +42,9 @@ pub struct CfnTransitGatewayAttachment {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the transit gateway.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -60,10 +53,9 @@ pub struct CfnTransitGatewayAttachment {
     #[serde(rename = "TransitGatewayId")]
     pub transit_gateway_id: String,
 
-
-    /// 
+    ///
     /// The ID of the VPC.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -71,10 +63,7 @@ pub struct CfnTransitGatewayAttachment {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnTransitGatewayAttachment {
     fn type_string(&self) -> &'static str {
@@ -86,7 +75,6 @@ impl cfn_resources::CfnResource for CfnTransitGatewayAttachment {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.options.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
@@ -96,11 +84,9 @@ impl cfn_resources::CfnResource for CfnTransitGatewayAttachment {
 /// Describes the VPC attachment options.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Options {
-
-
-    /// 
+    ///
     /// Indicates whether appliance mode support is enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -111,10 +97,9 @@ pub struct Options {
     #[serde(rename = "ApplianceModeSupport")]
     pub appliance_mode_support: Option<OptionsApplianceModeSupportEnum>,
 
-
-    /// 
+    ///
     /// Indicates whether DNS support is enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -125,10 +110,9 @@ pub struct Options {
     #[serde(rename = "DnsSupport")]
     pub dns_support: Option<OptionsDnsSupportEnum>,
 
-
-    /// 
+    ///
     /// Indicates whether IPv6 support is disabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -138,13 +122,10 @@ pub struct Options {
     /// Update requires: No interruption
     #[serde(rename = "Ipv6Support")]
     pub ipv6_support: Option<OptionsIpv6SupportEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum OptionsApplianceModeSupportEnum {
-
     /// disable
     #[serde(rename = "disable")]
     Disable,
@@ -152,7 +133,6 @@ pub enum OptionsApplianceModeSupportEnum {
     /// enable
     #[serde(rename = "enable")]
     Enable,
-
 }
 
 impl Default for OptionsApplianceModeSupportEnum {
@@ -163,7 +143,6 @@ impl Default for OptionsApplianceModeSupportEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum OptionsDnsSupportEnum {
-
     /// disable
     #[serde(rename = "disable")]
     Disable,
@@ -171,7 +150,6 @@ pub enum OptionsDnsSupportEnum {
     /// enable
     #[serde(rename = "enable")]
     Enable,
-
 }
 
 impl Default for OptionsDnsSupportEnum {
@@ -182,7 +160,6 @@ impl Default for OptionsDnsSupportEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum OptionsIpv6SupportEnum {
-
     /// disable
     #[serde(rename = "disable")]
     Disable,
@@ -190,7 +167,6 @@ pub enum OptionsIpv6SupportEnum {
     /// enable
     #[serde(rename = "enable")]
     Enable,
-
 }
 
 impl Default for OptionsIpv6SupportEnum {
@@ -198,7 +174,6 @@ impl Default for OptionsIpv6SupportEnum {
         OptionsIpv6SupportEnum::Disable
     }
 }
-
 
 impl cfn_resources::CfnResource for Options {
     fn type_string(&self) -> &'static str {
@@ -210,7 +185,6 @@ impl cfn_resources::CfnResource for Options {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -224,32 +198,26 @@ impl cfn_resources::CfnResource for Options {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -261,7 +229,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

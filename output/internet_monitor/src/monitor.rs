@@ -1,5 +1,3 @@
-
-
 /// The AWS::InternetMonitor::Monitor resource is an Internet Monitor resource type that contains information about how 		you create a monitor in Amazon CloudWatch Internet Monitor. A monitor in Internet Monitor provides visibility into performance and 		availability between your applications hosted on AWS and your end users, using a traffic profile that it creates 		based on the application resources that you add: Virtual Private Clouds (VPCs), Amazon CloudFront distributions, or WorkSpaces directories.
 ///
 /// Internet Monitor also alerts you to internet issues that impact your application in the city-networks (geographies and networks) 			where your end users use it. With Internet Monitor, you can quickly pinpoint the locations and providers that are affected, so 			that you can address the issue.
@@ -7,9 +5,7 @@
 /// For more information, see 		Using Amazon CloudWatch Internet Monitor in the Amazon CloudWatch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMonitor {
-
-
-    /// 
+    ///
     /// Publish internet measurements for a monitor for all city-networks (up to the 500,000 service limit) to another location, such as an Amazon S3 bucket. 			Measurements are also published to Amazon CloudWatch Logs for the first 500 (by traffic volume) city-networks (client locations and ASNs, typically 			internet service providers or ISPs).
     ///
     /// Required: No
@@ -20,12 +16,11 @@ pub struct CfnMonitor {
     #[serde(rename = "InternetMeasurementsLogDelivery")]
     pub internet_measurements_log_delivery: Option<InternetMeasurementsLogDelivery>,
 
-
-    /// 
+    ///
     /// The maximum number of city-networks to monitor for your resources. A city-network is the location (city) where 			clients access your application resources from and the network, such as an internet service provider, that clients 			access the resources through.
-    /// 
+    ///
     /// For more information, see 			Choosing a city-network maximum value in Using Amazon CloudWatch Internet Monitor.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -34,10 +29,9 @@ pub struct CfnMonitor {
     #[serde(rename = "MaxCityNetworksToMonitor")]
     pub max_city_networks_to_monitor: Option<i64>,
 
-
-    /// 
+    ///
     /// The name of the monitor. A monitor name can contain only alphanumeric characters, dashes (-), periods (.), 			and underscores (_).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -46,10 +40,9 @@ pub struct CfnMonitor {
     #[serde(rename = "MonitorName")]
     pub monitor_name: String,
 
-
-    /// 
+    ///
     /// The resources that have been added for the monitor, listed by their Amazon Resource Names (ARNs).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -58,14 +51,13 @@ pub struct CfnMonitor {
     #[serde(rename = "Resources")]
     pub resources: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The resources to add to a monitor, which you provide as a set of Amazon Resource Names (ARNs).
-    /// 
+    ///
     /// You can add a combination of Virtual Private Clouds (VPCs) and Amazon CloudFront distributions, or you can add WorkSpaces directories. 		You can't add all three types of resources.
-    /// 
+    ///
     /// NoteIf you add only VPC resources, at least one VPC must have an Internet Gateway attached to it, to make sure that it has internet connectivity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -74,10 +66,9 @@ pub struct CfnMonitor {
     #[serde(rename = "ResourcesToAdd")]
     pub resources_to_add: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The resources to remove from a monitor, which you provide as a set of Amazon Resource Names (ARNs).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -86,10 +77,9 @@ pub struct CfnMonitor {
     #[serde(rename = "ResourcesToRemove")]
     pub resources_to_remove: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The status of a monitor. The accepted values that you can specify for Status are ACTIVE and INACTIVE.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -98,10 +88,9 @@ pub struct CfnMonitor {
     #[serde(rename = "Status")]
     pub status: Option<String>,
 
-
-    /// 
+    ///
     /// The tags for a monitor, listed as a set of key:value pairs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -110,10 +99,9 @@ pub struct CfnMonitor {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The percentage of the internet-facing traffic for your application that you want to monitor. You can also, optionally, set 			a limit for the number of city-networks (client locations and ASNs, typically internet service providers) that Internet Monitor will monitor traffic for. 			The city-networks maximum limit caps the number of city-networks that Internet Monitor monitors for your application, regardless of 			the percentage of traffic that you choose to monitor.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -121,10 +109,7 @@ pub struct CfnMonitor {
     /// Update requires: No interruption
     #[serde(rename = "TrafficPercentageToMonitor")]
     pub traffic_percentage_to_monitor: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnMonitor {
     fn type_string(&self) -> &'static str {
@@ -136,8 +121,9 @@ impl cfn_resources::CfnResource for CfnMonitor {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.internet_measurements_log_delivery.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.internet_measurements_log_delivery
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -146,11 +132,9 @@ impl cfn_resources::CfnResource for CfnMonitor {
 /// The InternetMeasurementsLogDelivery property type specifies Property description not available. for an AWS::InternetMonitor::Monitor.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InternetMeasurementsLogDelivery {
-
-
-    /// 
+    ///
     /// The configuration information for publishing Amazon CloudWatch Internet Monitor internet measurements to Amazon S3. The configuration 			includes the bucket name and (optionally) bucket prefix for the S3 bucket to store the measurements, and the delivery status. 			The delivery status is ENABLED if you choose to deliver internet measurements to an S3 bucket, and DISABLED otherwise.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3Config
@@ -158,10 +142,7 @@ pub struct InternetMeasurementsLogDelivery {
     /// Update requires: No interruption
     #[serde(rename = "S3Config")]
     pub s3_config: Option<S3Config>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InternetMeasurementsLogDelivery {
     fn type_string(&self) -> &'static str {
@@ -173,8 +154,9 @@ impl cfn_resources::CfnResource for InternetMeasurementsLogDelivery {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.s3_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.s3_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -183,11 +165,9 @@ impl cfn_resources::CfnResource for InternetMeasurementsLogDelivery {
 /// The configuration for publishing Amazon CloudWatch Internet Monitor internet measurements to Amazon S3. The configuration 			includes the bucket name and (optionally) bucket prefix for the S3 bucket to store the measurements, and the delivery status. 			The delivery status is ENABLED if you choose to deliver internet measurements to S3 logs, and DISABLED otherwise.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Config {
-
-
-    /// 
+    ///
     /// The Amazon S3 bucket name for internet measurements publishing.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -196,10 +176,9 @@ pub struct S3Config {
     #[serde(rename = "BucketName")]
     pub bucket_name: Option<String>,
 
-
-    /// 
+    ///
     /// An optional Amazon S3 bucket prefix for internet measurements publishing.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -208,10 +187,9 @@ pub struct S3Config {
     #[serde(rename = "BucketPrefix")]
     pub bucket_prefix: Option<String>,
 
-
-    /// 
+    ///
     /// The status of publishing Internet Monitor internet measurements to an Amazon S3 bucket. The delivery status is ENABLED 			if you choose to deliver internet measurements to an S3 bucket, and DISABLED otherwise.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -219,10 +197,7 @@ pub struct S3Config {
     /// Update requires: No interruption
     #[serde(rename = "LogDeliveryStatus")]
     pub log_delivery_status: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3Config {
     fn type_string(&self) -> &'static str {
@@ -234,7 +209,6 @@ impl cfn_resources::CfnResource for S3Config {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -248,32 +222,26 @@ impl cfn_resources::CfnResource for S3Config {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -285,7 +253,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

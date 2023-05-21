@@ -1,15 +1,11 @@
-
-
 /// Creates an agreement. An agreement is a bilateral trading partner agreement, or partnership,    between an AWS Transfer Family server and an AS2 process. The agreement defines the file and message    transfer relationship between the server and the AS2 process. To define an agreement, Transfer Family    combines a server, local profile, partner profile, certificate, and other    attributes.
 ///
 /// The partner is identified with the PartnerProfileId, and the AS2 process is identified with the LocalProfileId.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAgreement {
-
-
-    /// 
+    ///
     /// With AS2, you can send files by calling StartFileTransfer and specifying the    file paths in the request parameter, SendFilePaths. We use the file’s parent    directory (for example, for --send-file-paths /bucket/dir/file.txt, parent    directory is /bucket/dir/) to temporarily store a processed AS2 message file,    store the MDN when we receive them from the partner, and write a final JSON file containing    relevant metadata of the transmission. So, the AccessRole needs to provide read    and write access to the parent directory of the file location used in the     StartFileTransfer request. Additionally, you need to provide read and write    access to the parent directory of the files that you intend to send with     StartFileTransfer.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnAgreement {
     #[serde(rename = "AccessRole")]
     pub access_role: String,
 
-
-    /// 
+    ///
     /// The landing directory (folder) for files that are transferred by using the AS2    protocol.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -40,10 +35,9 @@ pub struct CfnAgreement {
     #[serde(rename = "BaseDirectory")]
     pub base_directory: String,
 
-
-    /// 
+    ///
     /// The name or short description that's used to identify the agreement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -58,10 +52,9 @@ pub struct CfnAgreement {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// A unique identifier for the AS2 local profile.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -76,10 +69,9 @@ pub struct CfnAgreement {
     #[serde(rename = "LocalProfileId")]
     pub local_profile_id: String,
 
-
-    /// 
+    ///
     /// A unique identifier for the partner profile used in the agreement.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -94,10 +86,9 @@ pub struct CfnAgreement {
     #[serde(rename = "PartnerProfileId")]
     pub partner_profile_id: String,
 
-
-    /// 
+    ///
     /// A system-assigned unique identifier for a server instance. This identifier indicates the    specific server that the agreement uses.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -112,10 +103,9 @@ pub struct CfnAgreement {
     #[serde(rename = "ServerId")]
     pub server_id: String,
 
-
-    /// 
+    ///
     /// The current status of the agreement, either ACTIVE or    INACTIVE.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -126,10 +116,9 @@ pub struct CfnAgreement {
     #[serde(rename = "Status")]
     pub status: Option<AgreementStatusEnum>,
 
-
-    /// 
+    ///
     /// Key-value pairs that can be used to group and search for agreements.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -139,13 +128,10 @@ pub struct CfnAgreement {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AgreementStatusEnum {
-
     /// ACTIVE
     #[serde(rename = "ACTIVE")]
     Active,
@@ -153,7 +139,6 @@ pub enum AgreementStatusEnum {
     /// INACTIVE
     #[serde(rename = "INACTIVE")]
     Inactive,
-
 }
 
 impl Default for AgreementStatusEnum {
@@ -161,7 +146,6 @@ impl Default for AgreementStatusEnum {
         AgreementStatusEnum::Active
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnAgreement {
     fn type_string(&self) -> &'static str {
@@ -173,94 +157,114 @@ impl cfn_resources::CfnResource for CfnAgreement {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.access_role;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'access_role'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'access_role'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.access_role;
 
         if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'access_role'. {} is less than 20", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'access_role'. {} is less than 20",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.base_directory;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'base_directory'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'base_directory'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.local_profile_id;
 
         if the_val.len() > 19 as _ {
-            return Err(format!("Max validation failed on field 'local_profile_id'. {} is greater than 19", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'local_profile_id'. {} is greater than 19",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.local_profile_id;
 
         if the_val.len() < 19 as _ {
-            return Err(format!("Min validation failed on field 'local_profile_id'. {} is less than 19", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'local_profile_id'. {} is less than 19",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.partner_profile_id;
 
         if the_val.len() > 19 as _ {
-            return Err(format!("Max validation failed on field 'partner_profile_id'. {} is greater than 19", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'partner_profile_id'. {} is greater than 19",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.partner_profile_id;
 
         if the_val.len() < 19 as _ {
-            return Err(format!("Min validation failed on field 'partner_profile_id'. {} is less than 19", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'partner_profile_id'. {} is less than 19",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.server_id;
 
         if the_val.len() > 19 as _ {
-            return Err(format!("Max validation failed on field 'server_id'. {} is greater than 19", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'server_id'. {} is greater than 19",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.server_id;
 
         if the_val.len() < 19 as _ {
-            return Err(format!("Min validation failed on field 'server_id'. {} is less than 19", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'server_id'. {} is less than 19",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -274,32 +278,26 @@ impl cfn_resources::CfnResource for CfnAgreement {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -311,7 +309,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

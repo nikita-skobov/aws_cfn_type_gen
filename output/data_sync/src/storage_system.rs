@@ -1,13 +1,9 @@
-
-
 /// The AWS::DataSync::StorageSystem resource creates an AWS resource for an on-premises storage system that you want DataSync Discovery to collect     information about. For more information, see discovering your storage with DataSync Discovery.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnStorageSystem {
-
-
-    /// 
+    ///
     /// Specifies the Amazon Resource Name (ARN) of the DataSync agent that connects to    and reads from your on-premises storage system's management interface.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -18,10 +14,9 @@ pub struct CfnStorageSystem {
     #[serde(rename = "AgentArns")]
     pub agent_arns: Vec<String>,
 
-
-    /// 
+    ///
     /// Specifies the ARN of the Amazon CloudWatch log group for monitoring and logging    discovery job events.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnStorageSystem {
     #[serde(rename = "CloudWatchLogGroupArn")]
     pub cloud_watch_log_group_arn: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies a familiar name for your on-premises storage system.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -52,10 +46,9 @@ pub struct CfnStorageSystem {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the server name and network port required to connect with the management    interface of your on-premises storage system.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ServerConfiguration
@@ -64,10 +57,9 @@ pub struct CfnStorageSystem {
     #[serde(rename = "ServerConfiguration")]
     pub server_configuration: ServerConfiguration,
 
-
-    /// 
+    ///
     /// Specifies the user name and password for accessing your on-premises storage system's    management interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ServerCredentials
@@ -76,12 +68,11 @@ pub struct CfnStorageSystem {
     #[serde(rename = "ServerCredentials")]
     pub server_credentials: Option<ServerCredentials>,
 
-
-    /// 
+    ///
     /// Specifies the type of on-premises storage system that you want DataSync Discovery to collect    information about.
-    /// 
+    ///
     /// NoteDataSync Discovery currently supports NetApp     Fabric-Attached     Storage (FAS) and All Flash FAS (AFF) systems running ONTAP 9.7 or     later.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -92,10 +83,9 @@ pub struct CfnStorageSystem {
     #[serde(rename = "SystemType")]
     pub system_type: StorageSystemSystemTypeEnum,
 
-
-    /// 
+    ///
     /// Specifies labels that help you categorize, filter, and search for your AWS    resources. We recommend creating at least a name tag for your on-premises storage    system.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -105,17 +95,13 @@ pub struct CfnStorageSystem {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum StorageSystemSystemTypeEnum {
-
     /// NetAppONTAP
     #[serde(rename = "NetAppONTAP")]
     Netappontap,
-
 }
 
 impl Default for StorageSystemSystemTypeEnum {
@@ -123,7 +109,6 @@ impl Default for StorageSystemSystemTypeEnum {
         StorageSystemSystemTypeEnum::Netappontap
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnStorageSystem {
     fn type_string(&self) -> &'static str {
@@ -135,50 +120,54 @@ impl cfn_resources::CfnResource for CfnStorageSystem {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.agent_arns;
 
         if the_val.len() > 1 as _ {
-            return Err(format!("Max validation failed on field 'agent_arns'. {} is greater than 1", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'agent_arns'. {} is greater than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.cloud_watch_log_group_arn {
-
-        if the_val.len() > 562 as _ {
-            return Err(format!("Max validation failed on field 'cloud_watch_log_group_arn'. {} is greater than 562", the_val.len()));
+            if the_val.len() > 562 as _ {
+                return Err(format!("Max validation failed on field 'cloud_watch_log_group_arn'. {} is greater than 562", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         self.server_configuration.validate()?;
 
-        self.server_credentials.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.server_credentials
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -186,11 +175,9 @@ impl cfn_resources::CfnResource for CfnStorageSystem {
 /// The network settings that DataSync Discovery uses to connect with your on-premises storage system's    management interface.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServerConfiguration {
-
-
-    /// 
+    ///
     /// The domain name or IP address of your storage system's management interface.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -203,10 +190,9 @@ pub struct ServerConfiguration {
     #[serde(rename = "ServerHostname")]
     pub server_hostname: String,
 
-
-    /// 
+    ///
     /// The network port for accessing the storage system's management interface.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -218,10 +204,7 @@ pub struct ServerConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ServerPort")]
     pub server_port: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServerConfiguration {
     fn type_string(&self) -> &'static str {
@@ -233,30 +216,33 @@ impl cfn_resources::CfnResource for ServerConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.server_hostname;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'server_hostname'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'server_hostname'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.server_port {
-
-        if *the_val > 65535 as _ {
-            return Err(format!("Max validation failed on field 'server_port'. {} is greater than 65535", the_val));
+            if *the_val > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'server_port'. {} is greater than 65535",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.server_port {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'server_port'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'server_port'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -266,11 +252,9 @@ impl cfn_resources::CfnResource for ServerConfiguration {
 /// DataSync Discovery stores these credentials in AWS Secrets Manager. For more    information, see Accessing your on-premises     storage system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ServerCredentials {
-
-
-    /// 
+    ///
     /// Specifies the password for your storage system's management interface.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -283,10 +267,9 @@ pub struct ServerCredentials {
     #[serde(rename = "Password")]
     pub password: String,
 
-
-    /// 
+    ///
     /// Specifies the user name for your storage system's management interface.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -298,10 +281,7 @@ pub struct ServerCredentials {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     pub username: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ServerCredentials {
     fn type_string(&self) -> &'static str {
@@ -313,21 +293,24 @@ impl cfn_resources::CfnResource for ServerCredentials {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.password;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'password'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'password'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.username;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'username'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'username'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -341,32 +324,26 @@ impl cfn_resources::CfnResource for ServerCredentials {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -378,7 +355,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

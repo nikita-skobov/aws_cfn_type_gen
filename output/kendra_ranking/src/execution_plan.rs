@@ -1,15 +1,11 @@
-
-
 /// Creates a rescore execution plan. A rescore execution       plan is an Amazon Kendra Intelligent Ranking resource       used for provisioning the Rescore API. You set       the number of capacity units that you require for       Amazon Kendra Intelligent Ranking to rescore or re-rank       a search service's results.
 ///
 /// For an example of using the       CreateRescoreExecutionPlan API, including using       the Python and Java SDKs, see Semantically         ranking a search service's results.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnExecutionPlan {
-
-
-    /// 
+    ///
     /// You can set additional capacity units to meet the       needs of your rescore execution plan. You are given a single       capacity unit by default. If you want to use the default       capacity, you don't set additional capacity units. For more       information on the default capacity and additional capacity       units, see Adjusting         capacity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CapacityUnitsConfiguration
@@ -18,10 +14,9 @@ pub struct CfnExecutionPlan {
     #[serde(rename = "CapacityUnits")]
     pub capacity_units: Option<CapacityUnitsConfiguration>,
 
-
-    /// 
+    ///
     /// A description for the rescore execution plan.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnExecutionPlan {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// A name for the rescore execution plan.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,10 +48,9 @@ pub struct CfnExecutionPlan {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// A list of key-value pairs that identify or categorize your       rescore execution plan. You can also use tags to help control       access to the rescore execution plan. Tag keys and values can       consist of Unicode letters, digits, white space. They can also       consist of underscore, period, colon, equal, plus, and asperand.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -67,10 +60,7 @@ pub struct CfnExecutionPlan {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnExecutionPlan {
     fn type_string(&self) -> &'static str {
@@ -82,47 +72,55 @@ impl cfn_resources::CfnResource for CfnExecutionPlan {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.capacity_units.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.capacity_units
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1000", the_val.len()));
+            if the_val.len() > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1000",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 1000", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 1000",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -130,13 +128,11 @@ impl cfn_resources::CfnResource for CfnExecutionPlan {
 /// Sets additional capacity units configured for your       rescore execution plan. A rescore execution plan is an       Amazon Kendra Intelligent Ranking resource used for       provisioning the Rescore API. You can add and       remove capacity units to fit your usage requirements.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CapacityUnitsConfiguration {
-
-
-    /// 
+    ///
     /// The amount of extra capacity for your rescore execution       plan.
-    /// 
+    ///
     /// A single extra capacity unit for a rescore execution       plan provides 0.01 rescore requests per second. You can add       up to 1000 extra capacity units.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -146,10 +142,7 @@ pub struct CapacityUnitsConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "RescoreCapacityUnits")]
     pub rescore_capacity_units: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CapacityUnitsConfiguration {
     fn type_string(&self) -> &'static str {
@@ -161,14 +154,15 @@ impl cfn_resources::CfnResource for CapacityUnitsConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.rescore_capacity_units;
 
         if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'rescore_capacity_units'. {} is less than 0", the_val));
+            return Err(format!(
+                "Min validation failed on field 'rescore_capacity_units'. {} is less than 0",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -182,32 +176,26 @@ impl cfn_resources::CfnResource for CapacityUnitsConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -219,7 +207,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

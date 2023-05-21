@@ -1,13 +1,9 @@
-
-
 /// For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, 			one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResolverRule {
-
-
-    /// 
+    ///
     /// DNS queries for this domain name are forwarded to the IP addresses that are specified in TargetIps. If a query matches 			multiple Resolver rules (example.com and www.example.com), the query is routed using the Resolver rule that contains the most specific domain name 			(www.example.com).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnResolverRule {
     #[serde(rename = "DomainName")]
     pub domain_name: String,
 
-
-    /// 
+    ///
     /// The name for the Resolver rule, which you specified when you created the Resolver rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnResolverRule {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the endpoint that the rule is associated with.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -52,16 +46,15 @@ pub struct CfnResolverRule {
     #[serde(rename = "ResolverEndpointId")]
     pub resolver_endpoint_id: Option<String>,
 
-
-    /// 
+    ///
     /// When you want to forward DNS queries for specified domain name to resolvers on your network, specify FORWARD.
-    /// 
+    ///
     /// When you have a forwarding rule to forward DNS queries for a domain to your network and you want Resolver to process queries for 			a subdomain of that domain, specify SYSTEM.
-    /// 
+    ///
     /// For example, to forward DNS queries for example.com to resolvers on your network, you create a rule and specify FORWARD 			for RuleType. To then have Resolver process queries for apex.example.com, you create a rule and specify 			SYSTEM for RuleType.
-    /// 
+    ///
     /// Currently, only Resolver can create rules that have a value of RECURSIVE for RuleType.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -72,10 +65,9 @@ pub struct CfnResolverRule {
     #[serde(rename = "RuleType")]
     pub rule_type: ResolverRuleRuleTypeEnum,
 
-
-    /// 
+    ///
     /// Tags help organize and categorize your Resolver rules. Each tag consists of a key and an optional value, both of which you define.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -86,10 +78,9 @@ pub struct CfnResolverRule {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// An array that contains the IP addresses and ports that an outbound endpoint forwards DNS queries to. Typically, 			these are the IP addresses of DNS resolvers on your network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of TargetAddress
@@ -97,13 +88,10 @@ pub struct CfnResolverRule {
     /// Update requires: No interruption
     #[serde(rename = "TargetIps")]
     pub target_ips: Option<Vec<TargetAddress>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ResolverRuleRuleTypeEnum {
-
     /// FORWARD
     #[serde(rename = "FORWARD")]
     Forward,
@@ -115,7 +103,6 @@ pub enum ResolverRuleRuleTypeEnum {
     /// SYSTEM
     #[serde(rename = "SYSTEM")]
     System,
-
 }
 
 impl Default for ResolverRuleRuleTypeEnum {
@@ -123,7 +110,6 @@ impl Default for ResolverRuleRuleTypeEnum {
         ResolverRuleRuleTypeEnum::Forward
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnResolverRule {
     fn type_string(&self) -> &'static str {
@@ -135,53 +121,60 @@ impl cfn_resources::CfnResource for CfnResolverRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.domain_name;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'domain_name'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'domain_name'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.domain_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'domain_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'domain_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+            if the_val.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.resolver_endpoint_id {
-
-        if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'resolver_endpoint_id'. {} is greater than 64", the_val.len()));
+            if the_val.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'resolver_endpoint_id'. {} is greater than 64",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.resolver_endpoint_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'resolver_endpoint_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'resolver_endpoint_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -195,32 +188,26 @@ impl cfn_resources::CfnResource for CfnResolverRule {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -232,7 +219,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -240,11 +226,9 @@ impl cfn_resources::CfnResource for Tag {
 /// In a 			CreateResolverRule 			request, an array of the IPs that you want to forward DNS queries to.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TargetAddress {
-
-
-    /// 
+    ///
     /// One IPv4 address that you want to forward DNS queries to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -257,10 +241,9 @@ pub struct TargetAddress {
     #[serde(rename = "Ip")]
     pub ip: Option<String>,
 
-
-    /// 
+    ///
     /// One IPv6 address that you want to forward DNS queries to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -273,10 +256,9 @@ pub struct TargetAddress {
     #[serde(rename = "Ipv6")]
     pub ipv6: Option<String>,
 
-
-    /// 
+    ///
     /// The port at Ip that you want to forward DNS queries to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -288,10 +270,7 @@ pub struct TargetAddress {
     /// Update requires: No interruption
     #[serde(rename = "Port")]
     pub port: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TargetAddress {
     fn type_string(&self) -> &'static str {
@@ -303,55 +282,60 @@ impl cfn_resources::CfnResource for TargetAddress {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.ip {
+            if the_val.len() > 36 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'ip'. {} is greater than 36",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.ip {
-
-        if the_val.len() > 36 as _ {
-            return Err(format!("Max validation failed on field 'ip'. {} is greater than 36", the_val.len()));
+            if the_val.len() < 7 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'ip'. {} is less than 7",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.ip {
-
-        if the_val.len() < 7 as _ {
-            return Err(format!("Min validation failed on field 'ip'. {} is less than 7", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.ipv6 {
-
-        if the_val.len() > 39 as _ {
-            return Err(format!("Max validation failed on field 'ipv6'. {} is greater than 39", the_val.len()));
+            if the_val.len() > 39 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'ipv6'. {} is greater than 39",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.ipv6 {
-
-        if the_val.len() < 7 as _ {
-            return Err(format!("Min validation failed on field 'ipv6'. {} is less than 7", the_val.len()));
+            if the_val.len() < 7 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'ipv6'. {} is less than 7",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.port {
-
-        if the_val.len() > 65535 as _ {
-            return Err(format!("Max validation failed on field 'port'. {} is greater than 65535", the_val.len()));
+            if the_val.len() > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'port'. {} is greater than 65535",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.port {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'port'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'port'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }

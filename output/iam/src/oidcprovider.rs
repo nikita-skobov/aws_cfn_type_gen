@@ -1,5 +1,3 @@
-
-
 /// Creates or updates an IAM entity to describe an identity provider (IdP)     that supports OpenID Connect (OIDC).
 ///
 /// The OIDC provider that you create with this operation can be used as a principal in a     role's trust policy. Such a policy establishes a trust relationship between AWS and the OIDC provider.
@@ -11,11 +9,9 @@
 /// When you update the IAM OIDC provider, you specify the     following:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnOIDCProvider {
-
-
-    /// 
+    ///
     /// A list of client IDs (also known as audiences) that are associated with the specified       IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -24,10 +20,9 @@ pub struct CfnOIDCProvider {
     #[serde(rename = "ClientIdList")]
     pub client_id_list: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of tags that are attached to the specified IAM OIDC provider.     The returned list of tags is sorted by tag key. For more information about tagging, see       Tagging IAM resources in the IAM User       Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -36,10 +31,9 @@ pub struct CfnOIDCProvider {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// A list of certificate thumbprints that are associated with the specified IAM OIDC provider resource object. For more information, see CreateOpenIDConnectProvider.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -48,10 +42,9 @@ pub struct CfnOIDCProvider {
     #[serde(rename = "ThumbprintList")]
     pub thumbprint_list: Vec<String>,
 
-
-    /// 
+    ///
     /// The URL that the IAM OIDC provider resource object is associated with.     For more information, see CreateOpenIDConnectProvider.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -59,10 +52,7 @@ pub struct CfnOIDCProvider {
     /// Update requires: Replacement
     #[serde(rename = "Url")]
     pub url: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnOIDCProvider {
     fn type_string(&self) -> &'static str {
@@ -74,7 +64,6 @@ impl cfn_resources::CfnResource for CfnOIDCProvider {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -88,32 +77,26 @@ impl cfn_resources::CfnResource for CfnOIDCProvider {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -125,7 +108,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

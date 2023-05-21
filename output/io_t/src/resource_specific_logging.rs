@@ -1,13 +1,9 @@
-
-
 /// Configure resource-specific logging.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceSpecificLogging {
-
-
-    /// 
+    ///
     /// The default log level.Valid Values: DEBUG | INFO | ERROR | WARN | DISABLED
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnResourceSpecificLogging {
     #[serde(rename = "LogLevel")]
     pub log_level: ResourceSpecificLoggingLogLevelEnum,
 
-
-    /// 
+    ///
     /// The target name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnResourceSpecificLogging {
     #[serde(rename = "TargetName")]
     pub target_name: String,
 
-
-    /// 
+    ///
     /// The target type. Valid Values: DEFAULT | THING_GROUP
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -39,13 +33,10 @@ pub struct CfnResourceSpecificLogging {
     /// Update requires: Replacement
     #[serde(rename = "TargetType")]
     pub target_type: ResourceSpecificLoggingTargetTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ResourceSpecificLoggingLogLevelEnum {
-
     /// DEBUG
     #[serde(rename = "DEBUG")]
     Debug,
@@ -65,7 +56,6 @@ pub enum ResourceSpecificLoggingLogLevelEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
-
 }
 
 impl Default for ResourceSpecificLoggingLogLevelEnum {
@@ -76,7 +66,6 @@ impl Default for ResourceSpecificLoggingLogLevelEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ResourceSpecificLoggingTargetTypeEnum {
-
     /// DEFAULT
     #[serde(rename = "DEFAULT")]
     Default,
@@ -84,7 +73,6 @@ pub enum ResourceSpecificLoggingTargetTypeEnum {
     /// THING_GROUP
     #[serde(rename = "THING_GROUP")]
     Thinggroup,
-
 }
 
 impl Default for ResourceSpecificLoggingTargetTypeEnum {
@@ -92,7 +80,6 @@ impl Default for ResourceSpecificLoggingTargetTypeEnum {
         ResourceSpecificLoggingTargetTypeEnum::Default
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnResourceSpecificLogging {
     fn type_string(&self) -> &'static str {
@@ -104,7 +91,6 @@ impl cfn_resources::CfnResource for CfnResourceSpecificLogging {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

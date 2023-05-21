@@ -1,15 +1,11 @@
-
-
 /// Adds a reference data source to an existing SQL-based Kinesis Data Analytics application.
 ///
 /// Kinesis Data Analytics reads reference data (that is, an Amazon S3 object) and creates an    in-application table within your application. In the request, you provide the source (S3    bucket name and object key name), name of the in-application table to create, and the    necessary mapping information that describes how data in an Amazon S3 object maps to columns    in the resulting in-application table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationReferenceDataSource {
-
-
-    /// 
+    ///
     /// The name of the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnApplicationReferenceDataSource {
     #[serde(rename = "ApplicationName")]
     pub application_name: String,
 
-
-    /// 
+    ///
     /// For a SQL-based Kinesis Data Analytics application, describes the reference data    source by providing the source information (Amazon S3 bucket name and object key name), the    resulting in-application table name that is created, and the necessary schema to map the data    elements in the Amazon S3 object to the in-application table.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ReferenceDataSource
@@ -35,10 +30,7 @@ pub struct CfnApplicationReferenceDataSource {
     /// Update requires: No interruption
     #[serde(rename = "ReferenceDataSource")]
     pub reference_data_source: ReferenceDataSource,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnApplicationReferenceDataSource {
     fn type_string(&self) -> &'static str {
@@ -50,21 +42,24 @@ impl cfn_resources::CfnResource for CfnApplicationReferenceDataSource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.application_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'application_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.application_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'application_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.reference_data_source.validate()?;
 
         Ok(())
@@ -78,11 +73,9 @@ impl cfn_resources::CfnResource for CfnApplicationReferenceDataSource {
 /// "name2", "address2"
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CSVMappingParameters {
-
-
-    /// 
+    ///
     /// The column delimiter. For example, in a CSV format, a comma (",") is the typical column    delimiter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -95,10 +88,9 @@ pub struct CSVMappingParameters {
     #[serde(rename = "RecordColumnDelimiter")]
     pub record_column_delimiter: String,
 
-
-    /// 
+    ///
     /// The row delimiter. For example, in a CSV format, '\n' is the typical    row delimiter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -110,10 +102,7 @@ pub struct CSVMappingParameters {
     /// Update requires: No interruption
     #[serde(rename = "RecordRowDelimiter")]
     pub record_row_delimiter: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CSVMappingParameters {
     fn type_string(&self) -> &'static str {
@@ -125,35 +114,42 @@ impl cfn_resources::CfnResource for CSVMappingParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.record_column_delimiter;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'record_column_delimiter'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'record_column_delimiter'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.record_column_delimiter;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'record_column_delimiter'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'record_column_delimiter'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.record_row_delimiter;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'record_row_delimiter'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'record_row_delimiter'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.record_row_delimiter;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'record_row_delimiter'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'record_row_delimiter'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -161,11 +157,9 @@ impl cfn_resources::CfnResource for CSVMappingParameters {
 /// For a SQL-based Kinesis Data Analytics application, provides additional mapping    information when JSON is the record format on the streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JSONMappingParameters {
-
-
-    /// 
+    ///
     /// The path to the top-level parent that contains the records.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -179,10 +173,7 @@ pub struct JSONMappingParameters {
     /// Update requires: No interruption
     #[serde(rename = "RecordRowPath")]
     pub record_row_path: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for JSONMappingParameters {
     fn type_string(&self) -> &'static str {
@@ -194,21 +185,24 @@ impl cfn_resources::CfnResource for JSONMappingParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.record_row_path;
 
         if the_val.len() > 65535 as _ {
-            return Err(format!("Max validation failed on field 'record_row_path'. {} is greater than 65535", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'record_row_path'. {} is greater than 65535",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.record_row_path;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'record_row_path'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'record_row_path'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -216,11 +210,9 @@ impl cfn_resources::CfnResource for JSONMappingParameters {
 /// When you configure a SQL-based Kinesis Data Analytics application's input at the    time of creating or updating an application, provides additional mapping information specific    to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the    streaming source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MappingParameters {
-
-
-    /// 
+    ///
     /// Provides additional mapping information when the record format uses delimiters    (for example, CSV).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CSVMappingParameters
@@ -229,10 +221,9 @@ pub struct MappingParameters {
     #[serde(rename = "CSVMappingParameters")]
     pub csvmapping_parameters: Option<CSVMappingParameters>,
 
-
-    /// 
+    ///
     /// Provides additional mapping information when JSON is the record format on the streaming source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: JSONMappingParameters
@@ -240,10 +231,7 @@ pub struct MappingParameters {
     /// Update requires: No interruption
     #[serde(rename = "JSONMappingParameters")]
     pub jsonmapping_parameters: Option<JSONMappingParameters>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MappingParameters {
     fn type_string(&self) -> &'static str {
@@ -255,10 +243,13 @@ impl cfn_resources::CfnResource for MappingParameters {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.csvmapping_parameters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.csvmapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.jsonmapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.jsonmapping_parameters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -269,11 +260,9 @@ impl cfn_resources::CfnResource for MappingParameters {
 /// Also used to describe the format of the reference data source.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RecordColumn {
-
-
-    /// 
+    ///
     /// A reference to the data element in the streaming input or the reference data    source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -286,10 +275,9 @@ pub struct RecordColumn {
     #[serde(rename = "Mapping")]
     pub mapping: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the column that is created in the in-application input stream or reference    table.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -304,10 +292,9 @@ pub struct RecordColumn {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The type of column created in the in-application input stream or reference table.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -319,10 +306,7 @@ pub struct RecordColumn {
     /// Update requires: No interruption
     #[serde(rename = "SqlType")]
     pub sql_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RecordColumn {
     fn type_string(&self) -> &'static str {
@@ -334,51 +318,60 @@ impl cfn_resources::CfnResource for RecordColumn {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.mapping {
+            if the_val.len() > 65535 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'mapping'. {} is greater than 65535",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.mapping {
-
-        if the_val.len() > 65535 as _ {
-            return Err(format!("Max validation failed on field 'mapping'. {} is greater than 65535", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'mapping'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.mapping {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'mapping'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.sql_type;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'sql_type'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'sql_type'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.sql_type;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'sql_type'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'sql_type'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -386,11 +379,9 @@ impl cfn_resources::CfnResource for RecordColumn {
 /// For a SQL-based Kinesis Data Analytics application, describes the record format    and relevant mapping information that should be applied to schematize the records on the    stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RecordFormat {
-
-
-    /// 
+    ///
     /// When you configure application input at the time of creating or updating an application,    provides additional mapping information specific to the record format (such as JSON, CSV, or    record fields delimited by some delimiter) on the streaming source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MappingParameters
@@ -399,10 +390,9 @@ pub struct RecordFormat {
     #[serde(rename = "MappingParameters")]
     pub mapping_parameters: Option<MappingParameters>,
 
-
-    /// 
+    ///
     /// The type of record format.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -412,13 +402,10 @@ pub struct RecordFormat {
     /// Update requires: No interruption
     #[serde(rename = "RecordFormatType")]
     pub record_format_type: RecordFormatRecordFormatTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RecordFormatRecordFormatTypeEnum {
-
     /// CSV
     #[serde(rename = "CSV")]
     Csv,
@@ -426,7 +413,6 @@ pub enum RecordFormatRecordFormatTypeEnum {
     /// JSON
     #[serde(rename = "JSON")]
     Json,
-
 }
 
 impl Default for RecordFormatRecordFormatTypeEnum {
@@ -434,7 +420,6 @@ impl Default for RecordFormatRecordFormatTypeEnum {
         RecordFormatRecordFormatTypeEnum::Csv
     }
 }
-
 
 impl cfn_resources::CfnResource for RecordFormat {
     fn type_string(&self) -> &'static str {
@@ -446,8 +431,9 @@ impl cfn_resources::CfnResource for RecordFormat {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.mapping_parameters.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.mapping_parameters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -456,11 +442,9 @@ impl cfn_resources::CfnResource for RecordFormat {
 /// For a SQL-based Kinesis Data Analytics application, describes the reference data    source by providing the source information (Amazon S3 bucket name and object key name), the    resulting in-application table name that is created, and the necessary schema to map the data    elements in the Amazon S3 object to the in-application table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReferenceDataSource {
-
-
-    /// 
+    ///
     /// Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ReferenceSchema
@@ -469,10 +453,9 @@ pub struct ReferenceDataSource {
     #[serde(rename = "ReferenceSchema")]
     pub reference_schema: ReferenceSchema,
 
-
-    /// 
+    ///
     /// Identifies the S3 bucket and object that contains the reference data. A Kinesis Data       Analytics application loads reference data only once. If the data changes, you call the         UpdateApplication operation to trigger reloading of data into your       application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3ReferenceDataSource
@@ -481,10 +464,9 @@ pub struct ReferenceDataSource {
     #[serde(rename = "S3ReferenceDataSource")]
     pub s3_reference_data_source: Option<S3ReferenceDataSource>,
 
-
-    /// 
+    ///
     /// The name of the in-application table to create.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -496,10 +478,7 @@ pub struct ReferenceDataSource {
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
     pub table_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ReferenceDataSource {
     fn type_string(&self) -> &'static str {
@@ -511,27 +490,30 @@ impl cfn_resources::CfnResource for ReferenceDataSource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.reference_schema.validate()?;
 
-        self.s3_reference_data_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.s3_reference_data_source
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.table_name {
-
-        if the_val.len() > 32 as _ {
-            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 32", the_val.len()));
+            if the_val.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'table_name'. {} is greater than 32",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.table_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'table_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -539,11 +521,9 @@ impl cfn_resources::CfnResource for ReferenceDataSource {
 /// For a SQL-based Kinesis Data Analytics application, describes the format of the    data in the streaming source, and how each data element maps to corresponding columns created    in the in-application stream.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReferenceSchema {
-
-
-    /// 
+    ///
     /// A list of RecordColumn objects.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of RecordColumn
@@ -554,10 +534,9 @@ pub struct ReferenceSchema {
     #[serde(rename = "RecordColumns")]
     pub record_columns: Vec<RecordColumn>,
 
-
-    /// 
+    ///
     /// Specifies the encoding of the records in the streaming source. For example, UTF-8.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -572,10 +551,9 @@ pub struct ReferenceSchema {
     #[serde(rename = "RecordEncoding")]
     pub record_encoding: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the format of the records on the streaming source.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: RecordFormat
@@ -583,10 +561,7 @@ pub struct ReferenceSchema {
     /// Update requires: No interruption
     #[serde(rename = "RecordFormat")]
     pub record_format: RecordFormat,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ReferenceSchema {
     fn type_string(&self) -> &'static str {
@@ -598,30 +573,33 @@ impl cfn_resources::CfnResource for ReferenceSchema {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.record_columns;
 
         if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'record_columns'. {} is greater than 1000", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'record_columns'. {} is greater than 1000",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.record_encoding {
-
-        if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'record_encoding'. {} is greater than 5", the_val.len()));
+            if the_val.len() > 5 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'record_encoding'. {} is greater than 5",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.record_encoding {
-
-        if the_val.len() < 5 as _ {
-            return Err(format!("Min validation failed on field 'record_encoding'. {} is less than 5", the_val.len()));
+            if the_val.len() < 5 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'record_encoding'. {} is less than 5",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         self.record_format.validate()?;
 
         Ok(())
@@ -633,11 +611,9 @@ impl cfn_resources::CfnResource for ReferenceSchema {
 /// A Kinesis Data Analytics application loads reference data only once. If the data       changes, you call the UpdateApplication operation to trigger reloading of data into your       application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3ReferenceDataSource {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the S3 bucket.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -652,10 +628,9 @@ pub struct S3ReferenceDataSource {
     #[serde(rename = "BucketARN")]
     pub bucket_arn: String,
 
-
-    /// 
+    ///
     /// The object key name containing the reference data.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -667,10 +642,7 @@ pub struct S3ReferenceDataSource {
     /// Update requires: No interruption
     #[serde(rename = "FileKey")]
     pub file_key: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3ReferenceDataSource {
     fn type_string(&self) -> &'static str {
@@ -682,35 +654,42 @@ impl cfn_resources::CfnResource for S3ReferenceDataSource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.bucket_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'bucket_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'bucket_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.bucket_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'bucket_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'bucket_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.file_key;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'file_key'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'file_key'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.file_key;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'file_key'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'file_key'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// Adds an Amazon CloudWatch log stream to monitor application configuration errors.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplicationCloudWatchLoggingOption {
-
-
-    /// 
+    ///
     /// The name of the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnApplicationCloudWatchLoggingOption {
     #[serde(rename = "ApplicationName")]
     pub application_name: String,
 
-
-    /// 
+    ///
     /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: CloudWatchLoggingOption
@@ -33,10 +28,7 @@ pub struct CfnApplicationCloudWatchLoggingOption {
     /// Update requires: No interruption
     #[serde(rename = "CloudWatchLoggingOption")]
     pub cloud_watch_logging_option: CloudWatchLoggingOption,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnApplicationCloudWatchLoggingOption {
     fn type_string(&self) -> &'static str {
@@ -48,21 +40,24 @@ impl cfn_resources::CfnResource for CfnApplicationCloudWatchLoggingOption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.application_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'application_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.application_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'application_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.cloud_watch_logging_option.validate()?;
 
         Ok(())
@@ -72,11 +67,9 @@ impl cfn_resources::CfnResource for CfnApplicationCloudWatchLoggingOption {
 /// Provides a description of Amazon CloudWatch logging options, including the log stream    Amazon Resource Name (ARN).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchLoggingOption {
-
-
-    /// 
+    ///
     /// The ARN of the CloudWatch log to receive application messages.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -90,10 +83,7 @@ pub struct CloudWatchLoggingOption {
     /// Update requires: No interruption
     #[serde(rename = "LogStreamARN")]
     pub log_stream_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CloudWatchLoggingOption {
     fn type_string(&self) -> &'static str {
@@ -105,21 +95,24 @@ impl cfn_resources::CfnResource for CloudWatchLoggingOption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.log_stream_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'log_stream_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'log_stream_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.log_stream_arn;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'log_stream_arn'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'log_stream_arn'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

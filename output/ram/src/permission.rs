@@ -1,13 +1,9 @@
-
-
 /// Creates a customer managed permission for a specified resource type that you can attach to resource shares.       It is created in the AWS Region in which you call the operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPermission {
-
-
-    /// 
+    ///
     /// Specifies the name of the customer managed permission. The name must be unique within the       AWS Region.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,14 +18,13 @@ pub struct CfnPermission {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// A string in JSON format string that contains the following elements of a       resource-based policy:
-    /// 
+    ///
     /// Effect: must be set to           ALLOW.                        Action: specifies the actions that are           allowed by this customer managed permission. The list must contain only actions that are supported by           the specified resource type. For a list of all actions supported by each           resource type, see Actions, resources, and condition keys for AWS services in the                        AWS Identity and Access Management User Guide.                        Condition: (optional) specifies conditional           parameters that must evaluate to true when a user attempts an action for that           action to be allowed. For more information about the Condition element, see           IAM             policies: Condition element in the            AWS Identity and Access Management User           Guide.
-    /// 
+    ///
     /// This template can't include either the Resource or       Principal elements. Those are both filled in by AWS RAM when it instantiates       the resource-based policy on each resource shared using this managed permission. The       Resource comes from the ARN of the specific resource that you are sharing.       The Principal comes from the list of identities added to the resource       share.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Json
@@ -38,12 +33,11 @@ pub struct CfnPermission {
     #[serde(rename = "PolicyTemplate")]
     pub policy_template: serde_json::Value,
 
-
-    /// 
+    ///
     /// Specifies the name of the resource type that this customer managed permission applies       to.
-    /// 
+    ///
     /// The format is         <service-code>:<resource-type>       and is not case sensitive. For example, to specify an Amazon EC2 Subnet, you can       use the string ec2:subnet. To see the list of valid values for this       parameter, query the ListResourceTypes       operation.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -52,10 +46,9 @@ pub struct CfnPermission {
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
 
-
-    /// 
+    ///
     /// Specifies a list of one or more tag key and value pairs to attach to the       permission.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -63,10 +56,7 @@ pub struct CfnPermission {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnPermission {
     fn type_string(&self) -> &'static str {
@@ -78,21 +68,24 @@ impl cfn_resources::CfnResource for CfnPermission {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 36 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 36", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 36",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -106,32 +99,26 @@ impl cfn_resources::CfnResource for CfnPermission {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -143,7 +130,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

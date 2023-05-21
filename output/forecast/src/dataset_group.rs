@@ -1,5 +1,3 @@
-
-
 /// Creates a dataset group, which holds a collection of related datasets. You can add    datasets to the dataset group when you create the dataset group, or later by using the UpdateDatasetGroup operation.
 ///
 /// After creating a dataset group and adding datasets, you use the dataset group when you    create a predictor. For more information, see Dataset groups.
@@ -7,11 +5,9 @@
 /// To get a list of all your datasets groups, use the ListDatasetGroups    operation.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDatasetGroup {
-
-
-    /// 
+    ///
     /// An array of Amazon Resource Names (ARNs) of the datasets that you want to include in the    dataset group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -20,10 +16,9 @@ pub struct CfnDatasetGroup {
     #[serde(rename = "DatasetArns")]
     pub dataset_arns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The name of the dataset group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -38,12 +33,11 @@ pub struct CfnDatasetGroup {
     #[serde(rename = "DatasetGroupName")]
     pub dataset_group_name: String,
 
-
-    /// 
+    ///
     /// The domain associated with the dataset group. When you add a dataset to a dataset group,    this value and the value specified for the Domain parameter of the CreateDataset    operation must match.
-    /// 
+    ///
     /// The Domain and DatasetType that you choose determine the fields    that must be present in training data that you import to a dataset. For example, if you choose    the RETAIL domain and TARGET_TIME_SERIES as the     DatasetType, Amazon Forecast requires that item_id,     timestamp, and demand fields are present in your data. For more    information, see Dataset groups.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,12 +48,11 @@ pub struct CfnDatasetGroup {
     #[serde(rename = "Domain")]
     pub domain: DatasetGroupDomainEnum,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -67,13 +60,10 @@ pub struct CfnDatasetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DatasetGroupDomainEnum {
-
     /// CUSTOM
     #[serde(rename = "CUSTOM")]
     Custom,
@@ -101,7 +91,6 @@ pub enum DatasetGroupDomainEnum {
     /// WORK_FORCE
     #[serde(rename = "WORK_FORCE")]
     Workforce,
-
 }
 
 impl Default for DatasetGroupDomainEnum {
@@ -109,7 +98,6 @@ impl Default for DatasetGroupDomainEnum {
         DatasetGroupDomainEnum::Custom
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnDatasetGroup {
     fn type_string(&self) -> &'static str {
@@ -121,21 +109,24 @@ impl cfn_resources::CfnResource for CfnDatasetGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.dataset_group_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'dataset_group_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'dataset_group_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.dataset_group_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'dataset_group_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'dataset_group_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -149,32 +140,26 @@ impl cfn_resources::CfnResource for CfnDatasetGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -186,7 +171,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

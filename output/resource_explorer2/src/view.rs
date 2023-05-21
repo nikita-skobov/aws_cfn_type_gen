@@ -1,17 +1,13 @@
-
-
 /// Creates a view that users can query by using the Search       operation. Results from queries that you make using this view include only resources       that match the view's Filters.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnView {
-
-
-    /// 
+    ///
     /// An array of strings that include search keywords, prefixes, and operators that filter       the results that are returned for queries made using this view. When you use this view       in a Search       operation, the filter string is combined with the search's QueryString       parameter using a logical AND operator.
-    /// 
+    ///
     /// For information about the supported syntax, see Search query         reference for Resource Explorer in the AWS         Resource Explorer User Guide.
-    /// 
+    ///
     /// ImportantThis query string in the context of this operation supports only filter prefixes with optional operators. It doesn't support free-form text. For example, the string           region:us* service:ec2 -tag:stage=prod includes all Amazon EC2 resources in any AWS Region that begin with the         letters us and are not tagged with a key           Stage that has the value prod.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Filters
@@ -20,10 +16,9 @@ pub struct CfnView {
     #[serde(rename = "Filters")]
     pub filters: Option<Filters>,
 
-
-    /// 
+    ///
     /// A list of fields that provide additional information about the view.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of IncludedProperty
@@ -32,10 +27,9 @@ pub struct CfnView {
     #[serde(rename = "IncludedProperties")]
     pub included_properties: Option<Vec<IncludedProperty>>,
 
-
-    /// 
+    ///
     /// Tag key and value pairs that are attached to the view.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -44,10 +38,9 @@ pub struct CfnView {
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
 
-
-    /// 
+    ///
     /// The name of the new view.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -57,10 +50,7 @@ pub struct CfnView {
     /// Update requires: Replacement
     #[serde(rename = "ViewName")]
     pub view_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnView {
     fn type_string(&self) -> &'static str {
@@ -72,7 +62,6 @@ impl cfn_resources::CfnResource for CfnView {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.filters.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
@@ -82,8 +71,6 @@ impl cfn_resources::CfnResource for CfnView {
 /// An object with a FilterString that specifies which resources to include       in the results of queries made using this view.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Filters {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -93,10 +80,7 @@ pub struct Filters {
     /// Update requires: No interruption
     #[serde(rename = "FilterString")]
     pub filter_string: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Filters {
     fn type_string(&self) -> &'static str {
@@ -108,7 +92,6 @@ impl cfn_resources::CfnResource for Filters {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -116,11 +99,9 @@ impl cfn_resources::CfnResource for Filters {
 /// Information about an additional property that describes a resource, that you can       optionally include in a view.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IncludedProperty {
-
-
-    /// 
+    ///
     /// The name of the property that is included in this view.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -132,10 +113,7 @@ pub struct IncludedProperty {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for IncludedProperty {
     fn type_string(&self) -> &'static str {
@@ -147,21 +125,24 @@ impl cfn_resources::CfnResource for IncludedProperty {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 1011 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 1011", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 1011",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

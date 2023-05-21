@@ -1,13 +1,9 @@
-
-
 /// The AWS::ApiGateway::VpcLink resource creates an API Gateway VPC link for a REST API to access resources in an Amazon Virtual Private Cloud (VPC). For more information, see vpclink:create in the Amazon API Gateway REST API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVpcLink {
-
-
-    /// 
+    ///
     /// The description of the VPC link.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnVpcLink {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name used to label and identify the VPC link.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -27,7 +22,6 @@ pub struct CfnVpcLink {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
 
     /// An array of arbitrary tags (key-value pairs) to associate with the VPC link.
     ///
@@ -39,10 +33,9 @@ pub struct CfnVpcLink {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ARN of the network load balancer of the VPC targeted by the VPC link. The network load balancer must be owned by the same AWS account of the API owner.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -50,10 +43,7 @@ pub struct CfnVpcLink {
     /// Update requires: Replacement
     #[serde(rename = "TargetArns")]
     pub target_arns: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnVpcLink {
     fn type_string(&self) -> &'static str {
@@ -65,7 +55,6 @@ impl cfn_resources::CfnResource for CfnVpcLink {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -79,32 +68,26 @@ impl cfn_resources::CfnResource for CfnVpcLink {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -116,7 +99,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

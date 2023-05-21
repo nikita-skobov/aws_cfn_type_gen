@@ -1,15 +1,11 @@
-
-
 /// The AWS::Lambda::Alias resource creates an alias for a Lambda function version. Use aliases to    provide clients with a function identifier that you can update to invoke a different version.
 ///
 /// You can also map an alias to split invocation requests between two versions. Use the     RoutingConfig parameter to specify a second version and the percentage of invocation requests that    it receives.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAlias {
-
-
-    /// 
+    ///
     /// A description of the alias.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -22,14 +18,13 @@ pub struct CfnAlias {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the Lambda function.
-    /// 
+    ///
     /// Name formats                                            Function name - MyFunction.                        Function ARN - arn:aws:lambda:us-west-2:123456789012:function:MyFunction.                        Partial ARN - 123456789012:function:MyFunction.
-    /// 
+    ///
     /// The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64    characters in length.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -44,10 +39,9 @@ pub struct CfnAlias {
     #[serde(rename = "FunctionName")]
     pub function_name: String,
 
-
-    /// 
+    ///
     /// The function version that the alias invokes.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -62,10 +56,9 @@ pub struct CfnAlias {
     #[serde(rename = "FunctionVersion")]
     pub function_version: String,
 
-
-    /// 
+    ///
     /// The name of the alias.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -80,10 +73,9 @@ pub struct CfnAlias {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Specifies a provisioned concurrency configuration for a function's alias.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ProvisionedConcurrencyConfiguration
@@ -92,10 +84,9 @@ pub struct CfnAlias {
     #[serde(rename = "ProvisionedConcurrencyConfig")]
     pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
 
-
-    /// 
+    ///
     /// The routing     configuration of the alias.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AliasRoutingConfiguration
@@ -103,10 +94,7 @@ pub struct CfnAlias {
     /// Update requires: No interruption
     #[serde(rename = "RoutingConfig")]
     pub routing_config: Option<AliasRoutingConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnAlias {
     fn type_string(&self) -> &'static str {
@@ -118,68 +106,85 @@ impl cfn_resources::CfnResource for CfnAlias {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.function_name;
 
         if the_val.len() > 140 as _ {
-            return Err(format!("Max validation failed on field 'function_name'. {} is greater than 140", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'function_name'. {} is greater than 140",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.function_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'function_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'function_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.function_version;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'function_version'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'function_version'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.function_version;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'function_version'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'function_version'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.provisioned_concurrency_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.provisioned_concurrency_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.routing_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.routing_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -188,11 +193,9 @@ impl cfn_resources::CfnResource for CfnAlias {
 /// The traffic-shifting configuration of a Lambda function alias.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AliasRoutingConfiguration {
-
-
-    /// 
+    ///
     /// The second version, and the percentage of traffic that's routed to it.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of VersionWeight
@@ -200,10 +203,7 @@ pub struct AliasRoutingConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "AdditionalVersionWeights")]
     pub additional_version_weights: Vec<VersionWeight>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AliasRoutingConfiguration {
     fn type_string(&self) -> &'static str {
@@ -215,7 +215,6 @@ impl cfn_resources::CfnResource for AliasRoutingConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -223,11 +222,9 @@ impl cfn_resources::CfnResource for AliasRoutingConfiguration {
 /// A provisioned concurrency configuration for a function's alias.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisionedConcurrencyConfiguration {
-
-
-    /// 
+    ///
     /// The amount of provisioned concurrency to allocate for the alias.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -235,10 +232,7 @@ pub struct ProvisionedConcurrencyConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ProvisionedConcurrentExecutions")]
     pub provisioned_concurrent_executions: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ProvisionedConcurrencyConfiguration {
     fn type_string(&self) -> &'static str {
@@ -250,7 +244,6 @@ impl cfn_resources::CfnResource for ProvisionedConcurrencyConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -258,11 +251,9 @@ impl cfn_resources::CfnResource for ProvisionedConcurrencyConfiguration {
 /// The traffic-shifting configuration of a Lambda function alias.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VersionWeight {
-
-
-    /// 
+    ///
     /// The qualifier of the second version.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -271,10 +262,9 @@ pub struct VersionWeight {
     #[serde(rename = "FunctionVersion")]
     pub function_version: String,
 
-
-    /// 
+    ///
     /// The percentage of traffic that the alias routes to the second version.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Double
@@ -282,10 +272,7 @@ pub struct VersionWeight {
     /// Update requires: No interruption
     #[serde(rename = "FunctionWeight")]
     pub function_weight: f64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VersionWeight {
     fn type_string(&self) -> &'static str {
@@ -297,7 +284,6 @@ impl cfn_resources::CfnResource for VersionWeight {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

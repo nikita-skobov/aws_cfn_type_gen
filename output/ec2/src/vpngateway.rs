@@ -1,15 +1,11 @@
-
-
 /// Specifies a virtual private gateway. A virtual private gateway is the endpoint on the     VPC side of your VPN connection. You can create a virtual private gateway before creating     the VPC itself.
 ///
 /// For more information, see AWS Site-to-Site VPN in the        AWS Site-to-Site VPN User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPNGateway {
-
-
-    /// 
+    ///
     /// The private Autonomous System Number (ASN) for the Amazon side of a BGP       session.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -18,10 +14,9 @@ pub struct CfnVPNGateway {
     #[serde(rename = "AmazonSideAsn")]
     pub amazon_side_asn: Option<i64>,
 
-
-    /// 
+    ///
     /// Any tags assigned to the virtual private gateway.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -30,10 +25,9 @@ pub struct CfnVPNGateway {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of VPN connection the virtual private gateway supports.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -43,17 +37,13 @@ pub struct CfnVPNGateway {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: VPNGatewayTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VPNGatewayTypeEnum {
-
     /// ipsec.1
     #[serde(rename = "ipsec.1")]
     Ipsec1,
-
 }
 
 impl Default for VPNGatewayTypeEnum {
@@ -61,7 +51,6 @@ impl Default for VPNGatewayTypeEnum {
         VPNGatewayTypeEnum::Ipsec1
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnVPNGateway {
     fn type_string(&self) -> &'static str {
@@ -73,7 +62,6 @@ impl cfn_resources::CfnResource for CfnVPNGateway {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -87,32 +75,26 @@ impl cfn_resources::CfnResource for CfnVPNGateway {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -124,7 +106,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

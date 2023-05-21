@@ -1,13 +1,9 @@
-
-
 /// A group object, which contains a specified group’s metadata and attributes.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnGroup {
-
-
-    /// 
+    ///
     /// A string containing the description of the group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -15,7 +11,6 @@ pub struct CfnGroup {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
 
     /// Property description not available.
     ///
@@ -27,7 +22,6 @@ pub struct CfnGroup {
     #[serde(rename = "DisplayName")]
     pub display_name: String,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -37,10 +31,7 @@ pub struct CfnGroup {
     /// Update requires: Replacement
     #[serde(rename = "IdentityStoreId")]
     pub identity_store_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnGroup {
     fn type_string(&self) -> &'static str {
@@ -52,7 +43,6 @@ impl cfn_resources::CfnResource for CfnGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

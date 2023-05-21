@@ -1,15 +1,11 @@
-
-
 /// The AWS::SSM::PatchBaseline resource defines the basic information for an     AWS Systems Manager patch baseline. A patch baseline defines which patches are approved for     installation on your instances.
 ///
 /// For more information, see CreatePatchBaseline in the AWS Systems Manager API       Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPatchBaseline {
-
-
-    /// 
+    ///
     /// A set of rules used to include patches in the baseline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: RuleGroup
@@ -18,12 +14,11 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "ApprovalRules")]
     pub approval_rules: Option<RuleGroup>,
 
-
-    /// 
+    ///
     /// A list of explicitly approved patches for the baseline.
-    /// 
+    ///
     /// For information about accepted formats for lists of approved patches and rejected patches,             see About             package name formats for approved and rejected patch lists in the         AWS Systems Manager User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -34,10 +29,9 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "ApprovedPatches")]
     pub approved_patches: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Defines the compliance level for approved patches. When an approved patch is reported as  missing, this value describes the severity of the compliance violation. The default value is   UNSPECIFIED.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -48,10 +42,9 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "ApprovedPatchesComplianceLevel")]
     pub approved_patches_compliance_level: Option<PatchBaselineApprovedPatchesComplianceLevelEnum>,
 
-
-    /// 
+    ///
     /// Indicates whether the list of approved patches includes non-security updates that should be  applied to the managed nodes. The default value is false. Applies to Linux managed  nodes only.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -60,10 +53,9 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "ApprovedPatchesEnableNonSecurity")]
     pub approved_patches_enable_non_security: Option<bool>,
 
-
-    /// 
+    ///
     /// A description of the patch baseline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -76,10 +68,9 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// A set of global filters used to include patches in the baseline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PatchFilterGroup
@@ -88,10 +79,9 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "GlobalFilters")]
     pub global_filters: Option<PatchFilterGroup>,
 
-
-    /// 
+    ///
     /// The name of the patch baseline.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -106,10 +96,9 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Defines the operating system the patch baseline applies to. The default value is   WINDOWS.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -120,10 +109,9 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "OperatingSystem")]
     pub operating_system: Option<PatchBaselineOperatingSystemEnum>,
 
-
-    /// 
+    ///
     /// The name of the patch group to be registered with the patch baseline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -138,12 +126,11 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "PatchGroups")]
     pub patch_groups: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of explicitly rejected patches for the baseline.
-    /// 
+    ///
     /// For information about accepted formats for lists of approved patches and rejected patches,             see About             package name formats for approved and rejected patch lists in the         AWS Systems Manager User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -154,12 +141,11 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "RejectedPatches")]
     pub rejected_patches: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The action for Patch Manager to take on patches included in the   RejectedPackages list.
-    /// 
+    ///
     /// ALLOW_AS_DEPENDENCY          : A package in the    Rejected patches list is installed only if it is a dependency of another package.   It is considered compliant with the patch baseline, and its status is reported as    InstalledOther. This is the default action if no option is specified.                                   BLOCK          : Packages in the    RejectedPatches list, and packages that include them as dependencies, aren't   installed under any circumstances. If a package was installed before it was added to the   Rejected patches list, it is considered non-compliant with the patch baseline, and its status   is reported as InstalledRejected.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -170,10 +156,9 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "RejectedPatchesAction")]
     pub rejected_patches_action: Option<PatchBaselineRejectedPatchesActionEnum>,
 
-
-    /// 
+    ///
     /// Information about the patches to use to update the managed nodes, including target operating  systems and source repositories. Applies to Linux managed nodes only.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of PatchSource
@@ -184,10 +169,9 @@ pub struct CfnPatchBaseline {
     #[serde(rename = "Sources")]
     pub sources: Option<Vec<PatchSource>>,
 
-
-    /// 
+    ///
     /// Optional metadata that you assign to a resource. Tags enable you to categorize a resource    in different ways, such as by purpose, owner, or environment. For example, you might want to    tag a patch baseline to identify the severity level of patches it specifies and the operating    system family it applies to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -197,13 +181,10 @@ pub struct CfnPatchBaseline {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PatchBaselineApprovedPatchesComplianceLevelEnum {
-
     /// CRITICAL
     #[serde(rename = "CRITICAL")]
     Critical,
@@ -227,7 +208,6 @@ pub enum PatchBaselineApprovedPatchesComplianceLevelEnum {
     /// UNSPECIFIED
     #[serde(rename = "UNSPECIFIED")]
     Unspecified,
-
 }
 
 impl Default for PatchBaselineApprovedPatchesComplianceLevelEnum {
@@ -238,7 +218,6 @@ impl Default for PatchBaselineApprovedPatchesComplianceLevelEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PatchBaselineOperatingSystemEnum {
-
     /// AMAZON_LINUX
     #[serde(rename = "AMAZON_LINUX")]
     Amazonlinux,
@@ -294,7 +273,6 @@ pub enum PatchBaselineOperatingSystemEnum {
     /// WINDOWS
     #[serde(rename = "WINDOWS")]
     Windows,
-
 }
 
 impl Default for PatchBaselineOperatingSystemEnum {
@@ -305,7 +283,6 @@ impl Default for PatchBaselineOperatingSystemEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PatchBaselineRejectedPatchesActionEnum {
-
     /// ALLOW_AS_DEPENDENCY
     #[serde(rename = "ALLOW_AS_DEPENDENCY")]
     Allowasdependency,
@@ -313,7 +290,6 @@ pub enum PatchBaselineRejectedPatchesActionEnum {
     /// BLOCK
     #[serde(rename = "BLOCK")]
     Block,
-
 }
 
 impl Default for PatchBaselineRejectedPatchesActionEnum {
@@ -321,7 +297,6 @@ impl Default for PatchBaselineRejectedPatchesActionEnum {
         PatchBaselineRejectedPatchesActionEnum::Allowasdependency
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnPatchBaseline {
     fn type_string(&self) -> &'static str {
@@ -333,89 +308,104 @@ impl cfn_resources::CfnResource for CfnPatchBaseline {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.approval_rules.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.approval_rules
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.approved_patches {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'approved_patches'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'approved_patches'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.global_filters.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.global_filters
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.patch_groups {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'patch_groups'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'patch_groups'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.patch_groups {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'patch_groups'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'patch_groups'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.rejected_patches {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'rejected_patches'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'rejected_patches'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.sources {
-
-        if the_val.len() > 20 as _ {
-            return Err(format!("Max validation failed on field 'sources'. {} is greater than 20", the_val.len()));
+            if the_val.len() > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sources'. {} is greater than 20",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 1000", the_val.len()));
+            if the_val.len() > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 1000",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -427,13 +417,11 @@ impl cfn_resources::CfnResource for CfnPatchBaseline {
 /// You can view lists of valid values for the patch properties by running the   DescribePatchProperties command. For more information, see DescribePatchProperties in the AWS Systems Manager API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PatchFilter {
-
-
-    /// 
+    ///
     /// The key for the filter.
-    /// 
+    ///
     /// For information about valid keys, see PatchFilter in the     AWS Systems Manager API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -444,12 +432,11 @@ pub struct PatchFilter {
     #[serde(rename = "Key")]
     pub key: Option<PatchFilterKeyEnum>,
 
-
-    /// 
+    ///
     /// The value for the filter key.
-    /// 
+    ///
     /// For information about valid values for each key based on operating system type, see PatchFilter in the AWS Systems Manager API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -459,13 +446,10 @@ pub struct PatchFilter {
     /// Update requires: No interruption
     #[serde(rename = "Values")]
     pub values: Option<Vec<String>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PatchFilterKeyEnum {
-
     /// ADVISORY_ID
     #[serde(rename = "ADVISORY_ID")]
     Advisoryid,
@@ -541,7 +525,6 @@ pub enum PatchFilterKeyEnum {
     /// VERSION
     #[serde(rename = "VERSION")]
     Version,
-
 }
 
 impl Default for PatchFilterKeyEnum {
@@ -549,7 +532,6 @@ impl Default for PatchFilterKeyEnum {
         PatchFilterKeyEnum::Advisoryid
     }
 }
-
 
 impl cfn_resources::CfnResource for PatchFilter {
     fn type_string(&self) -> &'static str {
@@ -561,15 +543,15 @@ impl cfn_resources::CfnResource for PatchFilter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.values {
-
-        if the_val.len() > 20 as _ {
-            return Err(format!("Max validation failed on field 'values'. {} is greater than 20", the_val.len()));
+            if the_val.len() > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'values'. {} is greater than 20",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -579,11 +561,9 @@ impl cfn_resources::CfnResource for PatchFilter {
 /// PatchFilterGroup is the property type for the GlobalFilters property    of the AWS::SSM::PatchBaseline resource and the PatchFilterGroup property of    the Rule property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PatchFilterGroup {
-
-
-    /// 
+    ///
     /// The set of patch filters that make up the group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of PatchFilter
@@ -593,10 +573,7 @@ pub struct PatchFilterGroup {
     /// Update requires: No interruption
     #[serde(rename = "PatchFilters")]
     pub patch_filters: Option<Vec<PatchFilter>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PatchFilterGroup {
     fn type_string(&self) -> &'static str {
@@ -608,15 +585,15 @@ impl cfn_resources::CfnResource for PatchFilterGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.patch_filters {
-
-        if the_val.len() > 4 as _ {
-            return Err(format!("Max validation failed on field 'patch_filters'. {} is greater than 4", the_val.len()));
+            if the_val.len() > 4 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'patch_filters'. {} is greater than 4",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -626,21 +603,19 @@ impl cfn_resources::CfnResource for PatchFilterGroup {
 /// The AWS CloudFormation AWS::SSM::PatchSource resource is used to provide    information about the patches to use to update target instances, including target operating    systems and source repository. Applies to Linux instances only.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PatchSource {
-
-
-    /// 
+    ///
     /// The value of the yum repo configuration. For example:
-    /// 
+    ///
     /// [main]
-    /// 
+    ///
     /// name=MyCustomRepository
-    /// 
+    ///
     /// baseurl=https://my-custom-repository
-    /// 
+    ///
     /// enabled=1
-    /// 
+    ///
     /// NoteFor information about other options available for your yum repository configuration, see   dnf.conf(5).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -653,10 +628,9 @@ pub struct PatchSource {
     #[serde(rename = "Configuration")]
     pub configuration: Option<String>,
 
-
-    /// 
+    ///
     /// The name specified to identify the patch source.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -667,10 +641,9 @@ pub struct PatchSource {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The specific operating system versions a patch repository applies to, such as    "Ubuntu16.04", "AmazonLinux2016.09", "RedhatEnterpriseLinux7.2" or "Suse12.7". For lists of    supported product values, see PatchFilter in the     AWS Systems Manager API Reference.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -680,10 +653,7 @@ pub struct PatchSource {
     /// Update requires: No interruption
     #[serde(rename = "Products")]
     pub products: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PatchSource {
     fn type_string(&self) -> &'static str {
@@ -695,42 +665,40 @@ impl cfn_resources::CfnResource for PatchSource {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.configuration {
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'configuration'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.configuration {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'configuration'. {} is greater than 1024", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'configuration'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.configuration {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'configuration'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.products {
-
-        if the_val.len() > 20 as _ {
-            return Err(format!("Max validation failed on field 'products'. {} is greater than 20", the_val.len()));
+            if the_val.len() > 20 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'products'. {} is greater than 20",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
 
 /// The date for ApproveUntilDate, as a String in the format     YYYY-MM-DD. For example, 2020-12-31.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct PatchStringDate {
-
-}
-
-
+pub struct PatchStringDate {}
 
 impl cfn_resources::CfnResource for PatchStringDate {
     fn type_string(&self) -> &'static str {
@@ -742,7 +710,6 @@ impl cfn_resources::CfnResource for PatchStringDate {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -752,15 +719,13 @@ impl cfn_resources::CfnResource for PatchStringDate {
 /// The PatchRules property of the RuleGroup property type contains a list of Rule property types.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Rule {
-
-
-    /// 
+    ///
     /// The number of days after the release date of each patch matched by the rule that the patch    is marked as approved in the patch baseline. For example, a value of 7 means that    patches are approved seven days after they are released.
-    /// 
+    ///
     /// You must specify a value for ApproveAfterDays.
-    /// 
+    ///
     /// Exception: Not supported on Debian Server or Ubuntu Server.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: Integer
@@ -773,12 +738,11 @@ pub struct Rule {
     #[serde(rename = "ApproveAfterDays")]
     pub approve_after_days: Option<i64>,
 
-
-    /// 
+    ///
     /// The cutoff date for auto approval of released patches. Any patches released on or before  this date are installed automatically. Not supported on Debian Server or Ubuntu Server.
-    /// 
+    ///
     /// Enter dates in the format YYYY-MM-DD. For example,  2021-12-31.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PatchStringDate
@@ -791,10 +755,9 @@ pub struct Rule {
     #[serde(rename = "ApproveUntilDate")]
     pub approve_until_date: Option<PatchStringDate>,
 
-
-    /// 
+    ///
     /// A compliance severity level for all approved patches in a patch baseline. Valid compliance    severity levels include the following: UNSPECIFIED, CRITICAL,     HIGH, MEDIUM, LOW, and    INFORMATIONAL.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -805,10 +768,9 @@ pub struct Rule {
     #[serde(rename = "ComplianceLevel")]
     pub compliance_level: Option<RuleComplianceLevelEnum>,
 
-
-    /// 
+    ///
     /// For managed nodes identified by the approval rule filters, enables a patch baseline to apply  non-security updates available in the specified repository. The default value is   false. Applies to Linux managed nodes only.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -817,10 +779,9 @@ pub struct Rule {
     #[serde(rename = "EnableNonSecurity")]
     pub enable_non_security: Option<bool>,
 
-
-    /// 
+    ///
     /// The patch filter group that defines the criteria for the rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PatchFilterGroup
@@ -828,13 +789,10 @@ pub struct Rule {
     /// Update requires: No interruption
     #[serde(rename = "PatchFilterGroup")]
     pub patch_filter_group: Option<PatchFilterGroup>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RuleComplianceLevelEnum {
-
     /// CRITICAL
     #[serde(rename = "CRITICAL")]
     Critical,
@@ -858,7 +816,6 @@ pub enum RuleComplianceLevelEnum {
     /// UNSPECIFIED
     #[serde(rename = "UNSPECIFIED")]
     Unspecified,
-
 }
 
 impl Default for RuleComplianceLevelEnum {
@@ -866,7 +823,6 @@ impl Default for RuleComplianceLevelEnum {
         RuleComplianceLevelEnum::Critical
     }
 }
-
 
 impl cfn_resources::CfnResource for Rule {
     fn type_string(&self) -> &'static str {
@@ -878,26 +834,31 @@ impl cfn_resources::CfnResource for Rule {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.approve_after_days {
+            if *the_val > 360 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'approve_after_days'. {} is greater than 360",
+                    the_val
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.approve_after_days {
-
-        if *the_val > 360 as _ {
-            return Err(format!("Max validation failed on field 'approve_after_days'. {} is greater than 360", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'approve_after_days'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.approve_after_days {
+        self.approve_until_date
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'approve_after_days'. {} is less than 0", the_val));
-        }
-
-        }
-        
-        self.approve_until_date.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.patch_filter_group.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.patch_filter_group
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -908,11 +869,9 @@ impl cfn_resources::CfnResource for Rule {
 /// RuleGroup is the property type for the ApprovalRules property of the     AWS::SSM::PatchBaseline resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RuleGroup {
-
-
-    /// 
+    ///
     /// The rules that make up the rule group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Rule
@@ -922,10 +881,7 @@ pub struct RuleGroup {
     /// Update requires: No interruption
     #[serde(rename = "PatchRules")]
     pub patch_rules: Option<Vec<Rule>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RuleGroup {
     fn type_string(&self) -> &'static str {
@@ -937,15 +893,15 @@ impl cfn_resources::CfnResource for RuleGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.patch_rules {
-
-        if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'patch_rules'. {} is greater than 10", the_val.len()));
+            if the_val.len() > 10 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'patch_rules'. {} is greater than 10",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -959,32 +915,26 @@ impl cfn_resources::CfnResource for RuleGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -996,7 +946,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

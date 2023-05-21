@@ -1,10 +1,6 @@
-
-
 /// The AWS::SageMaker::Pipeline resource creates shell scripts that run when       you create and/or start a SageMaker Pipeline. For information about SageMaker Pipelines,       see SageMaker         Pipelines in the Amazon SageMaker Developer       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPipeline {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -15,10 +11,9 @@ pub struct CfnPipeline {
     #[serde(rename = "ParallelismConfiguration")]
     pub parallelism_configuration: Option<ParallelismConfiguration>,
 
-
-    /// 
+    ///
     /// The definition of the pipeline. This can be either a JSON string or an Amazon S3       location.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: PipelineDefinition
@@ -27,10 +22,9 @@ pub struct CfnPipeline {
     #[serde(rename = "PipelineDefinition")]
     pub pipeline_definition: PipelineDefinition,
 
-
-    /// 
+    ///
     /// The description of the pipeline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -45,10 +39,9 @@ pub struct CfnPipeline {
     #[serde(rename = "PipelineDescription")]
     pub pipeline_description: Option<String>,
 
-
-    /// 
+    ///
     /// The display name of the pipeline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -63,10 +56,9 @@ pub struct CfnPipeline {
     #[serde(rename = "PipelineDisplayName")]
     pub pipeline_display_name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the pipeline.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -81,10 +73,9 @@ pub struct CfnPipeline {
     #[serde(rename = "PipelineName")]
     pub pipeline_name: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the IAM role used to execute the pipeline.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -99,10 +90,9 @@ pub struct CfnPipeline {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
-
-    /// 
+    ///
     /// The tags of the pipeline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -112,10 +102,7 @@ pub struct CfnPipeline {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnPipeline {
     fn type_string(&self) -> &'static str {
@@ -127,79 +114,87 @@ impl cfn_resources::CfnResource for CfnPipeline {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.parallelism_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.parallelism_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.pipeline_definition.validate()?;
 
         if let Some(the_val) = &self.pipeline_description {
-
-        if the_val.len() > 3072 as _ {
-            return Err(format!("Max validation failed on field 'pipeline_description'. {} is greater than 3072", the_val.len()));
+            if the_val.len() > 3072 as _ {
+                return Err(format!("Max validation failed on field 'pipeline_description'. {} is greater than 3072", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.pipeline_description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'pipeline_description'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'pipeline_description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.pipeline_display_name {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'pipeline_display_name'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'pipeline_display_name'. {} is greater than 256", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.pipeline_display_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'pipeline_display_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'pipeline_display_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.pipeline_name;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'pipeline_name'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'pipeline_name'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.pipeline_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'pipeline_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'pipeline_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.role_arn;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'role_arn'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.role_arn;
 
         if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 20", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'role_arn'. {} is less than 20",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -207,11 +202,9 @@ impl cfn_resources::CfnResource for CfnPipeline {
 /// Configuration that controls the parallelism of the pipeline.       By default, the parallelism configuration specified applies to all       executions of the pipeline unless overridden.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ParallelismConfiguration {
-
-
-    /// 
+    ///
     /// The max number of steps that can be executed in parallel.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -221,10 +214,7 @@ pub struct ParallelismConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "MaxParallelExecutionSteps")]
     pub max_parallel_execution_steps: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ParallelismConfiguration {
     fn type_string(&self) -> &'static str {
@@ -236,14 +226,15 @@ impl cfn_resources::CfnResource for ParallelismConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.max_parallel_execution_steps;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'max_parallel_execution_steps'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'max_parallel_execution_steps'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -251,8 +242,6 @@ impl cfn_resources::CfnResource for ParallelismConfiguration {
 /// The PipelineDefinition property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PipelineDefinition {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -263,7 +252,6 @@ pub struct PipelineDefinition {
     #[serde(rename = "PipelineDefinitionBody")]
     pub pipeline_definition_body: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -273,10 +261,7 @@ pub struct PipelineDefinition {
     /// Update requires: No interruption
     #[serde(rename = "PipelineDefinitionS3Location")]
     pub pipeline_definition_s3_location: Option<S3Location>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PipelineDefinition {
     fn type_string(&self) -> &'static str {
@@ -288,8 +273,9 @@ impl cfn_resources::CfnResource for PipelineDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.pipeline_definition_s3_location.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.pipeline_definition_s3_location
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -298,8 +284,6 @@ impl cfn_resources::CfnResource for PipelineDefinition {
 /// The S3Location property type specifies Property description not available. for an AWS::SageMaker::Pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Location {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -309,7 +293,6 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Bucket")]
     pub bucket: String,
-
 
     /// Property description not available.
     ///
@@ -321,7 +304,6 @@ pub struct S3Location {
     #[serde(rename = "ETag")]
     pub etag: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -332,7 +314,6 @@ pub struct S3Location {
     #[serde(rename = "Key")]
     pub key: String,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -342,10 +323,7 @@ pub struct S3Location {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     pub version: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for S3Location {
     fn type_string(&self) -> &'static str {
@@ -357,7 +335,6 @@ impl cfn_resources::CfnResource for S3Location {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -371,32 +348,26 @@ impl cfn_resources::CfnResource for S3Location {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -408,7 +379,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

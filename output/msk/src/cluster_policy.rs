@@ -1,13 +1,9 @@
-
-
 /// Create or update cluster policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClusterPolicy {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnClusterPolicy {
     #[serde(rename = "ClusterArn")]
     pub cluster_arn: String,
 
-
-    /// 
+    ///
     /// Resource policy for the cluster.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Json
@@ -27,10 +22,7 @@ pub struct CfnClusterPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
     pub policy: serde_json::Value,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnClusterPolicy {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnClusterPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

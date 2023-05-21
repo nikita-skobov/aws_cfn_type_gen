@@ -1,17 +1,13 @@
-
-
 /// Creates a custom SageMaker image. A SageMaker image is a set of image versions. Each image     version represents a container image stored in Amazon Elastic Container Registry (ECR). For more information, see     Bring your own SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnImage {
-
-
-    /// 
+    ///
     /// The description of the image.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of       512.
-    /// 
+    ///
     /// Pattern: .*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,14 +16,13 @@ pub struct CfnImage {
     #[serde(rename = "ImageDescription")]
     pub image_description: Option<String>,
 
-
-    /// 
+    ///
     /// The display name of the image.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of       128.
-    /// 
+    ///
     /// Pattern: ^\S(.*\S)?$
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,14 +31,13 @@ pub struct CfnImage {
     #[serde(rename = "ImageDisplayName")]
     pub image_display_name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the Image. Must be unique by region in your account.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of       63.
-    /// 
+    ///
     /// Pattern:       ^[a-zA-Z0-9]([-.]?[a-zA-Z0-9]){0,62}$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -52,14 +46,13 @@ pub struct CfnImage {
     #[serde(rename = "ImageName")]
     pub image_name: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker to perform       tasks on your behalf.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 20. Maximum length of       2048.
-    /// 
+    ///
     /// Pattern:         ^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -68,12 +61,11 @@ pub struct CfnImage {
     #[serde(rename = "ImageRoleArn")]
     pub image_role_arn: String,
 
-
-    /// 
+    ///
     /// A list of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// Array Members: Minimum number of 0 items. Maximum number of 50       items.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -81,10 +73,7 @@ pub struct CfnImage {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnImage {
     fn type_string(&self) -> &'static str {
@@ -96,7 +85,6 @@ impl cfn_resources::CfnResource for CfnImage {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -110,32 +98,26 @@ impl cfn_resources::CfnResource for CfnImage {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -147,7 +129,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

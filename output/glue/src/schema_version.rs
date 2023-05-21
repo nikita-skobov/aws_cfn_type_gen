@@ -1,13 +1,9 @@
-
-
 /// The AWS::Glue::SchemaVersion is an AWS Glue resource type that manages schema versions of schemas in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSchemaVersion {
-
-
-    /// 
+    ///
     /// The schema that includes the schema version.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Schema
@@ -16,10 +12,9 @@ pub struct CfnSchemaVersion {
     #[serde(rename = "Schema")]
     pub schema: Schema,
 
-
-    /// 
+    ///
     /// The schema definition for the schema version.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -27,10 +22,7 @@ pub struct CfnSchemaVersion {
     /// Update requires: Replacement
     #[serde(rename = "SchemaDefinition")]
     pub schema_definition: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSchemaVersion {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnSchemaVersion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.schema.validate()?;
 
         Ok(())
@@ -52,11 +43,9 @@ impl cfn_resources::CfnResource for CfnSchemaVersion {
 /// A wrapper structure to contain schema identity fields. Either SchemaArn, or SchemaName and RegistryName has to be provided.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Schema {
-
-
-    /// 
+    ///
     /// The name of the registry where the schema is stored. Either SchemaArn, or SchemaName and RegistryName has to be provided.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -65,10 +54,9 @@ pub struct Schema {
     #[serde(rename = "RegistryName")]
     pub registry_name: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -77,10 +65,9 @@ pub struct Schema {
     #[serde(rename = "SchemaArn")]
     pub schema_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the schema. Either SchemaArn, or SchemaName and RegistryName has to be provided.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -88,10 +75,7 @@ pub struct Schema {
     /// Update requires: Replacement
     #[serde(rename = "SchemaName")]
     pub schema_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Schema {
     fn type_string(&self) -> &'static str {
@@ -103,7 +87,6 @@ impl cfn_resources::CfnResource for Schema {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

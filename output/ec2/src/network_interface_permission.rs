@@ -1,13 +1,9 @@
-
-
 /// Specifies a permission for an Amazon EC2 network interface. For example, you can grant       an AWS authorized partner account permission to attach the specified       network interface to an instance in their account.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnNetworkInterfacePermission {
-
-
-    /// 
+    ///
     /// The AWS account ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnNetworkInterfacePermission {
     #[serde(rename = "AwsAccountId")]
     pub aws_account_id: String,
 
-
-    /// 
+    ///
     /// The ID of the network interface.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnNetworkInterfacePermission {
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
 
-
-    /// 
+    ///
     /// The type of permission to grant: INSTANCE-ATTACH or       EIP-ASSOCIATE.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -41,13 +35,10 @@ pub struct CfnNetworkInterfacePermission {
     /// Update requires: Replacement
     #[serde(rename = "Permission")]
     pub permission: NetworkInterfacePermissionPermissionEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum NetworkInterfacePermissionPermissionEnum {
-
     /// EIP-ASSOCIATE
     #[serde(rename = "EIP-ASSOCIATE")]
     Eipassociate,
@@ -55,7 +46,6 @@ pub enum NetworkInterfacePermissionPermissionEnum {
     /// INSTANCE-ATTACH
     #[serde(rename = "INSTANCE-ATTACH")]
     Instanceattach,
-
 }
 
 impl Default for NetworkInterfacePermissionPermissionEnum {
@@ -63,7 +53,6 @@ impl Default for NetworkInterfacePermissionPermissionEnum {
         NetworkInterfacePermissionPermissionEnum::Eipassociate
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnNetworkInterfacePermission {
     fn type_string(&self) -> &'static str {
@@ -75,7 +64,6 @@ impl cfn_resources::CfnResource for CfnNetworkInterfacePermission {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

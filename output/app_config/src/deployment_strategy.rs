@@ -1,5 +1,3 @@
-
-
 /// The AWS::AppConfig::DeploymentStrategy resource creates an AWS AppConfig deployment strategy. A deployment strategy defines important criteria for    rolling out your configuration to the designated targets. A deployment strategy includes: the    overall duration required, a percentage of targets to receive the deployment during each    interval, an algorithm that defines how percentage grows, and bake time.
 ///
 /// AWS AppConfig requires that you create resources and deploy a configuration in the    following order:
@@ -7,11 +5,9 @@
 /// For more information, see AWS AppConfig in the      AWS AppConfig User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDeploymentStrategy {
-
-
-    /// 
+    ///
     /// Total amount of time for a deployment to last.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Double
@@ -24,10 +20,9 @@ pub struct CfnDeploymentStrategy {
     #[serde(rename = "DeploymentDurationInMinutes")]
     pub deployment_duration_in_minutes: f64,
 
-
-    /// 
+    ///
     /// A description of the deployment strategy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,10 +35,9 @@ pub struct CfnDeploymentStrategy {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the amount of time AWS AppConfig monitors for Amazon CloudWatch alarms after the     configuration has been deployed to 100% of its targets, before considering the deployment     to be complete. If an alarm is triggered during this time, AWS AppConfig rolls back     the deployment. You must configure permissions for AWS AppConfig to roll back based     on CloudWatch alarms. For more information, see Configuring permissions for rollback based on Amazon CloudWatch alarms in the               AWS AppConfig User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -56,10 +50,9 @@ pub struct CfnDeploymentStrategy {
     #[serde(rename = "FinalBakeTimeInMinutes")]
     pub final_bake_time_in_minutes: Option<f64>,
 
-
-    /// 
+    ///
     /// The percentage of targets to receive a deployed configuration during each     interval.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Double
@@ -68,22 +61,21 @@ pub struct CfnDeploymentStrategy {
     #[serde(rename = "GrowthFactor")]
     pub growth_factor: f64,
 
-
-    /// 
+    ///
     /// The algorithm used to define how percentage grows over time. AWS AppConfig     supports the following growth types:
-    /// 
+    ///
     /// Linear: For this type, AWS AppConfig processes     the deployment by dividing the total number of targets by the value specified for       Step percentage. For example, a linear deployment that uses a Step       percentage of 10 deploys the configuration to 10 percent of the hosts. After     those deployments are complete, the system deploys the configuration to the next 10     percent. This continues until 100% of the targets have successfully received the     configuration.
-    /// 
+    ///
     /// Exponential: For this type, AWS AppConfig     processes the deployment exponentially using the following formula: G*(2^N).     In this formula, G is the growth factor specified by the user and       N is the number of steps until the configuration is deployed to all     targets. For example, if you specify a growth factor of 2, then the system rolls out the     configuration as follows:
-    /// 
+    ///
     /// 2*(2^0)
-    /// 
+    ///
     /// 2*(2^1)
-    /// 
+    ///
     /// 2*(2^2)
-    /// 
+    ///
     /// Expressed numerically, the deployment rolls out as follows: 2% of the targets, 4% of the     targets, 8% of the targets, and continues until the configuration has been deployed to all     targets.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -94,10 +86,9 @@ pub struct CfnDeploymentStrategy {
     #[serde(rename = "GrowthType")]
     pub growth_type: Option<DeploymentStrategyGrowthTypeEnum>,
 
-
-    /// 
+    ///
     /// A name for the deployment strategy.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -110,10 +101,9 @@ pub struct CfnDeploymentStrategy {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Save the deployment strategy to a Systems Manager (SSM) document.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -124,10 +114,9 @@ pub struct CfnDeploymentStrategy {
     #[serde(rename = "ReplicateTo")]
     pub replicate_to: DeploymentStrategyReplicateToEnum,
 
-
-    /// 
+    ///
     /// Assigns metadata to an AWS AppConfig resource. Tags help organize and categorize     your AWS AppConfig resources. Each tag consists of a key and an optional value, both     of which you define. You can specify a maximum of 50 tags for a resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tags
@@ -135,13 +124,10 @@ pub struct CfnDeploymentStrategy {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tags>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DeploymentStrategyGrowthTypeEnum {
-
     /// EXPONENTIAL
     #[serde(rename = "EXPONENTIAL")]
     Exponential,
@@ -149,7 +135,6 @@ pub enum DeploymentStrategyGrowthTypeEnum {
     /// LINEAR
     #[serde(rename = "LINEAR")]
     Linear,
-
 }
 
 impl Default for DeploymentStrategyGrowthTypeEnum {
@@ -160,7 +145,6 @@ impl Default for DeploymentStrategyGrowthTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum DeploymentStrategyReplicateToEnum {
-
     /// NONE
     #[serde(rename = "NONE")]
     None,
@@ -168,7 +152,6 @@ pub enum DeploymentStrategyReplicateToEnum {
     /// SSM_DOCUMENT
     #[serde(rename = "SSM_DOCUMENT")]
     Ssmdocument,
-
 }
 
 impl Default for DeploymentStrategyReplicateToEnum {
@@ -176,7 +159,6 @@ impl Default for DeploymentStrategyReplicateToEnum {
         DeploymentStrategyReplicateToEnum::None
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnDeploymentStrategy {
     fn type_string(&self) -> &'static str {
@@ -188,67 +170,66 @@ impl cfn_resources::CfnResource for CfnDeploymentStrategy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.deployment_duration_in_minutes;
 
         if *the_val > 1440 as _ {
             return Err(format!("Max validation failed on field 'deployment_duration_in_minutes'. {} is greater than 1440", the_val));
         }
 
-        
         let the_val = &self.deployment_duration_in_minutes;
 
         if *the_val < 0 as _ {
             return Err(format!("Min validation failed on field 'deployment_duration_in_minutes'. {} is less than 0", the_val));
         }
 
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.final_bake_time_in_minutes {
-
-        if *the_val > 1440 as _ {
-            return Err(format!("Max validation failed on field 'final_bake_time_in_minutes'. {} is greater than 1440", the_val));
+            if *the_val > 1440 as _ {
+                return Err(format!("Max validation failed on field 'final_bake_time_in_minutes'. {} is greater than 1440", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.final_bake_time_in_minutes {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'final_bake_time_in_minutes'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!("Min validation failed on field 'final_bake_time_in_minutes'. {} is less than 0", the_val));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -256,11 +237,9 @@ impl cfn_resources::CfnResource for CfnDeploymentStrategy {
 /// Metadata to assign to the deployment strategy. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tags {
-
-
-    /// 
+    ///
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -269,10 +248,9 @@ pub struct Tags {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 
-
-    /// 
+    ///
     /// The tag value can be up to 256 characters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -280,10 +258,7 @@ pub struct Tags {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tags {
     fn type_string(&self) -> &'static str {
@@ -295,7 +270,6 @@ impl cfn_resources::CfnResource for Tags {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

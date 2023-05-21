@@ -1,13 +1,9 @@
-
-
 /// Creates an entitlement to control access, based on user attributes, to specific     applications within a stack. Entitlements apply to SAML 2.0 federated user identities.     Amazon AppStream 2.0 user pool and streaming URL users are entitled to all applications in     a stack. Entitlements don't apply to the desktop stream view application or to applications     managed by a dynamic app provider using the Dynamic Application Framework.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEntitlement {
-
-
-    /// 
+    ///
     /// Specifies whether to entitle all apps or only selected apps.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnEntitlement {
     #[serde(rename = "AppVisibility")]
     pub app_visibility: EntitlementAppVisibilityEnum,
 
-
-    /// 
+    ///
     /// The attributes of the entitlement.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Attribute
@@ -30,10 +25,9 @@ pub struct CfnEntitlement {
     #[serde(rename = "Attributes")]
     pub attributes: Vec<Attribute>,
 
-
-    /// 
+    ///
     /// The description of the entitlement.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -44,10 +38,9 @@ pub struct CfnEntitlement {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the entitlement.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -58,10 +51,9 @@ pub struct CfnEntitlement {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The name of the stack.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -71,13 +63,10 @@ pub struct CfnEntitlement {
     /// Update requires: Replacement
     #[serde(rename = "StackName")]
     pub stack_name: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EntitlementAppVisibilityEnum {
-
     /// ALL
     #[serde(rename = "ALL")]
     All,
@@ -85,7 +74,6 @@ pub enum EntitlementAppVisibilityEnum {
     /// ASSOCIATED
     #[serde(rename = "ASSOCIATED")]
     Associated,
-
 }
 
 impl Default for EntitlementAppVisibilityEnum {
@@ -93,7 +81,6 @@ impl Default for EntitlementAppVisibilityEnum {
         EntitlementAppVisibilityEnum::All
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnEntitlement {
     fn type_string(&self) -> &'static str {
@@ -105,15 +92,15 @@ impl cfn_resources::CfnResource for CfnEntitlement {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -121,12 +108,10 @@ impl cfn_resources::CfnResource for CfnEntitlement {
 /// An attribute that belongs to an entitlement. Application entitlements work by matching a     supported SAML 2.0 attribute name to a value when a user identity federates to an AppStream     2.0 SAML application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Attribute {
-
-
     /// A supported AWS IAM SAML PrincipalTag attribute that is matched to a value when a user     identity federates to an AppStream 2.0 SAML application.
-    /// 
+    ///
     /// The following are supported values:
-    /// 
+    ///
     /// roles department organization groups title costCenter userType
     ///
     /// Required: Yes
@@ -137,7 +122,6 @@ pub struct Attribute {
     #[serde(rename = "Name")]
     pub name: String,
 
-
     /// A value that is matched to a supported SAML attribute name when a user identity federates to an AppStream 2.0 SAML application.
     ///
     /// Required: Yes
@@ -147,10 +131,7 @@ pub struct Attribute {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Attribute {
     fn type_string(&self) -> &'static str {
@@ -162,7 +143,6 @@ impl cfn_resources::CfnResource for Attribute {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// The AWS::RoboMaker::SimulationApplication resource creates an AWS RoboMaker simulation application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSimulationApplication {
-
-
-    /// 
+    ///
     /// The current revision id.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnSimulationApplication {
     #[serde(rename = "CurrentRevisionId")]
     pub current_revision_id: Option<String>,
 
-
-    /// 
+    ///
     /// The environment of the simulation application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnSimulationApplication {
     #[serde(rename = "Environment")]
     pub environment: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the simulation application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -46,10 +40,9 @@ pub struct CfnSimulationApplication {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The rendering engine for the simulation application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: RenderingEngine
@@ -58,10 +51,9 @@ pub struct CfnSimulationApplication {
     #[serde(rename = "RenderingEngine")]
     pub rendering_engine: Option<RenderingEngine>,
 
-
-    /// 
+    ///
     /// The robot software suite used by the simulation application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: RobotSoftwareSuite
@@ -70,10 +62,9 @@ pub struct CfnSimulationApplication {
     #[serde(rename = "RobotSoftwareSuite")]
     pub robot_software_suite: RobotSoftwareSuite,
 
-
-    /// 
+    ///
     /// The simulation software suite used by the simulation application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: SimulationSoftwareSuite
@@ -82,10 +73,9 @@ pub struct CfnSimulationApplication {
     #[serde(rename = "SimulationSoftwareSuite")]
     pub simulation_software_suite: SimulationSoftwareSuite,
 
-
-    /// 
+    ///
     /// The sources of the simulation application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of SourceConfig
@@ -94,10 +84,9 @@ pub struct CfnSimulationApplication {
     #[serde(rename = "Sources")]
     pub sources: Option<Vec<SourceConfig>>,
 
-
-    /// 
+    ///
     /// A map that contains tag keys and tag values that are attached to the simulation     application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of String
@@ -105,10 +94,7 @@ pub struct CfnSimulationApplication {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<std::collections::HashMap<String, String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSimulationApplication {
     fn type_string(&self) -> &'static str {
@@ -120,24 +106,27 @@ impl cfn_resources::CfnResource for CfnSimulationApplication {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.name {
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
-        self.rendering_engine.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.rendering_engine
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.robot_software_suite.validate()?;
 
@@ -150,11 +139,9 @@ impl cfn_resources::CfnResource for CfnSimulationApplication {
 /// Information about a rendering engine.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RenderingEngine {
-
-
-    /// 
+    ///
     /// The name of the rendering engine.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -165,10 +152,9 @@ pub struct RenderingEngine {
     #[serde(rename = "Name")]
     pub name: RenderingEngineNameEnum,
 
-
-    /// 
+    ///
     /// The version of the rendering engine.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -182,17 +168,13 @@ pub struct RenderingEngine {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     pub version: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RenderingEngineNameEnum {
-
     /// OGRE
     #[serde(rename = "OGRE")]
     Ogre,
-
 }
 
 impl Default for RenderingEngineNameEnum {
@@ -200,7 +182,6 @@ impl Default for RenderingEngineNameEnum {
         RenderingEngineNameEnum::Ogre
     }
 }
-
 
 impl cfn_resources::CfnResource for RenderingEngine {
     fn type_string(&self) -> &'static str {
@@ -212,21 +193,24 @@ impl cfn_resources::CfnResource for RenderingEngine {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.version;
 
         if the_val.len() > 4 as _ {
-            return Err(format!("Max validation failed on field 'version'. {} is greater than 4", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'version'. {} is greater than 4",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.version;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'version'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'version'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -234,11 +218,9 @@ impl cfn_resources::CfnResource for RenderingEngine {
 /// Information about a robot software suite.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RobotSoftwareSuite {
-
-
-    /// 
+    ///
     /// The name of the robot software suite. General is the only supported value.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -249,10 +231,9 @@ pub struct RobotSoftwareSuite {
     #[serde(rename = "Name")]
     pub name: RobotSoftwareSuiteNameEnum,
 
-
-    /// 
+    ///
     /// The version of the robot software suite. Not applicable for General software suite.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -262,13 +243,10 @@ pub struct RobotSoftwareSuite {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     pub version: Option<RobotSoftwareSuiteVersionEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RobotSoftwareSuiteNameEnum {
-
     /// General
     #[serde(rename = "General")]
     General,
@@ -280,7 +258,6 @@ pub enum RobotSoftwareSuiteNameEnum {
     /// ROS2
     #[serde(rename = "ROS2")]
     Ros2,
-
 }
 
 impl Default for RobotSoftwareSuiteNameEnum {
@@ -291,7 +268,6 @@ impl Default for RobotSoftwareSuiteNameEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum RobotSoftwareSuiteVersionEnum {
-
     /// Dashing
     #[serde(rename = "Dashing")]
     Dashing,
@@ -307,7 +283,6 @@ pub enum RobotSoftwareSuiteVersionEnum {
     /// Melodic
     #[serde(rename = "Melodic")]
     Melodic,
-
 }
 
 impl Default for RobotSoftwareSuiteVersionEnum {
@@ -315,7 +290,6 @@ impl Default for RobotSoftwareSuiteVersionEnum {
         RobotSoftwareSuiteVersionEnum::Dashing
     }
 }
-
 
 impl cfn_resources::CfnResource for RobotSoftwareSuite {
     fn type_string(&self) -> &'static str {
@@ -327,7 +301,6 @@ impl cfn_resources::CfnResource for RobotSoftwareSuite {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -335,11 +308,9 @@ impl cfn_resources::CfnResource for RobotSoftwareSuite {
 /// Information about a simulation software suite.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SimulationSoftwareSuite {
-
-
-    /// 
+    ///
     /// The name of the simulation software suite. SimulationRuntime is the only supported value.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -350,10 +321,9 @@ pub struct SimulationSoftwareSuite {
     #[serde(rename = "Name")]
     pub name: SimulationSoftwareSuiteNameEnum,
 
-
-    /// 
+    ///
     /// The version of the simulation software suite. Not applicable for SimulationRuntime.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -367,13 +337,10 @@ pub struct SimulationSoftwareSuite {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     pub version: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SimulationSoftwareSuiteNameEnum {
-
     /// Gazebo
     #[serde(rename = "Gazebo")]
     Gazebo,
@@ -385,7 +352,6 @@ pub enum SimulationSoftwareSuiteNameEnum {
     /// SimulationRuntime
     #[serde(rename = "SimulationRuntime")]
     Simulationruntime,
-
 }
 
 impl Default for SimulationSoftwareSuiteNameEnum {
@@ -393,7 +359,6 @@ impl Default for SimulationSoftwareSuiteNameEnum {
         SimulationSoftwareSuiteNameEnum::Gazebo
     }
 }
-
 
 impl cfn_resources::CfnResource for SimulationSoftwareSuite {
     fn type_string(&self) -> &'static str {
@@ -405,23 +370,24 @@ impl cfn_resources::CfnResource for SimulationSoftwareSuite {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.version {
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'version'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.version {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'version'. {} is greater than 1024", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'version'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.version {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'version'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -429,11 +395,9 @@ impl cfn_resources::CfnResource for SimulationSoftwareSuite {
 /// Information about a source configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SourceConfig {
-
-
-    /// 
+    ///
     /// The target processor architecture for the application.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -444,10 +408,9 @@ pub struct SourceConfig {
     #[serde(rename = "Architecture")]
     pub architecture: SourceConfigArchitectureEnum,
 
-
-    /// 
+    ///
     /// The Amazon S3 bucket name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -462,10 +425,9 @@ pub struct SourceConfig {
     #[serde(rename = "S3Bucket")]
     pub s3_bucket: String,
 
-
-    /// 
+    ///
     /// The s3 object key.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -479,13 +441,10 @@ pub struct SourceConfig {
     /// Update requires: No interruption
     #[serde(rename = "S3Key")]
     pub s3_key: String,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SourceConfigArchitectureEnum {
-
     /// ARM64
     #[serde(rename = "ARM64")]
     Arm64,
@@ -497,7 +456,6 @@ pub enum SourceConfigArchitectureEnum {
     /// X86_64
     #[serde(rename = "X86_64")]
     X8664,
-
 }
 
 impl Default for SourceConfigArchitectureEnum {
@@ -505,7 +463,6 @@ impl Default for SourceConfigArchitectureEnum {
         SourceConfigArchitectureEnum::Arm64
     }
 }
-
 
 impl cfn_resources::CfnResource for SourceConfig {
     fn type_string(&self) -> &'static str {
@@ -517,35 +474,42 @@ impl cfn_resources::CfnResource for SourceConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.s3_bucket;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 's3_bucket'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 's3_bucket'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.s3_bucket;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 's3_bucket'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 's3_bucket'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.s3_key;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 's3_key'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 's3_key'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.s3_key;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 's3_key'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 's3_key'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

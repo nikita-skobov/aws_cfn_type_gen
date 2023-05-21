@@ -1,5 +1,3 @@
-
-
 /// The AWS::AppConfig::ConfigurationProfile resource creates a configuration    profile that enables AWS AppConfig to access the configuration source. Valid    configuration sources include AWS Systems Manager (SSM) documents, SSM Parameter Store    parameters, and Amazon S3. A configuration profile includes the following    information.
 ///
 /// AWS AppConfig requires that you create resources and deploy a configuration in the    following order:
@@ -7,11 +5,9 @@
 /// For more information, see AWS AppConfig in the      AWS AppConfig User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnConfigurationProfile {
-
-
-    /// 
+    ///
     /// The application ID.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnConfigurationProfile {
     #[serde(rename = "ApplicationId")]
     pub application_id: String,
 
-
-    /// 
+    ///
     /// A description of the configuration profile.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -38,12 +33,11 @@ pub struct CfnConfigurationProfile {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// A URI to locate the configuration. You can specify the following:
-    /// 
+    ///
     /// For the AWS AppConfig hosted configuration store and for feature flags,        specify hosted.               For an AWS Systems Manager Parameter Store parameter, specify either the parameter name in        the format ssm-parameter://<parameter name> or the ARN.               For an AWS CodePipeline pipeline, specify the URI in the following format:        codepipeline://<pipeline name>.               For an AWS Secrets Manager secret, specify the URI in the following format:          secretsmanager://<secret name>.               For an Amazon S3 object, specify the URI in the following format:          s3://<bucket>/<objectKey> . Here is an example:          s3://my-bucket/my-app/us-east-1/my-config.json                       For an SSM document, specify either the document name in the format          ssm-document://<document name> or the Amazon Resource Name        (ARN).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -56,10 +50,9 @@ pub struct CfnConfigurationProfile {
     #[serde(rename = "LocationUri")]
     pub location_uri: String,
 
-
-    /// 
+    ///
     /// A name for the configuration profile.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -72,12 +65,11 @@ pub struct CfnConfigurationProfile {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The ARN of an IAM role with permission to access the configuration at the specified       LocationUri.
-    /// 
+    ///
     /// ImportantA retrieval role ARN is not required for configurations stored in the AWS AppConfig hosted configuration store. It is required for all other sources that       store your configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -92,10 +84,9 @@ pub struct CfnConfigurationProfile {
     #[serde(rename = "RetrievalRoleArn")]
     pub retrieval_role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// Metadata to assign to the configuration profile. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tags
@@ -104,14 +95,13 @@ pub struct CfnConfigurationProfile {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tags>>,
 
-
-    /// 
+    ///
     /// The type of configurations contained in the profile. AWS AppConfig supports       feature flags and freeform configurations. We recommend you     create feature flag configurations to enable or disable new features and freeform     configurations to distribute configurations to an application. When calling this API, enter     one of the following values for Type:
-    /// 
+    ///
     /// AWS.AppConfig.FeatureFlags
-    /// 
+    ///
     /// AWS.Freeform
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -122,10 +112,9 @@ pub struct CfnConfigurationProfile {
     #[serde(rename = "Type")]
     pub cfn_type: Option<String>,
 
-
-    /// 
+    ///
     /// A list of methods for validating the configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Validators
@@ -135,10 +124,7 @@ pub struct CfnConfigurationProfile {
     /// Update requires: No interruption
     #[serde(rename = "Validators")]
     pub validators: Option<Vec<Validators>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnConfigurationProfile {
     fn type_string(&self) -> &'static str {
@@ -150,75 +136,87 @@ impl cfn_resources::CfnResource for CfnConfigurationProfile {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.location_uri;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'location_uri'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'location_uri'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.location_uri;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'location_uri'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'location_uri'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.retrieval_role_arn {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'retrieval_role_arn'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'retrieval_role_arn'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.retrieval_role_arn {
-
-        if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'retrieval_role_arn'. {} is less than 20", the_val.len()));
+            if the_val.len() < 20 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'retrieval_role_arn'. {} is less than 20",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.validators {
-
-        if the_val.len() > 2 as _ {
-            return Err(format!("Max validation failed on field 'validators'. {} is greater than 2", the_val.len()));
+            if the_val.len() > 2 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'validators'. {} is greater than 2",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -226,11 +224,9 @@ impl cfn_resources::CfnResource for CfnConfigurationProfile {
 /// Metadata to assign to the configuration profile. Tags help organize and categorize your       AWS AppConfig resources. Each tag consists of a key and an optional value, both of     which you define.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tags {
-
-
-    /// 
+    ///
     /// The key-value string map. The valid character set is [a-zA-Z+-=._:/]. The tag    key can be up to 128 characters and must not start with aws:.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -239,10 +235,9 @@ pub struct Tags {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 
-
-    /// 
+    ///
     /// The tag value can be up to 256 characters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -250,10 +245,7 @@ pub struct Tags {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tags {
     fn type_string(&self) -> &'static str {
@@ -265,7 +257,6 @@ impl cfn_resources::CfnResource for Tags {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -273,11 +264,9 @@ impl cfn_resources::CfnResource for Tags {
 /// A validator provides a syntactic or semantic check to ensure the configuration that you     want to deploy functions as intended. To validate your application configuration data, you     provide a schema or an AWS Lambda function that runs against the configuration. The     configuration deployment or update can only proceed when the configuration data is     valid.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Validators {
-
-
-    /// 
+    ///
     /// Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda     function.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -290,10 +279,9 @@ pub struct Validators {
     #[serde(rename = "Content")]
     pub content: Option<String>,
 
-
-    /// 
+    ///
     /// AWS AppConfig supports validators of type JSON_SCHEMA and       LAMBDA
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -303,13 +291,10 @@ pub struct Validators {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: Option<ValidatorsTypeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ValidatorsTypeEnum {
-
     /// JSON_SCHEMA
     #[serde(rename = "JSON_SCHEMA")]
     Jsonschema,
@@ -317,7 +302,6 @@ pub enum ValidatorsTypeEnum {
     /// LAMBDA
     #[serde(rename = "LAMBDA")]
     Lambda,
-
 }
 
 impl Default for ValidatorsTypeEnum {
@@ -325,7 +309,6 @@ impl Default for ValidatorsTypeEnum {
         ValidatorsTypeEnum::Jsonschema
     }
 }
-
 
 impl cfn_resources::CfnResource for Validators {
     fn type_string(&self) -> &'static str {
@@ -337,23 +320,24 @@ impl cfn_resources::CfnResource for Validators {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.content {
+            if the_val.len() > 32768 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'content'. {} is greater than 32768",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.content {
-
-        if the_val.len() > 32768 as _ {
-            return Err(format!("Max validation failed on field 'content'. {} is greater than 32768", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'content'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.content {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'content'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }

@@ -1,15 +1,11 @@
-
-
 /// The AWS::SNS::Topic resource creates a topic to which notifications can be     published.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTopic {
-
-
-    /// 
+    ///
     /// Enables content-based deduplication for FIFO topics.
-    /// 
+    ///
     /// By default, ContentBasedDeduplication is set to false.        If you create a FIFO topic and this attribute is false, you must specify        a value for the MessageDeduplicationId parameter for the Publish action.                  When you set ContentBasedDeduplication to true, Amazon SNS uses a SHA-256 hash to generate the MessageDeduplicationId        using the body of the message (but not the attributes of the message).       (Optional) To override the generated value, you can specify a value for the the          MessageDeduplicationId parameter for the Publish        action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -18,16 +14,15 @@ pub struct CfnTopic {
     #[serde(rename = "ContentBasedDeduplication")]
     pub content_based_deduplication: Option<bool>,
 
-
-    /// 
+    ///
     /// The body of the policy document you want to use for this topic.
-    /// 
+    ///
     /// You can only add one policy per topic.
-    /// 
+    ///
     /// The policy must be in JSON string format.
-    /// 
+    ///
     /// Length Constraints: Maximum length of 30,720.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -36,10 +31,9 @@ pub struct CfnTopic {
     #[serde(rename = "DataProtectionPolicy")]
     pub data_protection_policy: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// The display name to use for an Amazon SNS topic with SMS subscriptions. The     display name must be maximum 100 characters long, including hyphens (-), underscores (_),     spaces, and tabs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -48,10 +42,9 @@ pub struct CfnTopic {
     #[serde(rename = "DisplayName")]
     pub display_name: Option<String>,
 
-
-    /// 
+    ///
     /// Set to true to create a FIFO topic.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -60,12 +53,11 @@ pub struct CfnTopic {
     #[serde(rename = "FifoTopic")]
     pub fifo_topic: Option<bool>,
 
-
-    /// 
+    ///
     /// The ID of an AWS managed customer master key (CMK) for Amazon SNS     or a custom CMK. For more information, see Key terms. For     more examples, see       KeyId      in the AWS Key Management Service API Reference.
-    /// 
+    ///
     /// This property applies only to server-side-encryption.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -74,10 +66,9 @@ pub struct CfnTopic {
     #[serde(rename = "KmsMasterKeyId")]
     pub kms_master_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// The signature version corresponds to the hashing algorithm used while creating the     signature of the notifications, subscription confirmations, or unsubscribe confirmation     messages sent by Amazon SNS. By default, SignatureVersion is set to       1.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -86,12 +77,11 @@ pub struct CfnTopic {
     #[serde(rename = "SignatureVersion")]
     pub signature_version: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon SNS subscriptions (endpoints) for this topic.
-    /// 
+    ///
     /// ImportantIf you specify the Subscription property in the        AWS::SNS::Topic resource and it creates an associated subscription       resource, the associated subscription is not deleted when the        AWS::SNS::Topic resource is deleted.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Subscription
@@ -100,12 +90,11 @@ pub struct CfnTopic {
     #[serde(rename = "Subscription")]
     pub subscription: Option<Vec<Subscription>>,
 
-
-    /// 
+    ///
     /// The list of tags to add to a new topic.
-    /// 
+    ///
     /// NoteTo be able to tag a topic on creation, you must have the           sns:CreateTopic and sns:TagResource         permissions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -114,14 +103,13 @@ pub struct CfnTopic {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The name of the topic you want to create. Topic names must include only uppercase and     lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256     characters long. FIFO topic names must end with .fifo.
-    /// 
+    ///
     /// If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses     that ID for the topic name. For more information, see Name     type.
-    /// 
+    ///
     /// ImportantIf you specify a name, you can't perform updates that require replacement of this       resource. You can perform updates that require no or some interruption. If you must       replace the resource, specify a new name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -130,10 +118,9 @@ pub struct CfnTopic {
     #[serde(rename = "TopicName")]
     pub topic_name: Option<String>,
 
-
-    /// 
+    ///
     /// Tracing mode of an Amazon SNS topic. By default TracingConfig is set to       PassThrough, and the topic passes through the tracing header it receives     from an SNS publisher to its subscriptions. If set to Active, SNS will vend     X-Ray segment data to topic owner account if the sampled flag in the tracing header is     true. Only supported on standard topics.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -141,10 +128,7 @@ pub struct CfnTopic {
     /// Update requires: No interruption
     #[serde(rename = "TracingConfig")]
     pub tracing_config: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnTopic {
     fn type_string(&self) -> &'static str {
@@ -156,7 +140,6 @@ impl cfn_resources::CfnResource for CfnTopic {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -164,11 +147,9 @@ impl cfn_resources::CfnResource for CfnTopic {
 /// Subscription is an embedded property that describes the subscription endpoints     of an Amazon SNS topic.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Subscription {
-
-
-    /// 
+    ///
     /// The endpoint that receives notifications from the Amazon SNS topic. The endpoint     value depends on the protocol that you specify. For more information, see the       Endpoint parameter of the       Subscribe      action in the Amazon SNS API Reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -177,10 +158,9 @@ pub struct Subscription {
     #[serde(rename = "Endpoint")]
     pub endpoint: String,
 
-
-    /// 
+    ///
     /// The subscription's protocol. For more information, see the Protocol     parameter of the       Subscribe      action in the Amazon SNS API Reference.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -188,10 +168,7 @@ pub struct Subscription {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     pub protocol: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Subscription {
     fn type_string(&self) -> &'static str {
@@ -203,7 +180,6 @@ impl cfn_resources::CfnResource for Subscription {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -217,32 +193,26 @@ impl cfn_resources::CfnResource for Subscription {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -254,7 +224,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

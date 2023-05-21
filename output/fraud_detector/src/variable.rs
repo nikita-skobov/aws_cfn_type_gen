@@ -1,17 +1,13 @@
-
-
 /// Manages a variable.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVariable {
-
-
-    /// 
+    ///
     /// The data source of the variable.
-    /// 
+    ///
     /// Valid values: EVENT | EXTERNAL_MODEL_SCORE
-    /// 
+    ///
     /// When defining a variable within a detector, you can only use the EVENT value for DataSource when the Inline property is set to true.      If the Inline property is set false, you can use either EVENT or MODEL_SCORE for DataSource.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -20,12 +16,11 @@ pub struct CfnVariable {
     #[serde(rename = "DataSource")]
     pub data_source: String,
 
-
-    /// 
+    ///
     /// The data type of the variable.
-    /// 
+    ///
     /// Valid data types: STRING | INTEGER | BOOLEAN | FLOAT
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnVariable {
     #[serde(rename = "DataType")]
     pub data_type: String,
 
-
-    /// 
+    ///
     /// The default value of the variable.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -46,10 +40,9 @@ pub struct CfnVariable {
     #[serde(rename = "DefaultValue")]
     pub default_value: String,
 
-
-    /// 
+    ///
     /// The description of the variable.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -58,12 +51,11 @@ pub struct CfnVariable {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the variable.
-    /// 
+    ///
     /// Pattern: ^[0-9a-z_-]+$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -72,12 +64,11 @@ pub struct CfnVariable {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -86,12 +77,11 @@ pub struct CfnVariable {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of the variable. For more information see Variable types.
-    /// 
+    ///
     /// Valid Values: AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -99,13 +89,10 @@ pub struct CfnVariable {
     /// Update requires: No interruption
     #[serde(rename = "VariableType")]
     pub variable_type: Option<VariableVariableTypeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VariableVariableTypeEnum {
-
     /// AUTH_CODE
     #[serde(rename = "AUTH_CODE")]
     Authcode,
@@ -237,7 +224,6 @@ pub enum VariableVariableTypeEnum {
     /// USERAGENT
     #[serde(rename = "USERAGENT")]
     Useragent,
-
 }
 
 impl Default for VariableVariableTypeEnum {
@@ -245,7 +231,6 @@ impl Default for VariableVariableTypeEnum {
         VariableVariableTypeEnum::Authcode
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnVariable {
     fn type_string(&self) -> &'static str {
@@ -257,7 +242,6 @@ impl cfn_resources::CfnResource for CfnVariable {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -271,32 +255,26 @@ impl cfn_resources::CfnResource for CfnVariable {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -308,7 +286,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

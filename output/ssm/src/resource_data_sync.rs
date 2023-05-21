@@ -1,5 +1,3 @@
-
-
 /// The AWS::SSM::ResourceDataSync resource creates, updates, or deletes a    resource data sync for AWS Systems Manager. A resource data sync helps you view data from    multiple sources in a single location. Systems Manager offers two types of resource data sync:     SyncToDestination and SyncFromSource.
 ///
 /// You can configure Systems Manager Inventory to use the SyncToDestination type    to synchronize Inventory data from multiple AWS Regions to a single Amazon S3 bucket.
@@ -15,11 +13,9 @@
 /// Important: The following Syntax section shows all fields that are    supported for a resource data sync. The Examples section below shows the    recommended way to specify configurations for each sync type. Please see the     Examples section when you create your resource data sync.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceDataSync {
-
-
-    /// 
+    ///
     /// The name of the S3 bucket where the aggregated data is stored.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -32,10 +28,9 @@ pub struct CfnResourceDataSync {
     #[serde(rename = "BucketName")]
     pub bucket_name: Option<String>,
 
-
-    /// 
+    ///
     /// An Amazon S3 prefix for the bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -48,10 +43,9 @@ pub struct CfnResourceDataSync {
     #[serde(rename = "BucketPrefix")]
     pub bucket_prefix: Option<String>,
 
-
-    /// 
+    ///
     /// The AWS Region with the S3 bucket targeted by the resource data sync.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -64,10 +58,9 @@ pub struct CfnResourceDataSync {
     #[serde(rename = "BucketRegion")]
     pub bucket_region: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of an encryption key for a destination in Amazon S3. You can use a KMS key to    encrypt inventory data in Amazon S3. You must specify a key that exist in the same region as    the destination Amazon S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -82,10 +75,9 @@ pub struct CfnResourceDataSync {
     #[serde(rename = "KMSKeyArn")]
     pub kmskey_arn: Option<String>,
 
-
-    /// 
+    ///
     /// Configuration information for the target S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3Destination
@@ -94,10 +86,9 @@ pub struct CfnResourceDataSync {
     #[serde(rename = "S3Destination")]
     pub s3_destination: Option<S3Destination>,
 
-
-    /// 
+    ///
     /// A supported sync format. The following format is currently supported: JsonSerDe
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -108,10 +99,9 @@ pub struct CfnResourceDataSync {
     #[serde(rename = "SyncFormat")]
     pub sync_format: Option<ResourceDataSyncSyncFormatEnum>,
 
-
-    /// 
+    ///
     /// A name for the resource data sync.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -124,10 +114,9 @@ pub struct CfnResourceDataSync {
     #[serde(rename = "SyncName")]
     pub sync_name: String,
 
-
-    /// 
+    ///
     /// Information about the source where the data was synchronized.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SyncSource
@@ -136,10 +125,9 @@ pub struct CfnResourceDataSync {
     #[serde(rename = "SyncSource")]
     pub sync_source: Option<SyncSource>,
 
-
-    /// 
+    ///
     /// The type of resource data sync. If SyncType is SyncToDestination,  then the resource data sync synchronizes data to an S3 bucket. If the SyncType is   SyncFromSource then the resource data sync synchronizes data from AWS Organizations or from  multiple AWS Regions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -151,17 +139,13 @@ pub struct CfnResourceDataSync {
     /// Update requires: Replacement
     #[serde(rename = "SyncType")]
     pub sync_type: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ResourceDataSyncSyncFormatEnum {
-
     /// JsonSerDe
     #[serde(rename = "JsonSerDe")]
     Jsonserde,
-
 }
 
 impl Default for ResourceDataSyncSyncFormatEnum {
@@ -169,7 +153,6 @@ impl Default for ResourceDataSyncSyncFormatEnum {
         ResourceDataSyncSyncFormatEnum::Jsonserde
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnResourceDataSync {
     fn type_string(&self) -> &'static str {
@@ -181,105 +164,122 @@ impl cfn_resources::CfnResource for CfnResourceDataSync {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.bucket_name {
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_name'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.bucket_name {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 2048", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.bucket_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.bucket_prefix {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_prefix'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.bucket_prefix {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'bucket_prefix'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket_prefix'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.bucket_region {
-
-        if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'bucket_region'. {} is greater than 64", the_val.len()));
+            if the_val.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_region'. {} is greater than 64",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.bucket_region {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'bucket_region'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket_region'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.kmskey_arn {
-
-        if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'kmskey_arn'. {} is greater than 512", the_val.len()));
+            if the_val.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kmskey_arn'. {} is greater than 512",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.kmskey_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'kmskey_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'kmskey_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.s3_destination.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.s3_destination
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.sync_name;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'sync_name'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'sync_name'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.sync_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'sync_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'sync_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.sync_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.sync_source
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.sync_type {
-
-        if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'sync_type'. {} is greater than 64", the_val.len()));
+            if the_val.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sync_type'. {} is greater than 64",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.sync_type {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'sync_type'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'sync_type'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -287,11 +287,9 @@ impl cfn_resources::CfnResource for CfnResourceDataSync {
 /// Information about the AwsOrganizationsSource resource data sync source. A sync  source of this type can synchronize data from AWS Organizations or, if an AWS organization isn't  present, from multiple AWS Regions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AwsOrganizationsSource {
-
-
-    /// 
+    ///
     /// If an AWS organization is present, this is either OrganizationalUnits or   EntireOrganization. For OrganizationalUnits, the data is aggregated  from a set of organization units. For EntireOrganization, the data is aggregated  from the entire AWS organization.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -304,10 +302,9 @@ pub struct AwsOrganizationsSource {
     #[serde(rename = "OrganizationSourceType")]
     pub organization_source_type: String,
 
-
-    /// 
+    ///
     /// The AWS Organizations organization units included in the sync.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -317,10 +314,7 @@ pub struct AwsOrganizationsSource {
     /// Update requires: No interruption
     #[serde(rename = "OrganizationalUnits")]
     pub organizational_units: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AwsOrganizationsSource {
     fn type_string(&self) -> &'static str {
@@ -332,29 +326,30 @@ impl cfn_resources::CfnResource for AwsOrganizationsSource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.organization_source_type;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'organization_source_type'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'organization_source_type'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.organization_source_type;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'organization_source_type'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'organization_source_type'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.organizational_units {
-
-        if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'organizational_units'. {} is greater than 1000", the_val.len()));
+            if the_val.len() > 1000 as _ {
+                return Err(format!("Max validation failed on field 'organizational_units'. {} is greater than 1000", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -362,11 +357,9 @@ impl cfn_resources::CfnResource for AwsOrganizationsSource {
 /// Information about the target S3 bucket for the resource data sync.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Destination {
-
-
-    /// 
+    ///
     /// The name of the S3 bucket where the aggregated data is stored.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -379,10 +372,9 @@ pub struct S3Destination {
     #[serde(rename = "BucketName")]
     pub bucket_name: String,
 
-
-    /// 
+    ///
     /// An Amazon S3 prefix for the bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -395,10 +387,9 @@ pub struct S3Destination {
     #[serde(rename = "BucketPrefix")]
     pub bucket_prefix: Option<String>,
 
-
-    /// 
+    ///
     /// The AWS Region with the S3 bucket targeted by the resource data sync.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -411,10 +402,9 @@ pub struct S3Destination {
     #[serde(rename = "BucketRegion")]
     pub bucket_region: String,
 
-
-    /// 
+    ///
     /// The ARN of an encryption key for a destination in Amazon S3. Must belong to the same  Region as the destination S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -429,10 +419,9 @@ pub struct S3Destination {
     #[serde(rename = "KMSKeyArn")]
     pub kmskey_arn: Option<String>,
 
-
-    /// 
+    ///
     /// A supported sync format. The following format is currently supported: JsonSerDe
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -442,17 +431,13 @@ pub struct S3Destination {
     /// Update requires: Replacement
     #[serde(rename = "SyncFormat")]
     pub sync_format: S3DestinationSyncFormatEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum S3DestinationSyncFormatEnum {
-
     /// JsonSerDe
     #[serde(rename = "JsonSerDe")]
     Jsonserde,
-
 }
 
 impl Default for S3DestinationSyncFormatEnum {
@@ -460,7 +445,6 @@ impl Default for S3DestinationSyncFormatEnum {
         S3DestinationSyncFormatEnum::Jsonserde
     }
 }
-
 
 impl cfn_resources::CfnResource for S3Destination {
     fn type_string(&self) -> &'static str {
@@ -472,67 +456,78 @@ impl cfn_resources::CfnResource for S3Destination {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.bucket_name;
 
         if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'bucket_name'. {} is greater than 2048", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'bucket_name'. {} is greater than 2048",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.bucket_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'bucket_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'bucket_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.bucket_prefix {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'bucket_prefix'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'bucket_prefix'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.bucket_prefix {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'bucket_prefix'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'bucket_prefix'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.bucket_region;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'bucket_region'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'bucket_region'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.bucket_region;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'bucket_region'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'bucket_region'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.kmskey_arn {
-
-        if the_val.len() > 512 as _ {
-            return Err(format!("Max validation failed on field 'kmskey_arn'. {} is greater than 512", the_val.len()));
+            if the_val.len() > 512 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kmskey_arn'. {} is greater than 512",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.kmskey_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'kmskey_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'kmskey_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -540,11 +535,9 @@ impl cfn_resources::CfnResource for S3Destination {
 /// Information about the source of the data included in the resource data sync.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SyncSource {
-
-
-    /// 
+    ///
     /// Information about the AwsOrganizationsSource resource data sync source. A sync source of    this type can synchronize data from AWS Organizations.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AwsOrganizationsSource
@@ -553,10 +546,9 @@ pub struct SyncSource {
     #[serde(rename = "AwsOrganizationsSource")]
     pub aws_organizations_source: Option<AwsOrganizationsSource>,
 
-
-    /// 
+    ///
     /// Whether to automatically synchronize and aggregate data from new AWS Regions when those  Regions come online.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -565,10 +557,9 @@ pub struct SyncSource {
     #[serde(rename = "IncludeFutureRegions")]
     pub include_future_regions: Option<bool>,
 
-
-    /// 
+    ///
     /// The SyncSource       AWS Regions included in the resource data sync.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -577,10 +568,9 @@ pub struct SyncSource {
     #[serde(rename = "SourceRegions")]
     pub source_regions: Vec<String>,
 
-
-    /// 
+    ///
     /// The type of data source for the resource data sync. SourceType is either   AwsOrganizations (if an organization is present in AWS Organizations) or   SingleAccountMultiRegions.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -592,10 +582,7 @@ pub struct SyncSource {
     /// Update requires: No interruption
     #[serde(rename = "SourceType")]
     pub source_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SyncSource {
     fn type_string(&self) -> &'static str {
@@ -607,23 +594,28 @@ impl cfn_resources::CfnResource for SyncSource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.aws_organizations_source.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.aws_organizations_source
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.source_type;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'source_type'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'source_type'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.source_type;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'source_type'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'source_type'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

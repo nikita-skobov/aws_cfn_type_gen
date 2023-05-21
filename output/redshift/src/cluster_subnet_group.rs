@@ -1,15 +1,11 @@
-
-
 /// Specifies an Amazon Redshift subnet group. You must provide a list of one or more       subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating       Amazon Redshift subnet group.
 ///
 /// For information about subnet groups, go to Amazon Redshift         Cluster Subnet Groups in the Amazon Redshift Cluster Management         Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClusterSubnetGroup {
-
-
-    /// 
+    ///
     /// A description for the subnet group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnClusterSubnetGroup {
     #[serde(rename = "Description")]
     pub description: String,
 
-
-    /// 
+    ///
     /// An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single       request.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -32,10 +27,9 @@ pub struct CfnClusterSubnetGroup {
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
 
-
-    /// 
+    ///
     /// Specifies an arbitrary set of tags (key–value pairs) to associate with this subnet       group. Use tags to manage your resources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -43,10 +37,7 @@ pub struct CfnClusterSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnClusterSubnetGroup {
     fn type_string(&self) -> &'static str {
@@ -58,14 +49,15 @@ impl cfn_resources::CfnResource for CfnClusterSubnetGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.description;
 
         if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 2147483647", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'description'. {} is greater than 2147483647",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -79,32 +71,26 @@ impl cfn_resources::CfnResource for CfnClusterSubnetGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -116,7 +102,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

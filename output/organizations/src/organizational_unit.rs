@@ -1,5 +1,3 @@
-
-
 /// Creates an organizational unit (OU) within a root or parent OU. An OU is a container       for accounts that enables you to organize your accounts to apply policies according to       your business requirements. The number of levels deep that you can nest OUs is dependent       upon the policy types enabled for that root. For service control policies, the limit is       five.
 ///
 /// For more information about OUs, see Managing Organizational Units in the                 AWS Organizations User Guide.
@@ -9,13 +7,11 @@
 /// This operation can be called only from the organization's management account.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnOrganizationalUnit {
-
-
-    /// 
+    ///
     /// The friendly name of this OU.
-    /// 
+    ///
     /// The regex pattern   that is used to validate this parameter is a string of any of the characters in the ASCII   character range.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -30,16 +26,15 @@ pub struct CfnOrganizationalUnit {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The unique identifier (ID) of the parent root or OU that you want to create the new OU       in.
-    /// 
+    ///
     /// ImportantTo update the ParentId parameter value, you must first remove all         accounts attached to the organizational unit (OU). OUs can't be moved within the         organization with accounts still attached.
-    /// 
+    ///
     /// The regex pattern for a parent ID       string requires one of the following:
-    /// 
+    ///
     /// Root - A string that begins with "r-" followed           by from 4 to 32 lowercase letters or digits.                          Organizational unit (OU) - A string that begins           with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the           root that the OU is in). This string is followed by a second "-" dash and from 8           to 32 additional lowercase letters or digits.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -52,12 +47,11 @@ pub struct CfnOrganizationalUnit {
     #[serde(rename = "ParentId")]
     pub parent_id: String,
 
-
-    /// 
+    ///
     /// A list of tags that you want to attach to the newly created OU. For each tag in the       list, you must specify both a tag key and a value. You can set the value to an empty       string, but you can't set it to null. For more information about tagging,       see Tagging AWS Organizations         resources in the AWS Organizations User Guide.
-    /// 
+    ///
     /// NoteIf any one of the tags is not valid or if you exceed the allowed number of tags         for an OU, then the entire request fails and the OU is not created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -65,10 +59,7 @@ pub struct CfnOrganizationalUnit {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnOrganizationalUnit {
     fn type_string(&self) -> &'static str {
@@ -80,28 +71,33 @@ impl cfn_resources::CfnResource for CfnOrganizationalUnit {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.parent_id;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'parent_id'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'parent_id'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -115,32 +111,26 @@ impl cfn_resources::CfnResource for CfnOrganizationalUnit {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -152,7 +142,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

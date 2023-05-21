@@ -1,10 +1,6 @@
-
-
 /// The AWS::Budgets::BudgetsAction resource enables you to take predefined actions that are initiated when a budget threshold has been exceeded. 		For more information, see Managing Your Costs with Budgets 			in the AWS Billing and Cost Management User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBudgetsAction {
-
-
     /// The trigger threshold of the action.
     ///
     /// Required: Yes
@@ -14,7 +10,6 @@ pub struct CfnBudgetsAction {
     /// Update requires: No interruption
     #[serde(rename = "ActionThreshold")]
     pub action_threshold: ActionThreshold,
-
 
     /// The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition.
     ///
@@ -28,7 +23,6 @@ pub struct CfnBudgetsAction {
     #[serde(rename = "ActionType")]
     pub action_type: BudgetsActionActionTypeEnum,
 
-
     /// This specifies if the action needs manual or automatic approval.
     ///
     /// Required: No
@@ -41,7 +35,6 @@ pub struct CfnBudgetsAction {
     #[serde(rename = "ApprovalModel")]
     pub approval_model: Option<BudgetsActionApprovalModelEnum>,
 
-
     /// A string that represents the budget name. ":" and "\" characters aren't allowed.
     ///
     /// Required: Yes
@@ -52,7 +45,6 @@ pub struct CfnBudgetsAction {
     #[serde(rename = "BudgetName")]
     pub budget_name: String,
 
-
     /// Specifies all of the type-specific parameters.
     ///
     /// Required: Yes
@@ -62,7 +54,6 @@ pub struct CfnBudgetsAction {
     /// Update requires: No interruption
     #[serde(rename = "Definition")]
     pub definition: Definition,
-
 
     /// The role passed for action execution and reversion. Roles and actions must be in the same account.
     ///
@@ -80,7 +71,6 @@ pub struct CfnBudgetsAction {
     #[serde(rename = "ExecutionRoleArn")]
     pub execution_role_arn: String,
 
-
     /// The type of a notification.
     ///
     /// Required: Yes
@@ -93,7 +83,6 @@ pub struct CfnBudgetsAction {
     #[serde(rename = "NotificationType")]
     pub notification_type: BudgetsActionNotificationTypeEnum,
 
-
     /// A list of subscribers.
     ///
     /// Required: Yes
@@ -103,13 +92,10 @@ pub struct CfnBudgetsAction {
     /// Update requires: No interruption
     #[serde(rename = "Subscribers")]
     pub subscribers: Vec<Subscriber>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum BudgetsActionActionTypeEnum {
-
     /// APPLY_IAM_POLICY
     #[serde(rename = "APPLY_IAM_POLICY")]
     Applyiampolicy,
@@ -121,7 +107,6 @@ pub enum BudgetsActionActionTypeEnum {
     /// RUN_SSM_DOCUMENTS
     #[serde(rename = "RUN_SSM_DOCUMENTS")]
     Runssmdocuments,
-
 }
 
 impl Default for BudgetsActionActionTypeEnum {
@@ -132,7 +117,6 @@ impl Default for BudgetsActionActionTypeEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum BudgetsActionApprovalModelEnum {
-
     /// AUTOMATIC
     #[serde(rename = "AUTOMATIC")]
     Automatic,
@@ -140,7 +124,6 @@ pub enum BudgetsActionApprovalModelEnum {
     /// MANUAL
     #[serde(rename = "MANUAL")]
     Manual,
-
 }
 
 impl Default for BudgetsActionApprovalModelEnum {
@@ -151,7 +134,6 @@ impl Default for BudgetsActionApprovalModelEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum BudgetsActionNotificationTypeEnum {
-
     /// ACTUAL
     #[serde(rename = "ACTUAL")]
     Actual,
@@ -159,7 +141,6 @@ pub enum BudgetsActionNotificationTypeEnum {
     /// FORECASTED
     #[serde(rename = "FORECASTED")]
     Forecasted,
-
 }
 
 impl Default for BudgetsActionNotificationTypeEnum {
@@ -167,7 +148,6 @@ impl Default for BudgetsActionNotificationTypeEnum {
         BudgetsActionNotificationTypeEnum::Actual
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnBudgetsAction {
     fn type_string(&self) -> &'static str {
@@ -179,7 +159,6 @@ impl cfn_resources::CfnResource for CfnBudgetsAction {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.action_threshold.validate()?;
 
         self.definition.validate()?;
@@ -187,17 +166,21 @@ impl cfn_resources::CfnResource for CfnBudgetsAction {
         let the_val = &self.execution_role_arn;
 
         if the_val.len() > 618 as _ {
-            return Err(format!("Max validation failed on field 'execution_role_arn'. {} is greater than 618", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'execution_role_arn'. {} is greater than 618",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.execution_role_arn;
 
         if the_val.len() < 32 as _ {
-            return Err(format!("Min validation failed on field 'execution_role_arn'. {} is less than 32", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'execution_role_arn'. {} is less than 32",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -205,8 +188,6 @@ impl cfn_resources::CfnResource for CfnBudgetsAction {
 /// The trigger threshold of the action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ActionThreshold {
-
-
     /// The type of threshold for a notification.
     ///
     /// Required: Yes
@@ -219,7 +200,6 @@ pub struct ActionThreshold {
     #[serde(rename = "Type")]
     pub cfn_type: ActionThresholdTypeEnum,
 
-
     /// The threshold of a notification.
     ///
     /// Required: Yes
@@ -229,13 +209,10 @@ pub struct ActionThreshold {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: f64,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ActionThresholdTypeEnum {
-
     /// ABSOLUTE_VALUE
     #[serde(rename = "ABSOLUTE_VALUE")]
     Absolutevalue,
@@ -243,7 +220,6 @@ pub enum ActionThresholdTypeEnum {
     /// PERCENTAGE
     #[serde(rename = "PERCENTAGE")]
     Percentage,
-
 }
 
 impl Default for ActionThresholdTypeEnum {
@@ -251,7 +227,6 @@ impl Default for ActionThresholdTypeEnum {
         ActionThresholdTypeEnum::Absolutevalue
     }
 }
-
 
 impl cfn_resources::CfnResource for ActionThreshold {
     fn type_string(&self) -> &'static str {
@@ -263,7 +238,6 @@ impl cfn_resources::CfnResource for ActionThreshold {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -271,8 +245,6 @@ impl cfn_resources::CfnResource for ActionThreshold {
 /// The definition is where you specify all of the type-specific parameters.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Definition {
-
-
     /// The AWS Identity and Access Management (IAM) action definition details.
     ///
     /// Required: No
@@ -282,7 +254,6 @@ pub struct Definition {
     /// Update requires: No interruption
     #[serde(rename = "IamActionDefinition")]
     pub iam_action_definition: Option<IamActionDefinition>,
-
 
     /// The service control policies (SCP) action definition details.
     ///
@@ -294,7 +265,6 @@ pub struct Definition {
     #[serde(rename = "ScpActionDefinition")]
     pub scp_action_definition: Option<ScpActionDefinition>,
 
-
     /// The Amazon EC2 Systems Manager (SSM) action definition details.
     ///
     /// Required: No
@@ -304,10 +274,7 @@ pub struct Definition {
     /// Update requires: No interruption
     #[serde(rename = "SsmActionDefinition")]
     pub ssm_action_definition: Option<SsmActionDefinition>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Definition {
     fn type_string(&self) -> &'static str {
@@ -319,12 +286,17 @@ impl cfn_resources::CfnResource for Definition {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.iam_action_definition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.iam_action_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.scp_action_definition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.scp_action_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.ssm_action_definition.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.ssm_action_definition
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -333,8 +305,6 @@ impl cfn_resources::CfnResource for Definition {
 /// The AWS Identity and Access Management (IAM) action definition details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IamActionDefinition {
-
-
     /// A list of groups to be attached. There must be at least one group.
     ///
     /// Required: No
@@ -346,7 +316,6 @@ pub struct IamActionDefinition {
     /// Update requires: No interruption
     #[serde(rename = "Groups")]
     pub groups: Option<Vec<String>>,
-
 
     /// The Amazon Resource Name (ARN) of the policy to be attached.
     ///
@@ -364,7 +333,6 @@ pub struct IamActionDefinition {
     #[serde(rename = "PolicyArn")]
     pub policy_arn: String,
 
-
     /// A list of roles to be attached. There must be at least one role.
     ///
     /// Required: No
@@ -377,7 +345,6 @@ pub struct IamActionDefinition {
     #[serde(rename = "Roles")]
     pub roles: Option<Vec<String>>,
 
-
     /// A list of users to be attached. There must be at least one user.
     ///
     /// Required: No
@@ -389,10 +356,7 @@ pub struct IamActionDefinition {
     /// Update requires: No interruption
     #[serde(rename = "Users")]
     pub users: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for IamActionDefinition {
     fn type_string(&self) -> &'static str {
@@ -404,45 +368,51 @@ impl cfn_resources::CfnResource for IamActionDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.groups {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'groups'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'groups'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.policy_arn;
 
         if the_val.len() > 684 as _ {
-            return Err(format!("Max validation failed on field 'policy_arn'. {} is greater than 684", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'policy_arn'. {} is greater than 684",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.policy_arn;
 
         if the_val.len() < 25 as _ {
-            return Err(format!("Min validation failed on field 'policy_arn'. {} is less than 25", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'policy_arn'. {} is less than 25",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.roles {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'roles'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'roles'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.users {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'users'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'users'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -450,8 +420,6 @@ impl cfn_resources::CfnResource for IamActionDefinition {
 /// The service control policies (SCP) action definition details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ScpActionDefinition {
-
-
     /// The policy ID attached.
     ///
     /// Required: Yes
@@ -468,7 +436,6 @@ pub struct ScpActionDefinition {
     #[serde(rename = "PolicyId")]
     pub policy_id: String,
 
-
     /// A list of target IDs.
     ///
     /// Required: Yes
@@ -480,10 +447,7 @@ pub struct ScpActionDefinition {
     /// Update requires: No interruption
     #[serde(rename = "TargetIds")]
     pub target_ids: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ScpActionDefinition {
     fn type_string(&self) -> &'static str {
@@ -495,28 +459,33 @@ impl cfn_resources::CfnResource for ScpActionDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.policy_id;
 
         if the_val.len() > 130 as _ {
-            return Err(format!("Max validation failed on field 'policy_id'. {} is greater than 130", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'policy_id'. {} is greater than 130",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.policy_id;
 
         if the_val.len() < 10 as _ {
-            return Err(format!("Min validation failed on field 'policy_id'. {} is less than 10", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'policy_id'. {} is less than 10",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.target_ids;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'target_ids'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'target_ids'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -524,8 +493,6 @@ impl cfn_resources::CfnResource for ScpActionDefinition {
 /// The Amazon EC2 Systems Manager (SSM) action definition details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SsmActionDefinition {
-
-
     /// The EC2 and RDS instance IDs.
     ///
     /// Required: Yes
@@ -537,7 +504,6 @@ pub struct SsmActionDefinition {
     /// Update requires: No interruption
     #[serde(rename = "InstanceIds")]
     pub instance_ids: Vec<String>,
-
 
     /// The Region to run the (SSM) document.
     ///
@@ -555,7 +521,6 @@ pub struct SsmActionDefinition {
     #[serde(rename = "Region")]
     pub region: String,
 
-
     /// The action subType.
     ///
     /// Required: Yes
@@ -567,13 +532,10 @@ pub struct SsmActionDefinition {
     /// Update requires: No interruption
     #[serde(rename = "Subtype")]
     pub subtype: SsmActionDefinitionSubtypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SsmActionDefinitionSubtypeEnum {
-
     /// STOP_EC2_INSTANCES
     #[serde(rename = "STOP_EC2_INSTANCES")]
     Stopec2instances,
@@ -581,7 +543,6 @@ pub enum SsmActionDefinitionSubtypeEnum {
     /// STOP_RDS_INSTANCES
     #[serde(rename = "STOP_RDS_INSTANCES")]
     Stoprdsinstances,
-
 }
 
 impl Default for SsmActionDefinitionSubtypeEnum {
@@ -589,7 +550,6 @@ impl Default for SsmActionDefinitionSubtypeEnum {
         SsmActionDefinitionSubtypeEnum::Stopec2instances
     }
 }
-
 
 impl cfn_resources::CfnResource for SsmActionDefinition {
     fn type_string(&self) -> &'static str {
@@ -601,28 +561,33 @@ impl cfn_resources::CfnResource for SsmActionDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.instance_ids;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'instance_ids'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'instance_ids'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.region;
 
         if the_val.len() > 20 as _ {
-            return Err(format!("Max validation failed on field 'region'. {} is greater than 20", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'region'. {} is greater than 20",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.region;
 
         if the_val.len() < 9 as _ {
-            return Err(format!("Min validation failed on field 'region'. {} is less than 9", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'region'. {} is less than 9",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -632,13 +597,11 @@ impl cfn_resources::CfnResource for SsmActionDefinition {
 /// For example, an email subscriber has the following parameters:
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Subscriber {
-
-
-    /// 
+    ///
     /// The address that AWS sends budget notifications to, either an SNS topic or an email.
-    /// 
+    ///
     /// When you create a subscriber, the value of Address can't contain line breaks.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -646,7 +609,6 @@ pub struct Subscriber {
     /// Update requires: No interruption
     #[serde(rename = "Address")]
     pub address: String,
-
 
     /// The type of notification that AWS sends to a subscriber.
     ///
@@ -657,10 +619,7 @@ pub struct Subscriber {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Subscriber {
     fn type_string(&self) -> &'static str {
@@ -672,7 +631,6 @@ impl cfn_resources::CfnResource for Subscriber {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

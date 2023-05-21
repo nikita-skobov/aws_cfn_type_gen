@@ -1,13 +1,9 @@
-
-
 /// Creates a new subnet group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSubnetGroup {
-
-
-    /// 
+    ///
     /// The description of the subnet group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnSubnetGroup {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the subnet group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnSubnetGroup {
     #[serde(rename = "SubnetGroupName")]
     pub subnet_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// A list of VPC subnet IDs for the subnet group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -39,10 +33,7 @@ pub struct CfnSubnetGroup {
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSubnetGroup {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnSubnetGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

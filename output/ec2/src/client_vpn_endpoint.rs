@@ -1,13 +1,9 @@
-
-
 /// Specifies a Client VPN endpoint. A Client VPN endpoint is the resource you create and     configure to enable and manage client VPN sessions. It is the destination endpoint at which     all client VPN sessions are terminated.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClientVpnEndpoint {
-
-
-    /// 
+    ///
     /// Information about the authentication method to be used to authenticate clients.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ClientAuthenticationRequest
@@ -16,10 +12,9 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "AuthenticationOptions")]
     pub authentication_options: Vec<ClientAuthenticationRequest>,
 
-
-    /// 
+    ///
     /// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. Client CIDR range must have a size of at least /22 and must not be greater than /12.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "ClientCidrBlock")]
     pub client_cidr_block: String,
 
-
-    /// 
+    ///
     /// The options for managing connection authorization for new client connections.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ClientConnectOptions
@@ -40,10 +34,9 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "ClientConnectOptions")]
     pub client_connect_options: Option<ClientConnectOptions>,
 
-
-    /// 
+    ///
     /// Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is 			established.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ClientLoginBannerOptions
@@ -52,14 +45,13 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "ClientLoginBannerOptions")]
     pub client_login_banner_options: Option<ClientLoginBannerOptions>,
 
-
-    /// 
+    ///
     /// Information about the client connection logging options.
-    /// 
+    ///
     /// If you enable client connection logging, data about client connections is sent to a 			Cloudwatch Logs log stream. The following information is logged:
-    /// 
+    ///
     /// Client connection requests               Client connection results (successful and unsuccessful)               Reasons for unsuccessful client connection requests               Client connection termination time
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ConnectionLogOptions
@@ -68,10 +60,9 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "ConnectionLogOptions")]
     pub connection_log_options: ConnectionLogOptions,
 
-
-    /// 
+    ///
     /// A brief description of the Client VPN endpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -80,10 +71,9 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Information about the DNS servers to be used for DNS resolution. A Client VPN endpoint can 			have up to two DNS servers. If no DNS server is specified, the DNS address configured on the device is used for the DNS server.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -92,10 +82,9 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "DnsServers")]
     pub dns_servers: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -104,12 +93,11 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Specify whether to enable the self-service portal for the Client VPN endpoint.
-    /// 
+    ///
     /// Default Value: enabled
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -120,10 +108,9 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "SelfServicePortal")]
     pub self_service_portal: Option<ClientVpnEndpointSelfServicePortalEnum>,
 
-
-    /// 
+    ///
     /// The ARN of the server certificate. For more information, see 			the AWS Certificate Manager User Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -132,14 +119,13 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "ServerCertificateArn")]
     pub server_certificate_arn: String,
 
-
-    /// 
+    ///
     /// The maximum VPN session duration time in hours.
-    /// 
+    ///
     /// Valid values: 8 | 10 | 12 | 24
-    /// 
+    ///
     /// Default value: 24
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -148,14 +134,13 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "SessionTimeoutHours")]
     pub session_timeout_hours: Option<i64>,
 
-
-    /// 
+    ///
     /// Indicates whether split-tunnel is enabled on the AWS Client VPN endpoint.
-    /// 
+    ///
     /// By default, split-tunnel on a VPN endpoint is disabled.
-    /// 
+    ///
     /// For information about split-tunnel VPN endpoints, see Split-tunnel AWS Client VPN endpoint in the 			        AWS Client VPN Administrator Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -164,10 +149,9 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "SplitTunnel")]
     pub split_tunnel: Option<bool>,
 
-
-    /// 
+    ///
     /// The tags to apply to the Client VPN endpoint during creation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of TagSpecification
@@ -176,12 +160,11 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "TagSpecifications")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
-
-    /// 
+    ///
     /// The transport protocol to be used by the VPN session.
-    /// 
+    ///
     /// Default value: udp
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -192,10 +175,9 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "TransportProtocol")]
     pub transport_protocol: Option<ClientVpnEndpointTransportProtocolEnum>,
 
-
-    /// 
+    ///
     /// The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -204,14 +186,13 @@ pub struct CfnClientVpnEndpoint {
     #[serde(rename = "VpcId")]
     pub vpc_id: Option<String>,
 
-
-    /// 
+    ///
     /// The port number to assign to the Client VPN endpoint for TCP and UDP traffic.
-    /// 
+    ///
     /// Valid Values: 443 | 1194
-    /// 
+    ///
     /// Default Value: 443
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -219,13 +200,10 @@ pub struct CfnClientVpnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VpnPort")]
     pub vpn_port: Option<i64>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ClientVpnEndpointSelfServicePortalEnum {
-
     /// disabled
     #[serde(rename = "disabled")]
     Disabled,
@@ -233,7 +211,6 @@ pub enum ClientVpnEndpointSelfServicePortalEnum {
     /// enabled
     #[serde(rename = "enabled")]
     Enabled,
-
 }
 
 impl Default for ClientVpnEndpointSelfServicePortalEnum {
@@ -244,7 +221,6 @@ impl Default for ClientVpnEndpointSelfServicePortalEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ClientVpnEndpointTransportProtocolEnum {
-
     /// tcp
     #[serde(rename = "tcp")]
     Tcp,
@@ -252,7 +228,6 @@ pub enum ClientVpnEndpointTransportProtocolEnum {
     /// udp
     #[serde(rename = "udp")]
     Udp,
-
 }
 
 impl Default for ClientVpnEndpointTransportProtocolEnum {
@@ -260,7 +235,6 @@ impl Default for ClientVpnEndpointTransportProtocolEnum {
         ClientVpnEndpointTransportProtocolEnum::Tcp
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnClientVpnEndpoint {
     fn type_string(&self) -> &'static str {
@@ -272,10 +246,13 @@ impl cfn_resources::CfnResource for CfnClientVpnEndpoint {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.client_connect_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.client_connect_options.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.client_login_banner_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.client_login_banner_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.connection_log_options.validate()?;
 
@@ -286,11 +263,9 @@ impl cfn_resources::CfnResource for CfnClientVpnEndpoint {
 /// Information about the client certificate to be used for authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CertificateAuthenticationRequest {
-
-
-    /// 
+    ///
     /// The ARN of the client certificate. The certificate must be signed by a certificate 			authority (CA) and it must be provisioned in AWS Certificate Manager (ACM).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -298,10 +273,7 @@ pub struct CertificateAuthenticationRequest {
     /// Update requires: No interruption
     #[serde(rename = "ClientRootCertificateChainArn")]
     pub client_root_certificate_chain_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CertificateAuthenticationRequest {
     fn type_string(&self) -> &'static str {
@@ -313,7 +285,6 @@ impl cfn_resources::CfnResource for CertificateAuthenticationRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -321,11 +292,9 @@ impl cfn_resources::CfnResource for CertificateAuthenticationRequest {
 /// Describes the authentication method to be used by a Client VPN endpoint. For more information, see Authentication 			in the         AWS Client VPN Administrator Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClientAuthenticationRequest {
-
-
-    /// 
+    ///
     /// Information about the Active Directory to be used, if applicable. You must provide this information if Type is directory-service-authentication.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: DirectoryServiceAuthenticationRequest
@@ -334,10 +303,9 @@ pub struct ClientAuthenticationRequest {
     #[serde(rename = "ActiveDirectory")]
     pub active_directory: Option<DirectoryServiceAuthenticationRequest>,
 
-
-    /// 
+    ///
     /// Information about the IAM SAML identity provider, if applicable.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FederatedAuthenticationRequest
@@ -346,10 +314,9 @@ pub struct ClientAuthenticationRequest {
     #[serde(rename = "FederatedAuthentication")]
     pub federated_authentication: Option<FederatedAuthenticationRequest>,
 
-
-    /// 
+    ///
     /// Information about the authentication certificates to be used, if applicable. You must provide this information if Type is certificate-authentication.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CertificateAuthenticationRequest
@@ -358,10 +325,9 @@ pub struct ClientAuthenticationRequest {
     #[serde(rename = "MutualAuthentication")]
     pub mutual_authentication: Option<CertificateAuthenticationRequest>,
 
-
-    /// 
+    ///
     /// The type of client authentication to be used.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -371,13 +337,10 @@ pub struct ClientAuthenticationRequest {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: ClientAuthenticationRequestTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ClientAuthenticationRequestTypeEnum {
-
     /// certificate-authentication
     #[serde(rename = "certificate-authentication")]
     Certificateauthentication,
@@ -389,7 +352,6 @@ pub enum ClientAuthenticationRequestTypeEnum {
     /// federated-authentication
     #[serde(rename = "federated-authentication")]
     Federatedauthentication,
-
 }
 
 impl Default for ClientAuthenticationRequestTypeEnum {
@@ -397,7 +359,6 @@ impl Default for ClientAuthenticationRequestTypeEnum {
         ClientAuthenticationRequestTypeEnum::Certificateauthentication
     }
 }
-
 
 impl cfn_resources::CfnResource for ClientAuthenticationRequest {
     fn type_string(&self) -> &'static str {
@@ -409,12 +370,17 @@ impl cfn_resources::CfnResource for ClientAuthenticationRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.active_directory
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.active_directory.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.federated_authentication
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.federated_authentication.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.mutual_authentication.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.mutual_authentication
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -423,11 +389,9 @@ impl cfn_resources::CfnResource for ClientAuthenticationRequest {
 /// Indicates whether client connect options are enabled. The default is false     (not enabled).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClientConnectOptions {
-
-
-    /// 
+    ///
     /// Indicates whether client connect options are enabled. The default is false     (not enabled).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -436,10 +400,9 @@ pub struct ClientConnectOptions {
     #[serde(rename = "Enabled")]
     pub enabled: bool,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the AWS Lambda function used for     connection authorization.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -447,10 +410,7 @@ pub struct ClientConnectOptions {
     /// Update requires: No interruption
     #[serde(rename = "LambdaFunctionArn")]
     pub lambda_function_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClientConnectOptions {
     fn type_string(&self) -> &'static str {
@@ -462,7 +422,6 @@ impl cfn_resources::CfnResource for ClientConnectOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -470,11 +429,9 @@ impl cfn_resources::CfnResource for ClientConnectOptions {
 /// Options for enabling a customizable text banner that will be displayed on 			AWS provided clients when a VPN session is established.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ClientLoginBannerOptions {
-
-
-    /// 
+    ///
     /// Customizable text that will be displayed in a banner on AWS provided 			clients when a VPN session is established. UTF-8 encoded characters only. Maximum of 			1400 characters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -483,14 +440,13 @@ pub struct ClientLoginBannerOptions {
     #[serde(rename = "BannerText")]
     pub banner_text: Option<String>,
 
-
-    /// 
+    ///
     /// Enable or disable a customizable text banner that will be displayed on 			AWS provided clients when a VPN session is established.
-    /// 
+    ///
     /// Valid values: true | false
-    /// 
+    ///
     /// Default value: false
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -498,10 +454,7 @@ pub struct ClientLoginBannerOptions {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: bool,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ClientLoginBannerOptions {
     fn type_string(&self) -> &'static str {
@@ -513,7 +466,6 @@ impl cfn_resources::CfnResource for ClientLoginBannerOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -521,11 +473,9 @@ impl cfn_resources::CfnResource for ClientLoginBannerOptions {
 /// Describes the client connection logging options for the Client VPN endpoint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectionLogOptions {
-
-
-    /// 
+    ///
     /// The name of the CloudWatch Logs log group. Required if connection logging is enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -534,10 +484,9 @@ pub struct ConnectionLogOptions {
     #[serde(rename = "CloudwatchLogGroup")]
     pub cloudwatch_log_group: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the CloudWatch Logs log stream to which the connection data is published.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -546,10 +495,9 @@ pub struct ConnectionLogOptions {
     #[serde(rename = "CloudwatchLogStream")]
     pub cloudwatch_log_stream: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether connection logging is enabled.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -557,10 +505,7 @@ pub struct ConnectionLogOptions {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: bool,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConnectionLogOptions {
     fn type_string(&self) -> &'static str {
@@ -572,7 +517,6 @@ impl cfn_resources::CfnResource for ConnectionLogOptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -580,11 +524,9 @@ impl cfn_resources::CfnResource for ConnectionLogOptions {
 /// Describes the Active Directory to be used for client authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DirectoryServiceAuthenticationRequest {
-
-
-    /// 
+    ///
     /// The ID of the Active Directory to be used for authentication.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -592,10 +534,7 @@ pub struct DirectoryServiceAuthenticationRequest {
     /// Update requires: No interruption
     #[serde(rename = "DirectoryId")]
     pub directory_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DirectoryServiceAuthenticationRequest {
     fn type_string(&self) -> &'static str {
@@ -607,7 +546,6 @@ impl cfn_resources::CfnResource for DirectoryServiceAuthenticationRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -615,11 +553,9 @@ impl cfn_resources::CfnResource for DirectoryServiceAuthenticationRequest {
 /// The IAM SAML identity provider used for federated authentication.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FederatedAuthenticationRequest {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the IAM SAML identity provider.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -628,10 +564,9 @@ pub struct FederatedAuthenticationRequest {
     #[serde(rename = "SAMLProviderArn")]
     pub samlprovider_arn: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the IAM SAML identity provider for the self-service portal.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -639,10 +574,7 @@ pub struct FederatedAuthenticationRequest {
     /// Update requires: No interruption
     #[serde(rename = "SelfServiceSAMLProviderArn")]
     pub self_service_samlprovider_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FederatedAuthenticationRequest {
     fn type_string(&self) -> &'static str {
@@ -654,7 +586,6 @@ impl cfn_resources::CfnResource for FederatedAuthenticationRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -668,32 +599,26 @@ impl cfn_resources::CfnResource for FederatedAuthenticationRequest {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -705,7 +630,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -713,11 +637,9 @@ impl cfn_resources::CfnResource for Tag {
 /// The tags to apply to a resource when the resource is being created. When you specify a tag, you must     specify the resource type to tag, otherwise the request will fail.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagSpecification {
-
-
-    /// 
+    ///
     /// The type of resource to tag.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -728,10 +650,9 @@ pub struct TagSpecification {
     #[serde(rename = "ResourceType")]
     pub resource_type: TagSpecificationResourceTypeEnum,
 
-
-    /// 
+    ///
     /// The tags to apply to the resource.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Tag
@@ -739,13 +660,10 @@ pub struct TagSpecification {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Vec<Tag>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TagSpecificationResourceTypeEnum {
-
     /// capacity-reservation
     #[serde(rename = "capacity-reservation")]
     Capacityreservation,
@@ -1085,7 +1003,6 @@ pub enum TagSpecificationResourceTypeEnum {
     /// vpn-gateway
     #[serde(rename = "vpn-gateway")]
     Vpngateway,
-
 }
 
 impl Default for TagSpecificationResourceTypeEnum {
@@ -1093,7 +1010,6 @@ impl Default for TagSpecificationResourceTypeEnum {
         TagSpecificationResourceTypeEnum::Capacityreservation
     }
 }
-
 
 impl cfn_resources::CfnResource for TagSpecification {
     fn type_string(&self) -> &'static str {
@@ -1105,7 +1021,6 @@ impl cfn_resources::CfnResource for TagSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,15 +1,11 @@
-
-
 /// The AWS::Inspector::ResourceGroup resource is used to create Amazon     Inspector resource groups. A resource group defines a set of tags that, when queried,     identify the AWS resources that make up the assessment target.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceGroup {
-
-
-    /// 
+    ///
     /// The tags (key and value pairs) that will be associated with the resource     group.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Tag
@@ -19,10 +15,7 @@ pub struct CfnResourceGroup {
     /// Update requires: Replacement
     #[serde(rename = "ResourceGroupTags")]
     pub resource_group_tags: Vec<Tag>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnResourceGroup {
     fn type_string(&self) -> &'static str {
@@ -34,14 +27,15 @@ impl cfn_resources::CfnResource for CfnResourceGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.resource_group_tags;
 
         if the_val.len() > 10 as _ {
-            return Err(format!("Max validation failed on field 'resource_group_tags'. {} is greater than 10", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'resource_group_tags'. {} is greater than 10",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -55,32 +49,26 @@ impl cfn_resources::CfnResource for CfnResourceGroup {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -92,7 +80,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

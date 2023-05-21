@@ -1,15 +1,11 @@
-
-
 /// The AWS::CodePipeline::Pipeline resource creates a CodePipeline pipeline    that describes how software changes go through a release process. For more information, see     What Is      CodePipeline? in the AWS CodePipeline User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPipeline {
-
-
-    /// 
+    ///
     /// The S3 bucket where artifacts for the pipeline are stored.
-    /// 
+    ///
     /// NoteYou must include either artifactStore or           artifactStores in your pipeline, but you cannot use both. If you         create a cross-region action in your pipeline, you must use           artifactStores.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: ArtifactStore
@@ -18,12 +14,11 @@ pub struct CfnPipeline {
     #[serde(rename = "ArtifactStore")]
     pub artifact_store: Option<ArtifactStore>,
 
-
-    /// 
+    ///
     /// A mapping of artifactStore objects and their corresponding AWS       Regions. There must be an artifact store for the pipeline Region and for each       cross-region action in the pipeline.
-    /// 
+    ///
     /// NoteYou must include either artifactStore or           artifactStores in your pipeline, but you cannot use both. If you         create a cross-region action in your pipeline, you must use           artifactStores.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: List of ArtifactStoreMap
@@ -32,10 +27,9 @@ pub struct CfnPipeline {
     #[serde(rename = "ArtifactStores")]
     pub artifact_stores: Option<Vec<ArtifactStoreMap>>,
 
-
-    /// 
+    ///
     /// Represents the input of a DisableStageTransition action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of StageTransition
@@ -44,10 +38,9 @@ pub struct CfnPipeline {
     #[serde(rename = "DisableInboundStageTransitions")]
     pub disable_inbound_stage_transitions: Option<Vec<StageTransition>>,
 
-
-    /// 
+    ///
     /// The name of the pipeline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -62,10 +55,9 @@ pub struct CfnPipeline {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether to rerun the CodePipeline pipeline after you update it.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -74,10 +66,9 @@ pub struct CfnPipeline {
     #[serde(rename = "RestartExecutionOnUpdate")]
     pub restart_execution_on_update: Option<bool>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) for CodePipeline to use to either perform       actions with no actionRoleArn, or to use to assume roles for actions with       an actionRoleArn.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -90,10 +81,9 @@ pub struct CfnPipeline {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
-
-    /// 
+    ///
     /// Represents information about a stage and its definition.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of StageDeclaration
@@ -102,10 +92,9 @@ pub struct CfnPipeline {
     #[serde(rename = "Stages")]
     pub stages: Vec<StageDeclaration>,
 
-
-    /// 
+    ///
     /// Specifies the tags applied to the pipeline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -113,10 +102,7 @@ pub struct CfnPipeline {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnPipeline {
     fn type_string(&self) -> &'static str {
@@ -128,32 +114,37 @@ impl cfn_resources::CfnResource for CfnPipeline {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.artifact_store.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.artifact_store
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.role_arn;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'role_arn'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -161,11 +152,9 @@ impl cfn_resources::CfnResource for CfnPipeline {
 /// Represents information about an action declaration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ActionDeclaration {
-
-
-    /// 
+    ///
     /// Specifies the action type and the provider of the action.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ActionTypeId
@@ -174,16 +163,15 @@ pub struct ActionDeclaration {
     #[serde(rename = "ActionTypeId")]
     pub action_type_id: ActionTypeId,
 
-
-    /// 
+    ///
     /// The action's configuration. These are key-value pairs that specify input values for       an action. For more information, see Action Structure Requirements in CodePipeline. For the list of       configuration properties for the AWS CloudFormation action type in CodePipeline, see         Configuration Properties Reference in the         AWS CloudFormation User         Guide. For template snippets with examples, see Using Parameter Override Functions with CodePipeline Pipelines in the               AWS CloudFormation User Guide.
-    /// 
+    ///
     /// The values can be represented in either JSON or YAML format. For example, the JSON       configuration item format is as follows:
-    /// 
+    ///
     /// JSON:
-    /// 
+    ///
     /// "Configuration" : { Key : Value },
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -192,12 +180,11 @@ pub struct ActionDeclaration {
     #[serde(rename = "Configuration")]
     pub configuration: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// The name or ID of the artifact consumed by the action, such as a test or build    artifact. While the field is not a required parameter, most actions have an action    configuration that requires a specified quantity of input artifacts. To refer to the action    configuration specification by action provider, see the Action structure reference    in the AWS CodePipeline User Guide.
-    /// 
+    ///
     /// NoteFor a CodeBuild action with multiple input artifacts, one of your input sources must be     designated the PrimarySource. For more information, see the CodeBuild action      reference page in the AWS CodePipeline User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of InputArtifact
@@ -206,10 +193,9 @@ pub struct ActionDeclaration {
     #[serde(rename = "InputArtifacts")]
     pub input_artifacts: Option<Vec<InputArtifact>>,
 
-
-    /// 
+    ///
     /// The action declaration's name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -224,10 +210,9 @@ pub struct ActionDeclaration {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The variable namespace associated with the action. All variables produced as output by       this action fall under this namespace.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -242,10 +227,9 @@ pub struct ActionDeclaration {
     #[serde(rename = "Namespace")]
     pub namespace: Option<String>,
 
-
-    /// 
+    ///
     /// The name or ID of the result of the action declaration, such as a test or build    artifact. While the field is not a required parameter, most actions have an action    configuration that requires a specified quantity of output artifacts. To refer to the action    configuration specification by action provider, see the Action structure reference in the AWS CodePipeline User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of OutputArtifact
@@ -254,10 +238,9 @@ pub struct ActionDeclaration {
     #[serde(rename = "OutputArtifacts")]
     pub output_artifacts: Option<Vec<OutputArtifact>>,
 
-
-    /// 
+    ///
     /// The action declaration's AWS Region, such as us-east-1.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -270,10 +253,9 @@ pub struct ActionDeclaration {
     #[serde(rename = "Region")]
     pub region: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the IAM service role that performs the declared action. This is assumed       through the roleArn for the pipeline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -286,10 +268,9 @@ pub struct ActionDeclaration {
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The order in which actions are run.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -301,10 +282,7 @@ pub struct ActionDeclaration {
     /// Update requires: No interruption
     #[serde(rename = "RunOrder")]
     pub run_order: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ActionDeclaration {
     fn type_string(&self) -> &'static str {
@@ -316,79 +294,89 @@ impl cfn_resources::CfnResource for ActionDeclaration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.action_type_id.validate()?;
 
         let the_val = &self.name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.namespace {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'namespace'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'namespace'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.namespace {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'namespace'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'namespace'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.region {
-
-        if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'region'. {} is greater than 30", the_val.len()));
+            if the_val.len() > 30 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'region'. {} is greater than 30",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.region {
-
-        if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'region'. {} is less than 4", the_val.len()));
+            if the_val.len() < 4 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'region'. {} is less than 4",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.role_arn {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 1024", the_val.len()));
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.run_order {
-
-        if *the_val > 999 as _ {
-            return Err(format!("Max validation failed on field 'run_order'. {} is greater than 999", the_val));
+            if *the_val > 999 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'run_order'. {} is greater than 999",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.run_order {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'run_order'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'run_order'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -396,13 +384,11 @@ impl cfn_resources::CfnResource for ActionDeclaration {
 /// Represents information about an action type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ActionTypeId {
-
-
-    /// 
+    ///
     /// A category defines what kind of action can be taken in the stage, and constrains the    provider type for the action. Valid categories are limited to one of the values    below.
-    /// 
+    ///
     /// Source        Build        Test        Deploy        Invoke        Approval
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -411,10 +397,9 @@ pub struct ActionTypeId {
     #[serde(rename = "Category")]
     pub category: String,
 
-
-    /// 
+    ///
     /// The creator of the action being called. There are three valid values for the         Owner field in the action category section within your pipeline       structure: AWS, ThirdParty, and Custom. For more       information, see Valid Action Types and Providers in CodePipeline.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -423,10 +408,9 @@ pub struct ActionTypeId {
     #[serde(rename = "Owner")]
     pub owner: String,
 
-
-    /// 
+    ///
     /// The provider of the service being called by the action. Valid providers are       determined by the action category. For example, an action in the Deploy category type       might have a provider of CodeDeploy, which would be specified as CodeDeploy. For       more information, see Valid Action Types and Providers in CodePipeline.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -435,10 +419,9 @@ pub struct ActionTypeId {
     #[serde(rename = "Provider")]
     pub provider: String,
 
-
-    /// 
+    ///
     /// A string that describes the action version.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -446,10 +429,7 @@ pub struct ActionTypeId {
     /// Update requires: No interruption
     #[serde(rename = "Version")]
     pub version: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ActionTypeId {
     fn type_string(&self) -> &'static str {
@@ -461,7 +441,6 @@ impl cfn_resources::CfnResource for ActionTypeId {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -469,11 +448,9 @@ impl cfn_resources::CfnResource for ActionTypeId {
 /// The S3 bucket where artifacts for the pipeline are stored.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ArtifactStore {
-
-
-    /// 
+    ///
     /// The encryption key used to encrypt the data in the artifact store, such as an AWS Key    Management Service (AWS KMS) key. If this is undefined, the default key for Amazon S3 is used.    To see an example artifact store encryption key field, see the example structure here: AWS::CodePipeline::Pipeline.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EncryptionKey
@@ -482,10 +459,9 @@ pub struct ArtifactStore {
     #[serde(rename = "EncryptionKey")]
     pub encryption_key: Option<EncryptionKey>,
 
-
-    /// 
+    ///
     /// The S3 bucket used for storing the artifacts for a pipeline. You can specify the       name of an S3 bucket but not a folder in the bucket. A folder to contain the pipeline       artifacts is created for you based on the name of the pipeline. You can use any S3       bucket in the same AWS Region as the pipeline to store your pipeline       artifacts.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -500,10 +476,9 @@ pub struct ArtifactStore {
     #[serde(rename = "Location")]
     pub location: String,
 
-
-    /// 
+    ///
     /// The type of the artifact store, such as S3.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -513,17 +488,13 @@ pub struct ArtifactStore {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: ArtifactStoreTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ArtifactStoreTypeEnum {
-
     /// S3
     #[serde(rename = "S3")]
     S3,
-
 }
 
 impl Default for ArtifactStoreTypeEnum {
@@ -531,7 +502,6 @@ impl Default for ArtifactStoreTypeEnum {
         ArtifactStoreTypeEnum::S3
     }
 }
-
 
 impl cfn_resources::CfnResource for ArtifactStore {
     fn type_string(&self) -> &'static str {
@@ -543,23 +513,28 @@ impl cfn_resources::CfnResource for ArtifactStore {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.encryption_key.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.encryption_key
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.location;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'location'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'location'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.location;
 
         if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'location'. {} is less than 3", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'location'. {} is less than 3",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -567,13 +542,11 @@ impl cfn_resources::CfnResource for ArtifactStore {
 /// A mapping of artifactStore objects and their corresponding AWS       Regions. There must be an artifact store for the pipeline Region and for each       cross-region action in the pipeline.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ArtifactStoreMap {
-
-
-    /// 
+    ///
     /// Represents information about the S3 bucket where artifacts are stored for the       pipeline.
-    /// 
+    ///
     /// NoteYou must include either artifactStore or           artifactStores in your pipeline, but you cannot use both. If you         create a cross-region action in your pipeline, you must use           artifactStores.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: ArtifactStore
@@ -582,10 +555,9 @@ pub struct ArtifactStoreMap {
     #[serde(rename = "ArtifactStore")]
     pub artifact_store: ArtifactStore,
 
-
-    /// 
+    ///
     /// The action declaration's AWS Region, such as us-east-1.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -597,10 +569,7 @@ pub struct ArtifactStoreMap {
     /// Update requires: No interruption
     #[serde(rename = "Region")]
     pub region: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ArtifactStoreMap {
     fn type_string(&self) -> &'static str {
@@ -612,23 +581,26 @@ impl cfn_resources::CfnResource for ArtifactStoreMap {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.artifact_store.validate()?;
 
         let the_val = &self.region;
 
         if the_val.len() > 30 as _ {
-            return Err(format!("Max validation failed on field 'region'. {} is greater than 30", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'region'. {} is greater than 30",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.region;
 
         if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'region'. {} is less than 4", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'region'. {} is less than 4",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -636,11 +608,9 @@ impl cfn_resources::CfnResource for ArtifactStoreMap {
 /// Reserved for future use.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BlockerDeclaration {
-
-
-    /// 
+    ///
     /// Reserved for future use.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -653,10 +623,9 @@ pub struct BlockerDeclaration {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Reserved for future use.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -666,17 +635,13 @@ pub struct BlockerDeclaration {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: BlockerDeclarationTypeEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum BlockerDeclarationTypeEnum {
-
     /// Schedule
     #[serde(rename = "Schedule")]
     Schedule,
-
 }
 
 impl Default for BlockerDeclarationTypeEnum {
@@ -684,7 +649,6 @@ impl Default for BlockerDeclarationTypeEnum {
         BlockerDeclarationTypeEnum::Schedule
     }
 }
-
 
 impl cfn_resources::CfnResource for BlockerDeclaration {
     fn type_string(&self) -> &'static str {
@@ -696,21 +660,24 @@ impl cfn_resources::CfnResource for BlockerDeclaration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -720,13 +687,11 @@ impl cfn_resources::CfnResource for BlockerDeclaration {
 /// EncryptionKey is a property of the ArtifactStore property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EncryptionKey {
-
-
-    /// 
+    ///
     /// The ID used to identify the key. For an AWS KMS key, you can use the key ID, the       key ARN, or the alias ARN.
-    /// 
+    ///
     /// NoteAliases are recognized only in the account that created the AWS KMS         key. For cross-account actions, you can only use the key ID or key ARN to identify         the key. Cross-account actions involve using the role from the other account         (AccountB), so specifying the key ID will use the key from the other account         (AccountB).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -735,10 +700,9 @@ pub struct EncryptionKey {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// The type of encryption key, such as an AWS KMS key. When creating or       updating a pipeline, the value must be set to 'KMS'.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -746,10 +710,7 @@ pub struct EncryptionKey {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EncryptionKey {
     fn type_string(&self) -> &'static str {
@@ -761,7 +722,6 @@ impl cfn_resources::CfnResource for EncryptionKey {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -769,15 +729,13 @@ impl cfn_resources::CfnResource for EncryptionKey {
 /// Represents information about an artifact to be worked on, such as a test or build       artifact.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InputArtifact {
-
-
-    /// 
+    ///
     /// The name of the artifact to be worked on (for example, "My App").
-    /// 
+    ///
     /// Artifacts are the files that are worked on by actions in the pipeline. See the       action configuration for each action for details about artifact parameters. For example,       the S3 source action input artifact is a file name (or file path), and the files are       generally provided as a ZIP file. Example artifact name: SampleApp_Windows.zip
-    /// 
+    ///
     /// The input artifact of an action must exactly match the output artifact declared in       a preceding action, but the input artifact does not have to be the next action in strict       sequence from the action that provided the output artifact. Actions in parallel can       declare different output artifacts, which are in turn consumed by different following       actions.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -791,10 +749,7 @@ pub struct InputArtifact {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InputArtifact {
     fn type_string(&self) -> &'static str {
@@ -806,21 +761,24 @@ impl cfn_resources::CfnResource for InputArtifact {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -828,15 +786,13 @@ impl cfn_resources::CfnResource for InputArtifact {
 /// Represents information about the output of an action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OutputArtifact {
-
-
-    /// 
+    ///
     /// The name of the output of an artifact, such as "My App".
-    /// 
+    ///
     /// The output artifact name must exactly match the input artifact declared for a    downstream action. However, the downstream action's input artifact does not have to be the    next action in strict sequence from the action that provided the output artifact. Actions in    parallel can declare different output artifacts, which are in turn consumed by different    following actions.
-    /// 
+    ///
     /// Output artifact names must be unique within a pipeline.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -850,10 +806,7 @@ pub struct OutputArtifact {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for OutputArtifact {
     fn type_string(&self) -> &'static str {
@@ -865,21 +818,24 @@ impl cfn_resources::CfnResource for OutputArtifact {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -887,11 +843,9 @@ impl cfn_resources::CfnResource for OutputArtifact {
 /// Represents information about a stage and its definition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StageDeclaration {
-
-
-    /// 
+    ///
     /// The actions included in a stage.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of ActionDeclaration
@@ -900,10 +854,9 @@ pub struct StageDeclaration {
     #[serde(rename = "Actions")]
     pub actions: Vec<ActionDeclaration>,
 
-
-    /// 
+    ///
     /// Reserved for future use.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of BlockerDeclaration
@@ -912,10 +865,9 @@ pub struct StageDeclaration {
     #[serde(rename = "Blockers")]
     pub blockers: Option<Vec<BlockerDeclaration>>,
 
-
-    /// 
+    ///
     /// The name of the stage.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -929,10 +881,7 @@ pub struct StageDeclaration {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for StageDeclaration {
     fn type_string(&self) -> &'static str {
@@ -944,21 +893,24 @@ impl cfn_resources::CfnResource for StageDeclaration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -966,11 +918,9 @@ impl cfn_resources::CfnResource for StageDeclaration {
 /// The name of the pipeline in which you want to disable the flow of artifacts from       one stage to another.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StageTransition {
-
-
-    /// 
+    ///
     /// The reason given to the user that a stage is disabled, such as waiting for manual       approval or manual tests. This message is displayed in the pipeline console       UI.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -985,10 +935,9 @@ pub struct StageTransition {
     #[serde(rename = "Reason")]
     pub reason: String,
 
-
-    /// 
+    ///
     /// The name of the stage where you want to disable the inbound or outbound transition       of artifacts.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -1002,10 +951,7 @@ pub struct StageTransition {
     /// Update requires: No interruption
     #[serde(rename = "StageName")]
     pub stage_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for StageTransition {
     fn type_string(&self) -> &'static str {
@@ -1017,35 +963,42 @@ impl cfn_resources::CfnResource for StageTransition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.reason;
 
         if the_val.len() > 300 as _ {
-            return Err(format!("Max validation failed on field 'reason'. {} is greater than 300", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'reason'. {} is greater than 300",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.reason;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'reason'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'reason'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.stage_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'stage_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'stage_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.stage_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'stage_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'stage_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -1059,32 +1012,26 @@ impl cfn_resources::CfnResource for StageTransition {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -1096,7 +1043,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

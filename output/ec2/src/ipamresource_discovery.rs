@@ -1,13 +1,9 @@
-
-
 /// A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnIPAMResourceDiscovery {
-
-
-    /// 
+    ///
     /// The resource discovery description.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnIPAMResourceDiscovery {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The operating Regions for the resource discovery. Operating Regions are AWS Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the AWS Regions you select as operating Regions.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of IpamOperatingRegion
@@ -28,10 +23,9 @@ pub struct CfnIPAMResourceDiscovery {
     #[serde(rename = "OperatingRegions")]
     pub operating_regions: Option<Vec<IpamOperatingRegion>>,
 
-
-    /// 
+    ///
     /// A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your AWS costs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -39,10 +33,7 @@ pub struct CfnIPAMResourceDiscovery {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnIPAMResourceDiscovery {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnIPAMResourceDiscovery {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -64,11 +54,9 @@ impl cfn_resources::CfnResource for CfnIPAMResourceDiscovery {
 /// For more information about operating Regions, see Create an IPAM in the Amazon VPC IPAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IpamOperatingRegion {
-
-
-    /// 
+    ///
     /// The name of the operating Region.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -76,10 +64,7 @@ pub struct IpamOperatingRegion {
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
     pub region_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for IpamOperatingRegion {
     fn type_string(&self) -> &'static str {
@@ -91,7 +76,6 @@ impl cfn_resources::CfnResource for IpamOperatingRegion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -105,32 +89,26 @@ impl cfn_resources::CfnResource for IpamOperatingRegion {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -142,7 +120,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

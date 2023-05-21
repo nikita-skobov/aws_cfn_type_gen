@@ -1,13 +1,9 @@
-
-
 /// Use the AWS::IoT::CustomMetric resource to define a custom metric published by your devices to Device Defender. For API reference, see CreateCustomMetric and for general information, see Custom metrics.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCustomMetric {
-
-
-    /// 
+    ///
     /// The friendly name in the console for the custom metric. This name doesn't have to be unique. Don't use this name as the metric identifier in the device metric report. You can update the friendly name after you define it.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnCustomMetric {
     #[serde(rename = "DisplayName")]
     pub display_name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the custom metric. This will be used in the metric report submitted from     the device/thing. The name can't begin with aws:. You can’t change the name after you define it.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,12 +23,11 @@ pub struct CfnCustomMetric {
     #[serde(rename = "MetricName")]
     pub metric_name: Option<String>,
 
-
-    /// 
+    ///
     /// The type of the custom metric. Types include string-list,     ip-address-list, number-list, and number.
-    /// 
+    ///
     /// ImportantThe type number only takes a single metric value as an input, but when you submit the metrics value in the DeviceMetrics report, you must pass it as an array with a single value.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -42,10 +36,9 @@ pub struct CfnCustomMetric {
     #[serde(rename = "MetricType")]
     pub metric_type: String,
 
-
-    /// 
+    ///
     /// Metadata that can be used to manage the custom metric.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -53,10 +46,7 @@ pub struct CfnCustomMetric {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCustomMetric {
     fn type_string(&self) -> &'static str {
@@ -68,7 +58,6 @@ impl cfn_resources::CfnResource for CfnCustomMetric {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -82,32 +71,26 @@ impl cfn_resources::CfnResource for CfnCustomMetric {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -119,7 +102,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

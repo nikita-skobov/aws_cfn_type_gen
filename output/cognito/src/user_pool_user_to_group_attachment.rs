@@ -1,15 +1,11 @@
-
-
 /// Adds the specified user to the specified group.
 ///
 /// Calling this action requires developer credentials.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserPoolUserToGroupAttachment {
-
-
-    /// 
+    ///
     /// The group name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnUserPoolUserToGroupAttachment {
     #[serde(rename = "GroupName")]
     pub group_name: String,
 
-
-    /// 
+    ///
     /// The user pool ID for the user pool.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -42,10 +37,9 @@ pub struct CfnUserPoolUserToGroupAttachment {
     #[serde(rename = "UserPoolId")]
     pub user_pool_id: String,
 
-
-    /// 
+    ///
     /// The username for the user.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -59,10 +53,7 @@ pub struct CfnUserPoolUserToGroupAttachment {
     /// Update requires: Replacement
     #[serde(rename = "Username")]
     pub username: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnUserPoolUserToGroupAttachment {
     fn type_string(&self) -> &'static str {
@@ -74,49 +65,60 @@ impl cfn_resources::CfnResource for CfnUserPoolUserToGroupAttachment {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.group_name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'group_name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'group_name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.group_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'group_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'group_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_pool_id;
 
         if the_val.len() > 55 as _ {
-            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_pool_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.username;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'username'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'username'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.username;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'username'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'username'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

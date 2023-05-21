@@ -1,15 +1,11 @@
-
-
 /// Creates a profile, a list of the roles that Roles Anywhere service is trusted to assume. You use profiles to intersect permissions with IAM managed policies.
 ///
 /// Required permissions: rolesanywhere:CreateProfile.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProfile {
-
-
-    /// 
+    ///
     /// Sets the maximum number of seconds that vended temporary credentials through CreateSession will be valid for, between 900 and 3600.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -18,10 +14,9 @@ pub struct CfnProfile {
     #[serde(rename = "DurationSeconds")]
     pub duration_seconds: Option<f64>,
 
-
-    /// 
+    ///
     /// Indicates whether the profile is enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -30,10 +25,9 @@ pub struct CfnProfile {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// A list of managed policy ARNs that apply to the vended session credentials.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -44,10 +38,9 @@ pub struct CfnProfile {
     #[serde(rename = "ManagedPolicyArns")]
     pub managed_policy_arns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The name of the profile.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -62,10 +55,9 @@ pub struct CfnProfile {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Specifies whether instance properties are required in temporary credential requests with this profile.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -74,10 +66,9 @@ pub struct CfnProfile {
     #[serde(rename = "RequireInstanceProperties")]
     pub require_instance_properties: Option<bool>,
 
-
-    /// 
+    ///
     /// A list of IAM role ARNs. During CreateSession, if a matching role ARN is provided, the properties in this profile will be applied to the intersection session policy.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -88,10 +79,9 @@ pub struct CfnProfile {
     #[serde(rename = "RoleArns")]
     pub role_arns: Vec<String>,
 
-
-    /// 
+    ///
     /// A session policy that applies to the trust boundary of the vended session credentials.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -100,10 +90,9 @@ pub struct CfnProfile {
     #[serde(rename = "SessionPolicy")]
     pub session_policy: Option<String>,
 
-
-    /// 
+    ///
     /// The tags to attach to the profile.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -113,10 +102,7 @@ pub struct CfnProfile {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnProfile {
     fn type_string(&self) -> &'static str {
@@ -128,44 +114,51 @@ impl cfn_resources::CfnResource for CfnProfile {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.managed_policy_arns {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'managed_policy_arns'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'managed_policy_arns'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.role_arns;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'role_arns'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'role_arns'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -179,32 +172,26 @@ impl cfn_resources::CfnResource for CfnProfile {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -216,7 +203,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

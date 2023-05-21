@@ -1,5 +1,3 @@
-
-
 /// Provisions the specified product.
 ///
 /// A provisioned product is a resourced instance of a product. For example, provisioning     a product based on a AWS CloudFormation template launches a AWS CloudFormation stack and its     underlying resources. You can check the status of this request using DescribeRecord.
@@ -7,13 +5,11 @@
 /// If the request contains a tag key with an empty list of values, there is a tag     conflict for that key. Do not include conflicted keys as tags, or this causes the error     "Parameter validation failed: Missing required parameter in       Tags[N]:Value".
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCloudFormationProvisionedProduct {
-
-
-    /// 
+    ///
     /// The language code.
-    /// 
+    ///
     /// jp - Japanese                        zh - Chinese
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "AcceptLanguage")]
     pub accept_language: Option<String>,
 
-
-    /// 
+    ///
     /// Passed to AWS CloudFormation. The SNS topic ARNs to which to publish stack-related     events.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -38,12 +33,11 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "NotificationArns")]
     pub notification_arns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The path identifier of the product. This value is optional if the product has a     default path, and required if the product has more than one path. To list the paths for a     product, use ListLaunchPaths.
-    /// 
+    ///
     /// NoteYou must provide the name or ID, but not both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -58,12 +52,11 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "PathId")]
     pub path_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the path. This value is optional if the product has a     default path, and required if the product has more than one path. To list the paths for a     product, use ListLaunchPaths.
-    /// 
+    ///
     /// NoteYou must provide the name or ID, but not both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -76,12 +69,11 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "PathName")]
     pub path_name: Option<String>,
 
-
-    /// 
+    ///
     /// The product identifier.
-    /// 
+    ///
     /// NoteYou must specify either the ID or the name of the product,        but not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -96,14 +88,13 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "ProductId")]
     pub product_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the Service Catalog product.
-    /// 
+    ///
     /// Each time a stack is created or updated, if ProductName is provided it will     successfully resolve to ProductId as long as only one product exists in the     account or Region with that ProductName.
-    /// 
+    ///
     /// NoteYou must specify either       the name or the ID of the product, but not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -118,10 +109,9 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "ProductName")]
     pub product_name: Option<String>,
 
-
-    /// 
+    ///
     /// A user-friendly name for the provisioned product. This value must be     unique for the AWS account and cannot be updated after the product is provisioned.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -136,12 +126,11 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "ProvisionedProductName")]
     pub provisioned_product_name: Option<String>,
 
-
-    /// 
+    ///
     /// The identifier of the provisioning artifact (also known as a version).
-    /// 
+    ///
     /// NoteYou must specify either the ID or the name of the provisioning artifact, but not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -156,12 +145,11 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "ProvisioningArtifactId")]
     pub provisioning_artifact_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the provisioning artifact (also known as a version) for the product. This     name must be unique for the product.
-    /// 
+    ///
     /// Note You must specify either the name or the ID of the provisioning artifact, but not both. You must also specify either the name or the ID of the product, but not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -172,10 +160,9 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "ProvisioningArtifactName")]
     pub provisioning_artifact_name: Option<String>,
 
-
-    /// 
+    ///
     /// Parameters specified by the administrator that are required for provisioning the     product.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ProvisioningParameter
@@ -184,10 +171,9 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "ProvisioningParameters")]
     pub provisioning_parameters: Option<Vec<ProvisioningParameter>>,
 
-
-    /// 
+    ///
     /// StackSet preferences that are required for provisioning the product or updating a provisioned product.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ProvisioningPreferences
@@ -196,12 +182,11 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "ProvisioningPreferences")]
     pub provisioning_preferences: Option<ProvisioningPreferences>,
 
-
-    /// 
+    ///
     /// One or more tags.
-    /// 
+    ///
     /// NoteRequires the provisioned product to have an ResourceUpdateConstraint resource with       TagUpdatesOnProvisionedProduct set to ALLOWED to allow tag       updates. If RESOURCE_UPDATE constraint is not present, tags updates are ignored.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -211,10 +196,7 @@ pub struct CfnCloudFormationProvisionedProduct {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCloudFormationProvisionedProduct {
     fn type_string(&self) -> &'static str {
@@ -226,137 +208,145 @@ impl cfn_resources::CfnResource for CfnCloudFormationProvisionedProduct {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.accept_language {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'accept_language'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'accept_language'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.notification_arns {
-
-        if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'notification_arns'. {} is greater than 5", the_val.len()));
+            if the_val.len() > 5 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'notification_arns'. {} is greater than 5",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.path_id {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'path_id'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'path_id'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.path_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'path_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'path_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.path_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'path_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'path_name'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.path_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'path_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'path_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.product_id {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'product_id'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'product_id'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.product_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'product_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'product_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.product_name {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'product_name'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'product_name'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.product_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'product_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'product_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.provisioned_product_name {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'provisioned_product_name'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!("Max validation failed on field 'provisioned_product_name'. {} is greater than 128", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.provisioned_product_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'provisioned_product_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'provisioned_product_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.provisioning_artifact_id {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'provisioning_artifact_id'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'provisioning_artifact_id'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.provisioning_artifact_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'provisioning_artifact_id'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'provisioning_artifact_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.provisioning_artifact_name {
-
-        if the_val.len() > 8192 as _ {
-            return Err(format!("Max validation failed on field 'provisioning_artifact_name'. {} is greater than 8192", the_val.len()));
+            if the_val.len() > 8192 as _ {
+                return Err(format!("Max validation failed on field 'provisioning_artifact_name'. {} is greater than 8192", the_val.len()));
+            }
         }
 
-        }
-        
-        self.provisioning_preferences.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.provisioning_preferences
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -364,11 +354,9 @@ impl cfn_resources::CfnResource for CfnCloudFormationProvisionedProduct {
 /// Information about a parameter used to provision a product.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisioningParameter {
-
-
-    /// 
+    ///
     /// The parameter key.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -381,10 +369,9 @@ pub struct ProvisioningParameter {
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The parameter value.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -394,10 +381,7 @@ pub struct ProvisioningParameter {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ProvisioningParameter {
     fn type_string(&self) -> &'static str {
@@ -409,28 +393,33 @@ impl cfn_resources::CfnResource for ProvisioningParameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.key;
 
         if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'key'. {} is greater than 1000", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'key'. {} is greater than 1000",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.key;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'key'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.value;
 
         if the_val.len() > 4096 as _ {
-            return Err(format!("Max validation failed on field 'value'. {} is greater than 4096", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'value'. {} is greater than 4096",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -446,17 +435,15 @@ impl cfn_resources::CfnResource for ProvisioningParameter {
 /// If no values are specified, the default value is all accounts from the       STACKSET constraint.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisioningPreferences {
-
-
-    /// 
+    ///
     /// One or more AWS accounts where the provisioned product will be available.
-    /// 
+    ///
     /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
+    ///
     /// The specified accounts should be within the list of accounts from the STACKSET constraint. To get the list of accounts in the STACKSET constraint, use the DescribeProvisioningParameters operation.
-    /// 
+    ///
     /// If no values are specified, the default value is all acounts from the STACKSET constraint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -465,16 +452,15 @@ pub struct ProvisioningPreferences {
     #[serde(rename = "StackSetAccounts")]
     pub stack_set_accounts: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The number of accounts, per Region, for which this operation can fail before AWS Service Catalog stops the operation in that Region. If the operation is stopped in a Region, AWS Service Catalog doesn't attempt the operation in any subsequent Regions.
-    /// 
+    ///
     /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
+    ///
     /// Conditional: You must specify either StackSetFailureToleranceCount or StackSetFailureTolerancePercentage, but not both.
-    /// 
+    ///
     /// The default value is 0 if no value is specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -485,16 +471,15 @@ pub struct ProvisioningPreferences {
     #[serde(rename = "StackSetFailureToleranceCount")]
     pub stack_set_failure_tolerance_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The percentage of accounts, per Region, for which this stack operation can fail before AWS Service Catalog stops the operation in that Region. If the operation is stopped in a Region, AWS Service Catalog doesn't attempt the operation in any subsequent Regions.
-    /// 
+    ///
     /// When calculating the number of accounts based on the specified percentage, AWS Service Catalog rounds down to the next whole number.
-    /// 
+    ///
     /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
+    ///
     /// Conditional: You must specify either StackSetFailureToleranceCount or StackSetFailureTolerancePercentage, but not both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -507,16 +492,15 @@ pub struct ProvisioningPreferences {
     #[serde(rename = "StackSetFailureTolerancePercentage")]
     pub stack_set_failure_tolerance_percentage: Option<i64>,
 
-
-    /// 
+    ///
     /// The maximum number of accounts in which to perform this operation at one time. This is dependent on the value of StackSetFailureToleranceCount. StackSetMaxConcurrentCount is at most one more than the StackSetFailureToleranceCount.
-    /// 
+    ///
     /// Note that this setting lets you specify the maximum for operations. For large deployments, under certain circumstances the actual number of accounts acted upon concurrently may be lower due to service throttling.
-    /// 
+    ///
     /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
+    ///
     /// Conditional: You must specify either StackSetMaxConcurrentCount or StackSetMaxConcurrentPercentage, but not both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -527,18 +511,17 @@ pub struct ProvisioningPreferences {
     #[serde(rename = "StackSetMaxConcurrencyCount")]
     pub stack_set_max_concurrency_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The maximum percentage of accounts in which to perform this operation at one time.
-    /// 
+    ///
     /// When calculating the number of accounts based on the specified percentage, AWS Service Catalog rounds down to the next whole number. This is true except in cases where rounding down would result is zero. In this case, AWS Service Catalog sets the number as 1 instead.
-    /// 
+    ///
     /// Note that this setting lets you specify the maximum for operations. For large deployments, under certain circumstances the actual number of accounts acted upon concurrently may be lower due to service throttling.
-    /// 
+    ///
     /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
+    ///
     /// Conditional: You must specify either StackSetMaxConcurrentCount or StackSetMaxConcurrentPercentage, but not both.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -551,14 +534,13 @@ pub struct ProvisioningPreferences {
     #[serde(rename = "StackSetMaxConcurrencyPercentage")]
     pub stack_set_max_concurrency_percentage: Option<i64>,
 
-
-    /// 
+    ///
     /// Determines what action AWS Service Catalog performs to a stack set or a stack instance represented by the provisioned product. The default value is UPDATE if nothing is specified.
-    /// 
+    ///
     /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
+    ///
     /// CREATE                  Creates a new stack instance in the stack set represented by the provisioned product. In this case, only new stack instances are created based on accounts and Regions; if new ProductId or ProvisioningArtifactID are passed, they will be ignored.                       UPDATE                  Updates the stack set represented by the provisioned product and also its stack instances.                       DELETE                  Deletes a stack instance in the stack set represented by the provisioned product.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -569,16 +551,15 @@ pub struct ProvisioningPreferences {
     #[serde(rename = "StackSetOperationType")]
     pub stack_set_operation_type: Option<ProvisioningPreferencesStackSetOperationTypeEnum>,
 
-
-    /// 
+    ///
     /// One or more AWS Regions where the provisioned product will be available.
-    /// 
+    ///
     /// Applicable only to a CFN_STACKSET provisioned product type.
-    /// 
+    ///
     /// The specified Regions should be within the list of Regions from the STACKSET constraint. To get the list of Regions in the STACKSET constraint, use the DescribeProvisioningParameters operation.
-    /// 
+    ///
     /// If no values are specified, the default value is all Regions from the STACKSET constraint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -586,13 +567,10 @@ pub struct ProvisioningPreferences {
     /// Update requires: No interruption
     #[serde(rename = "StackSetRegions")]
     pub stack_set_regions: Option<Vec<String>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ProvisioningPreferencesStackSetOperationTypeEnum {
-
     /// CREATE
     #[serde(rename = "CREATE")]
     Create,
@@ -604,7 +582,6 @@ pub enum ProvisioningPreferencesStackSetOperationTypeEnum {
     /// UPDATE
     #[serde(rename = "UPDATE")]
     Update,
-
 }
 
 impl Default for ProvisioningPreferencesStackSetOperationTypeEnum {
@@ -612,7 +589,6 @@ impl Default for ProvisioningPreferencesStackSetOperationTypeEnum {
         ProvisioningPreferencesStackSetOperationTypeEnum::Create
     }
 }
-
 
 impl cfn_resources::CfnResource for ProvisioningPreferences {
     fn type_string(&self) -> &'static str {
@@ -624,55 +600,42 @@ impl cfn_resources::CfnResource for ProvisioningPreferences {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.stack_set_failure_tolerance_count {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'stack_set_failure_tolerance_count'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!("Min validation failed on field 'stack_set_failure_tolerance_count'. {} is less than 0", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.stack_set_failure_tolerance_percentage {
-
-        if *the_val > 100 as _ {
-            return Err(format!("Max validation failed on field 'stack_set_failure_tolerance_percentage'. {} is greater than 100", the_val));
+            if *the_val > 100 as _ {
+                return Err(format!("Max validation failed on field 'stack_set_failure_tolerance_percentage'. {} is greater than 100", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.stack_set_failure_tolerance_percentage {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'stack_set_failure_tolerance_percentage'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!("Min validation failed on field 'stack_set_failure_tolerance_percentage'. {} is less than 0", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.stack_set_max_concurrency_count {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'stack_set_max_concurrency_count'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!("Min validation failed on field 'stack_set_max_concurrency_count'. {} is less than 1", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.stack_set_max_concurrency_percentage {
-
-        if *the_val > 100 as _ {
-            return Err(format!("Max validation failed on field 'stack_set_max_concurrency_percentage'. {} is greater than 100", the_val));
+            if *the_val > 100 as _ {
+                return Err(format!("Max validation failed on field 'stack_set_max_concurrency_percentage'. {} is greater than 100", the_val));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.stack_set_max_concurrency_percentage {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'stack_set_max_concurrency_percentage'. {} is less than 1", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!("Min validation failed on field 'stack_set_max_concurrency_percentage'. {} is less than 1", the_val));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -686,32 +649,26 @@ impl cfn_resources::CfnResource for ProvisioningPreferences {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -723,7 +680,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,5 +1,3 @@
-
-
 /// Specifies a delivery channel object to deliver configuration 			information to an Amazon S3 bucket and Amazon SNS topic.
 ///
 /// Before you can create a delivery channel, you must create a 			configuration recorder. You can use this action to change the Amazon S3 bucket or an 			Amazon SNS topic of the existing delivery channel. To change the 			Amazon S3 bucket or an Amazon SNS topic, call this action and 			specify the changed values for the S3 bucket and the SNS topic. If 			you specify a different value for either the S3 bucket or the SNS 			topic, this action will keep the existing value for the parameter 			that is not changed.
@@ -11,11 +9,9 @@
 /// For more information, see Managing the Delivery Channel in the AWS Config Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDeliveryChannel {
-
-
-    /// 
+    ///
     /// The options for how often AWS Config delivers configuration 			snapshots to the Amazon S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConfigSnapshotDeliveryProperties
@@ -24,12 +20,11 @@ pub struct CfnDeliveryChannel {
     #[serde(rename = "ConfigSnapshotDeliveryProperties")]
     pub config_snapshot_delivery_properties: Option<ConfigSnapshotDeliveryProperties>,
 
-
-    /// 
+    ///
     /// A name for the delivery channel. If you don't specify a name, AWS CloudFormation generates a       unique physical ID and uses that ID for the delivery channel name. For more information,       see Name Type.
-    /// 
+    ///
     /// Updates are not supported. To change the name, you must run two separate updates. In the first update, delete this resource, and then recreate it with a new name in the second update.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -42,12 +37,11 @@ pub struct CfnDeliveryChannel {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the Amazon S3 bucket to which AWS Config delivers 			configuration snapshots and configuration history files.
-    /// 
+    ///
     /// If you specify a bucket that belongs to another AWS account, 			that bucket must have policies that grant access permissions to AWS Config. For more information, see Permissions for the Amazon S3 Bucket in the         AWS Config 			Developer Guide.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -56,10 +50,9 @@ pub struct CfnDeliveryChannel {
     #[serde(rename = "S3BucketName")]
     pub s3_bucket_name: String,
 
-
-    /// 
+    ///
     /// The prefix for the specified Amazon S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -68,10 +61,9 @@ pub struct CfnDeliveryChannel {
     #[serde(rename = "S3KeyPrefix")]
     pub s3_key_prefix: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS ) AWS KMS key (KMS key) used to encrypt objects delivered by AWS Config. 			Must belong to the same Region as the destination S3 bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -80,12 +72,11 @@ pub struct CfnDeliveryChannel {
     #[serde(rename = "S3KmsKeyArn")]
     pub s3_kms_key_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the Amazon SNS topic to which 			AWS Config sends notifications about configuration 			changes.
-    /// 
+    ///
     /// If you choose a topic from another account, the topic must have 			policies that grant access permissions to AWS Config. For more 			information, see Permissions for the Amazon SNS Topic in the         AWS Config 			Developer Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -93,10 +84,7 @@ pub struct CfnDeliveryChannel {
     /// Update requires: No interruption
     #[serde(rename = "SnsTopicARN")]
     pub sns_topic_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDeliveryChannel {
     fn type_string(&self) -> &'static str {
@@ -108,25 +96,28 @@ impl cfn_resources::CfnResource for CfnDeliveryChannel {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.config_snapshot_delivery_properties.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.config_snapshot_delivery_properties
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -142,11 +133,9 @@ impl cfn_resources::CfnResource for CfnDeliveryChannel {
 /// To update the deliveryFrequency with which AWS Config delivers your configuration snapshots, use the PutDeliveryChannel action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConfigSnapshotDeliveryProperties {
-
-
-    /// 
+    ///
     /// The frequency with which AWS Config delivers configuration 			snapshots.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -156,13 +145,10 @@ pub struct ConfigSnapshotDeliveryProperties {
     /// Update requires: No interruption
     #[serde(rename = "DeliveryFrequency")]
     pub delivery_frequency: Option<ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum {
-
     /// One_Hour
     #[serde(rename = "One_Hour")]
     Onehour,
@@ -182,7 +168,6 @@ pub enum ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum {
     /// TwentyFour_Hours
     #[serde(rename = "TwentyFour_Hours")]
     Twentyfourhours,
-
 }
 
 impl Default for ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum {
@@ -190,7 +175,6 @@ impl Default for ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum {
         ConfigSnapshotDeliveryPropertiesDeliveryFrequencyEnum::Onehour
     }
 }
-
 
 impl cfn_resources::CfnResource for ConfigSnapshotDeliveryProperties {
     fn type_string(&self) -> &'static str {
@@ -202,7 +186,6 @@ impl cfn_resources::CfnResource for ConfigSnapshotDeliveryProperties {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

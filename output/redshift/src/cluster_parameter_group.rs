@@ -1,13 +1,9 @@
-
-
 /// Describes a parameter group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnClusterParameterGroup {
-
-
-    /// 
+    ///
     /// The description of the parameter group.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnClusterParameterGroup {
     #[serde(rename = "Description")]
     pub description: String,
 
-
-    /// 
+    ///
     /// The name of the cluster parameter group family that this cluster parameter group is       compatible with. You can create a custom parameter group and then associate your cluster with it. For more information, see        Amazon Redshift parameter groups.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -32,10 +27,9 @@ pub struct CfnClusterParameterGroup {
     #[serde(rename = "ParameterGroupFamily")]
     pub parameter_group_family: String,
 
-
-    /// 
+    ///
     /// The name of the cluster parameter group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -46,14 +40,13 @@ pub struct CfnClusterParameterGroup {
     #[serde(rename = "ParameterGroupName")]
     pub parameter_group_name: Option<String>,
 
-
-    /// 
+    ///
     /// An array of parameters to be modified. A maximum of 20 parameters can be modified       in a single request.
-    /// 
+    ///
     /// For each parameter to be modified, you must supply at least the parameter name and       parameter value; other name-value pairs of the parameter are optional.
-    /// 
+    ///
     /// For the workload management (WLM) configuration, you must supply all the name-value       pairs in the wlm_json_configuration parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Parameter
@@ -62,10 +55,9 @@ pub struct CfnClusterParameterGroup {
     #[serde(rename = "Parameters")]
     pub parameters: Option<Vec<Parameter>>,
 
-
-    /// 
+    ///
     /// The list of tags for the cluster parameter group.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -73,10 +65,7 @@ pub struct CfnClusterParameterGroup {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnClusterParameterGroup {
     fn type_string(&self) -> &'static str {
@@ -88,29 +77,27 @@ impl cfn_resources::CfnResource for CfnClusterParameterGroup {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.description;
 
         if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 2147483647", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'description'. {} is greater than 2147483647",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.parameter_group_family;
 
         if the_val.len() > 2147483647 as _ {
             return Err(format!("Max validation failed on field 'parameter_group_family'. {} is greater than 2147483647", the_val.len()));
         }
 
-        
         if let Some(the_val) = &self.parameter_group_name {
-
-        if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'parameter_group_name'. {} is greater than 2147483647", the_val.len()));
+            if the_val.len() > 2147483647 as _ {
+                return Err(format!("Max validation failed on field 'parameter_group_name'. {} is greater than 2147483647", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -118,11 +105,9 @@ impl cfn_resources::CfnResource for CfnClusterParameterGroup {
 /// Describes a parameter in a cluster parameter group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Parameter {
-
-
-    /// 
+    ///
     /// The name of the parameter.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -133,10 +118,9 @@ pub struct Parameter {
     #[serde(rename = "ParameterName")]
     pub parameter_name: String,
 
-
-    /// 
+    ///
     /// The value of the parameter. If ParameterName is wlm_json_configuration,       then the maximum size of ParameterValue is 8000 characters.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -146,10 +130,7 @@ pub struct Parameter {
     /// Update requires: No interruption
     #[serde(rename = "ParameterValue")]
     pub parameter_value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Parameter {
     fn type_string(&self) -> &'static str {
@@ -161,21 +142,24 @@ impl cfn_resources::CfnResource for Parameter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.parameter_name;
 
         if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'parameter_name'. {} is greater than 2147483647", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'parameter_name'. {} is greater than 2147483647",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.parameter_value;
 
         if the_val.len() > 2147483647 as _ {
-            return Err(format!("Max validation failed on field 'parameter_value'. {} is greater than 2147483647", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'parameter_value'. {} is greater than 2147483647",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -189,32 +173,26 @@ impl cfn_resources::CfnResource for Parameter {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -226,7 +204,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

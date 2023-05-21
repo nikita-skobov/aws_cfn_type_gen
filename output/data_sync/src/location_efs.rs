@@ -1,13 +1,9 @@
-
-
 /// The AWS::DataSync::LocationEFS resource creates an endpoint for an Amazon EFS file system. AWS DataSync can access this endpoint as a source or destination location.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocationEFS {
-
-
-    /// 
+    ///
     /// Specifies the Amazon Resource Name (ARN) of the access point that DataSync uses    to access the Amazon EFS file system.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnLocationEFS {
     #[serde(rename = "AccessPointArn")]
     pub access_point_arn: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the subnet and security groups DataSync uses to access your Amazon EFS file system.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Ec2Config
@@ -32,10 +27,9 @@ pub struct CfnLocationEFS {
     #[serde(rename = "Ec2Config")]
     pub ec2_config: Ec2Config,
 
-
-    /// 
+    ///
     /// Specifies the ARN for the Amazon EFS file system.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -48,10 +42,9 @@ pub struct CfnLocationEFS {
     #[serde(rename = "EfsFilesystemArn")]
     pub efs_filesystem_arn: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies an AWS Identity and Access Management (IAM) role that DataSync    assumes when mounting the Amazon EFS file system.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -64,12 +57,11 @@ pub struct CfnLocationEFS {
     #[serde(rename = "FileSystemAccessRoleArn")]
     pub file_system_access_role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies whether you want DataSync to use Transport Layer Security (TLS) 1.2    encryption when it copies data to or from the Amazon EFS file system.
-    /// 
+    ///
     /// If you specify an access point using AccessPointArn or an IAM    role using FileSystemAccessRoleArn, you must set this parameter to     TLS1_2.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -80,12 +72,11 @@ pub struct CfnLocationEFS {
     #[serde(rename = "InTransitEncryption")]
     pub in_transit_encryption: Option<LocationEFSInTransitEncryptionEnum>,
 
-
-    /// 
+    ///
     /// Specifies a mount path for your Amazon EFS file system. This is where DataSync reads or writes data (depending on if this is a source or destination location).    By default, DataSync uses the root directory, but you can also include    subdirectories.
-    /// 
+    ///
     /// NoteYou must specify a value with forward slashes (for example,     /path/to/folder).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -98,10 +89,9 @@ pub struct CfnLocationEFS {
     #[serde(rename = "Subdirectory")]
     pub subdirectory: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the key-value pair that represents a tag that you want to add to the    resource. The value can be an empty string. This value helps you manage, filter, and search    for your resources. We recommend that you create a name tag for your location.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -111,13 +101,10 @@ pub struct CfnLocationEFS {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum LocationEFSInTransitEncryptionEnum {
-
     /// NONE
     #[serde(rename = "NONE")]
     None,
@@ -125,7 +112,6 @@ pub enum LocationEFSInTransitEncryptionEnum {
     /// TLS1_2
     #[serde(rename = "TLS1_2")]
     Tls12,
-
 }
 
 impl Default for LocationEFSInTransitEncryptionEnum {
@@ -133,7 +119,6 @@ impl Default for LocationEFSInTransitEncryptionEnum {
         LocationEFSInTransitEncryptionEnum::None
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnLocationEFS {
     fn type_string(&self) -> &'static str {
@@ -145,49 +130,50 @@ impl cfn_resources::CfnResource for CfnLocationEFS {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.access_point_arn {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'access_point_arn'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'access_point_arn'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         self.ec2_config.validate()?;
 
         if let Some(the_val) = &self.efs_filesystem_arn {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'efs_filesystem_arn'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'efs_filesystem_arn'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.file_system_access_role_arn {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'file_system_access_role_arn'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!("Max validation failed on field 'file_system_access_role_arn'. {} is greater than 2048", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.subdirectory {
-
-        if the_val.len() > 4096 as _ {
-            return Err(format!("Max validation failed on field 'subdirectory'. {} is greater than 4096", the_val.len()));
+            if the_val.len() > 4096 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subdirectory'. {} is greater than 4096",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -195,11 +181,9 @@ impl cfn_resources::CfnResource for CfnLocationEFS {
 /// The subnet and security groups that AWS DataSync uses to access your Amazon EFS file system.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Ec2Config {
-
-
-    /// 
+    ///
     /// Specifies the Amazon Resource Names (ARNs) of the security groups associated with an     Amazon EFS file system's mount target.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -210,16 +194,15 @@ pub struct Ec2Config {
     #[serde(rename = "SecurityGroupArns")]
     pub security_group_arns: Vec<String>,
 
-
-    /// 
+    ///
     /// Specifies the ARN of a subnet where DataSync creates the network interfaces for managing traffic during your transfer.
-    /// 
+    ///
     /// The subnet must be located:
-    /// 
+    ///
     /// In the same virtual private cloud (VPC) as the Amazon EFS file system.               In the same Availability Zone as at least one mount target for the Amazon EFS file      system.
-    /// 
+    ///
     /// NoteYou don't need to specify a subnet that includes a file system mount target.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -231,10 +214,7 @@ pub struct Ec2Config {
     /// Update requires: Replacement
     #[serde(rename = "SubnetArn")]
     pub subnet_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Ec2Config {
     fn type_string(&self) -> &'static str {
@@ -246,21 +226,24 @@ impl cfn_resources::CfnResource for Ec2Config {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.security_group_arns;
 
         if the_val.len() > 5 as _ {
-            return Err(format!("Max validation failed on field 'security_group_arns'. {} is greater than 5", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'security_group_arns'. {} is greater than 5",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.subnet_arn;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'subnet_arn'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'subnet_arn'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -274,32 +257,26 @@ impl cfn_resources::CfnResource for Ec2Config {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -311,7 +288,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// Defines an action that can be applied to audit findings by using StartAuditMitigationActionsTask. For API reference, see     CreateMitigationAction and for general information,      see Mitigation actions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnMitigationAction {
-
-
-    /// 
+    ///
     /// The friendly name of the mitigation action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnMitigationAction {
     #[serde(rename = "ActionName")]
     pub action_name: Option<String>,
 
-
-    /// 
+    ///
     /// The set of parameters for this mitigation action. The parameters vary, depending on the kind of action you apply.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: ActionParams
@@ -28,10 +23,9 @@ pub struct CfnMitigationAction {
     #[serde(rename = "ActionParams")]
     pub action_params: ActionParams,
 
-
-    /// 
+    ///
     /// The IAM role ARN used to apply this mitigation action.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -40,10 +34,9 @@ pub struct CfnMitigationAction {
     #[serde(rename = "RoleArn")]
     pub role_arn: String,
 
-
-    /// 
+    ///
     /// Metadata that can be used to manage the mitigation action.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -51,10 +44,7 @@ pub struct CfnMitigationAction {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnMitigationAction {
     fn type_string(&self) -> &'static str {
@@ -66,7 +56,6 @@ impl cfn_resources::CfnResource for CfnMitigationAction {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.action_params.validate()?;
 
         Ok(())
@@ -76,11 +65,9 @@ impl cfn_resources::CfnResource for CfnMitigationAction {
 /// Defines the type of action and the parameters for that action.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ActionParams {
-
-
-    /// 
+    ///
     /// Specifies the group to which you want to add the devices.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AddThingsToThingGroupParams
@@ -89,10 +76,9 @@ pub struct ActionParams {
     #[serde(rename = "AddThingsToThingGroupParams")]
     pub add_things_to_thing_group_params: Option<AddThingsToThingGroupParams>,
 
-
-    /// 
+    ///
     /// Specifies the logging level and the role with permissions for logging. You cannot specify a logging level of DISABLED.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EnableIoTLoggingParams
@@ -101,10 +87,9 @@ pub struct ActionParams {
     #[serde(rename = "EnableIoTLoggingParams")]
     pub enable_io_tlogging_params: Option<EnableIoTLoggingParams>,
 
-
-    /// 
+    ///
     /// Specifies the topic to which the finding should be published.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: PublishFindingToSnsParams
@@ -113,10 +98,9 @@ pub struct ActionParams {
     #[serde(rename = "PublishFindingToSnsParams")]
     pub publish_finding_to_sns_params: Option<PublishFindingToSnsParams>,
 
-
-    /// 
+    ///
     /// Replaces the policy version with a default or blank policy. You specify the template name. Only a value of BLANK_POLICY is currently supported.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ReplaceDefaultPolicyVersionParams
@@ -125,10 +109,9 @@ pub struct ActionParams {
     #[serde(rename = "ReplaceDefaultPolicyVersionParams")]
     pub replace_default_policy_version_params: Option<ReplaceDefaultPolicyVersionParams>,
 
-
-    /// 
+    ///
     /// Specifies the new state for the CA certificate. Only a value of DEACTIVATE is currently supported.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: UpdateCACertificateParams
@@ -137,10 +120,9 @@ pub struct ActionParams {
     #[serde(rename = "UpdateCACertificateParams")]
     pub update_cacertificate_params: Option<UpdateCACertificateParams>,
 
-
-    /// 
+    ///
     /// Specifies the new state for a device certificate. Only a value of DEACTIVATE is currently supported.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: UpdateDeviceCertificateParams
@@ -148,10 +130,7 @@ pub struct ActionParams {
     /// Update requires: No interruption
     #[serde(rename = "UpdateDeviceCertificateParams")]
     pub update_device_certificate_params: Option<UpdateDeviceCertificateParams>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ActionParams {
     fn type_string(&self) -> &'static str {
@@ -163,18 +142,29 @@ impl cfn_resources::CfnResource for ActionParams {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.add_things_to_thing_group_params
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.add_things_to_thing_group_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.enable_io_tlogging_params
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.enable_io_tlogging_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.publish_finding_to_sns_params
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.publish_finding_to_sns_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.replace_default_policy_version_params
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.replace_default_policy_version_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.update_cacertificate_params
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.update_cacertificate_params.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.update_device_certificate_params.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.update_device_certificate_params
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -183,11 +173,9 @@ impl cfn_resources::CfnResource for ActionParams {
 /// Parameters used when defining a mitigation action that move a set of things to a thing group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AddThingsToThingGroupParams {
-
-
-    /// 
+    ///
     /// Specifies if this mitigation action can move the things that triggered the mitigation action even if they are part of one or more dynamic thing groups.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -196,10 +184,9 @@ pub struct AddThingsToThingGroupParams {
     #[serde(rename = "OverrideDynamicGroups")]
     pub override_dynamic_groups: Option<bool>,
 
-
-    /// 
+    ///
     /// The list of groups to which you want to add the things that triggered the mitigation action. You can add a thing to a maximum of 10 groups, but you can't add a thing to more than one group in the same hierarchy.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -207,10 +194,7 @@ pub struct AddThingsToThingGroupParams {
     /// Update requires: No interruption
     #[serde(rename = "ThingGroupNames")]
     pub thing_group_names: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AddThingsToThingGroupParams {
     fn type_string(&self) -> &'static str {
@@ -222,7 +206,6 @@ impl cfn_resources::CfnResource for AddThingsToThingGroupParams {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -230,11 +213,9 @@ impl cfn_resources::CfnResource for AddThingsToThingGroupParams {
 /// Parameters used when defining a mitigation action that enable AWS IoT Core logging.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EnableIoTLoggingParams {
-
-
-    /// 
+    ///
     /// Specifies the type of information to be logged.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -243,10 +224,9 @@ pub struct EnableIoTLoggingParams {
     #[serde(rename = "LogLevel")]
     pub log_level: String,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the IAM role used for logging.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -254,10 +234,7 @@ pub struct EnableIoTLoggingParams {
     /// Update requires: No interruption
     #[serde(rename = "RoleArnForLogging")]
     pub role_arn_for_logging: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EnableIoTLoggingParams {
     fn type_string(&self) -> &'static str {
@@ -269,7 +246,6 @@ impl cfn_resources::CfnResource for EnableIoTLoggingParams {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -277,11 +253,9 @@ impl cfn_resources::CfnResource for EnableIoTLoggingParams {
 /// Parameters to define a mitigation action that publishes findings to Amazon SNS. You can implement your own custom actions in response to the Amazon SNS messages.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PublishFindingToSnsParams {
-
-
-    /// 
+    ///
     /// The ARN of the topic to which you want to publish the findings.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -289,10 +263,7 @@ pub struct PublishFindingToSnsParams {
     /// Update requires: No interruption
     #[serde(rename = "TopicArn")]
     pub topic_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PublishFindingToSnsParams {
     fn type_string(&self) -> &'static str {
@@ -304,7 +275,6 @@ impl cfn_resources::CfnResource for PublishFindingToSnsParams {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -312,11 +282,9 @@ impl cfn_resources::CfnResource for PublishFindingToSnsParams {
 /// Parameters to define a mitigation action that adds a blank policy to restrict permissions.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ReplaceDefaultPolicyVersionParams {
-
-
-    /// 
+    ///
     /// The name of the template to be applied. The only supported value is BLANK_POLICY.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -324,10 +292,7 @@ pub struct ReplaceDefaultPolicyVersionParams {
     /// Update requires: No interruption
     #[serde(rename = "TemplateName")]
     pub template_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ReplaceDefaultPolicyVersionParams {
     fn type_string(&self) -> &'static str {
@@ -339,7 +304,6 @@ impl cfn_resources::CfnResource for ReplaceDefaultPolicyVersionParams {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -353,32 +317,26 @@ impl cfn_resources::CfnResource for ReplaceDefaultPolicyVersionParams {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -390,7 +348,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -398,11 +355,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Parameters to define a mitigation action that changes the state of the CA certificate to inactive.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct UpdateCACertificateParams {
-
-
-    /// 
+    ///
     /// The action that you want to apply to the CA certificate. The only supported value is DEACTIVATE.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -410,10 +365,7 @@ pub struct UpdateCACertificateParams {
     /// Update requires: No interruption
     #[serde(rename = "Action")]
     pub action: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for UpdateCACertificateParams {
     fn type_string(&self) -> &'static str {
@@ -425,7 +377,6 @@ impl cfn_resources::CfnResource for UpdateCACertificateParams {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -433,11 +384,9 @@ impl cfn_resources::CfnResource for UpdateCACertificateParams {
 /// Parameters to define a mitigation action that changes the state of the device certificate to inactive.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct UpdateDeviceCertificateParams {
-
-
-    /// 
+    ///
     /// The action that you want to apply to the device certificate. The only supported value is DEACTIVATE.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -445,10 +394,7 @@ pub struct UpdateDeviceCertificateParams {
     /// Update requires: No interruption
     #[serde(rename = "Action")]
     pub action: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for UpdateDeviceCertificateParams {
     fn type_string(&self) -> &'static str {
@@ -460,7 +406,6 @@ impl cfn_resources::CfnResource for UpdateDeviceCertificateParams {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

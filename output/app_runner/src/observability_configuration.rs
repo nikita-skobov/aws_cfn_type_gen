@@ -1,5 +1,3 @@
-
-
 /// The AWS::AppRunner::ObservabilityConfiguration resource is an AWS App Runner resource type that specifies an App Runner    observability configuration.
 ///
 /// App Runner requires this resource when you specify App Runner services and you want to enable non-default observability features.    You can share an observability configuration across multiple services.
@@ -9,15 +7,13 @@
 /// The observability configuration resource is designed to configure multiple features (currently one feature, tracing). This resource takes optional    parameters that describe the configuration of these features (currently one parameter, TraceConfiguration). If you don't specify a feature      parameter, App Runner doesn't enable the feature.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnObservabilityConfiguration {
-
-
-    /// 
+    ///
     /// A name for the observability configuration. When you use it for the first time in an AWS Region, App Runner creates revision number     1 of this name. When you use the same name in subsequent calls, App Runner creates incremental revisions of the configuration.
-    /// 
+    ///
     /// NoteThe name DefaultConfiguration is reserved. You can't use it to create a new observability configuration, and you can't create a     revision of it.When you want to use your own observability configuration for your App Runner service, create a configuration with a different name,     and then provide it when you create or update your service.
-    /// 
+    ///
     /// If you don't specify a name, AWS CloudFormation generates a name for your observability configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -32,10 +28,9 @@ pub struct CfnObservabilityConfiguration {
     #[serde(rename = "ObservabilityConfigurationName")]
     pub observability_configuration_name: Option<String>,
 
-
-    /// 
+    ///
     /// A list of metadata items that you can associate with your observability configuration resource. A tag is a key-value pair.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -44,10 +39,9 @@ pub struct CfnObservabilityConfiguration {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: TraceConfiguration
@@ -55,10 +49,7 @@ pub struct CfnObservabilityConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "TraceConfiguration")]
     pub trace_configuration: Option<TraceConfiguration>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnObservabilityConfiguration {
     fn type_string(&self) -> &'static str {
@@ -70,24 +61,21 @@ impl cfn_resources::CfnResource for CfnObservabilityConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.observability_configuration_name {
+            if the_val.len() > 32 as _ {
+                return Err(format!("Max validation failed on field 'observability_configuration_name'. {} is greater than 32", the_val.len()));
+            }
+        }
 
         if let Some(the_val) = &self.observability_configuration_name {
-
-        if the_val.len() > 32 as _ {
-            return Err(format!("Max validation failed on field 'observability_configuration_name'. {} is greater than 32", the_val.len()));
+            if the_val.len() < 4 as _ {
+                return Err(format!("Min validation failed on field 'observability_configuration_name'. {} is less than 4", the_val.len()));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.observability_configuration_name {
-
-        if the_val.len() < 4 as _ {
-            return Err(format!("Min validation failed on field 'observability_configuration_name'. {} is less than 4", the_val.len()));
-        }
-
-        }
-        
-        self.trace_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.trace_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -102,32 +90,26 @@ impl cfn_resources::CfnResource for CfnObservabilityConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -139,7 +121,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -147,11 +128,9 @@ impl cfn_resources::CfnResource for Tag {
 /// Describes the configuration of the tracing feature within an AWS App Runner observability configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TraceConfiguration {
-
-
-    /// 
+    ///
     /// The implementation provider chosen for tracing App Runner services.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -161,17 +140,13 @@ pub struct TraceConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "Vendor")]
     pub vendor: TraceConfigurationVendorEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TraceConfigurationVendorEnum {
-
     /// AWSXRAY
     #[serde(rename = "AWSXRAY")]
     Awsxray,
-
 }
 
 impl Default for TraceConfigurationVendorEnum {
@@ -179,7 +154,6 @@ impl Default for TraceConfigurationVendorEnum {
         TraceConfigurationVendorEnum::Awsxray
     }
 }
-
 
 impl cfn_resources::CfnResource for TraceConfiguration {
     fn type_string(&self) -> &'static str {
@@ -191,7 +165,6 @@ impl cfn_resources::CfnResource for TraceConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

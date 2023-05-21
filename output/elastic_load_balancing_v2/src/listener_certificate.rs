@@ -1,13 +1,9 @@
-
-
 /// Specifies an SSL server certificate to add to the certificate list for an HTTPS or TLS     listener.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnListenerCertificate {
-
-
-    /// 
+    ///
     /// The certificate. You can specify one certificate per resource.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Certificate
@@ -16,10 +12,9 @@ pub struct CfnListenerCertificate {
     #[serde(rename = "Certificates")]
     pub certificates: Vec<Certificate>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the listener.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -27,10 +22,7 @@ pub struct CfnListenerCertificate {
     /// Update requires: Replacement
     #[serde(rename = "ListenerArn")]
     pub listener_arn: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnListenerCertificate {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnListenerCertificate {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -50,11 +41,9 @@ impl cfn_resources::CfnResource for CfnListenerCertificate {
 /// Specifies an SSL server certificate for the certificate list of a secure     listener.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Certificate {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the certificate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -62,10 +51,7 @@ pub struct Certificate {
     /// Update requires: No interruption
     #[serde(rename = "CertificateArn")]
     pub certificate_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Certificate {
     fn type_string(&self) -> &'static str {
@@ -77,7 +63,6 @@ impl cfn_resources::CfnResource for Certificate {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

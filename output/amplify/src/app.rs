@@ -1,21 +1,17 @@
-
-
 /// The AWS::Amplify::App resource specifies Apps in Amplify Hosting. An App is a    collection of branches.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApp {
-
-
-    /// 
+    ///
     /// The personal access token for a GitHub repository for an Amplify app. The personal access    token is used to authorize access to a GitHub repository using the Amplify GitHub App. The    token is not stored.
-    /// 
+    ///
     /// Use AccessToken for GitHub repositories only. To authorize access to a    repository provider such as Bitbucket or CodeCommit, use OauthToken.
-    /// 
+    ///
     /// You must specify either AccessToken or OauthToken when you    create a new app.
-    /// 
+    ///
     /// Existing Amplify apps deployed from a GitHub repository using OAuth continue to work with    CI/CD. However, we strongly recommend that you migrate these apps to use the GitHub App. For    more information, see Migrating an existing OAuth app to the Amplify GitHub App in the Amplify     User Guide .
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of    255.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnApp {
     #[serde(rename = "AccessToken")]
     pub access_token: Option<String>,
 
-
-    /// 
+    ///
     /// Sets the configuration for your automatic branch creation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AutoBranchCreationConfig
@@ -36,10 +31,9 @@ pub struct CfnApp {
     #[serde(rename = "AutoBranchCreationConfig")]
     pub auto_branch_creation_config: Option<AutoBranchCreationConfig>,
 
-
-    /// 
+    ///
     /// The credentials for basic authorization for an Amplify app. You must base64-encode       the authorization credentials and provide them in the format       user:password.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: BasicAuthConfig
@@ -48,14 +42,13 @@ pub struct CfnApp {
     #[serde(rename = "BasicAuthConfig")]
     pub basic_auth_config: Option<BasicAuthConfig>,
 
-
-    /// 
+    ///
     /// The build specification (build spec) for an Amplify app.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of    25000.
-    /// 
+    ///
     /// Pattern: (?s).+
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -64,14 +57,13 @@ pub struct CfnApp {
     #[serde(rename = "BuildSpec")]
     pub build_spec: Option<String>,
 
-
-    /// 
+    ///
     /// The custom HTTP headers for an Amplify app.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 0. Maximum length of    25000.
-    /// 
+    ///
     /// Pattern: (?s).*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -80,10 +72,9 @@ pub struct CfnApp {
     #[serde(rename = "CustomHeaders")]
     pub custom_headers: Option<String>,
 
-
-    /// 
+    ///
     /// The custom rewrite and redirect rules for an Amplify app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of CustomRule
@@ -92,14 +83,13 @@ pub struct CfnApp {
     #[serde(rename = "CustomRules")]
     pub custom_rules: Option<Vec<CustomRule>>,
 
-
-    /// 
+    ///
     /// The description for an Amplify app.
-    /// 
+    ///
     /// Length Constraints: Maximum length of 1000.
-    /// 
+    ///
     /// Pattern: (?s).*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -108,10 +98,9 @@ pub struct CfnApp {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Automatically disconnect a branch in Amplify Hosting when you delete a branch from    your Git repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -120,10 +109,9 @@ pub struct CfnApp {
     #[serde(rename = "EnableBranchAutoDeletion")]
     pub enable_branch_auto_deletion: Option<bool>,
 
-
-    /// 
+    ///
     /// The environment variables map for an Amplify app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of EnvironmentVariable
@@ -132,14 +120,13 @@ pub struct CfnApp {
     #[serde(rename = "EnvironmentVariables")]
     pub environment_variables: Option<Vec<EnvironmentVariable>>,
 
-
-    /// 
+    ///
     /// The AWS Identity and Access Management (IAM) service role for the Amazon Resource Name (ARN) of the    Amplify app.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 0. Maximum length of    1000.
-    /// 
+    ///
     /// Pattern: (?s).*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -148,14 +135,13 @@ pub struct CfnApp {
     #[serde(rename = "IAMServiceRole")]
     pub iamservice_role: Option<String>,
 
-
-    /// 
+    ///
     /// The name for an Amplify app.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of    255.
-    /// 
+    ///
     /// Pattern: (?s).+
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -164,20 +150,19 @@ pub struct CfnApp {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The OAuth token for a third-party source control system for an Amplify app. The OAuth    token is used to create a webhook and a read-only deploy key using SSH cloning. The OAuth    token is not stored.
-    /// 
+    ///
     /// Use OauthToken for repository providers other than GitHub, such as Bitbucket    or CodeCommit. To authorize access to GitHub as your repository provider, use     AccessToken.
-    /// 
+    ///
     /// You must specify either OauthToken or AccessToken when you    create a new app.
-    /// 
+    ///
     /// Existing Amplify apps deployed from a GitHub repository using OAuth continue to work with    CI/CD. However, we strongly recommend that you migrate these apps to use the GitHub App. For    more information, see Migrating an existing OAuth app to the Amplify GitHub App in the Amplify     User Guide .
-    /// 
+    ///
     /// Length Constraints: Maximum length of 1000.
-    /// 
+    ///
     /// Pattern: (?s).*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -186,10 +171,9 @@ pub struct CfnApp {
     #[serde(rename = "OauthToken")]
     pub oauth_token: Option<String>,
 
-
-    /// 
+    ///
     /// The platform for the Amplify app. For a static app, set the platform type to WEB.       For a dynamic server-side rendered (SSR) app, set the platform type to       WEB_COMPUTE. For an app requiring Amplify Hosting's original SSR support only, set the platform type to       WEB_DYNAMIC.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -198,12 +182,11 @@ pub struct CfnApp {
     #[serde(rename = "Platform")]
     pub platform: Option<String>,
 
-
-    /// 
+    ///
     /// The repository for an Amplify app.
-    /// 
+    ///
     /// Pattern: (?s).*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -212,10 +195,9 @@ pub struct CfnApp {
     #[serde(rename = "Repository")]
     pub repository: Option<String>,
 
-
-    /// 
+    ///
     /// The tag for an Amplify app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -223,10 +205,7 @@ pub struct CfnApp {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnApp {
     fn type_string(&self) -> &'static str {
@@ -238,10 +217,13 @@ impl cfn_resources::CfnResource for CfnApp {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.auto_branch_creation_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.auto_branch_creation_config.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.basic_auth_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.basic_auth_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -250,11 +232,9 @@ impl cfn_resources::CfnResource for CfnApp {
 /// Use the AutoBranchCreationConfig property type to automatically create branches that    match a certain pattern.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoBranchCreationConfig {
-
-
-    /// 
+    ///
     /// Automated branch creation glob patterns for the Amplify app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -263,10 +243,9 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "AutoBranchCreationPatterns")]
     pub auto_branch_creation_patterns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Sets password protection for your auto created branch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: BasicAuthConfig
@@ -275,12 +254,11 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "BasicAuthConfig")]
     pub basic_auth_config: Option<BasicAuthConfig>,
 
-
-    /// 
+    ///
     /// The build specification (build spec) for the autocreated branch.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of    25000.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -289,10 +267,9 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "BuildSpec")]
     pub build_spec: Option<String>,
 
-
-    /// 
+    ///
     /// Enables automated branch creation for the Amplify app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -301,10 +278,9 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "EnableAutoBranchCreation")]
     pub enable_auto_branch_creation: Option<bool>,
 
-
-    /// 
+    ///
     /// Enables auto building for the auto created branch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -313,12 +289,11 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "EnableAutoBuild")]
     pub enable_auto_build: Option<bool>,
 
-
-    /// 
+    ///
     /// Enables performance mode for the branch.
-    /// 
+    ///
     /// Performance mode optimizes for faster hosting performance by keeping content cached at       the edge for a longer interval. When performance mode is enabled, hosting configuration       or code changes can take up to 10 minutes to roll out.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -327,14 +302,13 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "EnablePerformanceMode")]
     pub enable_performance_mode: Option<bool>,
 
-
-    /// 
+    ///
     /// Sets whether pull request previews are enabled for each branch that Amplify Hosting    automatically creates for your app. Amplify creates previews by deploying your app to    a unique URL whenever a pull request is opened for the branch. Development and QA teams can    use this preview to test the pull request before it's merged into a production or integration    branch.
-    /// 
+    ///
     /// To provide backend support for your preview, Amplify Hosting automatically    provisions a temporary backend environment that it deletes when the pull request is closed. If    you want to specify a dedicated backend environment for your previews, use the     PullRequestEnvironmentName property.
-    /// 
+    ///
     /// For more information, see Web Previews in the      AWS Amplify Hosting User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -343,10 +317,9 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "EnablePullRequestPreview")]
     pub enable_pull_request_preview: Option<bool>,
 
-
-    /// 
+    ///
     /// Environment variables for the auto created branch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of EnvironmentVariable
@@ -355,10 +328,9 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "EnvironmentVariables")]
     pub environment_variables: Option<Vec<EnvironmentVariable>>,
 
-
-    /// 
+    ///
     /// The framework for the autocreated branch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -367,20 +339,19 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "Framework")]
     pub framework: Option<String>,
 
-
-    /// 
+    ///
     /// If pull request previews are enabled, you can use this property to specify a dedicated    backend environment for your previews. For example, you could specify an environment named     prod, test, or dev that you initialized with the    Amplify CLI.
-    /// 
+    ///
     /// To enable pull request previews, set the EnablePullRequestPreview property    to true.
-    /// 
+    ///
     /// If you don't specify an environment, Amplify Hosting provides backend support for    each preview by automatically provisioning a temporary backend environment. Amplify    deletes this environment when the pull request is closed.
-    /// 
+    ///
     /// For more information about creating backend environments, see Feature Branch     Deployments and Team Workflows in the AWS Amplify Hosting     User Guide.
-    /// 
+    ///
     /// Length Constraints: Maximum length of 20.
-    /// 
+    ///
     /// Pattern: (?s).*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -389,10 +360,9 @@ pub struct AutoBranchCreationConfig {
     #[serde(rename = "PullRequestEnvironmentName")]
     pub pull_request_environment_name: Option<String>,
 
-
-    /// 
+    ///
     /// Stage for the auto created branch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -400,10 +370,7 @@ pub struct AutoBranchCreationConfig {
     /// Update requires: No interruption
     #[serde(rename = "Stage")]
     pub stage: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AutoBranchCreationConfig {
     fn type_string(&self) -> &'static str {
@@ -415,8 +382,9 @@ impl cfn_resources::CfnResource for AutoBranchCreationConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.basic_auth_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.basic_auth_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -425,11 +393,9 @@ impl cfn_resources::CfnResource for AutoBranchCreationConfig {
 /// Use the BasicAuthConfig property type to set password protection at an app level to all    your branches.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BasicAuthConfig {
-
-
-    /// 
+    ///
     /// Enables basic authorization for the Amplify app's branches.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -438,12 +404,11 @@ pub struct BasicAuthConfig {
     #[serde(rename = "EnableBasicAuth")]
     pub enable_basic_auth: Option<bool>,
 
-
-    /// 
+    ///
     /// The password for basic authorization.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of    255.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -452,12 +417,11 @@ pub struct BasicAuthConfig {
     #[serde(rename = "Password")]
     pub password: Option<String>,
 
-
-    /// 
+    ///
     /// The user name for basic authorization.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of    255.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -465,10 +429,7 @@ pub struct BasicAuthConfig {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     pub username: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for BasicAuthConfig {
     fn type_string(&self) -> &'static str {
@@ -480,7 +441,6 @@ impl cfn_resources::CfnResource for BasicAuthConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -488,15 +448,13 @@ impl cfn_resources::CfnResource for BasicAuthConfig {
 /// The CustomRule property type allows you to specify redirects, rewrites, and reverse    proxies. Redirects enable a web app to reroute navigation from one URL to another.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomRule {
-
-
-    /// 
+    ///
     /// The condition for a URL rewrite or redirect rule, such as a country code.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 0. Maximum length of 2048.
-    /// 
+    ///
     /// Pattern: (?s).*
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -505,14 +463,13 @@ pub struct CustomRule {
     #[serde(rename = "Condition")]
     pub condition: Option<String>,
 
-
-    /// 
+    ///
     /// The source pattern for a URL rewrite or redirect rule.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of    2048.
-    /// 
+    ///
     /// Pattern: (?s).+
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -521,16 +478,15 @@ pub struct CustomRule {
     #[serde(rename = "Source")]
     pub source: String,
 
-
-    /// 
+    ///
     /// The status code for a URL rewrite or redirect rule.
-    /// 
+    ///
     /// 200          Represents a 200 rewrite rule.             301          Represents a 301 (moved pemanently) redirect rule. This and all future requests       should be directed to the target URL.              302          Represents a 302 temporary redirect rule.             404          Represents a 404 redirect rule.             404-200          Represents a 404 rewrite rule.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 3. Maximum length of 7.
-    /// 
+    ///
     /// Pattern: .{3,7}
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -539,14 +495,13 @@ pub struct CustomRule {
     #[serde(rename = "Status")]
     pub status: Option<String>,
 
-
-    /// 
+    ///
     /// The target pattern for a URL rewrite or redirect rule.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 1. Maximum length of    2048.
-    /// 
+    ///
     /// Pattern: (?s).+
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -554,10 +509,7 @@ pub struct CustomRule {
     /// Update requires: No interruption
     #[serde(rename = "Target")]
     pub target: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CustomRule {
     fn type_string(&self) -> &'static str {
@@ -569,7 +521,6 @@ impl cfn_resources::CfnResource for CustomRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -577,15 +528,13 @@ impl cfn_resources::CfnResource for CustomRule {
 /// Environment variables are key-value pairs that are available at build time. Set    environment variables for all branches in your app.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EnvironmentVariable {
-
-
-    /// 
+    ///
     /// The environment variable name.
-    /// 
+    ///
     /// Length Constraints: Maximum length of 255.
-    /// 
+    ///
     /// Pattern: (?s).*
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -594,14 +543,13 @@ pub struct EnvironmentVariable {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The environment variable value.
-    /// 
+    ///
     /// Length Constraints: Maximum length of 5500.
-    /// 
+    ///
     /// Pattern: (?s).*
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -609,10 +557,7 @@ pub struct EnvironmentVariable {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EnvironmentVariable {
     fn type_string(&self) -> &'static str {
@@ -624,7 +569,6 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -638,32 +582,26 @@ impl cfn_resources::CfnResource for EnvironmentVariable {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -675,7 +613,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

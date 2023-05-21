@@ -1,5 +1,3 @@
-
-
 /// The AWS::S3Outposts::Bucket resource specifies a new Amazon S3 on Outposts bucket.    To create an S3 on Outposts bucket, you must have S3 on Outposts capacity provisioned on your Outpost.    For more information, see     Using Amazon S3 on Outposts.
 ///
 /// S3 on Outposts buckets support the following:
@@ -7,13 +5,11 @@
 /// For a complete list of restrictions and Amazon S3 feature limitations on S3 on Outposts,     see     Amazon S3 on Outposts Restrictions and Limitations.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnBucket {
-
-
-    /// 
+    ///
     /// A name for the S3 on Outposts bucket. If you don't specify a name, AWS CloudFormation generates a    unique ID and uses that ID for the bucket name.    The bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-)    and must follow     Amazon S3 bucket restrictions and limitations.    For more information, see Bucket     naming rules.
-    /// 
+    ///
     /// ImportantIf you specify a name, you can't perform updates that require replacement of this     resource. You can perform updates that require no or some interruption. If you need to     replace the resource, specify a new name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnBucket {
     #[serde(rename = "BucketName")]
     pub bucket_name: String,
 
-
-    /// 
+    ///
     /// Creates a new lifecycle configuration for the S3 on Outposts bucket or replaces an existing    lifecycle configuration. Outposts buckets only support lifecycle configurations that delete/expire objects    after a certain period of time and abort incomplete multipart uploads.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LifecycleConfiguration
@@ -34,10 +29,9 @@ pub struct CfnBucket {
     #[serde(rename = "LifecycleConfiguration")]
     pub lifecycle_configuration: Option<LifecycleConfiguration>,
 
-
-    /// 
+    ///
     /// The ID of the Outpost of the specified bucket.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -46,16 +40,15 @@ pub struct CfnBucket {
     #[serde(rename = "OutpostId")]
     pub outpost_id: String,
 
-
-    /// 
+    ///
     /// Sets the tags for an S3 on Outposts bucket. For more information, see Using Amazon S3 on Outposts.
-    /// 
+    ///
     /// Use tags to organize your AWS bill to reflect your own cost structure. To do this, sign up to get your    AWS account bill with tag key values included. Then, to see the cost of combined resources, organize your    billing information according to resources with the same tag key values. For example, you can tag several    resources with a specific application name, and then organize your billing information to see the total cost    of that application across several services. For more information, see    Cost allocation and     tags.
-    /// 
+    ///
     /// NoteWithin a bucket, if you add a tag that has the same key as an existing tag, the new value overwrites    the old value. For more information, see     Using cost allocation and bucket tags.
-    /// 
+    ///
     /// To use this resource, you must have permissions to perform the    s3-outposts:PutBucketTagging. The S3 on Outposts bucket owner has this    permission by default and can grant this permission to others. For more information about    permissions, see Permissions     Related to Bucket Subresource Operations and Managing access permissions to your Amazon S3 resources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -63,10 +56,7 @@ pub struct CfnBucket {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnBucket {
     fn type_string(&self) -> &'static str {
@@ -78,8 +68,9 @@ impl cfn_resources::CfnResource for CfnBucket {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.lifecycle_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.lifecycle_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -88,11 +79,9 @@ impl cfn_resources::CfnResource for CfnBucket {
 /// Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 on Outposts waits    before permanently removing all parts of the upload. For more information, see Aborting Incomplete     Multipart Uploads Using a Bucket Lifecycle Policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AbortIncompleteMultipartUpload {
-
-
-    /// 
+    ///
     /// Specifies the number of days after initiation that Amazon S3 on Outposts aborts an incomplete multipart upload.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -100,10 +89,7 @@ pub struct AbortIncompleteMultipartUpload {
     /// Update requires: No interruption
     #[serde(rename = "DaysAfterInitiation")]
     pub days_after_initiation: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AbortIncompleteMultipartUpload {
     fn type_string(&self) -> &'static str {
@@ -115,7 +101,6 @@ impl cfn_resources::CfnResource for AbortIncompleteMultipartUpload {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -123,8 +108,6 @@ impl cfn_resources::CfnResource for AbortIncompleteMultipartUpload {
 /// The Filter property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Filter {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -134,7 +117,6 @@ pub struct Filter {
     /// Update requires: No interruption
     #[serde(rename = "AndOperator")]
     pub and_operator: Option<FilterAndOperator>,
-
 
     /// Property description not available.
     ///
@@ -146,7 +128,6 @@ pub struct Filter {
     #[serde(rename = "Prefix")]
     pub prefix: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -156,10 +137,7 @@ pub struct Filter {
     /// Update requires: No interruption
     #[serde(rename = "Tag")]
     pub tag: Option<FilterTag>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Filter {
     fn type_string(&self) -> &'static str {
@@ -171,8 +149,9 @@ impl cfn_resources::CfnResource for Filter {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.and_operator.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.and_operator
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.tag.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -183,8 +162,6 @@ impl cfn_resources::CfnResource for Filter {
 /// The FilterAndOperator property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FilterAndOperator {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -195,7 +172,6 @@ pub struct FilterAndOperator {
     #[serde(rename = "Prefix")]
     pub prefix: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -205,10 +181,7 @@ pub struct FilterAndOperator {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Vec<FilterTag>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FilterAndOperator {
     fn type_string(&self) -> &'static str {
@@ -220,7 +193,6 @@ impl cfn_resources::CfnResource for FilterAndOperator {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -228,8 +200,6 @@ impl cfn_resources::CfnResource for FilterAndOperator {
 /// The FilterTag property type specifies Property description not available. for an AWS::S3Outposts::Bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FilterTag {
-
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -240,7 +210,6 @@ pub struct FilterTag {
     #[serde(rename = "Key")]
     pub key: String,
 
-
     /// Property description not available.
     ///
     /// Required: Yes
@@ -250,10 +219,7 @@ pub struct FilterTag {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FilterTag {
     fn type_string(&self) -> &'static str {
@@ -265,7 +231,6 @@ impl cfn_resources::CfnResource for FilterTag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -273,11 +238,9 @@ impl cfn_resources::CfnResource for FilterTag {
 /// The container for the lifecycle configuration for the objects stored in an S3 on Outposts bucket.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LifecycleConfiguration {
-
-
-    /// 
+    ///
     /// The container for the lifecycle configuration rules for the objects stored in the S3 on Outposts bucket.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Rule
@@ -285,10 +248,7 @@ pub struct LifecycleConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Rules")]
     pub rules: Vec<Rule>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LifecycleConfiguration {
     fn type_string(&self) -> &'static str {
@@ -300,7 +260,6 @@ impl cfn_resources::CfnResource for LifecycleConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -308,11 +267,9 @@ impl cfn_resources::CfnResource for LifecycleConfiguration {
 /// A container for an Amazon S3 on Outposts bucket lifecycle rule.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Rule {
-
-
-    /// 
+    ///
     /// The container for the abort incomplete multipart upload rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AbortIncompleteMultipartUpload
@@ -321,10 +278,9 @@ pub struct Rule {
     #[serde(rename = "AbortIncompleteMultipartUpload")]
     pub abort_incomplete_multipart_upload: Option<AbortIncompleteMultipartUpload>,
 
-
-    /// 
+    ///
     /// Specifies the expiration for the lifecycle of the object by specifying an expiry date.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -333,10 +289,9 @@ pub struct Rule {
     #[serde(rename = "ExpirationDate")]
     pub expiration_date: Option<String>,
 
-
-    /// 
+    ///
     /// Specifies the expiration for the lifecycle of the object in the form of days that the object has been in the S3 on Outposts bucket.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -345,10 +300,9 @@ pub struct Rule {
     #[serde(rename = "ExpirationInDays")]
     pub expiration_in_days: Option<i64>,
 
-
-    /// 
+    ///
     /// The container for the filter of the lifecycle rule.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Filter
@@ -357,10 +311,9 @@ pub struct Rule {
     #[serde(rename = "Filter")]
     pub filter: Option<Filter>,
 
-
-    /// 
+    ///
     /// The unique identifier for the lifecycle rule. The value can't be longer than 255    characters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -369,10 +322,9 @@ pub struct Rule {
     #[serde(rename = "Id")]
     pub id: Option<String>,
 
-
-    /// 
+    ///
     /// If Enabled, the rule is currently being applied. If Disabled,    the rule is not currently being applied.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -380,10 +332,7 @@ pub struct Rule {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     pub status: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Rule {
     fn type_string(&self) -> &'static str {
@@ -395,8 +344,9 @@ impl cfn_resources::CfnResource for Rule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.abort_incomplete_multipart_upload.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.abort_incomplete_multipart_upload
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.filter.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -413,32 +363,26 @@ impl cfn_resources::CfnResource for Rule {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -450,7 +394,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

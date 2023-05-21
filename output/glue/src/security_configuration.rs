@@ -1,13 +1,9 @@
-
-
 /// Creates a new security configuration. A security configuration is a set of security properties that can be used by AWS Glue. You can use a security configuration to encrypt data at rest. For information about using security configurations in AWS Glue, see Encrypting Data Written by Crawlers, Jobs, and Development Endpoints.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSecurityConfiguration {
-
-
-    /// 
+    ///
     /// The encryption configuration associated with this security configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: EncryptionConfiguration
@@ -16,10 +12,9 @@ pub struct CfnSecurityConfiguration {
     #[serde(rename = "EncryptionConfiguration")]
     pub encryption_configuration: EncryptionConfiguration,
 
-
-    /// 
+    ///
     /// The name of the security configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -33,10 +28,7 @@ pub struct CfnSecurityConfiguration {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSecurityConfiguration {
     fn type_string(&self) -> &'static str {
@@ -48,23 +40,26 @@ impl cfn_resources::CfnResource for CfnSecurityConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.encryption_configuration.validate()?;
 
         let the_val = &self.name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -72,11 +67,9 @@ impl cfn_resources::CfnResource for CfnSecurityConfiguration {
 /// Specifies how Amazon CloudWatch data should be encrypted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CloudWatchEncryption {
-
-
-    /// 
+    ///
     /// The encryption mode to use for CloudWatch data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -87,10 +80,9 @@ pub struct CloudWatchEncryption {
     #[serde(rename = "CloudWatchEncryptionMode")]
     pub cloud_watch_encryption_mode: Option<CloudWatchEncryptionCloudWatchEncryptionModeEnum>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -100,13 +92,10 @@ pub struct CloudWatchEncryption {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
     pub kms_key_arn: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CloudWatchEncryptionCloudWatchEncryptionModeEnum {
-
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
@@ -114,7 +103,6 @@ pub enum CloudWatchEncryptionCloudWatchEncryptionModeEnum {
     /// SSE-KMS
     #[serde(rename = "SSE-KMS")]
     Ssekms,
-
 }
 
 impl Default for CloudWatchEncryptionCloudWatchEncryptionModeEnum {
@@ -122,7 +110,6 @@ impl Default for CloudWatchEncryptionCloudWatchEncryptionModeEnum {
         CloudWatchEncryptionCloudWatchEncryptionModeEnum::Disabled
     }
 }
-
 
 impl cfn_resources::CfnResource for CloudWatchEncryption {
     fn type_string(&self) -> &'static str {
@@ -134,7 +121,6 @@ impl cfn_resources::CfnResource for CloudWatchEncryption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -142,11 +128,9 @@ impl cfn_resources::CfnResource for CloudWatchEncryption {
 /// Specifies an encryption configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EncryptionConfiguration {
-
-
-    /// 
+    ///
     /// The encryption configuration for Amazon CloudWatch.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CloudWatchEncryption
@@ -155,10 +139,9 @@ pub struct EncryptionConfiguration {
     #[serde(rename = "CloudWatchEncryption")]
     pub cloud_watch_encryption: Option<CloudWatchEncryption>,
 
-
-    /// 
+    ///
     /// The encryption configuration for job bookmarks.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: JobBookmarksEncryption
@@ -167,10 +150,9 @@ pub struct EncryptionConfiguration {
     #[serde(rename = "JobBookmarksEncryption")]
     pub job_bookmarks_encryption: Option<JobBookmarksEncryption>,
 
-
-    /// 
+    ///
     /// The encyption configuration for Amazon Simple Storage Service (Amazon S3) data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: S3Encryptions
@@ -178,10 +160,7 @@ pub struct EncryptionConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "S3Encryptions")]
     pub s3_encryptions: Option<S3Encryptions>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for EncryptionConfiguration {
     fn type_string(&self) -> &'static str {
@@ -193,12 +172,17 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.cloud_watch_encryption
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.cloud_watch_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.job_bookmarks_encryption
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.job_bookmarks_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.s3_encryptions.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.s3_encryptions
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -207,11 +191,9 @@ impl cfn_resources::CfnResource for EncryptionConfiguration {
 /// Specifies how job bookmark data should be encrypted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JobBookmarksEncryption {
-
-
-    /// 
+    ///
     /// The encryption mode to use for job bookmarks data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -222,10 +204,9 @@ pub struct JobBookmarksEncryption {
     #[serde(rename = "JobBookmarksEncryptionMode")]
     pub job_bookmarks_encryption_mode: Option<JobBookmarksEncryptionJobBookmarksEncryptionModeEnum>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -235,13 +216,10 @@ pub struct JobBookmarksEncryption {
     /// Update requires: No interruption
     #[serde(rename = "KmsKeyArn")]
     pub kms_key_arn: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum JobBookmarksEncryptionJobBookmarksEncryptionModeEnum {
-
     /// CSE-KMS
     #[serde(rename = "CSE-KMS")]
     Csekms,
@@ -249,7 +227,6 @@ pub enum JobBookmarksEncryptionJobBookmarksEncryptionModeEnum {
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
-
 }
 
 impl Default for JobBookmarksEncryptionJobBookmarksEncryptionModeEnum {
@@ -257,7 +234,6 @@ impl Default for JobBookmarksEncryptionJobBookmarksEncryptionModeEnum {
         JobBookmarksEncryptionJobBookmarksEncryptionModeEnum::Csekms
     }
 }
-
 
 impl cfn_resources::CfnResource for JobBookmarksEncryption {
     fn type_string(&self) -> &'static str {
@@ -269,7 +245,6 @@ impl cfn_resources::CfnResource for JobBookmarksEncryption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -277,11 +252,9 @@ impl cfn_resources::CfnResource for JobBookmarksEncryption {
 /// Specifies how Amazon Simple Storage Service (Amazon S3) data should be encrypted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct S3Encryption {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -292,10 +265,9 @@ pub struct S3Encryption {
     #[serde(rename = "KmsKeyArn")]
     pub kms_key_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The encryption mode to use for Amazon S3 data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -305,13 +277,10 @@ pub struct S3Encryption {
     /// Update requires: No interruption
     #[serde(rename = "S3EncryptionMode")]
     pub s3_encryption_mode: Option<S3EncryptionS3EncryptionModeEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum S3EncryptionS3EncryptionModeEnum {
-
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
@@ -323,7 +292,6 @@ pub enum S3EncryptionS3EncryptionModeEnum {
     /// SSE-S3
     #[serde(rename = "SSE-S3")]
     Sses3,
-
 }
 
 impl Default for S3EncryptionS3EncryptionModeEnum {
@@ -331,7 +299,6 @@ impl Default for S3EncryptionS3EncryptionModeEnum {
         S3EncryptionS3EncryptionModeEnum::Disabled
     }
 }
-
 
 impl cfn_resources::CfnResource for S3Encryption {
     fn type_string(&self) -> &'static str {
@@ -343,18 +310,13 @@ impl cfn_resources::CfnResource for S3Encryption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
 
 /// The S3Encryptions property type specifies the encyption configuration for       Amazon Simple Storage Service (Amazon S3) data for a security configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct S3Encryptions {
-
-}
-
-
+pub struct S3Encryptions {}
 
 impl cfn_resources::CfnResource for S3Encryptions {
     fn type_string(&self) -> &'static str {
@@ -366,7 +328,6 @@ impl cfn_resources::CfnResource for S3Encryptions {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

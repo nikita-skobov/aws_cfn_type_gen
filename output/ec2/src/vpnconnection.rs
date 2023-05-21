@@ -1,5 +1,3 @@
-
-
 /// Specifies a VPN connection between a virtual private gateway and a VPN customer gateway     or a transit gateway and a VPN customer gateway.
 ///
 /// To specify a VPN connection between a transit gateway and customer gateway, use the     TransitGatewayId and CustomerGatewayId properties.
@@ -9,11 +7,9 @@
 /// For more information, see AWS Site-to-Site VPN in the     AWS Site-to-Site VPN User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnVPNConnection {
-
-
-    /// 
+    ///
     /// The ID of the customer gateway at your end of the VPN connection.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,12 +18,11 @@ pub struct CfnVPNConnection {
     #[serde(rename = "CustomerGatewayId")]
     pub customer_gateway_id: String,
 
-
-    /// 
+    ///
     /// Indicates whether the VPN connection uses static routes only. Static routes must be used     for devices that don't support BGP.
-    /// 
+    ///
     /// If you are creating a VPN connection for a device that does not support Border Gateway     Protocol (BGP), you must specify true.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -36,10 +31,9 @@ pub struct CfnVPNConnection {
     #[serde(rename = "StaticRoutesOnly")]
     pub static_routes_only: Option<bool>,
 
-
-    /// 
+    ///
     /// Any tags assigned to the VPN connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -48,12 +42,11 @@ pub struct CfnVPNConnection {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ID of the transit gateway associated with the VPN connection.
-    /// 
+    ///
     /// You must specify either TransitGatewayId or VpnGatewayId, but     not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -62,10 +55,9 @@ pub struct CfnVPNConnection {
     #[serde(rename = "TransitGatewayId")]
     pub transit_gateway_id: Option<String>,
 
-
-    /// 
+    ///
     /// The type of VPN connection.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -76,12 +68,11 @@ pub struct CfnVPNConnection {
     #[serde(rename = "Type")]
     pub cfn_type: VPNConnectionTypeEnum,
 
-
-    /// 
+    ///
     /// The ID of the virtual private gateway at the AWS side of the VPN     connection.
-    /// 
+    ///
     /// You must specify either TransitGatewayId or VpnGatewayId, but     not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -90,10 +81,9 @@ pub struct CfnVPNConnection {
     #[serde(rename = "VpnGatewayId")]
     pub vpn_gateway_id: Option<String>,
 
-
-    /// 
+    ///
     /// The tunnel options for the VPN connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of VpnTunnelOptionsSpecification
@@ -101,17 +91,13 @@ pub struct CfnVPNConnection {
     /// Update requires: Replacement
     #[serde(rename = "VpnTunnelOptionsSpecifications")]
     pub vpn_tunnel_options_specifications: Option<Vec<VpnTunnelOptionsSpecification>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum VPNConnectionTypeEnum {
-
     /// ipsec.1
     #[serde(rename = "ipsec.1")]
     Ipsec1,
-
 }
 
 impl Default for VPNConnectionTypeEnum {
@@ -119,7 +105,6 @@ impl Default for VPNConnectionTypeEnum {
         VPNConnectionTypeEnum::Ipsec1
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnVPNConnection {
     fn type_string(&self) -> &'static str {
@@ -131,7 +116,6 @@ impl cfn_resources::CfnResource for CfnVPNConnection {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -145,32 +129,26 @@ impl cfn_resources::CfnResource for CfnVPNConnection {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -182,7 +160,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -190,13 +167,11 @@ impl cfn_resources::CfnResource for Tag {
 /// The tunnel options for a single VPN tunnel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VpnTunnelOptionsSpecification {
-
-
-    /// 
+    ///
     /// The pre-shared key (PSK) to establish initial authentication between the virtual       private gateway and customer gateway.
-    /// 
+    ///
     /// Constraints: Allowed characters are alphanumeric characters, periods (.), and       underscores (_). Must be between 8 and 64 characters in length and cannot start with       zero (0).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -205,14 +180,13 @@ pub struct VpnTunnelOptionsSpecification {
     #[serde(rename = "PreSharedKey")]
     pub pre_shared_key: Option<String>,
 
-
-    /// 
+    ///
     /// The range of inside IP addresses for the tunnel. Any specified CIDR blocks must be     unique across all VPN connections that use the same virtual private gateway.
-    /// 
+    ///
     /// Constraints: A size /30 CIDR block from the 169.254.0.0/16 range. The     following CIDR blocks are reserved and cannot be used:
-    /// 
+    ///
     /// 169.254.0.0/30                          169.254.1.0/30                          169.254.2.0/30                          169.254.3.0/30                          169.254.4.0/30                          169.254.5.0/30                          169.254.169.252/30
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -220,10 +194,7 @@ pub struct VpnTunnelOptionsSpecification {
     /// Update requires: Replacement
     #[serde(rename = "TunnelInsideCidr")]
     pub tunnel_inside_cidr: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VpnTunnelOptionsSpecification {
     fn type_string(&self) -> &'static str {
@@ -235,7 +206,6 @@ impl cfn_resources::CfnResource for VpnTunnelOptionsSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

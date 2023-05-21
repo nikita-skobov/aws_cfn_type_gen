@@ -1,13 +1,9 @@
-
-
 /// Use the AWS::IoT::FleetMetric resource to declare a fleet metric.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnFleetMetric {
-
-
-    /// 
+    ///
     /// The field to aggregate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnFleetMetric {
     #[serde(rename = "AggregationField")]
     pub aggregation_field: Option<String>,
 
-
-    /// 
+    ///
     /// The type of the aggregation query.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AggregationType
@@ -28,10 +23,9 @@ pub struct CfnFleetMetric {
     #[serde(rename = "AggregationType")]
     pub aggregation_type: Option<AggregationType>,
 
-
-    /// 
+    ///
     /// The fleet metric description.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,10 +34,9 @@ pub struct CfnFleetMetric {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the index to search.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -52,10 +45,9 @@ pub struct CfnFleetMetric {
     #[serde(rename = "IndexName")]
     pub index_name: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the fleet metric to create.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -64,10 +56,9 @@ pub struct CfnFleetMetric {
     #[serde(rename = "MetricName")]
     pub metric_name: String,
 
-
-    /// 
+    ///
     /// The time in seconds between fleet metric emissions. Range [60(1 min), 86400(1 day)] and must be multiple of 60.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -76,10 +67,9 @@ pub struct CfnFleetMetric {
     #[serde(rename = "Period")]
     pub period: Option<i64>,
 
-
-    /// 
+    ///
     /// The search query string.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -88,10 +78,9 @@ pub struct CfnFleetMetric {
     #[serde(rename = "QueryString")]
     pub query_string: Option<String>,
 
-
-    /// 
+    ///
     /// The query version.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -100,10 +89,9 @@ pub struct CfnFleetMetric {
     #[serde(rename = "QueryVersion")]
     pub query_version: Option<String>,
 
-
-    /// 
+    ///
     /// Metadata which can be used to manage the fleet metric.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -112,10 +100,9 @@ pub struct CfnFleetMetric {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// Used to support unit transformation such as milliseconds to seconds. Must be a unit supported by CW metric. Default to null.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -123,10 +110,7 @@ pub struct CfnFleetMetric {
     /// Update requires: No interruption
     #[serde(rename = "Unit")]
     pub unit: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnFleetMetric {
     fn type_string(&self) -> &'static str {
@@ -138,8 +122,9 @@ impl cfn_resources::CfnResource for CfnFleetMetric {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.aggregation_type.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.aggregation_type
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -148,11 +133,9 @@ impl cfn_resources::CfnResource for CfnFleetMetric {
 /// The type of aggregation queries.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AggregationType {
-
-
-    /// 
+    ///
     /// The name of the aggregation type.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -161,10 +144,9 @@ pub struct AggregationType {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// A list of the values of aggregation types.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -172,10 +154,7 @@ pub struct AggregationType {
     /// Update requires: No interruption
     #[serde(rename = "Values")]
     pub values: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AggregationType {
     fn type_string(&self) -> &'static str {
@@ -187,7 +166,6 @@ impl cfn_resources::CfnResource for AggregationType {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -201,32 +179,26 @@ impl cfn_resources::CfnResource for AggregationType {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -238,7 +210,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

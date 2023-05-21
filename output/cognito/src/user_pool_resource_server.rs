@@ -1,13 +1,9 @@
-
-
 /// The AWS::Cognito::UserPoolResourceServer resource creates a new OAuth2.0    resource server and defines custom scopes in it.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUserPoolResourceServer {
-
-
-    /// 
+    ///
     /// A unique resource server identifier for the resource server. This could be an HTTPS    endpoint where the resource server is located. For example:     https://my-weather-api.example.com.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnUserPoolResourceServer {
     #[serde(rename = "Identifier")]
     pub identifier: String,
 
-
-    /// 
+    ///
     /// A friendly name for the resource server.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -40,10 +35,9 @@ pub struct CfnUserPoolResourceServer {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// A list of scopes. Each scope is a map with keys ScopeName and     ScopeDescription.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ResourceServerScopeType
@@ -54,10 +48,9 @@ pub struct CfnUserPoolResourceServer {
     #[serde(rename = "Scopes")]
     pub scopes: Option<Vec<ResourceServerScopeType>>,
 
-
-    /// 
+    ///
     /// The user pool ID for the user pool.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -71,10 +64,7 @@ pub struct CfnUserPoolResourceServer {
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
     pub user_pool_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
     fn type_string(&self) -> &'static str {
@@ -86,57 +76,69 @@ impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.identifier;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'identifier'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'identifier'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.identifier;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'identifier'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'identifier'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.scopes {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'scopes'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'scopes'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.user_pool_id;
 
         if the_val.len() > 55 as _ {
-            return Err(format!("Max validation failed on field 'user_pool_id'. {} is greater than 55", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'user_pool_id'. {} is greater than 55",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.user_pool_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'user_pool_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'user_pool_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -144,11 +146,9 @@ impl cfn_resources::CfnResource for CfnUserPoolResourceServer {
 /// A resource server scope.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceServerScopeType {
-
-
-    /// 
+    ///
     /// A description of the scope.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -161,10 +161,9 @@ pub struct ResourceServerScopeType {
     #[serde(rename = "ScopeDescription")]
     pub scope_description: String,
 
-
-    /// 
+    ///
     /// The name of the scope.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -178,10 +177,7 @@ pub struct ResourceServerScopeType {
     /// Update requires: No interruption
     #[serde(rename = "ScopeName")]
     pub scope_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ResourceServerScopeType {
     fn type_string(&self) -> &'static str {
@@ -193,35 +189,42 @@ impl cfn_resources::CfnResource for ResourceServerScopeType {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.scope_description;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'scope_description'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'scope_description'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.scope_description;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'scope_description'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'scope_description'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.scope_name;
 
         if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'scope_name'. {} is greater than 256", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'scope_name'. {} is greater than 256",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.scope_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'scope_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'scope_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }

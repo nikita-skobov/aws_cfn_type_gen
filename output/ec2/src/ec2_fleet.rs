@@ -1,13 +1,9 @@
-
-
 /// Specifies the configuration information to launch a fleet--or group--of instances. An     EC2 Fleet can launch multiple instance types across multiple Availability Zones, using the     On-Demand Instance, Reserved Instance, and Spot Instance purchasing models together. Using     EC2 Fleet, you can define separate On-Demand and Spot capacity targets, specify the     instance types that work best for your applications, and specify how Amazon EC2 should     distribute your fleet capacity within each purchasing model. For more information, see       Launching an       EC2 Fleet in the Amazon EC2 User Guide for Linux     Instances.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEC2Fleet {
-
-
-    /// 
+    ///
     /// Reserved.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,12 +12,11 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "Context")]
     pub context: Option<String>,
 
-
-    /// 
+    ///
     /// Indicates whether running instances should be terminated if the total target capacity of     the EC2 Fleet is decreased below the current size of the EC2 Fleet.
-    /// 
+    ///
     /// Supported only for fleets of type maintain.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -32,10 +27,9 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "ExcessCapacityTerminationPolicy")]
     pub excess_capacity_termination_policy: Option<EC2FleetExcessCapacityTerminationPolicyEnum>,
 
-
-    /// 
+    ///
     /// The configuration for the EC2 Fleet.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of FleetLaunchTemplateConfigRequest
@@ -46,10 +40,9 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "LaunchTemplateConfigs")]
     pub launch_template_configs: Vec<FleetLaunchTemplateConfigRequest>,
 
-
-    /// 
+    ///
     /// Describes the configuration of On-Demand Instances in an EC2 Fleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: OnDemandOptionsRequest
@@ -58,10 +51,9 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "OnDemandOptions")]
     pub on_demand_options: Option<OnDemandOptionsRequest>,
 
-
-    /// 
+    ///
     /// Indicates whether EC2 Fleet should replace unhealthy Spot Instances. Supported only for     fleets of type maintain. For more information, see EC2 Fleet       health checks in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -70,10 +62,9 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "ReplaceUnhealthyInstances")]
     pub replace_unhealthy_instances: Option<bool>,
 
-
-    /// 
+    ///
     /// Describes the configuration of Spot Instances in an EC2 Fleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SpotOptionsRequest
@@ -82,14 +73,13 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "SpotOptions")]
     pub spot_options: Option<SpotOptionsRequest>,
 
-
-    /// 
+    ///
     /// The key-value pair for tagging the EC2 Fleet request on creation. For more information, see      Tagging your resources.
-    /// 
+    ///
     /// If the fleet type is instant, specify a resource type of fleet      to tag the fleet or instance to tag the instances at launch.
-    /// 
+    ///
     /// If the fleet type is maintain or request, specify a resource     type of fleet to tag the fleet. You cannot specify a resource type of       instance. To tag instances at launch, specify the tags in a launch template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of TagSpecification
@@ -98,10 +88,9 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "TagSpecifications")]
     pub tag_specifications: Option<Vec<TagSpecification>>,
 
-
-    /// 
+    ///
     /// The number of units to request.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: TargetCapacitySpecificationRequest
@@ -110,10 +99,9 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "TargetCapacitySpecification")]
     pub target_capacity_specification: TargetCapacitySpecificationRequest,
 
-
-    /// 
+    ///
     /// Indicates whether running instances should be terminated when the EC2 Fleet expires.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -122,14 +110,13 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "TerminateInstancesWithExpiration")]
     pub terminate_instances_with_expiration: Option<bool>,
 
-
-    /// 
+    ///
     /// The fleet type. The default value is maintain.
-    /// 
+    ///
     /// maintain - The EC2 Fleet places an asynchronous request for your desired        capacity, and continues to maintain your desired Spot capacity by replenishing        interrupted Spot Instances.                        request - The EC2 Fleet places an asynchronous one-time request for your        desired capacity, but does submit Spot requests in alternative capacity pools if Spot        capacity is unavailable, and does not maintain Spot capacity if Spot Instances are        interrupted.                        instant - The EC2 Fleet places a synchronous one-time request for your        desired capacity, and returns errors for any instances that could not be        launched.
-    /// 
+    ///
     /// For more information, see EC2 Fleet       request types in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -140,10 +127,9 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "Type")]
     pub cfn_type: Option<EC2FleetTypeEnum>,
 
-
-    /// 
+    ///
     /// The start date and time of the request, in UTC format (for example,       YYYY-MM-DDTHH:MM:SSZ).     The default is to start fulfilling the request immediately.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -152,10 +138,9 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "ValidFrom")]
     pub valid_from: Option<String>,
 
-
-    /// 
+    ///
     /// The end date and time of the request, in UTC format (for example,       YYYY-MM-DDTHH:MM:SSZ).     At this point, no new EC2 Fleet requests are placed or able to fulfill the request. If no value is specified, the request remains until you cancel it.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -163,13 +148,10 @@ pub struct CfnEC2Fleet {
     /// Update requires: Replacement
     #[serde(rename = "ValidUntil")]
     pub valid_until: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EC2FleetExcessCapacityTerminationPolicyEnum {
-
     /// no-termination
     #[serde(rename = "no-termination")]
     Notermination,
@@ -177,7 +159,6 @@ pub enum EC2FleetExcessCapacityTerminationPolicyEnum {
     /// termination
     #[serde(rename = "termination")]
     Termination,
-
 }
 
 impl Default for EC2FleetExcessCapacityTerminationPolicyEnum {
@@ -188,7 +169,6 @@ impl Default for EC2FleetExcessCapacityTerminationPolicyEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EC2FleetTypeEnum {
-
     /// instant
     #[serde(rename = "instant")]
     Instant,
@@ -200,7 +180,6 @@ pub enum EC2FleetTypeEnum {
     /// request
     #[serde(rename = "request")]
     Request,
-
 }
 
 impl Default for EC2FleetTypeEnum {
@@ -208,7 +187,6 @@ impl Default for EC2FleetTypeEnum {
         EC2FleetTypeEnum::Instant
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnEC2Fleet {
     fn type_string(&self) -> &'static str {
@@ -220,17 +198,22 @@ impl cfn_resources::CfnResource for CfnEC2Fleet {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.launch_template_configs;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'launch_template_configs'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'launch_template_configs'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
-        self.on_demand_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.on_demand_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.spot_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.spot_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.target_capacity_specification.validate()?;
 
@@ -241,11 +224,9 @@ impl cfn_resources::CfnResource for CfnEC2Fleet {
 /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips)     on an instance. To exclude accelerator-enabled instance types, set Max to       0.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AcceleratorCountRequest {
-
-
-    /// 
+    ///
     /// The maximum number of accelerators. To specify no maximum limit, omit this     parameter. To exclude accelerator-enabled instance types, set Max to     0.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -254,10 +235,9 @@ pub struct AcceleratorCountRequest {
     #[serde(rename = "Max")]
     pub max: Option<i64>,
 
-
-    /// 
+    ///
     /// The minimum number of accelerators. To specify no minimum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -265,10 +245,7 @@ pub struct AcceleratorCountRequest {
     /// Update requires: Replacement
     #[serde(rename = "Min")]
     pub min: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AcceleratorCountRequest {
     fn type_string(&self) -> &'static str {
@@ -280,7 +257,6 @@ impl cfn_resources::CfnResource for AcceleratorCountRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -288,11 +264,9 @@ impl cfn_resources::CfnResource for AcceleratorCountRequest {
 /// The minimum and maximum amount of total accelerator memory, in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AcceleratorTotalMemoryMiBRequest {
-
-
-    /// 
+    ///
     /// The maximum amount of accelerator memory, in MiB. To specify no maximum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -301,10 +275,9 @@ pub struct AcceleratorTotalMemoryMiBRequest {
     #[serde(rename = "Max")]
     pub max: Option<i64>,
 
-
-    /// 
+    ///
     /// The minimum amount of accelerator memory, in MiB. To specify no minimum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -312,10 +285,7 @@ pub struct AcceleratorTotalMemoryMiBRequest {
     /// Update requires: Replacement
     #[serde(rename = "Min")]
     pub min: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
     fn type_string(&self) -> &'static str {
@@ -327,7 +297,6 @@ impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -335,11 +304,9 @@ impl cfn_resources::CfnResource for AcceleratorTotalMemoryMiBRequest {
 /// The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps. For more information, see       Amazon       EBS–optimized instances in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct BaselineEbsBandwidthMbpsRequest {
-
-
-    /// 
+    ///
     /// The maximum baseline bandwidth, in Mbps. To specify no maximum limit, omit     this parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -348,10 +315,9 @@ pub struct BaselineEbsBandwidthMbpsRequest {
     #[serde(rename = "Max")]
     pub max: Option<i64>,
 
-
-    /// 
+    ///
     /// The minimum baseline bandwidth, in Mbps. To specify no minimum limit, omit     this parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -359,10 +325,7 @@ pub struct BaselineEbsBandwidthMbpsRequest {
     /// Update requires: Replacement
     #[serde(rename = "Min")]
     pub min: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
     fn type_string(&self) -> &'static str {
@@ -374,7 +337,6 @@ impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -382,15 +344,13 @@ impl cfn_resources::CfnResource for BaselineEbsBandwidthMbpsRequest {
 /// The Spot Instance replacement strategy to use when Amazon EC2 emits a rebalance     notification signal that your Spot Instance is at an elevated risk of being interrupted.     For more information, see Capacity rebalancing in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CapacityRebalance {
-
-
-    /// 
+    ///
     /// The replacement strategy to use. Only available for fleets of type     maintain.
-    /// 
+    ///
     /// launch - EC2 Fleet launches a replacement Spot Instance when a rebalance     notification is emitted for an existing Spot Instance in the fleet. EC2 Fleet does not     terminate the instances that receive a rebalance notification. You can terminate the old     instances, or you can leave them running. You are charged for all instances while they are     running.
-    /// 
+    ///
     /// launch-before-terminate - EC2 Fleet launches a replacement Spot Instance     when a rebalance notification is emitted for an existing Spot Instance in the fleet, and     then, after a delay that you specify (in TerminationDelay), terminates the     instances that received a rebalance notification.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -401,16 +361,15 @@ pub struct CapacityRebalance {
     #[serde(rename = "ReplacementStrategy")]
     pub replacement_strategy: Option<CapacityRebalanceReplacementStrategyEnum>,
 
-
-    /// 
+    ///
     /// The amount of time (in seconds) that Amazon EC2 waits before terminating the old Spot     Instance after launching a new replacement Spot Instance.
-    /// 
+    ///
     /// Required when ReplacementStrategy is set to launch-before-terminate.
-    /// 
+    ///
     /// Not valid when ReplacementStrategy is set to launch.
-    /// 
+    ///
     /// Valid values: Minimum value of 120 seconds. Maximum value of 7200 seconds.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -418,13 +377,10 @@ pub struct CapacityRebalance {
     /// Update requires: Replacement
     #[serde(rename = "TerminationDelay")]
     pub termination_delay: Option<i64>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CapacityRebalanceReplacementStrategyEnum {
-
     /// launch
     #[serde(rename = "launch")]
     Launch,
@@ -432,7 +388,6 @@ pub enum CapacityRebalanceReplacementStrategyEnum {
     /// launch-before-terminate
     #[serde(rename = "launch-before-terminate")]
     Launchbeforeterminate,
-
 }
 
 impl Default for CapacityRebalanceReplacementStrategyEnum {
@@ -440,7 +395,6 @@ impl Default for CapacityRebalanceReplacementStrategyEnum {
         CapacityRebalanceReplacementStrategyEnum::Launch
     }
 }
-
 
 impl cfn_resources::CfnResource for CapacityRebalance {
     fn type_string(&self) -> &'static str {
@@ -452,7 +406,6 @@ impl cfn_resources::CfnResource for CapacityRebalance {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -462,15 +415,13 @@ impl cfn_resources::CfnResource for CapacityRebalance {
 /// For more information about Capacity Reservations, see On-Demand Capacity       Reservations in the Amazon EC2 User Guide. For examples of using     Capacity Reservations in an EC2 Fleet, see EC2 Fleet example       configurations in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CapacityReservationOptionsRequest {
-
-
-    /// 
+    ///
     /// Indicates whether to use unused Capacity Reservations for fulfilling On-Demand capacity.
-    /// 
+    ///
     /// If you specify use-capacity-reservations-first, the fleet uses unused     Capacity Reservations to fulfill On-Demand capacity up to the target On-Demand capacity. If     multiple instance pools have unused Capacity Reservations, the On-Demand allocation     strategy (lowest-price or prioritized) is applied. If the number     of unused Capacity Reservations is less than the On-Demand target capacity, the remaining     On-Demand target capacity is launched according to the On-Demand allocation strategy       (lowest-price or prioritized).
-    /// 
+    ///
     /// If you do not specify a value, the fleet fulfils the On-Demand capacity according to the     chosen On-Demand allocation strategy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -480,17 +431,13 @@ pub struct CapacityReservationOptionsRequest {
     /// Update requires: Replacement
     #[serde(rename = "UsageStrategy")]
     pub usage_strategy: Option<CapacityReservationOptionsRequestUsageStrategyEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CapacityReservationOptionsRequestUsageStrategyEnum {
-
     /// use-capacity-reservations-first
     #[serde(rename = "use-capacity-reservations-first")]
     Usecapacityreservationsfirst,
-
 }
 
 impl Default for CapacityReservationOptionsRequestUsageStrategyEnum {
@@ -498,7 +445,6 @@ impl Default for CapacityReservationOptionsRequestUsageStrategyEnum {
         CapacityReservationOptionsRequestUsageStrategyEnum::Usecapacityreservationsfirst
     }
 }
-
 
 impl cfn_resources::CfnResource for CapacityReservationOptionsRequest {
     fn type_string(&self) -> &'static str {
@@ -510,7 +456,6 @@ impl cfn_resources::CfnResource for CapacityReservationOptionsRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -520,11 +465,9 @@ impl cfn_resources::CfnResource for CapacityReservationOptionsRequest {
 /// FleetLaunchTemplateConfigRequest is a property of the AWS::EC2::EC2Fleet resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FleetLaunchTemplateConfigRequest {
-
-
-    /// 
+    ///
     /// The launch template to use. You must specify either the launch template ID or launch     template name in the request.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: FleetLaunchTemplateSpecificationRequest
@@ -533,12 +476,11 @@ pub struct FleetLaunchTemplateConfigRequest {
     #[serde(rename = "LaunchTemplateSpecification")]
     pub launch_template_specification: Option<FleetLaunchTemplateSpecificationRequest>,
 
-
-    /// 
+    ///
     /// Any parameters that you specify override the same parameters in the launch     template.
-    /// 
+    ///
     /// For fleets of type request and maintain, a maximum of 300     items is allowed across all launch templates.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of FleetLaunchTemplateOverridesRequest
@@ -546,10 +488,7 @@ pub struct FleetLaunchTemplateConfigRequest {
     /// Update requires: Replacement
     #[serde(rename = "Overrides")]
     pub overrides: Option<Vec<FleetLaunchTemplateOverridesRequest>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FleetLaunchTemplateConfigRequest {
     fn type_string(&self) -> &'static str {
@@ -561,8 +500,9 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateConfigRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.launch_template_specification.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.launch_template_specification
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -573,11 +513,9 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateConfigRequest {
 /// FleetLaunchTemplateOverridesRequest is a property of the FleetLaunchTemplateConfigRequest property type.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FleetLaunchTemplateOverridesRequest {
-
-
-    /// 
+    ///
     /// The Availability Zone in which to launch the instances.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -586,12 +524,11 @@ pub struct FleetLaunchTemplateOverridesRequest {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// The attributes for the instance types. When you specify instance attributes, Amazon EC2 will     identify instance types with those attributes.
-    /// 
+    ///
     /// NoteIf you specify InstanceRequirements, you can't specify       InstanceType.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: InstanceRequirementsRequest
@@ -600,14 +537,13 @@ pub struct FleetLaunchTemplateOverridesRequest {
     #[serde(rename = "InstanceRequirements")]
     pub instance_requirements: Option<InstanceRequirementsRequest>,
 
-
-    /// 
+    ///
     /// The instance type.
-    /// 
+    ///
     /// mac1.metal is not supported as a launch template override.
-    /// 
+    ///
     /// NoteIf you specify InstanceType, you can't specify        InstanceRequirements.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -618,12 +554,11 @@ pub struct FleetLaunchTemplateOverridesRequest {
     #[serde(rename = "InstanceType")]
     pub instance_type: Option<FleetLaunchTemplateOverridesRequestInstanceTypeEnum>,
 
-
-    /// 
+    ///
     /// The maximum price per unit hour that you are willing to pay for a Spot Instance. We do not recommend using this parameter because it can lead to increased interruptions. If you do not specify this parameter, you will pay the current Spot price.
-    /// 
+    ///
     /// ImportantIf you specify a maximum price, your instances will be interrupted more frequently than if you do not specify this parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -632,10 +567,9 @@ pub struct FleetLaunchTemplateOverridesRequest {
     #[serde(rename = "MaxPrice")]
     pub max_price: Option<String>,
 
-
-    /// 
+    ///
     /// The location where the instance launched, if applicable.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Placement
@@ -644,16 +578,15 @@ pub struct FleetLaunchTemplateOverridesRequest {
     #[serde(rename = "Placement")]
     pub placement: Option<Placement>,
 
-
-    /// 
+    ///
     /// The priority for the launch template override. The highest priority is launched     first.
-    /// 
+    ///
     /// If the On-Demand AllocationStrategy is set to prioritized,     EC2 Fleet uses priority to determine which launch template override to use first in fulfilling     On-Demand capacity.
-    /// 
+    ///
     /// If the Spot AllocationStrategy is set to       capacity-optimized-prioritized, EC2 Fleet uses priority on a best-effort basis     to determine which launch template override to use in fulfilling Spot capacity, but     optimizes for capacity first.
-    /// 
+    ///
     /// Valid values are whole numbers starting at 0. The lower the number, the     higher the priority. If no number is set, the launch template override has the lowest     priority. You can set the same priority for different launch template overrides.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -662,10 +595,9 @@ pub struct FleetLaunchTemplateOverridesRequest {
     #[serde(rename = "Priority")]
     pub priority: Option<f64>,
 
-
-    /// 
+    ///
     /// The IDs of the subnets in which to launch the instances. Separate multiple subnet IDs using commas (for example, subnet-1234abcdeexample1, subnet-0987cdef6example2). A request of type instant can have only one subnet ID.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -674,10 +606,9 @@ pub struct FleetLaunchTemplateOverridesRequest {
     #[serde(rename = "SubnetId")]
     pub subnet_id: Option<String>,
 
-
-    /// 
+    ///
     /// The number of units provided by the specified instance type.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -685,13 +616,10 @@ pub struct FleetLaunchTemplateOverridesRequest {
     /// Update requires: Replacement
     #[serde(rename = "WeightedCapacity")]
     pub weighted_capacity: Option<f64>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum FleetLaunchTemplateOverridesRequestInstanceTypeEnum {
-
     /// a1.2xlarge
     #[serde(rename = "a1.2xlarge")]
     A12xlarge,
@@ -3231,7 +3159,6 @@ pub enum FleetLaunchTemplateOverridesRequestInstanceTypeEnum {
     /// z1d.xlarge
     #[serde(rename = "z1d.xlarge")]
     Z1dxlarge,
-
 }
 
 impl Default for FleetLaunchTemplateOverridesRequestInstanceTypeEnum {
@@ -3239,7 +3166,6 @@ impl Default for FleetLaunchTemplateOverridesRequestInstanceTypeEnum {
         FleetLaunchTemplateOverridesRequestInstanceTypeEnum::A12xlarge
     }
 }
-
 
 impl cfn_resources::CfnResource for FleetLaunchTemplateOverridesRequest {
     fn type_string(&self) -> &'static str {
@@ -3251,10 +3177,13 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateOverridesRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.instance_requirements
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.instance_requirements.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.placement.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.placement
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -3271,13 +3200,11 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateOverridesRequest {
 /// For examples of launch templates, see Examples.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct FleetLaunchTemplateSpecificationRequest {
-
-
-    /// 
+    ///
     /// The ID of the launch template.
-    /// 
+    ///
     /// You must specify the LaunchTemplateId or the LaunchTemplateName, but not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -3286,12 +3213,11 @@ pub struct FleetLaunchTemplateSpecificationRequest {
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the launch template.
-    /// 
+    ///
     /// You must specify the LaunchTemplateName or the LaunchTemplateId, but not both.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: String
@@ -3306,14 +3232,13 @@ pub struct FleetLaunchTemplateSpecificationRequest {
     #[serde(rename = "LaunchTemplateName")]
     pub launch_template_name: Option<String>,
 
-
-    /// 
+    ///
     /// The launch template version number, $Latest, or $Default. You must specify a value, otherwise the request fails.
-    /// 
+    ///
     /// If the value is $Latest, Amazon EC2 uses the latest version of the launch template.
-    /// 
+    ///
     /// If the value is $Default, Amazon EC2 uses the default version of the launch template.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -3321,10 +3246,7 @@ pub struct FleetLaunchTemplateSpecificationRequest {
     /// Update requires: Replacement
     #[serde(rename = "Version")]
     pub version: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for FleetLaunchTemplateSpecificationRequest {
     fn type_string(&self) -> &'static str {
@@ -3336,23 +3258,24 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateSpecificationRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.launch_template_name {
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'launch_template_name'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.launch_template_name {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'launch_template_name'. {} is greater than 128", the_val.len()));
+            if the_val.len() < 3 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'launch_template_name'. {} is less than 3",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.launch_template_name {
-
-        if the_val.len() < 3 as _ {
-            return Err(format!("Min validation failed on field 'launch_template_name'. {} is less than 3", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -3366,15 +3289,13 @@ impl cfn_resources::CfnResource for FleetLaunchTemplateSpecificationRequest {
 /// For more information, see Attribute-based instance type selection for EC2 Fleet, Attribute-based instance type selection for Spot Fleet, and Spot        placement score in the Amazon EC2 User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InstanceRequirementsRequest {
-
-
-    /// 
+    ///
     /// The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips) on     an instance.
-    /// 
+    ///
     /// To exclude accelerator-enabled instance types, set Max to 0.
-    /// 
+    ///
     /// Default: No minimum or maximum limits
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AcceleratorCountRequest
@@ -3383,14 +3304,13 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "AcceleratorCount")]
     pub accelerator_count: Option<AcceleratorCountRequest>,
 
-
-    /// 
+    ///
     /// Indicates whether instance types must have accelerators by specific manufacturers.
-    /// 
+    ///
     /// For instance types with NVIDIA devices, specify nvidia.               For instance types with AMD devices, specify amd.               For instance types with AWS devices, specify amazon-web-services.               For instance types with Xilinx devices, specify xilinx.
-    /// 
+    ///
     /// Default: Any manufacturer
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3399,14 +3319,13 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "AcceleratorManufacturers")]
     pub accelerator_manufacturers: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The accelerators that must be on the instance type.
-    /// 
+    ///
     /// For instance types with NVIDIA A100 GPUs, specify a100.               For instance types with NVIDIA V100 GPUs, specify v100.               For instance types with NVIDIA K80 GPUs, specify k80.               For instance types with NVIDIA T4 GPUs, specify t4.               For instance types with NVIDIA M60 GPUs, specify m60.               For instance types with AMD Radeon Pro V520 GPUs, specify radeon-pro-v520.               For instance types with Xilinx VU9P FPGAs, specify vu9p.               For instance types with AWS Inferentia chips, specify inferentia.               For instance types with NVIDIA GRID K520 GPUs, specify k520.
-    /// 
+    ///
     /// Default: Any accelerator
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3415,12 +3334,11 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "AcceleratorNames")]
     pub accelerator_names: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The minimum and maximum amount of total accelerator memory, in MiB.
-    /// 
+    ///
     /// Default: No minimum or maximum limits
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AcceleratorTotalMemoryMiBRequest
@@ -3429,14 +3347,13 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "AcceleratorTotalMemoryMiB")]
     pub accelerator_total_memory_mi_b: Option<AcceleratorTotalMemoryMiBRequest>,
 
-
-    /// 
+    ///
     /// The accelerator types that must be on the instance type.
-    /// 
+    ///
     /// To include instance types with GPU hardware, specify gpu.               To include instance types with FPGA hardware, specify fpga.               To include instance types with inference hardware, specify inference.
-    /// 
+    ///
     /// Default: Any accelerator type
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3445,18 +3362,17 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "AcceleratorTypes")]
     pub accelerator_types: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The instance types to apply your specified attributes against. All other instance types      are ignored, even if they match your specified attributes.
-    /// 
+    ///
     /// You can use strings with one or more wild cards, represented by     an asterisk (*), to allow an instance type, size, or generation. The     following are examples: m5.8xlarge, c5*.*, m5a.*,     r*, *3*.
-    /// 
+    ///
     /// For example, if you specify c5*,Amazon EC2 will allow the entire C5 instance     family, which includes all C5a and C5n instance types. If you specify     m5a.*, Amazon EC2 will allow all the M5a instance types, but not the M5n     instance types.
-    /// 
+    ///
     /// NoteIf you specify AllowedInstanceTypes, you can't specify ExcludedInstanceTypes.
-    /// 
+    ///
     /// Default: All instance types
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3467,14 +3383,13 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "AllowedInstanceTypes")]
     pub allowed_instance_types: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Indicates whether bare metal instance types must be included, excluded, or required.
-    /// 
+    ///
     /// To include bare metal instance types, specify included.               To require only bare metal instance types, specify required.               To exclude bare metal instance types, specify excluded.
-    /// 
+    ///
     /// Default: excluded
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -3485,12 +3400,11 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "BareMetal")]
     pub bare_metal: Option<InstanceRequirementsRequestBareMetalEnum>,
 
-
-    /// 
+    ///
     /// The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps. For more information, see       Amazon       EBS–optimized instances in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// Default: No minimum or maximum limits
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: BaselineEbsBandwidthMbpsRequest
@@ -3499,14 +3413,13 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "BaselineEbsBandwidthMbps")]
     pub baseline_ebs_bandwidth_mbps: Option<BaselineEbsBandwidthMbpsRequest>,
 
-
-    /// 
+    ///
     /// Indicates whether burstable performance T instance types are included, excluded, or required. For more information, see    Burstable performance instances.
-    /// 
+    ///
     /// To include burstable performance instance types, specify included.               To require only burstable performance instance types, specify required.               To exclude burstable performance instance types, specify excluded.
-    /// 
+    ///
     /// Default: excluded
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -3517,16 +3430,15 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "BurstablePerformance")]
     pub burstable_performance: Option<InstanceRequirementsRequestBurstablePerformanceEnum>,
 
-
-    /// 
+    ///
     /// The CPU manufacturers to include.
-    /// 
+    ///
     /// For instance types with Intel CPUs, specify intel.               For instance types with AMD CPUs, specify amd.               For instance types with AWS CPUs, specify amazon-web-services.
-    /// 
+    ///
     /// NoteDon't confuse the CPU manufacturer with the CPU architecture. Instances will      be launched with a compatible CPU architecture based on the Amazon Machine Image (AMI) that you      specify in your launch template.
-    /// 
+    ///
     /// Default: Any manufacturer
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3535,18 +3447,17 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "CpuManufacturers")]
     pub cpu_manufacturers: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The instance types to exclude.
-    /// 
+    ///
     /// You can use strings with one or more wild cards, represented by     an asterisk (*), to exclude an instance family, type, size, or generation. The     following are examples: m5.8xlarge, c5*.*, m5a.*,       r*, *3*.
-    /// 
+    ///
     /// For example, if you specify c5*,Amazon EC2 will exclude the entire C5 instance    family, which includes all C5a and C5n instance types. If you specify    m5a.*, Amazon EC2 will exclude all the M5a instance types, but not the M5n    instance types.
-    /// 
+    ///
     /// NoteIf you specify ExcludedInstanceTypes, you can't specify AllowedInstanceTypes.
-    /// 
+    ///
     /// Default: No excluded instance types
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3557,16 +3468,15 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "ExcludedInstanceTypes")]
     pub excluded_instance_types: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Indicates whether current or previous generation instance types are included. The    current generation instance types are recommended for use. Current generation instance types are    typically the latest two to three generations in each instance family. For more    information, see Instance types in the    Amazon EC2 User Guide.
-    /// 
+    ///
     /// For current generation instance types, specify current.
-    /// 
+    ///
     /// For previous generation instance types, specify previous.
-    /// 
+    ///
     /// Default: Current and previous generation instance types
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3575,14 +3485,13 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "InstanceGenerations")]
     pub instance_generations: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Indicates whether instance types with instance store volumes are included, excluded, or required. For more information,    Amazon     EC2 instance store in the Amazon EC2 User Guide.
-    /// 
+    ///
     /// To include instance types with instance store volumes, specify          included.               To require only instance types with instance store volumes, specify          required.               To exclude instance types with instance store volumes, specify          excluded.
-    /// 
+    ///
     /// Default: included
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -3593,14 +3502,13 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "LocalStorage")]
     pub local_storage: Option<InstanceRequirementsRequestLocalStorageEnum>,
 
-
-    /// 
+    ///
     /// The type of local storage that is required.
-    /// 
+    ///
     /// For instance types with hard disk drive (HDD) storage, specify hdd.               For instance types with solid state drive (SSD) storage, specify        ssd.
-    /// 
+    ///
     /// Default: hdd and ssd
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -3609,12 +3517,11 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "LocalStorageTypes")]
     pub local_storage_types: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The minimum and maximum amount of memory per vCPU, in GiB.
-    /// 
+    ///
     /// Default: No minimum or maximum limits
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MemoryGiBPerVCpuRequest
@@ -3623,10 +3530,9 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "MemoryGiBPerVCpu")]
     pub memory_gi_bper_vcpu: Option<MemoryGiBPerVCpuRequest>,
 
-
-    /// 
+    ///
     /// The minimum and maximum amount of memory, in MiB.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MemoryMiBRequest
@@ -3635,12 +3541,11 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "MemoryMiB")]
     pub memory_mi_b: Option<MemoryMiBRequest>,
 
-
-    /// 
+    ///
     /// The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).
-    /// 
+    ///
     /// Default: No minimum or maximum limits
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NetworkBandwidthGbpsRequest
@@ -3649,12 +3554,11 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "NetworkBandwidthGbps")]
     pub network_bandwidth_gbps: Option<NetworkBandwidthGbpsRequest>,
 
-
-    /// 
+    ///
     /// The minimum and maximum number of network interfaces.
-    /// 
+    ///
     /// Default: No minimum or maximum limits
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NetworkInterfaceCountRequest
@@ -3663,20 +3567,19 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "NetworkInterfaceCount")]
     pub network_interface_count: Option<NetworkInterfaceCountRequest>,
 
-
-    /// 
+    ///
     /// The price protection threshold for On-Demand Instances. This is the maximum you’ll pay for an On-Demand Instance,     expressed as a percentage above the least expensive current generation M, C, or R instance type with your specified     attributes. When Amazon EC2 selects instance types with your attributes, it excludes instance     types priced above your threshold.
-    /// 
+    ///
     /// The parameter accepts an integer, which Amazon EC2 interprets as a percentage.
-    /// 
+    ///
     /// To turn off price protection, specify a high value, such as 999999.
-    /// 
+    ///
     /// This parameter is not supported for GetSpotPlacementScores and GetInstanceTypesFromInstanceRequirements.
-    /// 
+    ///
     /// NoteIf you set TargetCapacityUnitType to vcpu or     memory-mib, the price protection threshold is applied based on the     per-vCPU or per-memory price instead of the per-instance price.
-    /// 
+    ///
     /// Default: 20
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -3685,14 +3588,13 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "OnDemandMaxPricePercentageOverLowestPrice")]
     pub on_demand_max_price_percentage_over_lowest_price: Option<i64>,
 
-
-    /// 
+    ///
     /// Indicates whether instance types must support hibernation for On-Demand Instances.
-    /// 
+    ///
     /// This parameter is not supported for GetSpotPlacementScores.
-    /// 
+    ///
     /// Default: false
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -3701,20 +3603,19 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "RequireHibernateSupport")]
     pub require_hibernate_support: Option<bool>,
 
-
-    /// 
+    ///
     /// The price protection threshold for Spot Instance. This is the maximum you’ll pay for an Spot Instance,     expressed as a percentage above the least expensive current generation M, C, or R instance type with your specified     attributes. When Amazon EC2 selects instance types with your attributes, it excludes instance     types priced above your threshold.
-    /// 
+    ///
     /// The parameter accepts an integer, which Amazon EC2 interprets as a percentage.
-    /// 
+    ///
     /// To turn off price protection, specify a high value, such as 999999.
-    /// 
+    ///
     /// This parameter is not supported for GetSpotPlacementScores and GetInstanceTypesFromInstanceRequirements.
-    /// 
+    ///
     /// NoteIf you set TargetCapacityUnitType to vcpu or     memory-mib, the price protection threshold is applied based on the     per-vCPU or per-memory price instead of the per-instance price.
-    /// 
+    ///
     /// Default: 100
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -3723,12 +3624,11 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "SpotMaxPricePercentageOverLowestPrice")]
     pub spot_max_price_percentage_over_lowest_price: Option<i64>,
 
-
-    /// 
+    ///
     /// The minimum and maximum amount of total local storage, in GB.
-    /// 
+    ///
     /// Default: No minimum or maximum limits
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: TotalLocalStorageGBRequest
@@ -3737,10 +3637,9 @@ pub struct InstanceRequirementsRequest {
     #[serde(rename = "TotalLocalStorageGB")]
     pub total_local_storage_gb: Option<TotalLocalStorageGBRequest>,
 
-
-    /// 
+    ///
     /// The minimum and maximum number of vCPUs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: VCpuCountRangeRequest
@@ -3748,13 +3647,10 @@ pub struct InstanceRequirementsRequest {
     /// Update requires: Replacement
     #[serde(rename = "VCpuCount")]
     pub vcpu_count: Option<VCpuCountRangeRequest>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceRequirementsRequestBareMetalEnum {
-
     /// excluded
     #[serde(rename = "excluded")]
     Excluded,
@@ -3766,7 +3662,6 @@ pub enum InstanceRequirementsRequestBareMetalEnum {
     /// required
     #[serde(rename = "required")]
     Required,
-
 }
 
 impl Default for InstanceRequirementsRequestBareMetalEnum {
@@ -3777,7 +3672,6 @@ impl Default for InstanceRequirementsRequestBareMetalEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceRequirementsRequestBurstablePerformanceEnum {
-
     /// excluded
     #[serde(rename = "excluded")]
     Excluded,
@@ -3789,7 +3683,6 @@ pub enum InstanceRequirementsRequestBurstablePerformanceEnum {
     /// required
     #[serde(rename = "required")]
     Required,
-
 }
 
 impl Default for InstanceRequirementsRequestBurstablePerformanceEnum {
@@ -3800,7 +3693,6 @@ impl Default for InstanceRequirementsRequestBurstablePerformanceEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum InstanceRequirementsRequestLocalStorageEnum {
-
     /// excluded
     #[serde(rename = "excluded")]
     Excluded,
@@ -3812,7 +3704,6 @@ pub enum InstanceRequirementsRequestLocalStorageEnum {
     /// required
     #[serde(rename = "required")]
     Required,
-
 }
 
 impl Default for InstanceRequirementsRequestLocalStorageEnum {
@@ -3820,7 +3711,6 @@ impl Default for InstanceRequirementsRequestLocalStorageEnum {
         InstanceRequirementsRequestLocalStorageEnum::Excluded
     }
 }
-
 
 impl cfn_resources::CfnResource for InstanceRequirementsRequest {
     fn type_string(&self) -> &'static str {
@@ -3832,40 +3722,53 @@ impl cfn_resources::CfnResource for InstanceRequirementsRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.accelerator_count
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.accelerator_count.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.accelerator_total_memory_mi_b.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.accelerator_total_memory_mi_b
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.allowed_instance_types {
-
-        if the_val.len() > 400 as _ {
-            return Err(format!("Max validation failed on field 'allowed_instance_types'. {} is greater than 400", the_val.len()));
+            if the_val.len() > 400 as _ {
+                return Err(format!("Max validation failed on field 'allowed_instance_types'. {} is greater than 400", the_val.len()));
+            }
         }
 
-        }
-        
-        self.baseline_ebs_bandwidth_mbps.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.baseline_ebs_bandwidth_mbps
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.excluded_instance_types {
-
-        if the_val.len() > 400 as _ {
-            return Err(format!("Max validation failed on field 'excluded_instance_types'. {} is greater than 400", the_val.len()));
+            if the_val.len() > 400 as _ {
+                return Err(format!("Max validation failed on field 'excluded_instance_types'. {} is greater than 400", the_val.len()));
+            }
         }
 
-        }
-        
-        self.memory_gi_bper_vcpu.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.memory_gi_bper_vcpu
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.memory_mi_b.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.memory_mi_b
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.network_bandwidth_gbps.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.network_bandwidth_gbps
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.network_interface_count.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.network_interface_count
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.total_local_storage_gb.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.total_local_storage_gb
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.vcpu_count.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.vcpu_count
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -3874,11 +3777,9 @@ impl cfn_resources::CfnResource for InstanceRequirementsRequest {
 /// The strategies for managing your Spot Instances that are at an elevated risk of being     interrupted.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MaintenanceStrategies {
-
-
-    /// 
+    ///
     /// The strategy to use when Amazon EC2 emits a signal that your Spot Instance is at an     elevated risk of being interrupted.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CapacityRebalance
@@ -3886,10 +3787,7 @@ pub struct MaintenanceStrategies {
     /// Update requires: Replacement
     #[serde(rename = "CapacityRebalance")]
     pub capacity_rebalance: Option<CapacityRebalance>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MaintenanceStrategies {
     fn type_string(&self) -> &'static str {
@@ -3901,8 +3799,9 @@ impl cfn_resources::CfnResource for MaintenanceStrategies {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.capacity_rebalance.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.capacity_rebalance
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -3911,11 +3810,9 @@ impl cfn_resources::CfnResource for MaintenanceStrategies {
 /// The minimum and maximum amount of memory per vCPU, in GiB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MemoryGiBPerVCpuRequest {
-
-
-    /// 
+    ///
     /// The maximum amount of memory per vCPU, in GiB. To specify no maximum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -3924,10 +3821,9 @@ pub struct MemoryGiBPerVCpuRequest {
     #[serde(rename = "Max")]
     pub max: Option<f64>,
 
-
-    /// 
+    ///
     /// The minimum amount of memory per vCPU, in GiB. To specify no minimum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -3935,10 +3831,7 @@ pub struct MemoryGiBPerVCpuRequest {
     /// Update requires: Replacement
     #[serde(rename = "Min")]
     pub min: Option<f64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
     fn type_string(&self) -> &'static str {
@@ -3950,7 +3843,6 @@ impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -3958,11 +3850,9 @@ impl cfn_resources::CfnResource for MemoryGiBPerVCpuRequest {
 /// The minimum and maximum amount of memory, in MiB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MemoryMiBRequest {
-
-
-    /// 
+    ///
     /// The maximum amount of memory, in MiB. To specify no maximum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -3971,10 +3861,9 @@ pub struct MemoryMiBRequest {
     #[serde(rename = "Max")]
     pub max: Option<i64>,
 
-
-    /// 
+    ///
     /// The minimum amount of memory, in MiB. To specify no minimum limit, specify     0.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -3982,10 +3871,7 @@ pub struct MemoryMiBRequest {
     /// Update requires: Replacement
     #[serde(rename = "Min")]
     pub min: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MemoryMiBRequest {
     fn type_string(&self) -> &'static str {
@@ -3997,7 +3883,6 @@ impl cfn_resources::CfnResource for MemoryMiBRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4005,11 +3890,9 @@ impl cfn_resources::CfnResource for MemoryMiBRequest {
 /// The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkBandwidthGbpsRequest {
-
-
-    /// 
+    ///
     /// The maximum amount of network bandwidth, in Gbps. To specify no maximum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -4018,10 +3901,9 @@ pub struct NetworkBandwidthGbpsRequest {
     #[serde(rename = "Max")]
     pub max: Option<f64>,
 
-
-    /// 
+    ///
     /// The minimum amount of network bandwidth, in Gbps. To specify no minimum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -4029,10 +3911,7 @@ pub struct NetworkBandwidthGbpsRequest {
     /// Update requires: Replacement
     #[serde(rename = "Min")]
     pub min: Option<f64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
     fn type_string(&self) -> &'static str {
@@ -4044,7 +3923,6 @@ impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4052,11 +3930,9 @@ impl cfn_resources::CfnResource for NetworkBandwidthGbpsRequest {
 /// The minimum and maximum number of network interfaces.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkInterfaceCountRequest {
-
-
-    /// 
+    ///
     /// The maximum number of network interfaces. To specify no maximum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -4065,10 +3941,9 @@ pub struct NetworkInterfaceCountRequest {
     #[serde(rename = "Max")]
     pub max: Option<i64>,
 
-
-    /// 
+    ///
     /// The minimum number of network interfaces. To specify no minimum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -4076,10 +3951,7 @@ pub struct NetworkInterfaceCountRequest {
     /// Update requires: Replacement
     #[serde(rename = "Min")]
     pub min: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
     fn type_string(&self) -> &'static str {
@@ -4091,7 +3963,6 @@ impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4101,17 +3972,15 @@ impl cfn_resources::CfnResource for NetworkInterfaceCountRequest {
 /// OnDemandOptionsRequest is a property of the AWS::EC2::EC2Fleet resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct OnDemandOptionsRequest {
-
-
-    /// 
+    ///
     /// The strategy that determines the order of the launch template overrides to use in     fulfilling On-Demand capacity.
-    /// 
+    ///
     /// lowest-price - EC2 Fleet uses price to determine the order, launching the lowest     price first.
-    /// 
+    ///
     /// prioritized - EC2 Fleet uses the priority that you assigned to each launch     template override, launching the highest priority first.
-    /// 
+    ///
     /// Default: lowest-price
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4122,12 +3991,11 @@ pub struct OnDemandOptionsRequest {
     #[serde(rename = "AllocationStrategy")]
     pub allocation_strategy: Option<OnDemandOptionsRequestAllocationStrategyEnum>,
 
-
-    /// 
+    ///
     /// The strategy for using unused Capacity Reservations for fulfilling On-Demand     capacity.
-    /// 
+    ///
     /// Supported only for fleets of type instant.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CapacityReservationOptionsRequest
@@ -4136,10 +4004,9 @@ pub struct OnDemandOptionsRequest {
     #[serde(rename = "CapacityReservationOptions")]
     pub capacity_reservation_options: Option<CapacityReservationOptionsRequest>,
 
-
-    /// 
+    ///
     /// The maximum amount per hour for On-Demand Instances that you're willing to pay.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4148,14 +4015,13 @@ pub struct OnDemandOptionsRequest {
     #[serde(rename = "MaxTotalPrice")]
     pub max_total_price: Option<String>,
 
-
-    /// 
+    ///
     /// The minimum target capacity for On-Demand Instances in the fleet. If the minimum target capacity is     not reached, the fleet launches no instances.
-    /// 
+    ///
     /// Supported only for fleets of type instant.
-    /// 
+    ///
     /// At least one of the following must be specified: SingleAvailabilityZone |     SingleInstanceType
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -4164,12 +4030,11 @@ pub struct OnDemandOptionsRequest {
     #[serde(rename = "MinTargetCapacity")]
     pub min_target_capacity: Option<i64>,
 
-
-    /// 
+    ///
     /// Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
-    /// 
+    ///
     /// Supported only for fleets of type instant.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -4178,12 +4043,11 @@ pub struct OnDemandOptionsRequest {
     #[serde(rename = "SingleAvailabilityZone")]
     pub single_availability_zone: Option<bool>,
 
-
-    /// 
+    ///
     /// Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the     fleet.
-    /// 
+    ///
     /// Supported only for fleets of type instant.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -4191,13 +4055,10 @@ pub struct OnDemandOptionsRequest {
     /// Update requires: Replacement
     #[serde(rename = "SingleInstanceType")]
     pub single_instance_type: Option<bool>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum OnDemandOptionsRequestAllocationStrategyEnum {
-
     /// lowest-price
     #[serde(rename = "lowest-price")]
     Lowestprice,
@@ -4205,7 +4066,6 @@ pub enum OnDemandOptionsRequestAllocationStrategyEnum {
     /// prioritized
     #[serde(rename = "prioritized")]
     Prioritized,
-
 }
 
 impl Default for OnDemandOptionsRequestAllocationStrategyEnum {
@@ -4213,7 +4073,6 @@ impl Default for OnDemandOptionsRequestAllocationStrategyEnum {
         OnDemandOptionsRequestAllocationStrategyEnum::Lowestprice
     }
 }
-
 
 impl cfn_resources::CfnResource for OnDemandOptionsRequest {
     fn type_string(&self) -> &'static str {
@@ -4225,8 +4084,9 @@ impl cfn_resources::CfnResource for OnDemandOptionsRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.capacity_reservation_options.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.capacity_reservation_options
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -4235,13 +4095,11 @@ impl cfn_resources::CfnResource for OnDemandOptionsRequest {
 /// Describes the placement of an instance.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Placement {
-
-
-    /// 
+    ///
     /// The affinity setting for the instance on the Dedicated Host.
-    /// 
+    ///
     /// This parameter is not supported for CreateFleet or ImportInstance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4250,14 +4108,13 @@ pub struct Placement {
     #[serde(rename = "Affinity")]
     pub affinity: Option<String>,
 
-
-    /// 
+    ///
     /// The Availability Zone of the instance.
-    /// 
+    ///
     /// If not specified, an Availability Zone will be automatically chosen for you based on       the load balancing criteria for the Region.
-    /// 
+    ///
     /// This parameter is not supported for CreateFleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4266,10 +4123,9 @@ pub struct Placement {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the placement group that the instance is in. If you specify         GroupName, you can't specify GroupId.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4278,12 +4134,11 @@ pub struct Placement {
     #[serde(rename = "GroupName")]
     pub group_name: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the Dedicated Host on which the instance resides.
-    /// 
+    ///
     /// This parameter is not supported for CreateFleet or ImportInstance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4292,14 +4147,13 @@ pub struct Placement {
     #[serde(rename = "HostId")]
     pub host_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the host resource group in which to launch the instances.
-    /// 
+    ///
     /// If you specify this parameter, either omit the Tenancy parameter or set it to host.
-    /// 
+    ///
     /// This parameter is not supported for CreateFleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4308,12 +4162,11 @@ pub struct Placement {
     #[serde(rename = "HostResourceGroupArn")]
     pub host_resource_group_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The number of the partition that the instance is in. Valid only if the placement group       strategy is set to partition.
-    /// 
+    ///
     /// This parameter is not supported for CreateFleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -4322,10 +4175,9 @@ pub struct Placement {
     #[serde(rename = "PartitionNumber")]
     pub partition_number: Option<i64>,
 
-
-    /// 
+    ///
     /// Reserved for future use.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4334,12 +4186,11 @@ pub struct Placement {
     #[serde(rename = "SpreadDomain")]
     pub spread_domain: Option<String>,
 
-
-    /// 
+    ///
     /// The tenancy of the instance. An instance with a       tenancy of dedicated runs on single-tenant hardware.
-    /// 
+    ///
     /// This parameter is not supported for CreateFleet. The         host tenancy is not supported for ImportInstance or       for T3 instances that are configured for the unlimited CPU credit       option.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4349,13 +4200,10 @@ pub struct Placement {
     /// Update requires: Replacement
     #[serde(rename = "Tenancy")]
     pub tenancy: Option<PlacementTenancyEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum PlacementTenancyEnum {
-
     /// dedicated
     #[serde(rename = "dedicated")]
     Dedicated,
@@ -4367,7 +4215,6 @@ pub enum PlacementTenancyEnum {
     /// host
     #[serde(rename = "host")]
     Host,
-
 }
 
 impl Default for PlacementTenancyEnum {
@@ -4375,7 +4222,6 @@ impl Default for PlacementTenancyEnum {
         PlacementTenancyEnum::Dedicated
     }
 }
-
 
 impl cfn_resources::CfnResource for Placement {
     fn type_string(&self) -> &'static str {
@@ -4387,7 +4233,6 @@ impl cfn_resources::CfnResource for Placement {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4397,19 +4242,17 @@ impl cfn_resources::CfnResource for Placement {
 /// SpotOptionsRequest is a property of the       AWS::EC2::EC2Fleet resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SpotOptionsRequest {
-
-
-    /// 
+    ///
     /// Indicates how to allocate the target Spot Instance capacity across the Spot Instance     pools specified by the EC2 Fleet.
-    /// 
+    ///
     /// If the allocation strategy is lowestPrice, EC2 Fleet launches instances     from the Spot Instance pools with the lowest price. This is the default allocation     strategy.
-    /// 
+    ///
     /// If the allocation strategy is diversified, EC2 Fleet launches instances     from all the Spot Instance pools that you specify.
-    /// 
+    ///
     /// If the allocation strategy is capacityOptimized, EC2 Fleet launches     instances from Spot Instance pools that are optimally chosen based on the available Spot     Instance capacity.
-    /// 
+    ///
     /// Allowed Values: lowestPrice | diversified     | capacityOptimized | capacityOptimizedPrioritized
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4418,12 +4261,11 @@ pub struct SpotOptionsRequest {
     #[serde(rename = "AllocationStrategy")]
     pub allocation_strategy: Option<SpotOptionsRequestAllocationStrategyEnum>,
 
-
-    /// 
+    ///
     /// The behavior when a Spot Instance is interrupted.
-    /// 
+    ///
     /// Default: terminate
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4434,12 +4276,11 @@ pub struct SpotOptionsRequest {
     #[serde(rename = "InstanceInterruptionBehavior")]
     pub instance_interruption_behavior: Option<SpotOptionsRequestInstanceInterruptionBehaviorEnum>,
 
-
-    /// 
+    ///
     /// The number of Spot pools across which to allocate your target Spot capacity. Supported     only when Spot AllocationStrategy is set to lowest-price. EC2 Fleet     selects the cheapest Spot pools and evenly allocates your target Spot capacity across the     number of Spot pools that you specify.
-    /// 
+    ///
     /// Note that EC2 Fleet attempts to draw Spot Instances from the number of pools that you specify on a     best effort basis. If a pool runs out of Spot capacity before fulfilling your target     capacity, EC2 Fleet will continue to fulfill your request by drawing from the next cheapest     pool. To ensure that your target capacity is met, you might receive Spot Instances from more than     the number of pools that you specified. Similarly, if most of the pools have no Spot     capacity, you might receive your full target capacity from fewer than the number of pools     that you specified.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -4448,10 +4289,9 @@ pub struct SpotOptionsRequest {
     #[serde(rename = "InstancePoolsToUseCount")]
     pub instance_pools_to_use_count: Option<i64>,
 
-
-    /// 
+    ///
     /// The strategies for managing your Spot Instances that are at an elevated risk of being     interrupted.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MaintenanceStrategies
@@ -4460,12 +4300,11 @@ pub struct SpotOptionsRequest {
     #[serde(rename = "MaintenanceStrategies")]
     pub maintenance_strategies: Option<MaintenanceStrategies>,
 
-
-    /// 
+    ///
     /// The maximum amount per hour for Spot Instances that you're willing to pay. We do not recommend     using this parameter because it can lead to increased interruptions. If you do not specify     this parameter, you will pay the current Spot price.
-    /// 
+    ///
     /// ImportantIf you specify a maximum price, your Spot Instances will be interrupted more frequently than if you do not specify this parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4474,14 +4313,13 @@ pub struct SpotOptionsRequest {
     #[serde(rename = "MaxTotalPrice")]
     pub max_total_price: Option<String>,
 
-
-    /// 
+    ///
     /// The minimum target capacity for Spot Instances in the fleet. If the minimum target capacity is     not reached, the fleet launches no instances.
-    /// 
+    ///
     /// Supported only for fleets of type instant.
-    /// 
+    ///
     /// At least one of the following must be specified: SingleAvailabilityZone |     SingleInstanceType
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -4490,12 +4328,11 @@ pub struct SpotOptionsRequest {
     #[serde(rename = "MinTargetCapacity")]
     pub min_target_capacity: Option<i64>,
 
-
-    /// 
+    ///
     /// Indicates that the fleet launches all Spot Instances into a single Availability Zone.
-    /// 
+    ///
     /// Supported only for fleets of type instant.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -4504,12 +4341,11 @@ pub struct SpotOptionsRequest {
     #[serde(rename = "SingleAvailabilityZone")]
     pub single_availability_zone: Option<bool>,
 
-
-    /// 
+    ///
     /// Indicates that the fleet uses a single instance type to launch all Spot Instances in the     fleet.
-    /// 
+    ///
     /// Supported only for fleets of type instant.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -4517,13 +4353,10 @@ pub struct SpotOptionsRequest {
     /// Update requires: Replacement
     #[serde(rename = "SingleInstanceType")]
     pub single_instance_type: Option<bool>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SpotOptionsRequestAllocationStrategyEnum {
-
     /// lowestPrice
     #[serde(rename = "lowestPrice")]
     Lowestprice,
@@ -4539,7 +4372,6 @@ pub enum SpotOptionsRequestAllocationStrategyEnum {
     /// capacityOptimizedPrioritized
     #[serde(rename = "capacityOptimizedPrioritized")]
     Capacityoptimizedprioritized,
-
 }
 
 impl Default for SpotOptionsRequestAllocationStrategyEnum {
@@ -4550,7 +4382,6 @@ impl Default for SpotOptionsRequestAllocationStrategyEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum SpotOptionsRequestInstanceInterruptionBehaviorEnum {
-
     /// hibernate
     #[serde(rename = "hibernate")]
     Hibernate,
@@ -4562,7 +4393,6 @@ pub enum SpotOptionsRequestInstanceInterruptionBehaviorEnum {
     /// terminate
     #[serde(rename = "terminate")]
     Terminate,
-
 }
 
 impl Default for SpotOptionsRequestInstanceInterruptionBehaviorEnum {
@@ -4570,7 +4400,6 @@ impl Default for SpotOptionsRequestInstanceInterruptionBehaviorEnum {
         SpotOptionsRequestInstanceInterruptionBehaviorEnum::Hibernate
     }
 }
-
 
 impl cfn_resources::CfnResource for SpotOptionsRequest {
     fn type_string(&self) -> &'static str {
@@ -4582,8 +4411,9 @@ impl cfn_resources::CfnResource for SpotOptionsRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.maintenance_strategies.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.maintenance_strategies
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -4598,32 +4428,26 @@ impl cfn_resources::CfnResource for SpotOptionsRequest {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -4635,7 +4459,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -4645,11 +4468,9 @@ impl cfn_resources::CfnResource for Tag {
 /// TagSpecification is a property of the       AWS::EC2::EC2Fleet resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TagSpecification {
-
-
-    /// 
+    ///
     /// The type of resource to tag. ResourceType must be     fleet.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -4660,10 +4481,9 @@ pub struct TagSpecification {
     #[serde(rename = "ResourceType")]
     pub resource_type: Option<TagSpecificationResourceTypeEnum>,
 
-
-    /// 
+    ///
     /// The tags to apply to the resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -4671,13 +4491,10 @@ pub struct TagSpecification {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TagSpecificationResourceTypeEnum {
-
     /// capacity-reservation
     #[serde(rename = "capacity-reservation")]
     Capacityreservation,
@@ -5017,7 +4834,6 @@ pub enum TagSpecificationResourceTypeEnum {
     /// vpn-gateway
     #[serde(rename = "vpn-gateway")]
     Vpngateway,
-
 }
 
 impl Default for TagSpecificationResourceTypeEnum {
@@ -5025,7 +4841,6 @@ impl Default for TagSpecificationResourceTypeEnum {
         TagSpecificationResourceTypeEnum::Capacityreservation
     }
 }
-
 
 impl cfn_resources::CfnResource for TagSpecification {
     fn type_string(&self) -> &'static str {
@@ -5037,7 +4852,6 @@ impl cfn_resources::CfnResource for TagSpecification {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -5047,11 +4861,9 @@ impl cfn_resources::CfnResource for TagSpecification {
 /// TargetCapacitySpecificationRequest is a property of the AWS::EC2::EC2Fleet resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TargetCapacitySpecificationRequest {
-
-
-    /// 
+    ///
     /// The default TotalTargetCapacity, which is either Spot or     On-Demand.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -5060,12 +4872,12 @@ pub struct TargetCapacitySpecificationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "DefaultTargetCapacityType")]
-    pub default_target_capacity_type: Option<TargetCapacitySpecificationRequestDefaultTargetCapacityTypeEnum>,
+    pub default_target_capacity_type:
+        Option<TargetCapacitySpecificationRequestDefaultTargetCapacityTypeEnum>,
 
-
-    /// 
+    ///
     /// The number of On-Demand units to request.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -5074,10 +4886,9 @@ pub struct TargetCapacitySpecificationRequest {
     #[serde(rename = "OnDemandTargetCapacity")]
     pub on_demand_target_capacity: Option<i64>,
 
-
-    /// 
+    ///
     /// The number of Spot units to request.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -5086,12 +4897,11 @@ pub struct TargetCapacitySpecificationRequest {
     #[serde(rename = "SpotTargetCapacity")]
     pub spot_target_capacity: Option<i64>,
 
-
-    /// 
+    ///
     /// The unit for the target capacity. TargetCapacityUnitType can only be specified when InstanceRequirements is specified.
-    /// 
+    ///
     /// Default: units (translates to number of instances)
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -5100,12 +4910,12 @@ pub struct TargetCapacitySpecificationRequest {
     ///
     /// Update requires: No interruption
     #[serde(rename = "TargetCapacityUnitType")]
-    pub target_capacity_unit_type: Option<TargetCapacitySpecificationRequestTargetCapacityUnitTypeEnum>,
+    pub target_capacity_unit_type:
+        Option<TargetCapacitySpecificationRequestTargetCapacityUnitTypeEnum>,
 
-
-    /// 
+    ///
     /// The number of units to request, filled using     DefaultTargetCapacityType.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -5113,13 +4923,10 @@ pub struct TargetCapacitySpecificationRequest {
     /// Update requires: No interruption
     #[serde(rename = "TotalTargetCapacity")]
     pub total_target_capacity: i64,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TargetCapacitySpecificationRequestDefaultTargetCapacityTypeEnum {
-
     /// on-demand
     #[serde(rename = "on-demand")]
     Ondemand,
@@ -5127,7 +4934,6 @@ pub enum TargetCapacitySpecificationRequestDefaultTargetCapacityTypeEnum {
     /// spot
     #[serde(rename = "spot")]
     Spot,
-
 }
 
 impl Default for TargetCapacitySpecificationRequestDefaultTargetCapacityTypeEnum {
@@ -5138,7 +4944,6 @@ impl Default for TargetCapacitySpecificationRequestDefaultTargetCapacityTypeEnum
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum TargetCapacitySpecificationRequestTargetCapacityUnitTypeEnum {
-
     /// memory-mib
     #[serde(rename = "memory-mib")]
     Memorymib,
@@ -5150,7 +4955,6 @@ pub enum TargetCapacitySpecificationRequestTargetCapacityUnitTypeEnum {
     /// vcpu
     #[serde(rename = "vcpu")]
     Vcpu,
-
 }
 
 impl Default for TargetCapacitySpecificationRequestTargetCapacityUnitTypeEnum {
@@ -5158,7 +4962,6 @@ impl Default for TargetCapacitySpecificationRequestTargetCapacityUnitTypeEnum {
         TargetCapacitySpecificationRequestTargetCapacityUnitTypeEnum::Memorymib
     }
 }
-
 
 impl cfn_resources::CfnResource for TargetCapacitySpecificationRequest {
     fn type_string(&self) -> &'static str {
@@ -5170,7 +4973,6 @@ impl cfn_resources::CfnResource for TargetCapacitySpecificationRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -5178,11 +4980,9 @@ impl cfn_resources::CfnResource for TargetCapacitySpecificationRequest {
 /// The minimum and maximum amount of total local storage, in GB.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct TotalLocalStorageGBRequest {
-
-
-    /// 
+    ///
     /// The maximum amount of total local storage, in GB. To specify no maximum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -5191,10 +4991,9 @@ pub struct TotalLocalStorageGBRequest {
     #[serde(rename = "Max")]
     pub max: Option<f64>,
 
-
-    /// 
+    ///
     /// The minimum amount of total local storage, in GB. To specify no minimum limit, omit this     parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -5202,10 +5001,7 @@ pub struct TotalLocalStorageGBRequest {
     /// Update requires: Replacement
     #[serde(rename = "Min")]
     pub min: Option<f64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
     fn type_string(&self) -> &'static str {
@@ -5217,7 +5013,6 @@ impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -5225,11 +5020,9 @@ impl cfn_resources::CfnResource for TotalLocalStorageGBRequest {
 /// The minimum and maximum number of vCPUs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct VCpuCountRangeRequest {
-
-
-    /// 
+    ///
     /// The maximum number of vCPUs. To specify no maximum limit, omit this parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -5238,10 +5031,9 @@ pub struct VCpuCountRangeRequest {
     #[serde(rename = "Max")]
     pub max: Option<i64>,
 
-
-    /// 
+    ///
     /// The minimum number of vCPUs. To specify no minimum limit, specify 0.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -5249,10 +5041,7 @@ pub struct VCpuCountRangeRequest {
     /// Update requires: Replacement
     #[serde(rename = "Min")]
     pub min: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for VCpuCountRangeRequest {
     fn type_string(&self) -> &'static str {
@@ -5264,7 +5053,6 @@ impl cfn_resources::CfnResource for VCpuCountRangeRequest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

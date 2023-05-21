@@ -1,13 +1,9 @@
-
-
 /// Creates a space used for real time collaboration in a Domain.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSpace {
-
-
-    /// 
+    ///
     /// The ID of the associated Domain.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnSpace {
     #[serde(rename = "DomainId")]
     pub domain_id: String,
 
-
-    /// 
+    ///
     /// The name of the space.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnSpace {
     #[serde(rename = "SpaceName")]
     pub space_name: String,
 
-
-    /// 
+    ///
     /// A collection of space settings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SpaceSettings
@@ -46,12 +40,11 @@ pub struct CfnSpace {
     #[serde(rename = "SpaceSettings")]
     pub space_settings: Option<SpaceSettings>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -61,10 +54,7 @@ pub struct CfnSpace {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSpace {
     fn type_string(&self) -> &'static str {
@@ -76,31 +66,37 @@ impl cfn_resources::CfnResource for CfnSpace {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.domain_id;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'domain_id'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'domain_id'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.space_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'space_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'space_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
-        self.space_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.space_settings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -108,11 +104,9 @@ impl cfn_resources::CfnResource for CfnSpace {
 /// A custom SageMaker image. For more information, see    Bring your own SageMaker image.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CustomImage {
-
-
-    /// 
+    ///
     /// The name of the AppImageConfig.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -125,10 +119,9 @@ pub struct CustomImage {
     #[serde(rename = "AppImageConfigName")]
     pub app_image_config_name: String,
 
-
-    /// 
+    ///
     /// The name of the CustomImage. Must be unique to your account.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -143,10 +136,9 @@ pub struct CustomImage {
     #[serde(rename = "ImageName")]
     pub image_name: String,
 
-
-    /// 
+    ///
     /// The version number of the CustomImage.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -156,10 +148,7 @@ pub struct CustomImage {
     /// Update requires: No interruption
     #[serde(rename = "ImageVersionNumber")]
     pub image_version_number: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CustomImage {
     fn type_string(&self) -> &'static str {
@@ -171,36 +160,42 @@ impl cfn_resources::CfnResource for CustomImage {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.app_image_config_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'app_image_config_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'app_image_config_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.image_name;
 
         if the_val.len() > 63 as _ {
-            return Err(format!("Max validation failed on field 'image_name'. {} is greater than 63", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'image_name'. {} is greater than 63",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.image_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'image_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'image_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.image_version_number {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'image_version_number'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'image_version_number'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -208,11 +203,9 @@ impl cfn_resources::CfnResource for CustomImage {
 /// The JupyterServer app settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct JupyterServerAppSettings {
-
-
-    /// 
+    ///
     /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the JupyterServer app. If you use the LifecycleConfigArns parameter, then this parameter is also required.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ResourceSpec
@@ -220,10 +213,7 @@ pub struct JupyterServerAppSettings {
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
     pub default_resource_spec: Option<ResourceSpec>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for JupyterServerAppSettings {
     fn type_string(&self) -> &'static str {
@@ -235,8 +225,9 @@ impl cfn_resources::CfnResource for JupyterServerAppSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.default_resource_spec
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -245,11 +236,9 @@ impl cfn_resources::CfnResource for JupyterServerAppSettings {
 /// The KernelGateway app settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct KernelGatewayAppSettings {
-
-
-    /// 
+    ///
     /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of CustomImage
@@ -260,12 +249,11 @@ pub struct KernelGatewayAppSettings {
     #[serde(rename = "CustomImages")]
     pub custom_images: Option<Vec<CustomImage>>,
 
-
-    /// 
+    ///
     /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the KernelGateway app.
-    /// 
+    ///
     /// NoteThe Amazon SageMaker Studio UI does not use the default instance type value set here. The default      instance type set here is used when Apps are created using the AWS Command Line Interface or AWS CloudFormation       and the instance type parameter value is not passed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ResourceSpec
@@ -273,10 +261,7 @@ pub struct KernelGatewayAppSettings {
     /// Update requires: No interruption
     #[serde(rename = "DefaultResourceSpec")]
     pub default_resource_spec: Option<ResourceSpec>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for KernelGatewayAppSettings {
     fn type_string(&self) -> &'static str {
@@ -288,16 +273,18 @@ impl cfn_resources::CfnResource for KernelGatewayAppSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.custom_images {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'custom_images'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'custom_images'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.default_resource_spec.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.default_resource_spec
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -306,13 +293,11 @@ impl cfn_resources::CfnResource for KernelGatewayAppSettings {
 /// Specifies the ARN's of a SageMaker image and SageMaker image version, and the instance type that   the version runs on.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ResourceSpec {
-
-
-    /// 
+    ///
     /// The instance type that the image version runs on.
-    /// 
+    ///
     /// Note        JupyterServer apps only support the system value.For KernelGateway apps, the system       value is translated to ml.t3.medium. KernelGateway apps also support all other values for available       instance types.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -323,10 +308,9 @@ pub struct ResourceSpec {
     #[serde(rename = "InstanceType")]
     pub instance_type: Option<ResourceSpecInstanceTypeEnum>,
 
-
-    /// 
+    ///
     /// The ARN of the SageMaker image that the image version belongs to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -339,10 +323,9 @@ pub struct ResourceSpec {
     #[serde(rename = "SageMakerImageArn")]
     pub sage_maker_image_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the image version created on the instance.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -354,13 +337,10 @@ pub struct ResourceSpec {
     /// Update requires: No interruption
     #[serde(rename = "SageMakerImageVersionArn")]
     pub sage_maker_image_version_arn: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ResourceSpecInstanceTypeEnum {
-
     /// ml.c5.12xlarge
     #[serde(rename = "ml.c5.12xlarge")]
     Mlc512xlarge,
@@ -600,7 +580,6 @@ pub enum ResourceSpecInstanceTypeEnum {
     /// system
     #[serde(rename = "system")]
     System,
-
 }
 
 impl Default for ResourceSpecInstanceTypeEnum {
@@ -608,7 +587,6 @@ impl Default for ResourceSpecInstanceTypeEnum {
         ResourceSpecInstanceTypeEnum::Mlc512xlarge
     }
 }
-
 
 impl cfn_resources::CfnResource for ResourceSpec {
     fn type_string(&self) -> &'static str {
@@ -620,23 +598,21 @@ impl cfn_resources::CfnResource for ResourceSpec {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.sage_maker_image_arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sage_maker_image_arn'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.sage_maker_image_version_arn {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!("Max validation failed on field 'sage_maker_image_version_arn'. {} is greater than 256", the_val.len()));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -644,11 +620,9 @@ impl cfn_resources::CfnResource for ResourceSpec {
 /// A collection of space settings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SpaceSettings {
-
-
-    /// 
+    ///
     /// The JupyterServer app settings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: JupyterServerAppSettings
@@ -657,10 +631,9 @@ pub struct SpaceSettings {
     #[serde(rename = "JupyterServerAppSettings")]
     pub jupyter_server_app_settings: Option<JupyterServerAppSettings>,
 
-
-    /// 
+    ///
     /// The KernelGateway app settings.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: KernelGatewayAppSettings
@@ -668,10 +641,7 @@ pub struct SpaceSettings {
     /// Update requires: No interruption
     #[serde(rename = "KernelGatewayAppSettings")]
     pub kernel_gateway_app_settings: Option<KernelGatewayAppSettings>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SpaceSettings {
     fn type_string(&self) -> &'static str {
@@ -683,10 +653,13 @@ impl cfn_resources::CfnResource for SpaceSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.jupyter_server_app_settings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.jupyter_server_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.kernel_gateway_app_settings.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.kernel_gateway_app_settings
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -701,32 +674,26 @@ impl cfn_resources::CfnResource for SpaceSettings {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -738,7 +705,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// The AWS::CodeArtifact::Repository resource creates an AWS CodeArtifact repository.      CodeArtifact repositories contain a set of package versions.    For more information about repositories, see the    Repository concepts information      in the CodeArtifact User Guide. For more information about the CreateRepository API, see    CreateRepository      in the CodeArtifact API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnRepository {
-
-
-    /// 
+    ///
     /// A text description of the repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnRepository {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the domain that contains the repository.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -38,10 +33,9 @@ pub struct CfnRepository {
     #[serde(rename = "DomainName")]
     pub domain_name: String,
 
-
-    /// 
+    ///
     /// The 12-digit account number of the AWS account that owns the domain that contains the repository. It does not include     dashes or spaces.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -56,10 +50,9 @@ pub struct CfnRepository {
     #[serde(rename = "DomainOwner")]
     pub domain_owner: Option<String>,
 
-
-    /// 
+    ///
     /// An array of external connections associated with the repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -68,10 +61,9 @@ pub struct CfnRepository {
     #[serde(rename = "ExternalConnections")]
     pub external_connections: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The document that defines the resource policy that is set on a repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -80,10 +72,9 @@ pub struct CfnRepository {
     #[serde(rename = "PermissionsPolicyDocument")]
     pub permissions_policy_document: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// The name of an upstream repository.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -98,10 +89,9 @@ pub struct CfnRepository {
     #[serde(rename = "RepositoryName")]
     pub repository_name: String,
 
-
-    /// 
+    ///
     /// A list of tags to be applied to the repository.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -110,10 +100,9 @@ pub struct CfnRepository {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// A list of upstream repositories to associate with the repository. The order of the upstream repositories     in the list determines their priority order when AWS CodeArtifact looks for a requested package version. For more     information, see Working with upstream repositories.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -121,10 +110,7 @@ pub struct CfnRepository {
     /// Update requires: No interruption
     #[serde(rename = "Upstreams")]
     pub upstreams: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnRepository {
     fn type_string(&self) -> &'static str {
@@ -136,59 +122,69 @@ impl cfn_resources::CfnResource for CfnRepository {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1000 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1000", the_val.len()));
+            if the_val.len() > 1000 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1000",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.domain_name;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'domain_name'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'domain_name'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.domain_name;
 
         if the_val.len() < 2 as _ {
-            return Err(format!("Min validation failed on field 'domain_name'. {} is less than 2", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'domain_name'. {} is less than 2",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.domain_owner {
-
-        if the_val.len() > 12 as _ {
-            return Err(format!("Max validation failed on field 'domain_owner'. {} is greater than 12", the_val.len()));
+            if the_val.len() > 12 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'domain_owner'. {} is greater than 12",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.domain_owner {
-
-        if the_val.len() < 12 as _ {
-            return Err(format!("Min validation failed on field 'domain_owner'. {} is less than 12", the_val.len()));
+            if the_val.len() < 12 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'domain_owner'. {} is less than 12",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.repository_name;
 
         if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'repository_name'. {} is greater than 100", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'repository_name'. {} is greater than 100",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.repository_name;
 
         if the_val.len() < 2 as _ {
-            return Err(format!("Min validation failed on field 'repository_name'. {} is less than 2", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'repository_name'. {} is less than 2",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -202,32 +198,26 @@ impl cfn_resources::CfnResource for CfnRepository {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -239,7 +229,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

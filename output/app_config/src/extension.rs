@@ -1,5 +1,3 @@
-
-
 /// Creates an AWS AppConfig extension. An extension augments your ability to inject     logic or behavior at different points during the AWS AppConfig workflow of creating     or deploying a configuration.
 ///
 /// You can create your own extensions or use the AWS authored extensions provided by       AWS AppConfig. For an AWS AppConfig extension that uses       AWS Lambda, you must create a Lambda function to perform any     computation and processing defined in the extension. If you plan to create custom versions     of the AWS authored notification extensions, you only need to specify an Amazon Resource     Name (ARN) in the Uri field for the new extension version.
@@ -7,11 +5,9 @@
 /// For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnExtension {
-
-
-    /// 
+    ///
     /// The actions defined in the extension.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Json
@@ -20,10 +16,9 @@ pub struct CfnExtension {
     #[serde(rename = "Actions")]
     pub actions: serde_json::Value,
 
-
-    /// 
+    ///
     /// Information about the extension.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnExtension {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// You can omit this field when you create an extension. When you create a new version,     specify the most recent current version number. For example, you create version 3, enter 2     for this field.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -48,10 +42,9 @@ pub struct CfnExtension {
     #[serde(rename = "LatestVersionNumber")]
     pub latest_version_number: Option<i64>,
 
-
-    /// 
+    ///
     /// A name for the extension. Each extension name in your account must be unique. Extension     versions use the same name.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -64,10 +57,9 @@ pub struct CfnExtension {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The parameters accepted by the extension. You specify parameter values when you     associate the extension to an AWS AppConfig resource by using the       CreateExtensionAssociation API action. For AWS Lambda extension     actions, these parameters are included in the Lambda request object.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of Parameter
@@ -76,10 +68,9 @@ pub struct CfnExtension {
     #[serde(rename = "Parameters")]
     pub parameters: Option<std::collections::HashMap<String, Parameter>>,
 
-
-    /// 
+    ///
     /// Adds one or more tags for the specified extension. Tags are metadata that help you     categorize resources in different ways, for example, by purpose, owner, or environment.     Each tag consists of a key and an optional value, both of which you define.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -87,10 +78,7 @@ pub struct CfnExtension {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnExtension {
     fn type_string(&self) -> &'static str {
@@ -102,37 +90,42 @@ impl cfn_resources::CfnResource for CfnExtension {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -140,11 +133,9 @@ impl cfn_resources::CfnResource for CfnExtension {
 /// A value such as an Amazon Resource Name (ARN) or an Amazon Simple Notification Service topic entered     in an extension when invoked. Parameter values are specified in an extension association.     For more information about extensions, see Working with        AWS AppConfig extensions in the             AWS AppConfig User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Parameter {
-
-
-    /// 
+    ///
     /// Information about the parameter.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -157,10 +148,9 @@ pub struct Parameter {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// A parameter value must be specified in the extension association.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Boolean
@@ -168,10 +158,7 @@ pub struct Parameter {
     /// Update requires: No interruption
     #[serde(rename = "Required")]
     pub required: bool,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Parameter {
     fn type_string(&self) -> &'static str {
@@ -183,23 +170,24 @@ impl cfn_resources::CfnResource for Parameter {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.description {
+            if the_val.len() > 1024 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 1024",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 1024", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -213,32 +201,26 @@ impl cfn_resources::CfnResource for Parameter {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -250,7 +232,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

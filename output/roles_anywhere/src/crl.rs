@@ -1,15 +1,11 @@
-
-
 /// Imports the certificate revocation list (CRL). A CRL is a list of certificates that have     been revoked by the issuing certificate Authority (CA). IAM Roles Anywhere     validates against the CRL before issuing credentials.
 ///
 /// Required permissions: rolesanywhere:ImportCrl.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCRL {
-
-
-    /// 
+    ///
     /// The x509 v3 specified certificate revocation list (CRL).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnCRL {
     #[serde(rename = "CrlData")]
     pub crl_data: String,
 
-
-    /// 
+    ///
     /// Specifies whether the certificate revocation list (CRL) is enabled.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -30,10 +25,9 @@ pub struct CfnCRL {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The name of the certificate revocation list (CRL).
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -48,10 +42,9 @@ pub struct CfnCRL {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// A list of tags to attach to the certificate revocation list (CRL).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -62,10 +55,9 @@ pub struct CfnCRL {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The ARN of the TrustAnchor the certificate revocation list (CRL) will provide revocation for.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -79,10 +71,7 @@ pub struct CfnCRL {
     /// Update requires: No interruption
     #[serde(rename = "TrustAnchorArn")]
     pub trust_anchor_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCRL {
     fn type_string(&self) -> &'static str {
@@ -94,45 +83,51 @@ impl cfn_resources::CfnResource for CfnCRL {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.trust_anchor_arn {
-
-        if the_val.len() > 1011 as _ {
-            return Err(format!("Max validation failed on field 'trust_anchor_arn'. {} is greater than 1011", the_val.len()));
+            if the_val.len() > 1011 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'trust_anchor_arn'. {} is greater than 1011",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.trust_anchor_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'trust_anchor_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'trust_anchor_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -146,32 +141,26 @@ impl cfn_resources::CfnResource for CfnCRL {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -183,7 +172,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

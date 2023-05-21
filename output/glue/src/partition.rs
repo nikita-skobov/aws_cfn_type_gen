@@ -1,15 +1,11 @@
-
-
 /// The AWS::Glue::Partition resource creates an AWS Glue partition, which       represents a slice of table data. For more information, see CreatePartition Action and Partition Structure in the AWS Glue Developer       Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnPartition {
-
-
-    /// 
+    ///
     /// The AWS account ID of the catalog in which the partion is to be created.
-    /// 
+    ///
     /// NoteTo specify the account ID, you can use the Ref intrinsic function         with the AWS::AccountId pseudo parameter. For example: !Ref           AWS::AccountId
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -24,10 +20,9 @@ pub struct CfnPartition {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
-
-    /// 
+    ///
     /// The name of the catalog database in which to create the partition.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -42,10 +37,9 @@ pub struct CfnPartition {
     #[serde(rename = "DatabaseName")]
     pub database_name: String,
 
-
-    /// 
+    ///
     /// The structure used to create and update a partition.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: PartitionInput
@@ -54,10 +48,9 @@ pub struct CfnPartition {
     #[serde(rename = "PartitionInput")]
     pub partition_input: PartitionInput,
 
-
-    /// 
+    ///
     /// The name of the metadata table in which the partition is to be created.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -71,10 +64,7 @@ pub struct CfnPartition {
     /// Update requires: Replacement
     #[serde(rename = "TableName")]
     pub table_name: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnPartition {
     fn type_string(&self) -> &'static str {
@@ -86,51 +76,62 @@ impl cfn_resources::CfnResource for CfnPartition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.catalog_id;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'catalog_id'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'catalog_id'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.catalog_id;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'catalog_id'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'catalog_id'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.database_name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'database_name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'database_name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.database_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'database_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'database_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.partition_input.validate()?;
 
         let the_val = &self.table_name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'table_name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'table_name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.table_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'table_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'table_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -138,11 +139,9 @@ impl cfn_resources::CfnResource for CfnPartition {
 /// A column in a Table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Column {
-
-
-    /// 
+    ///
     /// A free-form text comment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -157,10 +156,9 @@ pub struct Column {
     #[serde(rename = "Comment")]
     pub comment: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the Column.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -175,10 +173,9 @@ pub struct Column {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The data type of the Column.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -192,10 +189,7 @@ pub struct Column {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Column {
     fn type_string(&self) -> &'static str {
@@ -207,53 +201,60 @@ impl cfn_resources::CfnResource for Column {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.comment {
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'comment'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.comment {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'comment'. {} is greater than 255", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'comment'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.comment {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'comment'. {} is less than 0", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.cfn_type {
-
-        if the_val.len() > 131072 as _ {
-            return Err(format!("Max validation failed on field 'cfn_type'. {} is greater than 131072", the_val.len()));
+            if the_val.len() > 131072 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'cfn_type'. {} is greater than 131072",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.cfn_type {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'cfn_type'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'cfn_type'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -261,11 +262,9 @@ impl cfn_resources::CfnResource for Column {
 /// Specifies the sort order of a sorted column.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Order {
-
-
-    /// 
+    ///
     /// The name of the column.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -280,10 +279,9 @@ pub struct Order {
     #[serde(rename = "Column")]
     pub column: String,
 
-
-    /// 
+    ///
     /// Indicates that the column is sorted in ascending order    (== 1), or in descending order (==0).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -295,10 +293,7 @@ pub struct Order {
     /// Update requires: No interruption
     #[serde(rename = "SortOrder")]
     pub sort_order: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Order {
     fn type_string(&self) -> &'static str {
@@ -310,37 +305,42 @@ impl cfn_resources::CfnResource for Order {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.column;
 
         if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'column'. {} is greater than 255", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'column'. {} is greater than 255",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.column;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'column'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'column'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.sort_order {
-
-        if *the_val > 1 as _ {
-            return Err(format!("Max validation failed on field 'sort_order'. {} is greater than 1", the_val));
+            if *the_val > 1 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sort_order'. {} is greater than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.sort_order {
-
-        if *the_val < 0 as _ {
-            return Err(format!("Min validation failed on field 'sort_order'. {} is less than 0", the_val));
+            if *the_val < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'sort_order'. {} is less than 0",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -348,11 +348,9 @@ impl cfn_resources::CfnResource for Order {
 /// The structure used to create and update a partition.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct PartitionInput {
-
-
-    /// 
+    ///
     /// These key-value pairs define partition parameters.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -361,10 +359,9 @@ pub struct PartitionInput {
     #[serde(rename = "Parameters")]
     pub parameters: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// Provides information about the physical    location where the partition is stored.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: StorageDescriptor
@@ -373,12 +370,11 @@ pub struct PartitionInput {
     #[serde(rename = "StorageDescriptor")]
     pub storage_descriptor: Option<StorageDescriptor>,
 
-
-    /// 
+    ///
     /// The values of the partition. Although this parameter is not required by the SDK, you must specify this parameter for a valid input.
-    /// 
+    ///
     /// The values for the keys for the new partition must be passed as an array of String objects that must be ordered in the same order as the partition keys appearing in the Amazon S3 prefix. Otherwise AWS Glue will add the values to the wrong keys.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -386,10 +382,7 @@ pub struct PartitionInput {
     /// Update requires: Replacement
     #[serde(rename = "Values")]
     pub values: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for PartitionInput {
     fn type_string(&self) -> &'static str {
@@ -401,8 +394,9 @@ impl cfn_resources::CfnResource for PartitionInput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.storage_descriptor.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.storage_descriptor
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -411,11 +405,9 @@ impl cfn_resources::CfnResource for PartitionInput {
 /// A structure that contains schema identity fields. Either this or the SchemaVersionId has to be provided.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SchemaId {
-
-
-    /// 
+    ///
     /// The name of the schema registry that contains the schema.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -424,10 +416,9 @@ pub struct SchemaId {
     #[serde(rename = "RegistryName")]
     pub registry_name: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the schema. One of SchemaArn or SchemaName has to be provided.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -436,10 +427,9 @@ pub struct SchemaId {
     #[serde(rename = "SchemaArn")]
     pub schema_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the schema. One of SchemaArn or SchemaName has to be provided.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -447,10 +437,7 @@ pub struct SchemaId {
     /// Update requires: No interruption
     #[serde(rename = "SchemaName")]
     pub schema_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SchemaId {
     fn type_string(&self) -> &'static str {
@@ -462,7 +449,6 @@ impl cfn_resources::CfnResource for SchemaId {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -470,11 +456,9 @@ impl cfn_resources::CfnResource for SchemaId {
 /// An object that references a schema stored in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SchemaReference {
-
-
-    /// 
+    ///
     /// A structure that contains schema identity fields. Either this or the SchemaVersionId has to be provided.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SchemaId
@@ -483,10 +467,9 @@ pub struct SchemaReference {
     #[serde(rename = "SchemaId")]
     pub schema_id: Option<SchemaId>,
 
-
-    /// 
+    ///
     /// The unique ID assigned to a version of the schema. Either this or the SchemaId has to be provided.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -495,10 +478,9 @@ pub struct SchemaReference {
     #[serde(rename = "SchemaVersionId")]
     pub schema_version_id: Option<String>,
 
-
-    /// 
+    ///
     /// The version number of the schema.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -506,10 +488,7 @@ pub struct SchemaReference {
     /// Update requires: No interruption
     #[serde(rename = "SchemaVersionNumber")]
     pub schema_version_number: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SchemaReference {
     fn type_string(&self) -> &'static str {
@@ -521,8 +500,9 @@ impl cfn_resources::CfnResource for SchemaReference {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.schema_id.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.schema_id
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -531,11 +511,9 @@ impl cfn_resources::CfnResource for SchemaReference {
 /// Information about a serialization/deserialization program (SerDe) that serves as an    extractor and loader.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SerdeInfo {
-
-
-    /// 
+    ///
     /// Name of the SerDe.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -544,10 +522,9 @@ pub struct SerdeInfo {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// These key-value pairs define initialization parameters for the SerDe.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -556,10 +533,9 @@ pub struct SerdeInfo {
     #[serde(rename = "Parameters")]
     pub parameters: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// Usually the class that implements the SerDe. An example is     org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -567,10 +543,7 @@ pub struct SerdeInfo {
     /// Update requires: No interruption
     #[serde(rename = "SerializationLibrary")]
     pub serialization_library: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SerdeInfo {
     fn type_string(&self) -> &'static str {
@@ -582,7 +555,6 @@ impl cfn_resources::CfnResource for SerdeInfo {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -590,11 +562,9 @@ impl cfn_resources::CfnResource for SerdeInfo {
 /// Specifies skewed values in a table. Skewed values are those that occur with very high    frequency.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SkewedInfo {
-
-
-    /// 
+    ///
     /// A list of names of columns that contain skewed values.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -603,10 +573,9 @@ pub struct SkewedInfo {
     #[serde(rename = "SkewedColumnNames")]
     pub skewed_column_names: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A mapping of skewed values to the columns that contain them.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -615,10 +584,9 @@ pub struct SkewedInfo {
     #[serde(rename = "SkewedColumnValueLocationMaps")]
     pub skewed_column_value_location_maps: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// A list of values that appear so frequently as to be considered    skewed.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -626,10 +594,7 @@ pub struct SkewedInfo {
     /// Update requires: No interruption
     #[serde(rename = "SkewedColumnValues")]
     pub skewed_column_values: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SkewedInfo {
     fn type_string(&self) -> &'static str {
@@ -641,7 +606,6 @@ impl cfn_resources::CfnResource for SkewedInfo {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -649,11 +613,9 @@ impl cfn_resources::CfnResource for SkewedInfo {
 /// Describes the physical storage of table data.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct StorageDescriptor {
-
-
-    /// 
+    ///
     /// A list of reducer grouping columns, clustering columns, and    bucketing columns in the table.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -662,10 +624,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "BucketColumns")]
     pub bucket_columns: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A list of the Columns in the table.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Column
@@ -674,10 +635,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "Columns")]
     pub columns: Option<Vec<Column>>,
 
-
-    /// 
+    ///
     /// True if the data in the table is compressed, or False if    not.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -686,10 +646,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "Compressed")]
     pub compressed: Option<bool>,
 
-
-    /// 
+    ///
     /// The input format: SequenceFileInputFormat (binary),    or TextInputFormat, or a custom format.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -702,10 +661,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "InputFormat")]
     pub input_format: Option<String>,
 
-
-    /// 
+    ///
     /// The physical location of the table. By default, this takes the form of the warehouse    location, followed by the database location in the warehouse, followed by the table    name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -718,12 +676,11 @@ pub struct StorageDescriptor {
     #[serde(rename = "Location")]
     pub location: Option<String>,
 
-
-    /// 
+    ///
     /// The number of buckets.
-    /// 
+    ///
     /// You must specify this property if the partition contains any dimension columns.
-    /// 
+    ///
     /// Required: Conditional
     ///
     /// Type: Integer
@@ -732,10 +689,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "NumberOfBuckets")]
     pub number_of_buckets: Option<i64>,
 
-
-    /// 
+    ///
     /// The output format: SequenceFileOutputFormat (binary),    or IgnoreKeyTextOutputFormat, or a custom format.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -748,10 +704,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "OutputFormat")]
     pub output_format: Option<String>,
 
-
-    /// 
+    ///
     /// The user-supplied properties in key-value form.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Json
@@ -760,10 +715,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "Parameters")]
     pub parameters: Option<serde_json::Value>,
 
-
-    /// 
+    ///
     /// An object that references a schema stored in the AWS Glue Schema Registry.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SchemaReference
@@ -772,10 +726,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "SchemaReference")]
     pub schema_reference: Option<SchemaReference>,
 
-
-    /// 
+    ///
     /// The serialization/deserialization (SerDe) information.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SerdeInfo
@@ -784,10 +737,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "SerdeInfo")]
     pub serde_info: Option<SerdeInfo>,
 
-
-    /// 
+    ///
     /// The information about values that appear frequently in a column (skewed values).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SkewedInfo
@@ -796,10 +748,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "SkewedInfo")]
     pub skewed_info: Option<SkewedInfo>,
 
-
-    /// 
+    ///
     /// A list specifying the sort order of each bucket in the table.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Order
@@ -808,10 +759,9 @@ pub struct StorageDescriptor {
     #[serde(rename = "SortColumns")]
     pub sort_columns: Option<Vec<Order>>,
 
-
-    /// 
+    ///
     /// True if the table data is stored in subdirectories, or False if    not.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -819,10 +769,7 @@ pub struct StorageDescriptor {
     /// Update requires: No interruption
     #[serde(rename = "StoredAsSubDirectories")]
     pub stored_as_sub_directories: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for StorageDescriptor {
     fn type_string(&self) -> &'static str {
@@ -834,36 +781,44 @@ impl cfn_resources::CfnResource for StorageDescriptor {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.input_format {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'input_format'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'input_format'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.location {
-
-        if the_val.len() > 2056 as _ {
-            return Err(format!("Max validation failed on field 'location'. {} is greater than 2056", the_val.len()));
+            if the_val.len() > 2056 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'location'. {} is greater than 2056",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.output_format {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'output_format'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'output_format'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.schema_reference.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.schema_reference
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.serde_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.serde_info
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.skewed_info.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.skewed_info
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }

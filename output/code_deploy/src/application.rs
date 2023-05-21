@@ -1,15 +1,11 @@
-
-
 /// The AWS::CodeDeploy::Application resource creates an AWS CodeDeploy    application. In CodeDeploy, an application is a name that functions as a container    to ensure that the correct combination of revision, deployment configuration, and deployment    group are referenced during a deployment. You can use the     AWS::CodeDeploy::DeploymentGroup resource to associate the application with a     CodeDeploy deployment group. For more information, see CodeDeploy     Deployments in the AWS CodeDeploy User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
-
-
-    /// 
+    ///
     /// A name for the application. If you don't specify a name, AWS CloudFormation generates a    unique physical ID and uses that ID for the application name. For more information, see Name     Type.
-    /// 
+    ///
     /// Note Updates to ApplicationName are not supported.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -22,10 +18,9 @@ pub struct CfnApplication {
     #[serde(rename = "ApplicationName")]
     pub application_name: Option<String>,
 
-
-    /// 
+    ///
     /// The compute platform that CodeDeploy deploys the application to.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -36,10 +31,9 @@ pub struct CfnApplication {
     #[serde(rename = "ComputePlatform")]
     pub compute_platform: Option<ApplicationComputePlatformEnum>,
 
-
-    /// 
+    ///
     /// The metadata that you apply to CodeDeploy applications to help you organize and       categorize them. Each tag consists of a key and an optional value, both of which you       define.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -47,13 +41,10 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ApplicationComputePlatformEnum {
-
     /// ECS
     #[serde(rename = "ECS")]
     Ecs,
@@ -65,7 +56,6 @@ pub enum ApplicationComputePlatformEnum {
     /// Server
     #[serde(rename = "Server")]
     Server,
-
 }
 
 impl Default for ApplicationComputePlatformEnum {
@@ -73,7 +63,6 @@ impl Default for ApplicationComputePlatformEnum {
         ApplicationComputePlatformEnum::Ecs
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string(&self) -> &'static str {
@@ -85,23 +74,24 @@ impl cfn_resources::CfnResource for CfnApplication {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.application_name {
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'application_name'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.application_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'application_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'application_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.application_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'application_name'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -115,32 +105,26 @@ impl cfn_resources::CfnResource for CfnApplication {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -152,7 +136,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

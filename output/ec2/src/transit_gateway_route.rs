@@ -1,13 +1,9 @@
-
-
 /// Specifies a static route for a transit gateway route table.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnTransitGatewayRoute {
-
-
-    /// 
+    ///
     /// Indicates whether to drop traffic that matches this route.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -16,10 +12,9 @@ pub struct CfnTransitGatewayRoute {
     #[serde(rename = "Blackhole")]
     pub blackhole: Option<bool>,
 
-
-    /// 
+    ///
     /// The CIDR block used for destination matches.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnTransitGatewayRoute {
     #[serde(rename = "DestinationCidrBlock")]
     pub destination_cidr_block: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the attachment.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,10 +34,9 @@ pub struct CfnTransitGatewayRoute {
     #[serde(rename = "TransitGatewayAttachmentId")]
     pub transit_gateway_attachment_id: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the transit gateway route table.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -51,10 +44,7 @@ pub struct CfnTransitGatewayRoute {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayRouteTableId")]
     pub transit_gateway_route_table_id: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRoute {
     fn type_string(&self) -> &'static str {
@@ -66,7 +56,6 @@ impl cfn_resources::CfnResource for CfnTransitGatewayRoute {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

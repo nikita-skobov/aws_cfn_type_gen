@@ -1,10 +1,6 @@
-
-
 /// The AWS::EMRServerless::Application resource specifies an EMR Serverless       application. An application uses open source analytics frameworks to run jobs that       process data. To create an application, you must specify the release version for the       open source framework version you want to use and the type of application you want, such       as Apache Spark or Apache Hive. After you create an application, you can submit data       processing jobs or interactive requests to it.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnApplication {
-
-
     /// The CPU architecture type of the application. Allowed values: X86_64 or ARM64
     ///
     /// Required: No
@@ -15,10 +11,9 @@ pub struct CfnApplication {
     #[serde(rename = "Architecture")]
     pub architecture: Option<ApplicationArchitectureEnum>,
 
-
-    /// 
+    ///
     /// The configuration for an application to automatically start on job submission.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AutoStartConfiguration
@@ -27,10 +22,9 @@ pub struct CfnApplication {
     #[serde(rename = "AutoStartConfiguration")]
     pub auto_start_configuration: Option<AutoStartConfiguration>,
 
-
-    /// 
+    ///
     /// The configuration for an application to automatically stop after a certain amount of       time being idle.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AutoStopConfiguration
@@ -38,7 +32,6 @@ pub struct CfnApplication {
     /// Update requires: No interruption
     #[serde(rename = "AutoStopConfiguration")]
     pub auto_stop_configuration: Option<AutoStopConfiguration>,
-
 
     /// Property description not available.
     ///
@@ -50,10 +43,9 @@ pub struct CfnApplication {
     #[serde(rename = "ImageConfiguration")]
     pub image_configuration: Option<ImageConfigurationInput>,
 
-
-    /// 
+    ///
     /// The initial capacity of the application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of InitialCapacityConfigKeyValuePair
@@ -62,10 +54,9 @@ pub struct CfnApplication {
     #[serde(rename = "InitialCapacity")]
     pub initial_capacity: Option<Vec<InitialCapacityConfigKeyValuePair>>,
 
-
-    /// 
+    ///
     /// The maximum capacity of the application. This is cumulative across all workers at any     given point in time during the lifespan of the application is created. No new resources     will be created once any one of the defined limits is hit.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: MaximumAllowedResources
@@ -74,16 +65,15 @@ pub struct CfnApplication {
     #[serde(rename = "MaximumCapacity")]
     pub maximum_capacity: Option<MaximumAllowedResources>,
 
-
-    /// 
+    ///
     /// The name of the application.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 64
-    /// 
+    ///
     /// Pattern: ^[A-Za-z0-9._\\/#-]+$
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -92,10 +82,9 @@ pub struct CfnApplication {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The network configuration for customer VPC connectivity for the application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: NetworkConfiguration
@@ -104,16 +93,15 @@ pub struct CfnApplication {
     #[serde(rename = "NetworkConfiguration")]
     pub network_configuration: Option<NetworkConfiguration>,
 
-
-    /// 
+    ///
     /// The EMR release version associated with the application.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 64
-    /// 
+    ///
     /// Pattern: ^[A-Za-z0-9._/-]+$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -122,10 +110,9 @@ pub struct CfnApplication {
     #[serde(rename = "ReleaseLabel")]
     pub release_label: String,
 
-
-    /// 
+    ///
     /// The tags assigned to the application.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -134,10 +121,9 @@ pub struct CfnApplication {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The type of application, such as Spark or Hive.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -145,7 +131,6 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: String,
-
 
     /// Property description not available.
     ///
@@ -155,18 +140,15 @@ pub struct CfnApplication {
     ///
     /// Update requires: No interruption
     #[serde(rename = "WorkerTypeSpecifications")]
-    pub worker_type_specifications: Option<std::collections::HashMap<String, WorkerTypeSpecificationInput>>,
-
+    pub worker_type_specifications:
+        Option<std::collections::HashMap<String, WorkerTypeSpecificationInput>>,
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum ApplicationArchitectureEnum {
-
     /// X86_64 or ARM64
     #[serde(rename = "X86_64 or ARM64")]
     X8664orarm64,
-
 }
 
 impl Default for ApplicationArchitectureEnum {
@@ -174,7 +156,6 @@ impl Default for ApplicationArchitectureEnum {
         ApplicationArchitectureEnum::X8664orarm64
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnApplication {
     fn type_string(&self) -> &'static str {
@@ -186,47 +167,62 @@ impl cfn_resources::CfnResource for CfnApplication {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.auto_start_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.auto_start_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.auto_stop_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.auto_stop_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.image_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.image_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.maximum_capacity.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.maximum_capacity
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.name {
-
-        if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 64", the_val.len()));
+            if the_val.len() > 64 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'name'. {} is greater than 64",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        self.network_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.network_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.release_label;
 
         if the_val.len() > 64 as _ {
-            return Err(format!("Max validation failed on field 'release_label'. {} is greater than 64", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'release_label'. {} is greater than 64",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.release_label;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'release_label'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'release_label'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -234,11 +230,9 @@ impl cfn_resources::CfnResource for CfnApplication {
 /// The conﬁguration for an application to automatically start on job submission.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoStartConfiguration {
-
-
-    /// 
+    ///
     /// Enables the application to automatically start on job submission. Defaults to       true.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -246,10 +240,7 @@ pub struct AutoStartConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AutoStartConfiguration {
     fn type_string(&self) -> &'static str {
@@ -261,7 +252,6 @@ impl cfn_resources::CfnResource for AutoStartConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -269,11 +259,9 @@ impl cfn_resources::CfnResource for AutoStartConfiguration {
 /// The conﬁguration for an application to automatically stop after a certain amount of       time being idle.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoStopConfiguration {
-
-
-    /// 
+    ///
     /// Enables the application to automatically stop after a certain amount of time being       idle. Defaults to true.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -282,14 +270,13 @@ pub struct AutoStopConfiguration {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// The amount of idle time in minutes after which your application will automatically       stop. Defaults to 15 minutes.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 10080
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -297,10 +284,7 @@ pub struct AutoStopConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "IdleTimeoutMinutes")]
     pub idle_timeout_minutes: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AutoStopConfiguration {
     fn type_string(&self) -> &'static str {
@@ -312,23 +296,21 @@ impl cfn_resources::CfnResource for AutoStopConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.idle_timeout_minutes {
+            if *the_val > 10080 as _ {
+                return Err(format!("Max validation failed on field 'idle_timeout_minutes'. {} is greater than 10080", the_val));
+            }
+        }
 
         if let Some(the_val) = &self.idle_timeout_minutes {
-
-        if *the_val > 10080 as _ {
-            return Err(format!("Max validation failed on field 'idle_timeout_minutes'. {} is greater than 10080", the_val));
+            if *the_val < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'idle_timeout_minutes'. {} is less than 1",
+                    the_val
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.idle_timeout_minutes {
-
-        if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'idle_timeout_minutes'. {} is less than 1", the_val));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -336,8 +318,6 @@ impl cfn_resources::CfnResource for AutoStopConfiguration {
 /// The ImageConfigurationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ImageConfigurationInput {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -347,10 +327,7 @@ pub struct ImageConfigurationInput {
     /// Update requires: No interruption
     #[serde(rename = "ImageUri")]
     pub image_uri: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ImageConfigurationInput {
     fn type_string(&self) -> &'static str {
@@ -362,7 +339,6 @@ impl cfn_resources::CfnResource for ImageConfigurationInput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -370,11 +346,9 @@ impl cfn_resources::CfnResource for ImageConfigurationInput {
 /// The initial capacity configuration per worker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InitialCapacityConfig {
-
-
-    /// 
+    ///
     /// The resource configuration of the initial capacity configuration.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: WorkerConfiguration
@@ -383,14 +357,13 @@ pub struct InitialCapacityConfig {
     #[serde(rename = "WorkerConfiguration")]
     pub worker_configuration: WorkerConfiguration,
 
-
-    /// 
+    ///
     /// The number of workers in the initial capacity configuration.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 1000000
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -398,10 +371,7 @@ pub struct InitialCapacityConfig {
     /// Update requires: No interruption
     #[serde(rename = "WorkerCount")]
     pub worker_count: i64,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InitialCapacityConfig {
     fn type_string(&self) -> &'static str {
@@ -413,23 +383,26 @@ impl cfn_resources::CfnResource for InitialCapacityConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.worker_configuration.validate()?;
 
         let the_val = &self.worker_count;
 
         if *the_val > 1000000 as _ {
-            return Err(format!("Max validation failed on field 'worker_count'. {} is greater than 1000000", the_val));
+            return Err(format!(
+                "Max validation failed on field 'worker_count'. {} is greater than 1000000",
+                the_val
+            ));
         }
 
-        
         let the_val = &self.worker_count;
 
         if *the_val < 1 as _ {
-            return Err(format!("Min validation failed on field 'worker_count'. {} is less than 1", the_val));
+            return Err(format!(
+                "Min validation failed on field 'worker_count'. {} is less than 1",
+                the_val
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -437,17 +410,15 @@ impl cfn_resources::CfnResource for InitialCapacityConfig {
 /// The initial capacity configuration per worker.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InitialCapacityConfigKeyValuePair {
-
-
-    /// 
+    ///
     /// The worker type for an analytics framework. For Spark applications, the key can either       be set to Driver or Executor. For Hive applications, it can be       set to HiveDriver or TezTask.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 50
-    /// 
+    ///
     /// Pattern: ^[a-zA-Z]+[-_]*[a-zA-Z]+$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -456,10 +427,9 @@ pub struct InitialCapacityConfigKeyValuePair {
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the initial capacity configuration per worker.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: InitialCapacityConfig
@@ -467,10 +437,7 @@ pub struct InitialCapacityConfigKeyValuePair {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: InitialCapacityConfig,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InitialCapacityConfigKeyValuePair {
     fn type_string(&self) -> &'static str {
@@ -482,21 +449,24 @@ impl cfn_resources::CfnResource for InitialCapacityConfigKeyValuePair {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.key;
 
         if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'key'. {} is greater than 50", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'key'. {} is greater than 50",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.key;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'key'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'key'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         self.value.validate()?;
 
         Ok(())
@@ -506,17 +476,15 @@ impl cfn_resources::CfnResource for InitialCapacityConfigKeyValuePair {
 /// The maximum allowed cumulative resources for an application. No new resources will be     created once the limit is hit.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct MaximumAllowedResources {
-
-
-    /// 
+    ///
     /// The maximum allowed CPU for an application.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 15
-    /// 
+    ///
     /// Pattern: ^[1-9][0-9]*(\\s)?(vCPU|vcpu|VCPU)?$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -525,16 +493,15 @@ pub struct MaximumAllowedResources {
     #[serde(rename = "Cpu")]
     pub cpu: String,
 
-
-    /// 
+    ///
     /// The maximum allowed disk for an application.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 15
-    /// 
+    ///
     /// Pattern: ^[1-9][0-9]*(\\s)?(GB|gb|gB|Gb)$"
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -543,16 +510,15 @@ pub struct MaximumAllowedResources {
     #[serde(rename = "Disk")]
     pub disk: Option<String>,
 
-
-    /// 
+    ///
     /// The maximum allowed resources for an application.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 15
-    /// 
+    ///
     /// Pattern: ^[1-9][0-9]*(\\s)?(GB|gb|gB|Gb)?$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -560,10 +526,7 @@ pub struct MaximumAllowedResources {
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
     pub memory: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for MaximumAllowedResources {
     fn type_string(&self) -> &'static str {
@@ -575,51 +538,60 @@ impl cfn_resources::CfnResource for MaximumAllowedResources {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.cpu;
 
         if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'cpu'. {} is greater than 15", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'cpu'. {} is greater than 15",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.cpu;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'cpu'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'cpu'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.disk {
-
-        if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'disk'. {} is greater than 15", the_val.len()));
+            if the_val.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'disk'. {} is greater than 15",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.disk {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'disk'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'disk'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.memory;
 
         if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'memory'. {} is greater than 15", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'memory'. {} is greater than 15",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.memory;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'memory'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'memory'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -627,17 +599,15 @@ impl cfn_resources::CfnResource for MaximumAllowedResources {
 /// The network configuration for customer VPC connectivity.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct NetworkConfiguration {
-
-
-    /// 
+    ///
     /// The array of security group Ids for customer VPC connectivity.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 32
-    /// 
+    ///
     /// Pattern: ^[-0-9a-zA-Z]+
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -646,16 +616,15 @@ pub struct NetworkConfiguration {
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// The array of subnet Ids for customer VPC connectivity.
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 32
-    /// 
+    ///
     /// Pattern: ^[-0-9a-zA-Z]+
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -663,10 +632,7 @@ pub struct NetworkConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "SubnetIds")]
     pub subnet_ids: Option<Vec<String>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for NetworkConfiguration {
     fn type_string(&self) -> &'static str {
@@ -678,39 +644,42 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.security_group_ids {
+            if the_val.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'security_group_ids'. {} is greater than 32",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.security_group_ids {
-
-        if the_val.len() > 32 as _ {
-            return Err(format!("Max validation failed on field 'security_group_ids'. {} is greater than 32", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'security_group_ids'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.security_group_ids {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'security_group_ids'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.subnet_ids {
-
-        if the_val.len() > 32 as _ {
-            return Err(format!("Max validation failed on field 'subnet_ids'. {} is greater than 32", the_val.len()));
+            if the_val.len() > 32 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'subnet_ids'. {} is greater than 32",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.subnet_ids {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'subnet_ids'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'subnet_ids'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -724,32 +693,26 @@ impl cfn_resources::CfnResource for NetworkConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -761,7 +724,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -769,15 +731,13 @@ impl cfn_resources::CfnResource for Tag {
 /// The resource configuration of the initial capacity configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WorkerConfiguration {
-
-
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 15
-    /// 
+    ///
     /// Pattern: ^[1-9][0-9]*(\\s)?(vCPU|vcpu|VCPU)?$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -786,14 +746,13 @@ pub struct WorkerConfiguration {
     #[serde(rename = "Cpu")]
     pub cpu: String,
 
-
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 15
-    /// 
+    ///
     /// Pattern: ^[1-9][0-9]*(\\s)?(GB|gb|gB|Gb)$"
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -802,14 +761,13 @@ pub struct WorkerConfiguration {
     #[serde(rename = "Disk")]
     pub disk: Option<String>,
 
-
-    /// 
+    ///
     /// Minimum: 1
-    /// 
+    ///
     /// Maximum: 15
-    /// 
+    ///
     /// Pattern: ^[1-9][0-9]*(\\s)?(GB|gb|gB|Gb)?$
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -817,10 +775,7 @@ pub struct WorkerConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "Memory")]
     pub memory: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WorkerConfiguration {
     fn type_string(&self) -> &'static str {
@@ -832,51 +787,60 @@ impl cfn_resources::CfnResource for WorkerConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.cpu;
 
         if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'cpu'. {} is greater than 15", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'cpu'. {} is greater than 15",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.cpu;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'cpu'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'cpu'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.disk {
-
-        if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'disk'. {} is greater than 15", the_val.len()));
+            if the_val.len() > 15 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'disk'. {} is greater than 15",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.disk {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'disk'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'disk'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.memory;
 
         if the_val.len() > 15 as _ {
-            return Err(format!("Max validation failed on field 'memory'. {} is greater than 15", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'memory'. {} is greater than 15",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.memory;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'memory'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'memory'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -884,8 +848,6 @@ impl cfn_resources::CfnResource for WorkerConfiguration {
 /// The WorkerTypeSpecificationInput property type specifies Property description not available. for an AWS::EMRServerless::Application.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct WorkerTypeSpecificationInput {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -895,10 +857,7 @@ pub struct WorkerTypeSpecificationInput {
     /// Update requires: No interruption
     #[serde(rename = "ImageConfiguration")]
     pub image_configuration: Option<ImageConfigurationInput>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for WorkerTypeSpecificationInput {
     fn type_string(&self) -> &'static str {
@@ -910,8 +869,9 @@ impl cfn_resources::CfnResource for WorkerTypeSpecificationInput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.image_configuration.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.image_configuration
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }

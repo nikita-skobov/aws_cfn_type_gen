@@ -1,13 +1,9 @@
-
-
 /// The AWS::Glue::Schema is an AWS Glue resource type that manages schemas in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnSchema {
-
-
-    /// 
+    ///
     /// Specify the VersionNumber or the IsLatest for setting the checkpoint for the schema. This is only required for updating a checkpoint.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: SchemaVersion
@@ -16,10 +12,9 @@ pub struct CfnSchema {
     #[serde(rename = "CheckpointVersion")]
     pub checkpoint_version: Option<SchemaVersion>,
 
-
-    /// 
+    ///
     /// The compatibility mode of the schema.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnSchema {
     #[serde(rename = "Compatibility")]
     pub compatibility: String,
 
-
-    /// 
+    ///
     /// The data format of the schema definition. Currently only AVRO is supported.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -40,10 +34,9 @@ pub struct CfnSchema {
     #[serde(rename = "DataFormat")]
     pub data_format: String,
 
-
-    /// 
+    ///
     /// A description of the schema if specified when created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -52,10 +45,9 @@ pub struct CfnSchema {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Name of the schema to be created of max length of 255, and may only contain letters, numbers, hyphen, underscore, dollar sign, or hash mark. No whitespace.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -70,10 +62,9 @@ pub struct CfnSchema {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// The registry where a schema is stored.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Registry
@@ -82,10 +73,9 @@ pub struct CfnSchema {
     #[serde(rename = "Registry")]
     pub registry: Option<Registry>,
 
-
-    /// 
+    ///
     /// The schema definition using the DataFormat setting for SchemaName.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -94,10 +84,9 @@ pub struct CfnSchema {
     #[serde(rename = "SchemaDefinition")]
     pub schema_definition: String,
 
-
-    /// 
+    ///
     /// AWS tags that contain a key value pair and may be searched by console, command line, or API.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -105,10 +94,7 @@ pub struct CfnSchema {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnSchema {
     fn type_string(&self) -> &'static str {
@@ -120,24 +106,31 @@ impl cfn_resources::CfnResource for CfnSchema {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.checkpoint_version.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.checkpoint_version
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         let the_val = &self.name;
 
         if the_val.len() > 1024 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 1024", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 1024",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
-        self.registry.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.registry
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -146,11 +139,9 @@ impl cfn_resources::CfnResource for CfnSchema {
 /// Specifies a registry in the AWS Glue Schema Registry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Registry {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the registry.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -159,10 +150,9 @@ pub struct Registry {
     #[serde(rename = "Arn")]
     pub arn: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the registry.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -170,10 +160,7 @@ pub struct Registry {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Registry {
     fn type_string(&self) -> &'static str {
@@ -185,7 +172,6 @@ impl cfn_resources::CfnResource for Registry {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -193,11 +179,9 @@ impl cfn_resources::CfnResource for Registry {
 /// Specifies the version of a schema.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct SchemaVersion {
-
-
-    /// 
+    ///
     /// Indicates if this version is the latest version of the schema.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -206,10 +190,9 @@ pub struct SchemaVersion {
     #[serde(rename = "IsLatest")]
     pub is_latest: Option<bool>,
 
-
-    /// 
+    ///
     /// The version number of the schema.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -217,10 +200,7 @@ pub struct SchemaVersion {
     /// Update requires: No interruption
     #[serde(rename = "VersionNumber")]
     pub version_number: Option<i64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for SchemaVersion {
     fn type_string(&self) -> &'static str {
@@ -232,7 +212,6 @@ impl cfn_resources::CfnResource for SchemaVersion {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -246,32 +225,26 @@ impl cfn_resources::CfnResource for SchemaVersion {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -283,7 +256,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

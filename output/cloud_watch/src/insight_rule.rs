@@ -1,10 +1,6 @@
-
-
 /// Creates or updates a Contributor Insights rule. Rules evaluate log events in a CloudWatch Logs log group, enabling you to find contributor data     for the log events in that log group. For more information, see       Using Contributor Insights to Analyze High-Cardinality Data in the Amazon CloudWatch User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInsightRule {
-
-
     /// The definition of the rule, as a JSON object.     For details about the syntax, see       Contributor Insights Rule Syntax in the Amazon CloudWatch User Guide.
     ///
     /// Required: Yes
@@ -15,8 +11,7 @@ pub struct CfnInsightRule {
     #[serde(rename = "RuleBody")]
     pub rule_body: String,
 
-
-    /// 
+    ///
     /// The name of the rule.
     ///
     /// Required: Yes
@@ -27,10 +22,9 @@ pub struct CfnInsightRule {
     #[serde(rename = "RuleName")]
     pub rule_name: String,
 
-
-    /// 
+    ///
     /// The current state of the rule. Valid values are ENABLED and DISABLED.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -39,14 +33,13 @@ pub struct CfnInsightRule {
     #[serde(rename = "RuleState")]
     pub rule_state: String,
 
-
-    /// 
+    ///
     /// A list of key-value pairs to associate with the Contributor Insights rule. You can       associate as many as 50 tags with a rule.
-    /// 
+    ///
     /// Tags can help you organize and categorize your resources. For more information,       see         Tagging Your Amazon CloudWatch Resources.
-    /// 
+    ///
     /// To be able to associate tags with a rule, you must have the cloudwatch:TagResource permission in addition to the cloudwatch:PutInsightRule permission.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Tags
@@ -54,10 +47,7 @@ pub struct CfnInsightRule {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Tags>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnInsightRule {
     fn type_string(&self) -> &'static str {
@@ -69,7 +59,6 @@ impl cfn_resources::CfnResource for CfnInsightRule {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.tags.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
@@ -85,32 +74,26 @@ impl cfn_resources::CfnResource for CfnInsightRule {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -122,7 +105,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -133,11 +115,7 @@ impl cfn_resources::CfnResource for Tag {
 ///
 /// To be able to associate tags with a rule, you must have the cloudwatch:TagResource permission in addition to the cloudwatch:PutInsightRule permission.
 #[derive(Clone, Debug, Default, serde::Serialize)]
-pub struct Tags {
-
-}
-
-
+pub struct Tags {}
 
 impl cfn_resources::CfnResource for Tags {
     fn type_string(&self) -> &'static str {
@@ -149,7 +127,6 @@ impl cfn_resources::CfnResource for Tags {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

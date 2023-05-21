@@ -1,15 +1,11 @@
-
-
 /// The AWS::ApiGateway::UsagePlan resource creates a usage plan for deployed APIs. A usage plan sets a target for the throttling and quota limits on individual client API keys. For more information, see Creating and Using API Usage Plans in Amazon API Gateway in the API Gateway Developer Guide.
 ///
 /// In some cases clients can exceed the targets that you set. Don’t rely on usage plans to control costs. Consider using AWS Budgets to monitor costs     and AWS WAF to manage API requests.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnUsagePlan {
-
-
-    /// 
+    ///
     /// The associated API stages of a usage plan.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of ApiStage
@@ -18,10 +14,9 @@ pub struct CfnUsagePlan {
     #[serde(rename = "ApiStages")]
     pub api_stages: Option<Vec<ApiStage>>,
 
-
-    /// 
+    ///
     /// The description of a usage plan.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnUsagePlan {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The target maximum number of permitted requests per a given unit time interval.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: QuotaSettings
@@ -42,10 +36,9 @@ pub struct CfnUsagePlan {
     #[serde(rename = "Quota")]
     pub quota: Option<QuotaSettings>,
 
-
-    /// 
+    ///
     /// The collection of tags. Each tag element is associated with a given resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -54,10 +47,9 @@ pub struct CfnUsagePlan {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// A map containing method level throttling information for API stage in a usage plan.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ThrottleSettings
@@ -66,10 +58,9 @@ pub struct CfnUsagePlan {
     #[serde(rename = "Throttle")]
     pub throttle: Option<ThrottleSettings>,
 
-
-    /// 
+    ///
     /// The name of a usage plan.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -77,10 +68,7 @@ pub struct CfnUsagePlan {
     /// Update requires: No interruption
     #[serde(rename = "UsagePlanName")]
     pub usage_plan_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnUsagePlan {
     fn type_string(&self) -> &'static str {
@@ -92,10 +80,11 @@ impl cfn_resources::CfnResource for CfnUsagePlan {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.quota.as_ref().map_or(Ok(()), |val| val.validate())?;
 
-        self.throttle.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.throttle
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -104,11 +93,9 @@ impl cfn_resources::CfnResource for CfnUsagePlan {
 /// API stage name of the associated API stage in a usage plan.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ApiStage {
-
-
-    /// 
+    ///
     /// API Id of the associated API stage in a usage plan.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -117,10 +104,9 @@ pub struct ApiStage {
     #[serde(rename = "ApiId")]
     pub api_id: Option<String>,
 
-
-    /// 
+    ///
     /// API stage name of the associated API stage in a usage plan.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -129,10 +115,9 @@ pub struct ApiStage {
     #[serde(rename = "Stage")]
     pub stage: Option<String>,
 
-
-    /// 
+    ///
     /// Map containing method level throttling information for API stage in a usage plan.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Map of ThrottleSettings
@@ -140,10 +125,7 @@ pub struct ApiStage {
     /// Update requires: No interruption
     #[serde(rename = "Throttle")]
     pub throttle: Option<std::collections::HashMap<String, ThrottleSettings>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ApiStage {
     fn type_string(&self) -> &'static str {
@@ -155,7 +137,6 @@ impl cfn_resources::CfnResource for ApiStage {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -165,11 +146,9 @@ impl cfn_resources::CfnResource for ApiStage {
 /// In some cases clients can exceed the targets that you set. Don’t rely on usage plans to control costs. Consider using AWS Budgets to monitor costs     and AWS WAF to manage API requests.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct QuotaSettings {
-
-
-    /// 
+    ///
     /// The target maximum number of requests that can be made in a given time period.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -178,10 +157,9 @@ pub struct QuotaSettings {
     #[serde(rename = "Limit")]
     pub limit: Option<i64>,
 
-
-    /// 
+    ///
     /// The number of requests subtracted from the given limit in the initial time period.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -190,10 +168,9 @@ pub struct QuotaSettings {
     #[serde(rename = "Offset")]
     pub offset: Option<i64>,
 
-
-    /// 
+    ///
     /// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -203,13 +180,10 @@ pub struct QuotaSettings {
     /// Update requires: No interruption
     #[serde(rename = "Period")]
     pub period: Option<QuotaSettingsPeriodEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum QuotaSettingsPeriodEnum {
-
     /// DAY
     #[serde(rename = "DAY")]
     Day,
@@ -221,7 +195,6 @@ pub enum QuotaSettingsPeriodEnum {
     /// WEEK
     #[serde(rename = "WEEK")]
     Week,
-
 }
 
 impl Default for QuotaSettingsPeriodEnum {
@@ -229,7 +202,6 @@ impl Default for QuotaSettingsPeriodEnum {
         QuotaSettingsPeriodEnum::Day
     }
 }
-
 
 impl cfn_resources::CfnResource for QuotaSettings {
     fn type_string(&self) -> &'static str {
@@ -241,7 +213,6 @@ impl cfn_resources::CfnResource for QuotaSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -255,32 +226,26 @@ impl cfn_resources::CfnResource for QuotaSettings {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -292,7 +257,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -300,11 +264,9 @@ impl cfn_resources::CfnResource for Tag {
 /// ThrottleSettings is a property of the AWS::ApiGateway::UsagePlan resource that specifies the overall request rate (average requests per second) and burst capacity when users call your REST APIs.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ThrottleSettings {
-
-
-    /// 
+    ///
     /// The API target request burst rate limit. This allows more requests through for a period of time than the target rate limit.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Integer
@@ -313,10 +275,9 @@ pub struct ThrottleSettings {
     #[serde(rename = "BurstLimit")]
     pub burst_limit: Option<i64>,
 
-
-    /// 
+    ///
     /// The API target request rate limit.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Double
@@ -324,10 +285,7 @@ pub struct ThrottleSettings {
     /// Update requires: No interruption
     #[serde(rename = "RateLimit")]
     pub rate_limit: Option<f64>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ThrottleSettings {
     fn type_string(&self) -> &'static str {
@@ -339,7 +297,6 @@ impl cfn_resources::CfnResource for ThrottleSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

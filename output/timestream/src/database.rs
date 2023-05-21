@@ -1,15 +1,11 @@
-
-
 /// Creates a new Timestream database. If the AWS KMS key is not    specified, the database will be encrypted with a Timestream managed AWS KMS key located in your account. Refer to AWS managed      AWS KMS keys for more info. Service quotas apply. See     code sample for    details.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDatabase {
-
-
-    /// 
+    ///
     /// The name of the Timestream database.
-    /// 
+    ///
     /// Length Constraints: Minimum length of 3 bytes. Maximum length of 256    bytes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnDatabase {
     #[serde(rename = "DatabaseName")]
     pub database_name: Option<String>,
 
-
-    /// 
+    ///
     /// The identifier of the AWS KMS key used to encrypt the data stored in the    database.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnDatabase {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// The tags to add to the database.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -45,10 +39,7 @@ pub struct CfnDatabase {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDatabase {
     fn type_string(&self) -> &'static str {
@@ -60,23 +51,24 @@ impl cfn_resources::CfnResource for CfnDatabase {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.kms_key_id {
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'kms_key_id'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.kms_key_id {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'kms_key_id'. {} is greater than 2048", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'kms_key_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.kms_key_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'kms_key_id'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }
@@ -90,32 +82,26 @@ impl cfn_resources::CfnResource for CfnDatabase {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -127,7 +113,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

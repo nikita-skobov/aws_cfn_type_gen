@@ -1,13 +1,9 @@
-
-
 /// The AWS::IoTEvents::Input resource creates an input. To monitor your devices and processes,    they must have a way to get telemetry data into AWS IoT Events. This is done by sending messages    as inputs to AWS IoT Events. For more information, see       How to Use AWS IoT Events in the AWS IoT Events Developer Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnInput {
-
-
-    /// 
+    ///
     /// The definition of the input.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: InputDefinition
@@ -16,10 +12,9 @@ pub struct CfnInput {
     #[serde(rename = "InputDefinition")]
     pub input_definition: InputDefinition,
 
-
-    /// 
+    ///
     /// A brief description of the input.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnInput {
     #[serde(rename = "InputDescription")]
     pub input_description: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the input.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -48,12 +42,11 @@ pub struct CfnInput {
     #[serde(rename = "InputName")]
     pub input_name: Option<String>,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -61,10 +54,7 @@ pub struct CfnInput {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnInput {
     fn type_string(&self) -> &'static str {
@@ -76,33 +66,35 @@ impl cfn_resources::CfnResource for CfnInput {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.input_definition.validate()?;
 
         if let Some(the_val) = &self.input_description {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'input_description'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'input_description'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.input_name {
-
-        if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'input_name'. {} is greater than 128", the_val.len()));
+            if the_val.len() > 128 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'input_name'. {} is greater than 128",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.input_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'input_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'input_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -110,13 +102,11 @@ impl cfn_resources::CfnResource for CfnInput {
 /// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload. Those attributes (and their paired values) specified here are    available for use in the condition expressions used by detectors.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Attribute {
-
-
-    /// 
+    ///
     /// An expression that specifies an attribute-value pair in a JSON structure. Use this to    specify an attribute from the JSON payload that is made available by the input. Inputs are    derived from messages sent to AWS IoT Events (BatchPutMessage). Each such message contains    a JSON payload. The attribute (and its paired value) specified here are available for use in    the condition expressions used by detectors.
-    /// 
+    ///
     /// Syntax: <field-name>.<field-name>...
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -130,10 +120,7 @@ pub struct Attribute {
     /// Update requires: No interruption
     #[serde(rename = "JsonPath")]
     pub json_path: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Attribute {
     fn type_string(&self) -> &'static str {
@@ -145,21 +132,24 @@ impl cfn_resources::CfnResource for Attribute {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.json_path;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'json_path'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'json_path'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.json_path;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'json_path'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'json_path'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -167,11 +157,9 @@ impl cfn_resources::CfnResource for Attribute {
 /// The definition of the input.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct InputDefinition {
-
-
-    /// 
+    ///
     /// The attributes from the JSON payload that are made available by the input. Inputs are    derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such    message contains a JSON payload, and those attributes (and their paired values) specified here    are available for use in the condition expressions used by detectors that monitor    this input.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of Attribute
@@ -181,10 +169,7 @@ pub struct InputDefinition {
     /// Update requires: No interruption
     #[serde(rename = "Attributes")]
     pub attributes: Vec<Attribute>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for InputDefinition {
     fn type_string(&self) -> &'static str {
@@ -196,14 +181,15 @@ impl cfn_resources::CfnResource for InputDefinition {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.attributes;
 
         if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'attributes'. {} is greater than 200", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'attributes'. {} is greater than 200",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -217,32 +203,26 @@ impl cfn_resources::CfnResource for InputDefinition {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -254,7 +234,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,13 +1,9 @@
-
-
 /// Creates an access policy that grants the specified identity (IAM Identity Center user, IAM Identity Center group, or    IAM user) access to the specified AWS IoT SiteWise Monitor portal or project resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccessPolicy {
-
-
-    /// 
+    ///
     /// The identity for this access policy. Choose an IAM Identity Center user, an IAM Identity Center group, or an IAM user.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: AccessPolicyIdentity
@@ -16,10 +12,9 @@ pub struct CfnAccessPolicy {
     #[serde(rename = "AccessPolicyIdentity")]
     pub access_policy_identity: AccessPolicyIdentity,
 
-
-    /// 
+    ///
     /// The permission level for this access policy. Choose either a ADMINISTRATOR or VIEWER.       Note that a project ADMINISTRATOR is also known as a project owner.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnAccessPolicy {
     #[serde(rename = "AccessPolicyPermission")]
     pub access_policy_permission: String,
 
-
-    /// 
+    ///
     /// The AWS IoT SiteWise Monitor resource for this access policy. Choose either a portal or a project.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: AccessPolicyResource
@@ -39,10 +33,7 @@ pub struct CfnAccessPolicy {
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicyResource")]
     pub access_policy_resource: AccessPolicyResource,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnAccessPolicy {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnAccessPolicy {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.access_policy_identity.validate()?;
 
         self.access_policy_resource.validate()?;
@@ -66,11 +56,9 @@ impl cfn_resources::CfnResource for CfnAccessPolicy {
 /// The identity (IAM Identity Center user, IAM Identity Center group, or IAM user) to which this access policy    applies.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccessPolicyIdentity {
-
-
-    /// 
+    ///
     /// An IAM role identity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: IamRole
@@ -79,10 +67,9 @@ pub struct AccessPolicyIdentity {
     #[serde(rename = "IamRole")]
     pub iam_role: Option<IamRole>,
 
-
-    /// 
+    ///
     /// An IAM user identity.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: IamUser
@@ -91,10 +78,9 @@ pub struct AccessPolicyIdentity {
     #[serde(rename = "IamUser")]
     pub iam_user: Option<IamUser>,
 
-
-    /// 
+    ///
     /// The IAM Identity Center user to which this access policy maps.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: User
@@ -102,10 +88,7 @@ pub struct AccessPolicyIdentity {
     /// Update requires: No interruption
     #[serde(rename = "User")]
     pub user: Option<User>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AccessPolicyIdentity {
     fn type_string(&self) -> &'static str {
@@ -117,10 +100,13 @@ impl cfn_resources::CfnResource for AccessPolicyIdentity {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.iam_role
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.iam_role.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.iam_user.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.iam_user
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         self.user.as_ref().map_or(Ok(()), |val| val.validate())?;
 
@@ -131,11 +117,9 @@ impl cfn_resources::CfnResource for AccessPolicyIdentity {
 /// The AWS IoT SiteWise Monitor resource for this access policy. Choose either a portal or a project.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AccessPolicyResource {
-
-
-    /// 
+    ///
     /// The AWS IoT SiteWise Monitor portal for this access policy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Portal
@@ -144,10 +128,9 @@ pub struct AccessPolicyResource {
     #[serde(rename = "Portal")]
     pub portal: Option<Portal>,
 
-
-    /// 
+    ///
     /// The AWS IoT SiteWise Monitor project for this access policy.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Project
@@ -155,10 +138,7 @@ pub struct AccessPolicyResource {
     /// Update requires: No interruption
     #[serde(rename = "Project")]
     pub project: Option<Project>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AccessPolicyResource {
     fn type_string(&self) -> &'static str {
@@ -170,7 +150,6 @@ impl cfn_resources::CfnResource for AccessPolicyResource {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.portal.as_ref().map_or(Ok(()), |val| val.validate())?;
 
         self.project.as_ref().map_or(Ok(()), |val| val.validate())?;
@@ -182,11 +161,9 @@ impl cfn_resources::CfnResource for AccessPolicyResource {
 /// Contains information about an AWS Identity and Access Management role. For more information, see IAM roles in the     IAM User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IamRole {
-
-
-    /// 
+    ///
     /// The ARN of the IAM role. For more information, see IAM ARNs in the     IAM User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -194,10 +171,7 @@ pub struct IamRole {
     /// Update requires: No interruption
     #[serde(rename = "arn")]
     pub arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for IamRole {
     fn type_string(&self) -> &'static str {
@@ -209,7 +183,6 @@ impl cfn_resources::CfnResource for IamRole {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -217,13 +190,11 @@ impl cfn_resources::CfnResource for IamRole {
 /// Contains information about an AWS Identity and Access Management user.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IamUser {
-
-
-    /// 
+    ///
     /// The ARN of the IAM user. For more information, see IAM ARNs in the     IAM User Guide.
-    /// 
+    ///
     /// NoteIf you delete the IAM user, access policies that contain this identity include an     empty arn. You can delete the access policy for the IAM user that no longer     exists.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -231,10 +202,7 @@ pub struct IamUser {
     /// Update requires: No interruption
     #[serde(rename = "arn")]
     pub arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for IamUser {
     fn type_string(&self) -> &'static str {
@@ -246,7 +214,6 @@ impl cfn_resources::CfnResource for IamUser {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -254,11 +221,9 @@ impl cfn_resources::CfnResource for IamUser {
 /// The Portal property type specifies the AWS IoT SiteWise Monitor portal for an       AWS::IoTSiteWise::AccessPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Portal {
-
-
-    /// 
+    ///
     /// The ID of the portal.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -266,10 +231,7 @@ pub struct Portal {
     /// Update requires: No interruption
     #[serde(rename = "id")]
     pub id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Portal {
     fn type_string(&self) -> &'static str {
@@ -281,7 +243,6 @@ impl cfn_resources::CfnResource for Portal {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -289,11 +250,9 @@ impl cfn_resources::CfnResource for Portal {
 /// The Project property type specifies the AWS IoT SiteWise Monitor project for an       AWS::IoTSiteWise::AccessPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Project {
-
-
-    /// 
+    ///
     /// The ID of the project.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -301,10 +260,7 @@ pub struct Project {
     /// Update requires: No interruption
     #[serde(rename = "id")]
     pub id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Project {
     fn type_string(&self) -> &'static str {
@@ -316,7 +272,6 @@ impl cfn_resources::CfnResource for Project {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -324,11 +279,9 @@ impl cfn_resources::CfnResource for Project {
 /// The User property type specifies the AWS IoT SiteWise Monitor user for       an AWS::IoTSiteWise::AccessPolicy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct User {
-
-
-    /// 
+    ///
     /// The ID of the user.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -336,10 +289,7 @@ pub struct User {
     /// Update requires: No interruption
     #[serde(rename = "id")]
     pub id: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for User {
     fn type_string(&self) -> &'static str {
@@ -351,7 +301,6 @@ impl cfn_resources::CfnResource for User {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

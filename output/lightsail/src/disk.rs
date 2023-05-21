@@ -1,15 +1,11 @@
-
-
 /// The AWS::Lightsail::Disk resource specifies a disk that can be attached to     an Amazon Lightsail instance that is in the same AWS Region     and Availability Zone.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDisk {
-
-
-    /// 
+    ///
     /// An array of add-ons for the disk.
-    /// 
+    ///
     /// NoteIf the disk has an add-on enabled when performing a delete disk request, the add-on       is automatically disabled before the disk is deleted.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of AddOn
@@ -18,10 +14,9 @@ pub struct CfnDisk {
     #[serde(rename = "AddOns")]
     pub add_ons: Option<Vec<AddOn>>,
 
-
-    /// 
+    ///
     /// The AWS Region and Availability Zone location for the disk (for     example, us-east-1a).
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -30,10 +25,9 @@ pub struct CfnDisk {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the disk.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -43,7 +37,6 @@ pub struct CfnDisk {
     /// Update requires: Replacement
     #[serde(rename = "DiskName")]
     pub disk_name: String,
-
 
     /// Property description not available.
     ///
@@ -55,10 +48,9 @@ pub struct CfnDisk {
     #[serde(rename = "Location")]
     pub location: Option<Location>,
 
-
-    /// 
+    ///
     /// The size of the disk in GB.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: Integer
@@ -67,14 +59,13 @@ pub struct CfnDisk {
     #[serde(rename = "SizeInGb")]
     pub size_in_gb: i64,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag     in the AWS CloudFormation User Guide.
-    /// 
+    ///
     /// NoteThe Value of Tags is optional for Lightsail resources.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -82,10 +73,7 @@ pub struct CfnDisk {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDisk {
     fn type_string(&self) -> &'static str {
@@ -97,8 +85,9 @@ impl cfn_resources::CfnResource for CfnDisk {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.location.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.location
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -107,13 +96,11 @@ impl cfn_resources::CfnResource for CfnDisk {
 /// AddOn is a property of the AWS::Lightsail::Disk resource. It describes the add-ons for a disk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AddOn {
-
-
-    /// 
+    ///
     /// The add-on type (for example, AutoSnapshot).
-    /// 
+    ///
     /// NoteAutoSnapshot is the only add-on that can be enabled for a disk.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -122,10 +109,9 @@ pub struct AddOn {
     #[serde(rename = "AddOnType")]
     pub add_on_type: String,
 
-
-    /// 
+    ///
     /// The parameters for the automatic snapshot add-on, such as the daily time when an     automatic snapshot will be created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: AutoSnapshotAddOn
@@ -134,12 +120,11 @@ pub struct AddOn {
     #[serde(rename = "AutoSnapshotAddOnRequest")]
     pub auto_snapshot_add_on_request: Option<AutoSnapshotAddOn>,
 
-
-    /// 
+    ///
     /// The status of the add-on.
-    /// 
+    ///
     /// Valid Values: Enabled | Disabled
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -147,13 +132,10 @@ pub struct AddOn {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     pub status: Option<AddOnStatusEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum AddOnStatusEnum {
-
     /// Enabled
     #[serde(rename = "Enabled")]
     Enabled,
@@ -161,7 +143,6 @@ pub enum AddOnStatusEnum {
     /// Disabled
     #[serde(rename = "Disabled")]
     Disabled,
-
 }
 
 impl Default for AddOnStatusEnum {
@@ -169,7 +150,6 @@ impl Default for AddOnStatusEnum {
         AddOnStatusEnum::Enabled
     }
 }
-
 
 impl cfn_resources::CfnResource for AddOn {
     fn type_string(&self) -> &'static str {
@@ -181,8 +161,9 @@ impl cfn_resources::CfnResource for AddOn {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.auto_snapshot_add_on_request.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.auto_snapshot_add_on_request
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -191,15 +172,13 @@ impl cfn_resources::CfnResource for AddOn {
 /// AutoSnapshotAddOn is a property of the AddOn property. It describes the automatic snapshot add-on for a disk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AutoSnapshotAddOn {
-
-
-    /// 
+    ///
     /// The daily time when an automatic snapshot will be created.
-    /// 
+    ///
     /// Constraints:
-    /// 
+    ///
     /// Must be in HH:00 format, and in an hourly increment.            Specified in Coordinated Universal Time (UTC).            The snapshot will be automatically created between the time specified and up to 45        minutes after.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -209,10 +188,7 @@ pub struct AutoSnapshotAddOn {
     /// Update requires: No interruption
     #[serde(rename = "SnapshotTimeOfDay")]
     pub snapshot_time_of_day: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AutoSnapshotAddOn {
     fn type_string(&self) -> &'static str {
@@ -224,7 +200,6 @@ impl cfn_resources::CfnResource for AutoSnapshotAddOn {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -232,8 +207,6 @@ impl cfn_resources::CfnResource for AutoSnapshotAddOn {
 /// The Location property type specifies Property description not available. for an AWS::Lightsail::Disk.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Location {
-
-
     /// Property description not available.
     ///
     /// Required: No
@@ -244,7 +217,6 @@ pub struct Location {
     #[serde(rename = "AvailabilityZone")]
     pub availability_zone: Option<String>,
 
-
     /// Property description not available.
     ///
     /// Required: No
@@ -254,10 +226,7 @@ pub struct Location {
     /// Update requires: No interruption
     #[serde(rename = "RegionName")]
     pub region_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Location {
     fn type_string(&self) -> &'static str {
@@ -269,7 +238,6 @@ impl cfn_resources::CfnResource for Location {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -283,32 +251,26 @@ impl cfn_resources::CfnResource for Location {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -320,7 +282,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

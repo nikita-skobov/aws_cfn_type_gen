@@ -1,13 +1,9 @@
-
-
 /// Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose. The service network owner  can use the access logs to audit the services in the network. The service network owner will only  see access logs from clients and services that are associated with their service network. Access  log entries represent traffic originated from VPCs associated with that network. For more  information, see Access logs in the   Amazon VPC Lattice User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnAccessLogSubscription {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the destination. The supported destination types are  CloudWatch Log groups, Kinesis Data Firehose delivery streams, and Amazon S3 buckets.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnAccessLogSubscription {
     #[serde(rename = "DestinationArn")]
     pub destination_arn: String,
 
-
-    /// 
+    ///
     /// The ID or Amazon Resource Name (ARN) of the service network or service.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -28,10 +23,9 @@ pub struct CfnAccessLogSubscription {
     #[serde(rename = "ResourceIdentifier")]
     pub resource_identifier: Option<String>,
 
-
-    /// 
+    ///
     /// The tags for the access log subscription.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -39,10 +33,7 @@ pub struct CfnAccessLogSubscription {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnAccessLogSubscription {
     fn type_string(&self) -> &'static str {
@@ -54,7 +45,6 @@ impl cfn_resources::CfnResource for CfnAccessLogSubscription {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -68,32 +58,26 @@ impl cfn_resources::CfnResource for CfnAccessLogSubscription {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -105,7 +89,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

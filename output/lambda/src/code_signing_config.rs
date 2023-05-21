@@ -1,13 +1,9 @@
-
-
 /// Details about a Code signing configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCodeSigningConfig {
-
-
-    /// 
+    ///
     /// List of allowed publishers.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: AllowedPublishers
@@ -16,10 +12,9 @@ pub struct CfnCodeSigningConfig {
     #[serde(rename = "AllowedPublishers")]
     pub allowed_publishers: AllowedPublishers,
 
-
-    /// 
+    ///
     /// The code signing policy controls the validation failure action for signature mismatch or expiry.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: CodeSigningPolicies
@@ -28,10 +23,9 @@ pub struct CfnCodeSigningConfig {
     #[serde(rename = "CodeSigningPolicies")]
     pub code_signing_policies: Option<CodeSigningPolicies>,
 
-
-    /// 
+    ///
     /// Code signing configuration description.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -43,10 +37,7 @@ pub struct CfnCodeSigningConfig {
     /// Update requires: No interruption
     #[serde(rename = "Description")]
     pub description: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCodeSigningConfig {
     fn type_string(&self) -> &'static str {
@@ -58,27 +49,30 @@ impl cfn_resources::CfnResource for CfnCodeSigningConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.allowed_publishers.validate()?;
 
-        self.code_signing_policies.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.code_signing_policies
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.description {
-
-        if the_val.len() < 0 as _ {
-            return Err(format!("Min validation failed on field 'description'. {} is less than 0", the_val.len()));
+            if the_val.len() < 0 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'description'. {} is less than 0",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -86,11 +80,9 @@ impl cfn_resources::CfnResource for CfnCodeSigningConfig {
 /// List of signing profiles that can sign a code package.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct AllowedPublishers {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) for each of the signing profiles. A signing profile defines a trusted user    who can sign a code package.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -100,10 +92,7 @@ pub struct AllowedPublishers {
     /// Update requires: No interruption
     #[serde(rename = "SigningProfileVersionArns")]
     pub signing_profile_version_arns: Vec<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for AllowedPublishers {
     fn type_string(&self) -> &'static str {
@@ -115,14 +104,12 @@ impl cfn_resources::CfnResource for AllowedPublishers {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.signing_profile_version_arns;
 
         if the_val.len() > 20 as _ {
             return Err(format!("Max validation failed on field 'signing_profile_version_arns'. {} is greater than 20", the_val.len()));
         }
 
-        
         Ok(())
     }
 }
@@ -130,13 +117,11 @@ impl cfn_resources::CfnResource for AllowedPublishers {
 /// Code signing configuration policies specify the validation failure action for signature mismatch or    expiry.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CodeSigningPolicies {
-
-
-    /// 
+    ///
     /// Code signing configuration policy for deployment validation failure. If you set the policy to    Enforce, Lambda blocks the deployment request if signature validation checks fail. If you set the    policy to Warn, Lambda allows the deployment and creates a CloudWatch log.
-    /// 
+    ///
     /// Default value: Warn
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -146,13 +131,10 @@ pub struct CodeSigningPolicies {
     /// Update requires: No interruption
     #[serde(rename = "UntrustedArtifactOnDeployment")]
     pub untrusted_artifact_on_deployment: CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum {
-
     /// Enforce
     #[serde(rename = "Enforce")]
     Enforce,
@@ -160,7 +142,6 @@ pub enum CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum {
     /// Warn
     #[serde(rename = "Warn")]
     Warn,
-
 }
 
 impl Default for CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum {
@@ -168,7 +149,6 @@ impl Default for CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum {
         CodeSigningPoliciesUntrustedArtifactOnDeploymentEnum::Enforce
     }
 }
-
 
 impl cfn_resources::CfnResource for CodeSigningPolicies {
     fn type_string(&self) -> &'static str {
@@ -180,7 +160,6 @@ impl cfn_resources::CfnResource for CodeSigningPolicies {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

@@ -1,17 +1,13 @@
-
-
 /// Creates a service network. A service network is a logical boundary for a collection of  services. You can associate services and VPCs with a service network.
 ///
 /// For more information, see Service networks in the   Amazon VPC Lattice User Guide.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnServiceNetwork {
-
-
-    /// 
+    ///
     /// The type of IAM policy.
-    /// 
+    ///
     /// NONE: The resource does not use an IAM policy. This is the default.     AWS_IAM: The resource uses an IAM policy. When this type is used, auth is enabled and an auth policy is required.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,12 +16,11 @@ pub struct CfnServiceNetwork {
     #[serde(rename = "AuthType")]
     pub auth_type: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the service network. The name must be unique to the account. The valid    characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last    character, or immediately after another hyphen.
-    /// 
+    ///
     /// If you don't specify a name, CloudFormation generates one. However, if    you specify a name, and later want to replace the resource, you must specify a new    name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -34,10 +29,9 @@ pub struct CfnServiceNetwork {
     #[serde(rename = "Name")]
     pub name: Option<String>,
 
-
-    /// 
+    ///
     /// The tags for the service network.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -45,10 +39,7 @@ pub struct CfnServiceNetwork {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnServiceNetwork {
     fn type_string(&self) -> &'static str {
@@ -60,7 +51,6 @@ impl cfn_resources::CfnResource for CfnServiceNetwork {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -74,32 +64,26 @@ impl cfn_resources::CfnResource for CfnServiceNetwork {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -111,7 +95,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

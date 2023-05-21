@@ -1,13 +1,9 @@
-
-
 /// Creates a fleet provisioning template.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnProvisioningTemplate {
-
-
-    /// 
+    ///
     /// The description of the fleet provisioning template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnProvisioningTemplate {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// True to enable the fleet provisioning template, otherwise false.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -28,10 +23,9 @@ pub struct CfnProvisioningTemplate {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 
-
-    /// 
+    ///
     /// Creates a pre-provisioning hook template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ProvisioningHook
@@ -40,10 +34,9 @@ pub struct CfnProvisioningTemplate {
     #[serde(rename = "PreProvisioningHook")]
     pub pre_provisioning_hook: Option<ProvisioningHook>,
 
-
-    /// 
+    ///
     /// The role ARN for the role associated with the fleet provisioning template. This IoT role grants permission to provision a device.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -52,10 +45,9 @@ pub struct CfnProvisioningTemplate {
     #[serde(rename = "ProvisioningRoleArn")]
     pub provisioning_role_arn: String,
 
-
-    /// 
+    ///
     /// Metadata that can be used to manage the fleet provisioning template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -64,10 +56,9 @@ pub struct CfnProvisioningTemplate {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The JSON formatted contents of the fleet provisioning template version.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -76,10 +67,9 @@ pub struct CfnProvisioningTemplate {
     #[serde(rename = "TemplateBody")]
     pub template_body: String,
 
-
-    /// 
+    ///
     /// The name of the fleet provisioning template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -88,10 +78,9 @@ pub struct CfnProvisioningTemplate {
     #[serde(rename = "TemplateName")]
     pub template_name: Option<String>,
 
-
-    /// 
+    ///
     /// The type of the provisioning template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -99,10 +88,7 @@ pub struct CfnProvisioningTemplate {
     /// Update requires: Replacement
     #[serde(rename = "TemplateType")]
     pub template_type: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnProvisioningTemplate {
     fn type_string(&self) -> &'static str {
@@ -114,8 +100,9 @@ impl cfn_resources::CfnResource for CfnProvisioningTemplate {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.pre_provisioning_hook.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.pre_provisioning_hook
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -124,11 +111,9 @@ impl cfn_resources::CfnResource for CfnProvisioningTemplate {
 /// Structure that contains payloadVersion and targetArn. Provisioning hooks can be used when fleet provisioning to validate device parameters before allowing the device to be provisioned.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ProvisioningHook {
-
-
-    /// 
+    ///
     /// The payload that was sent to the target function. The valid payload is "2020-04-01".
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -137,10 +122,9 @@ pub struct ProvisioningHook {
     #[serde(rename = "PayloadVersion")]
     pub payload_version: Option<String>,
 
-
-    /// 
+    ///
     /// The ARN of the target function.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -148,10 +132,7 @@ pub struct ProvisioningHook {
     /// Update requires: No interruption
     #[serde(rename = "TargetArn")]
     pub target_arn: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ProvisioningHook {
     fn type_string(&self) -> &'static str {
@@ -163,7 +144,6 @@ impl cfn_resources::CfnResource for ProvisioningHook {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -177,32 +157,26 @@ impl cfn_resources::CfnResource for ProvisioningHook {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -214,7 +188,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

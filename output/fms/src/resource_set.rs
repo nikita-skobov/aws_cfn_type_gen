@@ -1,13 +1,9 @@
-
-
 /// A set of resources to include in a policy.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnResourceSet {
-
-
-    /// 
+    ///
     /// A description of the resource set.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -20,10 +16,9 @@ pub struct CfnResourceSet {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// The descriptive name of the resource set. You can't change the name of a resource set after you create it.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -38,10 +33,9 @@ pub struct CfnResourceSet {
     #[serde(rename = "Name")]
     pub name: String,
 
-
-    /// 
+    ///
     /// Determines the resources that can be associated to the resource set. Depending on     your setting for max results and the number of resource sets, a single call might not     return the full list.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: List of String
@@ -50,10 +44,9 @@ pub struct CfnResourceSet {
     #[serde(rename = "ResourceTypeList")]
     pub resource_type_list: Vec<String>,
 
-
-    /// 
+    ///
     /// The resources included in the resource set.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -62,10 +55,9 @@ pub struct CfnResourceSet {
     #[serde(rename = "Resources")]
     pub resources: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// A collection of key:value pairs associated with a resource set. The key:value pair can be anything you define. Typically, the tag key represents a category (such as "environment") and the tag value represents a specific value within that category (such as "test," "development," or "production"). You can add up to 50 tags to each AWS resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -73,10 +65,7 @@ pub struct CfnResourceSet {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnResourceSet {
     fn type_string(&self) -> &'static str {
@@ -88,29 +77,33 @@ impl cfn_resources::CfnResource for CfnResourceSet {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         if let Some(the_val) = &self.description {
-
-        if the_val.len() > 256 as _ {
-            return Err(format!("Max validation failed on field 'description'. {} is greater than 256", the_val.len()));
+            if the_val.len() > 256 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'description'. {} is greater than 256",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         let the_val = &self.name;
 
         if the_val.len() > 128 as _ {
-            return Err(format!("Max validation failed on field 'name'. {} is greater than 128", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'name'. {} is greater than 128",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         Ok(())
     }
 }
@@ -124,32 +117,26 @@ impl cfn_resources::CfnResource for CfnResourceSet {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -161,7 +148,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

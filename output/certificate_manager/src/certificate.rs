@@ -1,15 +1,11 @@
-
-
 /// The AWS::CertificateManager::Certificate resource requests an AWS Certificate Manager (ACM) certificate that you can use to enable secure     connections. For example, you can deploy an ACM certificate to an Elastic Load Balancer to     enable HTTPS support. For more information, see RequestCertificate in     the AWS Certificate Manager API Reference.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCertificate {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the private certificate authority (CA) that will be used    to issue the certificate. If you do not provide an ARN and you are trying to request a private    certificate, ACM will attempt to issue a public certificate. For more information about    private CAs, see the AWS Private Certificate Authority user guide. The ARN must have the following form:
-    /// 
+    ///
     /// arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -24,14 +20,13 @@ pub struct CfnCertificate {
     #[serde(rename = "CertificateAuthorityArn")]
     pub certificate_authority_arn: Option<String>,
 
-
-    /// 
+    ///
     /// You can opt out of certificate transparency logging by specifying the       DISABLED option. Opt in by specifying ENABLED.
-    /// 
+    ///
     /// If you do not specify a certificate transparency logging preference on a new     CloudFormation template, or if you remove the logging preference from an existing template,     this is the same as explicitly enabling the preference.
-    /// 
+    ///
     /// Changing the certificate transparency logging preference will update the existing     resource by calling UpdateCertificateOptions on the certificate. This action     will not create a new resource.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -40,12 +35,12 @@ pub struct CfnCertificate {
     ///
     /// Update requires: No interruption
     #[serde(rename = "CertificateTransparencyLoggingPreference")]
-    pub certificate_transparency_logging_preference: Option<CertificateCertificateTransparencyLoggingPreferenceEnum>,
+    pub certificate_transparency_logging_preference:
+        Option<CertificateCertificateTransparencyLoggingPreferenceEnum>,
 
-
-    /// 
+    ///
     /// The fully qualified domain name (FQDN), such as www.example.com, with which you want to     secure an ACM certificate. Use an asterisk (*) to create a wildcard certificate that     protects several sites in the same domain. For example, *.example.com protects       www.example.com, site.example.com, and       images.example.com.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -60,12 +55,11 @@ pub struct CfnCertificate {
     #[serde(rename = "DomainName")]
     pub domain_name: String,
 
-
-    /// 
+    ///
     /// Domain information that domain name registrars use to verify your identity.
-    /// 
+    ///
     /// ImportantIn order for a AWS::CertificateManager::Certificate to be provisioned and validated       in CloudFormation automatically, the `DomainName` property needs to be identical to one       of the `DomainName` property supplied in DomainValidationOptions, if the       ValidationMethod is **DNS**. Failing to keep them like-for-like will result in failure       to create the domain validation records in Route53.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of DomainValidationOption
@@ -76,10 +70,9 @@ pub struct CfnCertificate {
     #[serde(rename = "DomainValidationOptions")]
     pub domain_validation_options: Option<Vec<DomainValidationOption>>,
 
-
-    /// 
+    ///
     /// Additional FQDNs to be included in the Subject Alternative Name extension of the ACM     certificate. For example, you can add www.example.net to a certificate for which the       DomainName field is www.example.com if users can reach your site by using     either name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of String
@@ -90,10 +83,9 @@ pub struct CfnCertificate {
     #[serde(rename = "SubjectAlternativeNames")]
     pub subject_alternative_names: Option<Vec<String>>,
 
-
-    /// 
+    ///
     /// Key-value pairs that can identify the certificate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -104,12 +96,11 @@ pub struct CfnCertificate {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The method you want to use to validate that you own or control the domain associated     with a public certificate. You can validate with DNS or validate with       email. We recommend that you use DNS validation.
-    /// 
+    ///
     /// If not specified, this property defaults to email validation.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -119,13 +110,10 @@ pub struct CfnCertificate {
     /// Update requires: Replacement
     #[serde(rename = "ValidationMethod")]
     pub validation_method: Option<CertificateValidationMethodEnum>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CertificateCertificateTransparencyLoggingPreferenceEnum {
-
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
@@ -133,7 +121,6 @@ pub enum CertificateCertificateTransparencyLoggingPreferenceEnum {
     /// ENABLED
     #[serde(rename = "ENABLED")]
     Enabled,
-
 }
 
 impl Default for CertificateCertificateTransparencyLoggingPreferenceEnum {
@@ -144,7 +131,6 @@ impl Default for CertificateCertificateTransparencyLoggingPreferenceEnum {
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum CertificateValidationMethodEnum {
-
     /// DNS
     #[serde(rename = "DNS")]
     Dns,
@@ -152,7 +138,6 @@ pub enum CertificateValidationMethodEnum {
     /// EMAIL
     #[serde(rename = "EMAIL")]
     Email,
-
 }
 
 impl Default for CertificateValidationMethodEnum {
@@ -160,7 +145,6 @@ impl Default for CertificateValidationMethodEnum {
         CertificateValidationMethodEnum::Dns
     }
 }
-
 
 impl cfn_resources::CfnResource for CfnCertificate {
     fn type_string(&self) -> &'static str {
@@ -172,61 +156,57 @@ impl cfn_resources::CfnResource for CfnCertificate {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.certificate_authority_arn {
+            if the_val.len() > 2048 as _ {
+                return Err(format!("Max validation failed on field 'certificate_authority_arn'. {} is greater than 2048", the_val.len()));
+            }
+        }
 
         if let Some(the_val) = &self.certificate_authority_arn {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'certificate_authority_arn'. {} is greater than 2048", the_val.len()));
+            if the_val.len() < 20 as _ {
+                return Err(format!("Min validation failed on field 'certificate_authority_arn'. {} is less than 20", the_val.len()));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.certificate_authority_arn {
-
-        if the_val.len() < 20 as _ {
-            return Err(format!("Min validation failed on field 'certificate_authority_arn'. {} is less than 20", the_val.len()));
-        }
-
-        }
-        
         let the_val = &self.domain_name;
 
         if the_val.len() > 253 as _ {
-            return Err(format!("Max validation failed on field 'domain_name'. {} is greater than 253", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'domain_name'. {} is greater than 253",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.domain_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'domain_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'domain_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.domain_validation_options {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'domain_validation_options'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'domain_validation_options'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.subject_alternative_names {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'subject_alternative_names'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!("Max validation failed on field 'subject_alternative_names'. {} is greater than 100", the_val.len()));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -234,11 +214,9 @@ impl cfn_resources::CfnResource for CfnCertificate {
 /// DomainValidationOption is a property of the AWS::CertificateManager::Certificate resource that specifies the AWS Certificate Manager (ACM) certificate domain to validate. Depending on the     chosen validation method, ACM checks the domain's DNS record for a validation CNAME, or it     attempts to send a validation email message to the domain owner.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DomainValidationOption {
-
-
-    /// 
+    ///
     /// A fully qualified domain name (FQDN) in the certificate request.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -253,18 +231,17 @@ pub struct DomainValidationOption {
     #[serde(rename = "DomainName")]
     pub domain_name: String,
 
-
-    /// 
+    ///
     /// The HostedZoneId option, which is available if you are using Route 53 as     your domain registrar, causes ACM to add your CNAME to the domain record. Your list of       DomainValidationOptions must contain one and only one of the     domain-validation options, and the HostedZoneId can be used only when       DNS is specified as your validation method.
-    /// 
+    ///
     /// Use the Route 53 ListHostedZones API to discover IDs for available hosted     zones.
-    /// 
+    ///
     /// This option is required for publicly trusted certificates.
-    /// 
+    ///
     /// NoteThe ListHostedZones API returns IDs in the format       "/hostedzone/Z111111QQQQQQQ", but CloudFormation requires the IDs to be in the format       "Z111111QQQQQQQ".
-    /// 
+    ///
     /// When you change your DomainValidationOptions, a new resource is     created.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -273,12 +250,11 @@ pub struct DomainValidationOption {
     #[serde(rename = "HostedZoneId")]
     pub hosted_zone_id: Option<String>,
 
-
-    /// 
+    ///
     /// The domain name to which you want ACM to send validation emails. This domain name is the     suffix of the email addresses that you want ACM to use. This must be the same as the       DomainName value or a superdomain of the DomainName value. For     example, if you request a certificate for testing.example.com, you can specify       example.com as this value. In that case, ACM sends domain validation emails     to the following five addresses:
-    /// 
+    ///
     /// admin@example.com            administrator@example.com            hostmaster@example.com            postmaster@example.com            webmaster@example.com
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -292,10 +268,7 @@ pub struct DomainValidationOption {
     /// Update requires: No interruption
     #[serde(rename = "ValidationDomain")]
     pub validation_domain: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DomainValidationOption {
     fn type_string(&self) -> &'static str {
@@ -307,37 +280,42 @@ impl cfn_resources::CfnResource for DomainValidationOption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         let the_val = &self.domain_name;
 
         if the_val.len() > 253 as _ {
-            return Err(format!("Max validation failed on field 'domain_name'. {} is greater than 253", the_val.len()));
+            return Err(format!(
+                "Max validation failed on field 'domain_name'. {} is greater than 253",
+                the_val.len()
+            ));
         }
 
-        
         let the_val = &self.domain_name;
 
         if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'domain_name'. {} is less than 1", the_val.len()));
+            return Err(format!(
+                "Min validation failed on field 'domain_name'. {} is less than 1",
+                the_val.len()
+            ));
         }
 
-        
         if let Some(the_val) = &self.validation_domain {
-
-        if the_val.len() > 253 as _ {
-            return Err(format!("Max validation failed on field 'validation_domain'. {} is greater than 253", the_val.len()));
+            if the_val.len() > 253 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'validation_domain'. {} is greater than 253",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.validation_domain {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'validation_domain'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'validation_domain'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -351,32 +329,26 @@ impl cfn_resources::CfnResource for DomainValidationOption {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -388,7 +360,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

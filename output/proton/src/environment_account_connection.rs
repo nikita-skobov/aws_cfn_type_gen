@@ -1,13 +1,9 @@
-
-
 /// Detailed data of an AWS Proton environment account connection resource.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnEnvironmentAccountConnection {
-
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of an IAM service role in the environment account. AWS Proton uses this role to provision infrastructure resources    using CodeBuild-based provisioning in the associated environment account.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -22,14 +18,13 @@ pub struct CfnEnvironmentAccountConnection {
     #[serde(rename = "CodebuildRoleArn")]
     pub codebuild_role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The Amazon Resource Name (ARN) of the IAM service role that AWS Proton uses when provisioning directly defined components in the associated    environment account. It determines the scope of infrastructure that a component can provision in the account.
-    /// 
+    ///
     /// The environment account connection must have a componentRoleArn to allow directly defined components to be associated with any    environments running in the account.
-    /// 
+    ///
     /// For more information about components, see  AWS Proton components in the  AWS Proton User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -44,10 +39,9 @@ pub struct CfnEnvironmentAccountConnection {
     #[serde(rename = "ComponentRoleArn")]
     pub component_role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The environment account that's connected to the environment account connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -58,10 +52,9 @@ pub struct CfnEnvironmentAccountConnection {
     #[serde(rename = "EnvironmentAccountId")]
     pub environment_account_id: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the environment that's associated with the environment account connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -76,10 +69,9 @@ pub struct CfnEnvironmentAccountConnection {
     #[serde(rename = "EnvironmentName")]
     pub environment_name: Option<String>,
 
-
-    /// 
+    ///
     /// The ID of the management account that's connected to the environment account connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -90,10 +82,9 @@ pub struct CfnEnvironmentAccountConnection {
     #[serde(rename = "ManagementAccountId")]
     pub management_account_id: Option<String>,
 
-
-    /// 
+    ///
     /// The IAM service role that's associated with the environment account connection.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -108,12 +99,11 @@ pub struct CfnEnvironmentAccountConnection {
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// An optional list of metadata items that you can associate with the AWS Proton environment account connection. A tag is a key-value pair.
-    /// 
+    ///
     /// For more information, see AWS Proton resources and tagging in the     AWS Proton User Guide.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -123,10 +113,7 @@ pub struct CfnEnvironmentAccountConnection {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnEnvironmentAccountConnection {
     fn type_string(&self) -> &'static str {
@@ -138,79 +125,87 @@ impl cfn_resources::CfnResource for CfnEnvironmentAccountConnection {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.codebuild_role_arn {
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'codebuild_role_arn'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.codebuild_role_arn {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'codebuild_role_arn'. {} is greater than 2048", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'codebuild_role_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.codebuild_role_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'codebuild_role_arn'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         if let Some(the_val) = &self.component_role_arn {
-
-        if the_val.len() > 2048 as _ {
-            return Err(format!("Max validation failed on field 'component_role_arn'. {} is greater than 2048", the_val.len()));
+            if the_val.len() > 2048 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'component_role_arn'. {} is greater than 2048",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.component_role_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'component_role_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'component_role_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.environment_name {
-
-        if the_val.len() > 100 as _ {
-            return Err(format!("Max validation failed on field 'environment_name'. {} is greater than 100", the_val.len()));
+            if the_val.len() > 100 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'environment_name'. {} is greater than 100",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.environment_name {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'environment_name'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'environment_name'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.role_arn {
-
-        if the_val.len() > 200 as _ {
-            return Err(format!("Max validation failed on field 'role_arn'. {} is greater than 200", the_val.len()));
+            if the_val.len() > 200 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'role_arn'. {} is greater than 200",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.role_arn {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'role_arn'. {} is less than 1", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'role_arn'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         if let Some(the_val) = &self.tags {
-
-        if the_val.len() > 50 as _ {
-            return Err(format!("Max validation failed on field 'tags'. {} is greater than 50", the_val.len()));
+            if the_val.len() > 50 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'tags'. {} is greater than 50",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
         Ok(())
     }
 }
@@ -224,32 +219,26 @@ impl cfn_resources::CfnResource for CfnEnvironmentAccountConnection {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -261,7 +250,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

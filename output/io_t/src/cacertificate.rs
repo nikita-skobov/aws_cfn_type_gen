@@ -1,13 +1,9 @@
-
-
 /// Specifies a CA certificate.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnCACertificate {
-
-
-    /// 
+    ///
     /// Whether the CA certificate is configured for auto registration of device certificates.     Valid values are "ENABLE" and "DISABLE".
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnCACertificate {
     #[serde(rename = "AutoRegistrationStatus")]
     pub auto_registration_status: Option<String>,
 
-
-    /// 
+    ///
     /// The certificate data in PEM format.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -28,14 +23,13 @@ pub struct CfnCACertificate {
     #[serde(rename = "CACertificatePem")]
     pub cacertificate_pem: String,
 
-
-    /// 
+    ///
     /// The mode of the CA.
-    /// 
+    ///
     /// All the device certificates that are registered using this CA will be registered      in the same mode as the CA. For more information about certificate mode for device certificates, see certificate mode.
-    /// 
+    ///
     /// Valid values are "DEFAULT" and "SNI_ONLY".
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -44,10 +38,9 @@ pub struct CfnCACertificate {
     #[serde(rename = "CertificateMode")]
     pub certificate_mode: Option<String>,
 
-
-    /// 
+    ///
     /// Information about the registration configuration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: RegistrationConfig
@@ -56,10 +49,9 @@ pub struct CfnCACertificate {
     #[serde(rename = "RegistrationConfig")]
     pub registration_config: Option<RegistrationConfig>,
 
-
-    /// 
+    ///
     /// If true, removes auto registration.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -68,12 +60,11 @@ pub struct CfnCACertificate {
     #[serde(rename = "RemoveAutoRegistration")]
     pub remove_auto_registration: Option<bool>,
 
-
-    /// 
+    ///
     /// The status of the CA certificate.
-    /// 
+    ///
     /// Valid values are "ACTIVE" and "INACTIVE".
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -82,12 +73,11 @@ pub struct CfnCACertificate {
     #[serde(rename = "Status")]
     pub status: String,
 
-
-    /// 
+    ///
     /// An array of key-value pairs to apply to this resource.
-    /// 
+    ///
     /// For more information, see Tag.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -96,10 +86,9 @@ pub struct CfnCACertificate {
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
 
-
-    /// 
+    ///
     /// The private key verification certificate.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -107,10 +96,7 @@ pub struct CfnCACertificate {
     /// Update requires: Replacement
     #[serde(rename = "VerificationCertificatePem")]
     pub verification_certificate_pem: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnCACertificate {
     fn type_string(&self) -> &'static str {
@@ -122,8 +108,9 @@ impl cfn_resources::CfnResource for CfnCACertificate {
     }
 
     fn validate(&self) -> Result<(), String> {
-
-        self.registration_config.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.registration_config
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -132,11 +119,9 @@ impl cfn_resources::CfnResource for CfnCACertificate {
 /// The registration configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct RegistrationConfig {
-
-
-    /// 
+    ///
     /// The ARN of the role.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -145,10 +130,9 @@ pub struct RegistrationConfig {
     #[serde(rename = "RoleArn")]
     pub role_arn: Option<String>,
 
-
-    /// 
+    ///
     /// The template body.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -157,10 +141,9 @@ pub struct RegistrationConfig {
     #[serde(rename = "TemplateBody")]
     pub template_body: Option<String>,
 
-
-    /// 
+    ///
     /// The name of the provisioning template.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -168,10 +151,7 @@ pub struct RegistrationConfig {
     /// Update requires: No interruption
     #[serde(rename = "TemplateName")]
     pub template_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for RegistrationConfig {
     fn type_string(&self) -> &'static str {
@@ -183,7 +163,6 @@ impl cfn_resources::CfnResource for RegistrationConfig {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -197,32 +176,26 @@ impl cfn_resources::CfnResource for RegistrationConfig {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -234,7 +207,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }

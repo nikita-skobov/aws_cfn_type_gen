@@ -1,13 +1,9 @@
-
-
 /// Sets the security configuration for a specified catalog. After the configuration has been    set, the specified encryption is applied to every catalog write thereafter.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnDataCatalogEncryptionSettings {
-
-
-    /// 
+    ///
     /// The ID of the Data Catalog in which the settings are created.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -16,10 +12,9 @@ pub struct CfnDataCatalogEncryptionSettings {
     #[serde(rename = "CatalogId")]
     pub catalog_id: String,
 
-
-    /// 
+    ///
     /// Contains configuration information for maintaining Data Catalog security.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: DataCatalogEncryptionSettings
@@ -27,10 +22,7 @@ pub struct CfnDataCatalogEncryptionSettings {
     /// Update requires: No interruption
     #[serde(rename = "DataCatalogEncryptionSettings")]
     pub data_catalog_encryption_settings: Box<DataCatalogEncryptionSettings>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnDataCatalogEncryptionSettings {
     fn type_string(&self) -> &'static str {
@@ -42,7 +34,6 @@ impl cfn_resources::CfnResource for CfnDataCatalogEncryptionSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         self.data_catalog_encryption_settings.validate()?;
 
         Ok(())
@@ -56,13 +47,11 @@ impl cfn_resources::CfnResource for CfnDataCatalogEncryptionSettings {
 /// This encryption requires that you set AWS KMS key permissions to enable or restrict access    on the password key according to your security requirements. For example, you might want only    administrators to have decrypt permission on the password key.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct ConnectionPasswordEncryption {
-
-
-    /// 
+    ///
     /// An AWS KMS key that is used to encrypt the connection password.
-    /// 
+    ///
     /// If connection password protection is enabled, the caller of         CreateConnection and UpdateConnection needs at least         kms:Encrypt permission on the specified AWS KMS key, to encrypt       passwords before storing them in the Data Catalog. You can set the decrypt permission to       enable or restrict access on the password key according to your security       requirements.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -71,10 +60,9 @@ pub struct ConnectionPasswordEncryption {
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: Option<String>,
 
-
-    /// 
+    ///
     /// When the ReturnConnectionPasswordEncrypted flag is set to "true", passwords remain encrypted in the responses of GetConnection and GetConnections. This encryption takes effect independently from catalog encryption.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: Boolean
@@ -82,10 +70,7 @@ pub struct ConnectionPasswordEncryption {
     /// Update requires: No interruption
     #[serde(rename = "ReturnConnectionPasswordEncrypted")]
     pub return_connection_password_encrypted: Option<bool>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for ConnectionPasswordEncryption {
     fn type_string(&self) -> &'static str {
@@ -97,7 +82,6 @@ impl cfn_resources::CfnResource for ConnectionPasswordEncryption {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -105,11 +89,9 @@ impl cfn_resources::CfnResource for ConnectionPasswordEncryption {
 /// Contains configuration information for maintaining Data Catalog security.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct DataCatalogEncryptionSettings {
-
-
-    /// 
+    ///
     /// When connection password protection is enabled, the Data Catalog uses a customer-provided    key to encrypt the password as part of CreateConnection or     UpdateConnection and store it in the ENCRYPTED_PASSWORD field in    the connection properties. You can enable catalog encryption or only password    encryption.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: ConnectionPasswordEncryption
@@ -118,10 +100,9 @@ pub struct DataCatalogEncryptionSettings {
     #[serde(rename = "ConnectionPasswordEncryption")]
     pub connection_password_encryption: Option<ConnectionPasswordEncryption>,
 
-
-    /// 
+    ///
     /// Specifies the encryption-at-rest configuration for the Data Catalog.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: EncryptionAtRest
@@ -129,10 +110,7 @@ pub struct DataCatalogEncryptionSettings {
     /// Update requires: No interruption
     #[serde(rename = "EncryptionAtRest")]
     pub encryption_at_rest: Option<EncryptionAtRest>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for DataCatalogEncryptionSettings {
     fn type_string(&self) -> &'static str {
@@ -144,10 +122,13 @@ impl cfn_resources::CfnResource for DataCatalogEncryptionSettings {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.connection_password_encryption
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.connection_password_encryption.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.encryption_at_rest.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.encryption_at_rest
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -156,11 +137,9 @@ impl cfn_resources::CfnResource for DataCatalogEncryptionSettings {
 /// Specifies the encryption-at-rest configuration for the Data Catalog.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct EncryptionAtRest {
-
-
-    /// 
+    ///
     /// The encryption-at-rest mode for encrypting Data Catalog data.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -171,10 +150,9 @@ pub struct EncryptionAtRest {
     #[serde(rename = "CatalogEncryptionMode")]
     pub catalog_encryption_mode: Option<EncryptionAtRestCatalogEncryptionModeEnum>,
 
-
-    /// 
+    ///
     /// The ID of the AWS KMS key to use for encryption at rest.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -188,13 +166,10 @@ pub struct EncryptionAtRest {
     /// Update requires: No interruption
     #[serde(rename = "SseAwsKmsKeyId")]
     pub sse_aws_kms_key_id: Option<String>,
-
 }
-
 
 #[derive(Clone, Debug, serde::Serialize)]
 pub enum EncryptionAtRestCatalogEncryptionModeEnum {
-
     /// DISABLED
     #[serde(rename = "DISABLED")]
     Disabled,
@@ -202,7 +177,6 @@ pub enum EncryptionAtRestCatalogEncryptionModeEnum {
     /// SSE-KMS
     #[serde(rename = "SSE-KMS")]
     Ssekms,
-
 }
 
 impl Default for EncryptionAtRestCatalogEncryptionModeEnum {
@@ -210,7 +184,6 @@ impl Default for EncryptionAtRestCatalogEncryptionModeEnum {
         EncryptionAtRestCatalogEncryptionModeEnum::Disabled
     }
 }
-
 
 impl cfn_resources::CfnResource for EncryptionAtRest {
     fn type_string(&self) -> &'static str {
@@ -222,23 +195,24 @@ impl cfn_resources::CfnResource for EncryptionAtRest {
     }
 
     fn validate(&self) -> Result<(), String> {
+        if let Some(the_val) = &self.sse_aws_kms_key_id {
+            if the_val.len() > 255 as _ {
+                return Err(format!(
+                    "Max validation failed on field 'sse_aws_kms_key_id'. {} is greater than 255",
+                    the_val.len()
+                ));
+            }
+        }
 
         if let Some(the_val) = &self.sse_aws_kms_key_id {
-
-        if the_val.len() > 255 as _ {
-            return Err(format!("Max validation failed on field 'sse_aws_kms_key_id'. {} is greater than 255", the_val.len()));
+            if the_val.len() < 1 as _ {
+                return Err(format!(
+                    "Min validation failed on field 'sse_aws_kms_key_id'. {} is less than 1",
+                    the_val.len()
+                ));
+            }
         }
 
-        }
-        
-        if let Some(the_val) = &self.sse_aws_kms_key_id {
-
-        if the_val.len() < 1 as _ {
-            return Err(format!("Min validation failed on field 'sse_aws_kms_key_id'. {} is less than 1", the_val.len()));
-        }
-
-        }
-        
         Ok(())
     }
 }

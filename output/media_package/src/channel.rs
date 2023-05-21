@@ -1,15 +1,11 @@
-
-
 /// Creates a channel to receive content.
 ///
 /// After it's created, a channel provides static input URLs. These URLs remain the same throughout the lifetime of the channel, regardless of any failures or upgrades that might     occur. Use these URLs to configure the outputs of your upstream encoder.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnChannel {
-
-
-    /// 
+    ///
     /// Any descriptive information that you want to add to the channel for future identification purposes.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -18,10 +14,9 @@ pub struct CfnChannel {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 
-
-    /// 
+    ///
     /// Configures egress access logs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LogConfiguration
@@ -30,10 +25,9 @@ pub struct CfnChannel {
     #[serde(rename = "EgressAccessLogs")]
     pub egress_access_logs: Option<LogConfiguration>,
 
-
-    /// 
+    ///
     /// The input URL where the source stream should be sent.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: HlsIngest
@@ -42,10 +36,9 @@ pub struct CfnChannel {
     #[serde(rename = "HlsIngest")]
     pub hls_ingest: Option<HlsIngest>,
 
-
-    /// 
+    ///
     /// Unique identifier that you assign to the channel.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -54,10 +47,9 @@ pub struct CfnChannel {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// Configures ingress access logs.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: LogConfiguration
@@ -66,10 +58,9 @@ pub struct CfnChannel {
     #[serde(rename = "IngressAccessLogs")]
     pub ingress_access_logs: Option<LogConfiguration>,
 
-
-    /// 
+    ///
     /// The tags to assign to the channel.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of Tag
@@ -77,10 +68,7 @@ pub struct CfnChannel {
     /// Update requires: Replacement
     #[serde(rename = "Tags")]
     pub tags: Option<Vec<Tag>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for CfnChannel {
     fn type_string(&self) -> &'static str {
@@ -92,12 +80,17 @@ impl cfn_resources::CfnResource for CfnChannel {
     }
 
     fn validate(&self) -> Result<(), String> {
+        self.egress_access_logs
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.egress_access_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.hls_ingest
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
-        self.hls_ingest.as_ref().map_or(Ok(()), |val| val.validate())?;
-
-        self.ingress_access_logs.as_ref().map_or(Ok(()), |val| val.validate())?;
+        self.ingress_access_logs
+            .as_ref()
+            .map_or(Ok(()), |val| val.validate())?;
 
         Ok(())
     }
@@ -106,11 +99,9 @@ impl cfn_resources::CfnResource for CfnChannel {
 /// HLS ingest configuration.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct HlsIngest {
-
-
-    /// 
+    ///
     /// The input URL where the source stream should be sent.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: List of IngestEndpoint
@@ -118,10 +109,7 @@ pub struct HlsIngest {
     /// Update requires: No interruption
     #[serde(rename = "ingestEndpoints")]
     pub ingest_endpoints: Option<Vec<IngestEndpoint>>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for HlsIngest {
     fn type_string(&self) -> &'static str {
@@ -133,7 +121,6 @@ impl cfn_resources::CfnResource for HlsIngest {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -141,11 +128,9 @@ impl cfn_resources::CfnResource for HlsIngest {
 /// An endpoint for ingesting source content for a channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct IngestEndpoint {
-
-
-    /// 
+    ///
     /// The endpoint identifier.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -154,10 +139,9 @@ pub struct IngestEndpoint {
     #[serde(rename = "Id")]
     pub id: String,
 
-
-    /// 
+    ///
     /// The system-generated password for WebDAV input authentication.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -166,10 +150,9 @@ pub struct IngestEndpoint {
     #[serde(rename = "Password")]
     pub password: String,
 
-
-    /// 
+    ///
     /// The input URL where the source stream should be sent.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -178,10 +161,9 @@ pub struct IngestEndpoint {
     #[serde(rename = "Url")]
     pub url: String,
 
-
-    /// 
+    ///
     /// The system-generated username for WebDAV input authentication.
-    /// 
+    ///
     /// Required: Yes
     ///
     /// Type: String
@@ -189,10 +171,7 @@ pub struct IngestEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "Username")]
     pub username: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for IngestEndpoint {
     fn type_string(&self) -> &'static str {
@@ -204,7 +183,6 @@ impl cfn_resources::CfnResource for IngestEndpoint {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -212,11 +190,9 @@ impl cfn_resources::CfnResource for IngestEndpoint {
 /// The access log configuration parameters for your channel.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct LogConfiguration {
-
-
-    /// 
+    ///
     /// Sets a custom Amazon CloudWatch log group name.
-    /// 
+    ///
     /// Required: No
     ///
     /// Type: String
@@ -224,10 +200,7 @@ pub struct LogConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "LogGroupName")]
     pub log_group_name: Option<String>,
-
 }
-
-
 
 impl cfn_resources::CfnResource for LogConfiguration {
     fn type_string(&self) -> &'static str {
@@ -239,7 +212,6 @@ impl cfn_resources::CfnResource for LogConfiguration {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
@@ -253,32 +225,26 @@ impl cfn_resources::CfnResource for LogConfiguration {
 /// Propagation of stack-level tags to resources, including automatically created tags, can vary by resource. For example, tags aren't propagated to Amazon EBS volumes that are created from block device mappings.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct Tag {
-
-
-    /// 
+    ///
     /// The key name of the tag. You can specify a value that's 1 to 128 Unicode          characters in length and can't be prefixed with aws:. You can use any          of the following characters: the set of Unicode letters, digits, whitespace,           _, ., /, =, +,          and -.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 
-
-    /// 
+    ///
     /// The value for the tag. You can specify a value that's 1 to 256 characters in          length.
-    /// 
+    ///
     /// Required: Yes
-    /// 
+    ///
     /// Type: String
-    /// 
+    ///
     #[serde(rename = "Value")]
     pub value: String,
-
 }
-
-
 
 impl cfn_resources::CfnResource for Tag {
     fn type_string(&self) -> &'static str {
@@ -290,7 +256,6 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn validate(&self) -> Result<(), String> {
-
         Ok(())
     }
 }
