@@ -1,8 +1,8 @@
 pub trait CfnResource {
     /// returns a string like 'AWS::CloudFront::Distribution'
-    fn type_string() -> &'static str;
+    fn type_string(&self) -> &'static str;
 
-    fn properties(self) -> serde_json::Value;
+    fn properties(&self) -> serde_json::Value;
 
     /// returns Err(string) if there is a validation error.
     fn validate(&self) -> Result<(), String> {
