@@ -19,7 +19,7 @@ impl Default for StrVal {
 }
 
 pub trait ToOptStrVal {
-    fn into(&self) -> Option<StrVal>;
+    fn to_str_val(&self) -> Option<StrVal>;
 }
 
 impl From<&str> for StrVal {
@@ -38,7 +38,7 @@ impl From<serde_json::Value> for StrVal {
     }
 }
 impl ToOptStrVal for &str {
-    fn into(&self) -> Option<StrVal> {
+    fn to_str_val(&self) -> Option<StrVal> {
         Some(StrVal::String(self.to_string()))
     }
 }
