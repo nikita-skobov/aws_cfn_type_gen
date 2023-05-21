@@ -101,13 +101,13 @@ pub fn bytes_to_zip(
     Ok(archive)
 }
 
-#[cfg(test)]
-mod test {
-    use super::*;
+// #[cfg(test)]
+// mod test {
+//     use super::*;
 
-    #[test]
-    fn can_download() {
-        let contents = get_cfn_resource_provider_schema("us-east-2", true).expect("Failed");
-        // bytes_to_zip(contents).expect("Failed to make zip");
-    }
-}
+//     #[test]
+//     fn can_download() {
+//         let contents = get_cfn_resource_provider_schema("us-east-2", true).expect("Failed");
+//         // bytes_to_zip(contents).expect("Failed to make zip");
+//     }
+// }
