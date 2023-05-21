@@ -1,6 +1,11 @@
-pub trait CfnResource: serde::Serialize {
+pub use serde;
+pub use serde_json;
+
+pub trait CfnResource {
     /// returns a string like 'AWS::CloudFront::Distribution'
     fn type_string(&self) -> &'static str;
+
+    fn properties(&self) -> serde_json::Value;
 
     /// returns Err(string) if there is a validation error.
     fn validate(&self) -> Result<(), String> {
