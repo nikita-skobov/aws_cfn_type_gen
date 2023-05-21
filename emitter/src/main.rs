@@ -165,7 +165,7 @@ impl ServiceCrate {
 pub fn emit_module_file(path: &str, module: &ModuleDef) {
     let mut use_map_tracker = HashMap::new();
     let use_name = format!("Cfn{}", module.name);
-    let mut out_str = emit_struct(&mut use_map_tracker, &use_name, &module.entrypoint_struct, true);
+    let mut out_str = emit_struct(&mut use_map_tracker, &use_name, &module.entrypoint_struct);
 
     out_str.push_str(&format!("
 impl cfn_resources::CfnResource for {} {{
@@ -180,7 +180,7 @@ impl cfn_resources::CfnResource for {} {{
 ", use_name, module.resource_name));
     
     for aux in module.auxiliary_structs.iter() {
-        out_str.push_str(&emit_struct(&mut use_map_tracker, &aux.name, aux, false));
+        out_str.push_str(&emit_struct(&mut use_map_tracker, &aux.name, aux));
     }
     if let Err(e) = std::fs::write(path, out_str) {
         panic!("Failed while writing out to {path}\nFor module {}\n{:?}", module.name, e);
@@ -268,7 +268,7 @@ pub fn emit_field_enums(field_enums: HashMap<String, Vec<String>>) -> String {
     out
 }
 
-pub fn emit_struct(use_map_tracker: &mut HashMap<String, Vec<String>>, use_name: &str, s: &CfnStruct, is_entrypoint: bool) -> String {
+pub fn emit_struct(use_map_tracker: &mut HashMap<String, Vec<String>>, use_name: &str, s: &CfnStruct) -> String {
     let mut fields = "".to_string();
     let mut field_enums = HashMap::new();
     for f in s.fields.iter() {
