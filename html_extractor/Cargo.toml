@@ -1,0 +1,11 @@
+[package]
+name = "html_extractor"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+scraper = "0.16.0"
+downloader = { path = "../downloader" }
+select = "0.6.0"
