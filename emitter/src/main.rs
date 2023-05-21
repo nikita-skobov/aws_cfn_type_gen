@@ -511,6 +511,8 @@ pub fn resource_type_to_cfn_struct<T: PropertyLike>(name: &str, doc: &str, props
     for (prop_name, prop) in props.iter() {
         fields.push(prop_to_cfn_field(prop_name, prop));
     }
+    // make fields deterministic
+    fields.sort_by(|a, b| a.name.cmp(&b.name));
     CfnStruct {
         name,
         documentation: doc.to_string(),
@@ -551,6 +553,8 @@ pub fn spec_to_service(service_name: String, spec: CfnResourceSpecSchema) -> Ser
     for (name, prop) in spec.property_types.iter() {
         auxiliary_structs.push(resource_type_to_cfn_struct(&name, &prop.documentation, &prop.properties));
     }
+    // make structs deterministic
+    auxiliary_structs.sort_by(|a, b| a.name.cmp(&b.name));
     ServiceCrate {
         name: convert_snake_case(&service_name),
         module: ModuleDef {
