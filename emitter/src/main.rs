@@ -256,7 +256,13 @@ impl Default for CfnField {
 
 pub fn emit_field_enums(field_enums: HashMap<String, Vec<String>>) -> String {
     let mut out = "".to_string();
+    let mut list = vec![];
     for (name, values) in field_enums {
+        list.push((name, values));
+    }
+    // make enum outputs deterministic
+    list.sort_by(|a, b| a.0.cmp(&b.0));
+    for (name, values) in list {
         out.push_str(&emit_field_enum(name, values));
     }
     out
