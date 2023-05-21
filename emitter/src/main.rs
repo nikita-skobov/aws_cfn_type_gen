@@ -424,9 +424,16 @@ pub fn emit_field(
     f: &CfnField
 ) -> String {
     let docs = emit_doc_comments("    ", &f.documentation);
+    let mut skip_if_none = "";
+    // if its not required that means we wrap it with an Option, and in
+    // that case we dont want to serialize if its none
+    if !f.required {
+        skip_if_none = "    #[serde(skip_serializing_if = \"Option::is_none\")]";
+    }
 format!("
 {docs}
     #[serde(rename = \"{}\")]
+{skip_if_none}
     pub {}: {},
 ", f.name, f.get_field_name(), f.get_type(field_enums, owning_struct_name, use_map_tracker))
 }
