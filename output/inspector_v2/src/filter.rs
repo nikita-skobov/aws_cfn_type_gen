@@ -52,7 +52,7 @@ impl cfn_resources::CfnResource for CfnFilter {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -94,7 +94,7 @@ impl cfn_resources::CfnResource for DateFilter {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -452,7 +452,7 @@ impl cfn_resources::CfnResource for FilterCriteria {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -503,7 +503,7 @@ impl cfn_resources::CfnResource for MapFilter {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -543,7 +543,7 @@ impl cfn_resources::CfnResource for NumberFilter {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -627,7 +627,7 @@ impl cfn_resources::CfnResource for PackageFilter {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -682,7 +682,7 @@ impl cfn_resources::CfnResource for PortRangeFilter {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -722,7 +722,7 @@ impl cfn_resources::CfnResource for StringFilter {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {

@@ -58,7 +58,7 @@ impl cfn_resources::CfnResource for CfnDistributionConfiguration {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -176,7 +176,7 @@ impl cfn_resources::CfnResource for AmiDistributionConfiguration {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -298,7 +298,7 @@ impl cfn_resources::CfnResource for ContainerDistributionConfiguration {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -411,7 +411,7 @@ impl cfn_resources::CfnResource for Distribution {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -517,7 +517,7 @@ impl cfn_resources::CfnResource for FastLaunchConfiguration {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -573,7 +573,7 @@ impl cfn_resources::CfnResource for FastLaunchLaunchTemplateSpecification {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -601,7 +601,7 @@ impl cfn_resources::CfnResource for FastLaunchSnapshotConfiguration {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -669,7 +669,7 @@ impl cfn_resources::CfnResource for LaunchPermissionConfiguration {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -748,7 +748,7 @@ impl cfn_resources::CfnResource for LaunchTemplateConfiguration {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -807,7 +807,7 @@ impl cfn_resources::CfnResource for TargetContainerRepository {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {

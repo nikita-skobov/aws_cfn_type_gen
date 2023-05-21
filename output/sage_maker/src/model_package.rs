@@ -370,7 +370,7 @@ impl cfn_resources::CfnResource for CfnModelPackage {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -590,7 +590,7 @@ impl cfn_resources::CfnResource for AdditionalInferenceSpecificationDefinition {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -677,7 +677,7 @@ impl cfn_resources::CfnResource for Bias {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -716,7 +716,7 @@ impl cfn_resources::CfnResource for DataSource {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -780,7 +780,7 @@ impl cfn_resources::CfnResource for DriftCheckBaselines {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -845,7 +845,7 @@ impl cfn_resources::CfnResource for DriftCheckBias {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -897,7 +897,7 @@ impl cfn_resources::CfnResource for DriftCheckExplainability {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -945,7 +945,7 @@ impl cfn_resources::CfnResource for DriftCheckModelDataQuality {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -993,7 +993,7 @@ impl cfn_resources::CfnResource for DriftCheckModelQuality {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1030,7 +1030,7 @@ impl cfn_resources::CfnResource for Explainability {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1095,7 +1095,7 @@ impl cfn_resources::CfnResource for FileSource {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1201,7 +1201,7 @@ impl cfn_resources::CfnResource for InferenceSpecification {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1288,7 +1288,7 @@ impl cfn_resources::CfnResource for MetadataProperties {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1387,7 +1387,7 @@ impl cfn_resources::CfnResource for MetricsSource {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1454,7 +1454,7 @@ impl cfn_resources::CfnResource for ModelDataQuality {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1497,7 +1497,7 @@ impl cfn_resources::CfnResource for ModelInput {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1577,7 +1577,7 @@ impl cfn_resources::CfnResource for ModelMetrics {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1749,7 +1749,7 @@ impl cfn_resources::CfnResource for ModelPackageContainerDefinition {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1856,7 +1856,7 @@ impl cfn_resources::CfnResource for ModelPackageStatusDetails {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1940,7 +1940,7 @@ impl cfn_resources::CfnResource for ModelPackageStatusItem {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -1998,7 +1998,7 @@ impl cfn_resources::CfnResource for ModelQuality {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2083,7 +2083,7 @@ impl cfn_resources::CfnResource for S3DataSource {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2144,7 +2144,7 @@ impl cfn_resources::CfnResource for SourceAlgorithm {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2202,7 +2202,7 @@ impl cfn_resources::CfnResource for SourceAlgorithmSpecification {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2255,7 +2255,7 @@ impl cfn_resources::CfnResource for Tag {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2373,7 +2373,7 @@ impl cfn_resources::CfnResource for TransformInput {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2504,7 +2504,7 @@ impl cfn_resources::CfnResource for TransformJobDefinition {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2629,7 +2629,7 @@ impl cfn_resources::CfnResource for TransformOutput {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2858,7 +2858,7 @@ impl cfn_resources::CfnResource for TransformResources {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2927,7 +2927,7 @@ impl cfn_resources::CfnResource for UserContext {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -2975,7 +2975,7 @@ impl cfn_resources::CfnResource for ValidationProfile {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
@@ -3043,7 +3043,7 @@ impl cfn_resources::CfnResource for ValidationSpecification {
     }
 
     fn properties(&self) -> serde_json::Value {
-        serde_json::to_value(self).expect("Failed to serialize cloudformation resource properties")
+        serde_json::to_value(self).expect("Failed to serialize to value")
     }
 
     fn validate(&self) -> Result<(), String> {
