@@ -6,6 +6,13 @@ use parser::{get_schema, get_service_name, get_spec_schema, CfnResourceProviderS
 
 use rayon::prelude::*;
 
+pub trait CfnResource {
+    /// returns a string like 'AWS::CloudFront::Distribution'
+    fn type_string() -> &'static str;
+
+    fn properties(&self) -> serde_json::Value;
+}
+
 /// as we parse, we create a service crate for each
 /// resourec type. eg a resource type 'AWS::Cloudfront::Distribution'
 /// would have service crate name 'Cloudfront'.
@@ -31,6 +38,8 @@ pub struct ModuleDef {
     /// in case of a cloudfront distribution, this would be the DistributionConfig, plus
     /// all of the complex types under the DistributionConfig
     pub auxiliary_structs: Vec<CfnStruct>,
+    /// the raw name like 'AWS::Cloudfront::Distribution'
+    pub resource_name: String,
 }
 
 impl ModuleDef {
@@ -105,7 +114,7 @@ impl CfnField {
 impl ServiceCrate {
     pub fn output(self) {
         let base_dir = env!("CARGO_MANIFEST_DIR");
-        let out_dir = format!("{base_dir}/../output2");
+        let out_dir = format!("{base_dir}/../output");
         if let Err(e) = std::fs::create_dir_all(&out_dir) {
             panic!("Failed to create output dir {out_dir}\n{:?}", e);
         }
@@ -141,9 +150,23 @@ impl ServiceCrate {
 
 pub fn emit_module_file(path: &str, module: &ModuleDef) {
     let mut use_map_tracker = HashMap::new();
-    let mut out_str = emit_struct(&mut use_map_tracker, &module.entrypoint_struct, true);
+    let use_name = format!("Cfn{}", module.name);
+    let mut out_str = emit_struct(&mut use_map_tracker, &use_name, &module.entrypoint_struct, true);
+
+    out_str.push_str(&format!("
+impl cfn_resources::CfnResource for {} {{
+    fn type_string() -> &'static str {{
+        \"{}\"
+    }}
+
+    fn properties(self) -> serde_json::Value {{
+        serde_json::to_value(self).expect(\"Failed to serialize cloudformation resource properties\")
+    }}
+}}
+", use_name, module.resource_name));
+    
     for aux in module.auxiliary_structs.iter() {
-        out_str.push_str(&emit_struct(&mut use_map_tracker, aux, false));
+        out_str.push_str(&emit_struct(&mut use_map_tracker, &aux.name, aux, false));
     }
     if let Err(e) = std::fs::write(path, out_str) {
         panic!("Failed while writing out to {path}\nFor module {}\n{:?}", module.name, e);
@@ -161,7 +184,7 @@ pub fn add_or_insert_to_use_map(use_map_tracker: &mut HashMap<String, Vec<String
     }
 }
 
-pub fn emit_struct(use_map_tracker: &mut HashMap<String, Vec<String>>, s: &CfnStruct, is_entrypoint: bool) -> String {
+pub fn emit_struct(use_map_tracker: &mut HashMap<String, Vec<String>>, use_name: &str, s: &CfnStruct, is_entrypoint: bool) -> String {
     let mut fields = "".to_string();
     for f in s.fields.iter() {
         // add to the use tracker to say that
@@ -172,19 +195,14 @@ pub fn emit_struct(use_map_tracker: &mut HashMap<String, Vec<String>>, s: &CfnSt
         fields.push_str(&emit_field(use_map_tracker, &s.name, f));
     }
     let doc_comment = emit_doc_comments("", &s.documentation);
-    let entrypoint = if is_entrypoint {
-        "Cfn"
-    } else {
-        ""
-    };
 
 format!("
 {doc_comment}
-#[derive(Default, serde::Serialize)]
-pub struct {}{} {{
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct {} {{
 {fields}
 }}
-", entrypoint, s.name)
+", use_name)
 }
 
 pub fn emit_doc_comments(indent: &str, f: &String) -> String {
@@ -225,6 +243,7 @@ edition = "2021"
 [dependencies]
 serde = {{ version = "1.0", features = ["derive"] }}
 serde_json = "1.0"
+cfn_resources = {{ path = "../cfn_resources" }}
 {extra_deps}
 "#);
 
@@ -404,6 +423,7 @@ pub fn spec_to_service(service_name: String, spec: CfnResourceSpecSchema) -> Ser
             doc_comment: resource_type.documentation.to_string(),
             entrypoint_struct,
             auxiliary_structs,
+            resource_name: resource_name.to_string(),
         }
     }
 }
