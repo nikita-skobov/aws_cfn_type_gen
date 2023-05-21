@@ -1,4 +1,4 @@
-use std::{io::{Read, Write}, collections::HashMap};
+use std::{io::{Read, Write}, collections::HashMap, process::Stdio};
 
 use downloader::{get_cfn_resource_provider_schema, get_cfn_resource_spec, Zipped};
 use html_extractor::extract_documentation;
@@ -180,6 +180,28 @@ impl cfn_resources::CfnResource for {} {{
 }}", use_name, resource_type_str)
 }
 
+pub fn format_file(s: String) -> Result<String, String> {
+    let mut cmd = std::process::Command::new("rustfmt")
+        .stdin(Stdio::piped())
+        .stderr(Stdio::piped())
+        .stdout(Stdio::piped())
+        .spawn().map_err(|e| format!("Failed to spawn rustfmt\n{:?}", e))?;
+    if let Some(handle) = &mut cmd.stdin.take() {
+        if let Err(e) = handle.write_all(s.as_bytes()) {
+            return Err(format!("Failed to write to rustfmt stdin\n{:?}", e));
+        }
+    } else {
+        return Err(format!("Failed to aquire stdin handle"));
+    };
+    let out = cmd.wait_with_output().map_err(|e| format!("Failed to wait for rustfmt\n{:?}", e))?;
+    if !out.status.success() {
+        let err = String::from_utf8_lossy(&out.stderr).to_string();
+        return Err(err);
+    }
+    let out_string = String::from_utf8_lossy(&out.stdout).to_string();
+    Ok(out_string)
+}
+
 pub fn emit_module_file(path: &str, module: &ModuleDef) {
     let mut use_map_tracker = HashMap::new();
     let use_name = format!("Cfn{}", module.name);
@@ -192,6 +214,12 @@ pub fn emit_module_file(path: &str, module: &ModuleDef) {
         out_str.push_str(&emit_struct(&mut aux_field_validations, &mut use_map_tracker, &aux.name, aux));
         out_str.push_str(&emit_cfn_resource_impl(aux_field_validations, &aux.name, "NOT_A_VALID_CFN_RESOURCE"));
     }
+    let out_str = match format_file(out_str) {
+        Ok(o) => o,
+        Err(e) => {
+            panic!("Failed to format {path}\n{e}");
+        }
+    };
     if let Err(e) = std::fs::write(path, out_str) {
         panic!("Failed while writing out to {path}\nFor module {}\n{:?}", module.name, e);
     }
