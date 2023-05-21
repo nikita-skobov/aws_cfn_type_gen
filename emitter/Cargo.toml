@@ -7,3 +7,7 @@ edition = "2021"
 
 [dependencies]
 parser = { path = "../parser" }
+downloader = { path = "../downloader" }
+html_extractor = { path = "../html_extractor" }
+rayon = "1.7.0"
+serde_json = "*"
