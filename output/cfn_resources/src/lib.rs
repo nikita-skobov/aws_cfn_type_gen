@@ -12,6 +12,10 @@ pub enum StrVal {
     Val(serde_json::Value),
 }
 
+pub trait ToOptStrVal {
+    fn into(&self) -> Option<StrVal>;
+}
+
 impl From<&str> for StrVal {
     fn from(value: &str) -> Self {
         Self::String(value.to_string())
@@ -25,6 +29,11 @@ impl From<String> for StrVal {
 impl From<serde_json::Value> for StrVal {
     fn from(value: serde_json::Value) -> Self {
         Self::Val(value)
+    }
+}
+impl ToOptStrVal for &str {
+    fn into(&self) -> Option<StrVal> {
+        Some(StrVal::String(self.to_string()))
     }
 }
 
