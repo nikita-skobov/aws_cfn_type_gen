@@ -57,6 +57,17 @@ pub struct CfnModel {
     /// Update requires: No interruption
     #[serde(rename = "Schema")]
     pub schema: serde_json::Value,
+
+    #[serde(skip_serializing)]
+    pub att_model_id: CfnModelmodelid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelmodelid;
+impl CfnModelmodelid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModelId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnModel {

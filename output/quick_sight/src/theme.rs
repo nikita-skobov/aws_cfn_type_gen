@@ -126,6 +126,105 @@ pub struct CfnTheme {
     #[serde(rename = "VersionDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version_description: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnThemearn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnThemecreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnThemelastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_cfn_type: CfnThemecfntype,
+
+    #[serde(skip_serializing)]
+    pub att_version_arn: CfnThemeversionarn,
+
+    #[serde(skip_serializing)]
+    pub att_version_base_theme_id: CfnThemeversionbasethemeid,
+
+    #[serde(skip_serializing)]
+    pub att_version_created_time: CfnThemeversioncreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_version_description: CfnThemeversiondescription,
+
+    #[serde(skip_serializing)]
+    pub att_version_status: CfnThemeversionstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemearn;
+impl CfnThemearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemecreatedtime;
+impl CfnThemecreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemelastupdatedtime;
+impl CfnThemelastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemecfntype;
+impl CfnThemecfntype {
+    pub fn att_name(&self) -> &'static str {
+        r#"Type"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemeversionarn;
+impl CfnThemeversionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemeversionbasethemeid;
+impl CfnThemeversionbasethemeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.BaseThemeId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemeversioncreatedtime;
+impl CfnThemeversioncreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemeversiondescription;
+impl CfnThemeversiondescription {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.Description"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemeversionstatus;
+impl CfnThemeversionstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTheme {

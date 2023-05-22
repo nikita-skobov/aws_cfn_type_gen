@@ -219,6 +219,50 @@ pub struct CfnApp {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_app_id: CfnAppappid,
+
+    #[serde(skip_serializing)]
+    pub att_app_name: CfnAppappname,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnApparn,
+
+    #[serde(skip_serializing)]
+    pub att_default_domain: CfnAppdefaultdomain,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAppappid;
+impl CfnAppappid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AppId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAppappname;
+impl CfnAppappname {
+    pub fn att_name(&self) -> &'static str {
+        r#"AppName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApparn;
+impl CfnApparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAppdefaultdomain;
+impl CfnAppdefaultdomain {
+    pub fn att_name(&self) -> &'static str {
+        r#"DefaultDomain"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnApp {

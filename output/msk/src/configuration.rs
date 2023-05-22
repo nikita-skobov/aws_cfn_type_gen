@@ -47,6 +47,17 @@ pub struct CfnConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ServerProperties")]
     pub server_properties: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnConfigurationarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigurationarn;
+impl CfnConfigurationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConfiguration {

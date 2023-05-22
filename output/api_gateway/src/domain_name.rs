@@ -99,6 +99,18 @@ pub struct CfnDomainName {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_distribution_domain_name: CfnDomainNamedistributiondomainname,
+
+    #[serde(skip_serializing)]
+    pub att_distribution_hosted_zone_id: CfnDomainNamedistributionhostedzoneid,
+
+    #[serde(skip_serializing)]
+    pub att_regional_domain_name: CfnDomainNameregionaldomainname,
+
+    #[serde(skip_serializing)]
+    pub att_regional_hosted_zone_id: CfnDomainNameregionalhostedzoneid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -115,6 +127,38 @@ pub enum DomainNameSecurityPolicyEnum {
 impl Default for DomainNameSecurityPolicyEnum {
     fn default() -> Self {
         DomainNameSecurityPolicyEnum::Tls10
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNamedistributiondomainname;
+impl CfnDomainNamedistributiondomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DistributionDomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNamedistributionhostedzoneid;
+impl CfnDomainNamedistributionhostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DistributionHostedZoneId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNameregionaldomainname;
+impl CfnDomainNameregionaldomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"RegionalDomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNameregionalhostedzoneid;
+impl CfnDomainNameregionalhostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RegionalHostedZoneId"#
     }
 }
 

@@ -12,6 +12,17 @@ pub struct CfnAccount {
     #[serde(rename = "CloudWatchRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_watch_role_arn: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnAccountid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccountid;
+impl CfnAccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccount {

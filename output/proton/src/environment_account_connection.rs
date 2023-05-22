@@ -120,6 +120,39 @@ pub struct CfnEnvironmentAccountConnection {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEnvironmentAccountConnectionarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnEnvironmentAccountConnectionid,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnEnvironmentAccountConnectionstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentAccountConnectionarn;
+impl CfnEnvironmentAccountConnectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentAccountConnectionid;
+impl CfnEnvironmentAccountConnectionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentAccountConnectionstatus;
+impl CfnEnvironmentAccountConnectionstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEnvironmentAccountConnection {

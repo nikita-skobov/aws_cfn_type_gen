@@ -37,6 +37,21 @@ pub struct CfnLocalGatewayRouteTable {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_local_gateway_route_table_arn: CfnLocalGatewayRouteTablelocalgatewayroutetablearn,
+
+    #[serde(skip_serializing)]
+    pub att_local_gateway_route_table_id: CfnLocalGatewayRouteTablelocalgatewayroutetableid,
+
+    #[serde(skip_serializing)]
+    pub att_outpost_arn: CfnLocalGatewayRouteTableoutpostarn,
+
+    #[serde(skip_serializing)]
+    pub att_owner_id: CfnLocalGatewayRouteTableownerid,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnLocalGatewayRouteTablestate,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -53,6 +68,46 @@ pub enum LocalGatewayRouteTableModeEnum {
 impl Default for LocalGatewayRouteTableModeEnum {
     fn default() -> Self {
         LocalGatewayRouteTableModeEnum::Coip
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTablelocalgatewayroutetablearn;
+impl CfnLocalGatewayRouteTablelocalgatewayroutetablearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocalGatewayRouteTableArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTablelocalgatewayroutetableid;
+impl CfnLocalGatewayRouteTablelocalgatewayroutetableid {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocalGatewayRouteTableId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableoutpostarn;
+impl CfnLocalGatewayRouteTableoutpostarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"OutpostArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableownerid;
+impl CfnLocalGatewayRouteTableownerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTablestate;
+impl CfnLocalGatewayRouteTablestate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
     }
 }
 

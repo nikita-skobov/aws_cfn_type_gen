@@ -58,6 +58,17 @@ pub struct CfnAnomalyDetector {
     /// Update requires: No interruption
     #[serde(rename = "MetricSetList")]
     pub metric_set_list: Vec<MetricSet>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAnomalyDetectorarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAnomalyDetectorarn;
+impl CfnAnomalyDetectorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAnomalyDetector {

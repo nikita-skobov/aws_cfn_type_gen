@@ -73,6 +73,28 @@ pub struct CfnAccessPoint {
     #[serde(rename = "RootDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub root_directory: Option<RootDirectory>,
+
+    #[serde(skip_serializing)]
+    pub att_access_point_id: CfnAccessPointaccesspointid,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAccessPointarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointaccesspointid;
+impl CfnAccessPointaccesspointid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AccessPointId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointarn;
+impl CfnAccessPointarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccessPoint {

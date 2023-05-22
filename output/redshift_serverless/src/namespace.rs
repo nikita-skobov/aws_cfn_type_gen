@@ -131,6 +131,105 @@ pub struct CfnNamespace {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_namespace_admin_username: CfnNamespacenamespaceadminusername,
+
+    #[serde(skip_serializing)]
+    pub att_namespace_creation_date: CfnNamespacenamespacecreationdate,
+
+    #[serde(skip_serializing)]
+    pub att_namespace_db_name: CfnNamespacenamespacedbname,
+
+    #[serde(skip_serializing)]
+    pub att_namespace_default_iam_role_arn: CfnNamespacenamespacedefaultiamrolearn,
+
+    #[serde(skip_serializing)]
+    pub att_namespace_kms_key_id: CfnNamespacenamespacekmskeyid,
+
+    #[serde(skip_serializing)]
+    pub att_namespace_namespace_arn: CfnNamespacenamespacenamespacearn,
+
+    #[serde(skip_serializing)]
+    pub att_namespace_namespace_id: CfnNamespacenamespacenamespaceid,
+
+    #[serde(skip_serializing)]
+    pub att_namespace_namespace_name: CfnNamespacenamespacenamespacename,
+
+    #[serde(skip_serializing)]
+    pub att_namespace_status: CfnNamespacenamespacestatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamespacenamespaceadminusername;
+impl CfnNamespacenamespaceadminusername {
+    pub fn att_name(&self) -> &'static str {
+        r#"Namespace.AdminUsername"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamespacenamespacecreationdate;
+impl CfnNamespacenamespacecreationdate {
+    pub fn att_name(&self) -> &'static str {
+        r#"Namespace.CreationDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamespacenamespacedbname;
+impl CfnNamespacenamespacedbname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Namespace.DbName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamespacenamespacedefaultiamrolearn;
+impl CfnNamespacenamespacedefaultiamrolearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Namespace.DefaultIamRoleArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamespacenamespacekmskeyid;
+impl CfnNamespacenamespacekmskeyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Namespace.KmsKeyId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamespacenamespacenamespacearn;
+impl CfnNamespacenamespacenamespacearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Namespace.NamespaceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamespacenamespacenamespaceid;
+impl CfnNamespacenamespacenamespaceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Namespace.NamespaceId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamespacenamespacenamespacename;
+impl CfnNamespacenamespacenamespacename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Namespace.NamespaceName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamespacenamespacestatus;
+impl CfnNamespacenamespacestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Namespace.Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnNamespace {

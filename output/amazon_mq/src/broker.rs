@@ -216,6 +216,28 @@ pub struct CfnBroker {
     /// Update requires: No interruption
     #[serde(rename = "Users")]
     pub users: Vec<User>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnBrokerarn,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_id: CfnBrokerconfigurationid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBrokerarn;
+impl CfnBrokerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBrokerconfigurationid;
+impl CfnBrokerconfigurationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConfigurationId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnBroker {

@@ -47,6 +47,9 @@ pub struct CfnAccessKey {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     pub user_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_secret_access_key: CfnAccessKeysecretaccesskey,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -63,6 +66,14 @@ pub enum AccessKeyStatusEnum {
 impl Default for AccessKeyStatusEnum {
     fn default() -> Self {
         AccessKeyStatusEnum::Active
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessKeysecretaccesskey;
+impl CfnAccessKeysecretaccesskey {
+    pub fn att_name(&self) -> &'static str {
+        r#"SecretAccessKey"#
     }
 }
 

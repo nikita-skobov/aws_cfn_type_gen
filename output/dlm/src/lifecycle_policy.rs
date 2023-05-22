@@ -76,6 +76,9 @@ pub struct CfnLifecyclePolicy {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnLifecyclePolicyarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -96,6 +99,14 @@ pub enum LifecyclePolicyStateEnum {
 impl Default for LifecyclePolicyStateEnum {
     fn default() -> Self {
         LifecyclePolicyStateEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLifecyclePolicyarn;
+impl CfnLifecyclePolicyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

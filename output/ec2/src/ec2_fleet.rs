@@ -158,6 +158,9 @@ pub struct CfnEC2Fleet {
     #[serde(rename = "ValidUntil")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub valid_until: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_fleet_id: CfnEC2Fleetfleetid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -195,6 +198,14 @@ pub enum EC2FleetTypeEnum {
 impl Default for EC2FleetTypeEnum {
     fn default() -> Self {
         EC2FleetTypeEnum::Instant
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEC2Fleetfleetid;
+impl CfnEC2Fleetfleetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"FleetId"#
     }
 }
 

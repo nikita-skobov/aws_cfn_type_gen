@@ -334,6 +334,15 @@ pub struct CfnFunction {
     #[serde(rename = "VpcConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnFunctionarn,
+
+    #[serde(skip_serializing)]
+    pub att_snap_start_response_apply_on: CfnFunctionsnapstartresponseapplyon,
+
+    #[serde(skip_serializing)]
+    pub att_snap_start_response_optimization_status: CfnFunctionsnapstartresponseoptimizationstatus,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -479,6 +488,30 @@ pub enum FunctionRuntimeEnum {
 impl Default for FunctionRuntimeEnum {
     fn default() -> Self {
         FunctionRuntimeEnum::Dotnet6
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionarn;
+impl CfnFunctionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionsnapstartresponseapplyon;
+impl CfnFunctionsnapstartresponseapplyon {
+    pub fn att_name(&self) -> &'static str {
+        r#"SnapStartResponse.ApplyOn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionsnapstartresponseoptimizationstatus;
+impl CfnFunctionsnapstartresponseoptimizationstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"SnapStartResponse.OptimizationStatus"#
     }
 }
 

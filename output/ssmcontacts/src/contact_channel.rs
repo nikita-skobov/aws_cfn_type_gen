@@ -72,6 +72,9 @@ pub struct CfnContactChannel {
     #[serde(rename = "DeferActivation")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub defer_activation: Option<bool>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnContactChannelarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -92,6 +95,14 @@ pub enum ContactChannelChannelTypeEnum {
 impl Default for ContactChannelChannelTypeEnum {
     fn default() -> Self {
         ContactChannelChannelTypeEnum::Email
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnContactChannelarn;
+impl CfnContactChannelarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

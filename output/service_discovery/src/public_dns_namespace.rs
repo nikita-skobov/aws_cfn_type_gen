@@ -57,6 +57,39 @@ pub struct CfnPublicDnsNamespace {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPublicDnsNamespacearn,
+
+    #[serde(skip_serializing)]
+    pub att_hosted_zone_id: CfnPublicDnsNamespacehostedzoneid,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnPublicDnsNamespaceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublicDnsNamespacearn;
+impl CfnPublicDnsNamespacearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublicDnsNamespacehostedzoneid;
+impl CfnPublicDnsNamespacehostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"HostedZoneId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublicDnsNamespaceid;
+impl CfnPublicDnsNamespaceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPublicDnsNamespace {

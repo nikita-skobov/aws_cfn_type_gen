@@ -107,6 +107,17 @@ pub struct CfnFeature {
     /// Update requires: No interruption
     #[serde(rename = "Variations")]
     pub variations: Vec<VariationObject>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnFeaturearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFeaturearn;
+impl CfnFeaturearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFeature {

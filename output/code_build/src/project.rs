@@ -334,6 +334,17 @@ pub struct CfnProject {
     #[serde(rename = "VpcConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnProjectarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProjectarn;
+impl CfnProjectarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnProject {

@@ -1346,6 +1346,33 @@ pub struct CfnDBInstance {
     #[serde(rename = "VPCSecurityGroups")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpcsecurity_groups: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_certificate_details_caidentifier: CfnDBInstancecertificatedetailscaidentifier,
+
+    #[serde(skip_serializing)]
+    pub att_certificate_details_valid_till: CfnDBInstancecertificatedetailsvalidtill,
+
+    #[serde(skip_serializing)]
+    pub att_dbinstance_arn: CfnDBInstancedbinstancearn,
+
+    #[serde(skip_serializing)]
+    pub att_dbsystem_id: CfnDBInstancedbsystemid,
+
+    #[serde(skip_serializing)]
+    pub att_dbi_resource_id: CfnDBInstancedbiresourceid,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_address: CfnDBInstanceendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_hosted_zone_id: CfnDBInstanceendpointhostedzoneid,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_port: CfnDBInstanceendpointport,
+
+    #[serde(skip_serializing)]
+    pub att_master_user_secret_secret_arn: CfnDBInstancemasterusersecretsecretarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -1371,6 +1398,78 @@ pub enum DBInstanceRestoreTimeEnum {
 impl Default for DBInstanceRestoreTimeEnum {
     fn default() -> Self {
         DBInstanceRestoreTimeEnum::Valuemustbeatimeinuniversalcoordinatedtimeutcformat
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstancecertificatedetailscaidentifier;
+impl CfnDBInstancecertificatedetailscaidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"CertificateDetails.CAIdentifier"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstancecertificatedetailsvalidtill;
+impl CfnDBInstancecertificatedetailsvalidtill {
+    pub fn att_name(&self) -> &'static str {
+        r#"CertificateDetails.ValidTill"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstancedbinstancearn;
+impl CfnDBInstancedbinstancearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DBInstanceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstancedbsystemid;
+impl CfnDBInstancedbsystemid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DBSystemId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstancedbiresourceid;
+impl CfnDBInstancedbiresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DbiResourceId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstanceendpointaddress;
+impl CfnDBInstanceendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstanceendpointhostedzoneid;
+impl CfnDBInstanceendpointhostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint.HostedZoneId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstanceendpointport;
+impl CfnDBInstanceendpointport {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint.Port"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstancemasterusersecretsecretarn;
+impl CfnDBInstancemasterusersecretsecretarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"MasterUserSecret.SecretArn"#
     }
 }
 

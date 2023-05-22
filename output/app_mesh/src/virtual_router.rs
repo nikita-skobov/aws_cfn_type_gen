@@ -76,6 +76,72 @@ pub struct CfnVirtualRouter {
     #[serde(rename = "VirtualRouterName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_router_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnVirtualRouterarn,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_name: CfnVirtualRoutermeshname,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_owner: CfnVirtualRoutermeshowner,
+
+    #[serde(skip_serializing)]
+    pub att_resource_owner: CfnVirtualRouterresourceowner,
+
+    #[serde(skip_serializing)]
+    pub att_uid: CfnVirtualRouteruid,
+
+    #[serde(skip_serializing)]
+    pub att_virtual_router_name: CfnVirtualRoutervirtualroutername,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualRouterarn;
+impl CfnVirtualRouterarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualRoutermeshname;
+impl CfnVirtualRoutermeshname {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualRoutermeshowner;
+impl CfnVirtualRoutermeshowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualRouterresourceowner;
+impl CfnVirtualRouterresourceowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualRouteruid;
+impl CfnVirtualRouteruid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Uid"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualRoutervirtualroutername;
+impl CfnVirtualRoutervirtualroutername {
+    pub fn att_name(&self) -> &'static str {
+        r#"VirtualRouterName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVirtualRouter {

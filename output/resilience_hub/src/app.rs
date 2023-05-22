@@ -87,6 +87,17 @@ pub struct CfnApp {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
+
+    #[serde(skip_serializing)]
+    pub att_app_arn: CfnAppapparn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAppapparn;
+impl CfnAppapparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AppArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnApp {

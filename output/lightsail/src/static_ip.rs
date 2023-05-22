@@ -23,6 +23,28 @@ pub struct CfnStaticIp {
     /// Update requires: Replacement
     #[serde(rename = "StaticIpName")]
     pub static_ip_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_ip_address: CfnStaticIpipaddress,
+
+    #[serde(skip_serializing)]
+    pub att_static_ip_arn: CfnStaticIpstaticiparn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStaticIpipaddress;
+impl CfnStaticIpipaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpAddress"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStaticIpstaticiparn;
+impl CfnStaticIpstaticiparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"StaticIpArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnStaticIp {

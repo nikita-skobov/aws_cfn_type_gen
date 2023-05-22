@@ -87,6 +87,12 @@ pub struct CfnConnectorProfile {
     #[serde(rename = "KMSArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub kmsarn: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_connector_profile_arn: CfnConnectorProfileconnectorprofilearn,
+
+    #[serde(skip_serializing)]
+    pub att_credentials_arn: CfnConnectorProfilecredentialsarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -208,6 +214,22 @@ pub enum ConnectorProfileConnectorTypeEnum {
 impl Default for ConnectorProfileConnectorTypeEnum {
     fn default() -> Self {
         ConnectorProfileConnectorTypeEnum::Amplitude
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorProfileconnectorprofilearn;
+impl CfnConnectorProfileconnectorprofilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConnectorProfileArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorProfilecredentialsarn;
+impl CfnConnectorProfilecredentialsarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CredentialsArn"#
     }
 }
 

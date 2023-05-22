@@ -57,6 +57,28 @@ pub struct CfnWorkflow {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnWorkflowarn,
+
+    #[serde(skip_serializing)]
+    pub att_workflow_id: CfnWorkflowworkflowid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkflowarn;
+impl CfnWorkflowarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkflowworkflowid;
+impl CfnWorkflowworkflowid {
+    pub fn att_name(&self) -> &'static str {
+        r#"WorkflowId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnWorkflow {

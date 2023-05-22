@@ -88,6 +88,61 @@ pub struct CfnEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "RoutingConfig")]
     pub routing_config: RoutingConfig,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEndpointarn,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_id: CfnEndpointendpointid,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_url: CfnEndpointendpointurl,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnEndpointstate,
+
+    #[serde(skip_serializing)]
+    pub att_state_reason: CfnEndpointstatereason,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointarn;
+impl CfnEndpointarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointendpointid;
+impl CfnEndpointendpointid {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointendpointurl;
+impl CfnEndpointendpointurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointUrl"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointstate;
+impl CfnEndpointstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointstatereason;
+impl CfnEndpointstatereason {
+    pub fn att_name(&self) -> &'static str {
+        r#"StateReason"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEndpoint {

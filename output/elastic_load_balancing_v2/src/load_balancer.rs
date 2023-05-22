@@ -144,6 +144,18 @@ pub struct CfnLoadBalancer {
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<LoadBalancerTypeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_canonical_hosted_zone_id: CfnLoadBalancercanonicalhostedzoneid,
+
+    #[serde(skip_serializing)]
+    pub att_dnsname: CfnLoadBalancerdnsname,
+
+    #[serde(skip_serializing)]
+    pub att_load_balancer_full_name: CfnLoadBalancerloadbalancerfullname,
+
+    #[serde(skip_serializing)]
+    pub att_load_balancer_name: CfnLoadBalancerloadbalancername,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -198,6 +210,38 @@ pub enum LoadBalancerTypeEnum {
 impl Default for LoadBalancerTypeEnum {
     fn default() -> Self {
         LoadBalancerTypeEnum::Application
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancercanonicalhostedzoneid;
+impl CfnLoadBalancercanonicalhostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CanonicalHostedZoneID"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancerdnsname;
+impl CfnLoadBalancerdnsname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DNSName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancerloadbalancerfullname;
+impl CfnLoadBalancerloadbalancerfullname {
+    pub fn att_name(&self) -> &'static str {
+        r#"LoadBalancerFullName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancerloadbalancername;
+impl CfnLoadBalancerloadbalancername {
+    pub fn att_name(&self) -> &'static str {
+        r#"LoadBalancerName"#
     }
 }
 

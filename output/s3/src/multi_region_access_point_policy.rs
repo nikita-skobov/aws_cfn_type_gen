@@ -24,6 +24,17 @@ pub struct CfnMultiRegionAccessPointPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
     pub policy: serde_json::Value,
+
+    #[serde(skip_serializing)]
+    pub att_policy_status_is_public: CfnMultiRegionAccessPointPolicypolicystatusispublic,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMultiRegionAccessPointPolicypolicystatusispublic;
+impl CfnMultiRegionAccessPointPolicypolicystatusispublic {
+    pub fn att_name(&self) -> &'static str {
+        r#"PolicyStatus.IsPublic"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMultiRegionAccessPointPolicy {

@@ -1,31 +1,37 @@
 /// Describes an association between a local gateway route table and a virtual interface group.
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociation {
-    ///
+
+
+    /// 
     /// The ID of the local gateway route table.
-    ///
+    /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalGatewayRouteTableId")]
+
     pub local_gateway_route_table_id: cfn_resources::StrVal,
 
-    ///
+
+    /// 
     /// The ID of the virtual interface group.
-    ///
+    /// 
     /// Required: Yes
     ///
     /// Type: String
     ///
     /// Update requires: Replacement
     #[serde(rename = "LocalGatewayVirtualInterfaceGroupId")]
+
     pub local_gateway_virtual_interface_group_id: cfn_resources::StrVal,
 
-    ///
+
+    /// 
     /// The tags assigned to the association.
-    ///
+    /// 
     /// Required: No
     ///
     /// Type: List of Tag
@@ -34,6 +40,63 @@ pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociation {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+
+    #[serde(skip_serializing)]
+    pub att_local_gateway_id: CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationlocalgatewayid,
+
+    #[serde(skip_serializing)]
+    pub att_local_gateway_route_table_arn: CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationlocalgatewayroutetablearn,
+
+    #[serde(skip_serializing)]
+    pub att_local_gateway_route_table_virtual_interface_group_association_id: CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationlocalgatewayroutetablevirtualinterfacegroupassociationid,
+
+    #[serde(skip_serializing)]
+    pub att_owner_id: CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationownerid,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationstate,
+
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationlocalgatewayid;
+impl CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationlocalgatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocalGatewayId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationlocalgatewayroutetablearn;
+impl CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationlocalgatewayroutetablearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocalGatewayRouteTableArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationlocalgatewayroutetablevirtualinterfacegroupassociationid;
+impl CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationlocalgatewayroutetablevirtualinterfacegroupassociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocalGatewayRouteTableVirtualInterfaceGroupAssociationId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationownerid;
+impl CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationownerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationstate;
+impl CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociationstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocalGatewayRouteTableVirtualInterfaceGroupAssociation {

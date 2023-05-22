@@ -123,6 +123,39 @@ pub struct CfnDBProxy {
     /// Update requires: Replacement
     #[serde(rename = "VpcSubnetIds")]
     pub vpc_subnet_ids: Vec<String>,
+
+    #[serde(skip_serializing)]
+    pub att_dbproxy_arn: CfnDBProxydbproxyarn,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint: CfnDBProxyendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_id: CfnDBProxyvpcid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBProxydbproxyarn;
+impl CfnDBProxydbproxyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DBProxyArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBProxyendpoint;
+impl CfnDBProxyendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBProxyvpcid;
+impl CfnDBProxyvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDBProxy {

@@ -66,6 +66,9 @@ pub struct CfnVPCEndpointService {
     #[serde(rename = "PayerResponsibility")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub payer_responsibility: Option<VPCEndpointServicePayerResponsibilityEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_service_id: CfnVPCEndpointServiceserviceid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -78,6 +81,14 @@ pub enum VPCEndpointServicePayerResponsibilityEnum {
 impl Default for VPCEndpointServicePayerResponsibilityEnum {
     fn default() -> Self {
         VPCEndpointServicePayerResponsibilityEnum::Serviceowner
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCEndpointServiceserviceid;
+impl CfnVPCEndpointServiceserviceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceId"#
     }
 }
 

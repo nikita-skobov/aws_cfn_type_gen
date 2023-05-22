@@ -73,6 +73,39 @@ pub struct CfnList {
     #[serde(rename = "VariableType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub variable_type: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnListarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnListcreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnListlastupdatedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListarn;
+impl CfnListarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListcreatedtime;
+impl CfnListcreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListlastupdatedtime;
+impl CfnListlastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnList {

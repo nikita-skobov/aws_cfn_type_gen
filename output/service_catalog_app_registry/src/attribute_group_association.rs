@@ -22,6 +22,39 @@ pub struct CfnAttributeGroupAssociation {
     /// Update requires: Replacement
     #[serde(rename = "AttributeGroup")]
     pub attribute_group: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_application_arn: CfnAttributeGroupAssociationapplicationarn,
+
+    #[serde(skip_serializing)]
+    pub att_attribute_group_arn: CfnAttributeGroupAssociationattributegrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnAttributeGroupAssociationid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAttributeGroupAssociationapplicationarn;
+impl CfnAttributeGroupAssociationapplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAttributeGroupAssociationattributegrouparn;
+impl CfnAttributeGroupAssociationattributegrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttributeGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAttributeGroupAssociationid;
+impl CfnAttributeGroupAssociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAttributeGroupAssociation {

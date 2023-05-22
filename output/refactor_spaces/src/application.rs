@@ -70,6 +70,94 @@ pub struct CfnApplication {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_api_gateway_id: CfnApplicationapigatewayid,
+
+    #[serde(skip_serializing)]
+    pub att_application_identifier: CfnApplicationapplicationidentifier,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnApplicationarn,
+
+    #[serde(skip_serializing)]
+    pub att_nlb_arn: CfnApplicationnlbarn,
+
+    #[serde(skip_serializing)]
+    pub att_nlb_name: CfnApplicationnlbname,
+
+    #[serde(skip_serializing)]
+    pub att_proxy_url: CfnApplicationproxyurl,
+
+    #[serde(skip_serializing)]
+    pub att_stage_name: CfnApplicationstagename,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_link_id: CfnApplicationvpclinkid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapigatewayid;
+impl CfnApplicationapigatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApiGatewayId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapplicationidentifier;
+impl CfnApplicationapplicationidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationIdentifier"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationarn;
+impl CfnApplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationnlbarn;
+impl CfnApplicationnlbarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"NlbArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationnlbname;
+impl CfnApplicationnlbname {
+    pub fn att_name(&self) -> &'static str {
+        r#"NlbName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationproxyurl;
+impl CfnApplicationproxyurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProxyUrl"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationstagename;
+impl CfnApplicationstagename {
+    pub fn att_name(&self) -> &'static str {
+        r#"StageName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationvpclinkid;
+impl CfnApplicationvpclinkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcLinkId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnApplication {

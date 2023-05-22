@@ -56,6 +56,9 @@ pub struct CfnConnector {
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_connector_arn: CfnConnectorconnectorarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -68,6 +71,14 @@ pub enum ConnectorConnectorProvisioningTypeEnum {
 impl Default for ConnectorConnectorProvisioningTypeEnum {
     fn default() -> Self {
         ConnectorConnectorProvisioningTypeEnum::Lambda
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorconnectorarn;
+impl CfnConnectorconnectorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConnectorArn"#
     }
 }
 

@@ -54,6 +54,94 @@ pub struct CfnServiceNetworkVpcAssociation {
     #[serde(rename = "VpcIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_identifier: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnServiceNetworkVpcAssociationarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnServiceNetworkVpcAssociationcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnServiceNetworkVpcAssociationid,
+
+    #[serde(skip_serializing)]
+    pub att_service_network_arn: CfnServiceNetworkVpcAssociationservicenetworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_service_network_id: CfnServiceNetworkVpcAssociationservicenetworkid,
+
+    #[serde(skip_serializing)]
+    pub att_service_network_name: CfnServiceNetworkVpcAssociationservicenetworkname,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnServiceNetworkVpcAssociationstatus,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_id: CfnServiceNetworkVpcAssociationvpcid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkVpcAssociationarn;
+impl CfnServiceNetworkVpcAssociationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkVpcAssociationcreatedat;
+impl CfnServiceNetworkVpcAssociationcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkVpcAssociationid;
+impl CfnServiceNetworkVpcAssociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkVpcAssociationservicenetworkarn;
+impl CfnServiceNetworkVpcAssociationservicenetworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceNetworkArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkVpcAssociationservicenetworkid;
+impl CfnServiceNetworkVpcAssociationservicenetworkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceNetworkId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkVpcAssociationservicenetworkname;
+impl CfnServiceNetworkVpcAssociationservicenetworkname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceNetworkName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkVpcAssociationstatus;
+impl CfnServiceNetworkVpcAssociationstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkVpcAssociationvpcid;
+impl CfnServiceNetworkVpcAssociationvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnServiceNetworkVpcAssociation {

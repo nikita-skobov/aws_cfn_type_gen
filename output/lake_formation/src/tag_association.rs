@@ -24,6 +24,28 @@ pub struct CfnTagAssociation {
     /// Update requires: Replacement
     #[serde(rename = "Resource")]
     pub resource: Resource,
+
+    #[serde(skip_serializing)]
+    pub att_resource_identifier: CfnTagAssociationresourceidentifier,
+
+    #[serde(skip_serializing)]
+    pub att_tags_identifier: CfnTagAssociationtagsidentifier,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTagAssociationresourceidentifier;
+impl CfnTagAssociationresourceidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceIdentifier"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTagAssociationtagsidentifier;
+impl CfnTagAssociationtagsidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"TagsIdentifier"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTagAssociation {

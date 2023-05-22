@@ -339,6 +339,17 @@ pub struct CfnEventSourceMapping {
     #[serde(rename = "TumblingWindowInSeconds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tumbling_window_in_seconds: Option<i64>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnEventSourceMappingid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventSourceMappingid;
+impl CfnEventSourceMappingid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEventSourceMapping {

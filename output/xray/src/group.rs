@@ -49,6 +49,17 @@ pub struct CfnGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_group_arn: CfnGroupgrouparn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGroupgrouparn;
+impl CfnGroupgrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"GroupARN"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGroup {

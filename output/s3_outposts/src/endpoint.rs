@@ -66,6 +66,21 @@ pub struct CfnEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     pub subnet_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEndpointarn,
+
+    #[serde(skip_serializing)]
+    pub att_cidr_block: CfnEndpointcidrblock,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnEndpointcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnEndpointid,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnEndpointstatus,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -82,6 +97,46 @@ pub enum EndpointAccessTypeEnum {
 impl Default for EndpointAccessTypeEnum {
     fn default() -> Self {
         EndpointAccessTypeEnum::Customerownedip
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointarn;
+impl CfnEndpointarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointcidrblock;
+impl CfnEndpointcidrblock {
+    pub fn att_name(&self) -> &'static str {
+        r#"CidrBlock"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointcreationtime;
+impl CfnEndpointcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointid;
+impl CfnEndpointid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointstatus;
+impl CfnEndpointstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
     }
 }
 

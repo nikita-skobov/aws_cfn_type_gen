@@ -72,6 +72,18 @@ pub struct CfnRouteCalculator {
     #[serde(rename = "PricingPlan")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pricing_plan: Option<RouteCalculatorPricingPlanEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRouteCalculatorarn,
+
+    #[serde(skip_serializing)]
+    pub att_calculator_arn: CfnRouteCalculatorcalculatorarn,
+
+    #[serde(skip_serializing)]
+    pub att_create_time: CfnRouteCalculatorcreatetime,
+
+    #[serde(skip_serializing)]
+    pub att_update_time: CfnRouteCalculatorupdatetime,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -84,6 +96,38 @@ pub enum RouteCalculatorPricingPlanEnum {
 impl Default for RouteCalculatorPricingPlanEnum {
     fn default() -> Self {
         RouteCalculatorPricingPlanEnum::Requestbasedusage
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouteCalculatorarn;
+impl CfnRouteCalculatorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouteCalculatorcalculatorarn;
+impl CfnRouteCalculatorcalculatorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CalculatorArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouteCalculatorcreatetime;
+impl CfnRouteCalculatorcreatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreateTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouteCalculatorupdatetime;
+impl CfnRouteCalculatorupdatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdateTime"#
     }
 }
 

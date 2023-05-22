@@ -68,6 +68,17 @@ pub struct CfnDBProxyTargetGroup {
     /// Update requires: Replacement
     #[serde(rename = "TargetGroupName")]
     pub target_group_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_target_group_arn: CfnDBProxyTargetGrouptargetgrouparn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBProxyTargetGrouptargetgrouparn;
+impl CfnDBProxyTargetGrouptargetgrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TargetGroupArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDBProxyTargetGroup {

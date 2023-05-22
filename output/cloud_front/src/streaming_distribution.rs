@@ -22,6 +22,17 @@ pub struct CfnStreamingDistribution {
     /// Update requires: No interruption
     #[serde(rename = "Tags")]
     pub tags: Vec<Tag>,
+
+    #[serde(skip_serializing)]
+    pub att_domain_name: CfnStreamingDistributiondomainname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamingDistributiondomainname;
+impl CfnStreamingDistributiondomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnStreamingDistribution {

@@ -35,6 +35,28 @@ pub struct CfnMultiRegionAccessPoint {
     /// Update requires: Replacement
     #[serde(rename = "Regions")]
     pub regions: Vec<Region>,
+
+    #[serde(skip_serializing)]
+    pub att_alias: CfnMultiRegionAccessPointalias,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnMultiRegionAccessPointcreatedat,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMultiRegionAccessPointalias;
+impl CfnMultiRegionAccessPointalias {
+    pub fn att_name(&self) -> &'static str {
+        r#"Alias"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMultiRegionAccessPointcreatedat;
+impl CfnMultiRegionAccessPointcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMultiRegionAccessPoint {

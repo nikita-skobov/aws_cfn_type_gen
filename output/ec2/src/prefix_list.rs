@@ -63,6 +63,15 @@ pub struct CfnPrefixList {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPrefixListarn,
+
+    #[serde(skip_serializing)]
+    pub att_owner_id: CfnPrefixListownerid,
+
+    #[serde(skip_serializing)]
+    pub att_prefix_list_id: CfnPrefixListprefixlistid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -79,6 +88,30 @@ pub enum PrefixListAddressFamilyEnum {
 impl Default for PrefixListAddressFamilyEnum {
     fn default() -> Self {
         PrefixListAddressFamilyEnum::Ipv4
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPrefixListarn;
+impl CfnPrefixListarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPrefixListownerid;
+impl CfnPrefixListownerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPrefixListprefixlistid;
+impl CfnPrefixListprefixlistid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrefixListId"#
     }
 }
 

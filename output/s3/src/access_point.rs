@@ -71,6 +71,50 @@ pub struct CfnAccessPoint {
     #[serde(rename = "VpcConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<VpcConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_alias: CfnAccessPointalias,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAccessPointarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnAccessPointname,
+
+    #[serde(skip_serializing)]
+    pub att_network_origin: CfnAccessPointnetworkorigin,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointalias;
+impl CfnAccessPointalias {
+    pub fn att_name(&self) -> &'static str {
+        r#"Alias"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointarn;
+impl CfnAccessPointarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointname;
+impl CfnAccessPointname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointnetworkorigin;
+impl CfnAccessPointnetworkorigin {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkOrigin"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccessPoint {

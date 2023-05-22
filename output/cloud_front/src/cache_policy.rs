@@ -15,6 +15,28 @@ pub struct CfnCachePolicy {
     /// Update requires: No interruption
     #[serde(rename = "CachePolicyConfig")]
     pub cache_policy_config: CachePolicyConfig,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCachePolicyid,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnCachePolicylastmodifiedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCachePolicyid;
+impl CfnCachePolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCachePolicylastmodifiedtime;
+impl CfnCachePolicylastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCachePolicy {

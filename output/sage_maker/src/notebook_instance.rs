@@ -254,6 +254,9 @@ pub struct CfnNotebookInstance {
     #[serde(rename = "VolumeSizeInGB")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_size_in_gb: Option<i64>,
+
+    #[serde(skip_serializing)]
+    pub att_notebook_instance_name: CfnNotebookInstancenotebookinstancename,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -572,6 +575,14 @@ pub enum NotebookInstanceRootAccessEnum {
 impl Default for NotebookInstanceRootAccessEnum {
     fn default() -> Self {
         NotebookInstanceRootAccessEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNotebookInstancenotebookinstancename;
+impl CfnNotebookInstancenotebookinstancename {
+    pub fn att_name(&self) -> &'static str {
+        r#"NotebookInstanceName"#
     }
 }
 

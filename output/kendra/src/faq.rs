@@ -94,6 +94,28 @@ pub struct CfnFaq {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnFaqarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnFaqid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFaqarn;
+impl CfnFaqarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFaqid;
+impl CfnFaqid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFaq {

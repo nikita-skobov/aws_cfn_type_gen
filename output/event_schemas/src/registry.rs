@@ -36,6 +36,28 @@ pub struct CfnRegistry {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagsEntry>>,
+
+    #[serde(skip_serializing)]
+    pub att_registry_arn: CfnRegistryregistryarn,
+
+    #[serde(skip_serializing)]
+    pub att_registry_name: CfnRegistryregistryname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRegistryregistryarn;
+impl CfnRegistryregistryarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"RegistryArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRegistryregistryname;
+impl CfnRegistryregistryname {
+    pub fn att_name(&self) -> &'static str {
+        r#"RegistryName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRegistry {

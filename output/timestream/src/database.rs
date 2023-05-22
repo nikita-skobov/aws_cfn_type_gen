@@ -42,6 +42,17 @@ pub struct CfnDatabase {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDatabasearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDatabasearn;
+impl CfnDatabasearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDatabase {

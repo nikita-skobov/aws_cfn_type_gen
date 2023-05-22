@@ -58,6 +58,9 @@ pub struct CfnPlacementGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_group_name: CfnPlacementGroupgroupname,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -95,6 +98,14 @@ pub enum PlacementGroupStrategyEnum {
 impl Default for PlacementGroupStrategyEnum {
     fn default() -> Self {
         PlacementGroupStrategyEnum::Cluster
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlacementGroupgroupname;
+impl CfnPlacementGroupgroupname {
+    pub fn att_name(&self) -> &'static str {
+        r#"GroupName"#
     }
 }
 

@@ -83,6 +83,28 @@ pub struct CfnSecurityGroup {
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_group_id: CfnSecurityGroupgroupid,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_id: CfnSecurityGroupvpcid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSecurityGroupgroupid;
+impl CfnSecurityGroupgroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"GroupId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSecurityGroupvpcid;
+impl CfnSecurityGroupvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSecurityGroup {

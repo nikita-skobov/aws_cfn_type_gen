@@ -164,6 +164,9 @@ pub struct CfnTransitGateway {
     #[serde(rename = "VpnEcmpSupport")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpn_ecmp_support: Option<TransitGatewayVpnEcmpSupportEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnTransitGatewayid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -265,6 +268,14 @@ pub enum TransitGatewayVpnEcmpSupportEnum {
 impl Default for TransitGatewayVpnEcmpSupportEnum {
     fn default() -> Self {
         TransitGatewayVpnEcmpSupportEnum::Disable
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayid;
+impl CfnTransitGatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

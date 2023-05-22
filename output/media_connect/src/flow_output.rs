@@ -166,6 +166,17 @@ pub struct CfnFlowOutput {
     #[serde(rename = "VpcInterfaceAttachment")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_interface_attachment: Option<VpcInterfaceAttachment>,
+
+    #[serde(skip_serializing)]
+    pub att_output_arn: CfnFlowOutputoutputarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowOutputoutputarn;
+impl CfnFlowOutputoutputarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"OutputArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFlowOutput {

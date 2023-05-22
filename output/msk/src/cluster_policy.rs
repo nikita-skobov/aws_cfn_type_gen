@@ -22,6 +22,17 @@ pub struct CfnClusterPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Policy")]
     pub policy: serde_json::Value,
+
+    #[serde(skip_serializing)]
+    pub att_current_version: CfnClusterPolicycurrentversion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterPolicycurrentversion;
+impl CfnClusterPolicycurrentversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"CurrentVersion"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnClusterPolicy {

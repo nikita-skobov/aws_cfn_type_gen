@@ -46,6 +46,17 @@ pub struct CfnCertificateAuthorityActivation {
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_complete_certificate_chain: CfnCertificateAuthorityActivationcompletecertificatechain,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificateAuthorityActivationcompletecertificatechain;
+impl CfnCertificateAuthorityActivationcompletecertificatechain {
+    pub fn att_name(&self) -> &'static str {
+        r#"CompleteCertificateChain"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCertificateAuthorityActivation {

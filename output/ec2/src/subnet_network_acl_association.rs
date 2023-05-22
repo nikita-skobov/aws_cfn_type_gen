@@ -24,6 +24,17 @@ pub struct CfnSubnetNetworkAclAssociation {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     pub subnet_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_association_id: CfnSubnetNetworkAclAssociationassociationid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSubnetNetworkAclAssociationassociationid;
+impl CfnSubnetNetworkAclAssociationassociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AssociationId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSubnetNetworkAclAssociation {

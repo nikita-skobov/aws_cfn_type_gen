@@ -151,6 +151,15 @@ pub struct CfnGlobalTable {
     #[serde(rename = "WriteProvisionedThroughputSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub write_provisioned_throughput_settings: Option<WriteProvisionedThroughputSettings>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnGlobalTablearn,
+
+    #[serde(skip_serializing)]
+    pub att_stream_arn: CfnGlobalTablestreamarn,
+
+    #[serde(skip_serializing)]
+    pub att_table_id: CfnGlobalTabletableid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -167,6 +176,30 @@ pub enum GlobalTableBillingModeEnum {
 impl Default for GlobalTableBillingModeEnum {
     fn default() -> Self {
         GlobalTableBillingModeEnum::Payperrequest
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGlobalTablearn;
+impl CfnGlobalTablearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGlobalTablestreamarn;
+impl CfnGlobalTablestreamarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"StreamArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGlobalTabletableid;
+impl CfnGlobalTabletableid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TableId"#
     }
 }
 

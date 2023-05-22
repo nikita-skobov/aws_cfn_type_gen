@@ -29,6 +29,28 @@ pub struct CfnCidrCollection {
     /// Update requires: Replacement
     #[serde(rename = "Name")]
     pub name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCidrCollectionarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCidrCollectionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCidrCollectionarn;
+impl CfnCidrCollectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCidrCollectionid;
+impl CfnCidrCollectionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCidrCollection {

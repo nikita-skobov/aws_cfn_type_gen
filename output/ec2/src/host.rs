@@ -93,6 +93,9 @@ pub struct CfnHost {
     #[serde(rename = "OutpostArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub outpost_arn: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_host_id: CfnHosthostid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -143,6 +146,14 @@ pub enum HostHostRecoveryEnum {
 impl Default for HostHostRecoveryEnum {
     fn default() -> Self {
         HostHostRecoveryEnum::Off
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnHosthostid;
+impl CfnHosthostid {
+    pub fn att_name(&self) -> &'static str {
+        r#"HostId"#
     }
 }
 

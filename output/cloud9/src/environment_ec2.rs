@@ -155,6 +155,12 @@ pub struct CfnEnvironmentEC2 {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEnvironmentEC2arn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnEnvironmentEC2name,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -171,6 +177,22 @@ pub enum EnvironmentEC2ConnectionTypeEnum {
 impl Default for EnvironmentEC2ConnectionTypeEnum {
     fn default() -> Self {
         EnvironmentEC2ConnectionTypeEnum::Connectssh
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentEC2arn;
+impl CfnEnvironmentEC2arn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentEC2name;
+impl CfnEnvironmentEC2name {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
     }
 }
 

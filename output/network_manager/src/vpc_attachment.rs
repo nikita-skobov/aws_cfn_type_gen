@@ -57,6 +57,127 @@ pub struct CfnVpcAttachment {
     /// Update requires: Replacement
     #[serde(rename = "VpcArn")]
     pub vpc_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_attachment_id: CfnVpcAttachmentattachmentid,
+
+    #[serde(skip_serializing)]
+    pub att_attachment_type: CfnVpcAttachmentattachmenttype,
+
+    #[serde(skip_serializing)]
+    pub att_core_network_arn: CfnVpcAttachmentcorenetworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnVpcAttachmentcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_edge_location: CfnVpcAttachmentedgelocation,
+
+    #[serde(skip_serializing)]
+    pub att_owner_account_id: CfnVpcAttachmentowneraccountid,
+
+    #[serde(skip_serializing)]
+    pub att_proposed_segment_change_segment_name: CfnVpcAttachmentproposedsegmentchangesegmentname,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnVpcAttachmentresourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_segment_name: CfnVpcAttachmentsegmentname,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnVpcAttachmentstate,
+
+    #[serde(skip_serializing)]
+    pub att_updated_at: CfnVpcAttachmentupdatedat,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentattachmentid;
+impl CfnVpcAttachmentattachmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachmentId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentattachmenttype;
+impl CfnVpcAttachmentattachmenttype {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachmentType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentcorenetworkarn;
+impl CfnVpcAttachmentcorenetworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CoreNetworkArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentcreatedat;
+impl CfnVpcAttachmentcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentedgelocation;
+impl CfnVpcAttachmentedgelocation {
+    pub fn att_name(&self) -> &'static str {
+        r#"EdgeLocation"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentowneraccountid;
+impl CfnVpcAttachmentowneraccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerAccountId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentproposedsegmentchangesegmentname;
+impl CfnVpcAttachmentproposedsegmentchangesegmentname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProposedSegmentChange.SegmentName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentresourcearn;
+impl CfnVpcAttachmentresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentsegmentname;
+impl CfnVpcAttachmentsegmentname {
+    pub fn att_name(&self) -> &'static str {
+        r#"SegmentName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentstate;
+impl CfnVpcAttachmentstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcAttachmentupdatedat;
+impl CfnVpcAttachmentupdatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdatedAt"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVpcAttachment {

@@ -145,6 +145,17 @@ pub struct CfnChannel {
     #[serde(rename = "Vpc")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc: Option<VpcOutputSettings>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnChannelarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnChannelarn;
+impl CfnChannelarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnChannel {

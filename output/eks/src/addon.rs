@@ -114,6 +114,9 @@ pub struct CfnAddon {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAddonarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -134,6 +137,14 @@ pub enum AddonResolveConflictsEnum {
 impl Default for AddonResolveConflictsEnum {
     fn default() -> Self {
         AddonResolveConflictsEnum::None
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAddonarn;
+impl CfnAddonarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

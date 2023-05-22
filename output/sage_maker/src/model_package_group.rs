@@ -61,6 +61,39 @@ pub struct CfnModelPackageGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnModelPackageGroupcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_model_package_group_arn: CfnModelPackageGroupmodelpackagegrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_model_package_group_status: CfnModelPackageGroupmodelpackagegroupstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelPackageGroupcreationtime;
+impl CfnModelPackageGroupcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelPackageGroupmodelpackagegrouparn;
+impl CfnModelPackageGroupmodelpackagegrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModelPackageGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelPackageGroupmodelpackagegroupstatus;
+impl CfnModelPackageGroupmodelpackagegroupstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModelPackageGroupStatus"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnModelPackageGroup {

@@ -28,6 +28,28 @@ pub struct CfnResourcePolicy {
     /// Update requires: Replacement
     #[serde(rename = "ResourceArn")]
     pub resource_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_policy_hash: CfnResourcePolicypolicyhash,
+
+    #[serde(skip_serializing)]
+    pub att_policy_id: CfnResourcePolicypolicyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourcePolicypolicyhash;
+impl CfnResourcePolicypolicyhash {
+    pub fn att_name(&self) -> &'static str {
+        r#"PolicyHash"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourcePolicypolicyid;
+impl CfnResourcePolicypolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PolicyId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {

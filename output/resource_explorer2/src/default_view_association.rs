@@ -15,6 +15,17 @@ pub struct CfnDefaultViewAssociation {
     /// Update requires: No interruption
     #[serde(rename = "ViewArn")]
     pub view_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_associated_aws_principal: CfnDefaultViewAssociationassociatedawsprincipal,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDefaultViewAssociationassociatedawsprincipal;
+impl CfnDefaultViewAssociationassociatedawsprincipal {
+    pub fn att_name(&self) -> &'static str {
+        r#"AssociatedAwsPrincipal"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDefaultViewAssociation {

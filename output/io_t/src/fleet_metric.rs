@@ -119,6 +119,17 @@ pub struct CfnFleetMetric {
     #[serde(rename = "Unit")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_metric_arn: CfnFleetMetricmetricarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFleetMetricmetricarn;
+impl CfnFleetMetricmetricarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"MetricArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFleetMetric {

@@ -55,6 +55,17 @@ pub struct CfnInstanceProfile {
     /// Update requires: No interruption
     #[serde(rename = "Roles")]
     pub roles: Vec<String>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnInstanceProfilearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstanceProfilearn;
+impl CfnInstanceProfilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnInstanceProfile {

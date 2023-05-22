@@ -98,6 +98,17 @@ pub struct CfnApiKey {
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_apikey_id: CfnApiKeyapikeyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApiKeyapikeyid;
+impl CfnApiKeyapikeyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"APIKeyId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnApiKey {

@@ -15,6 +15,17 @@ pub struct CfnOriginAccessControl {
     /// Update requires: No interruption
     #[serde(rename = "OriginAccessControlConfig")]
     pub origin_access_control_config: OriginAccessControlConfig,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnOriginAccessControlid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOriginAccessControlid;
+impl CfnOriginAccessControlid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnOriginAccessControl {

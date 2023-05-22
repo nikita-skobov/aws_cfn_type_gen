@@ -43,6 +43,39 @@ pub struct CfnLabel {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnLabelarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnLabelcreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnLabellastupdatedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLabelarn;
+impl CfnLabelarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLabelcreatedtime;
+impl CfnLabelcreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLabellastupdatedtime;
+impl CfnLabellastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLabel {

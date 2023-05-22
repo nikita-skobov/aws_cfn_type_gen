@@ -35,6 +35,50 @@ pub struct CfnSigningProfile {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnSigningProfilearn,
+
+    #[serde(skip_serializing)]
+    pub att_profile_name: CfnSigningProfileprofilename,
+
+    #[serde(skip_serializing)]
+    pub att_profile_version: CfnSigningProfileprofileversion,
+
+    #[serde(skip_serializing)]
+    pub att_profile_version_arn: CfnSigningProfileprofileversionarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSigningProfilearn;
+impl CfnSigningProfilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSigningProfileprofilename;
+impl CfnSigningProfileprofilename {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProfileName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSigningProfileprofileversion;
+impl CfnSigningProfileprofileversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProfileVersion"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSigningProfileprofileversionarn;
+impl CfnSigningProfileprofileversionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProfileVersionArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSigningProfile {

@@ -49,6 +49,28 @@ pub struct CfnPackagingGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPackagingGrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_domain_name: CfnPackagingGroupdomainname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPackagingGrouparn;
+impl CfnPackagingGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPackagingGroupdomainname;
+impl CfnPackagingGroupdomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPackagingGroup {

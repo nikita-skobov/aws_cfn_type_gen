@@ -54,6 +54,39 @@ pub struct CfnAllowList {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAllowListarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnAllowListid,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnAllowListstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAllowListarn;
+impl CfnAllowListarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAllowListid;
+impl CfnAllowListid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAllowListstatus;
+impl CfnAllowListstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAllowList {

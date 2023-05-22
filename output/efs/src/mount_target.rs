@@ -63,6 +63,28 @@ pub struct CfnMountTarget {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     pub subnet_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnMountTargetid,
+
+    #[serde(skip_serializing)]
+    pub att_ip_address: CfnMountTargetipaddress,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMountTargetid;
+impl CfnMountTargetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMountTargetipaddress;
+impl CfnMountTargetipaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpAddress"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMountTarget {

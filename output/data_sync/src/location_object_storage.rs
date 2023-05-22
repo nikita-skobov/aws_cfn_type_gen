@@ -161,6 +161,12 @@ pub struct CfnLocationObjectStorage {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationObjectStoragelocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationObjectStoragelocationuri,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -177,6 +183,22 @@ pub enum LocationObjectStorageServerProtocolEnum {
 impl Default for LocationObjectStorageServerProtocolEnum {
     fn default() -> Self {
         LocationObjectStorageServerProtocolEnum::Http
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationObjectStoragelocationarn;
+impl CfnLocationObjectStoragelocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationObjectStoragelocationuri;
+impl CfnLocationObjectStoragelocationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
     }
 }
 

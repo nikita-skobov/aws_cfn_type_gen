@@ -104,6 +104,28 @@ pub struct CfnService {
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnServicearn,
+
+    #[serde(skip_serializing)]
+    pub att_service_identifier: CfnServiceserviceidentifier,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicearn;
+impl CfnServicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceserviceidentifier;
+impl CfnServiceserviceidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceIdentifier"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnService {

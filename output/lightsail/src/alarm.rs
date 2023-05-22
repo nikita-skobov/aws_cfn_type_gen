@@ -142,6 +142,12 @@ pub struct CfnAlarm {
     #[serde(rename = "TreatMissingData")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub treat_missing_data: Option<AlarmTreatMissingDataEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_alarm_arn: CfnAlarmalarmarn,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnAlarmstate,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -300,6 +306,22 @@ pub enum AlarmTreatMissingDataEnum {
 impl Default for AlarmTreatMissingDataEnum {
     fn default() -> Self {
         AlarmTreatMissingDataEnum::Breaching
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAlarmalarmarn;
+impl CfnAlarmalarmarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AlarmArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAlarmstate;
+impl CfnAlarmstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
     }
 }
 

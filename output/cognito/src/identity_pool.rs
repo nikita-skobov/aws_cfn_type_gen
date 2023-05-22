@@ -143,6 +143,17 @@ pub struct CfnIdentityPool {
     #[serde(rename = "SupportedLoginProviders")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_login_providers: Option<serde_json::Value>,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnIdentityPoolname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIdentityPoolname;
+impl CfnIdentityPoolname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnIdentityPool {

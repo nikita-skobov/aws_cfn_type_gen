@@ -202,6 +202,18 @@ pub struct CfnFileSystem {
     #[serde(rename = "WindowsConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub windows_configuration: Option<WindowsConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_dnsname: CfnFileSystemdnsname,
+
+    #[serde(skip_serializing)]
+    pub att_lustre_mount_name: CfnFileSystemlustremountname,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnFileSystemresourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_root_volume_id: CfnFileSystemrootvolumeid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -218,6 +230,38 @@ pub enum FileSystemStorageTypeEnum {
 impl Default for FileSystemStorageTypeEnum {
     fn default() -> Self {
         FileSystemStorageTypeEnum::Hdd
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFileSystemdnsname;
+impl CfnFileSystemdnsname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DNSName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFileSystemlustremountname;
+impl CfnFileSystemlustremountname {
+    pub fn att_name(&self) -> &'static str {
+        r#"LustreMountName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFileSystemresourcearn;
+impl CfnFileSystemresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceARN"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFileSystemrootvolumeid;
+impl CfnFileSystemrootvolumeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RootVolumeId"#
     }
 }
 

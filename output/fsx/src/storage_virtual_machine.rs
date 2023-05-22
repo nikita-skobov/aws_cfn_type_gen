@@ -82,6 +82,15 @@ pub struct CfnStorageVirtualMachine {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnStorageVirtualMachineresourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_storage_virtual_machine_id: CfnStorageVirtualMachinestoragevirtualmachineid,
+
+    #[serde(skip_serializing)]
+    pub att_uuid: CfnStorageVirtualMachineuuid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -102,6 +111,30 @@ pub enum StorageVirtualMachineRootVolumeSecurityStyleEnum {
 impl Default for StorageVirtualMachineRootVolumeSecurityStyleEnum {
     fn default() -> Self {
         StorageVirtualMachineRootVolumeSecurityStyleEnum::Mixed
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStorageVirtualMachineresourcearn;
+impl CfnStorageVirtualMachineresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceARN"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStorageVirtualMachinestoragevirtualmachineid;
+impl CfnStorageVirtualMachinestoragevirtualmachineid {
+    pub fn att_name(&self) -> &'static str {
+        r#"StorageVirtualMachineId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStorageVirtualMachineuuid;
+impl CfnStorageVirtualMachineuuid {
+    pub fn att_name(&self) -> &'static str {
+        r#"UUID"#
     }
 }
 

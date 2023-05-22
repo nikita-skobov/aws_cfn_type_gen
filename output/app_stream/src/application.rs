@@ -148,6 +148,28 @@ pub struct CfnApplication {
     #[serde(rename = "WorkingDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub working_directory: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnApplicationarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnApplicationcreatedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationarn;
+impl CfnApplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationcreatedtime;
+impl CfnApplicationcreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnApplication {

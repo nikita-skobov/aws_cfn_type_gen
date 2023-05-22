@@ -573,6 +573,30 @@ pub struct CfnReplicationGroup {
     #[serde(rename = "UserGroupIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_group_ids: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_end_point_address: CfnReplicationGroupconfigurationendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_end_point_port: CfnReplicationGroupconfigurationendpointport,
+
+    #[serde(skip_serializing)]
+    pub att_primary_end_point_address: CfnReplicationGroupprimaryendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_primary_end_point_port: CfnReplicationGroupprimaryendpointport,
+
+    #[serde(skip_serializing)]
+    pub att_read_end_point_addresses: CfnReplicationGroupreadendpointaddresses,
+
+    #[serde(skip_serializing)]
+    pub att_read_end_point_ports: CfnReplicationGroupreadendpointports,
+
+    #[serde(skip_serializing)]
+    pub att_reader_end_point_address: CfnReplicationGroupreaderendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_reader_end_point_port: CfnReplicationGroupreaderendpointport,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -627,6 +651,70 @@ pub enum ReplicationGroupTransitEncryptionModeEnum {
 impl Default for ReplicationGroupTransitEncryptionModeEnum {
     fn default() -> Self {
         ReplicationGroupTransitEncryptionModeEnum::Preferred
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationGroupconfigurationendpointaddress;
+impl CfnReplicationGroupconfigurationendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConfigurationEndPoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationGroupconfigurationendpointport;
+impl CfnReplicationGroupconfigurationendpointport {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConfigurationEndPoint.Port"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationGroupprimaryendpointaddress;
+impl CfnReplicationGroupprimaryendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrimaryEndPoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationGroupprimaryendpointport;
+impl CfnReplicationGroupprimaryendpointport {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrimaryEndPoint.Port"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationGroupreadendpointaddresses;
+impl CfnReplicationGroupreadendpointaddresses {
+    pub fn att_name(&self) -> &'static str {
+        r#"ReadEndPoint.Addresses"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationGroupreadendpointports;
+impl CfnReplicationGroupreadendpointports {
+    pub fn att_name(&self) -> &'static str {
+        r#"ReadEndPoint.Ports"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationGroupreaderendpointaddress;
+impl CfnReplicationGroupreaderendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"ReaderEndPoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationGroupreaderendpointport;
+impl CfnReplicationGroupreaderendpointport {
+    pub fn att_name(&self) -> &'static str {
+        r#"ReaderEndPoint.Port"#
     }
 }
 

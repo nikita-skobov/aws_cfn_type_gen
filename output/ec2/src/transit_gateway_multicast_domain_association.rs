@@ -35,6 +35,39 @@ pub struct CfnTransitGatewayMulticastDomainAssociation {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayMulticastDomainId")]
     pub transit_gateway_multicast_domain_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_resource_id: CfnTransitGatewayMulticastDomainAssociationresourceid,
+
+    #[serde(skip_serializing)]
+    pub att_resource_type: CfnTransitGatewayMulticastDomainAssociationresourcetype,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnTransitGatewayMulticastDomainAssociationstate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastDomainAssociationresourceid;
+impl CfnTransitGatewayMulticastDomainAssociationresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastDomainAssociationresourcetype;
+impl CfnTransitGatewayMulticastDomainAssociationresourcetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastDomainAssociationstate;
+impl CfnTransitGatewayMulticastDomainAssociationstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayMulticastDomainAssociation {

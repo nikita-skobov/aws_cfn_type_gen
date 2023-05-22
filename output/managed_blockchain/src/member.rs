@@ -53,6 +53,28 @@ pub struct CfnMember {
     #[serde(rename = "NetworkId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub network_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_member_id: CfnMembermemberid,
+
+    #[serde(skip_serializing)]
+    pub att_network_id: CfnMembernetworkid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMembermemberid;
+impl CfnMembermemberid {
+    pub fn att_name(&self) -> &'static str {
+        r#"MemberId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMembernetworkid;
+impl CfnMembernetworkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMember {

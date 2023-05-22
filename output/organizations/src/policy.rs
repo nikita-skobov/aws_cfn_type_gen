@@ -113,6 +113,12 @@ pub struct CfnPolicy {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: PolicyTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPolicyarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnPolicyid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -137,6 +143,22 @@ pub enum PolicyTypeEnum {
 impl Default for PolicyTypeEnum {
     fn default() -> Self {
         PolicyTypeEnum::Aiservicesoptoutpolicy
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPolicyarn;
+impl CfnPolicyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPolicyid;
+impl CfnPolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

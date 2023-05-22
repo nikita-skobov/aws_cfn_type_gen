@@ -100,6 +100,18 @@ pub struct CfnVPC {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_cidr_block: CfnVPCcidrblock,
+
+    #[serde(skip_serializing)]
+    pub att_default_network_acl: CfnVPCdefaultnetworkacl,
+
+    #[serde(skip_serializing)]
+    pub att_default_security_group: CfnVPCdefaultsecuritygroup,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_id: CfnVPCvpcid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -120,6 +132,38 @@ pub enum VPCInstanceTenancyEnum {
 impl Default for VPCInstanceTenancyEnum {
     fn default() -> Self {
         VPCInstanceTenancyEnum::Dedicated
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCcidrblock;
+impl CfnVPCcidrblock {
+    pub fn att_name(&self) -> &'static str {
+        r#"CidrBlock"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCdefaultnetworkacl;
+impl CfnVPCdefaultnetworkacl {
+    pub fn att_name(&self) -> &'static str {
+        r#"DefaultNetworkAcl"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCdefaultsecuritygroup;
+impl CfnVPCdefaultsecuritygroup {
+    pub fn att_name(&self) -> &'static str {
+        r#"DefaultSecurityGroup"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCvpcid;
+impl CfnVPCvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcId"#
     }
 }
 

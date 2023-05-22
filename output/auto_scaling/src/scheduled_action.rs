@@ -115,6 +115,17 @@ pub struct CfnScheduledAction {
     #[serde(rename = "TimeZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub time_zone: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_scheduled_action_name: CfnScheduledActionscheduledactionname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledActionscheduledactionname;
+impl CfnScheduledActionscheduledactionname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ScheduledActionName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnScheduledAction {

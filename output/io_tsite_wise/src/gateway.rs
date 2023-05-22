@@ -48,6 +48,17 @@ pub struct CfnGateway {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_gateway_id: CfnGatewaygatewayid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewaygatewayid;
+impl CfnGatewaygatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"GatewayId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGateway {

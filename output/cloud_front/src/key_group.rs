@@ -13,6 +13,28 @@ pub struct CfnKeyGroup {
     /// Update requires: No interruption
     #[serde(rename = "KeyGroupConfig")]
     pub key_group_config: KeyGroupConfig,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnKeyGroupid,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnKeyGrouplastmodifiedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnKeyGroupid;
+impl CfnKeyGroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnKeyGrouplastmodifiedtime;
+impl CfnKeyGrouplastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnKeyGroup {

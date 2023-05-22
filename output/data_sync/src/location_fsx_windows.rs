@@ -110,6 +110,28 @@ pub struct CfnLocationFSxWindows {
     /// Update requires: Replacement
     #[serde(rename = "User")]
     pub user: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationFSxWindowslocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationFSxWindowslocationuri,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationFSxWindowslocationarn;
+impl CfnLocationFSxWindowslocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationFSxWindowslocationuri;
+impl CfnLocationFSxWindowslocationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocationFSxWindows {

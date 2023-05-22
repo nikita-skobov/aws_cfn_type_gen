@@ -30,6 +30,50 @@ pub struct CfnScheduleGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnScheduleGrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_creation_date: CfnScheduleGroupcreationdate,
+
+    #[serde(skip_serializing)]
+    pub att_last_modification_date: CfnScheduleGrouplastmodificationdate,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnScheduleGroupstate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduleGrouparn;
+impl CfnScheduleGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduleGroupcreationdate;
+impl CfnScheduleGroupcreationdate {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduleGrouplastmodificationdate;
+impl CfnScheduleGrouplastmodificationdate {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModificationDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduleGroupstate;
+impl CfnScheduleGroupstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnScheduleGroup {

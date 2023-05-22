@@ -59,6 +59,9 @@ pub struct CfnListener {
     /// Update requires: No interruption
     #[serde(rename = "Protocol")]
     pub protocol: ListenerProtocolEnum,
+
+    #[serde(skip_serializing)]
+    pub att_listener_arn: CfnListenerlistenerarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -92,6 +95,14 @@ pub enum ListenerProtocolEnum {
 impl Default for ListenerProtocolEnum {
     fn default() -> Self {
         ListenerProtocolEnum::Tcp
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListenerlistenerarn;
+impl CfnListenerlistenerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ListenerArn"#
     }
 }
 

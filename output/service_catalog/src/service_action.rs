@@ -68,6 +68,9 @@ pub struct CfnServiceAction {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnServiceActionid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -80,6 +83,14 @@ pub enum ServiceActionDefinitionTypeEnum {
 impl Default for ServiceActionDefinitionTypeEnum {
     fn default() -> Self {
         ServiceActionDefinitionTypeEnum::Ssmautomation
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceActionid;
+impl CfnServiceActionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

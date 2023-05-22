@@ -63,6 +63,28 @@ pub struct CfnCostCategory {
     #[serde(rename = "SplitChargeRules")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub split_charge_rules: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCostCategoryarn,
+
+    #[serde(skip_serializing)]
+    pub att_effective_start: CfnCostCategoryeffectivestart,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCostCategoryarn;
+impl CfnCostCategoryarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCostCategoryeffectivestart;
+impl CfnCostCategoryeffectivestart {
+    pub fn att_name(&self) -> &'static str {
+        r#"EffectiveStart"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCostCategory {

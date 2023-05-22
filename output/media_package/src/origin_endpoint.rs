@@ -174,6 +174,28 @@ pub struct CfnOriginEndpoint {
     #[serde(rename = "Whitelist")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub whitelist: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnOriginEndpointarn,
+
+    #[serde(skip_serializing)]
+    pub att_url: CfnOriginEndpointurl,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOriginEndpointarn;
+impl CfnOriginEndpointarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOriginEndpointurl;
+impl CfnOriginEndpointurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"Url"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnOriginEndpoint {

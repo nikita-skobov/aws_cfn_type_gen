@@ -72,6 +72,50 @@ pub struct CfnListener {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnListenerarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnListenerid,
+
+    #[serde(skip_serializing)]
+    pub att_service_arn: CfnListenerservicearn,
+
+    #[serde(skip_serializing)]
+    pub att_service_id: CfnListenerserviceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListenerarn;
+impl CfnListenerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListenerid;
+impl CfnListenerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListenerservicearn;
+impl CfnListenerservicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListenerserviceid;
+impl CfnListenerserviceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnListener {

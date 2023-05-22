@@ -38,6 +38,52 @@ pub struct CfnNetworkInsightsAccessScope {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_created_date: CfnNetworkInsightsAccessScopecreateddate,
+
+    #[serde(skip_serializing)]
+    pub att_network_insights_access_scope_arn:
+        CfnNetworkInsightsAccessScopenetworkinsightsaccessscopearn,
+
+    #[serde(skip_serializing)]
+    pub att_network_insights_access_scope_id:
+        CfnNetworkInsightsAccessScopenetworkinsightsaccessscopeid,
+
+    #[serde(skip_serializing)]
+    pub att_updated_date: CfnNetworkInsightsAccessScopeupdateddate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopecreateddate;
+impl CfnNetworkInsightsAccessScopecreateddate {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopenetworkinsightsaccessscopearn;
+impl CfnNetworkInsightsAccessScopenetworkinsightsaccessscopearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkInsightsAccessScopeArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopenetworkinsightsaccessscopeid;
+impl CfnNetworkInsightsAccessScopenetworkinsightsaccessscopeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkInsightsAccessScopeId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopeupdateddate;
+impl CfnNetworkInsightsAccessScopeupdateddate {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdatedDate"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnNetworkInsightsAccessScope {

@@ -108,6 +108,28 @@ pub struct CfnProfile {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_profile_arn: CfnProfileprofilearn,
+
+    #[serde(skip_serializing)]
+    pub att_profile_id: CfnProfileprofileid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProfileprofilearn;
+impl CfnProfileprofilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProfileArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProfileprofileid;
+impl CfnProfileprofileid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProfileId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnProfile {

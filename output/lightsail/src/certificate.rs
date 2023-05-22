@@ -50,6 +50,28 @@ pub struct CfnCertificate {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_certificate_arn: CfnCertificatecertificatearn,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnCertificatestatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatecertificatearn;
+impl CfnCertificatecertificatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CertificateArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatestatus;
+impl CfnCertificatestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCertificate {

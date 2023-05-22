@@ -112,6 +112,12 @@ pub struct CfnVPCEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_creation_timestamp: CfnVPCEndpointcreationtimestamp,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnVPCEndpointid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -132,6 +138,22 @@ pub enum VPCEndpointVpcEndpointTypeEnum {
 impl Default for VPCEndpointVpcEndpointTypeEnum {
     fn default() -> Self {
         VPCEndpointVpcEndpointTypeEnum::Gateway
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCEndpointcreationtimestamp;
+impl CfnVPCEndpointcreationtimestamp {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTimestamp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCEndpointid;
+impl CfnVPCEndpointid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

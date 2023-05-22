@@ -80,6 +80,28 @@ pub struct CfnGrant {
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_grant_arn: CfnGrantgrantarn,
+
+    #[serde(skip_serializing)]
+    pub att_version: CfnGrantversion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGrantgrantarn;
+impl CfnGrantgrantarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"GrantArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGrantversion;
+impl CfnGrantversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGrant {

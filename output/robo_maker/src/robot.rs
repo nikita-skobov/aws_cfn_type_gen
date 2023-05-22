@@ -72,6 +72,9 @@ pub struct CfnRobot {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRobotarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -92,6 +95,14 @@ pub enum RobotArchitectureEnum {
 impl Default for RobotArchitectureEnum {
     fn default() -> Self {
         RobotArchitectureEnum::Arm64
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRobotarn;
+impl CfnRobotarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

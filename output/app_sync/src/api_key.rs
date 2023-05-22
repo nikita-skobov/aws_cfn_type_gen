@@ -47,6 +47,28 @@ pub struct CfnApiKey {
     #[serde(rename = "Expires")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub expires: Option<f64>,
+
+    #[serde(skip_serializing)]
+    pub att_api_key: CfnApiKeyapikey,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnApiKeyarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApiKeyapikey;
+impl CfnApiKeyapikey {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApiKey"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApiKeyarn;
+impl CfnApiKeyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnApiKey {

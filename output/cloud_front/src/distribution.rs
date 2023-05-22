@@ -23,6 +23,28 @@ pub struct CfnDistribution {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_domain_name: CfnDistributiondomainname,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnDistributionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDistributiondomainname;
+impl CfnDistributiondomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDistributionid;
+impl CfnDistributionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDistribution {

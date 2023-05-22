@@ -38,6 +38,61 @@ pub struct CfnStreamConsumer {
     /// Update requires: Replacement
     #[serde(rename = "StreamARN")]
     pub stream_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_consumer_arn: CfnStreamConsumerconsumerarn,
+
+    #[serde(skip_serializing)]
+    pub att_consumer_creation_timestamp: CfnStreamConsumerconsumercreationtimestamp,
+
+    #[serde(skip_serializing)]
+    pub att_consumer_name: CfnStreamConsumerconsumername,
+
+    #[serde(skip_serializing)]
+    pub att_consumer_status: CfnStreamConsumerconsumerstatus,
+
+    #[serde(skip_serializing)]
+    pub att_stream_arn: CfnStreamConsumerstreamarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamConsumerconsumerarn;
+impl CfnStreamConsumerconsumerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConsumerARN"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamConsumerconsumercreationtimestamp;
+impl CfnStreamConsumerconsumercreationtimestamp {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConsumerCreationTimestamp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamConsumerconsumername;
+impl CfnStreamConsumerconsumername {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConsumerName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamConsumerconsumerstatus;
+impl CfnStreamConsumerconsumerstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConsumerStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamConsumerstreamarn;
+impl CfnStreamConsumerstreamarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"StreamARN"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnStreamConsumer {

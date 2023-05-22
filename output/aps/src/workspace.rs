@@ -50,6 +50,39 @@ pub struct CfnWorkspace {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnWorkspacearn,
+
+    #[serde(skip_serializing)]
+    pub att_prometheus_endpoint: CfnWorkspaceprometheusendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_workspace_id: CfnWorkspaceworkspaceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspacearn;
+impl CfnWorkspacearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspaceprometheusendpoint;
+impl CfnWorkspaceprometheusendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrometheusEndpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspaceworkspaceid;
+impl CfnWorkspaceworkspaceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"WorkspaceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnWorkspace {

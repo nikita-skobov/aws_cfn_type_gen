@@ -190,6 +190,28 @@ pub struct CfnRestApi {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_rest_api_id: CfnRestApirestapiid,
+
+    #[serde(skip_serializing)]
+    pub att_root_resource_id: CfnRestApirootresourceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRestApirestapiid;
+impl CfnRestApirestapiid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RestApiId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRestApirootresourceid;
+impl CfnRestApirootresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RootResourceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRestApi {

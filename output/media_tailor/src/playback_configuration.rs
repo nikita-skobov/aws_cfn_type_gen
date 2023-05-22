@@ -164,6 +164,64 @@ pub struct CfnPlaybackConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "VideoContentSourceUrl")]
     pub video_content_source_url: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_dash_configuration_manifest_endpoint_prefix:
+        CfnPlaybackConfigurationdashconfigurationmanifestendpointprefix,
+
+    #[serde(skip_serializing)]
+    pub att_hls_configuration_manifest_endpoint_prefix:
+        CfnPlaybackConfigurationhlsconfigurationmanifestendpointprefix,
+
+    #[serde(skip_serializing)]
+    pub att_playback_configuration_arn: CfnPlaybackConfigurationplaybackconfigurationarn,
+
+    #[serde(skip_serializing)]
+    pub att_playback_endpoint_prefix: CfnPlaybackConfigurationplaybackendpointprefix,
+
+    #[serde(skip_serializing)]
+    pub att_session_initialization_endpoint_prefix:
+        CfnPlaybackConfigurationsessioninitializationendpointprefix,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlaybackConfigurationdashconfigurationmanifestendpointprefix;
+impl CfnPlaybackConfigurationdashconfigurationmanifestendpointprefix {
+    pub fn att_name(&self) -> &'static str {
+        r#"DashConfiguration.ManifestEndpointPrefix"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlaybackConfigurationhlsconfigurationmanifestendpointprefix;
+impl CfnPlaybackConfigurationhlsconfigurationmanifestendpointprefix {
+    pub fn att_name(&self) -> &'static str {
+        r#"HlsConfiguration.ManifestEndpointPrefix"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlaybackConfigurationplaybackconfigurationarn;
+impl CfnPlaybackConfigurationplaybackconfigurationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"PlaybackConfigurationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlaybackConfigurationplaybackendpointprefix;
+impl CfnPlaybackConfigurationplaybackendpointprefix {
+    pub fn att_name(&self) -> &'static str {
+        r#"PlaybackEndpointPrefix"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlaybackConfigurationsessioninitializationendpointprefix;
+impl CfnPlaybackConfigurationsessioninitializationendpointprefix {
+    pub fn att_name(&self) -> &'static str {
+        r#"SessionInitializationEndpointPrefix"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPlaybackConfiguration {

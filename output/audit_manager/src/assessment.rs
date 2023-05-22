@@ -142,6 +142,12 @@ pub struct CfnAssessment {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAssessmentarn,
+
+    #[serde(skip_serializing)]
+    pub att_assessment_id: CfnAssessmentassessmentid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -158,6 +164,22 @@ pub enum AssessmentStatusEnum {
 impl Default for AssessmentStatusEnum {
     fn default() -> Self {
         AssessmentStatusEnum::Active
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAssessmentarn;
+impl CfnAssessmentarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAssessmentassessmentid;
+impl CfnAssessmentassessmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AssessmentId"#
     }
 }
 

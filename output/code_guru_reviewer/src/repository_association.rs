@@ -96,6 +96,17 @@ pub struct CfnRepositoryAssociation {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_association_arn: CfnRepositoryAssociationassociationarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositoryAssociationassociationarn;
+impl CfnRepositoryAssociationassociationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AssociationArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRepositoryAssociation {

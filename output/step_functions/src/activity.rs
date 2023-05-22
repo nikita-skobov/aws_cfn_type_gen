@@ -33,6 +33,28 @@ pub struct CfnActivity {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagsEntry>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnActivityarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnActivityname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnActivityarn;
+impl CfnActivityarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnActivityname;
+impl CfnActivityname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnActivity {

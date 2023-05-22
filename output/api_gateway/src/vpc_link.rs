@@ -45,6 +45,17 @@ pub struct CfnVpcLink {
     /// Update requires: Replacement
     #[serde(rename = "TargetArns")]
     pub target_arns: Vec<String>,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_link_id: CfnVpcLinkvpclinkid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcLinkvpclinkid;
+impl CfnVpcLinkvpclinkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcLinkId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVpcLink {

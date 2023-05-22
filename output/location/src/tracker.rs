@@ -73,6 +73,18 @@ pub struct CfnTracker {
     /// Update requires: Replacement
     #[serde(rename = "TrackerName")]
     pub tracker_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnTrackerarn,
+
+    #[serde(skip_serializing)]
+    pub att_create_time: CfnTrackercreatetime,
+
+    #[serde(skip_serializing)]
+    pub att_tracker_arn: CfnTrackertrackerarn,
+
+    #[serde(skip_serializing)]
+    pub att_update_time: CfnTrackerupdatetime,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -93,6 +105,38 @@ pub enum TrackerPositionFilteringEnum {
 impl Default for TrackerPositionFilteringEnum {
     fn default() -> Self {
         TrackerPositionFilteringEnum::Accuracybased
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTrackerarn;
+impl CfnTrackerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTrackercreatetime;
+impl CfnTrackercreatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreateTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTrackertrackerarn;
+impl CfnTrackertrackerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TrackerArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTrackerupdatetime;
+impl CfnTrackerupdatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdateTime"#
     }
 }
 

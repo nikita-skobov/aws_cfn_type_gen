@@ -74,6 +74,17 @@ pub struct CfnPortfolio {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_portfolio_name: CfnPortfolioportfolioname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPortfolioportfolioname;
+impl CfnPortfolioportfolioname {
+    pub fn att_name(&self) -> &'static str {
+        r#"PortfolioName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPortfolio {

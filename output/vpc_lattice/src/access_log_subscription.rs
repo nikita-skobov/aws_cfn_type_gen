@@ -35,6 +35,50 @@ pub struct CfnAccessLogSubscription {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAccessLogSubscriptionarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnAccessLogSubscriptionid,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnAccessLogSubscriptionresourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_resource_id: CfnAccessLogSubscriptionresourceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessLogSubscriptionarn;
+impl CfnAccessLogSubscriptionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessLogSubscriptionid;
+impl CfnAccessLogSubscriptionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessLogSubscriptionresourcearn;
+impl CfnAccessLogSubscriptionresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessLogSubscriptionresourceid;
+impl CfnAccessLogSubscriptionresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccessLogSubscription {

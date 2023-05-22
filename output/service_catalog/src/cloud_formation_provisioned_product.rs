@@ -208,6 +208,39 @@ pub struct CfnCloudFormationProvisionedProduct {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_cloudformation_stack_arn: CfnCloudFormationProvisionedProductcloudformationstackarn,
+
+    #[serde(skip_serializing)]
+    pub att_provisioned_product_id: CfnCloudFormationProvisionedProductprovisionedproductid,
+
+    #[serde(skip_serializing)]
+    pub att_record_id: CfnCloudFormationProvisionedProductrecordid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCloudFormationProvisionedProductcloudformationstackarn;
+impl CfnCloudFormationProvisionedProductcloudformationstackarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CloudformationStackArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCloudFormationProvisionedProductprovisionedproductid;
+impl CfnCloudFormationProvisionedProductprovisionedproductid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProvisionedProductId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCloudFormationProvisionedProductrecordid;
+impl CfnCloudFormationProvisionedProductrecordid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RecordId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCloudFormationProvisionedProduct {

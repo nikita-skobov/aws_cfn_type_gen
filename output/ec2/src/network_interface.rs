@@ -135,6 +135,12 @@ pub struct CfnNetworkInterface {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnNetworkInterfaceid,
+
+    #[serde(skip_serializing)]
+    pub att_primary_private_ip_address: CfnNetworkInterfaceprimaryprivateipaddress,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -155,6 +161,22 @@ pub enum NetworkInterfaceInterfaceTypeEnum {
 impl Default for NetworkInterfaceInterfaceTypeEnum {
     fn default() -> Self {
         NetworkInterfaceInterfaceTypeEnum::Branch
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInterfaceid;
+impl CfnNetworkInterfaceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInterfaceprimaryprivateipaddress;
+impl CfnNetworkInterfaceprimaryprivateipaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrimaryPrivateIpAddress"#
     }
 }
 

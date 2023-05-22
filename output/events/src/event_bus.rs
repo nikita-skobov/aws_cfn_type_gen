@@ -51,6 +51,39 @@ pub struct CfnEventBus {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagEntry>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEventBusarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnEventBusname,
+
+    #[serde(skip_serializing)]
+    pub att_policy: CfnEventBuspolicy,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventBusarn;
+impl CfnEventBusarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventBusname;
+impl CfnEventBusname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventBuspolicy;
+impl CfnEventBuspolicy {
+    pub fn att_name(&self) -> &'static str {
+        r#"Policy"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEventBus {

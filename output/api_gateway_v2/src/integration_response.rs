@@ -87,6 +87,17 @@ pub struct CfnIntegrationResponse {
     #[serde(rename = "TemplateSelectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub template_selection_expression: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_integration_response_id: CfnIntegrationResponseintegrationresponseid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIntegrationResponseintegrationresponseid;
+impl CfnIntegrationResponseintegrationresponseid {
+    pub fn att_name(&self) -> &'static str {
+        r#"IntegrationResponseId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnIntegrationResponse {

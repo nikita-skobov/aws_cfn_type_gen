@@ -120,6 +120,9 @@ pub struct CfnCapacityReservationFleet {
     #[serde(rename = "TotalTargetCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub total_target_capacity: Option<i64>,
+
+    #[serde(skip_serializing)]
+    pub att_capacity_reservation_fleet_id: CfnCapacityReservationFleetcapacityreservationfleetid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -145,6 +148,14 @@ pub enum CapacityReservationFleetTenancyEnum {
 impl Default for CapacityReservationFleetTenancyEnum {
     fn default() -> Self {
         CapacityReservationFleetTenancyEnum::Default
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCapacityReservationFleetcapacityreservationfleetid;
+impl CfnCapacityReservationFleetcapacityreservationfleetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CapacityReservationFleetId"#
     }
 }
 

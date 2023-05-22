@@ -142,6 +142,17 @@ pub struct CfnCompositeAlarm {
     #[serde(rename = "OKActions")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub okactions: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCompositeAlarmarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCompositeAlarmarn;
+impl CfnCompositeAlarmarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCompositeAlarm {

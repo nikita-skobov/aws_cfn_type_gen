@@ -150,6 +150,9 @@ pub struct CfnEndpointGroup {
     #[serde(rename = "TrafficDialPercentage")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub traffic_dial_percentage: Option<f64>,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_group_arn: CfnEndpointGroupendpointgrouparn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -170,6 +173,14 @@ pub enum EndpointGroupHealthCheckProtocolEnum {
 impl Default for EndpointGroupHealthCheckProtocolEnum {
     fn default() -> Self {
         EndpointGroupHealthCheckProtocolEnum::Http
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointGroupendpointgrouparn;
+impl CfnEndpointGroupendpointgrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointGroupArn"#
     }
 }
 

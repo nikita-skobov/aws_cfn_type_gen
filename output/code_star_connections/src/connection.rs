@@ -65,6 +65,15 @@ pub struct CfnConnection {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_connection_arn: CfnConnectionconnectionarn,
+
+    #[serde(skip_serializing)]
+    pub att_connection_status: CfnConnectionconnectionstatus,
+
+    #[serde(skip_serializing)]
+    pub att_owner_account_id: CfnConnectionowneraccountid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -85,6 +94,30 @@ pub enum ConnectionProviderTypeEnum {
 impl Default for ConnectionProviderTypeEnum {
     fn default() -> Self {
         ConnectionProviderTypeEnum::Bitbucket
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectionconnectionarn;
+impl CfnConnectionconnectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConnectionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectionconnectionstatus;
+impl CfnConnectionconnectionstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConnectionStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectionowneraccountid;
+impl CfnConnectionowneraccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerAccountId"#
     }
 }
 

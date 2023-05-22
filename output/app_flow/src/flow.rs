@@ -130,6 +130,9 @@ pub struct CfnFlow {
     /// Update requires: No interruption
     #[serde(rename = "TriggerConfig")]
     pub trigger_config: TriggerConfig,
+
+    #[serde(skip_serializing)]
+    pub att_flow_arn: CfnFlowflowarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -162,6 +165,14 @@ pub enum FlowFlowStatusEnum {
 impl Default for FlowFlowStatusEnum {
     fn default() -> Self {
         FlowFlowStatusEnum::Active
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowflowarn;
+impl CfnFlowflowarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FlowArn"#
     }
 }
 

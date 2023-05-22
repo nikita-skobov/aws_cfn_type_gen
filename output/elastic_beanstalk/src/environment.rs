@@ -187,6 +187,17 @@ pub struct CfnEnvironment {
     #[serde(rename = "VersionLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version_label: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_url: CfnEnvironmentendpointurl,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentendpointurl;
+impl CfnEnvironmentendpointurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointURL"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEnvironment {

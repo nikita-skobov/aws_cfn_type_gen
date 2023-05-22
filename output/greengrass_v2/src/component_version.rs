@@ -46,6 +46,39 @@ pub struct CfnComponentVersion {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnComponentVersionarn,
+
+    #[serde(skip_serializing)]
+    pub att_component_name: CfnComponentVersioncomponentname,
+
+    #[serde(skip_serializing)]
+    pub att_component_version: CfnComponentVersioncomponentversion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnComponentVersionarn;
+impl CfnComponentVersionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnComponentVersioncomponentname;
+impl CfnComponentVersioncomponentname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ComponentName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnComponentVersioncomponentversion;
+impl CfnComponentVersioncomponentversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"ComponentVersion"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnComponentVersion {

@@ -33,6 +33,28 @@ pub struct CfnAccessPolicy {
     /// Update requires: No interruption
     #[serde(rename = "AccessPolicyResource")]
     pub access_policy_resource: AccessPolicyResource,
+
+    #[serde(skip_serializing)]
+    pub att_access_policy_arn: CfnAccessPolicyaccesspolicyarn,
+
+    #[serde(skip_serializing)]
+    pub att_access_policy_id: CfnAccessPolicyaccesspolicyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPolicyaccesspolicyarn;
+impl CfnAccessPolicyaccesspolicyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AccessPolicyArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPolicyaccesspolicyid;
+impl CfnAccessPolicyaccesspolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AccessPolicyId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccessPolicy {

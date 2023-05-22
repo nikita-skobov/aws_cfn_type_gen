@@ -79,6 +79,13 @@ pub struct CfnWorkGroup {
     #[serde(rename = "WorkGroupConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub work_group_configuration: Option<WorkGroupConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnWorkGroupcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_work_group_configuration_engine_version_effective_engine_version:
+        CfnWorkGroupworkgroupconfigurationengineversioneffectiveengineversion,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -95,6 +102,22 @@ pub enum WorkGroupStateEnum {
 impl Default for WorkGroupStateEnum {
     fn default() -> Self {
         WorkGroupStateEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkGroupcreationtime;
+impl CfnWorkGroupcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkGroupworkgroupconfigurationengineversioneffectiveengineversion;
+impl CfnWorkGroupworkgroupconfigurationengineversioneffectiveengineversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"WorkGroupConfiguration.EngineVersion.EffectiveEngineVersion"#
     }
 }
 

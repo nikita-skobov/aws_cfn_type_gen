@@ -73,6 +73,17 @@ pub struct CfnAssessmentTemplate {
     #[serde(rename = "UserAttributesForFindings")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_attributes_for_findings: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAssessmentTemplatearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAssessmentTemplatearn;
+impl CfnAssessmentTemplatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAssessmentTemplate {

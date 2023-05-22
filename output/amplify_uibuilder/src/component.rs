@@ -163,6 +163,17 @@ pub struct CfnComponent {
     /// Update requires: No interruption
     #[serde(rename = "Variants")]
     pub variants: Vec<ComponentVariant>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnComponentid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnComponentid;
+impl CfnComponentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnComponent {

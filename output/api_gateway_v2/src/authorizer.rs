@@ -133,6 +133,17 @@ pub struct CfnAuthorizer {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_authorizer_id: CfnAuthorizerauthorizerid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAuthorizerauthorizerid;
+impl CfnAuthorizerauthorizerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AuthorizerId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAuthorizer {

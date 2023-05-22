@@ -204,6 +204,28 @@ pub struct CfnApi {
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_api_endpoint: CfnApiapiendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_api_id: CfnApiapiid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApiapiendpoint;
+impl CfnApiapiendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApiEndpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApiapiid;
+impl CfnApiapiid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApiId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnApi {

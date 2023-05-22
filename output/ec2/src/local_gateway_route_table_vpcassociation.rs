@@ -34,6 +34,40 @@ pub struct CfnLocalGatewayRouteTableVPCAssociation {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_local_gateway_id: CfnLocalGatewayRouteTableVPCAssociationlocalgatewayid,
+
+    #[serde(skip_serializing)]
+    pub att_local_gateway_route_table_vpc_association_id:
+        CfnLocalGatewayRouteTableVPCAssociationlocalgatewayroutetablevpcassociationid,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnLocalGatewayRouteTableVPCAssociationstate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableVPCAssociationlocalgatewayid;
+impl CfnLocalGatewayRouteTableVPCAssociationlocalgatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocalGatewayId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableVPCAssociationlocalgatewayroutetablevpcassociationid;
+impl CfnLocalGatewayRouteTableVPCAssociationlocalgatewayroutetablevpcassociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocalGatewayRouteTableVpcAssociationId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRouteTableVPCAssociationstate;
+impl CfnLocalGatewayRouteTableVPCAssociationstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocalGatewayRouteTableVPCAssociation {

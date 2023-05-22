@@ -117,6 +117,61 @@ pub struct CfnMonitor {
     #[serde(rename = "TrafficPercentageToMonitor")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub traffic_percentage_to_monitor: Option<i64>,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnMonitorcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_modified_at: CfnMonitormodifiedat,
+
+    #[serde(skip_serializing)]
+    pub att_monitor_arn: CfnMonitormonitorarn,
+
+    #[serde(skip_serializing)]
+    pub att_processing_status: CfnMonitorprocessingstatus,
+
+    #[serde(skip_serializing)]
+    pub att_processing_status_info: CfnMonitorprocessingstatusinfo,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMonitorcreatedat;
+impl CfnMonitorcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMonitormodifiedat;
+impl CfnMonitormodifiedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModifiedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMonitormonitorarn;
+impl CfnMonitormonitorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"MonitorArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMonitorprocessingstatus;
+impl CfnMonitorprocessingstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProcessingStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMonitorprocessingstatusinfo;
+impl CfnMonitorprocessingstatusinfo {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProcessingStatusInfo"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMonitor {

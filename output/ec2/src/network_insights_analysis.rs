@@ -47,6 +47,61 @@ pub struct CfnNetworkInsightsAnalysis {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_network_insights_analysis_arn: CfnNetworkInsightsAnalysisnetworkinsightsanalysisarn,
+
+    #[serde(skip_serializing)]
+    pub att_network_insights_analysis_id: CfnNetworkInsightsAnalysisnetworkinsightsanalysisid,
+
+    #[serde(skip_serializing)]
+    pub att_start_date: CfnNetworkInsightsAnalysisstartdate,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnNetworkInsightsAnalysisstatus,
+
+    #[serde(skip_serializing)]
+    pub att_status_message: CfnNetworkInsightsAnalysisstatusmessage,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAnalysisnetworkinsightsanalysisarn;
+impl CfnNetworkInsightsAnalysisnetworkinsightsanalysisarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkInsightsAnalysisArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAnalysisnetworkinsightsanalysisid;
+impl CfnNetworkInsightsAnalysisnetworkinsightsanalysisid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkInsightsAnalysisId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAnalysisstartdate;
+impl CfnNetworkInsightsAnalysisstartdate {
+    pub fn att_name(&self) -> &'static str {
+        r#"StartDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAnalysisstatus;
+impl CfnNetworkInsightsAnalysisstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAnalysisstatusmessage;
+impl CfnNetworkInsightsAnalysisstatusmessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"StatusMessage"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnNetworkInsightsAnalysis {

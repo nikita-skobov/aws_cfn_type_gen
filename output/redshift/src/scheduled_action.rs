@@ -109,6 +109,17 @@ pub struct CfnScheduledAction {
     #[serde(rename = "TargetAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub target_action: Option<ScheduledActionType>,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnScheduledActionstate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledActionstate;
+impl CfnScheduledActionstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnScheduledAction {

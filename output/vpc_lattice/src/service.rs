@@ -77,6 +77,83 @@ pub struct CfnService {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnServicearn,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnServicecreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_dns_entry_domain_name: CfnServicednsentrydomainname,
+
+    #[serde(skip_serializing)]
+    pub att_dns_entry_hosted_zone_id: CfnServicednsentryhostedzoneid,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnServiceid,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_at: CfnServicelastupdatedat,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnServicestatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicearn;
+impl CfnServicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicecreatedat;
+impl CfnServicecreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicednsentrydomainname;
+impl CfnServicednsentrydomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DnsEntry.DomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicednsentryhostedzoneid;
+impl CfnServicednsentryhostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DnsEntry.HostedZoneId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceid;
+impl CfnServiceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicelastupdatedat;
+impl CfnServicelastupdatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicestatus;
+impl CfnServicestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnService {

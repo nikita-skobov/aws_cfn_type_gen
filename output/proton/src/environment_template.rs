@@ -100,6 +100,9 @@ pub struct CfnEnvironmentTemplate {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEnvironmentTemplatearn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -112,6 +115,14 @@ pub enum EnvironmentTemplateProvisioningEnum {
 impl Default for EnvironmentTemplateProvisioningEnum {
     fn default() -> Self {
         EnvironmentTemplateProvisioningEnum::Customermanaged
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentTemplatearn;
+impl CfnEnvironmentTemplatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

@@ -44,6 +44,17 @@ pub struct CfnAlias {
     /// Update requires: No interruption
     #[serde(rename = "RoutingStrategy")]
     pub routing_strategy: RoutingStrategy,
+
+    #[serde(skip_serializing)]
+    pub att_alias_id: CfnAliasaliasid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAliasaliasid;
+impl CfnAliasaliasid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AliasId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAlias {

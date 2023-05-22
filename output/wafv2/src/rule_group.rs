@@ -143,6 +143,39 @@ pub struct CfnRuleGroup {
     /// Update requires: No interruption
     #[serde(rename = "VisibilityConfig")]
     pub visibility_config: VisibilityConfig,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRuleGrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnRuleGroupid,
+
+    #[serde(skip_serializing)]
+    pub att_label_namespace: CfnRuleGrouplabelnamespace,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRuleGrouparn;
+impl CfnRuleGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRuleGroupid;
+impl CfnRuleGroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRuleGrouplabelnamespace;
+impl CfnRuleGrouplabelnamespace {
+    pub fn att_name(&self) -> &'static str {
+        r#"LabelNamespace"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRuleGroup {

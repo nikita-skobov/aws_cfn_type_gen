@@ -77,6 +77,12 @@ pub struct CfnLocationS3 {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationS3locationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationS3locationuri,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -117,6 +123,22 @@ pub enum LocationS3S3StorageClassEnum {
 impl Default for LocationS3S3StorageClassEnum {
     fn default() -> Self {
         LocationS3S3StorageClassEnum::Deeparchive
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationS3locationarn;
+impl CfnLocationS3locationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationS3locationuri;
+impl CfnLocationS3locationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
     }
 }
 

@@ -98,6 +98,28 @@ pub struct CfnBucket {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_bucket_arn: CfnBucketbucketarn,
+
+    #[serde(skip_serializing)]
+    pub att_url: CfnBucketurl,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBucketbucketarn;
+impl CfnBucketbucketarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"BucketArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBucketurl;
+impl CfnBucketurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"Url"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnBucket {

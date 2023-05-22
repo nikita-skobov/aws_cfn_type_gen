@@ -126,6 +126,50 @@ pub struct CfnMetricStream {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnMetricStreamarn,
+
+    #[serde(skip_serializing)]
+    pub att_creation_date: CfnMetricStreamcreationdate,
+
+    #[serde(skip_serializing)]
+    pub att_last_update_date: CfnMetricStreamlastupdatedate,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnMetricStreamstate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMetricStreamarn;
+impl CfnMetricStreamarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMetricStreamcreationdate;
+impl CfnMetricStreamcreationdate {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMetricStreamlastupdatedate;
+impl CfnMetricStreamlastupdatedate {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdateDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMetricStreamstate;
+impl CfnMetricStreamstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMetricStream {

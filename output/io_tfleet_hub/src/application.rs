@@ -62,6 +62,72 @@ pub struct CfnApplication {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_application_arn: CfnApplicationapplicationarn,
+
+    #[serde(skip_serializing)]
+    pub att_application_id: CfnApplicationapplicationid,
+
+    #[serde(skip_serializing)]
+    pub att_application_state: CfnApplicationapplicationstate,
+
+    #[serde(skip_serializing)]
+    pub att_application_url: CfnApplicationapplicationurl,
+
+    #[serde(skip_serializing)]
+    pub att_error_message: CfnApplicationerrormessage,
+
+    #[serde(skip_serializing)]
+    pub att_sso_client_id: CfnApplicationssoclientid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapplicationarn;
+impl CfnApplicationapplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapplicationid;
+impl CfnApplicationapplicationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapplicationstate;
+impl CfnApplicationapplicationstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationState"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapplicationurl;
+impl CfnApplicationapplicationurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationUrl"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationerrormessage;
+impl CfnApplicationerrormessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"ErrorMessage"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationssoclientid;
+impl CfnApplicationssoclientid {
+    pub fn att_name(&self) -> &'static str {
+        r#"SsoClientId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnApplication {

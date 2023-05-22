@@ -78,6 +78,9 @@ pub struct CfnBuild {
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_build_id: CfnBuildbuildid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -102,6 +105,14 @@ pub enum BuildOperatingSystemEnum {
 impl Default for BuildOperatingSystemEnum {
     fn default() -> Self {
         BuildOperatingSystemEnum::Amazonlinux
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBuildbuildid;
+impl CfnBuildbuildid {
+    pub fn att_name(&self) -> &'static str {
+        r#"BuildId"#
     }
 }
 

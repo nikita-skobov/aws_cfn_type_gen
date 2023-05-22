@@ -128,6 +128,50 @@ pub struct CfnEventDataStore {
     #[serde(rename = "TerminationProtectionEnabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub termination_protection_enabled: Option<bool>,
+
+    #[serde(skip_serializing)]
+    pub att_created_timestamp: CfnEventDataStorecreatedtimestamp,
+
+    #[serde(skip_serializing)]
+    pub att_event_data_store_arn: CfnEventDataStoreeventdatastorearn,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnEventDataStorestatus,
+
+    #[serde(skip_serializing)]
+    pub att_updated_timestamp: CfnEventDataStoreupdatedtimestamp,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventDataStorecreatedtimestamp;
+impl CfnEventDataStorecreatedtimestamp {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTimestamp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventDataStoreeventdatastorearn;
+impl CfnEventDataStoreeventdatastorearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"EventDataStoreArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventDataStorestatus;
+impl CfnEventDataStorestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventDataStoreupdatedtimestamp;
+impl CfnEventDataStoreupdatedtimestamp {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdatedTimestamp"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEventDataStore {

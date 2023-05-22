@@ -83,6 +83,28 @@ pub struct CfnLocationNFS {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationNFSlocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationNFSlocationuri,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationNFSlocationarn;
+impl CfnLocationNFSlocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationNFSlocationuri;
+impl CfnLocationNFSlocationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocationNFS {

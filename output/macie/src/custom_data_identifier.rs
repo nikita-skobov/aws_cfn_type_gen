@@ -84,6 +84,28 @@ pub struct CfnCustomDataIdentifier {
     /// Update requires: Replacement
     #[serde(rename = "Regex")]
     pub regex: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCustomDataIdentifierarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCustomDataIdentifierid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCustomDataIdentifierarn;
+impl CfnCustomDataIdentifierarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCustomDataIdentifierid;
+impl CfnCustomDataIdentifierid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCustomDataIdentifier {

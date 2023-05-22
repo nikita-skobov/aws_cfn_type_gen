@@ -128,6 +128,28 @@ pub struct CfnLocationSMB {
     /// Update requires: No interruption
     #[serde(rename = "User")]
     pub user: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationSMBlocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationSMBlocationuri,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationSMBlocationarn;
+impl CfnLocationSMBlocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationSMBlocationuri;
+impl CfnLocationSMBlocationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocationSMB {

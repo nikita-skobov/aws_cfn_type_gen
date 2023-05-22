@@ -35,6 +35,28 @@ pub struct CfnIPAMPoolCidr {
     #[serde(rename = "NetmaskLength")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub netmask_length: Option<i64>,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_pool_cidr_id: CfnIPAMPoolCidripampoolcidrid,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnIPAMPoolCidrstate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMPoolCidripampoolcidrid;
+impl CfnIPAMPoolCidripampoolcidrid {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamPoolCidrId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMPoolCidrstate;
+impl CfnIPAMPoolCidrstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnIPAMPoolCidr {

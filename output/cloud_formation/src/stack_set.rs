@@ -230,6 +230,9 @@ pub struct CfnStackSet {
     #[serde(rename = "TemplateURL")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub template_url: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_stack_set_id: CfnStackSetstacksetid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -263,6 +266,14 @@ pub enum StackSetPermissionModelEnum {
 impl Default for StackSetPermissionModelEnum {
     fn default() -> Self {
         StackSetPermissionModelEnum::Selfmanaged
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStackSetstacksetid;
+impl CfnStackSetstacksetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"StackSetId"#
     }
 }
 

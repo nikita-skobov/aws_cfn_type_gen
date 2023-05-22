@@ -83,6 +83,12 @@ pub struct CfnApplication {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
+
+    #[serde(skip_serializing)]
+    pub att_application_arn: CfnApplicationapplicationarn,
+
+    #[serde(skip_serializing)]
+    pub att_application_id: CfnApplicationapplicationid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -99,6 +105,22 @@ pub enum ApplicationEngineTypeEnum {
 impl Default for ApplicationEngineTypeEnum {
     fn default() -> Self {
         ApplicationEngineTypeEnum::Bluage
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapplicationarn;
+impl CfnApplicationapplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapplicationid;
+impl CfnApplicationapplicationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationId"#
     }
 }
 

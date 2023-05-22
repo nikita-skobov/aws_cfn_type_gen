@@ -22,6 +22,17 @@ pub struct CfnGatewayRouteTableAssociation {
     /// Update requires: No interruption
     #[serde(rename = "RouteTableId")]
     pub route_table_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_association_id: CfnGatewayRouteTableAssociationassociationid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewayRouteTableAssociationassociationid;
+impl CfnGatewayRouteTableAssociationassociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AssociationId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGatewayRouteTableAssociation {

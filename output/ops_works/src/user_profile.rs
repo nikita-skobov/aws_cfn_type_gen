@@ -47,6 +47,17 @@ pub struct CfnUserProfile {
     #[serde(rename = "SshUsername")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ssh_username: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_ssh_username: CfnUserProfilesshusername,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserProfilesshusername;
+impl CfnUserProfilesshusername {
+    pub fn att_name(&self) -> &'static str {
+        r#"SshUsername"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnUserProfile {

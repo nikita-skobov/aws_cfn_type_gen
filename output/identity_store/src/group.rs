@@ -32,6 +32,17 @@ pub struct CfnGroup {
     /// Update requires: Replacement
     #[serde(rename = "IdentityStoreId")]
     pub identity_store_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_group_id: CfnGroupgroupid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGroupgroupid;
+impl CfnGroupgroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"GroupId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGroup {

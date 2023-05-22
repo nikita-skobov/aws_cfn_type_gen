@@ -100,6 +100,17 @@ pub struct CfnSolution {
     #[serde(rename = "SolutionConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub solution_config: Option<SolutionConfig>,
+
+    #[serde(skip_serializing)]
+    pub att_solution_arn: CfnSolutionsolutionarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSolutionsolutionarn;
+impl CfnSolutionsolutionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SolutionArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSolution {

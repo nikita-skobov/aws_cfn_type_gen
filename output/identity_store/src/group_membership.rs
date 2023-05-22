@@ -31,6 +31,17 @@ pub struct CfnGroupMembership {
     /// Update requires: No interruption
     #[serde(rename = "MemberId")]
     pub member_id: MemberId,
+
+    #[serde(skip_serializing)]
+    pub att_membership_id: CfnGroupMembershipmembershipid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGroupMembershipmembershipid;
+impl CfnGroupMembershipmembershipid {
+    pub fn att_name(&self) -> &'static str {
+        r#"MembershipId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGroupMembership {

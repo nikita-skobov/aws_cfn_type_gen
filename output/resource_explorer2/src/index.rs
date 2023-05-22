@@ -31,6 +31,12 @@ pub struct CfnIndex {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: IndexTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnIndexarn,
+
+    #[serde(skip_serializing)]
+    pub att_index_state: CfnIndexindexstate,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -47,6 +53,22 @@ pub enum IndexTypeEnum {
 impl Default for IndexTypeEnum {
     fn default() -> Self {
         IndexTypeEnum::Aggregator
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIndexarn;
+impl CfnIndexarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIndexindexstate;
+impl CfnIndexindexstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"IndexState"#
     }
 }
 

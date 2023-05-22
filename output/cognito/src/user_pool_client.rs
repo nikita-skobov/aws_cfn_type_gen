@@ -343,6 +343,12 @@ pub struct CfnUserPoolClient {
     #[serde(rename = "WriteAttributes")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub write_attributes: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_client_secret: CfnUserPoolClientclientsecret,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnUserPoolClientname,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -359,6 +365,22 @@ pub enum UserPoolClientPreventUserExistenceErrorsEnum {
 impl Default for UserPoolClientPreventUserExistenceErrorsEnum {
     fn default() -> Self {
         UserPoolClientPreventUserExistenceErrorsEnum::Enabled
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserPoolClientclientsecret;
+impl CfnUserPoolClientclientsecret {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClientSecret"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserPoolClientname;
+impl CfnUserPoolClientname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
     }
 }
 

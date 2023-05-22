@@ -109,6 +109,9 @@ pub struct CfnCustomActionType {
     /// Update requires: Replacement
     #[serde(rename = "Version")]
     pub version: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCustomActionTypeid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -141,6 +144,14 @@ pub enum CustomActionTypeCategoryEnum {
 impl Default for CustomActionTypeCategoryEnum {
     fn default() -> Self {
         CustomActionTypeCategoryEnum::Approval
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCustomActionTypeid;
+impl CfnCustomActionTypeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

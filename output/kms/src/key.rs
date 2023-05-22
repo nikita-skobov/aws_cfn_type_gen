@@ -197,6 +197,12 @@ pub struct CfnKey {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnKeyarn,
+
+    #[serde(skip_serializing)]
+    pub att_key_id: CfnKeykeyid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -278,6 +284,22 @@ pub enum KeyKeyUsageEnum {
 impl Default for KeyKeyUsageEnum {
     fn default() -> Self {
         KeyKeyUsageEnum::Encryptdecrypt
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnKeyarn;
+impl CfnKeyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnKeykeyid;
+impl CfnKeykeyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"KeyId"#
     }
 }
 

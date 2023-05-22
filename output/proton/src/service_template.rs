@@ -94,6 +94,9 @@ pub struct CfnServiceTemplate {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnServiceTemplatearn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -106,6 +109,14 @@ pub enum ServiceTemplatePipelineProvisioningEnum {
 impl Default for ServiceTemplatePipelineProvisioningEnum {
     fn default() -> Self {
         ServiceTemplatePipelineProvisioningEnum::Customermanaged
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceTemplatearn;
+impl CfnServiceTemplatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

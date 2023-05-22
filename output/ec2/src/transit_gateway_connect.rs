@@ -38,6 +38,50 @@ pub struct CfnTransitGatewayConnect {
     /// Update requires: Replacement
     #[serde(rename = "TransportTransitGatewayAttachmentId")]
     pub transport_transit_gateway_attachment_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnTransitGatewayConnectcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnTransitGatewayConnectstate,
+
+    #[serde(skip_serializing)]
+    pub att_transit_gateway_attachment_id: CfnTransitGatewayConnecttransitgatewayattachmentid,
+
+    #[serde(skip_serializing)]
+    pub att_transit_gateway_id: CfnTransitGatewayConnecttransitgatewayid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayConnectcreationtime;
+impl CfnTransitGatewayConnectcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayConnectstate;
+impl CfnTransitGatewayConnectstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayConnecttransitgatewayattachmentid;
+impl CfnTransitGatewayConnecttransitgatewayattachmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TransitGatewayAttachmentId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayConnecttransitgatewayid;
+impl CfnTransitGatewayConnecttransitgatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TransitGatewayId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayConnect {

@@ -132,6 +132,28 @@ pub struct CfnFirewall {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_firewall_arn: CfnFirewallfirewallarn,
+
+    #[serde(skip_serializing)]
+    pub att_firewall_id: CfnFirewallfirewallid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallfirewallarn;
+impl CfnFirewallfirewallarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FirewallArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallfirewallid;
+impl CfnFirewallfirewallid {
+    pub fn att_name(&self) -> &'static str {
+        r#"FirewallId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFirewall {

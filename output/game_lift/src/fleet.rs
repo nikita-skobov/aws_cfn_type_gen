@@ -304,6 +304,9 @@ pub struct CfnFleet {
     #[serde(rename = "ScriptId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub script_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_fleet_id: CfnFleetfleetid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -819,6 +822,14 @@ pub enum FleetNewGameSessionProtectionPolicyEnum {
 impl Default for FleetNewGameSessionProtectionPolicyEnum {
     fn default() -> Self {
         FleetNewGameSessionProtectionPolicyEnum::Fullprotection
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFleetfleetid;
+impl CfnFleetfleetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"FleetId"#
     }
 }
 

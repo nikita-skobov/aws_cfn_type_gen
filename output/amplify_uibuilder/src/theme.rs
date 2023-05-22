@@ -68,6 +68,17 @@ pub struct CfnTheme {
     /// Update requires: No interruption
     #[serde(rename = "Values")]
     pub values: Vec<ThemeValues>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnThemeid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThemeid;
+impl CfnThemeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTheme {

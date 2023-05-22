@@ -102,6 +102,39 @@ pub struct CfnMissionProfile {
     /// Update requires: No interruption
     #[serde(rename = "TrackingConfigArn")]
     pub tracking_config_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnMissionProfilearn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnMissionProfileid,
+
+    #[serde(skip_serializing)]
+    pub att_region: CfnMissionProfileregion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMissionProfilearn;
+impl CfnMissionProfilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMissionProfileid;
+impl CfnMissionProfileid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMissionProfileregion;
+impl CfnMissionProfileregion {
+    pub fn att_name(&self) -> &'static str {
+        r#"Region"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMissionProfile {

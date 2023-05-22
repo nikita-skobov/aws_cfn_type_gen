@@ -43,6 +43,50 @@ pub struct CfnNode {
     /// Update requires: No interruption
     #[serde(rename = "NodeConfiguration")]
     pub node_configuration: NodeConfiguration,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnNodearn,
+
+    #[serde(skip_serializing)]
+    pub att_member_id: CfnNodememberid,
+
+    #[serde(skip_serializing)]
+    pub att_network_id: CfnNodenetworkid,
+
+    #[serde(skip_serializing)]
+    pub att_node_id: CfnNodenodeid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNodearn;
+impl CfnNodearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNodememberid;
+impl CfnNodememberid {
+    pub fn att_name(&self) -> &'static str {
+        r#"MemberId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNodenetworkid;
+impl CfnNodenetworkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNodenodeid;
+impl CfnNodenodeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NodeId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnNode {

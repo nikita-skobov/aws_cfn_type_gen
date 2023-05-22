@@ -35,6 +35,50 @@ pub struct CfnPublisher {
     #[serde(rename = "ConnectionArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub connection_arn: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_identity_provider: CfnPublisheridentityprovider,
+
+    #[serde(skip_serializing)]
+    pub att_publisher_id: CfnPublisherpublisherid,
+
+    #[serde(skip_serializing)]
+    pub att_publisher_profile: CfnPublisherpublisherprofile,
+
+    #[serde(skip_serializing)]
+    pub att_publisher_status: CfnPublisherpublisherstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublisheridentityprovider;
+impl CfnPublisheridentityprovider {
+    pub fn att_name(&self) -> &'static str {
+        r#"IdentityProvider"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublisherpublisherid;
+impl CfnPublisherpublisherid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublisherId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublisherpublisherprofile;
+impl CfnPublisherpublisherprofile {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublisherProfile"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublisherpublisherstatus;
+impl CfnPublisherpublisherstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublisherStatus"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPublisher {

@@ -94,6 +94,9 @@ pub struct CfnListener {
     #[serde(rename = "SslPolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ssl_policy: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_listener_arn: CfnListenerlistenerarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -130,6 +133,14 @@ pub enum ListenerProtocolEnum {
 impl Default for ListenerProtocolEnum {
     fn default() -> Self {
         ListenerProtocolEnum::Geneve
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListenerlistenerarn;
+impl CfnListenerlistenerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ListenerArn"#
     }
 }
 

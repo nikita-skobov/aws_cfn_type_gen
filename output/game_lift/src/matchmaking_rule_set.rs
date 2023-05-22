@@ -50,6 +50,28 @@ pub struct CfnMatchmakingRuleSet {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnMatchmakingRuleSetarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnMatchmakingRuleSetname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMatchmakingRuleSetarn;
+impl CfnMatchmakingRuleSetarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMatchmakingRuleSetname;
+impl CfnMatchmakingRuleSetname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMatchmakingRuleSet {

@@ -142,6 +142,17 @@ pub struct CfnRoute {
     #[serde(rename = "Target")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub target: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_route_id: CfnRouterouteid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouterouteid;
+impl CfnRouterouteid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RouteId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRoute {

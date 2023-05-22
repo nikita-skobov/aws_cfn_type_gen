@@ -83,6 +83,17 @@ pub struct CfnTransitGatewayVpcAttachment {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnTransitGatewayVpcAttachmentid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayVpcAttachmentid;
+impl CfnTransitGatewayVpcAttachmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayVpcAttachment {

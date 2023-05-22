@@ -12,6 +12,17 @@ pub struct CfnTemplate {
     #[serde(rename = "Template")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub template: Option<Box<Template>>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnTemplateid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTemplateid;
+impl CfnTemplateid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTemplate {

@@ -71,6 +71,39 @@ pub struct CfnFunction {
     /// Update requires: No interruption
     #[serde(rename = "Name")]
     pub name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_function_arn: CfnFunctionfunctionarn,
+
+    #[serde(skip_serializing)]
+    pub att_function_metadata_function_arn: CfnFunctionfunctionmetadatafunctionarn,
+
+    #[serde(skip_serializing)]
+    pub att_stage: CfnFunctionstage,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionfunctionarn;
+impl CfnFunctionfunctionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FunctionARN"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionfunctionmetadatafunctionarn;
+impl CfnFunctionfunctionmetadatafunctionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FunctionMetadata.FunctionARN"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionstage;
+impl CfnFunctionstage {
+    pub fn att_name(&self) -> &'static str {
+        r#"Stage"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFunction {

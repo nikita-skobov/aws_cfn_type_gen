@@ -110,6 +110,9 @@ pub struct CfnNetworkAclEntry {
     /// Update requires: Replacement
     #[serde(rename = "RuleNumber")]
     pub rule_number: i64,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnNetworkAclEntryid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -126,6 +129,14 @@ pub enum NetworkAclEntryRuleActionEnum {
 impl Default for NetworkAclEntryRuleActionEnum {
     fn default() -> Self {
         NetworkAclEntryRuleActionEnum::Allow
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkAclEntryid;
+impl CfnNetworkAclEntryid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

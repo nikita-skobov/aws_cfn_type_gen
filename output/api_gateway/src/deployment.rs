@@ -59,6 +59,17 @@ pub struct CfnDeployment {
     #[serde(rename = "StageName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub stage_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_deployment_id: CfnDeploymentdeploymentid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDeploymentdeploymentid;
+impl CfnDeploymentdeploymentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DeploymentId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDeployment {

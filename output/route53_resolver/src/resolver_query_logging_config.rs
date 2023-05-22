@@ -34,6 +34,83 @@ pub struct CfnResolverQueryLoggingConfig {
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnResolverQueryLoggingConfigarn,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnResolverQueryLoggingConfigcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_creator_request_id: CfnResolverQueryLoggingConfigcreatorrequestid,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnResolverQueryLoggingConfigid,
+
+    #[serde(skip_serializing)]
+    pub att_owner_id: CfnResolverQueryLoggingConfigownerid,
+
+    #[serde(skip_serializing)]
+    pub att_share_status: CfnResolverQueryLoggingConfigsharestatus,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnResolverQueryLoggingConfigstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigarn;
+impl CfnResolverQueryLoggingConfigarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigcreationtime;
+impl CfnResolverQueryLoggingConfigcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigcreatorrequestid;
+impl CfnResolverQueryLoggingConfigcreatorrequestid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatorRequestId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigid;
+impl CfnResolverQueryLoggingConfigid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigownerid;
+impl CfnResolverQueryLoggingConfigownerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigsharestatus;
+impl CfnResolverQueryLoggingConfigsharestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ShareStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigstatus;
+impl CfnResolverQueryLoggingConfigstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResolverQueryLoggingConfig {

@@ -40,6 +40,106 @@ pub struct CfnTransitGatewayPeering {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayArn")]
     pub transit_gateway_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_core_network_arn: CfnTransitGatewayPeeringcorenetworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnTransitGatewayPeeringcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_edge_location: CfnTransitGatewayPeeringedgelocation,
+
+    #[serde(skip_serializing)]
+    pub att_owner_account_id: CfnTransitGatewayPeeringowneraccountid,
+
+    #[serde(skip_serializing)]
+    pub att_peering_id: CfnTransitGatewayPeeringpeeringid,
+
+    #[serde(skip_serializing)]
+    pub att_peering_type: CfnTransitGatewayPeeringpeeringtype,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnTransitGatewayPeeringresourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnTransitGatewayPeeringstate,
+
+    #[serde(skip_serializing)]
+    pub att_transit_gateway_peering_attachment_id:
+        CfnTransitGatewayPeeringtransitgatewaypeeringattachmentid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringcorenetworkarn;
+impl CfnTransitGatewayPeeringcorenetworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CoreNetworkArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringcreatedat;
+impl CfnTransitGatewayPeeringcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringedgelocation;
+impl CfnTransitGatewayPeeringedgelocation {
+    pub fn att_name(&self) -> &'static str {
+        r#"EdgeLocation"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringowneraccountid;
+impl CfnTransitGatewayPeeringowneraccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerAccountId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringpeeringid;
+impl CfnTransitGatewayPeeringpeeringid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PeeringId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringpeeringtype;
+impl CfnTransitGatewayPeeringpeeringtype {
+    pub fn att_name(&self) -> &'static str {
+        r#"PeeringType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringresourcearn;
+impl CfnTransitGatewayPeeringresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringstate;
+impl CfnTransitGatewayPeeringstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringtransitgatewaypeeringattachmentid;
+impl CfnTransitGatewayPeeringtransitgatewaypeeringattachmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TransitGatewayPeeringAttachmentId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayPeering {

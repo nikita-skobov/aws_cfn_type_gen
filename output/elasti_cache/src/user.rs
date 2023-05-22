@@ -104,6 +104,28 @@ pub struct CfnUser {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     pub user_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnUserarn,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnUserstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserarn;
+impl CfnUserarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserstatus;
+impl CfnUserstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnUser {

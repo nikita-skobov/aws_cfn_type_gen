@@ -77,6 +77,17 @@ pub struct CfnArchive {
     /// Update requires: Replacement
     #[serde(rename = "SourceArn")]
     pub source_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnArchivearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnArchivearn;
+impl CfnArchivearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnArchive {

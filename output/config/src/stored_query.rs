@@ -52,6 +52,28 @@ pub struct CfnStoredQuery {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_query_arn: CfnStoredQueryqueryarn,
+
+    #[serde(skip_serializing)]
+    pub att_query_id: CfnStoredQueryqueryid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStoredQueryqueryarn;
+impl CfnStoredQueryqueryarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"QueryArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStoredQueryqueryid;
+impl CfnStoredQueryqueryid {
+    pub fn att_name(&self) -> &'static str {
+        r#"QueryId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnStoredQuery {

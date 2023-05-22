@@ -198,6 +198,27 @@ pub struct CfnIPAMPool {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnIPAMPoolarn,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_arn: CfnIPAMPoolipamarn,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_pool_id: CfnIPAMPoolipampoolid,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_scope_arn: CfnIPAMPoolipamscopearn,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_scope_type: CfnIPAMPoolipamscopetype,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnIPAMPoolstate,
+
+    #[serde(skip_serializing)]
+    pub att_state_message: CfnIPAMPoolstatemessage,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -244,6 +265,62 @@ pub enum IPAMPoolPublicIpSourceEnum {
 impl Default for IPAMPoolPublicIpSourceEnum {
     fn default() -> Self {
         IPAMPoolPublicIpSourceEnum::Amazon
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMPoolarn;
+impl CfnIPAMPoolarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMPoolipamarn;
+impl CfnIPAMPoolipamarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMPoolipampoolid;
+impl CfnIPAMPoolipampoolid {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamPoolId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMPoolipamscopearn;
+impl CfnIPAMPoolipamscopearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamScopeArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMPoolipamscopetype;
+impl CfnIPAMPoolipamscopetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamScopeType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMPoolstate;
+impl CfnIPAMPoolstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMPoolstatemessage;
+impl CfnIPAMPoolstatemessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"StateMessage"#
     }
 }
 

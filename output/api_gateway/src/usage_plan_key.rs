@@ -33,6 +33,17 @@ pub struct CfnUsagePlanKey {
     /// Update requires: Replacement
     #[serde(rename = "UsagePlanId")]
     pub usage_plan_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnUsagePlanKeyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUsagePlanKeyid;
+impl CfnUsagePlanKeyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnUsagePlanKey {

@@ -113,6 +113,28 @@ pub struct CfnDomainConfiguration {
     #[serde(rename = "ValidationCertificateArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub validation_certificate_arn: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDomainConfigurationarn,
+
+    #[serde(skip_serializing)]
+    pub att_domain_type: CfnDomainConfigurationdomaintype,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainConfigurationarn;
+impl CfnDomainConfigurationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainConfigurationdomaintype;
+impl CfnDomainConfigurationdomaintype {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainType"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDomainConfiguration {

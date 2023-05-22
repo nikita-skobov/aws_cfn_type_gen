@@ -28,6 +28,28 @@ pub struct CfnThing {
     #[serde(rename = "ThingName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnThingarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnThingid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThingarn;
+impl CfnThingarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThingid;
+impl CfnThingid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnThing {

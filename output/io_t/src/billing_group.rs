@@ -38,6 +38,28 @@ pub struct CfnBillingGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnBillingGrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnBillingGroupid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBillingGrouparn;
+impl CfnBillingGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBillingGroupid;
+impl CfnBillingGroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnBillingGroup {

@@ -122,6 +122,9 @@ pub struct CfnLoadBalancer {
     #[serde(rename = "TlsPolicyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tls_policy_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_load_balancer_arn: CfnLoadBalancerloadbalancerarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -138,6 +141,14 @@ pub enum LoadBalancerIpAddressTypeEnum {
 impl Default for LoadBalancerIpAddressTypeEnum {
     fn default() -> Self {
         LoadBalancerIpAddressTypeEnum::Dualstack
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancerloadbalancerarn;
+impl CfnLoadBalancerloadbalancerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LoadBalancerArn"#
     }
 }
 

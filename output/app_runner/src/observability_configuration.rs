@@ -52,6 +52,18 @@ pub struct CfnObservabilityConfiguration {
     #[serde(rename = "TraceConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub trace_configuration: Option<TraceConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_observability_configuration_arn:
+        CfnObservabilityConfigurationobservabilityconfigurationarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnObservabilityConfigurationobservabilityconfigurationarn;
+impl CfnObservabilityConfigurationobservabilityconfigurationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ObservabilityConfigurationArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnObservabilityConfiguration {

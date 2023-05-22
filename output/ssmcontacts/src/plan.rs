@@ -41,6 +41,17 @@ pub struct CfnPlan {
     #[serde(rename = "Stages")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub stages: Option<Vec<Stage>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPlanarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlanarn;
+impl CfnPlanarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPlan {

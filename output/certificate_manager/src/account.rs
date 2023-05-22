@@ -11,6 +11,17 @@ pub struct CfnAccount {
     /// Update requires: No interruption
     #[serde(rename = "ExpiryEventsConfiguration")]
     pub expiry_events_configuration: ExpiryEventsConfiguration,
+
+    #[serde(skip_serializing)]
+    pub att_account_id: CfnAccountaccountid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccountaccountid;
+impl CfnAccountaccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AccountId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccount {

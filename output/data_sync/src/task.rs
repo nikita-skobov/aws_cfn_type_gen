@@ -134,6 +134,28 @@ pub struct CfnTask {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnTaskstatus,
+
+    #[serde(skip_serializing)]
+    pub att_task_arn: CfnTasktaskarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTaskstatus;
+impl CfnTaskstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTasktaskarn;
+impl CfnTasktaskarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TaskArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTask {

@@ -123,6 +123,94 @@ pub struct CfnTemplate {
     #[serde(rename = "VersionDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version_description: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnTemplatearn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnTemplatecreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnTemplatelastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_version_created_time: CfnTemplateversioncreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_version_description: CfnTemplateversiondescription,
+
+    #[serde(skip_serializing)]
+    pub att_version_source_entity_arn: CfnTemplateversionsourceentityarn,
+
+    #[serde(skip_serializing)]
+    pub att_version_status: CfnTemplateversionstatus,
+
+    #[serde(skip_serializing)]
+    pub att_version_theme_arn: CfnTemplateversionthemearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTemplatearn;
+impl CfnTemplatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTemplatecreatedtime;
+impl CfnTemplatecreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTemplatelastupdatedtime;
+impl CfnTemplatelastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTemplateversioncreatedtime;
+impl CfnTemplateversioncreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTemplateversiondescription;
+impl CfnTemplateversiondescription {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.Description"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTemplateversionsourceentityarn;
+impl CfnTemplateversionsourceentityarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.SourceEntityArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTemplateversionstatus;
+impl CfnTemplateversionstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTemplateversionthemearn;
+impl CfnTemplateversionthemearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.ThemeArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTemplate {

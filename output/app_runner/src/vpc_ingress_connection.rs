@@ -60,6 +60,39 @@ pub struct CfnVpcIngressConnection {
     #[serde(rename = "VpcIngressConnectionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_ingress_connection_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_domain_name: CfnVpcIngressConnectiondomainname,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnVpcIngressConnectionstatus,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_ingress_connection_arn: CfnVpcIngressConnectionvpcingressconnectionarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcIngressConnectiondomainname;
+impl CfnVpcIngressConnectiondomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcIngressConnectionstatus;
+impl CfnVpcIngressConnectionstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcIngressConnectionvpcingressconnectionarn;
+impl CfnVpcIngressConnectionvpcingressconnectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcIngressConnectionArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVpcIngressConnection {

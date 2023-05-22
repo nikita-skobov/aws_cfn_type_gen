@@ -103,6 +103,12 @@ pub struct CfnContainer {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_container_arn: CfnContainercontainerarn,
+
+    #[serde(skip_serializing)]
+    pub att_url: CfnContainerurl,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -135,6 +141,22 @@ pub enum ContainerPowerEnum {
 impl Default for ContainerPowerEnum {
     fn default() -> Self {
         ContainerPowerEnum::Large
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnContainercontainerarn;
+impl CfnContainercontainerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ContainerArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnContainerurl;
+impl CfnContainerurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"Url"#
     }
 }
 

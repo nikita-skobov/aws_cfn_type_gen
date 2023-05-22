@@ -41,6 +41,17 @@ pub struct CfnAppImageConfig {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_app_image_config_arn: CfnAppImageConfigappimageconfigarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAppImageConfigappimageconfigarn;
+impl CfnAppImageConfigappimageconfigarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AppImageConfigArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAppImageConfig {

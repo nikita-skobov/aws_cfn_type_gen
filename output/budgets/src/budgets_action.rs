@@ -93,6 +93,9 @@ pub struct CfnBudgetsAction {
     /// Update requires: No interruption
     #[serde(rename = "Subscribers")]
     pub subscribers: Vec<Subscriber>,
+
+    #[serde(skip_serializing)]
+    pub att_action_id: CfnBudgetsActionactionid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -147,6 +150,14 @@ pub enum BudgetsActionNotificationTypeEnum {
 impl Default for BudgetsActionNotificationTypeEnum {
     fn default() -> Self {
         BudgetsActionNotificationTypeEnum::Actual
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBudgetsActionactionid;
+impl CfnBudgetsActionactionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ActionId"#
     }
 }
 

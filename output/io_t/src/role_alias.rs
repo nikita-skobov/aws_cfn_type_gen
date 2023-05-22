@@ -51,6 +51,17 @@ pub struct CfnRoleAlias {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_role_alias_arn: CfnRoleAliasrolealiasarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRoleAliasrolealiasarn;
+impl CfnRoleAliasrolealiasarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"RoleAliasArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRoleAlias {

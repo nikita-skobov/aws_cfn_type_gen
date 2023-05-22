@@ -91,6 +91,83 @@ pub struct CfnGatewayRoute {
     /// Update requires: Replacement
     #[serde(rename = "VirtualGatewayName")]
     pub virtual_gateway_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnGatewayRoutearn,
+
+    #[serde(skip_serializing)]
+    pub att_gateway_route_name: CfnGatewayRoutegatewayroutename,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_name: CfnGatewayRoutemeshname,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_owner: CfnGatewayRoutemeshowner,
+
+    #[serde(skip_serializing)]
+    pub att_resource_owner: CfnGatewayRouteresourceowner,
+
+    #[serde(skip_serializing)]
+    pub att_uid: CfnGatewayRouteuid,
+
+    #[serde(skip_serializing)]
+    pub att_virtual_gateway_name: CfnGatewayRoutevirtualgatewayname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewayRoutearn;
+impl CfnGatewayRoutearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewayRoutegatewayroutename;
+impl CfnGatewayRoutegatewayroutename {
+    pub fn att_name(&self) -> &'static str {
+        r#"GatewayRouteName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewayRoutemeshname;
+impl CfnGatewayRoutemeshname {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewayRoutemeshowner;
+impl CfnGatewayRoutemeshowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewayRouteresourceowner;
+impl CfnGatewayRouteresourceowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewayRouteuid;
+impl CfnGatewayRouteuid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Uid"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewayRoutevirtualgatewayname;
+impl CfnGatewayRoutevirtualgatewayname {
+    pub fn att_name(&self) -> &'static str {
+        r#"VirtualGatewayName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGatewayRoute {

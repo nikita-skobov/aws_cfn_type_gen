@@ -306,6 +306,12 @@ pub struct CfnService {
     #[serde(rename = "TaskDefinition")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub task_definition: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnServicename,
+
+    #[serde(skip_serializing)]
+    pub att_service_arn: CfnServiceservicearn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -364,6 +370,22 @@ pub enum ServiceSchedulingStrategyEnum {
 impl Default for ServiceSchedulingStrategyEnum {
     fn default() -> Self {
         ServiceSchedulingStrategyEnum::Daemon
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicename;
+impl CfnServicename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceservicearn;
+impl CfnServiceservicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceArn"#
     }
 }
 

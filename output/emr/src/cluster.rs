@@ -318,6 +318,9 @@ pub struct CfnCluster {
     #[serde(rename = "VisibleToAllUsers")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub visible_to_all_users: Option<bool>,
+
+    #[serde(skip_serializing)]
+    pub att_master_public_dns: CfnClustermasterpublicdns,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -334,6 +337,14 @@ pub enum ClusterScaleDownBehaviorEnum {
 impl Default for ClusterScaleDownBehaviorEnum {
     fn default() -> Self {
         ClusterScaleDownBehaviorEnum::Terminateatinstancehour
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClustermasterpublicdns;
+impl CfnClustermasterpublicdns {
+    pub fn att_name(&self) -> &'static str {
+        r#"MasterPublicDNS"#
     }
 }
 

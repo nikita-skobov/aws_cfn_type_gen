@@ -145,6 +145,9 @@ pub struct CfnComputeEnvironment {
     #[serde(rename = "UpdatePolicy")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub update_policy: Option<UpdatePolicy>,
+
+    #[serde(skip_serializing)]
+    pub att_compute_environment_arn: CfnComputeEnvironmentcomputeenvironmentarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -178,6 +181,14 @@ pub enum ComputeEnvironmentTypeEnum {
 impl Default for ComputeEnvironmentTypeEnum {
     fn default() -> Self {
         ComputeEnvironmentTypeEnum::Managed
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnComputeEnvironmentcomputeenvironmentarn;
+impl CfnComputeEnvironmentcomputeenvironmentarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ComputeEnvironmentArn"#
     }
 }
 

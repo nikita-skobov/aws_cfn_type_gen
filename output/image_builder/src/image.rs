@@ -98,6 +98,50 @@ pub struct CfnImage {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnImagearn,
+
+    #[serde(skip_serializing)]
+    pub att_image_id: CfnImageimageid,
+
+    #[serde(skip_serializing)]
+    pub att_image_uri: CfnImageimageuri,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnImagename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImagearn;
+impl CfnImagearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImageimageid;
+impl CfnImageimageid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ImageId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImageimageuri;
+impl CfnImageimageuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"ImageUri"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImagename;
+impl CfnImagename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnImage {

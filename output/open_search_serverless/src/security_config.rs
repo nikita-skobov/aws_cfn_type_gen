@@ -48,6 +48,17 @@ pub struct CfnSecurityConfig {
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnSecurityConfigid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSecurityConfigid;
+impl CfnSecurityConfigid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSecurityConfig {

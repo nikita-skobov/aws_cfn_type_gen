@@ -212,6 +212,15 @@ pub struct CfnStudio {
     /// Update requires: Replacement
     #[serde(rename = "WorkspaceSecurityGroupId")]
     pub workspace_security_group_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnStudioarn,
+
+    #[serde(skip_serializing)]
+    pub att_studio_id: CfnStudiostudioid,
+
+    #[serde(skip_serializing)]
+    pub att_url: CfnStudiourl,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -228,6 +237,30 @@ pub enum StudioAuthModeEnum {
 impl Default for StudioAuthModeEnum {
     fn default() -> Self {
         StudioAuthModeEnum::Iam
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStudioarn;
+impl CfnStudioarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStudiostudioid;
+impl CfnStudiostudioid {
+    pub fn att_name(&self) -> &'static str {
+        r#"StudioId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStudiourl;
+impl CfnStudiourl {
+    pub fn att_name(&self) -> &'static str {
+        r#"Url"#
     }
 }
 

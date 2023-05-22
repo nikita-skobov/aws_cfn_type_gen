@@ -37,6 +37,50 @@ pub struct CfnIPAMScope {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnIPAMScopearn,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_arn: CfnIPAMScopeipamarn,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_scope_id: CfnIPAMScopeipamscopeid,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_scope_type: CfnIPAMScopeipamscopetype,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMScopearn;
+impl CfnIPAMScopearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMScopeipamarn;
+impl CfnIPAMScopeipamarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMScopeipamscopeid;
+impl CfnIPAMScopeipamscopeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamScopeId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMScopeipamscopetype;
+impl CfnIPAMScopeipamscopetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamScopeType"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnIPAMScope {

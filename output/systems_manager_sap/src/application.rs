@@ -94,6 +94,9 @@ pub struct CfnApplication {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnApplicationarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -106,6 +109,14 @@ pub enum ApplicationApplicationTypeEnum {
 impl Default for ApplicationApplicationTypeEnum {
     fn default() -> Self {
         ApplicationApplicationTypeEnum::Hana
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationarn;
+impl CfnApplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

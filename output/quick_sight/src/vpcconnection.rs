@@ -130,6 +130,21 @@ pub struct CfnVPCConnection {
     #[serde(rename = "VPCConnectionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpcconnection_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnVPCConnectionarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnVPCConnectioncreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnVPCConnectionlastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnVPCConnectionstatus,
+
+    #[serde(skip_serializing)]
+    pub att_vpcid: CfnVPCConnectionvpcid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -150,6 +165,46 @@ pub enum VPCConnectionAvailabilityStatusEnum {
 impl Default for VPCConnectionAvailabilityStatusEnum {
     fn default() -> Self {
         VPCConnectionAvailabilityStatusEnum::Available
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCConnectionarn;
+impl CfnVPCConnectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCConnectioncreatedtime;
+impl CfnVPCConnectioncreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCConnectionlastupdatedtime;
+impl CfnVPCConnectionlastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCConnectionstatus;
+impl CfnVPCConnectionstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPCConnectionvpcid;
+impl CfnVPCConnectionvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VPCId"#
     }
 }
 

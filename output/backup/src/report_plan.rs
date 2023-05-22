@@ -78,6 +78,17 @@ pub struct CfnReportPlan {
     /// Update requires: No interruption
     #[serde(rename = "ReportSetting")]
     pub report_setting: ReportSetting,
+
+    #[serde(skip_serializing)]
+    pub att_report_plan_arn: CfnReportPlanreportplanarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReportPlanreportplanarn;
+impl CfnReportPlanreportplanarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ReportPlanArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnReportPlan {

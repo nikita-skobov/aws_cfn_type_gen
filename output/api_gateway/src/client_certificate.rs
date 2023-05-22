@@ -24,6 +24,17 @@ pub struct CfnClientCertificate {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_client_certificate_id: CfnClientCertificateclientcertificateid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClientCertificateclientcertificateid;
+impl CfnClientCertificateclientcertificateid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClientCertificateId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnClientCertificate {

@@ -59,6 +59,17 @@ pub struct CfnVpcConnector {
     #[serde(rename = "VpcConnectorName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_connector_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_connector_arn: CfnVpcConnectorvpcconnectorarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVpcConnectorvpcconnectorarn;
+impl CfnVpcConnectorvpcconnectorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcConnectorArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVpcConnector {

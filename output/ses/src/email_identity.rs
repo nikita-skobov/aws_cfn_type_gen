@@ -77,6 +77,72 @@ pub struct CfnEmailIdentity {
     #[serde(rename = "MailFromAttributes")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mail_from_attributes: Option<MailFromAttributes>,
+
+    #[serde(skip_serializing)]
+    pub att_dkim_dnstoken_name1: CfnEmailIdentitydkimdnstokenname1,
+
+    #[serde(skip_serializing)]
+    pub att_dkim_dnstoken_name2: CfnEmailIdentitydkimdnstokenname2,
+
+    #[serde(skip_serializing)]
+    pub att_dkim_dnstoken_name3: CfnEmailIdentitydkimdnstokenname3,
+
+    #[serde(skip_serializing)]
+    pub att_dkim_dnstoken_value1: CfnEmailIdentitydkimdnstokenvalue1,
+
+    #[serde(skip_serializing)]
+    pub att_dkim_dnstoken_value2: CfnEmailIdentitydkimdnstokenvalue2,
+
+    #[serde(skip_serializing)]
+    pub att_dkim_dnstoken_value3: CfnEmailIdentitydkimdnstokenvalue3,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEmailIdentitydkimdnstokenname1;
+impl CfnEmailIdentitydkimdnstokenname1 {
+    pub fn att_name(&self) -> &'static str {
+        r#"DkimDNSTokenName1"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEmailIdentitydkimdnstokenname2;
+impl CfnEmailIdentitydkimdnstokenname2 {
+    pub fn att_name(&self) -> &'static str {
+        r#"DkimDNSTokenName2"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEmailIdentitydkimdnstokenname3;
+impl CfnEmailIdentitydkimdnstokenname3 {
+    pub fn att_name(&self) -> &'static str {
+        r#"DkimDNSTokenName3"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEmailIdentitydkimdnstokenvalue1;
+impl CfnEmailIdentitydkimdnstokenvalue1 {
+    pub fn att_name(&self) -> &'static str {
+        r#"DkimDNSTokenValue1"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEmailIdentitydkimdnstokenvalue2;
+impl CfnEmailIdentitydkimdnstokenvalue2 {
+    pub fn att_name(&self) -> &'static str {
+        r#"DkimDNSTokenValue2"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEmailIdentitydkimdnstokenvalue3;
+impl CfnEmailIdentitydkimdnstokenvalue3 {
+    pub fn att_name(&self) -> &'static str {
+        r#"DkimDNSTokenValue3"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEmailIdentity {

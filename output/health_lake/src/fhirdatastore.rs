@@ -69,6 +69,21 @@ pub struct CfnFHIRDatastore {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_created_at_seconds: CfnFHIRDatastorecreatedatseconds,
+
+    #[serde(skip_serializing)]
+    pub att_datastore_arn: CfnFHIRDatastoredatastorearn,
+
+    #[serde(skip_serializing)]
+    pub att_datastore_endpoint: CfnFHIRDatastoredatastoreendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_datastore_id: CfnFHIRDatastoredatastoreid,
+
+    #[serde(skip_serializing)]
+    pub att_datastore_status: CfnFHIRDatastoredatastorestatus,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -81,6 +96,46 @@ pub enum FHIRDatastoreDatastoreTypeVersionEnum {
 impl Default for FHIRDatastoreDatastoreTypeVersionEnum {
     fn default() -> Self {
         FHIRDatastoreDatastoreTypeVersionEnum::R4
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFHIRDatastorecreatedatseconds;
+impl CfnFHIRDatastorecreatedatseconds {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt.Seconds"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFHIRDatastoredatastorearn;
+impl CfnFHIRDatastoredatastorearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DatastoreArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFHIRDatastoredatastoreendpoint;
+impl CfnFHIRDatastoredatastoreendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"DatastoreEndpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFHIRDatastoredatastoreid;
+impl CfnFHIRDatastoredatastoreid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DatastoreId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFHIRDatastoredatastorestatus;
+impl CfnFHIRDatastoredatastorestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"DatastoreStatus"#
     }
 }
 

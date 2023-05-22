@@ -77,6 +77,105 @@ pub struct CfnDisk {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_attached_to: CfnDiskattachedto,
+
+    #[serde(skip_serializing)]
+    pub att_attachment_state: CfnDiskattachmentstate,
+
+    #[serde(skip_serializing)]
+    pub att_disk_arn: CfnDiskdiskarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_availability_zone: CfnDisklocationavailabilityzone,
+
+    #[serde(skip_serializing)]
+    pub att_location_region_name: CfnDisklocationregionname,
+
+    #[serde(skip_serializing)]
+    pub att_path: CfnDiskpath,
+
+    #[serde(skip_serializing)]
+    pub att_resource_type: CfnDiskresourcetype,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnDiskstate,
+
+    #[serde(skip_serializing)]
+    pub att_support_code: CfnDisksupportcode,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDiskattachedto;
+impl CfnDiskattachedto {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachedTo"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDiskattachmentstate;
+impl CfnDiskattachmentstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachmentState"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDiskdiskarn;
+impl CfnDiskdiskarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DiskArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDisklocationavailabilityzone;
+impl CfnDisklocationavailabilityzone {
+    pub fn att_name(&self) -> &'static str {
+        r#"Location.AvailabilityZone"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDisklocationregionname;
+impl CfnDisklocationregionname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Location.RegionName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDiskpath;
+impl CfnDiskpath {
+    pub fn att_name(&self) -> &'static str {
+        r#"Path"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDiskresourcetype;
+impl CfnDiskresourcetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDiskstate;
+impl CfnDiskstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDisksupportcode;
+impl CfnDisksupportcode {
+    pub fn att_name(&self) -> &'static str {
+        r#"SupportCode"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDisk {

@@ -43,6 +43,50 @@ pub struct CfnLoggerDefinition {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnLoggerDefinitionarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnLoggerDefinitionid,
+
+    #[serde(skip_serializing)]
+    pub att_latest_version_arn: CfnLoggerDefinitionlatestversionarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnLoggerDefinitionname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoggerDefinitionarn;
+impl CfnLoggerDefinitionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoggerDefinitionid;
+impl CfnLoggerDefinitionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoggerDefinitionlatestversionarn;
+impl CfnLoggerDefinitionlatestversionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LatestVersionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoggerDefinitionname;
+impl CfnLoggerDefinitionname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLoggerDefinition {

@@ -45,6 +45,17 @@ pub struct CfnRuleGroupsNamespace {
     /// Update requires: No interruption
     #[serde(rename = "Workspace")]
     pub workspace: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRuleGroupsNamespacearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRuleGroupsNamespacearn;
+impl CfnRuleGroupsNamespacearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRuleGroupsNamespace {

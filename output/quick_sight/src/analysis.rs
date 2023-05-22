@@ -142,6 +142,15 @@ pub struct CfnAnalysis {
     #[serde(rename = "ThemeArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub theme_arn: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAnalysisarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnAnalysiscreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnAnalysislastupdatedtime,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -178,6 +187,30 @@ pub enum AnalysisStatusEnum {
 impl Default for AnalysisStatusEnum {
     fn default() -> Self {
         AnalysisStatusEnum::Creationfailed
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAnalysisarn;
+impl CfnAnalysisarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAnalysiscreatedtime;
+impl CfnAnalysiscreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAnalysislastupdatedtime;
+impl CfnAnalysislastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
     }
 }
 

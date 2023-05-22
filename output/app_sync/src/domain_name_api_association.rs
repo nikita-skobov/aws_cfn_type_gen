@@ -22,6 +22,17 @@ pub struct CfnDomainNameApiAssociation {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     pub domain_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_api_association_identifier: CfnDomainNameApiAssociationapiassociationidentifier,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNameApiAssociationapiassociationidentifier;
+impl CfnDomainNameApiAssociationapiassociationidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApiAssociationIdentifier"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDomainNameApiAssociation {

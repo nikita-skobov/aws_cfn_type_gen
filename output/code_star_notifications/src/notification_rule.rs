@@ -126,6 +126,9 @@ pub struct CfnNotificationRule {
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
     pub targets: Vec<Target>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnNotificationRulearn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -159,6 +162,14 @@ pub enum NotificationRuleStatusEnum {
 impl Default for NotificationRuleStatusEnum {
     fn default() -> Self {
         NotificationRuleStatusEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNotificationRulearn;
+impl CfnNotificationRulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

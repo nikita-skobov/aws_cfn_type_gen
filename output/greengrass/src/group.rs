@@ -63,6 +63,72 @@ pub struct CfnGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnGrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnGroupid,
+
+    #[serde(skip_serializing)]
+    pub att_latest_version_arn: CfnGrouplatestversionarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnGroupname,
+
+    #[serde(skip_serializing)]
+    pub att_role_arn: CfnGrouprolearn,
+
+    #[serde(skip_serializing)]
+    pub att_role_attached_at: CfnGrouproleattachedat,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGrouparn;
+impl CfnGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGroupid;
+impl CfnGroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGrouplatestversionarn;
+impl CfnGrouplatestversionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LatestVersionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGroupname;
+impl CfnGroupname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGrouprolearn;
+impl CfnGrouprolearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"RoleArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGrouproleattachedat;
+impl CfnGrouproleattachedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"RoleAttachedAt"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGroup {

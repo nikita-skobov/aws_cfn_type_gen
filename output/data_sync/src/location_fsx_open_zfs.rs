@@ -74,6 +74,28 @@ pub struct CfnLocationFSxOpenZFS {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationFSxOpenZFSlocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationFSxOpenZFSlocationuri,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationFSxOpenZFSlocationarn;
+impl CfnLocationFSxOpenZFSlocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationFSxOpenZFSlocationuri;
+impl CfnLocationFSxOpenZFSlocationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocationFSxOpenZFS {

@@ -61,6 +61,12 @@ pub struct CfnKeyPair {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_key_fingerprint: CfnKeyPairkeyfingerprint,
+
+    #[serde(skip_serializing)]
+    pub att_key_pair_id: CfnKeyPairkeypairid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -77,6 +83,22 @@ pub enum KeyPairKeyTypeEnum {
 impl Default for KeyPairKeyTypeEnum {
     fn default() -> Self {
         KeyPairKeyTypeEnum::Ed25519
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnKeyPairkeyfingerprint;
+impl CfnKeyPairkeyfingerprint {
+    pub fn att_name(&self) -> &'static str {
+        r#"KeyFingerprint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnKeyPairkeypairid;
+impl CfnKeyPairkeypairid {
+    pub fn att_name(&self) -> &'static str {
+        r#"KeyPairId"#
     }
 }
 

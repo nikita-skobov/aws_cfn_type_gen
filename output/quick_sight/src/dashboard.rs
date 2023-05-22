@@ -160,6 +160,116 @@ pub struct CfnDashboard {
     #[serde(rename = "VersionDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version_description: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDashboardarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnDashboardcreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_published_time: CfnDashboardlastpublishedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnDashboardlastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_version_arn: CfnDashboardversionarn,
+
+    #[serde(skip_serializing)]
+    pub att_version_created_time: CfnDashboardversioncreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_version_description: CfnDashboardversiondescription,
+
+    #[serde(skip_serializing)]
+    pub att_version_source_entity_arn: CfnDashboardversionsourceentityarn,
+
+    #[serde(skip_serializing)]
+    pub att_version_status: CfnDashboardversionstatus,
+
+    #[serde(skip_serializing)]
+    pub att_version_theme_arn: CfnDashboardversionthemearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardarn;
+impl CfnDashboardarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardcreatedtime;
+impl CfnDashboardcreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardlastpublishedtime;
+impl CfnDashboardlastpublishedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastPublishedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardlastupdatedtime;
+impl CfnDashboardlastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardversionarn;
+impl CfnDashboardversionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardversioncreatedtime;
+impl CfnDashboardversioncreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardversiondescription;
+impl CfnDashboardversiondescription {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.Description"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardversionsourceentityarn;
+impl CfnDashboardversionsourceentityarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.SourceEntityArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardversionstatus;
+impl CfnDashboardversionstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDashboardversionthemearn;
+impl CfnDashboardversionthemearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version.ThemeArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDashboard {

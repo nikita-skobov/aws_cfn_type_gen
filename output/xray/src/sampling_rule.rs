@@ -26,6 +26,17 @@ pub struct CfnSamplingRule {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_rule_arn: CfnSamplingRulerulearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSamplingRulerulearn;
+impl CfnSamplingRulerulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"RuleARN"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSamplingRule {

@@ -60,6 +60,12 @@ pub struct CfnConnection {
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnConnectionarn,
+
+    #[serde(skip_serializing)]
+    pub att_secret_arn: CfnConnectionsecretarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -80,6 +86,22 @@ pub enum ConnectionAuthorizationTypeEnum {
 impl Default for ConnectionAuthorizationTypeEnum {
     fn default() -> Self {
         ConnectionAuthorizationTypeEnum::Apikey
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectionarn;
+impl CfnConnectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectionsecretarn;
+impl CfnConnectionsecretarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SecretArn"#
     }
 }
 

@@ -96,6 +96,15 @@ pub struct CfnMonitoringSchedule {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnMonitoringSchedulecreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnMonitoringSchedulelastmodifiedtime,
+
+    #[serde(skip_serializing)]
+    pub att_monitoring_schedule_arn: CfnMonitoringSchedulemonitoringschedulearn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -120,6 +129,30 @@ pub enum MonitoringScheduleMonitoringScheduleStatusEnum {
 impl Default for MonitoringScheduleMonitoringScheduleStatusEnum {
     fn default() -> Self {
         MonitoringScheduleMonitoringScheduleStatusEnum::Failed
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMonitoringSchedulecreationtime;
+impl CfnMonitoringSchedulecreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMonitoringSchedulelastmodifiedtime;
+impl CfnMonitoringSchedulelastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMonitoringSchedulemonitoringschedulearn;
+impl CfnMonitoringSchedulemonitoringschedulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"MonitoringScheduleArn"#
     }
 }
 

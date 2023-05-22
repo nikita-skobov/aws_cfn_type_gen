@@ -56,6 +56,28 @@ pub struct CfnPrincipalPermissions {
     /// Update requires: Replacement
     #[serde(rename = "Resource")]
     pub resource: Resource,
+
+    #[serde(skip_serializing)]
+    pub att_principal_identifier: CfnPrincipalPermissionsprincipalidentifier,
+
+    #[serde(skip_serializing)]
+    pub att_resource_identifier: CfnPrincipalPermissionsresourceidentifier,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPrincipalPermissionsprincipalidentifier;
+impl CfnPrincipalPermissionsprincipalidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrincipalIdentifier"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPrincipalPermissionsresourceidentifier;
+impl CfnPrincipalPermissionsresourceidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceIdentifier"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPrincipalPermissions {

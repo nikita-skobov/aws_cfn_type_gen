@@ -152,6 +152,12 @@ pub struct CfnApplication {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub worker_type_specifications:
         Option<std::collections::HashMap<String, WorkerTypeSpecificationInput>>,
+
+    #[serde(skip_serializing)]
+    pub att_application_id: CfnApplicationapplicationid,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnApplicationarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -164,6 +170,22 @@ pub enum ApplicationArchitectureEnum {
 impl Default for ApplicationArchitectureEnum {
     fn default() -> Self {
         ApplicationArchitectureEnum::X8664orarm64
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapplicationid;
+impl CfnApplicationapplicationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationarn;
+impl CfnApplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

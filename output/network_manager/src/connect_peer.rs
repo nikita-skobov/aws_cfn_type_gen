@@ -86,6 +86,94 @@ pub struct CfnConnectPeer {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_core_network_address: CfnConnectPeerconfigurationcorenetworkaddress,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_peer_address: CfnConnectPeerconfigurationpeeraddress,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_protocol: CfnConnectPeerconfigurationprotocol,
+
+    #[serde(skip_serializing)]
+    pub att_connect_peer_id: CfnConnectPeerconnectpeerid,
+
+    #[serde(skip_serializing)]
+    pub att_core_network_id: CfnConnectPeercorenetworkid,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnConnectPeercreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_edge_location: CfnConnectPeeredgelocation,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnConnectPeerstate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectPeerconfigurationcorenetworkaddress;
+impl CfnConnectPeerconfigurationcorenetworkaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"Configuration.CoreNetworkAddress"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectPeerconfigurationpeeraddress;
+impl CfnConnectPeerconfigurationpeeraddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"Configuration.PeerAddress"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectPeerconfigurationprotocol;
+impl CfnConnectPeerconfigurationprotocol {
+    pub fn att_name(&self) -> &'static str {
+        r#"Configuration.Protocol"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectPeerconnectpeerid;
+impl CfnConnectPeerconnectpeerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConnectPeerId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectPeercorenetworkid;
+impl CfnConnectPeercorenetworkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CoreNetworkId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectPeercreatedat;
+impl CfnConnectPeercreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectPeeredgelocation;
+impl CfnConnectPeeredgelocation {
+    pub fn att_name(&self) -> &'static str {
+        r#"EdgeLocation"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectPeerstate;
+impl CfnConnectPeerstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConnectPeer {

@@ -114,6 +114,15 @@ pub struct CfnService {
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<ServiceTypeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnServicearn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnServiceid,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnServicename,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -126,6 +135,30 @@ pub enum ServiceTypeEnum {
 impl Default for ServiceTypeEnum {
     fn default() -> Self {
         ServiceTypeEnum::Http
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicearn;
+impl CfnServicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceid;
+impl CfnServiceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicename;
+impl CfnServicename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
     }
 }
 

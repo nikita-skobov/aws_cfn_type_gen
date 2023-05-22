@@ -99,6 +99,15 @@ pub struct CfnStorageSystem {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_connectivity_status: CfnStorageSystemconnectivitystatus,
+
+    #[serde(skip_serializing)]
+    pub att_secrets_manager_arn: CfnStorageSystemsecretsmanagerarn,
+
+    #[serde(skip_serializing)]
+    pub att_storage_system_arn: CfnStorageSystemstoragesystemarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -111,6 +120,30 @@ pub enum StorageSystemSystemTypeEnum {
 impl Default for StorageSystemSystemTypeEnum {
     fn default() -> Self {
         StorageSystemSystemTypeEnum::Netappontap
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStorageSystemconnectivitystatus;
+impl CfnStorageSystemconnectivitystatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConnectivityStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStorageSystemsecretsmanagerarn;
+impl CfnStorageSystemsecretsmanagerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SecretsManagerArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStorageSystemstoragesystemarn;
+impl CfnStorageSystemstoragesystemarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"StorageSystemArn"#
     }
 }
 

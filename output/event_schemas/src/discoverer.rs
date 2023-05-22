@@ -47,6 +47,28 @@ pub struct CfnDiscoverer {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagsEntry>>,
+
+    #[serde(skip_serializing)]
+    pub att_discoverer_arn: CfnDiscovererdiscovererarn,
+
+    #[serde(skip_serializing)]
+    pub att_discoverer_id: CfnDiscovererdiscovererid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDiscovererdiscovererarn;
+impl CfnDiscovererdiscovererarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DiscovererArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDiscovererdiscovererid;
+impl CfnDiscovererdiscovererid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DiscovererId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDiscoverer {

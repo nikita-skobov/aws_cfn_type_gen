@@ -61,6 +61,9 @@ pub struct CfnCustomerGateway {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: CustomerGatewayTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_customer_gateway_id: CfnCustomerGatewaycustomergatewayid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -73,6 +76,14 @@ pub enum CustomerGatewayTypeEnum {
 impl Default for CustomerGatewayTypeEnum {
     fn default() -> Self {
         CustomerGatewayTypeEnum::Ipsec1
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCustomerGatewaycustomergatewayid;
+impl CfnCustomerGatewaycustomergatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CustomerGatewayId"#
     }
 }
 

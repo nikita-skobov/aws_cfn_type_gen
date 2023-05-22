@@ -65,6 +65,28 @@ pub struct CfnLaunchTemplate {
     #[serde(rename = "VersionDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version_description: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_default_version_number: CfnLaunchTemplatedefaultversionnumber,
+
+    #[serde(skip_serializing)]
+    pub att_latest_version_number: CfnLaunchTemplatelatestversionnumber,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLaunchTemplatedefaultversionnumber;
+impl CfnLaunchTemplatedefaultversionnumber {
+    pub fn att_name(&self) -> &'static str {
+        r#"DefaultVersionNumber"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLaunchTemplatelatestversionnumber;
+impl CfnLaunchTemplatelatestversionnumber {
+    pub fn att_name(&self) -> &'static str {
+        r#"LatestVersionNumber"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLaunchTemplate {

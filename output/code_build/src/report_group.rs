@@ -72,6 +72,9 @@ pub struct CfnReportGroup {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: ReportGroupTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnReportGrouparn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -88,6 +91,14 @@ pub enum ReportGroupTypeEnum {
 impl Default for ReportGroupTypeEnum {
     fn default() -> Self {
         ReportGroupTypeEnum::Codecoverage
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReportGrouparn;
+impl CfnReportGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

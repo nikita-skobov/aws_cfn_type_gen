@@ -47,6 +47,28 @@ pub struct CfnPlacement {
     /// Update requires: Replacement
     #[serde(rename = "ProjectName")]
     pub project_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_placement_name: CfnPlacementplacementname,
+
+    #[serde(skip_serializing)]
+    pub att_project_name: CfnPlacementprojectname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlacementplacementname;
+impl CfnPlacementplacementname {
+    pub fn att_name(&self) -> &'static str {
+        r#"PlacementName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlacementprojectname;
+impl CfnPlacementprojectname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProjectName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPlacement {

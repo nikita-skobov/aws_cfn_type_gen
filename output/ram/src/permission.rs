@@ -57,6 +57,39 @@ pub struct CfnPermission {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPermissionarn,
+
+    #[serde(skip_serializing)]
+    pub att_permission_type: CfnPermissionpermissiontype,
+
+    #[serde(skip_serializing)]
+    pub att_version: CfnPermissionversion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPermissionarn;
+impl CfnPermissionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPermissionpermissiontype;
+impl CfnPermissionpermissiontype {
+    pub fn att_name(&self) -> &'static str {
+        r#"PermissionType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPermissionversion;
+impl CfnPermissionversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPermission {

@@ -159,6 +159,28 @@ pub struct CfnJobTemplate {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnJobTemplatearn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnJobTemplatename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnJobTemplatearn;
+impl CfnJobTemplatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnJobTemplatename;
+impl CfnJobTemplatename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnJobTemplate {

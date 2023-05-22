@@ -78,6 +78,39 @@ pub struct CfnLocationFSxONTAP {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_fsx_filesystem_arn: CfnLocationFSxONTAPfsxfilesystemarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationFSxONTAPlocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationFSxONTAPlocationuri,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationFSxONTAPfsxfilesystemarn;
+impl CfnLocationFSxONTAPfsxfilesystemarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FsxFilesystemArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationFSxONTAPlocationarn;
+impl CfnLocationFSxONTAPlocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationFSxONTAPlocationuri;
+impl CfnLocationFSxONTAPlocationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocationFSxONTAP {

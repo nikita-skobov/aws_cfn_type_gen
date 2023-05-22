@@ -11,6 +11,28 @@ pub struct CfnPublicKey {
     /// Update requires: No interruption
     #[serde(rename = "PublicKeyConfig")]
     pub public_key_config: PublicKeyConfig,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnPublicKeycreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnPublicKeyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublicKeycreatedtime;
+impl CfnPublicKeycreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublicKeyid;
+impl CfnPublicKeyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPublicKey {

@@ -134,6 +134,17 @@ pub struct CfnConnector {
     #[serde(rename = "WorkerConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub worker_configuration: Option<WorkerConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_connector_arn: CfnConnectorconnectorarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorconnectorarn;
+impl CfnConnectorconnectorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConnectorArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConnector {

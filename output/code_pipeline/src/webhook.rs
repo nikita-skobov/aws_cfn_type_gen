@@ -122,6 +122,9 @@ pub struct CfnWebhook {
     /// Update requires: No interruption
     #[serde(rename = "TargetPipelineVersion")]
     pub target_pipeline_version: i64,
+
+    #[serde(skip_serializing)]
+    pub att_url: CfnWebhookurl,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -142,6 +145,14 @@ pub enum WebhookAuthenticationEnum {
 impl Default for WebhookAuthenticationEnum {
     fn default() -> Self {
         WebhookAuthenticationEnum::Githubhmac
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWebhookurl;
+impl CfnWebhookurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"Url"#
     }
 }
 

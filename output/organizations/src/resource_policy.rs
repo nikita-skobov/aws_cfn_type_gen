@@ -37,6 +37,28 @@ pub struct CfnResourcePolicy {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnResourcePolicyarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnResourcePolicyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourcePolicyarn;
+impl CfnResourcePolicyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourcePolicyid;
+impl CfnResourcePolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResourcePolicy {

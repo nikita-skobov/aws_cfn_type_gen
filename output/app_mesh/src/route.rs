@@ -91,6 +91,83 @@ pub struct CfnRoute {
     /// Update requires: Replacement
     #[serde(rename = "VirtualRouterName")]
     pub virtual_router_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRoutearn,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_name: CfnRoutemeshname,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_owner: CfnRoutemeshowner,
+
+    #[serde(skip_serializing)]
+    pub att_resource_owner: CfnRouteresourceowner,
+
+    #[serde(skip_serializing)]
+    pub att_route_name: CfnRouteroutename,
+
+    #[serde(skip_serializing)]
+    pub att_uid: CfnRouteuid,
+
+    #[serde(skip_serializing)]
+    pub att_virtual_router_name: CfnRoutevirtualroutername,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRoutearn;
+impl CfnRoutearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRoutemeshname;
+impl CfnRoutemeshname {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRoutemeshowner;
+impl CfnRoutemeshowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouteresourceowner;
+impl CfnRouteresourceowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouteroutename;
+impl CfnRouteroutename {
+    pub fn att_name(&self) -> &'static str {
+        r#"RouteName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouteuid;
+impl CfnRouteuid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Uid"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRoutevirtualroutername;
+impl CfnRoutevirtualroutername {
+    pub fn att_name(&self) -> &'static str {
+        r#"VirtualRouterName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRoute {

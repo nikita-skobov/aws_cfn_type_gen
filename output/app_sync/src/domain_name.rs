@@ -34,6 +34,39 @@ pub struct CfnDomainName {
     /// Update requires: Replacement
     #[serde(rename = "DomainName")]
     pub domain_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_app_sync_domain_name: CfnDomainNameappsyncdomainname,
+
+    #[serde(skip_serializing)]
+    pub att_domain_name: CfnDomainNamedomainname,
+
+    #[serde(skip_serializing)]
+    pub att_hosted_zone_id: CfnDomainNamehostedzoneid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNameappsyncdomainname;
+impl CfnDomainNameappsyncdomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"AppSyncDomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNamedomainname;
+impl CfnDomainNamedomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNamehostedzoneid;
+impl CfnDomainNamehostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"HostedZoneId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDomainName {

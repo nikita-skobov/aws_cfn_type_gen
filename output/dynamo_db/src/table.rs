@@ -237,6 +237,12 @@ pub struct CfnTable {
     #[serde(rename = "TimeToLiveSpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub time_to_live_specification: Option<TimeToLiveSpecification>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnTablearn,
+
+    #[serde(skip_serializing)]
+    pub att_stream_arn: CfnTablestreamarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -270,6 +276,22 @@ pub enum TableTableClassEnum {
 impl Default for TableTableClassEnum {
     fn default() -> Self {
         TableTableClassEnum::Standard
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTablearn;
+impl CfnTablearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTablestreamarn;
+impl CfnTablestreamarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"StreamArn"#
     }
 }
 

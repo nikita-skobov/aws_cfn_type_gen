@@ -32,6 +32,61 @@ pub struct CfnResolverQueryLoggingConfigAssociation {
     #[serde(rename = "ResourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnResolverQueryLoggingConfigAssociationcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_error: CfnResolverQueryLoggingConfigAssociationerror,
+
+    #[serde(skip_serializing)]
+    pub att_error_message: CfnResolverQueryLoggingConfigAssociationerrormessage,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnResolverQueryLoggingConfigAssociationid,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnResolverQueryLoggingConfigAssociationstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigAssociationcreationtime;
+impl CfnResolverQueryLoggingConfigAssociationcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigAssociationerror;
+impl CfnResolverQueryLoggingConfigAssociationerror {
+    pub fn att_name(&self) -> &'static str {
+        r#"Error"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigAssociationerrormessage;
+impl CfnResolverQueryLoggingConfigAssociationerrormessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"ErrorMessage"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigAssociationid;
+impl CfnResolverQueryLoggingConfigAssociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverQueryLoggingConfigAssociationstatus;
+impl CfnResolverQueryLoggingConfigAssociationstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResolverQueryLoggingConfigAssociation {

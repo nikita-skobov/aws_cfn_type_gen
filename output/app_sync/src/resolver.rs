@@ -193,6 +193,39 @@ pub struct CfnResolver {
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
     pub type_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_field_name: CfnResolverfieldname,
+
+    #[serde(skip_serializing)]
+    pub att_resolver_arn: CfnResolverresolverarn,
+
+    #[serde(skip_serializing)]
+    pub att_type_name: CfnResolvertypename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverfieldname;
+impl CfnResolverfieldname {
+    pub fn att_name(&self) -> &'static str {
+        r#"FieldName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverresolverarn;
+impl CfnResolverresolverarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResolverArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolvertypename;
+impl CfnResolvertypename {
+    pub fn att_name(&self) -> &'static str {
+        r#"TypeName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResolver {

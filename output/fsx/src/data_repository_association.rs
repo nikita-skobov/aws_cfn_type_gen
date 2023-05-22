@@ -107,6 +107,28 @@ pub struct CfnDataRepositoryAssociation {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_association_id: CfnDataRepositoryAssociationassociationid,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnDataRepositoryAssociationresourcearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataRepositoryAssociationassociationid;
+impl CfnDataRepositoryAssociationassociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AssociationId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataRepositoryAssociationresourcearn;
+impl CfnDataRepositoryAssociationresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceARN"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDataRepositoryAssociation {

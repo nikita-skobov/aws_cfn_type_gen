@@ -110,6 +110,9 @@ pub struct CfnDataset {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<TagsItems>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDatasetarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -167,6 +170,14 @@ pub enum DatasetDomainEnum {
 impl Default for DatasetDomainEnum {
     fn default() -> Self {
         DatasetDomainEnum::Custom
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDatasetarn;
+impl CfnDatasetarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

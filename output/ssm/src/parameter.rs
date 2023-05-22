@@ -138,6 +138,12 @@ pub struct CfnParameter {
     /// Update requires: No interruption
     #[serde(rename = "Value")]
     pub value: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_cfn_type: CfnParametercfntype,
+
+    #[serde(skip_serializing)]
+    pub att_value: CfnParametervalue,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -175,6 +181,22 @@ pub enum ParameterTypeEnum {
 impl Default for ParameterTypeEnum {
     fn default() -> Self {
         ParameterTypeEnum::String
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnParametercfntype;
+impl CfnParametercfntype {
+    pub fn att_name(&self) -> &'static str {
+        r#"Type"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnParametervalue;
+impl CfnParametervalue {
+    pub fn att_name(&self) -> &'static str {
+        r#"Value"#
     }
 }
 

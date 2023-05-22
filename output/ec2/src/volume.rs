@@ -189,6 +189,9 @@ pub struct CfnVolume {
     #[serde(rename = "VolumeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_type: Option<VolumeVolumeTypeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_volume_id: CfnVolumevolumeid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -225,6 +228,14 @@ pub enum VolumeVolumeTypeEnum {
 impl Default for VolumeVolumeTypeEnum {
     fn default() -> Self {
         VolumeVolumeTypeEnum::Gp2
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVolumevolumeid;
+impl CfnVolumevolumeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VolumeId"#
     }
 }
 

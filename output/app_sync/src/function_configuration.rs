@@ -169,6 +169,50 @@ pub struct CfnFunctionConfiguration {
     #[serde(rename = "SyncConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_config: Option<SyncConfig>,
+
+    #[serde(skip_serializing)]
+    pub att_data_source_name: CfnFunctionConfigurationdatasourcename,
+
+    #[serde(skip_serializing)]
+    pub att_function_arn: CfnFunctionConfigurationfunctionarn,
+
+    #[serde(skip_serializing)]
+    pub att_function_id: CfnFunctionConfigurationfunctionid,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnFunctionConfigurationname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionConfigurationdatasourcename;
+impl CfnFunctionConfigurationdatasourcename {
+    pub fn att_name(&self) -> &'static str {
+        r#"DataSourceName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionConfigurationfunctionarn;
+impl CfnFunctionConfigurationfunctionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FunctionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionConfigurationfunctionid;
+impl CfnFunctionConfigurationfunctionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"FunctionId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFunctionConfigurationname;
+impl CfnFunctionConfigurationname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFunctionConfiguration {

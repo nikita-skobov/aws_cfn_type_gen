@@ -85,6 +85,12 @@ pub struct CfnRuleGroup {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: RuleGroupTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_rule_group_arn: CfnRuleGrouprulegrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_rule_group_id: CfnRuleGrouprulegroupid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -101,6 +107,22 @@ pub enum RuleGroupTypeEnum {
 impl Default for RuleGroupTypeEnum {
     fn default() -> Self {
         RuleGroupTypeEnum::Stateful
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRuleGrouprulegrouparn;
+impl CfnRuleGrouprulegrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"RuleGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRuleGrouprulegroupid;
+impl CfnRuleGrouprulegroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RuleGroupId"#
     }
 }
 

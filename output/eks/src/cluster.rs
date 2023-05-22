@@ -128,6 +128,95 @@ pub struct CfnCluster {
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnClusterarn,
+
+    #[serde(skip_serializing)]
+    pub att_certificate_authority_data: CfnClustercertificateauthoritydata,
+
+    #[serde(skip_serializing)]
+    pub att_cluster_security_group_id: CfnClusterclustersecuritygroupid,
+
+    #[serde(skip_serializing)]
+    pub att_encryption_config_key_arn: CfnClusterencryptionconfigkeyarn,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint: CfnClusterendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnClusterid,
+
+    #[serde(skip_serializing)]
+    pub att_kubernetes_network_config_service_ipv6_cidr:
+        CfnClusterkubernetesnetworkconfigserviceipv6cidr,
+
+    #[serde(skip_serializing)]
+    pub att_open_id_connect_issuer_url: CfnClusteropenidconnectissuerurl,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterarn;
+impl CfnClusterarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClustercertificateauthoritydata;
+impl CfnClustercertificateauthoritydata {
+    pub fn att_name(&self) -> &'static str {
+        r#"CertificateAuthorityData"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterclustersecuritygroupid;
+impl CfnClusterclustersecuritygroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClusterSecurityGroupId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterencryptionconfigkeyarn;
+impl CfnClusterencryptionconfigkeyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"EncryptionConfigKeyArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterendpoint;
+impl CfnClusterendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterid;
+impl CfnClusterid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterkubernetesnetworkconfigserviceipv6cidr;
+impl CfnClusterkubernetesnetworkconfigserviceipv6cidr {
+    pub fn att_name(&self) -> &'static str {
+        r#"KubernetesNetworkConfig.ServiceIpv6Cidr"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusteropenidconnectissuerurl;
+impl CfnClusteropenidconnectissuerurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"OpenIdConnectIssuerUrl"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCluster {

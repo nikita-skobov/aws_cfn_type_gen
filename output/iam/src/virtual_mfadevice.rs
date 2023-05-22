@@ -69,6 +69,17 @@ pub struct CfnVirtualMFADevice {
     #[serde(rename = "VirtualMfaDeviceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_mfa_device_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_serial_number: CfnVirtualMFADeviceserialnumber,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualMFADeviceserialnumber;
+impl CfnVirtualMFADeviceserialnumber {
+    pub fn att_name(&self) -> &'static str {
+        r#"SerialNumber"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVirtualMFADevice {

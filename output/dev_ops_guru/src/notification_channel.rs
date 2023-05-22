@@ -15,6 +15,17 @@ pub struct CfnNotificationChannel {
     /// Update requires: Replacement
     #[serde(rename = "Config")]
     pub config: NotificationChannelConfig,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnNotificationChannelid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNotificationChannelid;
+impl CfnNotificationChannelid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnNotificationChannel {

@@ -101,6 +101,9 @@ pub struct CfnApiDestination {
     #[serde(rename = "Name")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnApiDestinationarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -137,6 +140,14 @@ pub enum ApiDestinationHttpMethodEnum {
 impl Default for ApiDestinationHttpMethodEnum {
     fn default() -> Self {
         ApiDestinationHttpMethodEnum::Delete
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApiDestinationarn;
+impl CfnApiDestinationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

@@ -65,6 +65,9 @@ pub struct CfnDatasetGroup {
     #[serde(rename = "RoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_dataset_group_arn: CfnDatasetGroupdatasetgrouparn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -81,6 +84,14 @@ pub enum DatasetGroupDomainEnum {
 impl Default for DatasetGroupDomainEnum {
     fn default() -> Self {
         DatasetGroupDomainEnum::Ecommerce
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDatasetGroupdatasetgrouparn;
+impl CfnDatasetGroupdatasetgrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DatasetGroupArn"#
     }
 }
 

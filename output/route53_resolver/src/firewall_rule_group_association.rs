@@ -89,6 +89,30 @@ pub struct CfnFirewallRuleGroupAssociation {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnFirewallRuleGroupAssociationarn,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnFirewallRuleGroupAssociationcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_creator_request_id: CfnFirewallRuleGroupAssociationcreatorrequestid,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnFirewallRuleGroupAssociationid,
+
+    #[serde(skip_serializing)]
+    pub att_managed_owner_name: CfnFirewallRuleGroupAssociationmanagedownername,
+
+    #[serde(skip_serializing)]
+    pub att_modification_time: CfnFirewallRuleGroupAssociationmodificationtime,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnFirewallRuleGroupAssociationstatus,
+
+    #[serde(skip_serializing)]
+    pub att_status_message: CfnFirewallRuleGroupAssociationstatusmessage,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -105,6 +129,70 @@ pub enum FirewallRuleGroupAssociationMutationProtectionEnum {
 impl Default for FirewallRuleGroupAssociationMutationProtectionEnum {
     fn default() -> Self {
         FirewallRuleGroupAssociationMutationProtectionEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallRuleGroupAssociationarn;
+impl CfnFirewallRuleGroupAssociationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallRuleGroupAssociationcreationtime;
+impl CfnFirewallRuleGroupAssociationcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallRuleGroupAssociationcreatorrequestid;
+impl CfnFirewallRuleGroupAssociationcreatorrequestid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatorRequestId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallRuleGroupAssociationid;
+impl CfnFirewallRuleGroupAssociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallRuleGroupAssociationmanagedownername;
+impl CfnFirewallRuleGroupAssociationmanagedownername {
+    pub fn att_name(&self) -> &'static str {
+        r#"ManagedOwnerName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallRuleGroupAssociationmodificationtime;
+impl CfnFirewallRuleGroupAssociationmodificationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModificationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallRuleGroupAssociationstatus;
+impl CfnFirewallRuleGroupAssociationstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallRuleGroupAssociationstatusmessage;
+impl CfnFirewallRuleGroupAssociationstatusmessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"StatusMessage"#
     }
 }
 

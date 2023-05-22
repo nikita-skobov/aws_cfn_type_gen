@@ -74,6 +74,28 @@ pub struct CfnAsset {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_asset_arn: CfnAssetassetarn,
+
+    #[serde(skip_serializing)]
+    pub att_asset_id: CfnAssetassetid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAssetassetarn;
+impl CfnAssetassetarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AssetArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAssetassetid;
+impl CfnAssetassetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AssetId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAsset {

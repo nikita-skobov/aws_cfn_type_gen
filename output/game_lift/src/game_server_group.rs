@@ -187,6 +187,12 @@ pub struct CfnGameServerGroup {
     #[serde(rename = "VpcSubnets")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_subnets: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_auto_scaling_group_arn: CfnGameServerGroupautoscalinggrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_game_server_group_arn: CfnGameServerGroupgameservergrouparn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -245,6 +251,22 @@ pub enum GameServerGroupGameServerProtectionPolicyEnum {
 impl Default for GameServerGroupGameServerProtectionPolicyEnum {
     fn default() -> Self {
         GameServerGroupGameServerProtectionPolicyEnum::Fullprotection
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGameServerGroupautoscalinggrouparn;
+impl CfnGameServerGroupautoscalinggrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AutoScalingGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGameServerGroupgameservergrouparn;
+impl CfnGameServerGroupgameservergrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"GameServerGroupArn"#
     }
 }
 

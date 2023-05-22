@@ -120,6 +120,61 @@ pub struct CfnPipe {
     #[serde(rename = "TargetParameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub target_parameters: Option<PipeTargetParameters>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPipearn,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnPipecreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_current_state: CfnPipecurrentstate,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnPipelastmodifiedtime,
+
+    #[serde(skip_serializing)]
+    pub att_state_reason: CfnPipestatereason,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPipearn;
+impl CfnPipearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPipecreationtime;
+impl CfnPipecreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPipecurrentstate;
+impl CfnPipecurrentstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"CurrentState"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPipelastmodifiedtime;
+impl CfnPipelastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPipestatereason;
+impl CfnPipestatereason {
+    pub fn att_name(&self) -> &'static str {
+        r#"StateReason"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPipe {

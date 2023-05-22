@@ -170,6 +170,9 @@ pub struct CfnTypeActivation {
     #[serde(rename = "VersionBump")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version_bump: Option<TypeActivationVersionBumpEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnTypeActivationarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -207,6 +210,14 @@ pub enum TypeActivationVersionBumpEnum {
 impl Default for TypeActivationVersionBumpEnum {
     fn default() -> Self {
         TypeActivationVersionBumpEnum::Major
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTypeActivationarn;
+impl CfnTypeActivationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

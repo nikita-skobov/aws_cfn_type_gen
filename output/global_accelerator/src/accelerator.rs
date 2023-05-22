@@ -73,6 +73,15 @@ pub struct CfnAccelerator {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_accelerator_arn: CfnAcceleratoracceleratorarn,
+
+    #[serde(skip_serializing)]
+    pub att_dns_name: CfnAcceleratordnsname,
+
+    #[serde(skip_serializing)]
+    pub att_dual_stack_dns_name: CfnAcceleratordualstackdnsname,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -89,6 +98,30 @@ pub enum AcceleratorIpAddressTypeEnum {
 impl Default for AcceleratorIpAddressTypeEnum {
     fn default() -> Self {
         AcceleratorIpAddressTypeEnum::Dualstack
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAcceleratoracceleratorarn;
+impl CfnAcceleratoracceleratorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AcceleratorArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAcceleratordnsname;
+impl CfnAcceleratordnsname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DnsName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAcceleratordualstackdnsname;
+impl CfnAcceleratordualstackdnsname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DualStackDnsName"#
     }
 }
 

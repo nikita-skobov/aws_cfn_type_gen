@@ -41,6 +41,39 @@ pub struct CfnEntityType {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEntityTypearn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnEntityTypecreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnEntityTypelastupdatedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEntityTypearn;
+impl CfnEntityTypearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEntityTypecreatedtime;
+impl CfnEntityTypecreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEntityTypelastupdatedtime;
+impl CfnEntityTypelastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEntityType {

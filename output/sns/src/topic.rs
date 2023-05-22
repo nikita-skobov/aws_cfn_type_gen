@@ -138,6 +138,28 @@ pub struct CfnTopic {
     #[serde(rename = "TracingConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tracing_config: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_topic_arn: CfnTopictopicarn,
+
+    #[serde(skip_serializing)]
+    pub att_topic_name: CfnTopictopicname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTopictopicarn;
+impl CfnTopictopicarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TopicArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTopictopicname;
+impl CfnTopictopicname {
+    pub fn att_name(&self) -> &'static str {
+        r#"TopicName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTopic {

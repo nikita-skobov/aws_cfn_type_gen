@@ -34,6 +34,17 @@ pub struct CfnRegistryPolicy {
     #[serde(rename = "RevisionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub revision_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnRegistryPolicyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRegistryPolicyid;
+impl CfnRegistryPolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRegistryPolicy {

@@ -100,6 +100,28 @@ pub struct CfnSimulationApplication {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnSimulationApplicationarn,
+
+    #[serde(skip_serializing)]
+    pub att_current_revision_id: CfnSimulationApplicationcurrentrevisionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSimulationApplicationarn;
+impl CfnSimulationApplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSimulationApplicationcurrentrevisionid;
+impl CfnSimulationApplicationcurrentrevisionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CurrentRevisionId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSimulationApplication {

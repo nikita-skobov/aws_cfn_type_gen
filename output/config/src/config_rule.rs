@@ -107,6 +107,15 @@ pub struct CfnConfigRule {
     /// Update requires: No interruption
     #[serde(rename = "Source")]
     pub source: Source,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnConfigRulearn,
+
+    #[serde(skip_serializing)]
+    pub att_compliance_type: CfnConfigRulecompliancetype,
+
+    #[serde(skip_serializing)]
+    pub att_config_rule_id: CfnConfigRuleconfigruleid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -135,6 +144,30 @@ pub enum ConfigRuleMaximumExecutionFrequencyEnum {
 impl Default for ConfigRuleMaximumExecutionFrequencyEnum {
     fn default() -> Self {
         ConfigRuleMaximumExecutionFrequencyEnum::Onehour
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigRulearn;
+impl CfnConfigRulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigRulecompliancetype;
+impl CfnConfigRulecompliancetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"Compliance.Type"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigRuleconfigruleid;
+impl CfnConfigRuleconfigruleid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConfigRuleId"#
     }
 }
 

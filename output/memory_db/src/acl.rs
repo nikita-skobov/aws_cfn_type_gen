@@ -37,6 +37,28 @@ pub struct CfnACL {
     #[serde(rename = "UserNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_names: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnACLarn,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnACLstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnACLarn;
+impl CfnACLarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnACLstatus;
+impl CfnACLstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnACL {

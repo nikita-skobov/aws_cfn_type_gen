@@ -23,6 +23,17 @@ pub struct CfnSpotFleet {
     /// Update requires: No interruption
     #[serde(rename = "SpotFleetRequestConfigData")]
     pub spot_fleet_request_config_data: SpotFleetRequestConfigData,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnSpotFleetid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSpotFleetid;
+impl CfnSpotFleetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSpotFleet {

@@ -48,6 +48,17 @@ pub struct CfnSnapshot {
     /// Update requires: Replacement
     #[serde(rename = "VolumeId")]
     pub volume_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnSnapshotresourcearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSnapshotresourcearn;
+impl CfnSnapshotresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceARN"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSnapshot {

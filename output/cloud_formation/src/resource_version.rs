@@ -74,6 +74,61 @@ pub struct CfnResourceVersion {
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
     pub type_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnResourceVersionarn,
+
+    #[serde(skip_serializing)]
+    pub att_provisioning_type: CfnResourceVersionprovisioningtype,
+
+    #[serde(skip_serializing)]
+    pub att_type_arn: CfnResourceVersiontypearn,
+
+    #[serde(skip_serializing)]
+    pub att_version_id: CfnResourceVersionversionid,
+
+    #[serde(skip_serializing)]
+    pub att_visibility: CfnResourceVersionvisibility,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceVersionarn;
+impl CfnResourceVersionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceVersionprovisioningtype;
+impl CfnResourceVersionprovisioningtype {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProvisioningType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceVersiontypearn;
+impl CfnResourceVersiontypearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TypeArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceVersionversionid;
+impl CfnResourceVersionversionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VersionId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceVersionvisibility;
+impl CfnResourceVersionvisibility {
+    pub fn att_name(&self) -> &'static str {
+        r#"Visibility"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResourceVersion {

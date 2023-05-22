@@ -149,6 +149,28 @@ pub struct CfnRole {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRolearn,
+
+    #[serde(skip_serializing)]
+    pub att_role_id: CfnRoleroleid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRolearn;
+impl CfnRolearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRoleroleid;
+impl CfnRoleroleid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RoleId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRole {

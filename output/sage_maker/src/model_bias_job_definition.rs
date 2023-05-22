@@ -128,6 +128,28 @@ pub struct CfnModelBiasJobDefinition {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnModelBiasJobDefinitioncreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_job_definition_arn: CfnModelBiasJobDefinitionjobdefinitionarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelBiasJobDefinitioncreationtime;
+impl CfnModelBiasJobDefinitioncreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelBiasJobDefinitionjobdefinitionarn;
+impl CfnModelBiasJobDefinitionjobdefinitionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"JobDefinitionArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnModelBiasJobDefinition {

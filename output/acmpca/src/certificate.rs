@@ -92,6 +92,12 @@ pub struct CfnCertificate {
     #[serde(rename = "ValidityNotBefore")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub validity_not_before: Option<Validity>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCertificatearn,
+
+    #[serde(skip_serializing)]
+    pub att_certificate: CfnCertificatecertificate,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -124,6 +130,22 @@ pub enum CertificateSigningAlgorithmEnum {
 impl Default for CertificateSigningAlgorithmEnum {
     fn default() -> Self {
         CertificateSigningAlgorithmEnum::Sha256withecdsa
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatearn;
+impl CfnCertificatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatecertificate;
+impl CfnCertificatecertificate {
+    pub fn att_name(&self) -> &'static str {
+        r#"Certificate"#
     }
 }
 

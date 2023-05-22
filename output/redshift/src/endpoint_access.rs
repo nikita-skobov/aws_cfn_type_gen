@@ -64,6 +64,61 @@ pub struct CfnEndpointAccess {
     /// Update requires: No interruption
     #[serde(rename = "VpcSecurityGroupIds")]
     pub vpc_security_group_ids: Vec<String>,
+
+    #[serde(skip_serializing)]
+    pub att_address: CfnEndpointAccessaddress,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_create_time: CfnEndpointAccessendpointcreatetime,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_status: CfnEndpointAccessendpointstatus,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_endpoint_vpc_endpoint_id: CfnEndpointAccessvpcendpointvpcendpointid,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_endpoint_vpc_id: CfnEndpointAccessvpcendpointvpcid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAccessaddress;
+impl CfnEndpointAccessaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAccessendpointcreatetime;
+impl CfnEndpointAccessendpointcreatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointCreateTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAccessendpointstatus;
+impl CfnEndpointAccessendpointstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAccessvpcendpointvpcendpointid;
+impl CfnEndpointAccessvpcendpointvpcendpointid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcEndpoint.VpcEndpointId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAccessvpcendpointvpcid;
+impl CfnEndpointAccessvpcendpointvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcEndpoint.VpcId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEndpointAccess {

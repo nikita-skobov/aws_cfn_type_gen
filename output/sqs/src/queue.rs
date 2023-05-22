@@ -228,6 +228,39 @@ pub struct CfnQueue {
     #[serde(rename = "VisibilityTimeout")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility_timeout: Option<i64>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnQueuearn,
+
+    #[serde(skip_serializing)]
+    pub att_queue_name: CfnQueuequeuename,
+
+    #[serde(skip_serializing)]
+    pub att_queue_url: CfnQueuequeueurl,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnQueuearn;
+impl CfnQueuearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnQueuequeuename;
+impl CfnQueuequeuename {
+    pub fn att_name(&self) -> &'static str {
+        r#"QueueName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnQueuequeueurl;
+impl CfnQueuequeueurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"QueueUrl"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnQueue {

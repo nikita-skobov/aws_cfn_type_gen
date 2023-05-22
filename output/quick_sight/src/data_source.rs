@@ -164,6 +164,18 @@ pub struct CfnDataSource {
     #[serde(rename = "VpcConnectionProperties")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_connection_properties: Option<VpcConnectionProperties>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDataSourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnDataSourcecreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnDataSourcelastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnDataSourcestatus,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -276,6 +288,38 @@ pub enum DataSourceTypeEnum {
 impl Default for DataSourceTypeEnum {
     fn default() -> Self {
         DataSourceTypeEnum::Adobeanalytics
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSourcearn;
+impl CfnDataSourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSourcecreatedtime;
+impl CfnDataSourcecreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSourcelastupdatedtime;
+impl CfnDataSourcelastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSourcestatus;
+impl CfnDataSourcestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
     }
 }
 

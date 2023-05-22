@@ -321,6 +321,50 @@ pub struct CfnDBCluster {
     #[serde(rename = "VpcSecurityGroupIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_cluster_resource_id: CfnDBClusterclusterresourceid,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint: CfnDBClusterendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_port: CfnDBClusterport,
+
+    #[serde(skip_serializing)]
+    pub att_read_endpoint: CfnDBClusterreadendpoint,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClusterclusterresourceid;
+impl CfnDBClusterclusterresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClusterResourceId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClusterendpoint;
+impl CfnDBClusterendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClusterport;
+impl CfnDBClusterport {
+    pub fn att_name(&self) -> &'static str {
+        r#"Port"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClusterreadendpoint;
+impl CfnDBClusterreadendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"ReadEndpoint"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDBCluster {

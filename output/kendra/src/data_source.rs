@@ -125,6 +125,12 @@ pub struct CfnDataSource {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: DataSourceTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDataSourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnDataSourceid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -209,6 +215,22 @@ pub enum DataSourceTypeEnum {
 impl Default for DataSourceTypeEnum {
     fn default() -> Self {
         DataSourceTypeEnum::Alfresco
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSourcearn;
+impl CfnDataSourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSourceid;
+impl CfnDataSourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

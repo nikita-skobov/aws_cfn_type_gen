@@ -73,6 +73,28 @@ pub struct CfnConnector {
     /// Update requires: No interruption
     #[serde(rename = "Url")]
     pub url: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnConnectorarn,
+
+    #[serde(skip_serializing)]
+    pub att_connector_id: CfnConnectorconnectorid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorarn;
+impl CfnConnectorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorconnectorid;
+impl CfnConnectorconnectorid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConnectorId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConnector {

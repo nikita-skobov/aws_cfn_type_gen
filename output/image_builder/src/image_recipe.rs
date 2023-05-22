@@ -120,6 +120,28 @@ pub struct CfnImageRecipe {
     #[serde(rename = "WorkingDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub working_directory: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnImageRecipearn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnImageRecipename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImageRecipearn;
+impl CfnImageRecipearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImageRecipename;
+impl CfnImageRecipename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnImageRecipe {

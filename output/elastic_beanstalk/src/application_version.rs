@@ -42,6 +42,17 @@ pub struct CfnApplicationVersion {
     /// Update requires: Replacement
     #[serde(rename = "SourceBundle")]
     pub source_bundle: SourceBundle,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnApplicationVersionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationVersionid;
+impl CfnApplicationVersionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnApplicationVersion {

@@ -100,6 +100,12 @@ pub struct CfnRepository {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRepositoryarn,
+
+    #[serde(skip_serializing)]
+    pub att_repository_uri: CfnRepositoryrepositoryuri,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -116,6 +122,22 @@ pub enum RepositoryImageTagMutabilityEnum {
 impl Default for RepositoryImageTagMutabilityEnum {
     fn default() -> Self {
         RepositoryImageTagMutabilityEnum::Immutable
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositoryarn;
+impl CfnRepositoryarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositoryrepositoryuri;
+impl CfnRepositoryrepositoryuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"RepositoryUri"#
     }
 }
 

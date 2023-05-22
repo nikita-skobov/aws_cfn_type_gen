@@ -46,6 +46,28 @@ pub struct CfnUserGroup {
     /// Update requires: No interruption
     #[serde(rename = "UserIds")]
     pub user_ids: Vec<String>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnUserGrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnUserGroupstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserGrouparn;
+impl CfnUserGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserGroupstatus;
+impl CfnUserGroupstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnUserGroup {

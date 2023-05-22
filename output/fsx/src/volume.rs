@@ -81,6 +81,15 @@ pub struct CfnVolume {
     #[serde(rename = "VolumeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub volume_type: Option<VolumeVolumeTypeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnVolumeresourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_uuid: CfnVolumeuuid,
+
+    #[serde(skip_serializing)]
+    pub att_volume_id: CfnVolumevolumeid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -97,6 +106,30 @@ pub enum VolumeVolumeTypeEnum {
 impl Default for VolumeVolumeTypeEnum {
     fn default() -> Self {
         VolumeVolumeTypeEnum::Ontap
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVolumeresourcearn;
+impl CfnVolumeresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceARN"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVolumeuuid;
+impl CfnVolumeuuid {
+    pub fn att_name(&self) -> &'static str {
+        r#"UUID"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVolumevolumeid;
+impl CfnVolumevolumeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VolumeId"#
     }
 }
 

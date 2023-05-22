@@ -63,6 +63,61 @@ pub struct CfnTargetGroup {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnTargetGrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnTargetGroupcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnTargetGroupid,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_at: CfnTargetGrouplastupdatedat,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnTargetGroupstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTargetGrouparn;
+impl CfnTargetGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTargetGroupcreatedat;
+impl CfnTargetGroupcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTargetGroupid;
+impl CfnTargetGroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTargetGrouplastupdatedat;
+impl CfnTargetGrouplastupdatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTargetGroupstatus;
+impl CfnTargetGroupstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTargetGroup {

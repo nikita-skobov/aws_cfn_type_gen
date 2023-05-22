@@ -55,6 +55,17 @@ pub struct CfnIPAMAllocation {
     #[serde(rename = "NetmaskLength")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub netmask_length: Option<i64>,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_pool_allocation_id: CfnIPAMAllocationipampoolallocationid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMAllocationipampoolallocationid;
+impl CfnIPAMAllocationipampoolallocationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamPoolAllocationId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnIPAMAllocation {

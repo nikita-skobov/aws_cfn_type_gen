@@ -39,6 +39,28 @@ pub struct CfnCodeSigningConfig {
     #[serde(rename = "Description")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_code_signing_config_arn: CfnCodeSigningConfigcodesigningconfigarn,
+
+    #[serde(skip_serializing)]
+    pub att_code_signing_config_id: CfnCodeSigningConfigcodesigningconfigid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCodeSigningConfigcodesigningconfigarn;
+impl CfnCodeSigningConfigcodesigningconfigarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CodeSigningConfigArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCodeSigningConfigcodesigningconfigid;
+impl CfnCodeSigningConfigcodesigningconfigid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CodeSigningConfigId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCodeSigningConfig {

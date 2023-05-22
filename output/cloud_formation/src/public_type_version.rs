@@ -116,6 +116,15 @@ pub struct CfnPublicTypeVersion {
     #[serde(rename = "TypeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_public_type_arn: CfnPublicTypeVersionpublictypearn,
+
+    #[serde(skip_serializing)]
+    pub att_publisher_id: CfnPublicTypeVersionpublisherid,
+
+    #[serde(skip_serializing)]
+    pub att_type_version_arn: CfnPublicTypeVersiontypeversionarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -136,6 +145,30 @@ pub enum PublicTypeVersionTypeEnum {
 impl Default for PublicTypeVersionTypeEnum {
     fn default() -> Self {
         PublicTypeVersionTypeEnum::Hook
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublicTypeVersionpublictypearn;
+impl CfnPublicTypeVersionpublictypearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublicTypeArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublicTypeVersionpublisherid;
+impl CfnPublicTypeVersionpublisherid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublisherId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPublicTypeVersiontypeversionarn;
+impl CfnPublicTypeVersiontypeversionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TypeVersionArn"#
     }
 }
 

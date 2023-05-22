@@ -15,6 +15,17 @@ pub struct CfnResourceGroup {
     /// Update requires: Replacement
     #[serde(rename = "ResourceGroupTags")]
     pub resource_group_tags: Vec<Tag>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnResourceGrouparn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceGrouparn;
+impl CfnResourceGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResourceGroup {

@@ -62,6 +62,50 @@ pub struct CfnIPAM {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnIPAMarn,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_id: CfnIPAMipamid,
+
+    #[serde(skip_serializing)]
+    pub att_private_default_scope_id: CfnIPAMprivatedefaultscopeid,
+
+    #[serde(skip_serializing)]
+    pub att_public_default_scope_id: CfnIPAMpublicdefaultscopeid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMarn;
+impl CfnIPAMarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMipamid;
+impl CfnIPAMipamid {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMprivatedefaultscopeid;
+impl CfnIPAMprivatedefaultscopeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrivateDefaultScopeId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMpublicdefaultscopeid;
+impl CfnIPAMpublicdefaultscopeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublicDefaultScopeId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnIPAM {

@@ -270,6 +270,15 @@ pub struct CfnTargetGroup {
     #[serde(rename = "VpcId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_target_group_arn: CfnTargetGrouptargetgrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_target_group_full_name: CfnTargetGrouptargetgroupfullname,
+
+    #[serde(skip_serializing)]
+    pub att_target_group_name: CfnTargetGrouptargetgroupname,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -385,6 +394,30 @@ pub enum TargetGroupTargetTypeEnum {
 impl Default for TargetGroupTargetTypeEnum {
     fn default() -> Self {
         TargetGroupTargetTypeEnum::Alb
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTargetGrouptargetgrouparn;
+impl CfnTargetGrouptargetgrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TargetGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTargetGrouptargetgroupfullname;
+impl CfnTargetGrouptargetgroupfullname {
+    pub fn att_name(&self) -> &'static str {
+        r#"TargetGroupFullName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTargetGrouptargetgroupname;
+impl CfnTargetGrouptargetgroupname {
+    pub fn att_name(&self) -> &'static str {
+        r#"TargetGroupName"#
     }
 }
 

@@ -105,6 +105,33 @@ pub struct CfnResolverEndpoint {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnResolverEndpointarn,
+
+    #[serde(skip_serializing)]
+    pub att_direction: CfnResolverEndpointdirection,
+
+    #[serde(skip_serializing)]
+    pub att_host_vpcid: CfnResolverEndpointhostvpcid,
+
+    #[serde(skip_serializing)]
+    pub att_ip_address_count: CfnResolverEndpointipaddresscount,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnResolverEndpointname,
+
+    #[serde(skip_serializing)]
+    pub att_outpost_arn: CfnResolverEndpointoutpostarn,
+
+    #[serde(skip_serializing)]
+    pub att_preferred_instance_type: CfnResolverEndpointpreferredinstancetype,
+
+    #[serde(skip_serializing)]
+    pub att_resolver_endpoint_id: CfnResolverEndpointresolverendpointid,
+
+    #[serde(skip_serializing)]
+    pub att_resolver_endpoint_type: CfnResolverEndpointresolverendpointtype,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -142,6 +169,78 @@ pub enum ResolverEndpointResolverEndpointTypeEnum {
 impl Default for ResolverEndpointResolverEndpointTypeEnum {
     fn default() -> Self {
         ResolverEndpointResolverEndpointTypeEnum::Dualstack
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverEndpointarn;
+impl CfnResolverEndpointarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverEndpointdirection;
+impl CfnResolverEndpointdirection {
+    pub fn att_name(&self) -> &'static str {
+        r#"Direction"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverEndpointhostvpcid;
+impl CfnResolverEndpointhostvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"HostVPCId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverEndpointipaddresscount;
+impl CfnResolverEndpointipaddresscount {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpAddressCount"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverEndpointname;
+impl CfnResolverEndpointname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverEndpointoutpostarn;
+impl CfnResolverEndpointoutpostarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"OutpostArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverEndpointpreferredinstancetype;
+impl CfnResolverEndpointpreferredinstancetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"PreferredInstanceType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverEndpointresolverendpointid;
+impl CfnResolverEndpointresolverendpointid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResolverEndpointId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverEndpointresolverendpointtype;
+impl CfnResolverEndpointresolverendpointtype {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResolverEndpointType"#
     }
 }
 

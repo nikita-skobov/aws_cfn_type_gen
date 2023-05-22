@@ -50,6 +50,61 @@ pub struct CfnEndpointAuthorization {
     #[serde(rename = "VpcIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_ids: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_authorize_time: CfnEndpointAuthorizationauthorizetime,
+
+    #[serde(skip_serializing)]
+    pub att_cluster_status: CfnEndpointAuthorizationclusterstatus,
+
+    #[serde(skip_serializing)]
+    pub att_grantee: CfnEndpointAuthorizationgrantee,
+
+    #[serde(skip_serializing)]
+    pub att_grantor: CfnEndpointAuthorizationgrantor,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnEndpointAuthorizationstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAuthorizationauthorizetime;
+impl CfnEndpointAuthorizationauthorizetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"AuthorizeTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAuthorizationclusterstatus;
+impl CfnEndpointAuthorizationclusterstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClusterStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAuthorizationgrantee;
+impl CfnEndpointAuthorizationgrantee {
+    pub fn att_name(&self) -> &'static str {
+        r#"Grantee"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAuthorizationgrantor;
+impl CfnEndpointAuthorizationgrantor {
+    pub fn att_name(&self) -> &'static str {
+        r#"Grantor"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointAuthorizationstatus;
+impl CfnEndpointAuthorizationstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEndpointAuthorization {

@@ -109,6 +109,28 @@ pub struct CfnStream {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnStreamarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnStreamid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamarn;
+impl CfnStreamarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamid;
+impl CfnStreamid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnStream {

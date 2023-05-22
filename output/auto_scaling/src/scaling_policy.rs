@@ -169,6 +169,28 @@ pub struct CfnScalingPolicy {
     #[serde(rename = "TargetTrackingConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub target_tracking_configuration: Option<TargetTrackingConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnScalingPolicyarn,
+
+    #[serde(skip_serializing)]
+    pub att_policy_name: CfnScalingPolicypolicyname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScalingPolicyarn;
+impl CfnScalingPolicyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScalingPolicypolicyname;
+impl CfnScalingPolicypolicyname {
+    pub fn att_name(&self) -> &'static str {
+        r#"PolicyName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnScalingPolicy {

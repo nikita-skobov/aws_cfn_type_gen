@@ -28,6 +28,28 @@ pub struct CfnSession {
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_aws_account_id: CfnSessionawsaccountid,
+
+    #[serde(skip_serializing)]
+    pub att_service_role: CfnSessionservicerole,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSessionawsaccountid;
+impl CfnSessionawsaccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AwsAccountId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSessionservicerole;
+impl CfnSessionservicerole {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceRole"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSession {

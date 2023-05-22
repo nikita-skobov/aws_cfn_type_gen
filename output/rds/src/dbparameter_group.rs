@@ -90,6 +90,17 @@ pub struct CfnDBParameterGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_dbparameter_group_name: CfnDBParameterGroupdbparametergroupname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBParameterGroupdbparametergroupname;
+impl CfnDBParameterGroupdbparametergroupname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DBParameterGroupName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDBParameterGroup {

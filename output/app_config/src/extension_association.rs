@@ -68,6 +68,50 @@ pub struct CfnExtensionAssociation {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnExtensionAssociationarn,
+
+    #[serde(skip_serializing)]
+    pub att_extension_arn: CfnExtensionAssociationextensionarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnExtensionAssociationid,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnExtensionAssociationresourcearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnExtensionAssociationarn;
+impl CfnExtensionAssociationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnExtensionAssociationextensionarn;
+impl CfnExtensionAssociationextensionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ExtensionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnExtensionAssociationid;
+impl CfnExtensionAssociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnExtensionAssociationresourcearn;
+impl CfnExtensionAssociationresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnExtensionAssociation {

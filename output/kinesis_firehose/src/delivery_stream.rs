@@ -188,6 +188,9 @@ pub struct CfnDeliveryStream {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDeliveryStreamarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -204,6 +207,14 @@ pub enum DeliveryStreamDeliveryStreamTypeEnum {
 impl Default for DeliveryStreamDeliveryStreamTypeEnum {
     fn default() -> Self {
         DeliveryStreamDeliveryStreamTypeEnum::Directput
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDeliveryStreamarn;
+impl CfnDeliveryStreamarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

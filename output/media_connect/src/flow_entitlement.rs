@@ -80,6 +80,17 @@ pub struct CfnFlowEntitlement {
     /// Update requires: No interruption
     #[serde(rename = "Subscribers")]
     pub subscribers: Vec<String>,
+
+    #[serde(skip_serializing)]
+    pub att_entitlement_arn: CfnFlowEntitlemententitlementarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowEntitlemententitlementarn;
+impl CfnFlowEntitlemententitlementarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"EntitlementArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFlowEntitlement {

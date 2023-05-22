@@ -24,6 +24,28 @@ pub struct CfnProtection {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_protection_arn: CfnProtectionprotectionarn,
+
+    #[serde(skip_serializing)]
+    pub att_protection_id: CfnProtectionprotectionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProtectionprotectionarn;
+impl CfnProtectionprotectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProtectionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProtectionprotectionid;
+impl CfnProtectionprotectionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProtectionId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnProtection {

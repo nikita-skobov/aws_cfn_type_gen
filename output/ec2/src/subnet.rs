@@ -161,6 +161,61 @@ pub struct CfnSubnet {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_availability_zone: CfnSubnetavailabilityzone,
+
+    #[serde(skip_serializing)]
+    pub att_network_acl_association_id: CfnSubnetnetworkaclassociationid,
+
+    #[serde(skip_serializing)]
+    pub att_outpost_arn: CfnSubnetoutpostarn,
+
+    #[serde(skip_serializing)]
+    pub att_subnet_id: CfnSubnetsubnetid,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_id: CfnSubnetvpcid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSubnetavailabilityzone;
+impl CfnSubnetavailabilityzone {
+    pub fn att_name(&self) -> &'static str {
+        r#"AvailabilityZone"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSubnetnetworkaclassociationid;
+impl CfnSubnetnetworkaclassociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkAclAssociationId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSubnetoutpostarn;
+impl CfnSubnetoutpostarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"OutpostArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSubnetsubnetid;
+impl CfnSubnetsubnetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"SubnetId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSubnetvpcid;
+impl CfnSubnetvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSubnet {

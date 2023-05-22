@@ -122,6 +122,17 @@ pub struct CfnHypervisor {
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_hypervisor_arn: CfnHypervisorhypervisorarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnHypervisorhypervisorarn;
+impl CfnHypervisorhypervisorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"HypervisorArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnHypervisor {

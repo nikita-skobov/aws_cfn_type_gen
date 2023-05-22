@@ -23,6 +23,17 @@ pub struct CfnNetworkAcl {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnNetworkAclid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkAclid;
+impl CfnNetworkAclid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnNetworkAcl {

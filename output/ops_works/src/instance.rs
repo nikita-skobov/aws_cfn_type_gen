@@ -275,6 +275,21 @@ pub struct CfnInstance {
     #[serde(rename = "Volumes")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub volumes: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_availability_zone: CfnInstanceavailabilityzone,
+
+    #[serde(skip_serializing)]
+    pub att_private_dns_name: CfnInstanceprivatednsname,
+
+    #[serde(skip_serializing)]
+    pub att_private_ip: CfnInstanceprivateip,
+
+    #[serde(skip_serializing)]
+    pub att_public_dns_name: CfnInstancepublicdnsname,
+
+    #[serde(skip_serializing)]
+    pub att_public_ip: CfnInstancepublicip,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -325,6 +340,46 @@ pub enum InstanceRootDeviceTypeEnum {
 impl Default for InstanceRootDeviceTypeEnum {
     fn default() -> Self {
         InstanceRootDeviceTypeEnum::Ebs
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstanceavailabilityzone;
+impl CfnInstanceavailabilityzone {
+    pub fn att_name(&self) -> &'static str {
+        r#"AvailabilityZone"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstanceprivatednsname;
+impl CfnInstanceprivatednsname {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrivateDnsName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstanceprivateip;
+impl CfnInstanceprivateip {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrivateIp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstancepublicdnsname;
+impl CfnInstancepublicdnsname {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublicDnsName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstancepublicip;
+impl CfnInstancepublicip {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublicIp"#
     }
 }
 

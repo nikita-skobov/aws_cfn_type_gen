@@ -11,6 +11,17 @@ pub struct CfnReplicationConfiguration {
     /// Update requires: No interruption
     #[serde(rename = "ReplicationConfiguration")]
     pub replication_configuration: Box<ReplicationConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_registry_id: CfnReplicationConfigurationregistryid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationConfigurationregistryid;
+impl CfnReplicationConfigurationregistryid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RegistryId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnReplicationConfiguration {

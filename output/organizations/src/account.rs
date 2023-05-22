@@ -112,6 +112,61 @@ pub struct CfnAccount {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_account_id: CfnAccountaccountid,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAccountarn,
+
+    #[serde(skip_serializing)]
+    pub att_joined_method: CfnAccountjoinedmethod,
+
+    #[serde(skip_serializing)]
+    pub att_joined_timestamp: CfnAccountjoinedtimestamp,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnAccountstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccountaccountid;
+impl CfnAccountaccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AccountId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccountarn;
+impl CfnAccountarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccountjoinedmethod;
+impl CfnAccountjoinedmethod {
+    pub fn att_name(&self) -> &'static str {
+        r#"JoinedMethod"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccountjoinedtimestamp;
+impl CfnAccountjoinedtimestamp {
+    pub fn att_name(&self) -> &'static str {
+        r#"JoinedTimestamp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccountstatus;
+impl CfnAccountstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccount {

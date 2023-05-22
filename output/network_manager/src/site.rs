@@ -63,6 +63,28 @@ pub struct CfnSite {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_site_arn: CfnSitesitearn,
+
+    #[serde(skip_serializing)]
+    pub att_site_id: CfnSitesiteid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSitesitearn;
+impl CfnSitesitearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SiteArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSitesiteid;
+impl CfnSitesiteid {
+    pub fn att_name(&self) -> &'static str {
+        r#"SiteId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSite {

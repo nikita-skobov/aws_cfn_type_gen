@@ -133,6 +133,72 @@ pub struct CfnGraphQLApi {
     #[serde(rename = "XrayEnabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub xray_enabled: Option<bool>,
+
+    #[serde(skip_serializing)]
+    pub att_api_id: CfnGraphQLApiapiid,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnGraphQLApiarn,
+
+    #[serde(skip_serializing)]
+    pub att_graph_qldns: CfnGraphQLApigraphqldns,
+
+    #[serde(skip_serializing)]
+    pub att_graph_qlurl: CfnGraphQLApigraphqlurl,
+
+    #[serde(skip_serializing)]
+    pub att_realtime_dns: CfnGraphQLApirealtimedns,
+
+    #[serde(skip_serializing)]
+    pub att_realtime_url: CfnGraphQLApirealtimeurl,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGraphQLApiapiid;
+impl CfnGraphQLApiapiid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApiId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGraphQLApiarn;
+impl CfnGraphQLApiarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGraphQLApigraphqldns;
+impl CfnGraphQLApigraphqldns {
+    pub fn att_name(&self) -> &'static str {
+        r#"GraphQLDns"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGraphQLApigraphqlurl;
+impl CfnGraphQLApigraphqlurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"GraphQLUrl"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGraphQLApirealtimedns;
+impl CfnGraphQLApirealtimedns {
+    pub fn att_name(&self) -> &'static str {
+        r#"RealtimeDns"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGraphQLApirealtimeurl;
+impl CfnGraphQLApirealtimeurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"RealtimeUrl"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGraphQLApi {

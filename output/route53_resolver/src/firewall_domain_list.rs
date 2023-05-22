@@ -62,6 +62,94 @@ pub struct CfnFirewallDomainList {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnFirewallDomainListarn,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnFirewallDomainListcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_creator_request_id: CfnFirewallDomainListcreatorrequestid,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnFirewallDomainListid,
+
+    #[serde(skip_serializing)]
+    pub att_managed_owner_name: CfnFirewallDomainListmanagedownername,
+
+    #[serde(skip_serializing)]
+    pub att_modification_time: CfnFirewallDomainListmodificationtime,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnFirewallDomainListstatus,
+
+    #[serde(skip_serializing)]
+    pub att_status_message: CfnFirewallDomainListstatusmessage,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallDomainListarn;
+impl CfnFirewallDomainListarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallDomainListcreationtime;
+impl CfnFirewallDomainListcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallDomainListcreatorrequestid;
+impl CfnFirewallDomainListcreatorrequestid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatorRequestId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallDomainListid;
+impl CfnFirewallDomainListid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallDomainListmanagedownername;
+impl CfnFirewallDomainListmanagedownername {
+    pub fn att_name(&self) -> &'static str {
+        r#"ManagedOwnerName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallDomainListmodificationtime;
+impl CfnFirewallDomainListmodificationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModificationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallDomainListstatus;
+impl CfnFirewallDomainListstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallDomainListstatusmessage;
+impl CfnFirewallDomainListstatusmessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"StatusMessage"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFirewallDomainList {

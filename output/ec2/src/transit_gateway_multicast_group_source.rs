@@ -35,6 +35,73 @@ pub struct CfnTransitGatewayMulticastGroupSource {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayMulticastDomainId")]
     pub transit_gateway_multicast_domain_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_member_type: CfnTransitGatewayMulticastGroupSourcemembertype,
+
+    #[serde(skip_serializing)]
+    pub att_resource_id: CfnTransitGatewayMulticastGroupSourceresourceid,
+
+    #[serde(skip_serializing)]
+    pub att_resource_type: CfnTransitGatewayMulticastGroupSourceresourcetype,
+
+    #[serde(skip_serializing)]
+    pub att_source_type: CfnTransitGatewayMulticastGroupSourcesourcetype,
+
+    #[serde(skip_serializing)]
+    pub att_subnet_id: CfnTransitGatewayMulticastGroupSourcesubnetid,
+
+    #[serde(skip_serializing)]
+    pub att_transit_gateway_attachment_id:
+        CfnTransitGatewayMulticastGroupSourcetransitgatewayattachmentid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastGroupSourcemembertype;
+impl CfnTransitGatewayMulticastGroupSourcemembertype {
+    pub fn att_name(&self) -> &'static str {
+        r#"MemberType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastGroupSourceresourceid;
+impl CfnTransitGatewayMulticastGroupSourceresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastGroupSourceresourcetype;
+impl CfnTransitGatewayMulticastGroupSourceresourcetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastGroupSourcesourcetype;
+impl CfnTransitGatewayMulticastGroupSourcesourcetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"SourceType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastGroupSourcesubnetid;
+impl CfnTransitGatewayMulticastGroupSourcesubnetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"SubnetId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastGroupSourcetransitgatewayattachmentid;
+impl CfnTransitGatewayMulticastGroupSourcetransitgatewayattachmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TransitGatewayAttachmentId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayMulticastGroupSource {

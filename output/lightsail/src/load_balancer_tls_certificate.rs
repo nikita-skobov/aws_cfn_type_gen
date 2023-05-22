@@ -73,6 +73,29 @@ pub struct CfnLoadBalancerTlsCertificate {
     /// Update requires: Replacement
     #[serde(rename = "LoadBalancerName")]
     pub load_balancer_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_load_balancer_tls_certificate_arn:
+        CfnLoadBalancerTlsCertificateloadbalancertlscertificatearn,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnLoadBalancerTlsCertificatestatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancerTlsCertificateloadbalancertlscertificatearn;
+impl CfnLoadBalancerTlsCertificateloadbalancertlscertificatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LoadBalancerTlsCertificateArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancerTlsCertificatestatus;
+impl CfnLoadBalancerTlsCertificatestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLoadBalancerTlsCertificate {

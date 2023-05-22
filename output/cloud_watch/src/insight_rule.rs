@@ -48,6 +48,28 @@ pub struct CfnInsightRule {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Tags>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnInsightRulearn,
+
+    #[serde(skip_serializing)]
+    pub att_rule_name: CfnInsightRulerulename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInsightRulearn;
+impl CfnInsightRulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInsightRulerulename;
+impl CfnInsightRulerulename {
+    pub fn att_name(&self) -> &'static str {
+        r#"RuleName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnInsightRule {

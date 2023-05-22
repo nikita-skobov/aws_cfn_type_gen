@@ -101,6 +101,17 @@ pub struct CfnConfigurationTemplate {
     #[serde(rename = "SourceConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub source_configuration: Option<SourceConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_template_name: CfnConfigurationTemplatetemplatename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigurationTemplatetemplatename;
+impl CfnConfigurationTemplatetemplatename {
+    pub fn att_name(&self) -> &'static str {
+        r#"TemplateName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConfigurationTemplate {

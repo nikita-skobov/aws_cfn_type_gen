@@ -125,6 +125,50 @@ pub struct CfnService {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_service_arn: CfnServiceservicearn,
+
+    #[serde(skip_serializing)]
+    pub att_service_id: CfnServiceserviceid,
+
+    #[serde(skip_serializing)]
+    pub att_service_url: CfnServiceserviceurl,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnServicestatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceservicearn;
+impl CfnServiceservicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceserviceid;
+impl CfnServiceserviceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceserviceurl;
+impl CfnServiceserviceurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceUrl"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServicestatus;
+impl CfnServicestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnService {

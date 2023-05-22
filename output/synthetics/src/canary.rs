@@ -200,6 +200,39 @@ pub struct CfnCanary {
     #[serde(rename = "VisualReference")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub visual_reference: Option<VisualReference>,
+
+    #[serde(skip_serializing)]
+    pub att_code_source_location_arn: CfnCanarycodesourcelocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCanaryid,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnCanarystate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCanarycodesourcelocationarn;
+impl CfnCanarycodesourcelocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Code.SourceLocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCanaryid;
+impl CfnCanaryid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCanarystate;
+impl CfnCanarystate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCanary {

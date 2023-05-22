@@ -35,6 +35,28 @@ pub struct CfnSimulationApplicationVersion {
     #[serde(rename = "CurrentRevisionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub current_revision_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_application_version: CfnSimulationApplicationVersionapplicationversion,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnSimulationApplicationVersionarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSimulationApplicationVersionapplicationversion;
+impl CfnSimulationApplicationVersionapplicationversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationVersion"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSimulationApplicationVersionarn;
+impl CfnSimulationApplicationVersionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSimulationApplicationVersion {

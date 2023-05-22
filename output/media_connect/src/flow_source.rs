@@ -204,6 +204,39 @@ pub struct CfnFlowSource {
     #[serde(rename = "WhitelistCidr")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub whitelist_cidr: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_ingest_ip: CfnFlowSourceingestip,
+
+    #[serde(skip_serializing)]
+    pub att_source_arn: CfnFlowSourcesourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_source_ingest_port: CfnFlowSourcesourceingestport,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowSourceingestip;
+impl CfnFlowSourceingestip {
+    pub fn att_name(&self) -> &'static str {
+        r#"IngestIp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowSourcesourcearn;
+impl CfnFlowSourcesourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SourceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowSourcesourceingestport;
+impl CfnFlowSourcesourceingestport {
+    pub fn att_name(&self) -> &'static str {
+        r#"SourceIngestPort"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFlowSource {

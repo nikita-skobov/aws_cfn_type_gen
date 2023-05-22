@@ -24,6 +24,17 @@ pub struct CfnSubnetRouteTableAssociation {
     /// Update requires: Replacement
     #[serde(rename = "SubnetId")]
     pub subnet_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnSubnetRouteTableAssociationid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSubnetRouteTableAssociationid;
+impl CfnSubnetRouteTableAssociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSubnetRouteTableAssociation {

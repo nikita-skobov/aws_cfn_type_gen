@@ -259,6 +259,9 @@ pub struct CfnAssociation {
     #[serde(rename = "WaitForSuccessTimeoutSeconds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub wait_for_success_timeout_seconds: Option<i64>,
+
+    #[serde(skip_serializing)]
+    pub att_association_id: CfnAssociationassociationid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -304,6 +307,14 @@ pub enum AssociationSyncComplianceEnum {
 impl Default for AssociationSyncComplianceEnum {
     fn default() -> Self {
         AssociationSyncComplianceEnum::Auto
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAssociationassociationid;
+impl CfnAssociationassociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AssociationId"#
     }
 }
 

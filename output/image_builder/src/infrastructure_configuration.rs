@@ -178,6 +178,28 @@ pub struct CfnInfrastructureConfiguration {
     #[serde(rename = "TerminateInstanceOnFailure")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub terminate_instance_on_failure: Option<bool>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnInfrastructureConfigurationarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnInfrastructureConfigurationname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInfrastructureConfigurationarn;
+impl CfnInfrastructureConfigurationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInfrastructureConfigurationname;
+impl CfnInfrastructureConfigurationname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnInfrastructureConfiguration {

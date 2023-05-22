@@ -8,6 +8,17 @@ pub struct CfnProactiveEngagement {
     /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-proactiveengagement.html#cfn-shield-proactiveengagement-proactiveengagementstatus
     #[serde(rename = "ProactiveEngagementStatus")]
     pub proactive_engagement_status: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_account_id: CfnProactiveEngagementaccountid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProactiveEngagementaccountid;
+impl CfnProactiveEngagementaccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AccountId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnProactiveEngagement {

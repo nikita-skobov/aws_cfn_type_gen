@@ -26,6 +26,17 @@ pub struct CfnInputSecurityGroup {
     #[serde(rename = "WhitelistRules")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub whitelist_rules: Option<Vec<InputWhitelistRuleCidr>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnInputSecurityGrouparn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInputSecurityGrouparn;
+impl CfnInputSecurityGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnInputSecurityGroup {

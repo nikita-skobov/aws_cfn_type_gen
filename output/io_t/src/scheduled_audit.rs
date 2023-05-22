@@ -74,6 +74,17 @@ pub struct CfnScheduledAudit {
     /// Update requires: No interruption
     #[serde(rename = "TargetCheckNames")]
     pub target_check_names: Vec<String>,
+
+    #[serde(skip_serializing)]
+    pub att_scheduled_audit_arn: CfnScheduledAuditscheduledauditarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledAuditscheduledauditarn;
+impl CfnScheduledAuditscheduledauditarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ScheduledAuditArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnScheduledAudit {

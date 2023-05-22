@@ -149,6 +149,12 @@ pub struct CfnImagePipeline {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnImagePipelinearn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnImagePipelinename,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -165,6 +171,22 @@ pub enum ImagePipelineStatusEnum {
 impl Default for ImagePipelineStatusEnum {
     fn default() -> Self {
         ImagePipelineStatusEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImagePipelinearn;
+impl CfnImagePipelinearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImagePipelinename;
+impl CfnImagePipelinename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
     }
 }
 

@@ -23,6 +23,39 @@ pub struct CfnCarrierGateway {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_carrier_gateway_id: CfnCarrierGatewaycarriergatewayid,
+
+    #[serde(skip_serializing)]
+    pub att_owner_id: CfnCarrierGatewayownerid,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnCarrierGatewaystate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCarrierGatewaycarriergatewayid;
+impl CfnCarrierGatewaycarriergatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CarrierGatewayId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCarrierGatewayownerid;
+impl CfnCarrierGatewayownerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCarrierGatewaystate;
+impl CfnCarrierGatewaystate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCarrierGateway {

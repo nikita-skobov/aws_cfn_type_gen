@@ -26,6 +26,41 @@ pub struct CfnEnclaveCertificateIamRoleAssociation {
     /// Update requires: Replacement
     #[serde(rename = "RoleArn")]
     pub role_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_certificate_s3_bucket_name:
+        CfnEnclaveCertificateIamRoleAssociationcertificates3bucketname,
+
+    #[serde(skip_serializing)]
+    pub att_certificate_s3_object_key:
+        CfnEnclaveCertificateIamRoleAssociationcertificates3objectkey,
+
+    #[serde(skip_serializing)]
+    pub att_encryption_kms_key_id: CfnEnclaveCertificateIamRoleAssociationencryptionkmskeyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnclaveCertificateIamRoleAssociationcertificates3bucketname;
+impl CfnEnclaveCertificateIamRoleAssociationcertificates3bucketname {
+    pub fn att_name(&self) -> &'static str {
+        r#"CertificateS3BucketName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnclaveCertificateIamRoleAssociationcertificates3objectkey;
+impl CfnEnclaveCertificateIamRoleAssociationcertificates3objectkey {
+    pub fn att_name(&self) -> &'static str {
+        r#"CertificateS3ObjectKey"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnclaveCertificateIamRoleAssociationencryptionkmskeyid;
+impl CfnEnclaveCertificateIamRoleAssociationencryptionkmskeyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"EncryptionKmsKeyId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEnclaveCertificateIamRoleAssociation {

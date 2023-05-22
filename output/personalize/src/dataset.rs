@@ -82,6 +82,17 @@ pub struct CfnDataset {
     /// Update requires: Replacement
     #[serde(rename = "SchemaArn")]
     pub schema_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_dataset_arn: CfnDatasetdatasetarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDatasetdatasetarn;
+impl CfnDatasetdatasetarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DatasetArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDataset {

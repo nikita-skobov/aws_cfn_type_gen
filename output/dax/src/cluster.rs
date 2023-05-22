@@ -179,6 +179,15 @@ pub struct CfnCluster {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnClusterarn,
+
+    #[serde(skip_serializing)]
+    pub att_cluster_discovery_endpoint: CfnClusterclusterdiscoveryendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_cluster_discovery_endpoint_url: CfnClusterclusterdiscoveryendpointurl,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -195,6 +204,30 @@ pub enum ClusterClusterEndpointEncryptionTypeEnum {
 impl Default for ClusterClusterEndpointEncryptionTypeEnum {
     fn default() -> Self {
         ClusterClusterEndpointEncryptionTypeEnum::None
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterarn;
+impl CfnClusterarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterclusterdiscoveryendpoint;
+impl CfnClusterclusterdiscoveryendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClusterDiscoveryEndpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterclusterdiscoveryendpointurl;
+impl CfnClusterclusterdiscoveryendpointurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClusterDiscoveryEndpointURL"#
     }
 }
 

@@ -131,6 +131,12 @@ pub struct CfnAgreement {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_agreement_id: CfnAgreementagreementid,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAgreementarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -147,6 +153,22 @@ pub enum AgreementStatusEnum {
 impl Default for AgreementStatusEnum {
     fn default() -> Self {
         AgreementStatusEnum::Active
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAgreementagreementid;
+impl CfnAgreementagreementid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AgreementId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAgreementarn;
+impl CfnAgreementarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

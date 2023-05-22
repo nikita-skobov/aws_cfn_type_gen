@@ -56,6 +56,12 @@ pub struct CfnProfile {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnProfilearn,
+
+    #[serde(skip_serializing)]
+    pub att_profile_id: CfnProfileprofileid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -72,6 +78,22 @@ pub enum ProfileProfileTypeEnum {
 impl Default for ProfileProfileTypeEnum {
     fn default() -> Self {
         ProfileProfileTypeEnum::Local
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProfilearn;
+impl CfnProfilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProfileprofileid;
+impl CfnProfileprofileid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProfileId"#
     }
 }
 

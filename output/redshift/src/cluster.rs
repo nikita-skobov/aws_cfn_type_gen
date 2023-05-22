@@ -729,6 +729,18 @@ pub struct CfnCluster {
     #[serde(rename = "VpcSecurityGroupIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_defer_maintenance_identifier: CfnClusterdefermaintenanceidentifier,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_address: CfnClusterendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_port: CfnClusterendpointport,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnClusterid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -811,6 +823,38 @@ pub enum ClusterNodeTypeEnum {
 impl Default for ClusterNodeTypeEnum {
     fn default() -> Self {
         ClusterNodeTypeEnum::Ds2xlarge
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterdefermaintenanceidentifier;
+impl CfnClusterdefermaintenanceidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"DeferMaintenanceIdentifier"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterendpointaddress;
+impl CfnClusterendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterendpointport;
+impl CfnClusterendpointport {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint.Port"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterid;
+impl CfnClusterid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

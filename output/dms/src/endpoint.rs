@@ -390,6 +390,9 @@ pub struct CfnEndpoint {
     #[serde(rename = "Username")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_external_id: CfnEndpointexternalid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -431,6 +434,14 @@ pub enum EndpointSslModeEnum {
 impl Default for EndpointSslModeEnum {
     fn default() -> Self {
         EndpointSslModeEnum::None
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointexternalid;
+impl CfnEndpointexternalid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ExternalId"#
     }
 }
 

@@ -15,6 +15,28 @@ pub struct CfnContinuousDeploymentPolicy {
     /// Update requires: No interruption
     #[serde(rename = "ContinuousDeploymentPolicyConfig")]
     pub continuous_deployment_policy_config: ContinuousDeploymentPolicyConfig,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnContinuousDeploymentPolicyid,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnContinuousDeploymentPolicylastmodifiedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnContinuousDeploymentPolicyid;
+impl CfnContinuousDeploymentPolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnContinuousDeploymentPolicylastmodifiedtime;
+impl CfnContinuousDeploymentPolicylastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnContinuousDeploymentPolicy {

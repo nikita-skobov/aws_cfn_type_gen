@@ -79,6 +79,28 @@ pub struct CfnBackupVault {
     #[serde(rename = "Notifications")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notifications: Option<NotificationObjectType>,
+
+    #[serde(skip_serializing)]
+    pub att_backup_vault_arn: CfnBackupVaultbackupvaultarn,
+
+    #[serde(skip_serializing)]
+    pub att_backup_vault_name: CfnBackupVaultbackupvaultname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBackupVaultbackupvaultarn;
+impl CfnBackupVaultbackupvaultarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"BackupVaultArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBackupVaultbackupvaultname;
+impl CfnBackupVaultbackupvaultname {
+    pub fn att_name(&self) -> &'static str {
+        r#"BackupVaultName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnBackupVault {

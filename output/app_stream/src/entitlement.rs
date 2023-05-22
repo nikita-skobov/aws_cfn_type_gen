@@ -64,6 +64,12 @@ pub struct CfnEntitlement {
     /// Update requires: Replacement
     #[serde(rename = "StackName")]
     pub stack_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnEntitlementcreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnEntitlementlastmodifiedtime,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -80,6 +86,22 @@ pub enum EntitlementAppVisibilityEnum {
 impl Default for EntitlementAppVisibilityEnum {
     fn default() -> Self {
         EntitlementAppVisibilityEnum::All
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEntitlementcreatedtime;
+impl CfnEntitlementcreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEntitlementlastmodifiedtime;
+impl CfnEntitlementlastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
     }
 }
 

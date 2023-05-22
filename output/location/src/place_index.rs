@@ -82,6 +82,18 @@ pub struct CfnPlaceIndex {
     #[serde(rename = "PricingPlan")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pricing_plan: Option<PlaceIndexPricingPlanEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPlaceIndexarn,
+
+    #[serde(skip_serializing)]
+    pub att_create_time: CfnPlaceIndexcreatetime,
+
+    #[serde(skip_serializing)]
+    pub att_index_arn: CfnPlaceIndexindexarn,
+
+    #[serde(skip_serializing)]
+    pub att_update_time: CfnPlaceIndexupdatetime,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -94,6 +106,38 @@ pub enum PlaceIndexPricingPlanEnum {
 impl Default for PlaceIndexPricingPlanEnum {
     fn default() -> Self {
         PlaceIndexPricingPlanEnum::Requestbasedusage
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlaceIndexarn;
+impl CfnPlaceIndexarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlaceIndexcreatetime;
+impl CfnPlaceIndexcreatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreateTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlaceIndexindexarn;
+impl CfnPlaceIndexindexarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"IndexArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPlaceIndexupdatetime;
+impl CfnPlaceIndexupdatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdateTime"#
     }
 }
 

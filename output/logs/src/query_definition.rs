@@ -31,6 +31,17 @@ pub struct CfnQueryDefinition {
     /// Update requires: No interruption
     #[serde(rename = "QueryString")]
     pub query_string: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_query_definition_id: CfnQueryDefinitionquerydefinitionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnQueryDefinitionquerydefinitionid;
+impl CfnQueryDefinitionquerydefinitionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"QueryDefinitionId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnQueryDefinition {

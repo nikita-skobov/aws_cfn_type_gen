@@ -153,6 +153,28 @@ pub struct CfnCluster {
     #[serde(rename = "VpcSecurityGroupIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_cluster_arn: CfnClusterclusterarn,
+
+    #[serde(skip_serializing)]
+    pub att_cluster_endpoint: CfnClusterclusterendpoint,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterclusterarn;
+impl CfnClusterclusterarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClusterArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterclusterendpoint;
+impl CfnClusterclusterendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClusterEndpoint"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCluster {

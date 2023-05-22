@@ -59,6 +59,17 @@ pub struct CfnHookTypeConfig {
     #[serde(rename = "TypeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub type_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_arn: CfnHookTypeConfigconfigurationarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnHookTypeConfigconfigurationarn;
+impl CfnHookTypeConfigconfigurationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConfigurationArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnHookTypeConfig {

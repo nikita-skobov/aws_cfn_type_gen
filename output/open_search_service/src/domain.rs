@@ -218,6 +218,118 @@ pub struct CfnDomain {
     #[serde(rename = "VPCOptions")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpcoptions: Option<VPCOptions>,
+
+    #[serde(skip_serializing)]
+    pub att_advanced_security_options_anonymous_auth_disable_date:
+        CfnDomainadvancedsecurityoptionsanonymousauthdisabledate,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDomainarn,
+
+    #[serde(skip_serializing)]
+    pub att_domain_arn: CfnDomaindomainarn,
+
+    #[serde(skip_serializing)]
+    pub att_domain_endpoint: CfnDomaindomainendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnDomainid,
+
+    #[serde(skip_serializing)]
+    pub att_service_software_options_automated_update_date:
+        CfnDomainservicesoftwareoptionsautomatedupdatedate,
+
+    #[serde(skip_serializing)]
+    pub att_service_software_options_current_version: CfnDomainservicesoftwareoptionscurrentversion,
+
+    #[serde(skip_serializing)]
+    pub att_service_software_options_description: CfnDomainservicesoftwareoptionsdescription,
+
+    #[serde(skip_serializing)]
+    pub att_service_software_options_new_version: CfnDomainservicesoftwareoptionsnewversion,
+
+    #[serde(skip_serializing)]
+    pub att_service_software_options_update_status: CfnDomainservicesoftwareoptionsupdatestatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainadvancedsecurityoptionsanonymousauthdisabledate;
+impl CfnDomainadvancedsecurityoptionsanonymousauthdisabledate {
+    pub fn att_name(&self) -> &'static str {
+        r#"AdvancedSecurityOptions.AnonymousAuthDisableDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainarn;
+impl CfnDomainarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomaindomainarn;
+impl CfnDomaindomainarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomaindomainendpoint;
+impl CfnDomaindomainendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainEndpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainid;
+impl CfnDomainid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainservicesoftwareoptionsautomatedupdatedate;
+impl CfnDomainservicesoftwareoptionsautomatedupdatedate {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceSoftwareOptions.AutomatedUpdateDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainservicesoftwareoptionscurrentversion;
+impl CfnDomainservicesoftwareoptionscurrentversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceSoftwareOptions.CurrentVersion"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainservicesoftwareoptionsdescription;
+impl CfnDomainservicesoftwareoptionsdescription {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceSoftwareOptions.Description"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainservicesoftwareoptionsnewversion;
+impl CfnDomainservicesoftwareoptionsnewversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceSoftwareOptions.NewVersion"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainservicesoftwareoptionsupdatestatus;
+impl CfnDomainservicesoftwareoptionsupdatestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceSoftwareOptions.UpdateStatus"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDomain {

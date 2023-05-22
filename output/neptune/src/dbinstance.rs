@@ -149,6 +149,28 @@ pub struct CfnDBInstance {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint: CfnDBInstanceendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_port: CfnDBInstanceport,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstanceendpoint;
+impl CfnDBInstanceendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBInstanceport;
+impl CfnDBInstanceport {
+    pub fn att_name(&self) -> &'static str {
+        r#"Port"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDBInstance {

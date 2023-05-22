@@ -25,6 +25,17 @@ pub struct CfnRouteTable {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_route_table_id: CfnRouteTableroutetableid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouteTableroutetableid;
+impl CfnRouteTableroutetableid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RouteTableId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRouteTable {

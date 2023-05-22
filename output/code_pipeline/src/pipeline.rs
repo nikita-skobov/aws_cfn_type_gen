@@ -108,6 +108,17 @@ pub struct CfnPipeline {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_version: CfnPipelineversion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPipelineversion;
+impl CfnPipelineversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPipeline {

@@ -224,6 +224,12 @@ pub struct CfnMatchmakingConfiguration {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnMatchmakingConfigurationarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnMatchmakingConfigurationname,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -257,6 +263,22 @@ pub enum MatchmakingConfigurationFlexMatchModeEnum {
 impl Default for MatchmakingConfigurationFlexMatchModeEnum {
     fn default() -> Self {
         MatchmakingConfigurationFlexMatchModeEnum::Standalone
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMatchmakingConfigurationarn;
+impl CfnMatchmakingConfigurationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMatchmakingConfigurationname;
+impl CfnMatchmakingConfigurationname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
     }
 }
 

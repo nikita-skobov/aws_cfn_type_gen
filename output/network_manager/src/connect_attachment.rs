@@ -69,6 +69,117 @@ pub struct CfnConnectAttachment {
     /// Update requires: Replacement
     #[serde(rename = "TransportAttachmentId")]
     pub transport_attachment_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_attachment_id: CfnConnectAttachmentattachmentid,
+
+    #[serde(skip_serializing)]
+    pub att_attachment_type: CfnConnectAttachmentattachmenttype,
+
+    #[serde(skip_serializing)]
+    pub att_core_network_arn: CfnConnectAttachmentcorenetworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnConnectAttachmentcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_owner_account_id: CfnConnectAttachmentowneraccountid,
+
+    #[serde(skip_serializing)]
+    pub att_proposed_segment_change_segment_name:
+        CfnConnectAttachmentproposedsegmentchangesegmentname,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnConnectAttachmentresourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_segment_name: CfnConnectAttachmentsegmentname,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnConnectAttachmentstate,
+
+    #[serde(skip_serializing)]
+    pub att_updated_at: CfnConnectAttachmentupdatedat,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentattachmentid;
+impl CfnConnectAttachmentattachmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachmentId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentattachmenttype;
+impl CfnConnectAttachmentattachmenttype {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachmentType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentcorenetworkarn;
+impl CfnConnectAttachmentcorenetworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CoreNetworkArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentcreatedat;
+impl CfnConnectAttachmentcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentowneraccountid;
+impl CfnConnectAttachmentowneraccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerAccountId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentproposedsegmentchangesegmentname;
+impl CfnConnectAttachmentproposedsegmentchangesegmentname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProposedSegmentChange.SegmentName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentresourcearn;
+impl CfnConnectAttachmentresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentsegmentname;
+impl CfnConnectAttachmentsegmentname {
+    pub fn att_name(&self) -> &'static str {
+        r#"SegmentName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentstate;
+impl CfnConnectAttachmentstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectAttachmentupdatedat;
+impl CfnConnectAttachmentupdatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdatedAt"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConnectAttachment {

@@ -82,6 +82,9 @@ pub struct CfnApp {
     /// Update requires: Replacement
     #[serde(rename = "UserProfileName")]
     pub user_profile_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_app_arn: CfnAppapparn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -114,6 +117,14 @@ pub enum AppAppTypeEnum {
 impl Default for AppAppTypeEnum {
     fn default() -> Self {
         AppAppTypeEnum::Jupyterserver
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAppapparn;
+impl CfnAppapparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AppArn"#
     }
 }
 

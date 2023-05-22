@@ -84,6 +84,17 @@ pub struct CfnSecurityProfile {
     #[serde(rename = "TargetArns")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub target_arns: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_security_profile_arn: CfnSecurityProfilesecurityprofilearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSecurityProfilesecurityprofilearn;
+impl CfnSecurityProfilesecurityprofilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SecurityProfileArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSecurityProfile {

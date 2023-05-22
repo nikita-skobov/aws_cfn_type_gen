@@ -53,6 +53,17 @@ pub struct CfnView {
     /// Update requires: Replacement
     #[serde(rename = "ViewName")]
     pub view_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_view_arn: CfnViewviewarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnViewviewarn;
+impl CfnViewviewarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ViewArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnView {

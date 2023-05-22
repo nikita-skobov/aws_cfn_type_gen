@@ -100,6 +100,16 @@ pub struct CfnVerifiedAccessTrustProvider {
     #[serde(rename = "UserTrustProviderType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_trust_provider_type: Option<VerifiedAccessTrustProviderUserTrustProviderTypeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnVerifiedAccessTrustProvidercreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnVerifiedAccessTrustProviderlastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_verified_access_trust_provider_id:
+        CfnVerifiedAccessTrustProviderverifiedaccesstrustproviderid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -150,6 +160,30 @@ pub enum VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
 impl Default for VerifiedAccessTrustProviderUserTrustProviderTypeEnum {
     fn default() -> Self {
         VerifiedAccessTrustProviderUserTrustProviderTypeEnum::Iamidentitycenter
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessTrustProvidercreationtime;
+impl CfnVerifiedAccessTrustProvidercreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessTrustProviderlastupdatedtime;
+impl CfnVerifiedAccessTrustProviderlastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessTrustProviderverifiedaccesstrustproviderid;
+impl CfnVerifiedAccessTrustProviderverifiedaccesstrustproviderid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VerifiedAccessTrustProviderId"#
     }
 }
 

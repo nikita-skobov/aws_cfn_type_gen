@@ -15,6 +15,28 @@ pub struct CfnOriginRequestPolicy {
     /// Update requires: No interruption
     #[serde(rename = "OriginRequestPolicyConfig")]
     pub origin_request_policy_config: OriginRequestPolicyConfig,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnOriginRequestPolicyid,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnOriginRequestPolicylastmodifiedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOriginRequestPolicyid;
+impl CfnOriginRequestPolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOriginRequestPolicylastmodifiedtime;
+impl CfnOriginRequestPolicylastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnOriginRequestPolicy {

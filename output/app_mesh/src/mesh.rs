@@ -46,6 +46,61 @@ pub struct CfnMesh {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnMesharn,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_name: CfnMeshmeshname,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_owner: CfnMeshmeshowner,
+
+    #[serde(skip_serializing)]
+    pub att_resource_owner: CfnMeshresourceowner,
+
+    #[serde(skip_serializing)]
+    pub att_uid: CfnMeshuid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMesharn;
+impl CfnMesharn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMeshmeshname;
+impl CfnMeshmeshname {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMeshmeshowner;
+impl CfnMeshmeshowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMeshresourceowner;
+impl CfnMeshresourceowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMeshuid;
+impl CfnMeshuid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Uid"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMesh {

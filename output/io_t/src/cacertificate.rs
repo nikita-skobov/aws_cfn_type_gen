@@ -102,6 +102,28 @@ pub struct CfnCACertificate {
     #[serde(rename = "VerificationCertificatePem")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub verification_certificate_pem: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCACertificatearn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCACertificateid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCACertificatearn;
+impl CfnCACertificatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCACertificateid;
+impl CfnCACertificateid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCACertificate {

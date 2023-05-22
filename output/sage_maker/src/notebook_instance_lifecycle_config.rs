@@ -44,6 +44,18 @@ pub struct CfnNotebookInstanceLifecycleConfig {
     #[serde(rename = "OnStart")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub on_start: Option<Vec<NotebookInstanceLifecycleHook>>,
+
+    #[serde(skip_serializing)]
+    pub att_notebook_instance_lifecycle_config_name:
+        CfnNotebookInstanceLifecycleConfignotebookinstancelifecycleconfigname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNotebookInstanceLifecycleConfignotebookinstancelifecycleconfigname;
+impl CfnNotebookInstanceLifecycleConfignotebookinstancelifecycleconfigname {
+    pub fn att_name(&self) -> &'static str {
+        r#"NotebookInstanceLifecycleConfigName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnNotebookInstanceLifecycleConfig {

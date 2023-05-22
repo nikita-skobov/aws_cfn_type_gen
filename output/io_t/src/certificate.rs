@@ -67,6 +67,28 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "Status")]
     pub status: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCertificatearn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCertificateid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatearn;
+impl CfnCertificatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificateid;
+impl CfnCertificateid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCertificate {

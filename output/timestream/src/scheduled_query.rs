@@ -121,6 +121,105 @@ pub struct CfnScheduledQuery {
     #[serde(rename = "TargetConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub target_configuration: Option<TargetConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnScheduledQueryarn,
+
+    #[serde(skip_serializing)]
+    pub att_sqerror_report_configuration: CfnScheduledQuerysqerrorreportconfiguration,
+
+    #[serde(skip_serializing)]
+    pub att_sqkms_key_id: CfnScheduledQuerysqkmskeyid,
+
+    #[serde(skip_serializing)]
+    pub att_sqname: CfnScheduledQuerysqname,
+
+    #[serde(skip_serializing)]
+    pub att_sqnotification_configuration: CfnScheduledQuerysqnotificationconfiguration,
+
+    #[serde(skip_serializing)]
+    pub att_sqquery_string: CfnScheduledQuerysqquerystring,
+
+    #[serde(skip_serializing)]
+    pub att_sqschedule_configuration: CfnScheduledQuerysqscheduleconfiguration,
+
+    #[serde(skip_serializing)]
+    pub att_sqscheduled_query_execution_role_arn: CfnScheduledQuerysqscheduledqueryexecutionrolearn,
+
+    #[serde(skip_serializing)]
+    pub att_sqtarget_configuration: CfnScheduledQuerysqtargetconfiguration,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledQueryarn;
+impl CfnScheduledQueryarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledQuerysqerrorreportconfiguration;
+impl CfnScheduledQuerysqerrorreportconfiguration {
+    pub fn att_name(&self) -> &'static str {
+        r#"SQErrorReportConfiguration"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledQuerysqkmskeyid;
+impl CfnScheduledQuerysqkmskeyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"SQKmsKeyId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledQuerysqname;
+impl CfnScheduledQuerysqname {
+    pub fn att_name(&self) -> &'static str {
+        r#"SQName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledQuerysqnotificationconfiguration;
+impl CfnScheduledQuerysqnotificationconfiguration {
+    pub fn att_name(&self) -> &'static str {
+        r#"SQNotificationConfiguration"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledQuerysqquerystring;
+impl CfnScheduledQuerysqquerystring {
+    pub fn att_name(&self) -> &'static str {
+        r#"SQQueryString"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledQuerysqscheduleconfiguration;
+impl CfnScheduledQuerysqscheduleconfiguration {
+    pub fn att_name(&self) -> &'static str {
+        r#"SQScheduleConfiguration"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledQuerysqscheduledqueryexecutionrolearn;
+impl CfnScheduledQuerysqscheduledqueryexecutionrolearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SQScheduledQueryExecutionRoleArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScheduledQuerysqtargetconfiguration;
+impl CfnScheduledQuerysqtargetconfiguration {
+    pub fn att_name(&self) -> &'static str {
+        r#"SQTargetConfiguration"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnScheduledQuery {

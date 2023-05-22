@@ -76,6 +76,39 @@ pub struct CfnEventType {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEventTypearn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnEventTypecreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnEventTypelastupdatedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventTypearn;
+impl CfnEventTypearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventTypecreatedtime;
+impl CfnEventTypecreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventTypelastupdatedtime;
+impl CfnEventTypelastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEventType {

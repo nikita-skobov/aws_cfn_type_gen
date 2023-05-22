@@ -23,6 +23,85 @@ pub struct CfnNetworkInsightsAccessScopeAnalysis {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_end_date: CfnNetworkInsightsAccessScopeAnalysisenddate,
+
+    #[serde(skip_serializing)]
+    pub att_findings_found: CfnNetworkInsightsAccessScopeAnalysisfindingsfound,
+
+    #[serde(skip_serializing)]
+    pub att_network_insights_access_scope_analysis_arn:
+        CfnNetworkInsightsAccessScopeAnalysisnetworkinsightsaccessscopeanalysisarn,
+
+    #[serde(skip_serializing)]
+    pub att_network_insights_access_scope_analysis_id:
+        CfnNetworkInsightsAccessScopeAnalysisnetworkinsightsaccessscopeanalysisid,
+
+    #[serde(skip_serializing)]
+    pub att_start_date: CfnNetworkInsightsAccessScopeAnalysisstartdate,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnNetworkInsightsAccessScopeAnalysisstatus,
+
+    #[serde(skip_serializing)]
+    pub att_status_message: CfnNetworkInsightsAccessScopeAnalysisstatusmessage,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopeAnalysisenddate;
+impl CfnNetworkInsightsAccessScopeAnalysisenddate {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopeAnalysisfindingsfound;
+impl CfnNetworkInsightsAccessScopeAnalysisfindingsfound {
+    pub fn att_name(&self) -> &'static str {
+        r#"FindingsFound"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopeAnalysisnetworkinsightsaccessscopeanalysisarn;
+impl CfnNetworkInsightsAccessScopeAnalysisnetworkinsightsaccessscopeanalysisarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkInsightsAccessScopeAnalysisArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopeAnalysisnetworkinsightsaccessscopeanalysisid;
+impl CfnNetworkInsightsAccessScopeAnalysisnetworkinsightsaccessscopeanalysisid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkInsightsAccessScopeAnalysisId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopeAnalysisstartdate;
+impl CfnNetworkInsightsAccessScopeAnalysisstartdate {
+    pub fn att_name(&self) -> &'static str {
+        r#"StartDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopeAnalysisstatus;
+impl CfnNetworkInsightsAccessScopeAnalysisstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsAccessScopeAnalysisstatusmessage;
+impl CfnNetworkInsightsAccessScopeAnalysisstatusmessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"StatusMessage"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnNetworkInsightsAccessScopeAnalysis {

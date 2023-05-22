@@ -225,6 +225,18 @@ pub struct CfnNodegroup {
     #[serde(rename = "Version")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnNodegrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_cluster_name: CfnNodegroupclustername,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnNodegroupid,
+
+    #[serde(skip_serializing)]
+    pub att_nodegroup_name: CfnNodegroupnodegroupname,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -298,6 +310,38 @@ pub enum NodegroupCapacityTypeEnum {
 impl Default for NodegroupCapacityTypeEnum {
     fn default() -> Self {
         NodegroupCapacityTypeEnum::Ondemand
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNodegrouparn;
+impl CfnNodegrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNodegroupclustername;
+impl CfnNodegroupclustername {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClusterName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNodegroupid;
+impl CfnNodegroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNodegroupnodegroupname;
+impl CfnNodegroupnodegroupname {
+    pub fn att_name(&self) -> &'static str {
+        r#"NodegroupName"#
     }
 }
 

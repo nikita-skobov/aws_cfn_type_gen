@@ -178,6 +178,9 @@ pub struct CfnRule {
     #[serde(rename = "Targets")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub targets: Option<Vec<Target>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRulearn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -194,6 +197,14 @@ pub enum RuleStateEnum {
 impl Default for RuleStateEnum {
     fn default() -> Self {
         RuleStateEnum::Disabled
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRulearn;
+impl CfnRulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

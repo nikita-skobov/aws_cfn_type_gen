@@ -76,6 +76,72 @@ pub struct CfnVirtualGateway {
     #[serde(rename = "VirtualGatewayName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_gateway_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnVirtualGatewayarn,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_name: CfnVirtualGatewaymeshname,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_owner: CfnVirtualGatewaymeshowner,
+
+    #[serde(skip_serializing)]
+    pub att_resource_owner: CfnVirtualGatewayresourceowner,
+
+    #[serde(skip_serializing)]
+    pub att_uid: CfnVirtualGatewayuid,
+
+    #[serde(skip_serializing)]
+    pub att_virtual_gateway_name: CfnVirtualGatewayvirtualgatewayname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualGatewayarn;
+impl CfnVirtualGatewayarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualGatewaymeshname;
+impl CfnVirtualGatewaymeshname {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualGatewaymeshowner;
+impl CfnVirtualGatewaymeshowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualGatewayresourceowner;
+impl CfnVirtualGatewayresourceowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualGatewayuid;
+impl CfnVirtualGatewayuid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Uid"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualGatewayvirtualgatewayname;
+impl CfnVirtualGatewayvirtualgatewayname {
+    pub fn att_name(&self) -> &'static str {
+        r#"VirtualGatewayName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVirtualGateway {

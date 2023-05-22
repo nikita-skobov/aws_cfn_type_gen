@@ -11,6 +11,28 @@ pub struct CfnCloudFrontOriginAccessIdentity {
     /// Update requires: No interruption
     #[serde(rename = "CloudFrontOriginAccessIdentityConfig")]
     pub cloud_front_origin_access_identity_config: CloudFrontOriginAccessIdentityConfig,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCloudFrontOriginAccessIdentityid,
+
+    #[serde(skip_serializing)]
+    pub att_s3_canonical_user_id: CfnCloudFrontOriginAccessIdentitys3canonicaluserid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCloudFrontOriginAccessIdentityid;
+impl CfnCloudFrontOriginAccessIdentityid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCloudFrontOriginAccessIdentitys3canonicaluserid;
+impl CfnCloudFrontOriginAccessIdentitys3canonicaluserid {
+    pub fn att_name(&self) -> &'static str {
+        r#"S3CanonicalUserId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCloudFrontOriginAccessIdentity {

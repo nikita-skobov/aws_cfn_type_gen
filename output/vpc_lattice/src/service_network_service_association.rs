@@ -53,6 +53,138 @@ pub struct CfnServiceNetworkServiceAssociation {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnServiceNetworkServiceAssociationarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnServiceNetworkServiceAssociationcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_dns_entry_domain_name: CfnServiceNetworkServiceAssociationdnsentrydomainname,
+
+    #[serde(skip_serializing)]
+    pub att_dns_entry_hosted_zone_id: CfnServiceNetworkServiceAssociationdnsentryhostedzoneid,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnServiceNetworkServiceAssociationid,
+
+    #[serde(skip_serializing)]
+    pub att_service_arn: CfnServiceNetworkServiceAssociationservicearn,
+
+    #[serde(skip_serializing)]
+    pub att_service_id: CfnServiceNetworkServiceAssociationserviceid,
+
+    #[serde(skip_serializing)]
+    pub att_service_name: CfnServiceNetworkServiceAssociationservicename,
+
+    #[serde(skip_serializing)]
+    pub att_service_network_arn: CfnServiceNetworkServiceAssociationservicenetworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_service_network_id: CfnServiceNetworkServiceAssociationservicenetworkid,
+
+    #[serde(skip_serializing)]
+    pub att_service_network_name: CfnServiceNetworkServiceAssociationservicenetworkname,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnServiceNetworkServiceAssociationstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationarn;
+impl CfnServiceNetworkServiceAssociationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationcreatedat;
+impl CfnServiceNetworkServiceAssociationcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationdnsentrydomainname;
+impl CfnServiceNetworkServiceAssociationdnsentrydomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DnsEntry.DomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationdnsentryhostedzoneid;
+impl CfnServiceNetworkServiceAssociationdnsentryhostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DnsEntry.HostedZoneId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationid;
+impl CfnServiceNetworkServiceAssociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationservicearn;
+impl CfnServiceNetworkServiceAssociationservicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationserviceid;
+impl CfnServiceNetworkServiceAssociationserviceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationservicename;
+impl CfnServiceNetworkServiceAssociationservicename {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationservicenetworkarn;
+impl CfnServiceNetworkServiceAssociationservicenetworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceNetworkArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationservicenetworkid;
+impl CfnServiceNetworkServiceAssociationservicenetworkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceNetworkId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationservicenetworkname;
+impl CfnServiceNetworkServiceAssociationservicenetworkname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceNetworkName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkServiceAssociationstatus;
+impl CfnServiceNetworkServiceAssociationstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnServiceNetworkServiceAssociation {

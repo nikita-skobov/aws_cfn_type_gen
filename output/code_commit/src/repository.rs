@@ -72,6 +72,50 @@ pub struct CfnRepository {
     #[serde(rename = "Triggers")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub triggers: Option<Vec<RepositoryTrigger>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRepositoryarn,
+
+    #[serde(skip_serializing)]
+    pub att_clone_url_http: CfnRepositorycloneurlhttp,
+
+    #[serde(skip_serializing)]
+    pub att_clone_url_ssh: CfnRepositorycloneurlssh,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnRepositoryname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositoryarn;
+impl CfnRepositoryarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositorycloneurlhttp;
+impl CfnRepositorycloneurlhttp {
+    pub fn att_name(&self) -> &'static str {
+        r#"CloneUrlHttp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositorycloneurlssh;
+impl CfnRepositorycloneurlssh {
+    pub fn att_name(&self) -> &'static str {
+        r#"CloneUrlSsh"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositoryname;
+impl CfnRepositoryname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRepository {

@@ -82,6 +82,28 @@ pub struct CfnExtension {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnExtensionarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnExtensionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnExtensionarn;
+impl CfnExtensionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnExtensionid;
+impl CfnExtensionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnExtension {

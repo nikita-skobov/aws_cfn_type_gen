@@ -168,6 +168,25 @@ pub struct CfnDomain {
     /// Update requires: Replacement
     #[serde(rename = "VpcId")]
     pub vpc_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_domain_arn: CfnDomaindomainarn,
+
+    #[serde(skip_serializing)]
+    pub att_domain_id: CfnDomaindomainid,
+
+    #[serde(skip_serializing)]
+    pub att_home_efs_file_system_id: CfnDomainhomeefsfilesystemid,
+
+    #[serde(skip_serializing)]
+    pub att_security_group_id_for_domain_boundary: CfnDomainsecuritygroupidfordomainboundary,
+
+    #[serde(skip_serializing)]
+    pub att_single_sign_on_managed_application_instance_id:
+        CfnDomainsinglesignonmanagedapplicationinstanceid,
+
+    #[serde(skip_serializing)]
+    pub att_url: CfnDomainurl,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -218,6 +237,54 @@ pub enum DomainAuthModeEnum {
 impl Default for DomainAuthModeEnum {
     fn default() -> Self {
         DomainAuthModeEnum::Sso
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomaindomainarn;
+impl CfnDomaindomainarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomaindomainid;
+impl CfnDomaindomainid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainhomeefsfilesystemid;
+impl CfnDomainhomeefsfilesystemid {
+    pub fn att_name(&self) -> &'static str {
+        r#"HomeEfsFileSystemId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainsecuritygroupidfordomainboundary;
+impl CfnDomainsecuritygroupidfordomainboundary {
+    pub fn att_name(&self) -> &'static str {
+        r#"SecurityGroupIdForDomainBoundary"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainsinglesignonmanagedapplicationinstanceid;
+impl CfnDomainsinglesignonmanagedapplicationinstanceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"SingleSignOnManagedApplicationInstanceId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainurl;
+impl CfnDomainurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"Url"#
     }
 }
 

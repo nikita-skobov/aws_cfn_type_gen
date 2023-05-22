@@ -49,6 +49,9 @@ pub struct CfnAnalyzer {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: AnalyzerTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAnalyzerarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -65,6 +68,14 @@ pub enum AnalyzerTypeEnum {
 impl Default for AnalyzerTypeEnum {
     fn default() -> Self {
         AnalyzerTypeEnum::Account
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAnalyzerarn;
+impl CfnAnalyzerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

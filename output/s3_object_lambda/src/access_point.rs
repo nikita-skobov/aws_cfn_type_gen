@@ -23,6 +23,50 @@ pub struct CfnAccessPoint {
     /// Update requires: No interruption
     #[serde(rename = "ObjectLambdaConfiguration")]
     pub object_lambda_configuration: ObjectLambdaConfiguration,
+
+    #[serde(skip_serializing)]
+    pub att_alias_status: CfnAccessPointaliasstatus,
+
+    #[serde(skip_serializing)]
+    pub att_alias_value: CfnAccessPointaliasvalue,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAccessPointarn,
+
+    #[serde(skip_serializing)]
+    pub att_creation_date: CfnAccessPointcreationdate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointaliasstatus;
+impl CfnAccessPointaliasstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Alias.Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointaliasvalue;
+impl CfnAccessPointaliasvalue {
+    pub fn att_name(&self) -> &'static str {
+        r#"Alias.Value"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointarn;
+impl CfnAccessPointarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointcreationdate;
+impl CfnAccessPointcreationdate {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationDate"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccessPoint {

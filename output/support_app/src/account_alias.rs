@@ -13,6 +13,17 @@ pub struct CfnAccountAlias {
     /// Update requires: No interruption
     #[serde(rename = "AccountAlias")]
     pub account_alias: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_account_alias_resource_id: CfnAccountAliasaccountaliasresourceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccountAliasaccountaliasresourceid;
+impl CfnAccountAliasaccountaliasresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AccountAliasResourceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccountAlias {

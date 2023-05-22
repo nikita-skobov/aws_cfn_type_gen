@@ -27,6 +27,17 @@ pub struct CfnProtectionGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_protection_group_arn: CfnProtectionGroupprotectiongrouparn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProtectionGroupprotectiongrouparn;
+impl CfnProtectionGroupprotectiongrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProtectionGroupArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnProtectionGroup {

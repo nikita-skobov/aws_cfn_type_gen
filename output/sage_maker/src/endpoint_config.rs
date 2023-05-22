@@ -116,6 +116,17 @@ pub struct CfnEndpointConfig {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_config_name: CfnEndpointConfigendpointconfigname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEndpointConfigendpointconfigname;
+impl CfnEndpointConfigendpointconfigname {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointConfigName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEndpointConfig {

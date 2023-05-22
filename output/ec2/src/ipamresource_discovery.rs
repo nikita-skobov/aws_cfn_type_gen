@@ -36,6 +36,61 @@ pub struct CfnIPAMResourceDiscovery {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_resource_discovery_arn: CfnIPAMResourceDiscoveryipamresourcediscoveryarn,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_resource_discovery_id: CfnIPAMResourceDiscoveryipamresourcediscoveryid,
+
+    #[serde(skip_serializing)]
+    pub att_ipam_resource_discovery_region: CfnIPAMResourceDiscoveryipamresourcediscoveryregion,
+
+    #[serde(skip_serializing)]
+    pub att_owner_id: CfnIPAMResourceDiscoveryownerid,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnIPAMResourceDiscoverystate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMResourceDiscoveryipamresourcediscoveryarn;
+impl CfnIPAMResourceDiscoveryipamresourcediscoveryarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamResourceDiscoveryArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMResourceDiscoveryipamresourcediscoveryid;
+impl CfnIPAMResourceDiscoveryipamresourcediscoveryid {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamResourceDiscoveryId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMResourceDiscoveryipamresourcediscoveryregion;
+impl CfnIPAMResourceDiscoveryipamresourcediscoveryregion {
+    pub fn att_name(&self) -> &'static str {
+        r#"IpamResourceDiscoveryRegion"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMResourceDiscoveryownerid;
+impl CfnIPAMResourceDiscoveryownerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPAMResourceDiscoverystate;
+impl CfnIPAMResourceDiscoverystate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnIPAMResourceDiscovery {

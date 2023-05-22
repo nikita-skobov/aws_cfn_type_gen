@@ -24,6 +24,17 @@ pub struct CfnVdmAttributes {
     #[serde(rename = "GuardianAttributes")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub guardian_attributes: Option<GuardianAttributes>,
+
+    #[serde(skip_serializing)]
+    pub att_vdm_attributes_resource_id: CfnVdmAttributesvdmattributesresourceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVdmAttributesvdmattributesresourceid;
+impl CfnVdmAttributesvdmattributesresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VdmAttributesResourceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVdmAttributes {

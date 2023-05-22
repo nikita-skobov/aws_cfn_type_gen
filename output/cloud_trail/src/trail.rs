@@ -198,6 +198,28 @@ pub struct CfnTrail {
     #[serde(rename = "TrailName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub trail_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnTrailarn,
+
+    #[serde(skip_serializing)]
+    pub att_sns_topic_arn: CfnTrailsnstopicarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTrailarn;
+impl CfnTrailarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTrailsnstopicarn;
+impl CfnTrailsnstopicarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SnsTopicArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTrail {

@@ -99,6 +99,12 @@ pub struct CfnIPSet {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnIPSetarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnIPSetid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -115,6 +121,22 @@ pub enum IPSetIPAddressVersionEnum {
 impl Default for IPSetIPAddressVersionEnum {
     fn default() -> Self {
         IPSetIPAddressVersionEnum::Ipv4
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPSetarn;
+impl CfnIPSetarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIPSetid;
+impl CfnIPSetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

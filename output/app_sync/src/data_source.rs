@@ -147,6 +147,28 @@ pub struct CfnDataSource {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_data_source_arn: CfnDataSourcedatasourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnDataSourcename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSourcedatasourcearn;
+impl CfnDataSourcedatasourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DataSourceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSourcename;
+impl CfnDataSourcename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDataSource {

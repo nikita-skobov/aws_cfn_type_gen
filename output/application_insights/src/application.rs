@@ -133,6 +133,9 @@ pub struct CfnApplication {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_application_arn: CfnApplicationapplicationarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -145,6 +148,14 @@ pub enum ApplicationGroupingTypeEnum {
 impl Default for ApplicationGroupingTypeEnum {
     fn default() -> Self {
         ApplicationGroupingTypeEnum::Accountbased
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnApplicationapplicationarn;
+impl CfnApplicationapplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationARN"#
     }
 }
 

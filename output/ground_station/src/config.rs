@@ -36,6 +36,39 @@ pub struct CfnConfig {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnConfigarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnConfigid,
+
+    #[serde(skip_serializing)]
+    pub att_cfn_type: CfnConfigcfntype,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigarn;
+impl CfnConfigarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigid;
+impl CfnConfigid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigcfntype;
+impl CfnConfigcfntype {
+    pub fn att_name(&self) -> &'static str {
+        r#"Type"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConfig {

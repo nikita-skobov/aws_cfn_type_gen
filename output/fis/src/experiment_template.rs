@@ -93,6 +93,17 @@ pub struct CfnExperimentTemplate {
     /// Update requires: No interruption
     #[serde(rename = "Targets")]
     pub targets: std::collections::HashMap<String, ExperimentTemplateTarget>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnExperimentTemplateid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnExperimentTemplateid;
+impl CfnExperimentTemplateid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnExperimentTemplate {

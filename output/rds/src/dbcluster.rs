@@ -980,6 +980,24 @@ pub struct CfnDBCluster {
     #[serde(rename = "VpcSecurityGroupIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_dbcluster_arn: CfnDBClusterdbclusterarn,
+
+    #[serde(skip_serializing)]
+    pub att_dbcluster_resource_id: CfnDBClusterdbclusterresourceid,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_address: CfnDBClusterendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_port: CfnDBClusterendpointport,
+
+    #[serde(skip_serializing)]
+    pub att_master_user_secret_secret_arn: CfnDBClustermasterusersecretsecretarn,
+
+    #[serde(skip_serializing)]
+    pub att_read_endpoint_address: CfnDBClusterreadendpointaddress,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -992,6 +1010,54 @@ pub enum DBClusterRestoreToTimeEnum {
 impl Default for DBClusterRestoreToTimeEnum {
     fn default() -> Self {
         DBClusterRestoreToTimeEnum::Valuemustbeatimeinuniversalcoordinatedtimeutcformat
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClusterdbclusterarn;
+impl CfnDBClusterdbclusterarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DBClusterArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClusterdbclusterresourceid;
+impl CfnDBClusterdbclusterresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DBClusterResourceId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClusterendpointaddress;
+impl CfnDBClusterendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClusterendpointport;
+impl CfnDBClusterendpointport {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint.Port"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClustermasterusersecretsecretarn;
+impl CfnDBClustermasterusersecretsecretarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"MasterUserSecret.SecretArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBClusterreadendpointaddress;
+impl CfnDBClusterreadendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"ReadEndpoint.Address"#
     }
 }
 

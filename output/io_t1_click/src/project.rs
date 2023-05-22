@@ -35,6 +35,28 @@ pub struct CfnProject {
     #[serde(rename = "ProjectName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub project_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnProjectarn,
+
+    #[serde(skip_serializing)]
+    pub att_project_name: CfnProjectprojectname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProjectarn;
+impl CfnProjectarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProjectprojectname;
+impl CfnProjectprojectname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProjectName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnProject {

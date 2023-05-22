@@ -59,6 +59,50 @@ pub struct CfnDomain {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDomainarn,
+
+    #[serde(skip_serializing)]
+    pub att_encryption_key: CfnDomainencryptionkey,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnDomainname,
+
+    #[serde(skip_serializing)]
+    pub att_owner: CfnDomainowner,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainarn;
+impl CfnDomainarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainencryptionkey;
+impl CfnDomainencryptionkey {
+    pub fn att_name(&self) -> &'static str {
+        r#"EncryptionKey"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainname;
+impl CfnDomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainowner;
+impl CfnDomainowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"Owner"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDomain {

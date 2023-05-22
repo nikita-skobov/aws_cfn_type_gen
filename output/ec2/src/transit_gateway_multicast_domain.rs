@@ -39,6 +39,52 @@ pub struct CfnTransitGatewayMulticastDomain {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayId")]
     pub transit_gateway_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnTransitGatewayMulticastDomaincreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnTransitGatewayMulticastDomainstate,
+
+    #[serde(skip_serializing)]
+    pub att_transit_gateway_multicast_domain_arn:
+        CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainarn,
+
+    #[serde(skip_serializing)]
+    pub att_transit_gateway_multicast_domain_id:
+        CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastDomaincreationtime;
+impl CfnTransitGatewayMulticastDomaincreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastDomainstate;
+impl CfnTransitGatewayMulticastDomainstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainarn;
+impl CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TransitGatewayMulticastDomainArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainid;
+impl CfnTransitGatewayMulticastDomaintransitgatewaymulticastdomainid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TransitGatewayMulticastDomainId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayMulticastDomain {

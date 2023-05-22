@@ -115,6 +115,83 @@ pub struct CfnDetector {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDetectorarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnDetectorcreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_detector_version_id: CfnDetectordetectorversionid,
+
+    #[serde(skip_serializing)]
+    pub att_event_type_arn: CfnDetectoreventtypearn,
+
+    #[serde(skip_serializing)]
+    pub att_event_type_created_time: CfnDetectoreventtypecreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_event_type_last_updated_time: CfnDetectoreventtypelastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnDetectorlastupdatedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDetectorarn;
+impl CfnDetectorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDetectorcreatedtime;
+impl CfnDetectorcreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDetectordetectorversionid;
+impl CfnDetectordetectorversionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DetectorVersionId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDetectoreventtypearn;
+impl CfnDetectoreventtypearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"EventType.Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDetectoreventtypecreatedtime;
+impl CfnDetectoreventtypecreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"EventType.CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDetectoreventtypelastupdatedtime;
+impl CfnDetectoreventtypelastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"EventType.LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDetectorlastupdatedtime;
+impl CfnDetectorlastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDetector {

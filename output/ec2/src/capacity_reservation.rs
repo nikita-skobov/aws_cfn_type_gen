@@ -178,6 +178,18 @@ pub struct CfnCapacityReservation {
     #[serde(rename = "Tenancy")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tenancy: Option<CapacityReservationTenancyEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_availability_zone: CfnCapacityReservationavailabilityzone,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCapacityReservationid,
+
+    #[serde(skip_serializing)]
+    pub att_instance_type: CfnCapacityReservationinstancetype,
+
+    #[serde(skip_serializing)]
+    pub att_tenancy: CfnCapacityReservationtenancy,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -305,6 +317,38 @@ pub enum CapacityReservationTenancyEnum {
 impl Default for CapacityReservationTenancyEnum {
     fn default() -> Self {
         CapacityReservationTenancyEnum::Dedicated
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCapacityReservationavailabilityzone;
+impl CfnCapacityReservationavailabilityzone {
+    pub fn att_name(&self) -> &'static str {
+        r#"AvailabilityZone"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCapacityReservationid;
+impl CfnCapacityReservationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCapacityReservationinstancetype;
+impl CfnCapacityReservationinstancetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"InstanceType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCapacityReservationtenancy;
+impl CfnCapacityReservationtenancy {
+    pub fn att_name(&self) -> &'static str {
+        r#"Tenancy"#
     }
 }
 

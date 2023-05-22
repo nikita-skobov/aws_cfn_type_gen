@@ -62,6 +62,9 @@ pub struct CfnDatasetGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_dataset_group_arn: CfnDatasetGroupdatasetgrouparn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -98,6 +101,14 @@ pub enum DatasetGroupDomainEnum {
 impl Default for DatasetGroupDomainEnum {
     fn default() -> Self {
         DatasetGroupDomainEnum::Custom
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDatasetGroupdatasetgrouparn;
+impl CfnDatasetGroupdatasetgrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DatasetGroupArn"#
     }
 }
 

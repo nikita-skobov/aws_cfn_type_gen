@@ -60,6 +60,28 @@ pub struct CfnOrganizationalUnit {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnOrganizationalUnitarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnOrganizationalUnitid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOrganizationalUnitarn;
+impl CfnOrganizationalUnitarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOrganizationalUnitid;
+impl CfnOrganizationalUnitid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnOrganizationalUnit {

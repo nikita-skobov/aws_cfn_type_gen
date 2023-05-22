@@ -277,6 +277,32 @@ pub struct CfnEnvironment {
     #[serde(rename = "WeeklyMaintenanceWindowStart")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub weekly_maintenance_window_start: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEnvironmentarn,
+
+    #[serde(skip_serializing)]
+    pub att_logging_configuration_dag_processing_logs_cloud_watch_log_group_arn:
+        CfnEnvironmentloggingconfigurationdagprocessinglogscloudwatchloggrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_logging_configuration_scheduler_logs_cloud_watch_log_group_arn:
+        CfnEnvironmentloggingconfigurationschedulerlogscloudwatchloggrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_logging_configuration_task_logs_cloud_watch_log_group_arn:
+        CfnEnvironmentloggingconfigurationtasklogscloudwatchloggrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_logging_configuration_webserver_logs_cloud_watch_log_group_arn:
+        CfnEnvironmentloggingconfigurationwebserverlogscloudwatchloggrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_logging_configuration_worker_logs_cloud_watch_log_group_arn:
+        CfnEnvironmentloggingconfigurationworkerlogscloudwatchloggrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_webserver_url: CfnEnvironmentwebserverurl,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -305,6 +331,62 @@ pub enum EnvironmentAirflowVersionEnum {
 impl Default for EnvironmentAirflowVersionEnum {
     fn default() -> Self {
         EnvironmentAirflowVersionEnum::E202
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentarn;
+impl CfnEnvironmentarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentloggingconfigurationdagprocessinglogscloudwatchloggrouparn;
+impl CfnEnvironmentloggingconfigurationdagprocessinglogscloudwatchloggrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LoggingConfiguration.DagProcessingLogs.CloudWatchLogGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentloggingconfigurationschedulerlogscloudwatchloggrouparn;
+impl CfnEnvironmentloggingconfigurationschedulerlogscloudwatchloggrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LoggingConfiguration.SchedulerLogs.CloudWatchLogGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentloggingconfigurationtasklogscloudwatchloggrouparn;
+impl CfnEnvironmentloggingconfigurationtasklogscloudwatchloggrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LoggingConfiguration.TaskLogs.CloudWatchLogGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentloggingconfigurationwebserverlogscloudwatchloggrouparn;
+impl CfnEnvironmentloggingconfigurationwebserverlogscloudwatchloggrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LoggingConfiguration.WebserverLogs.CloudWatchLogGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentloggingconfigurationworkerlogscloudwatchloggrouparn;
+impl CfnEnvironmentloggingconfigurationworkerlogscloudwatchloggrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LoggingConfiguration.WorkerLogs.CloudWatchLogGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentwebserverurl;
+impl CfnEnvironmentwebserverurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"WebserverUrl"#
     }
 }
 

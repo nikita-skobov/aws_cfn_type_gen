@@ -33,6 +33,17 @@ pub struct CfnResource {
     /// Update requires: Replacement
     #[serde(rename = "RestApiId")]
     pub rest_api_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_resource_id: CfnResourceresourceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceresourceid;
+impl CfnResourceresourceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResource {

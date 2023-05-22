@@ -23,6 +23,18 @@ pub struct CfnStorageLens {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_storage_lens_configuration_storage_lens_arn:
+        CfnStorageLensstoragelensconfigurationstoragelensarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStorageLensstoragelensconfigurationstoragelensarn;
+impl CfnStorageLensstoragelensconfigurationstoragelensarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"StorageLensConfiguration.StorageLensArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnStorageLens {

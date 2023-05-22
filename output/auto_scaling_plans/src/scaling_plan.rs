@@ -24,6 +24,28 @@ pub struct CfnScalingPlan {
     /// Update requires: No interruption
     #[serde(rename = "ScalingInstructions")]
     pub scaling_instructions: Vec<ScalingInstruction>,
+
+    #[serde(skip_serializing)]
+    pub att_scaling_plan_name: CfnScalingPlanscalingplanname,
+
+    #[serde(skip_serializing)]
+    pub att_scaling_plan_version: CfnScalingPlanscalingplanversion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScalingPlanscalingplanname;
+impl CfnScalingPlanscalingplanname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ScalingPlanName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnScalingPlanscalingplanversion;
+impl CfnScalingPlanscalingplanversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"ScalingPlanVersion"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnScalingPlan {

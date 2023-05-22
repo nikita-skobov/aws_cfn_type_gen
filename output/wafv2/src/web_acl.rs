@@ -151,6 +151,39 @@ pub struct CfnWebACL {
     /// Update requires: No interruption
     #[serde(rename = "VisibilityConfig")]
     pub visibility_config: VisibilityConfig,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnWebACLarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnWebACLid,
+
+    #[serde(skip_serializing)]
+    pub att_label_namespace: CfnWebACLlabelnamespace,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWebACLarn;
+impl CfnWebACLarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWebACLid;
+impl CfnWebACLid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWebACLlabelnamespace;
+impl CfnWebACLlabelnamespace {
+    pub fn att_name(&self) -> &'static str {
+        r#"LabelNamespace"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnWebACL {

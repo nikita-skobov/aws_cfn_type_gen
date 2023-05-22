@@ -168,6 +168,12 @@ pub struct CfnFileSystem {
     #[serde(rename = "ThroughputMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub throughput_mode: Option<FileSystemThroughputModeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnFileSystemarn,
+
+    #[serde(skip_serializing)]
+    pub att_file_system_id: CfnFileSystemfilesystemid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -205,6 +211,22 @@ pub enum FileSystemThroughputModeEnum {
 impl Default for FileSystemThroughputModeEnum {
     fn default() -> Self {
         FileSystemThroughputModeEnum::Bursting
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFileSystemarn;
+impl CfnFileSystemarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFileSystemfilesystemid;
+impl CfnFileSystemfilesystemid {
+    pub fn att_name(&self) -> &'static str {
+        r#"FileSystemId"#
     }
 }
 

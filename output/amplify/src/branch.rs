@@ -188,6 +188,12 @@ pub struct CfnBranch {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnBrancharn,
+
+    #[serde(skip_serializing)]
+    pub att_branch_name: CfnBranchbranchname,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -216,6 +222,22 @@ pub enum BranchStageEnum {
 impl Default for BranchStageEnum {
     fn default() -> Self {
         BranchStageEnum::Production
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBrancharn;
+impl CfnBrancharn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBranchbranchname;
+impl CfnBranchbranchname {
+    pub fn att_name(&self) -> &'static str {
+        r#"BranchName"#
     }
 }
 

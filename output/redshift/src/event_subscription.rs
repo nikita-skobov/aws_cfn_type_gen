@@ -117,6 +117,50 @@ pub struct CfnEventSubscription {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_cust_subscription_id: CfnEventSubscriptioncustsubscriptionid,
+
+    #[serde(skip_serializing)]
+    pub att_customer_aws_id: CfnEventSubscriptioncustomerawsid,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnEventSubscriptionstatus,
+
+    #[serde(skip_serializing)]
+    pub att_subscription_creation_time: CfnEventSubscriptionsubscriptioncreationtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventSubscriptioncustsubscriptionid;
+impl CfnEventSubscriptioncustsubscriptionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CustSubscriptionId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventSubscriptioncustomerawsid;
+impl CfnEventSubscriptioncustomerawsid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CustomerAwsId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventSubscriptionstatus;
+impl CfnEventSubscriptionstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEventSubscriptionsubscriptioncreationtime;
+impl CfnEventSubscriptionsubscriptioncreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"SubscriptionCreationTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEventSubscription {

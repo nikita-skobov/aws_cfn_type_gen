@@ -115,6 +115,17 @@ pub struct CfnMicrosoftTeamsChannelConfiguration {
     #[serde(rename = "UserRoleRequired")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_role_required: Option<bool>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnMicrosoftTeamsChannelConfigurationarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMicrosoftTeamsChannelConfigurationarn;
+impl CfnMicrosoftTeamsChannelConfigurationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnMicrosoftTeamsChannelConfiguration {

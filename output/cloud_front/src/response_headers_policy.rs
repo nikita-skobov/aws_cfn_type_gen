@@ -17,6 +17,28 @@ pub struct CfnResponseHeadersPolicy {
     /// Update requires: No interruption
     #[serde(rename = "ResponseHeadersPolicyConfig")]
     pub response_headers_policy_config: ResponseHeadersPolicyConfig,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnResponseHeadersPolicyid,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnResponseHeadersPolicylastmodifiedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResponseHeadersPolicyid;
+impl CfnResponseHeadersPolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResponseHeadersPolicylastmodifiedtime;
+impl CfnResponseHeadersPolicylastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResponseHeadersPolicy {

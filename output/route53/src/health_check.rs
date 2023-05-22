@@ -35,6 +35,17 @@ pub struct CfnHealthCheck {
     #[serde(rename = "HealthCheckTags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_tags: Option<Vec<HealthCheckTag>>,
+
+    #[serde(skip_serializing)]
+    pub att_health_check_id: CfnHealthCheckhealthcheckid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnHealthCheckhealthcheckid;
+impl CfnHealthCheckhealthcheckid {
+    pub fn att_name(&self) -> &'static str {
+        r#"HealthCheckId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnHealthCheck {

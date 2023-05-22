@@ -32,6 +32,17 @@ pub struct CfnAssessmentTarget {
     #[serde(rename = "ResourceGroupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_group_arn: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAssessmentTargetarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAssessmentTargetarn;
+impl CfnAssessmentTargetarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAssessmentTarget {

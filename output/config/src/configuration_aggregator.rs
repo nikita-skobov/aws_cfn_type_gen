@@ -58,6 +58,17 @@ pub struct CfnConfigurationAggregator {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_aggregator_arn: CfnConfigurationAggregatorconfigurationaggregatorarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigurationAggregatorconfigurationaggregatorarn;
+impl CfnConfigurationAggregatorconfigurationaggregatorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConfigurationAggregatorArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConfigurationAggregator {

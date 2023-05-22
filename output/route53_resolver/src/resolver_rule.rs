@@ -92,6 +92,21 @@ pub struct CfnResolverRule {
     #[serde(rename = "TargetIps")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub target_ips: Option<Vec<TargetAddress>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnResolverRulearn,
+
+    #[serde(skip_serializing)]
+    pub att_domain_name: CfnResolverRuledomainname,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnResolverRulename,
+
+    #[serde(skip_serializing)]
+    pub att_resolver_endpoint_id: CfnResolverRuleresolverendpointid,
+
+    #[serde(skip_serializing)]
+    pub att_resolver_rule_id: CfnResolverRuleresolverruleid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -112,6 +127,46 @@ pub enum ResolverRuleRuleTypeEnum {
 impl Default for ResolverRuleRuleTypeEnum {
     fn default() -> Self {
         ResolverRuleRuleTypeEnum::Forward
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverRulearn;
+impl CfnResolverRulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverRuledomainname;
+impl CfnResolverRuledomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverRulename;
+impl CfnResolverRulename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverRuleresolverendpointid;
+impl CfnResolverRuleresolverendpointid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResolverEndpointId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverRuleresolverruleid;
+impl CfnResolverRuleresolverruleid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResolverRuleId"#
     }
 }
 

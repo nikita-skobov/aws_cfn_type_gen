@@ -331,6 +331,9 @@ pub struct CfnAlarm {
     #[serde(rename = "Unit")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub unit: Option<AlarmUnitEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAlarmarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -513,6 +516,14 @@ pub enum AlarmUnitEnum {
 impl Default for AlarmUnitEnum {
     fn default() -> Self {
         AlarmUnitEnum::Bits
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAlarmarn;
+impl CfnAlarmarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

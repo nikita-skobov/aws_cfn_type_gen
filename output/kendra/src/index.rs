@@ -136,6 +136,12 @@ pub struct CfnIndex {
     #[serde(rename = "UserTokenConfigurations")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_token_configurations: Option<Vec<UserTokenConfiguration>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnIndexarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnIndexid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -152,6 +158,22 @@ pub enum IndexEditionEnum {
 impl Default for IndexEditionEnum {
     fn default() -> Self {
         IndexEditionEnum::Developeredition
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIndexarn;
+impl CfnIndexarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIndexid;
+impl CfnIndexid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

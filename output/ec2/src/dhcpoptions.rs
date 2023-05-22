@@ -74,6 +74,17 @@ pub struct CfnDHCPOptions {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_dhcp_options_id: CfnDHCPOptionsdhcpoptionsid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDHCPOptionsdhcpoptionsid;
+impl CfnDHCPOptionsdhcpoptionsid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DhcpOptionsId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDHCPOptions {

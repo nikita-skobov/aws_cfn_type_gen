@@ -36,6 +36,17 @@ pub struct CfnRefreshSchedule {
     #[serde(rename = "Schedule")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<RefreshScheduleMap>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRefreshSchedulearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRefreshSchedulearn;
+impl CfnRefreshSchedulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRefreshSchedule {

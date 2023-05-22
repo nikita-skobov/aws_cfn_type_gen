@@ -102,6 +102,27 @@ pub struct CfnEnvironment {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_aws_account_id: CfnEnvironmentawsaccountid,
+
+    #[serde(skip_serializing)]
+    pub att_dedicated_service_account_id: CfnEnvironmentdedicatedserviceaccountid,
+
+    #[serde(skip_serializing)]
+    pub att_environment_arn: CfnEnvironmentenvironmentarn,
+
+    #[serde(skip_serializing)]
+    pub att_environment_id: CfnEnvironmentenvironmentid,
+
+    #[serde(skip_serializing)]
+    pub att_environment_url: CfnEnvironmentenvironmenturl,
+
+    #[serde(skip_serializing)]
+    pub att_sage_maker_studio_domain_url: CfnEnvironmentsagemakerstudiodomainurl,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnEnvironmentstatus,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -118,6 +139,62 @@ pub enum EnvironmentFederationModeEnum {
 impl Default for EnvironmentFederationModeEnum {
     fn default() -> Self {
         EnvironmentFederationModeEnum::Federated
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentawsaccountid;
+impl CfnEnvironmentawsaccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AwsAccountId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentdedicatedserviceaccountid;
+impl CfnEnvironmentdedicatedserviceaccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DedicatedServiceAccountId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentenvironmentarn;
+impl CfnEnvironmentenvironmentarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"EnvironmentArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentenvironmentid;
+impl CfnEnvironmentenvironmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"EnvironmentId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentenvironmenturl;
+impl CfnEnvironmentenvironmenturl {
+    pub fn att_name(&self) -> &'static str {
+        r#"EnvironmentUrl"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentsagemakerstudiodomainurl;
+impl CfnEnvironmentsagemakerstudiodomainurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"SageMakerStudioDomainUrl"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentstatus;
+impl CfnEnvironmentstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
     }
 }
 

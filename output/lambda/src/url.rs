@@ -68,6 +68,12 @@ pub struct CfnUrl {
     /// Update requires: Replacement
     #[serde(rename = "TargetFunctionArn")]
     pub target_function_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_function_arn: CfnUrlfunctionarn,
+
+    #[serde(skip_serializing)]
+    pub att_function_url: CfnUrlfunctionurl,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -101,6 +107,22 @@ pub enum UrlInvokeModeEnum {
 impl Default for UrlInvokeModeEnum {
     fn default() -> Self {
         UrlInvokeModeEnum::Buffered
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUrlfunctionarn;
+impl CfnUrlfunctionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FunctionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUrlfunctionurl;
+impl CfnUrlfunctionurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"FunctionUrl"#
     }
 }
 

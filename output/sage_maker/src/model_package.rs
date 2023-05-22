@@ -369,6 +369,15 @@ pub struct CfnModelPackage {
     #[serde(rename = "ValidationSpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub validation_specification: Option<ValidationSpecification>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnModelPackagecreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_model_package_arn: CfnModelPackagemodelpackagearn,
+
+    #[serde(skip_serializing)]
+    pub att_model_package_status: CfnModelPackagemodelpackagestatus,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -389,6 +398,30 @@ pub enum ModelPackageModelApprovalStatusEnum {
 impl Default for ModelPackageModelApprovalStatusEnum {
     fn default() -> Self {
         ModelPackageModelApprovalStatusEnum::Approved
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelPackagecreationtime;
+impl CfnModelPackagecreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelPackagemodelpackagearn;
+impl CfnModelPackagemodelpackagearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModelPackageArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelPackagemodelpackagestatus;
+impl CfnModelPackagemodelpackagestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModelPackageStatus"#
     }
 }
 

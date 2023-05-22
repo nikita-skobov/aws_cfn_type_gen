@@ -124,6 +124,12 @@ pub struct CfnCertificateAuthority {
     #[serde(rename = "UsageMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub usage_mode: Option<CertificateAuthorityUsageModeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCertificateAuthorityarn,
+
+    #[serde(skip_serializing)]
+    pub att_certificate_signing_request: CfnCertificateAuthoritycertificatesigningrequest,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -232,6 +238,22 @@ pub enum CertificateAuthorityUsageModeEnum {
 impl Default for CertificateAuthorityUsageModeEnum {
     fn default() -> Self {
         CertificateAuthorityUsageModeEnum::Generalpurpose
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificateAuthorityarn;
+impl CfnCertificateAuthorityarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificateAuthoritycertificatesigningrequest;
+impl CfnCertificateAuthoritycertificatesigningrequest {
+    pub fn att_name(&self) -> &'static str {
+        r#"CertificateSigningRequest"#
     }
 }
 

@@ -180,6 +180,15 @@ pub struct CfnCloudFormationProduct {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_product_name: CfnCloudFormationProductproductname,
+
+    #[serde(skip_serializing)]
+    pub att_provisioning_artifact_ids: CfnCloudFormationProductprovisioningartifactids,
+
+    #[serde(skip_serializing)]
+    pub att_provisioning_artifact_names: CfnCloudFormationProductprovisioningartifactnames,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -200,6 +209,30 @@ pub enum CloudFormationProductProductTypeEnum {
 impl Default for CloudFormationProductProductTypeEnum {
     fn default() -> Self {
         CloudFormationProductProductTypeEnum::Cloudformationtemplate
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCloudFormationProductproductname;
+impl CfnCloudFormationProductproductname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProductName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCloudFormationProductprovisioningartifactids;
+impl CfnCloudFormationProductprovisioningartifactids {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProvisioningArtifactIds"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCloudFormationProductprovisioningartifactnames;
+impl CfnCloudFormationProductprovisioningartifactnames {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProvisioningArtifactNames"#
     }
 }
 

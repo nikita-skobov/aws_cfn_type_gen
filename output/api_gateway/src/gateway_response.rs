@@ -60,6 +60,9 @@ pub struct CfnGatewayResponse {
     #[serde(rename = "StatusCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub status_code: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnGatewayResponseid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -148,6 +151,14 @@ pub enum GatewayResponseResponseTypeEnum {
 impl Default for GatewayResponseResponseTypeEnum {
     fn default() -> Self {
         GatewayResponseResponseTypeEnum::Accessdenied
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGatewayResponseid;
+impl CfnGatewayResponseid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

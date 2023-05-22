@@ -61,6 +61,9 @@ pub struct CfnContact {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: ContactTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnContactarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -81,6 +84,14 @@ pub enum ContactTypeEnum {
 impl Default for ContactTypeEnum {
     fn default() -> Self {
         ContactTypeEnum::Escalation
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnContactarn;
+impl CfnContactarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

@@ -46,6 +46,17 @@ pub struct CfnRealtimeLogConfig {
     /// Update requires: No interruption
     #[serde(rename = "SamplingRate")]
     pub sampling_rate: f64,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRealtimeLogConfigarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRealtimeLogConfigarn;
+impl CfnRealtimeLogConfigarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRealtimeLogConfig {

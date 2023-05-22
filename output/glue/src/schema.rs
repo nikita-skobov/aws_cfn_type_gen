@@ -98,6 +98,28 @@ pub struct CfnSchema {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnSchemaarn,
+
+    #[serde(skip_serializing)]
+    pub att_initial_schema_version_id: CfnSchemainitialschemaversionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSchemaarn;
+impl CfnSchemaarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSchemainitialschemaversionid;
+impl CfnSchemainitialschemaversionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"InitialSchemaVersionId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSchema {

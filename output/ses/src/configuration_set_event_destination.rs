@@ -22,6 +22,17 @@ pub struct CfnConfigurationSetEventDestination {
     /// Update requires: No interruption
     #[serde(rename = "EventDestination")]
     pub event_destination: EventDestination,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnConfigurationSetEventDestinationid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConfigurationSetEventDestinationid;
+impl CfnConfigurationSetEventDestinationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConfigurationSetEventDestination {

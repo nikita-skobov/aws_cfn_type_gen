@@ -113,6 +113,17 @@ pub struct CfnDataset {
     #[serde(rename = "VersioningConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub versioning_configuration: Option<VersioningConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnDatasetid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDatasetid;
+impl CfnDatasetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDataset {

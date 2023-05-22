@@ -68,6 +68,17 @@ pub struct CfnSimulation {
     #[serde(rename = "SnapshotS3Location")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_s3_location: Option<S3Location>,
+
+    #[serde(skip_serializing)]
+    pub att_describe_payload: CfnSimulationdescribepayload,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSimulationdescribepayload;
+impl CfnSimulationdescribepayload {
+    pub fn att_name(&self) -> &'static str {
+        r#"DescribePayload"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSimulation {

@@ -16,6 +16,39 @@ pub struct CfnResolverDNSSECConfig {
     #[serde(rename = "ResourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnResolverDNSSECConfigid,
+
+    #[serde(skip_serializing)]
+    pub att_owner_id: CfnResolverDNSSECConfigownerid,
+
+    #[serde(skip_serializing)]
+    pub att_validation_status: CfnResolverDNSSECConfigvalidationstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverDNSSECConfigid;
+impl CfnResolverDNSSECConfigid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverDNSSECConfigownerid;
+impl CfnResolverDNSSECConfigownerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverDNSSECConfigvalidationstatus;
+impl CfnResolverDNSSECConfigvalidationstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ValidationStatus"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResolverDNSSECConfig {

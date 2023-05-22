@@ -74,6 +74,17 @@ pub struct CfnGroup {
     #[serde(rename = "Policies")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub policies: Option<Vec<Policy>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnGrouparn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGrouparn;
+impl CfnGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGroup {

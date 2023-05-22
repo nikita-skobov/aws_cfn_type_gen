@@ -50,6 +50,28 @@ pub struct CfnThingType {
     #[serde(rename = "ThingTypeProperties")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_type_properties: Option<ThingTypeProperties>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnThingTypearn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnThingTypeid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThingTypearn;
+impl CfnThingTypearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThingTypeid;
+impl CfnThingTypeid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnThingType {

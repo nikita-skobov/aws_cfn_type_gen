@@ -81,6 +81,72 @@ pub struct CfnDomain {
     /// Update requires: No interruption
     #[serde(rename = "SubDomainSettings")]
     pub sub_domain_settings: Vec<SubDomainSetting>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDomainarn,
+
+    #[serde(skip_serializing)]
+    pub att_auto_sub_domain_iamrole: CfnDomainautosubdomainiamrole,
+
+    #[serde(skip_serializing)]
+    pub att_certificate_record: CfnDomaincertificaterecord,
+
+    #[serde(skip_serializing)]
+    pub att_domain_name: CfnDomaindomainname,
+
+    #[serde(skip_serializing)]
+    pub att_domain_status: CfnDomaindomainstatus,
+
+    #[serde(skip_serializing)]
+    pub att_status_reason: CfnDomainstatusreason,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainarn;
+impl CfnDomainarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainautosubdomainiamrole;
+impl CfnDomainautosubdomainiamrole {
+    pub fn att_name(&self) -> &'static str {
+        r#"AutoSubDomainIAMRole"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomaincertificaterecord;
+impl CfnDomaincertificaterecord {
+    pub fn att_name(&self) -> &'static str {
+        r#"CertificateRecord"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomaindomainname;
+impl CfnDomaindomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomaindomainstatus;
+impl CfnDomaindomainstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainstatusreason;
+impl CfnDomainstatusreason {
+    pub fn att_name(&self) -> &'static str {
+        r#"StatusReason"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDomain {

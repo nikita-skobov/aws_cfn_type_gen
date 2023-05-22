@@ -386,6 +386,61 @@ pub struct CfnAutoScalingGroup {
     #[serde(rename = "VPCZoneIdentifier")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpczone_identifier: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_launch_configuration_name: CfnAutoScalingGrouplaunchconfigurationname,
+
+    #[serde(skip_serializing)]
+    pub att_launch_template_specification: CfnAutoScalingGrouplaunchtemplatespecification,
+
+    #[serde(skip_serializing)]
+    pub att_mixed_instances_policy: CfnAutoScalingGroupmixedinstancespolicy,
+
+    #[serde(skip_serializing)]
+    pub att_placement_group: CfnAutoScalingGroupplacementgroup,
+
+    #[serde(skip_serializing)]
+    pub att_vpczone_identifier: CfnAutoScalingGroupvpczoneidentifier,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAutoScalingGrouplaunchconfigurationname;
+impl CfnAutoScalingGrouplaunchconfigurationname {
+    pub fn att_name(&self) -> &'static str {
+        r#"LaunchConfigurationName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAutoScalingGrouplaunchtemplatespecification;
+impl CfnAutoScalingGrouplaunchtemplatespecification {
+    pub fn att_name(&self) -> &'static str {
+        r#"LaunchTemplateSpecification"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAutoScalingGroupmixedinstancespolicy;
+impl CfnAutoScalingGroupmixedinstancespolicy {
+    pub fn att_name(&self) -> &'static str {
+        r#"MixedInstancesPolicy"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAutoScalingGroupplacementgroup;
+impl CfnAutoScalingGroupplacementgroup {
+    pub fn att_name(&self) -> &'static str {
+        r#"PlacementGroup"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAutoScalingGroupvpczoneidentifier;
+impl CfnAutoScalingGroupvpczoneidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"VPCZoneIdentifier"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAutoScalingGroup {

@@ -146,6 +146,17 @@ pub struct CfnJobTemplate {
     #[serde(rename = "TimeoutConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_config: Option<TimeoutConfig>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnJobTemplatearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnJobTemplatearn;
+impl CfnJobTemplatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnJobTemplate {

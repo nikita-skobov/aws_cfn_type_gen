@@ -311,6 +311,39 @@ pub struct CfnServer {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnServerarn,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint: CfnServerendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_server_name: CfnServerservername,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServerarn;
+impl CfnServerarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServerendpoint;
+impl CfnServerendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServerservername;
+impl CfnServerservername {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServerName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnServer {

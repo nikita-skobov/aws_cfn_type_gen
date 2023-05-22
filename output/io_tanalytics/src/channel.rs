@@ -58,6 +58,17 @@ pub struct CfnChannel {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnChannelid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnChannelid;
+impl CfnChannelid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnChannel {

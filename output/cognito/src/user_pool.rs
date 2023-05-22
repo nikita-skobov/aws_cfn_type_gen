@@ -342,6 +342,15 @@ pub struct CfnUserPool {
     #[serde(rename = "VerificationMessageTemplate")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub verification_message_template: Option<VerificationMessageTemplate>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnUserPoolarn,
+
+    #[serde(skip_serializing)]
+    pub att_provider_name: CfnUserPoolprovidername,
+
+    #[serde(skip_serializing)]
+    pub att_provider_url: CfnUserPoolproviderurl,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -379,6 +388,30 @@ pub enum UserPoolMfaConfigurationEnum {
 impl Default for UserPoolMfaConfigurationEnum {
     fn default() -> Self {
         UserPoolMfaConfigurationEnum::Off
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserPoolarn;
+impl CfnUserPoolarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserPoolprovidername;
+impl CfnUserPoolprovidername {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProviderName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserPoolproviderurl;
+impl CfnUserPoolproviderurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProviderURL"#
     }
 }
 

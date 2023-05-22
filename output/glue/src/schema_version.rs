@@ -22,6 +22,17 @@ pub struct CfnSchemaVersion {
     /// Update requires: Replacement
     #[serde(rename = "SchemaDefinition")]
     pub schema_definition: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_version_id: CfnSchemaVersionversionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSchemaVersionversionid;
+impl CfnSchemaVersionversionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VersionId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSchemaVersion {

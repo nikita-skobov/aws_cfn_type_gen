@@ -69,6 +69,17 @@ pub struct CfnResiliencyPolicy {
     /// Update requires: No interruption
     #[serde(rename = "Tier")]
     pub tier: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_policy_arn: CfnResiliencyPolicypolicyarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResiliencyPolicypolicyarn;
+impl CfnResiliencyPolicypolicyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"PolicyArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResiliencyPolicy {

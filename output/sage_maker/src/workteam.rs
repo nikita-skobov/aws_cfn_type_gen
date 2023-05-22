@@ -89,6 +89,17 @@ pub struct CfnWorkteam {
     #[serde(rename = "WorkteamName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub workteam_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_workteam_name: CfnWorkteamworkteamname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkteamworkteamname;
+impl CfnWorkteamworkteamname {
+    pub fn att_name(&self) -> &'static str {
+        r#"WorkteamName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnWorkteam {

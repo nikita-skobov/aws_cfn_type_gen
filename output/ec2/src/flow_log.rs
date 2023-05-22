@@ -152,6 +152,9 @@ pub struct CfnFlowLog {
     #[serde(rename = "TrafficType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub traffic_type: Option<FlowLogTrafficTypeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnFlowLogid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -222,6 +225,14 @@ pub enum FlowLogTrafficTypeEnum {
 impl Default for FlowLogTrafficTypeEnum {
     fn default() -> Self {
         FlowLogTrafficTypeEnum::Accept
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowLogid;
+impl CfnFlowLogid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

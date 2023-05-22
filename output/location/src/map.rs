@@ -62,6 +62,21 @@ pub struct CfnMap {
     #[serde(rename = "PricingPlan")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pricing_plan: Option<MapPricingPlanEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnMaparn,
+
+    #[serde(skip_serializing)]
+    pub att_create_time: CfnMapcreatetime,
+
+    #[serde(skip_serializing)]
+    pub att_data_source: CfnMapdatasource,
+
+    #[serde(skip_serializing)]
+    pub att_map_arn: CfnMapmaparn,
+
+    #[serde(skip_serializing)]
+    pub att_update_time: CfnMapupdatetime,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -74,6 +89,46 @@ pub enum MapPricingPlanEnum {
 impl Default for MapPricingPlanEnum {
     fn default() -> Self {
         MapPricingPlanEnum::Requestbasedusage
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMaparn;
+impl CfnMaparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMapcreatetime;
+impl CfnMapcreatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreateTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMapdatasource;
+impl CfnMapdatasource {
+    pub fn att_name(&self) -> &'static str {
+        r#"DataSource"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMapmaparn;
+impl CfnMapmaparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"MapArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMapupdatetime;
+impl CfnMapupdatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdateTime"#
     }
 }
 

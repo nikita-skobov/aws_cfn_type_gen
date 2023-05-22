@@ -116,6 +116,50 @@ pub struct CfnRepository {
     #[serde(rename = "Upstreams")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub upstreams: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRepositoryarn,
+
+    #[serde(skip_serializing)]
+    pub att_domain_name: CfnRepositorydomainname,
+
+    #[serde(skip_serializing)]
+    pub att_domain_owner: CfnRepositorydomainowner,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnRepositoryname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositoryarn;
+impl CfnRepositoryarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositorydomainname;
+impl CfnRepositorydomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositorydomainowner;
+impl CfnRepositorydomainowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRepositoryname;
+impl CfnRepositoryname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRepository {

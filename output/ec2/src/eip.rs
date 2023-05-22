@@ -90,6 +90,12 @@ pub struct CfnEIP {
     #[serde(rename = "TransferAddress")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub transfer_address: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_allocation_id: CfnEIPallocationid,
+
+    #[serde(skip_serializing)]
+    pub att_public_ip: CfnEIPpublicip,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -106,6 +112,22 @@ pub enum EIPDomainEnum {
 impl Default for EIPDomainEnum {
     fn default() -> Self {
         EIPDomainEnum::Standard
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEIPallocationid;
+impl CfnEIPallocationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AllocationId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEIPpublicip;
+impl CfnEIPpublicip {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublicIp"#
     }
 }
 

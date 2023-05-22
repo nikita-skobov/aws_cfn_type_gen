@@ -46,6 +46,50 @@ pub struct CfnResolverRuleAssociation {
     /// Update requires: Replacement
     #[serde(rename = "VPCId")]
     pub vpcid: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnResolverRuleAssociationname,
+
+    #[serde(skip_serializing)]
+    pub att_resolver_rule_association_id: CfnResolverRuleAssociationresolverruleassociationid,
+
+    #[serde(skip_serializing)]
+    pub att_resolver_rule_id: CfnResolverRuleAssociationresolverruleid,
+
+    #[serde(skip_serializing)]
+    pub att_vpcid: CfnResolverRuleAssociationvpcid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverRuleAssociationname;
+impl CfnResolverRuleAssociationname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverRuleAssociationresolverruleassociationid;
+impl CfnResolverRuleAssociationresolverruleassociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResolverRuleAssociationId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverRuleAssociationresolverruleid;
+impl CfnResolverRuleAssociationresolverruleid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResolverRuleId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverRuleAssociationvpcid;
+impl CfnResolverRuleAssociationvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VPCId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResolverRuleAssociation {

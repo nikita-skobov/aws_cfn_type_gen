@@ -190,6 +190,28 @@ pub struct CfnLocationHDFS {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationHDFSlocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationHDFSlocationuri,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationHDFSlocationarn;
+impl CfnLocationHDFSlocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationHDFSlocationuri;
+impl CfnLocationHDFSlocationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocationHDFS {

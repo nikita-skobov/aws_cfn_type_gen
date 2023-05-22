@@ -215,6 +215,61 @@ pub struct CfnLoadBalancer {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_canonical_hosted_zone_name: CfnLoadBalancercanonicalhostedzonename,
+
+    #[serde(skip_serializing)]
+    pub att_canonical_hosted_zone_name_id: CfnLoadBalancercanonicalhostedzonenameid,
+
+    #[serde(skip_serializing)]
+    pub att_dnsname: CfnLoadBalancerdnsname,
+
+    #[serde(skip_serializing)]
+    pub att_source_security_group_group_name: CfnLoadBalancersourcesecuritygroupgroupname,
+
+    #[serde(skip_serializing)]
+    pub att_source_security_group_owner_alias: CfnLoadBalancersourcesecuritygroupowneralias,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancercanonicalhostedzonename;
+impl CfnLoadBalancercanonicalhostedzonename {
+    pub fn att_name(&self) -> &'static str {
+        r#"CanonicalHostedZoneName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancercanonicalhostedzonenameid;
+impl CfnLoadBalancercanonicalhostedzonenameid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CanonicalHostedZoneNameID"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancerdnsname;
+impl CfnLoadBalancerdnsname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DNSName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancersourcesecuritygroupgroupname;
+impl CfnLoadBalancersourcesecuritygroupgroupname {
+    pub fn att_name(&self) -> &'static str {
+        r#"SourceSecurityGroup.GroupName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLoadBalancersourcesecuritygroupowneralias;
+impl CfnLoadBalancersourcesecuritygroupowneralias {
+    pub fn att_name(&self) -> &'static str {
+        r#"SourceSecurityGroup.OwnerAlias"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLoadBalancer {

@@ -104,6 +104,28 @@ pub struct CfnGlobalReplicationGroup {
     #[serde(rename = "RegionalConfigurations")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub regional_configurations: Option<Vec<RegionalConfiguration>>,
+
+    #[serde(skip_serializing)]
+    pub att_global_replication_group_id: CfnGlobalReplicationGroupglobalreplicationgroupid,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnGlobalReplicationGroupstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGlobalReplicationGroupglobalreplicationgroupid;
+impl CfnGlobalReplicationGroupglobalreplicationgroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"GlobalReplicationGroupId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGlobalReplicationGroupstatus;
+impl CfnGlobalReplicationGroupstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGlobalReplicationGroup {

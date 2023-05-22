@@ -26,6 +26,39 @@ pub struct CfnBackupSelection {
     /// Update requires: Replacement
     #[serde(rename = "BackupSelection")]
     pub backup_selection: BackupSelectionResourceType,
+
+    #[serde(skip_serializing)]
+    pub att_backup_plan_id: CfnBackupSelectionbackupplanid,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnBackupSelectionid,
+
+    #[serde(skip_serializing)]
+    pub att_selection_id: CfnBackupSelectionselectionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBackupSelectionbackupplanid;
+impl CfnBackupSelectionbackupplanid {
+    pub fn att_name(&self) -> &'static str {
+        r#"BackupPlanId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBackupSelectionid;
+impl CfnBackupSelectionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBackupSelectionselectionid;
+impl CfnBackupSelectionselectionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"SelectionId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnBackupSelection {

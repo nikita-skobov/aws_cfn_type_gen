@@ -101,6 +101,50 @@ pub struct CfnPortal {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_portal_arn: CfnPortalportalarn,
+
+    #[serde(skip_serializing)]
+    pub att_portal_client_id: CfnPortalportalclientid,
+
+    #[serde(skip_serializing)]
+    pub att_portal_id: CfnPortalportalid,
+
+    #[serde(skip_serializing)]
+    pub att_portal_start_url: CfnPortalportalstarturl,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPortalportalarn;
+impl CfnPortalportalarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"PortalArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPortalportalclientid;
+impl CfnPortalportalclientid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PortalClientId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPortalportalid;
+impl CfnPortalportalid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PortalId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPortalportalstarturl;
+impl CfnPortalportalstarturl {
+    pub fn att_name(&self) -> &'static str {
+        r#"PortalStartUrl"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPortal {

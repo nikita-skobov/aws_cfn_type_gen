@@ -127,6 +127,28 @@ pub struct CfnLicense {
     /// Update requires: No interruption
     #[serde(rename = "Validity")]
     pub validity: ValidityDateFormat,
+
+    #[serde(skip_serializing)]
+    pub att_license_arn: CfnLicenselicensearn,
+
+    #[serde(skip_serializing)]
+    pub att_version: CfnLicenseversion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLicenselicensearn;
+impl CfnLicenselicensearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LicenseArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLicenseversion;
+impl CfnLicenseversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLicense {

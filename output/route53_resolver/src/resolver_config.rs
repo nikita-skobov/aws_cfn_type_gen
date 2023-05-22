@@ -26,6 +26,39 @@ pub struct CfnResolverConfig {
     /// Update requires: Replacement
     #[serde(rename = "ResourceId")]
     pub resource_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_autodefined_reverse: CfnResolverConfigautodefinedreverse,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnResolverConfigid,
+
+    #[serde(skip_serializing)]
+    pub att_owner_id: CfnResolverConfigownerid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverConfigautodefinedreverse;
+impl CfnResolverConfigautodefinedreverse {
+    pub fn att_name(&self) -> &'static str {
+        r#"AutodefinedReverse"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverConfigid;
+impl CfnResolverConfigid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResolverConfigownerid;
+impl CfnResolverConfigownerid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResolverConfig {

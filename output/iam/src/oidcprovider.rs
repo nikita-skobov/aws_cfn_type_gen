@@ -55,6 +55,17 @@ pub struct CfnOIDCProvider {
     #[serde(rename = "Url")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnOIDCProviderarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOIDCProviderarn;
+impl CfnOIDCProviderarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnOIDCProvider {

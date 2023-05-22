@@ -22,6 +22,17 @@ pub struct CfnAuthPolicy {
     /// Update requires: Replacement
     #[serde(rename = "ResourceIdentifier")]
     pub resource_identifier: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnAuthPolicystate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAuthPolicystate;
+impl CfnAuthPolicystate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAuthPolicy {

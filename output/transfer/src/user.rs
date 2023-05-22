@@ -159,6 +159,15 @@ pub struct CfnUser {
     /// Update requires: Replacement
     #[serde(rename = "UserName")]
     pub user_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnUserarn,
+
+    #[serde(skip_serializing)]
+    pub att_server_id: CfnUserserverid,
+
+    #[serde(skip_serializing)]
+    pub att_user_name: CfnUserusername,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -175,6 +184,30 @@ pub enum UserHomeDirectoryTypeEnum {
 impl Default for UserHomeDirectoryTypeEnum {
     fn default() -> Self {
         UserHomeDirectoryTypeEnum::Logical
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserarn;
+impl CfnUserarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserserverid;
+impl CfnUserserverid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServerId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserusername;
+impl CfnUserusername {
+    pub fn att_name(&self) -> &'static str {
+        r#"UserName"#
     }
 }
 

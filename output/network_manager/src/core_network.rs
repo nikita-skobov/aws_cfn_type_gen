@@ -61,6 +61,61 @@ pub struct CfnCoreNetwork {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_core_network_arn: CfnCoreNetworkcorenetworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_core_network_id: CfnCoreNetworkcorenetworkid,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnCoreNetworkcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_owner_account: CfnCoreNetworkowneraccount,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnCoreNetworkstate,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCoreNetworkcorenetworkarn;
+impl CfnCoreNetworkcorenetworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CoreNetworkArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCoreNetworkcorenetworkid;
+impl CfnCoreNetworkcorenetworkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CoreNetworkId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCoreNetworkcreatedat;
+impl CfnCoreNetworkcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCoreNetworkowneraccount;
+impl CfnCoreNetworkowneraccount {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerAccount"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCoreNetworkstate;
+impl CfnCoreNetworkstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCoreNetwork {

@@ -33,6 +33,39 @@ pub struct CfnResourceAssociation {
     /// Update requires: Replacement
     #[serde(rename = "ResourceType")]
     pub resource_type: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_application_arn: CfnResourceAssociationapplicationarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnResourceAssociationid,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnResourceAssociationresourcearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceAssociationapplicationarn;
+impl CfnResourceAssociationapplicationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ApplicationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceAssociationid;
+impl CfnResourceAssociationid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceAssociationresourcearn;
+impl CfnResourceAssociationresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResourceAssociation {

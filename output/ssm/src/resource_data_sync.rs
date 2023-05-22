@@ -147,6 +147,9 @@ pub struct CfnResourceDataSync {
     #[serde(rename = "SyncType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sync_type: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_sync_name: CfnResourceDataSyncsyncname,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -159,6 +162,14 @@ pub enum ResourceDataSyncSyncFormatEnum {
 impl Default for ResourceDataSyncSyncFormatEnum {
     fn default() -> Self {
         ResourceDataSyncSyncFormatEnum::Jsonserde
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceDataSyncsyncname;
+impl CfnResourceDataSyncsyncname {
+    pub fn att_name(&self) -> &'static str {
+        r#"SyncName"#
     }
 }
 

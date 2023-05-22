@@ -33,6 +33,9 @@ pub struct CfnResourceSpecificLogging {
     /// Update requires: Replacement
     #[serde(rename = "TargetType")]
     pub target_type: ResourceSpecificLoggingTargetTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_target_id: CfnResourceSpecificLoggingtargetid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -78,6 +81,14 @@ pub enum ResourceSpecificLoggingTargetTypeEnum {
 impl Default for ResourceSpecificLoggingTargetTypeEnum {
     fn default() -> Self {
         ResourceSpecificLoggingTargetTypeEnum::Default
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceSpecificLoggingtargetid;
+impl CfnResourceSpecificLoggingtargetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TargetId"#
     }
 }
 

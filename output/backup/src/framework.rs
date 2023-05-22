@@ -61,6 +61,50 @@ pub struct CfnFramework {
     #[serde(rename = "FrameworkTags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub framework_tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnFrameworkcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_deployment_status: CfnFrameworkdeploymentstatus,
+
+    #[serde(skip_serializing)]
+    pub att_framework_arn: CfnFrameworkframeworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_framework_status: CfnFrameworkframeworkstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFrameworkcreationtime;
+impl CfnFrameworkcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFrameworkdeploymentstatus;
+impl CfnFrameworkdeploymentstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"DeploymentStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFrameworkframeworkarn;
+impl CfnFrameworkframeworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FrameworkArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFrameworkframeworkstatus;
+impl CfnFrameworkframeworkstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"FrameworkStatus"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFramework {

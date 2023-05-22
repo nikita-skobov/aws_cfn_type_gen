@@ -152,6 +152,17 @@ pub struct CfnCluster {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<std::collections::HashMap<String, String>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnClusterarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterarn;
+impl CfnClusterarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCluster {

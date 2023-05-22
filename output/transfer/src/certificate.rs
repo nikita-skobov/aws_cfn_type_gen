@@ -116,6 +116,27 @@ pub struct CfnCertificate {
     /// Update requires: No interruption
     #[serde(rename = "Usage")]
     pub usage: CertificateUsageEnum,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCertificatearn,
+
+    #[serde(skip_serializing)]
+    pub att_certificate_id: CfnCertificatecertificateid,
+
+    #[serde(skip_serializing)]
+    pub att_not_after_date: CfnCertificatenotafterdate,
+
+    #[serde(skip_serializing)]
+    pub att_not_before_date: CfnCertificatenotbeforedate,
+
+    #[serde(skip_serializing)]
+    pub att_serial: CfnCertificateserial,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnCertificatestatus,
+
+    #[serde(skip_serializing)]
+    pub att_cfn_type: CfnCertificatecfntype,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -132,6 +153,62 @@ pub enum CertificateUsageEnum {
 impl Default for CertificateUsageEnum {
     fn default() -> Self {
         CertificateUsageEnum::Encryption
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatearn;
+impl CfnCertificatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatecertificateid;
+impl CfnCertificatecertificateid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CertificateId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatenotafterdate;
+impl CfnCertificatenotafterdate {
+    pub fn att_name(&self) -> &'static str {
+        r#"NotAfterDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatenotbeforedate;
+impl CfnCertificatenotbeforedate {
+    pub fn att_name(&self) -> &'static str {
+        r#"NotBeforeDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificateserial;
+impl CfnCertificateserial {
+    pub fn att_name(&self) -> &'static str {
+        r#"Serial"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatestatus;
+impl CfnCertificatestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCertificatecfntype;
+impl CfnCertificatecfntype {
+    pub fn att_name(&self) -> &'static str {
+        r#"Type"#
     }
 }
 

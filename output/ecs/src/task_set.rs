@@ -121,6 +121,9 @@ pub struct CfnTaskSet {
     /// Update requires: Replacement
     #[serde(rename = "TaskDefinition")]
     pub task_definition: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnTaskSetid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -141,6 +144,14 @@ pub enum TaskSetLaunchTypeEnum {
 impl Default for TaskSetLaunchTypeEnum {
     fn default() -> Self {
         TaskSetLaunchTypeEnum::Ec2
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTaskSetid;
+impl CfnTaskSetid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
     }
 }
 

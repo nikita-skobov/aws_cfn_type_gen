@@ -56,6 +56,50 @@ pub struct CfnHookVersion {
     /// Update requires: Replacement
     #[serde(rename = "TypeName")]
     pub type_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnHookVersionarn,
+
+    #[serde(skip_serializing)]
+    pub att_type_arn: CfnHookVersiontypearn,
+
+    #[serde(skip_serializing)]
+    pub att_version_id: CfnHookVersionversionid,
+
+    #[serde(skip_serializing)]
+    pub att_visibility: CfnHookVersionvisibility,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnHookVersionarn;
+impl CfnHookVersionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnHookVersiontypearn;
+impl CfnHookVersiontypearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TypeArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnHookVersionversionid;
+impl CfnHookVersionversionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VersionId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnHookVersionvisibility;
+impl CfnHookVersionvisibility {
+    pub fn att_name(&self) -> &'static str {
+        r#"Visibility"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnHookVersion {

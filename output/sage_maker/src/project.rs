@@ -58,6 +58,74 @@ pub struct CfnProject {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnProjectcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_project_arn: CfnProjectprojectarn,
+
+    #[serde(skip_serializing)]
+    pub att_project_id: CfnProjectprojectid,
+
+    #[serde(skip_serializing)]
+    pub att_project_status: CfnProjectprojectstatus,
+
+    #[serde(skip_serializing)]
+    pub att_service_catalog_provisioned_product_details_provisioned_product_id:
+        CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductid,
+
+    #[serde(skip_serializing)]
+    pub att_service_catalog_provisioned_product_details_provisioned_product_status_message:
+        CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductstatusmessage,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProjectcreationtime;
+impl CfnProjectcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProjectprojectarn;
+impl CfnProjectprojectarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProjectArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProjectprojectid;
+impl CfnProjectprojectid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProjectId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProjectprojectstatus;
+impl CfnProjectprojectstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProjectStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductid;
+impl CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductid {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceCatalogProvisionedProductDetails.ProvisionedProductId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductstatusmessage;
+impl CfnProjectservicecatalogprovisionedproductdetailsprovisionedproductstatusmessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"ServiceCatalogProvisionedProductDetails.ProvisionedProductStatusMessage"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnProject {

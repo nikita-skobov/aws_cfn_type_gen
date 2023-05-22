@@ -186,6 +186,15 @@ pub struct CfnDataSet {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDataSetarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnDataSetcreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnDataSetlastupdatedtime,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -202,6 +211,30 @@ pub enum DataSetImportModeEnum {
 impl Default for DataSetImportModeEnum {
     fn default() -> Self {
         DataSetImportModeEnum::Directquery
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSetarn;
+impl CfnDataSetarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSetcreatedtime;
+impl CfnDataSetcreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataSetlastupdatedtime;
+impl CfnDataSetlastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
     }
 }
 

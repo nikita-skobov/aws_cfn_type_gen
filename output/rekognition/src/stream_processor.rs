@@ -168,6 +168,39 @@ pub struct CfnStreamProcessor {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnStreamProcessorarn,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnStreamProcessorstatus,
+
+    #[serde(skip_serializing)]
+    pub att_status_message: CfnStreamProcessorstatusmessage,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamProcessorarn;
+impl CfnStreamProcessorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamProcessorstatus;
+impl CfnStreamProcessorstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStreamProcessorstatusmessage;
+impl CfnStreamProcessorstatusmessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"StatusMessage"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnStreamProcessor {

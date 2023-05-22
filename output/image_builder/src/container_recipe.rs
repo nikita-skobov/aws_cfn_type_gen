@@ -198,6 +198,12 @@ pub struct CfnContainerRecipe {
     #[serde(rename = "WorkingDirectory")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub working_directory: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnContainerRecipearn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnContainerRecipename,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -210,6 +216,22 @@ pub enum ContainerRecipeContainerTypeEnum {
 impl Default for ContainerRecipeContainerTypeEnum {
     fn default() -> Self {
         ContainerRecipeContainerTypeEnum::Docker
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnContainerRecipearn;
+impl CfnContainerRecipearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnContainerRecipename;
+impl CfnContainerRecipename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
     }
 }
 

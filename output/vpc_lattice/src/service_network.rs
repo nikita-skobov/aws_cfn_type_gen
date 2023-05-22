@@ -42,6 +42,50 @@ pub struct CfnServiceNetwork {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnServiceNetworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnServiceNetworkcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnServiceNetworkid,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_at: CfnServiceNetworklastupdatedat,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkarn;
+impl CfnServiceNetworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkcreatedat;
+impl CfnServiceNetworkcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworkid;
+impl CfnServiceNetworkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServiceNetworklastupdatedat;
+impl CfnServiceNetworklastupdatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedAt"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnServiceNetwork {

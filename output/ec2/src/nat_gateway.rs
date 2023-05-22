@@ -127,6 +127,9 @@ pub struct CfnNatGateway {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_nat_gateway_id: CfnNatGatewaynatgatewayid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -143,6 +146,14 @@ pub enum NatGatewayConnectivityTypeEnum {
 impl Default for NatGatewayConnectivityTypeEnum {
     fn default() -> Self {
         NatGatewayConnectivityTypeEnum::Private
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNatGatewaynatgatewayid;
+impl CfnNatGatewaynatgatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NatGatewayId"#
     }
 }
 

@@ -53,6 +53,50 @@ pub struct CfnGeofenceCollection {
     #[serde(rename = "KmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnGeofenceCollectionarn,
+
+    #[serde(skip_serializing)]
+    pub att_collection_arn: CfnGeofenceCollectioncollectionarn,
+
+    #[serde(skip_serializing)]
+    pub att_create_time: CfnGeofenceCollectioncreatetime,
+
+    #[serde(skip_serializing)]
+    pub att_update_time: CfnGeofenceCollectionupdatetime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGeofenceCollectionarn;
+impl CfnGeofenceCollectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGeofenceCollectioncollectionarn;
+impl CfnGeofenceCollectioncollectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CollectionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGeofenceCollectioncreatetime;
+impl CfnGeofenceCollectioncreatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreateTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGeofenceCollectionupdatetime;
+impl CfnGeofenceCollectionupdatetime {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdateTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGeofenceCollection {

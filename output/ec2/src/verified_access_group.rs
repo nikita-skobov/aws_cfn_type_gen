@@ -59,6 +59,61 @@ pub struct CfnVerifiedAccessGroup {
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessInstanceId")]
     pub verified_access_instance_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnVerifiedAccessGroupcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnVerifiedAccessGrouplastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_owner: CfnVerifiedAccessGroupowner,
+
+    #[serde(skip_serializing)]
+    pub att_verified_access_group_arn: CfnVerifiedAccessGroupverifiedaccessgrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_verified_access_group_id: CfnVerifiedAccessGroupverifiedaccessgroupid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessGroupcreationtime;
+impl CfnVerifiedAccessGroupcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessGrouplastupdatedtime;
+impl CfnVerifiedAccessGrouplastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessGroupowner;
+impl CfnVerifiedAccessGroupowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"Owner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessGroupverifiedaccessgrouparn;
+impl CfnVerifiedAccessGroupverifiedaccessgrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"VerifiedAccessGroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessGroupverifiedaccessgroupid;
+impl CfnVerifiedAccessGroupverifiedaccessgroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VerifiedAccessGroupId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVerifiedAccessGroup {

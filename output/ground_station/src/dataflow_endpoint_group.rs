@@ -49,6 +49,28 @@ pub struct CfnDataflowEndpointGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDataflowEndpointGrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnDataflowEndpointGroupid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataflowEndpointGrouparn;
+impl CfnDataflowEndpointGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDataflowEndpointGroupid;
+impl CfnDataflowEndpointGroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDataflowEndpointGroup {

@@ -42,6 +42,17 @@ pub struct CfnAggregationAuthorization {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_aggregation_authorization_arn: CfnAggregationAuthorizationaggregationauthorizationarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAggregationAuthorizationaggregationauthorizationarn;
+impl CfnAggregationAuthorizationaggregationauthorizationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AggregationAuthorizationArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAggregationAuthorization {

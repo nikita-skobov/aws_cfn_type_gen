@@ -48,6 +48,9 @@ pub struct CfnSchema {
     /// Update requires: Replacement
     #[serde(rename = "Schema")]
     pub schema: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_schema_arn: CfnSchemaschemaarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -64,6 +67,14 @@ pub enum SchemaDomainEnum {
 impl Default for SchemaDomainEnum {
     fn default() -> Self {
         SchemaDomainEnum::Ecommerce
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSchemaschemaarn;
+impl CfnSchemaschemaarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SchemaArn"#
     }
 }
 

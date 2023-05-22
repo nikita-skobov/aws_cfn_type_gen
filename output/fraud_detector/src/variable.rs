@@ -92,6 +92,15 @@ pub struct CfnVariable {
     #[serde(rename = "VariableType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub variable_type: Option<VariableVariableTypeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnVariablearn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnVariablecreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnVariablelastupdatedtime,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -232,6 +241,30 @@ pub enum VariableVariableTypeEnum {
 impl Default for VariableVariableTypeEnum {
     fn default() -> Self {
         VariableVariableTypeEnum::Authcode
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVariablearn;
+impl CfnVariablearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVariablecreatedtime;
+impl CfnVariablecreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVariablelastupdatedtime;
+impl CfnVariablelastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
     }
 }
 

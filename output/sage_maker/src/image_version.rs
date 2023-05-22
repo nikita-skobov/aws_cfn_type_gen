@@ -30,6 +30,39 @@ pub struct CfnImageVersion {
     /// Update requires: Replacement
     #[serde(rename = "ImageName")]
     pub image_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_container_image: CfnImageVersioncontainerimage,
+
+    #[serde(skip_serializing)]
+    pub att_image_arn: CfnImageVersionimagearn,
+
+    #[serde(skip_serializing)]
+    pub att_image_version_arn: CfnImageVersionimageversionarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImageVersioncontainerimage;
+impl CfnImageVersioncontainerimage {
+    pub fn att_name(&self) -> &'static str {
+        r#"ContainerImage"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImageVersionimagearn;
+impl CfnImageVersionimagearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ImageArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnImageVersionimageversionarn;
+impl CfnImageVersionimageversionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ImageVersionArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnImageVersion {

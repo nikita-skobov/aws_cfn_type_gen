@@ -36,6 +36,28 @@ pub struct CfnTopicRuleDestination {
     #[serde(rename = "VpcProperties")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_properties: Option<VpcDestinationProperties>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnTopicRuleDestinationarn,
+
+    #[serde(skip_serializing)]
+    pub att_status_reason: CfnTopicRuleDestinationstatusreason,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTopicRuleDestinationarn;
+impl CfnTopicRuleDestinationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTopicRuleDestinationstatusreason;
+impl CfnTopicRuleDestinationstatusreason {
+    pub fn att_name(&self) -> &'static str {
+        r#"StatusReason"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTopicRuleDestination {

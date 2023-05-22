@@ -80,6 +80,72 @@ pub struct CfnVirtualNode {
     #[serde(rename = "VirtualNodeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_node_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnVirtualNodearn,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_name: CfnVirtualNodemeshname,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_owner: CfnVirtualNodemeshowner,
+
+    #[serde(skip_serializing)]
+    pub att_resource_owner: CfnVirtualNoderesourceowner,
+
+    #[serde(skip_serializing)]
+    pub att_uid: CfnVirtualNodeuid,
+
+    #[serde(skip_serializing)]
+    pub att_virtual_node_name: CfnVirtualNodevirtualnodename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualNodearn;
+impl CfnVirtualNodearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualNodemeshname;
+impl CfnVirtualNodemeshname {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualNodemeshowner;
+impl CfnVirtualNodemeshowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualNoderesourceowner;
+impl CfnVirtualNoderesourceowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualNodeuid;
+impl CfnVirtualNodeuid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Uid"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualNodevirtualnodename;
+impl CfnVirtualNodevirtualnodename {
+    pub fn att_name(&self) -> &'static str {
+        r#"VirtualNodeName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVirtualNode {

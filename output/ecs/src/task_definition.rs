@@ -264,6 +264,9 @@ pub struct CfnTaskDefinition {
     #[serde(rename = "Volumes")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub volumes: Option<Vec<Volume>>,
+
+    #[serde(skip_serializing)]
+    pub att_task_definition_arn: CfnTaskDefinitiontaskdefinitionarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -326,6 +329,14 @@ pub enum TaskDefinitionPidModeEnum {
 impl Default for TaskDefinitionPidModeEnum {
     fn default() -> Self {
         TaskDefinitionPidModeEnum::Host
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTaskDefinitiontaskdefinitionarn;
+impl CfnTaskDefinitiontaskdefinitionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TaskDefinitionArn"#
     }
 }
 

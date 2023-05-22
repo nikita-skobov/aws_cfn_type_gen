@@ -38,6 +38,83 @@ pub struct CfnModuleVersion {
     /// Update requires: Replacement
     #[serde(rename = "ModulePackage")]
     pub module_package: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnModuleVersionarn,
+
+    #[serde(skip_serializing)]
+    pub att_description: CfnModuleVersiondescription,
+
+    #[serde(skip_serializing)]
+    pub att_documentation_url: CfnModuleVersiondocumentationurl,
+
+    #[serde(skip_serializing)]
+    pub att_schema: CfnModuleVersionschema,
+
+    #[serde(skip_serializing)]
+    pub att_time_created: CfnModuleVersiontimecreated,
+
+    #[serde(skip_serializing)]
+    pub att_version_id: CfnModuleVersionversionid,
+
+    #[serde(skip_serializing)]
+    pub att_visibility: CfnModuleVersionvisibility,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModuleVersionarn;
+impl CfnModuleVersionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModuleVersiondescription;
+impl CfnModuleVersiondescription {
+    pub fn att_name(&self) -> &'static str {
+        r#"Description"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModuleVersiondocumentationurl;
+impl CfnModuleVersiondocumentationurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"DocumentationUrl"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModuleVersionschema;
+impl CfnModuleVersionschema {
+    pub fn att_name(&self) -> &'static str {
+        r#"Schema"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModuleVersiontimecreated;
+impl CfnModuleVersiontimecreated {
+    pub fn att_name(&self) -> &'static str {
+        r#"TimeCreated"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModuleVersionversionid;
+impl CfnModuleVersionversionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VersionId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModuleVersionvisibility;
+impl CfnModuleVersionvisibility {
+    pub fn att_name(&self) -> &'static str {
+        r#"Visibility"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnModuleVersion {

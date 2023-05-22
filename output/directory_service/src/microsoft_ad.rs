@@ -93,6 +93,9 @@ pub struct CfnMicrosoftAD {
     /// Update requires: Replacement
     #[serde(rename = "VpcSettings")]
     pub vpc_settings: VpcSettings,
+
+    #[serde(skip_serializing)]
+    pub att_alias: CfnMicrosoftADalias,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -109,6 +112,14 @@ pub enum MicrosoftADEditionEnum {
 impl Default for MicrosoftADEditionEnum {
     fn default() -> Self {
         MicrosoftADEditionEnum::Enterprise
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnMicrosoftADalias;
+impl CfnMicrosoftADalias {
+    pub fn att_name(&self) -> &'static str {
+        r#"Alias"#
     }
 }
 

@@ -63,6 +63,28 @@ pub struct CfnLocationFSxLustre {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationFSxLustrelocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationFSxLustrelocationuri,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationFSxLustrelocationarn;
+impl CfnLocationFSxLustrelocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationFSxLustrelocationuri;
+impl CfnLocationFSxLustrelocationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocationFSxLustre {

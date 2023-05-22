@@ -58,6 +58,62 @@ pub struct CfnTransitGatewayPeeringAttachment {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayId")]
     pub transit_gateway_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnTransitGatewayPeeringAttachmentcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnTransitGatewayPeeringAttachmentstate,
+
+    #[serde(skip_serializing)]
+    pub att_status_code: CfnTransitGatewayPeeringAttachmentstatuscode,
+
+    #[serde(skip_serializing)]
+    pub att_status_message: CfnTransitGatewayPeeringAttachmentstatusmessage,
+
+    #[serde(skip_serializing)]
+    pub att_transit_gateway_attachment_id:
+        CfnTransitGatewayPeeringAttachmenttransitgatewayattachmentid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringAttachmentcreationtime;
+impl CfnTransitGatewayPeeringAttachmentcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringAttachmentstate;
+impl CfnTransitGatewayPeeringAttachmentstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringAttachmentstatuscode;
+impl CfnTransitGatewayPeeringAttachmentstatuscode {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status.Code"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringAttachmentstatusmessage;
+impl CfnTransitGatewayPeeringAttachmentstatusmessage {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status.Message"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayPeeringAttachmenttransitgatewayattachmentid;
+impl CfnTransitGatewayPeeringAttachmenttransitgatewayattachmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TransitGatewayAttachmentId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayPeeringAttachment {

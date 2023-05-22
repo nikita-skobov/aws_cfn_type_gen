@@ -46,6 +46,17 @@ pub struct CfnAccessPoint {
     /// Update requires: Replacement
     #[serde(rename = "VpcConfiguration")]
     pub vpc_configuration: VpcConfiguration,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAccessPointarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAccessPointarn;
+impl CfnAccessPointarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAccessPoint {

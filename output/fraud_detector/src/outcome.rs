@@ -47,6 +47,39 @@ pub struct CfnOutcome {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnOutcomearn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnOutcomecreatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnOutcomelastupdatedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOutcomearn;
+impl CfnOutcomearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOutcomecreatedtime;
+impl CfnOutcomecreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnOutcomelastupdatedtime;
+impl CfnOutcomelastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnOutcome {

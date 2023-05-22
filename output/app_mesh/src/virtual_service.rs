@@ -71,6 +71,72 @@ pub struct CfnVirtualService {
     /// Update requires: Replacement
     #[serde(rename = "VirtualServiceName")]
     pub virtual_service_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnVirtualServicearn,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_name: CfnVirtualServicemeshname,
+
+    #[serde(skip_serializing)]
+    pub att_mesh_owner: CfnVirtualServicemeshowner,
+
+    #[serde(skip_serializing)]
+    pub att_resource_owner: CfnVirtualServiceresourceowner,
+
+    #[serde(skip_serializing)]
+    pub att_uid: CfnVirtualServiceuid,
+
+    #[serde(skip_serializing)]
+    pub att_virtual_service_name: CfnVirtualServicevirtualservicename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualServicearn;
+impl CfnVirtualServicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualServicemeshname;
+impl CfnVirtualServicemeshname {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualServicemeshowner;
+impl CfnVirtualServicemeshowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"MeshOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualServiceresourceowner;
+impl CfnVirtualServiceresourceowner {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceOwner"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualServiceuid;
+impl CfnVirtualServiceuid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Uid"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVirtualServicevirtualservicename;
+impl CfnVirtualServicevirtualservicename {
+    pub fn att_name(&self) -> &'static str {
+        r#"VirtualServiceName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVirtualService {

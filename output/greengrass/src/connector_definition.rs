@@ -43,6 +43,50 @@ pub struct CfnConnectorDefinition {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnConnectorDefinitionarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnConnectorDefinitionid,
+
+    #[serde(skip_serializing)]
+    pub att_latest_version_arn: CfnConnectorDefinitionlatestversionarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnConnectorDefinitionname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorDefinitionarn;
+impl CfnConnectorDefinitionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorDefinitionid;
+impl CfnConnectorDefinitionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorDefinitionlatestversionarn;
+impl CfnConnectorDefinitionlatestversionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LatestVersionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnConnectorDefinitionname;
+impl CfnConnectorDefinitionname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnConnectorDefinition {

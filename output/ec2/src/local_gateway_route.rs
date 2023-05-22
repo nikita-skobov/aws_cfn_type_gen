@@ -46,6 +46,28 @@ pub struct CfnLocalGatewayRoute {
     #[serde(rename = "NetworkInterfaceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnLocalGatewayRoutestate,
+
+    #[serde(skip_serializing)]
+    pub att_cfn_type: CfnLocalGatewayRoutecfntype,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRoutestate;
+impl CfnLocalGatewayRoutestate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocalGatewayRoutecfntype;
+impl CfnLocalGatewayRoutecfntype {
+    pub fn att_name(&self) -> &'static str {
+        r#"Type"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnLocalGatewayRoute {

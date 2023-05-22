@@ -73,6 +73,15 @@ pub struct CfnDBProxyEndpoint {
     /// Update requires: Replacement
     #[serde(rename = "VpcSubnetIds")]
     pub vpc_subnet_ids: Vec<String>,
+
+    #[serde(skip_serializing)]
+    pub att_dbproxy_endpoint_arn: CfnDBProxyEndpointdbproxyendpointarn,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint: CfnDBProxyEndpointendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_vpc_id: CfnDBProxyEndpointvpcid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -89,6 +98,30 @@ pub enum DBProxyEndpointTargetRoleEnum {
 impl Default for DBProxyEndpointTargetRoleEnum {
     fn default() -> Self {
         DBProxyEndpointTargetRoleEnum::Readwrite
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBProxyEndpointdbproxyendpointarn;
+impl CfnDBProxyEndpointdbproxyendpointarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DBProxyEndpointArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBProxyEndpointendpoint;
+impl CfnDBProxyEndpointendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDBProxyEndpointvpcid;
+impl CfnDBProxyEndpointvpcid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpcId"#
     }
 }
 

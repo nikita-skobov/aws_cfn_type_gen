@@ -128,6 +128,28 @@ pub struct CfnModelExplainabilityJobDefinition {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnModelExplainabilityJobDefinitioncreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_job_definition_arn: CfnModelExplainabilityJobDefinitionjobdefinitionarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelExplainabilityJobDefinitioncreationtime;
+impl CfnModelExplainabilityJobDefinitioncreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelExplainabilityJobDefinitionjobdefinitionarn;
+impl CfnModelExplainabilityJobDefinitionjobdefinitionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"JobDefinitionArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnModelExplainabilityJobDefinition {

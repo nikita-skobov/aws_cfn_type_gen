@@ -58,6 +58,127 @@ pub struct CfnTransitGatewayRouteTableAttachment {
     /// Update requires: Replacement
     #[serde(rename = "TransitGatewayRouteTableArn")]
     pub transit_gateway_route_table_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_attachment_id: CfnTransitGatewayRouteTableAttachmentattachmentid,
+
+    #[serde(skip_serializing)]
+    pub att_attachment_type: CfnTransitGatewayRouteTableAttachmentattachmenttype,
+
+    #[serde(skip_serializing)]
+    pub att_core_network_arn: CfnTransitGatewayRouteTableAttachmentcorenetworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_core_network_id: CfnTransitGatewayRouteTableAttachmentcorenetworkid,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnTransitGatewayRouteTableAttachmentcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_edge_location: CfnTransitGatewayRouteTableAttachmentedgelocation,
+
+    #[serde(skip_serializing)]
+    pub att_owner_account_id: CfnTransitGatewayRouteTableAttachmentowneraccountid,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnTransitGatewayRouteTableAttachmentresourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_segment_name: CfnTransitGatewayRouteTableAttachmentsegmentname,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnTransitGatewayRouteTableAttachmentstate,
+
+    #[serde(skip_serializing)]
+    pub att_updated_at: CfnTransitGatewayRouteTableAttachmentupdatedat,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentattachmentid;
+impl CfnTransitGatewayRouteTableAttachmentattachmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachmentId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentattachmenttype;
+impl CfnTransitGatewayRouteTableAttachmentattachmenttype {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachmentType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentcorenetworkarn;
+impl CfnTransitGatewayRouteTableAttachmentcorenetworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CoreNetworkArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentcorenetworkid;
+impl CfnTransitGatewayRouteTableAttachmentcorenetworkid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CoreNetworkId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentcreatedat;
+impl CfnTransitGatewayRouteTableAttachmentcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentedgelocation;
+impl CfnTransitGatewayRouteTableAttachmentedgelocation {
+    pub fn att_name(&self) -> &'static str {
+        r#"EdgeLocation"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentowneraccountid;
+impl CfnTransitGatewayRouteTableAttachmentowneraccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerAccountId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentresourcearn;
+impl CfnTransitGatewayRouteTableAttachmentresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentsegmentname;
+impl CfnTransitGatewayRouteTableAttachmentsegmentname {
+    pub fn att_name(&self) -> &'static str {
+        r#"SegmentName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentstate;
+impl CfnTransitGatewayRouteTableAttachmentstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTransitGatewayRouteTableAttachmentupdatedat;
+impl CfnTransitGatewayRouteTableAttachmentupdatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdatedAt"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTransitGatewayRouteTableAttachment {

@@ -126,6 +126,21 @@ pub struct CfnNetworkInsightsPath {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_created_date: CfnNetworkInsightsPathcreateddate,
+
+    #[serde(skip_serializing)]
+    pub att_destination_arn: CfnNetworkInsightsPathdestinationarn,
+
+    #[serde(skip_serializing)]
+    pub att_network_insights_path_arn: CfnNetworkInsightsPathnetworkinsightspatharn,
+
+    #[serde(skip_serializing)]
+    pub att_network_insights_path_id: CfnNetworkInsightsPathnetworkinsightspathid,
+
+    #[serde(skip_serializing)]
+    pub att_source_arn: CfnNetworkInsightsPathsourcearn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -142,6 +157,46 @@ pub enum NetworkInsightsPathProtocolEnum {
 impl Default for NetworkInsightsPathProtocolEnum {
     fn default() -> Self {
         NetworkInsightsPathProtocolEnum::Tcp
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsPathcreateddate;
+impl CfnNetworkInsightsPathcreateddate {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsPathdestinationarn;
+impl CfnNetworkInsightsPathdestinationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DestinationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsPathnetworkinsightspatharn;
+impl CfnNetworkInsightsPathnetworkinsightspatharn {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkInsightsPathArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsPathnetworkinsightspathid;
+impl CfnNetworkInsightsPathnetworkinsightspathid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NetworkInsightsPathId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNetworkInsightsPathsourcearn;
+impl CfnNetworkInsightsPathsourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SourceArn"#
     }
 }
 

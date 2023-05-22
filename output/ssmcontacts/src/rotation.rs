@@ -83,6 +83,17 @@ pub struct CfnRotation {
     /// Update requires: No interruption
     #[serde(rename = "TimeZoneId")]
     pub time_zone_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRotationarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRotationarn;
+impl CfnRotationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRotation {

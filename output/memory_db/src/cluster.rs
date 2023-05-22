@@ -308,6 +308,50 @@ pub struct CfnCluster {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnClusterarn,
+
+    #[serde(skip_serializing)]
+    pub att_cluster_endpoint_address: CfnClusterclusterendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_parameter_group_status: CfnClusterparametergroupstatus,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnClusterstatus,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterarn;
+impl CfnClusterarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ARN"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterclusterendpointaddress;
+impl CfnClusterclusterendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"ClusterEndpoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterparametergroupstatus;
+impl CfnClusterparametergroupstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ParameterGroupStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnClusterstatus;
+impl CfnClusterstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCluster {

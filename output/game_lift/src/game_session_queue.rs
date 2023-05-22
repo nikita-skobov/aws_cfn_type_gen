@@ -129,6 +129,28 @@ pub struct CfnGameSessionQueue {
     #[serde(rename = "TimeoutInSeconds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_in_seconds: Option<i64>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnGameSessionQueuearn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnGameSessionQueuename,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGameSessionQueuearn;
+impl CfnGameSessionQueuearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnGameSessionQueuename;
+impl CfnGameSessionQueuename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnGameSessionQueue {

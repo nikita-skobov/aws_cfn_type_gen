@@ -25,6 +25,39 @@ pub struct CfnBackupPlan {
     #[serde(rename = "BackupPlanTags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub backup_plan_tags: Option<std::collections::HashMap<String, String>>,
+
+    #[serde(skip_serializing)]
+    pub att_backup_plan_arn: CfnBackupPlanbackupplanarn,
+
+    #[serde(skip_serializing)]
+    pub att_backup_plan_id: CfnBackupPlanbackupplanid,
+
+    #[serde(skip_serializing)]
+    pub att_version_id: CfnBackupPlanversionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBackupPlanbackupplanarn;
+impl CfnBackupPlanbackupplanarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"BackupPlanArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBackupPlanbackupplanid;
+impl CfnBackupPlanbackupplanid {
+    pub fn att_name(&self) -> &'static str {
+        r#"BackupPlanId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBackupPlanversionid;
+impl CfnBackupPlanversionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VersionId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnBackupPlan {

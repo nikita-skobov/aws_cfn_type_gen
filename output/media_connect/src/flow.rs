@@ -46,6 +46,61 @@ pub struct CfnFlow {
     #[serde(rename = "SourceFailoverConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub source_failover_config: Option<FailoverConfig>,
+
+    #[serde(skip_serializing)]
+    pub att_flow_arn: CfnFlowflowarn,
+
+    #[serde(skip_serializing)]
+    pub att_flow_availability_zone: CfnFlowflowavailabilityzone,
+
+    #[serde(skip_serializing)]
+    pub att_source_ingest_ip: CfnFlowsourceingestip,
+
+    #[serde(skip_serializing)]
+    pub att_source_source_arn: CfnFlowsourcesourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_source_source_ingest_port: CfnFlowsourcesourceingestport,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowflowarn;
+impl CfnFlowflowarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FlowArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowflowavailabilityzone;
+impl CfnFlowflowavailabilityzone {
+    pub fn att_name(&self) -> &'static str {
+        r#"FlowAvailabilityZone"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowsourceingestip;
+impl CfnFlowsourceingestip {
+    pub fn att_name(&self) -> &'static str {
+        r#"Source.IngestIp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowsourcesourcearn;
+impl CfnFlowsourcesourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Source.SourceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlowsourcesourceingestport;
+impl CfnFlowsourcesourceingestport {
+    pub fn att_name(&self) -> &'static str {
+        r#"Source.SourceIngestPort"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFlow {

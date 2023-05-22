@@ -60,6 +60,17 @@ pub struct CfnParameterGroup {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnParameterGrouparn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnParameterGrouparn;
+impl CfnParameterGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ARN"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnParameterGroup {

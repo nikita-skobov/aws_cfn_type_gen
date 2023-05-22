@@ -39,6 +39,9 @@ pub struct CfnVPNGateway {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: VPNGatewayTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_vpngateway_id: CfnVPNGatewayvpngatewayid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -51,6 +54,14 @@ pub enum VPNGatewayTypeEnum {
 impl Default for VPNGatewayTypeEnum {
     fn default() -> Self {
         VPNGatewayTypeEnum::Ipsec1
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPNGatewayvpngatewayid;
+impl CfnVPNGatewayvpngatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VPNGatewayId"#
     }
 }
 

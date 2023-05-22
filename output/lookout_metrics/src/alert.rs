@@ -57,6 +57,17 @@ pub struct CfnAlert {
     /// Update requires: Replacement
     #[serde(rename = "AnomalyDetectorArn")]
     pub anomaly_detector_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAlertarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAlertarn;
+impl CfnAlertarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAlert {

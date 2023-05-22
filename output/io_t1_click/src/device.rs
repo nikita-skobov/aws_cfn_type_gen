@@ -22,6 +22,28 @@ pub struct CfnDevice {
     /// Update requires: No interruption
     #[serde(rename = "Enabled")]
     pub enabled: bool,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDevicearn,
+
+    #[serde(skip_serializing)]
+    pub att_device_id: CfnDevicedeviceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDevicearn;
+impl CfnDevicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDevicedeviceid;
+impl CfnDevicedeviceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DeviceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDevice {

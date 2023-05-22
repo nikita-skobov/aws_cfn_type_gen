@@ -64,6 +64,9 @@ pub struct CfnSignalingChannel {
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<SignalingChannelTypeEnum>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnSignalingChannelarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -80,6 +83,14 @@ pub enum SignalingChannelTypeEnum {
 impl Default for SignalingChannelTypeEnum {
     fn default() -> Self {
         SignalingChannelTypeEnum::Fullmesh
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSignalingChannelarn;
+impl CfnSignalingChannelarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

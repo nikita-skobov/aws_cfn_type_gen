@@ -121,6 +121,9 @@ pub struct CfnFlywheel {
     #[serde(rename = "TaskConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub task_config: Option<TaskConfig>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnFlywheelarn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -137,6 +140,14 @@ pub enum FlywheelModelTypeEnum {
 impl Default for FlywheelModelTypeEnum {
     fn default() -> Self {
         FlywheelModelTypeEnum::Documentclassifier
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFlywheelarn;
+impl CfnFlywheelarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

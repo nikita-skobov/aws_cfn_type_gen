@@ -71,6 +71,28 @@ pub struct CfnAppBlock {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnAppBlockarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_time: CfnAppBlockcreatedtime,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAppBlockarn;
+impl CfnAppBlockarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAppBlockcreatedtime;
+impl CfnAppBlockcreatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedTime"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAppBlock {

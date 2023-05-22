@@ -56,6 +56,28 @@ pub struct CfnTrustAnchor {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_trust_anchor_arn: CfnTrustAnchortrustanchorarn,
+
+    #[serde(skip_serializing)]
+    pub att_trust_anchor_id: CfnTrustAnchortrustanchorid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTrustAnchortrustanchorarn;
+impl CfnTrustAnchortrustanchorarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TrustAnchorArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnTrustAnchortrustanchorid;
+impl CfnTrustAnchortrustanchorid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TrustAnchorId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnTrustAnchor {

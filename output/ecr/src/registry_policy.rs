@@ -13,6 +13,17 @@ pub struct CfnRegistryPolicy {
     /// Update requires: No interruption
     #[serde(rename = "PolicyText")]
     pub policy_text: serde_json::Value,
+
+    #[serde(skip_serializing)]
+    pub att_registry_id: CfnRegistryPolicyregistryid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRegistryPolicyregistryid;
+impl CfnRegistryPolicyregistryid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RegistryId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRegistryPolicy {

@@ -60,6 +60,28 @@ pub struct CfnFirewallPolicy {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_firewall_policy_arn: CfnFirewallPolicyfirewallpolicyarn,
+
+    #[serde(skip_serializing)]
+    pub att_firewall_policy_id: CfnFirewallPolicyfirewallpolicyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallPolicyfirewallpolicyarn;
+impl CfnFirewallPolicyfirewallpolicyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"FirewallPolicyArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnFirewallPolicyfirewallpolicyid;
+impl CfnFirewallPolicyfirewallpolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"FirewallPolicyId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnFirewallPolicy {

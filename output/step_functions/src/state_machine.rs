@@ -129,6 +129,39 @@ pub struct CfnStateMachine {
     #[serde(rename = "TracingConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tracing_configuration: Option<TracingConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnStateMachinearn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnStateMachinename,
+
+    #[serde(skip_serializing)]
+    pub att_state_machine_revision_id: CfnStateMachinestatemachinerevisionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStateMachinearn;
+impl CfnStateMachinearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStateMachinename;
+impl CfnStateMachinename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnStateMachinestatemachinerevisionid;
+impl CfnStateMachinestatemachinerevisionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"StateMachineRevisionId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnStateMachine {

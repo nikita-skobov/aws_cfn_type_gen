@@ -157,6 +157,28 @@ pub struct CfnDevice {
     #[serde(rename = "Vendor")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vendor: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_device_arn: CfnDevicedevicearn,
+
+    #[serde(skip_serializing)]
+    pub att_device_id: CfnDevicedeviceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDevicedevicearn;
+impl CfnDevicedevicearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"DeviceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDevicedeviceid;
+impl CfnDevicedeviceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"DeviceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDevice {

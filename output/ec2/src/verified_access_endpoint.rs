@@ -154,6 +154,27 @@ pub struct CfnVerifiedAccessEndpoint {
     /// Update requires: No interruption
     #[serde(rename = "VerifiedAccessGroupId")]
     pub verified_access_group_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnVerifiedAccessEndpointcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_device_validation_domain: CfnVerifiedAccessEndpointdevicevalidationdomain,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_domain: CfnVerifiedAccessEndpointendpointdomain,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnVerifiedAccessEndpointlastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnVerifiedAccessEndpointstatus,
+
+    #[serde(skip_serializing)]
+    pub att_verified_access_endpoint_id: CfnVerifiedAccessEndpointverifiedaccessendpointid,
+
+    #[serde(skip_serializing)]
+    pub att_verified_access_instance_id: CfnVerifiedAccessEndpointverifiedaccessinstanceid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -183,6 +204,62 @@ pub enum VerifiedAccessEndpointEndpointTypeEnum {
 impl Default for VerifiedAccessEndpointEndpointTypeEnum {
     fn default() -> Self {
         VerifiedAccessEndpointEndpointTypeEnum::Loadbalancer
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessEndpointcreationtime;
+impl CfnVerifiedAccessEndpointcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessEndpointdevicevalidationdomain;
+impl CfnVerifiedAccessEndpointdevicevalidationdomain {
+    pub fn att_name(&self) -> &'static str {
+        r#"DeviceValidationDomain"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessEndpointendpointdomain;
+impl CfnVerifiedAccessEndpointendpointdomain {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointDomain"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessEndpointlastupdatedtime;
+impl CfnVerifiedAccessEndpointlastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessEndpointstatus;
+impl CfnVerifiedAccessEndpointstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessEndpointverifiedaccessendpointid;
+impl CfnVerifiedAccessEndpointverifiedaccessendpointid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VerifiedAccessEndpointId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessEndpointverifiedaccessinstanceid;
+impl CfnVerifiedAccessEndpointverifiedaccessinstanceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VerifiedAccessInstanceId"#
     }
 }
 

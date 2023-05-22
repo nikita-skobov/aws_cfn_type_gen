@@ -113,6 +113,17 @@ pub struct CfnModel {
     #[serde(rename = "VpcConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VpcConfig>,
+
+    #[serde(skip_serializing)]
+    pub att_model_name: CfnModelmodelname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelmodelname;
+impl CfnModelmodelname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModelName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnModel {

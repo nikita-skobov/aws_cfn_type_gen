@@ -205,6 +205,30 @@ pub struct CfnReplicationInstance {
     #[serde(rename = "VpcSecurityGroupIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_replication_instance_private_ip_addresses:
+        CfnReplicationInstancereplicationinstanceprivateipaddresses,
+
+    #[serde(skip_serializing)]
+    pub att_replication_instance_public_ip_addresses:
+        CfnReplicationInstancereplicationinstancepublicipaddresses,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationInstancereplicationinstanceprivateipaddresses;
+impl CfnReplicationInstancereplicationinstanceprivateipaddresses {
+    pub fn att_name(&self) -> &'static str {
+        r#"ReplicationInstancePrivateIpAddresses"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicationInstancereplicationinstancepublicipaddresses;
+impl CfnReplicationInstancereplicationinstancepublicipaddresses {
+    pub fn att_name(&self) -> &'static str {
+        r#"ReplicationInstancePublicIpAddresses"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnReplicationInstance {

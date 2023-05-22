@@ -205,6 +205,30 @@ pub struct CfnWorkspace {
     #[serde(rename = "VpcConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<VpcConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_timestamp: CfnWorkspacecreationtimestamp,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint: CfnWorkspaceendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_grafana_version: CfnWorkspacegrafanaversion,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnWorkspaceid,
+
+    #[serde(skip_serializing)]
+    pub att_modification_timestamp: CfnWorkspacemodificationtimestamp,
+
+    #[serde(skip_serializing)]
+    pub att_saml_configuration_status: CfnWorkspacesamlconfigurationstatus,
+
+    #[serde(skip_serializing)]
+    pub att_sso_client_id: CfnWorkspacessoclientid,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnWorkspacestatus,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -238,6 +262,70 @@ pub enum WorkspacePermissionTypeEnum {
 impl Default for WorkspacePermissionTypeEnum {
     fn default() -> Self {
         WorkspacePermissionTypeEnum::Customermanaged
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspacecreationtimestamp;
+impl CfnWorkspacecreationtimestamp {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTimestamp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspaceendpoint;
+impl CfnWorkspaceendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"Endpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspacegrafanaversion;
+impl CfnWorkspacegrafanaversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"GrafanaVersion"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspaceid;
+impl CfnWorkspaceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspacemodificationtimestamp;
+impl CfnWorkspacemodificationtimestamp {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModificationTimestamp"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspacesamlconfigurationstatus;
+impl CfnWorkspacesamlconfigurationstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"SamlConfigurationStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspacessoclientid;
+impl CfnWorkspacessoclientid {
+    pub fn att_name(&self) -> &'static str {
+        r#"SsoClientId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkspacestatus;
+impl CfnWorkspacestatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
     }
 }
 

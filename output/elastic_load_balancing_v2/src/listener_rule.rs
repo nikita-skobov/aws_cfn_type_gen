@@ -56,6 +56,17 @@ pub struct CfnListenerRule {
     /// Update requires: No interruption
     #[serde(rename = "Priority")]
     pub priority: i64,
+
+    #[serde(skip_serializing)]
+    pub att_rule_arn: CfnListenerRulerulearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnListenerRulerulearn;
+impl CfnListenerRulerulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"RuleArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnListenerRule {

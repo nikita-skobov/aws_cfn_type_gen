@@ -94,6 +94,17 @@ pub struct CfnProvisioningTemplate {
     #[serde(rename = "TemplateType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub template_type: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_template_arn: CfnProvisioningTemplatetemplatearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnProvisioningTemplatetemplatearn;
+impl CfnProvisioningTemplatetemplatearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"TemplateArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnProvisioningTemplate {

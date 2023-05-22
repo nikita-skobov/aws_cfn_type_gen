@@ -89,6 +89,39 @@ pub struct CfnRoute {
     #[serde(rename = "UriPathRoute")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub uri_path_route: Option<UriPathRouteInput>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRoutearn,
+
+    #[serde(skip_serializing)]
+    pub att_path_resource_to_id: CfnRoutepathresourcetoid,
+
+    #[serde(skip_serializing)]
+    pub att_route_identifier: CfnRouterouteidentifier,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRoutearn;
+impl CfnRoutearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRoutepathresourcetoid;
+impl CfnRoutepathresourcetoid {
+    pub fn att_name(&self) -> &'static str {
+        r#"PathResourceToId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRouterouteidentifier;
+impl CfnRouterouteidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"RouteIdentifier"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRoute {

@@ -80,6 +80,17 @@ pub struct CfnUserProfile {
     #[serde(rename = "UserSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_settings: Option<UserSettings>,
+
+    #[serde(skip_serializing)]
+    pub att_user_profile_arn: CfnUserProfileuserprofilearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserProfileuserprofilearn;
+impl CfnUserProfileuserprofilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"UserProfileArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnUserProfile {

@@ -119,6 +119,83 @@ pub struct CfnWorkgroup {
     /// Update requires: Replacement
     #[serde(rename = "WorkgroupName")]
     pub workgroup_name: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_workgroup_creation_date: CfnWorkgroupworkgroupcreationdate,
+
+    #[serde(skip_serializing)]
+    pub att_workgroup_endpoint_address: CfnWorkgroupworkgroupendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_workgroup_namespace_name: CfnWorkgroupworkgroupnamespacename,
+
+    #[serde(skip_serializing)]
+    pub att_workgroup_status: CfnWorkgroupworkgroupstatus,
+
+    #[serde(skip_serializing)]
+    pub att_workgroup_workgroup_arn: CfnWorkgroupworkgroupworkgrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_workgroup_workgroup_id: CfnWorkgroupworkgroupworkgroupid,
+
+    #[serde(skip_serializing)]
+    pub att_workgroup_workgroup_name: CfnWorkgroupworkgroupworkgroupname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkgroupworkgroupcreationdate;
+impl CfnWorkgroupworkgroupcreationdate {
+    pub fn att_name(&self) -> &'static str {
+        r#"Workgroup.CreationDate"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkgroupworkgroupendpointaddress;
+impl CfnWorkgroupworkgroupendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"Workgroup.Endpoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkgroupworkgroupnamespacename;
+impl CfnWorkgroupworkgroupnamespacename {
+    pub fn att_name(&self) -> &'static str {
+        r#"Workgroup.NamespaceName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkgroupworkgroupstatus;
+impl CfnWorkgroupworkgroupstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Workgroup.Status"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkgroupworkgroupworkgrouparn;
+impl CfnWorkgroupworkgroupworkgrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Workgroup.WorkgroupArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkgroupworkgroupworkgroupid;
+impl CfnWorkgroupworkgroupworkgroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Workgroup.WorkgroupId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnWorkgroupworkgroupworkgroupname;
+impl CfnWorkgroupworkgroupworkgroupname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Workgroup.WorkgroupName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnWorkgroup {

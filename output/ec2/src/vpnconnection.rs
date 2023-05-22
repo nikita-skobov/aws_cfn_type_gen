@@ -96,6 +96,9 @@ pub struct CfnVPNConnection {
     #[serde(rename = "VpnTunnelOptionsSpecifications")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpn_tunnel_options_specifications: Option<Vec<VpnTunnelOptionsSpecification>>,
+
+    #[serde(skip_serializing)]
+    pub att_vpn_connection_id: CfnVPNConnectionvpnconnectionid,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -108,6 +111,14 @@ pub enum VPNConnectionTypeEnum {
 impl Default for VPNConnectionTypeEnum {
     fn default() -> Self {
         VPNConnectionTypeEnum::Ipsec1
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVPNConnectionvpnconnectionid;
+impl CfnVPNConnectionvpnconnectionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VpnConnectionId"#
     }
 }
 

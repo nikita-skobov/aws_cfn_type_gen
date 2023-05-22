@@ -49,6 +49,28 @@ pub struct CfnDomainName {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
+
+    #[serde(skip_serializing)]
+    pub att_regional_domain_name: CfnDomainNameregionaldomainname,
+
+    #[serde(skip_serializing)]
+    pub att_regional_hosted_zone_id: CfnDomainNameregionalhostedzoneid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNameregionaldomainname;
+impl CfnDomainNameregionaldomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"RegionalDomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDomainNameregionalhostedzoneid;
+impl CfnDomainNameregionalhostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RegionalHostedZoneId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDomainName {

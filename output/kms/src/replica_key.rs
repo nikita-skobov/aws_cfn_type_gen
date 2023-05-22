@@ -142,6 +142,28 @@ pub struct CfnReplicaKey {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnReplicaKeyarn,
+
+    #[serde(skip_serializing)]
+    pub att_key_id: CfnReplicaKeykeyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicaKeyarn;
+impl CfnReplicaKeyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnReplicaKeykeyid;
+impl CfnReplicaKeykeyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"KeyId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnReplicaKey {

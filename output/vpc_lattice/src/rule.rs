@@ -83,6 +83,28 @@ pub struct CfnRule {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnRulearn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnRuleid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRulearn;
+impl CfnRulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRuleid;
+impl CfnRuleid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRule {

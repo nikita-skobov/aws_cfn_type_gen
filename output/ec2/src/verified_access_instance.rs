@@ -60,6 +60,39 @@ pub struct CfnVerifiedAccessInstance {
     #[serde(rename = "VerifiedAccessTrustProviders")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub verified_access_trust_providers: Option<Vec<VerifiedAccessTrustProvider>>,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnVerifiedAccessInstancecreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_updated_time: CfnVerifiedAccessInstancelastupdatedtime,
+
+    #[serde(skip_serializing)]
+    pub att_verified_access_instance_id: CfnVerifiedAccessInstanceverifiedaccessinstanceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessInstancecreationtime;
+impl CfnVerifiedAccessInstancecreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessInstancelastupdatedtime;
+impl CfnVerifiedAccessInstancelastupdatedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastUpdatedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVerifiedAccessInstanceverifiedaccessinstanceid;
+impl CfnVerifiedAccessInstanceverifiedaccessinstanceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"VerifiedAccessInstanceId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVerifiedAccessInstance {

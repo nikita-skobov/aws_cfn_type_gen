@@ -11,6 +11,17 @@ pub struct CfnResourceCollection {
     /// Update requires: No interruption
     #[serde(rename = "ResourceCollectionFilter")]
     pub resource_collection_filter: ResourceCollectionFilter,
+
+    #[serde(skip_serializing)]
+    pub att_resource_collection_type: CfnResourceCollectionresourcecollectiontype,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnResourceCollectionresourcecollectiontype;
+impl CfnResourceCollectionresourcecollectiontype {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceCollectionType"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnResourceCollection {

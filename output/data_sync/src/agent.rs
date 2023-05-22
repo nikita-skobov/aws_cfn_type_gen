@@ -98,6 +98,28 @@ pub struct CfnAgent {
     #[serde(rename = "VpcEndpointId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_endpoint_id: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_agent_arn: CfnAgentagentarn,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_type: CfnAgentendpointtype,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAgentagentarn;
+impl CfnAgentagentarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"AgentArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAgentendpointtype;
+impl CfnAgentendpointtype {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointType"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAgent {

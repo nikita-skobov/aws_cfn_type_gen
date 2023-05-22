@@ -71,6 +71,39 @@ pub struct CfnSchema {
     /// Update requires: No interruption
     #[serde(rename = "Type")]
     pub cfn_type: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_schema_arn: CfnSchemaschemaarn,
+
+    #[serde(skip_serializing)]
+    pub att_schema_name: CfnSchemaschemaname,
+
+    #[serde(skip_serializing)]
+    pub att_schema_version: CfnSchemaschemaversion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSchemaschemaarn;
+impl CfnSchemaschemaarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"SchemaArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSchemaschemaname;
+impl CfnSchemaschemaname {
+    pub fn att_name(&self) -> &'static str {
+        r#"SchemaName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSchemaschemaversion;
+impl CfnSchemaschemaversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"SchemaVersion"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSchema {

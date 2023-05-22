@@ -110,6 +110,9 @@ pub struct CfnSimpleAD {
     /// Update requires: Replacement
     #[serde(rename = "VpcSettings")]
     pub vpc_settings: VpcSettings,
+
+    #[serde(skip_serializing)]
+    pub att_alias: CfnSimpleADalias,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -126,6 +129,14 @@ pub enum SimpleADSizeEnum {
 impl Default for SimpleADSizeEnum {
     fn default() -> Self {
         SimpleADSizeEnum::Large
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSimpleADalias;
+impl CfnSimpleADalias {
+    pub fn att_name(&self) -> &'static str {
+        r#"Alias"#
     }
 }
 

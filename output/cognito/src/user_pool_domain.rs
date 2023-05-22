@@ -48,6 +48,17 @@ pub struct CfnUserPoolDomain {
     /// Update requires: Replacement
     #[serde(rename = "UserPoolId")]
     pub user_pool_id: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_cloud_front_distribution: CfnUserPoolDomaincloudfrontdistribution,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnUserPoolDomaincloudfrontdistribution;
+impl CfnUserPoolDomaincloudfrontdistribution {
+    pub fn att_name(&self) -> &'static str {
+        r#"CloudFrontDistribution"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnUserPoolDomain {

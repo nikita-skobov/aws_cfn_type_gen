@@ -60,6 +60,17 @@ pub struct CfnIdentityProviderConfig {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_identity_provider_config_arn: CfnIdentityProviderConfigidentityproviderconfigarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnIdentityProviderConfigidentityproviderconfigarn;
+impl CfnIdentityProviderConfigidentityproviderconfigarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"IdentityProviderConfigArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnIdentityProviderConfig {

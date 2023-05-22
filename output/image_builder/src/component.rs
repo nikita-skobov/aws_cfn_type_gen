@@ -143,6 +143,15 @@ pub struct CfnComponent {
     /// Update requires: Replacement
     #[serde(rename = "Version")]
     pub version: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnComponentarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnComponentname,
+
+    #[serde(skip_serializing)]
+    pub att_cfn_type: CfnComponentcfntype,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -159,6 +168,30 @@ pub enum ComponentPlatformEnum {
 impl Default for ComponentPlatformEnum {
     fn default() -> Self {
         ComponentPlatformEnum::Linux
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnComponentarn;
+impl CfnComponentarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnComponentname;
+impl CfnComponentname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnComponentcfntype;
+impl CfnComponentcfntype {
+    pub fn att_name(&self) -> &'static str {
+        r#"Type"#
     }
 }
 

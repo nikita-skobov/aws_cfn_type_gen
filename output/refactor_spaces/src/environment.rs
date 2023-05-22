@@ -48,6 +48,39 @@ pub struct CfnEnvironment {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnEnvironmentarn,
+
+    #[serde(skip_serializing)]
+    pub att_environment_identifier: CfnEnvironmentenvironmentidentifier,
+
+    #[serde(skip_serializing)]
+    pub att_transit_gateway_id: CfnEnvironmenttransitgatewayid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentarn;
+impl CfnEnvironmentarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmentenvironmentidentifier;
+impl CfnEnvironmentenvironmentidentifier {
+    pub fn att_name(&self) -> &'static str {
+        r#"EnvironmentIdentifier"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnEnvironmenttransitgatewayid;
+impl CfnEnvironmenttransitgatewayid {
+    pub fn att_name(&self) -> &'static str {
+        r#"TransitGatewayId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnEnvironment {

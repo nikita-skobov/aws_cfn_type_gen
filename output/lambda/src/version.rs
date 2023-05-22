@@ -61,6 +61,17 @@ pub struct CfnVersion {
     #[serde(rename = "ProvisionedConcurrencyConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_concurrency_config: Option<ProvisionedConcurrencyConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_version: CfnVersionversion,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnVersionversion;
+impl CfnVersionversion {
+    pub fn att_name(&self) -> &'static str {
+        r#"Version"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnVersion {

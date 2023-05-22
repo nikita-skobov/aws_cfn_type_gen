@@ -195,6 +195,28 @@ pub struct CfnInferenceExperiment {
     /// Update requires: Replacement
     #[serde(rename = "Type")]
     pub cfn_type: InferenceExperimentTypeEnum,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnInferenceExperimentarn,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnInferenceExperimentcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_metadata_endpoint_config_name:
+        CfnInferenceExperimentendpointmetadataendpointconfigname,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_metadata_endpoint_name: CfnInferenceExperimentendpointmetadataendpointname,
+
+    #[serde(skip_serializing)]
+    pub att_endpoint_metadata_endpoint_status: CfnInferenceExperimentendpointmetadataendpointstatus,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnInferenceExperimentlastmodifiedtime,
+
+    #[serde(skip_serializing)]
+    pub att_status: CfnInferenceExperimentstatus,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -224,6 +246,62 @@ pub enum InferenceExperimentTypeEnum {
 impl Default for InferenceExperimentTypeEnum {
     fn default() -> Self {
         InferenceExperimentTypeEnum::Shadowmode
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInferenceExperimentarn;
+impl CfnInferenceExperimentarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInferenceExperimentcreationtime;
+impl CfnInferenceExperimentcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInferenceExperimentendpointmetadataendpointconfigname;
+impl CfnInferenceExperimentendpointmetadataendpointconfigname {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointMetadata.EndpointConfigName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInferenceExperimentendpointmetadataendpointname;
+impl CfnInferenceExperimentendpointmetadataendpointname {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointMetadata.EndpointName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInferenceExperimentendpointmetadataendpointstatus;
+impl CfnInferenceExperimentendpointmetadataendpointstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"EndpointMetadata.EndpointStatus"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInferenceExperimentlastmodifiedtime;
+impl CfnInferenceExperimentlastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInferenceExperimentstatus;
+impl CfnInferenceExperimentstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"Status"#
     }
 }
 

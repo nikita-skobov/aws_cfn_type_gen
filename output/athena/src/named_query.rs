@@ -76,6 +76,17 @@ pub struct CfnNamedQuery {
     #[serde(rename = "WorkGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub work_group: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_named_query_id: CfnNamedQuerynamedqueryid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnNamedQuerynamedqueryid;
+impl CfnNamedQuerynamedqueryid {
+    pub fn att_name(&self) -> &'static str {
+        r#"NamedQueryId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnNamedQuery {

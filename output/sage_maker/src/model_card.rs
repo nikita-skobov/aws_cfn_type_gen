@@ -96,6 +96,36 @@ pub struct CfnModelCard {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_created_by_domain_id: CfnModelCardcreatedbydomainid,
+
+    #[serde(skip_serializing)]
+    pub att_created_by_user_profile_arn: CfnModelCardcreatedbyuserprofilearn,
+
+    #[serde(skip_serializing)]
+    pub att_created_by_user_profile_name: CfnModelCardcreatedbyuserprofilename,
+
+    #[serde(skip_serializing)]
+    pub att_creation_time: CfnModelCardcreationtime,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_by_domain_id: CfnModelCardlastmodifiedbydomainid,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_by_user_profile_arn: CfnModelCardlastmodifiedbyuserprofilearn,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_by_user_profile_name: CfnModelCardlastmodifiedbyuserprofilename,
+
+    #[serde(skip_serializing)]
+    pub att_last_modified_time: CfnModelCardlastmodifiedtime,
+
+    #[serde(skip_serializing)]
+    pub att_model_card_arn: CfnModelCardmodelcardarn,
+
+    #[serde(skip_serializing)]
+    pub att_model_card_processing_status: CfnModelCardmodelcardprocessingstatus,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -120,6 +150,86 @@ pub enum ModelCardModelCardStatusEnum {
 impl Default for ModelCardModelCardStatusEnum {
     fn default() -> Self {
         ModelCardModelCardStatusEnum::Approved
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardcreatedbydomainid;
+impl CfnModelCardcreatedbydomainid {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedBy.DomainId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardcreatedbyuserprofilearn;
+impl CfnModelCardcreatedbyuserprofilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedBy.UserProfileArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardcreatedbyuserprofilename;
+impl CfnModelCardcreatedbyuserprofilename {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedBy.UserProfileName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardcreationtime;
+impl CfnModelCardcreationtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreationTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardlastmodifiedbydomainid;
+impl CfnModelCardlastmodifiedbydomainid {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedBy.DomainId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardlastmodifiedbyuserprofilearn;
+impl CfnModelCardlastmodifiedbyuserprofilearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedBy.UserProfileArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardlastmodifiedbyuserprofilename;
+impl CfnModelCardlastmodifiedbyuserprofilename {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedBy.UserProfileName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardlastmodifiedtime;
+impl CfnModelCardlastmodifiedtime {
+    pub fn att_name(&self) -> &'static str {
+        r#"LastModifiedTime"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardmodelcardarn;
+impl CfnModelCardmodelcardarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModelCardArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnModelCardmodelcardprocessingstatus;
+impl CfnModelCardmodelcardprocessingstatus {
+    pub fn att_name(&self) -> &'static str {
+        r#"ModelCardProcessingStatus"#
     }
 }
 

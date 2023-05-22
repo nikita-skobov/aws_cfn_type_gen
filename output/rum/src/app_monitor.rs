@@ -84,6 +84,17 @@ pub struct CfnAppMonitor {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnAppMonitorid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnAppMonitorid;
+impl CfnAppMonitorid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnAppMonitor {

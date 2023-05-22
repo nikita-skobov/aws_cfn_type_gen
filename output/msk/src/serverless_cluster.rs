@@ -41,6 +41,17 @@ pub struct CfnServerlessCluster {
     /// Update requires: Replacement
     #[serde(rename = "VpcConfigs")]
     pub vpc_configs: Vec<VpcConfig>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnServerlessClusterarn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnServerlessClusterarn;
+impl CfnServerlessClusterarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnServerlessCluster {

@@ -66,6 +66,28 @@ pub struct CfnThingGroup {
     #[serde(rename = "ThingGroupProperties")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub thing_group_properties: Option<ThingGroupProperties>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnThingGrouparn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnThingGroupid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThingGrouparn;
+impl CfnThingGrouparn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnThingGroupid;
+impl CfnThingGroupid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnThingGroup {

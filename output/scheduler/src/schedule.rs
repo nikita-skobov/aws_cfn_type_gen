@@ -147,6 +147,9 @@ pub struct CfnSchedule {
     /// Update requires: No interruption
     #[serde(rename = "Target")]
     pub target: Target,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnSchedulearn,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -163,6 +166,14 @@ pub enum ScheduleStateEnum {
 impl Default for ScheduleStateEnum {
     fn default() -> Self {
         ScheduleStateEnum::Enabled
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSchedulearn;
+impl CfnSchedulearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
     }
 }
 

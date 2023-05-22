@@ -23,6 +23,28 @@ pub struct CfnPolicy {
     #[serde(rename = "PolicyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub policy_name: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPolicyarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnPolicyid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPolicyarn;
+impl CfnPolicyarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPolicyid;
+impl CfnPolicyid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPolicy {

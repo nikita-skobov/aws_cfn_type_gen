@@ -370,6 +370,18 @@ pub struct CfnCacheCluster {
     #[serde(rename = "VpcSecurityGroupIds")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_security_group_ids: Option<Vec<String>>,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_endpoint_address: CfnCacheClusterconfigurationendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_configuration_endpoint_port: CfnCacheClusterconfigurationendpointport,
+
+    #[serde(skip_serializing)]
+    pub att_redis_endpoint_address: CfnCacheClusterredisendpointaddress,
+
+    #[serde(skip_serializing)]
+    pub att_redis_endpoint_port: CfnCacheClusterredisendpointport,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -424,6 +436,38 @@ pub enum CacheClusterNetworkTypeEnum {
 impl Default for CacheClusterNetworkTypeEnum {
     fn default() -> Self {
         CacheClusterNetworkTypeEnum::Dualstack
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCacheClusterconfigurationendpointaddress;
+impl CfnCacheClusterconfigurationendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConfigurationEndpoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCacheClusterconfigurationendpointport;
+impl CfnCacheClusterconfigurationendpointport {
+    pub fn att_name(&self) -> &'static str {
+        r#"ConfigurationEndpoint.Port"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCacheClusterredisendpointaddress;
+impl CfnCacheClusterredisendpointaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"RedisEndpoint.Address"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCacheClusterredisendpointport;
+impl CfnCacheClusterredisendpointport {
+    pub fn att_name(&self) -> &'static str {
+        r#"RedisEndpoint.Port"#
     }
 }
 

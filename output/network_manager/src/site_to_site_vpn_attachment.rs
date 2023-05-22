@@ -38,6 +38,128 @@ pub struct CfnSiteToSiteVpnAttachment {
     /// Update requires: Replacement
     #[serde(rename = "VpnConnectionArn")]
     pub vpn_connection_arn: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_attachment_id: CfnSiteToSiteVpnAttachmentattachmentid,
+
+    #[serde(skip_serializing)]
+    pub att_attachment_type: CfnSiteToSiteVpnAttachmentattachmenttype,
+
+    #[serde(skip_serializing)]
+    pub att_core_network_arn: CfnSiteToSiteVpnAttachmentcorenetworkarn,
+
+    #[serde(skip_serializing)]
+    pub att_created_at: CfnSiteToSiteVpnAttachmentcreatedat,
+
+    #[serde(skip_serializing)]
+    pub att_edge_location: CfnSiteToSiteVpnAttachmentedgelocation,
+
+    #[serde(skip_serializing)]
+    pub att_owner_account_id: CfnSiteToSiteVpnAttachmentowneraccountid,
+
+    #[serde(skip_serializing)]
+    pub att_proposed_segment_change_segment_name:
+        CfnSiteToSiteVpnAttachmentproposedsegmentchangesegmentname,
+
+    #[serde(skip_serializing)]
+    pub att_resource_arn: CfnSiteToSiteVpnAttachmentresourcearn,
+
+    #[serde(skip_serializing)]
+    pub att_segment_name: CfnSiteToSiteVpnAttachmentsegmentname,
+
+    #[serde(skip_serializing)]
+    pub att_state: CfnSiteToSiteVpnAttachmentstate,
+
+    #[serde(skip_serializing)]
+    pub att_updated_at: CfnSiteToSiteVpnAttachmentupdatedat,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentattachmentid;
+impl CfnSiteToSiteVpnAttachmentattachmentid {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachmentId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentattachmenttype;
+impl CfnSiteToSiteVpnAttachmentattachmenttype {
+    pub fn att_name(&self) -> &'static str {
+        r#"AttachmentType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentcorenetworkarn;
+impl CfnSiteToSiteVpnAttachmentcorenetworkarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"CoreNetworkArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentcreatedat;
+impl CfnSiteToSiteVpnAttachmentcreatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"CreatedAt"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentedgelocation;
+impl CfnSiteToSiteVpnAttachmentedgelocation {
+    pub fn att_name(&self) -> &'static str {
+        r#"EdgeLocation"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentowneraccountid;
+impl CfnSiteToSiteVpnAttachmentowneraccountid {
+    pub fn att_name(&self) -> &'static str {
+        r#"OwnerAccountId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentproposedsegmentchangesegmentname;
+impl CfnSiteToSiteVpnAttachmentproposedsegmentchangesegmentname {
+    pub fn att_name(&self) -> &'static str {
+        r#"ProposedSegmentChange.SegmentName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentresourcearn;
+impl CfnSiteToSiteVpnAttachmentresourcearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentsegmentname;
+impl CfnSiteToSiteVpnAttachmentsegmentname {
+    pub fn att_name(&self) -> &'static str {
+        r#"SegmentName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentstate;
+impl CfnSiteToSiteVpnAttachmentstate {
+    pub fn att_name(&self) -> &'static str {
+        r#"State"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnSiteToSiteVpnAttachmentupdatedat;
+impl CfnSiteToSiteVpnAttachmentupdatedat {
+    pub fn att_name(&self) -> &'static str {
+        r#"UpdatedAt"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnSiteToSiteVpnAttachment {

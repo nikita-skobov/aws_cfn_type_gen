@@ -80,6 +80,17 @@ pub struct CfnPipeline {
     #[serde(rename = "VpcOptions")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_options: Option<VpcOptions>,
+
+    #[serde(skip_serializing)]
+    pub att_pipeline_arn: CfnPipelinepipelinearn,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPipelinepipelinearn;
+impl CfnPipelinepipelinearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"PipelineArn"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPipeline {

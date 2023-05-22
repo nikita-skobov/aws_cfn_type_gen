@@ -43,6 +43,50 @@ pub struct CfnDeviceDefinition {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnDeviceDefinitionarn,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnDeviceDefinitionid,
+
+    #[serde(skip_serializing)]
+    pub att_latest_version_arn: CfnDeviceDefinitionlatestversionarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnDeviceDefinitionname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDeviceDefinitionarn;
+impl CfnDeviceDefinitionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDeviceDefinitionid;
+impl CfnDeviceDefinitionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDeviceDefinitionlatestversionarn;
+impl CfnDeviceDefinitionlatestversionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LatestVersionArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnDeviceDefinitionname;
+impl CfnDeviceDefinitionname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnDeviceDefinition {

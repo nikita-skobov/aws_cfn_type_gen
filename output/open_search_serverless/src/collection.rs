@@ -53,6 +53,50 @@ pub struct CfnCollection {
     #[serde(rename = "Type")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cfn_type: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnCollectionarn,
+
+    #[serde(skip_serializing)]
+    pub att_collection_endpoint: CfnCollectioncollectionendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_dashboard_endpoint: CfnCollectiondashboardendpoint,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnCollectionid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCollectionarn;
+impl CfnCollectionarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCollectioncollectionendpoint;
+impl CfnCollectioncollectionendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"CollectionEndpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCollectiondashboardendpoint;
+impl CfnCollectiondashboardendpoint {
+    pub fn att_name(&self) -> &'static str {
+        r#"DashboardEndpoint"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnCollectionid;
+impl CfnCollectionid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnCollection {

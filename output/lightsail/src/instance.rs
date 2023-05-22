@@ -161,6 +161,128 @@ pub struct CfnInstance {
     #[serde(rename = "UserData")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_data: Option<cfn_resources::StrVal>,
+
+    #[serde(skip_serializing)]
+    pub att_instance_arn: CfnInstanceinstancearn,
+
+    #[serde(skip_serializing)]
+    pub att_location_availability_zone: CfnInstancelocationavailabilityzone,
+
+    #[serde(skip_serializing)]
+    pub att_location_region_name: CfnInstancelocationregionname,
+
+    #[serde(skip_serializing)]
+    pub att_networking_monthly_transfer_gb_per_month_allocated:
+        CfnInstancenetworkingmonthlytransfergbpermonthallocated,
+
+    #[serde(skip_serializing)]
+    pub att_private_ip_address: CfnInstanceprivateipaddress,
+
+    #[serde(skip_serializing)]
+    pub att_public_ip_address: CfnInstancepublicipaddress,
+
+    #[serde(skip_serializing)]
+    pub att_resource_type: CfnInstanceresourcetype,
+
+    #[serde(skip_serializing)]
+    pub att_ssh_key_name: CfnInstancesshkeyname,
+
+    #[serde(skip_serializing)]
+    pub att_state_name: CfnInstancestatename,
+
+    #[serde(skip_serializing)]
+    pub att_support_code: CfnInstancesupportcode,
+
+    #[serde(skip_serializing)]
+    pub att_user_name: CfnInstanceusername,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstanceinstancearn;
+impl CfnInstanceinstancearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"InstanceArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstancelocationavailabilityzone;
+impl CfnInstancelocationavailabilityzone {
+    pub fn att_name(&self) -> &'static str {
+        r#"Location.AvailabilityZone"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstancelocationregionname;
+impl CfnInstancelocationregionname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Location.RegionName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstancenetworkingmonthlytransfergbpermonthallocated;
+impl CfnInstancenetworkingmonthlytransfergbpermonthallocated {
+    pub fn att_name(&self) -> &'static str {
+        r#"Networking.MonthlyTransfer.GbPerMonthAllocated"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstanceprivateipaddress;
+impl CfnInstanceprivateipaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"PrivateIpAddress"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstancepublicipaddress;
+impl CfnInstancepublicipaddress {
+    pub fn att_name(&self) -> &'static str {
+        r#"PublicIpAddress"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstanceresourcetype;
+impl CfnInstanceresourcetype {
+    pub fn att_name(&self) -> &'static str {
+        r#"ResourceType"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstancesshkeyname;
+impl CfnInstancesshkeyname {
+    pub fn att_name(&self) -> &'static str {
+        r#"SshKeyName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstancestatename;
+impl CfnInstancestatename {
+    pub fn att_name(&self) -> &'static str {
+        r#"State.Name"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstancesupportcode;
+impl CfnInstancesupportcode {
+    pub fn att_name(&self) -> &'static str {
+        r#"SupportCode"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnInstanceusername;
+impl CfnInstanceusername {
+    pub fn att_name(&self) -> &'static str {
+        r#"UserName"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnInstance {

@@ -47,6 +47,17 @@ pub struct CfnRequestValidator {
     #[serde(rename = "ValidateRequestParameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub validate_request_parameters: Option<bool>,
+
+    #[serde(skip_serializing)]
+    pub att_request_validator_id: CfnRequestValidatorrequestvalidatorid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnRequestValidatorrequestvalidatorid;
+impl CfnRequestValidatorrequestvalidatorid {
+    pub fn att_name(&self) -> &'static str {
+        r#"RequestValidatorId"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnRequestValidator {

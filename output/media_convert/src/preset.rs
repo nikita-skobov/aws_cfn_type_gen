@@ -67,6 +67,28 @@ pub struct CfnPreset {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<serde_json::Value>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPresetarn,
+
+    #[serde(skip_serializing)]
+    pub att_name: CfnPresetname,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPresetarn;
+impl CfnPresetarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPresetname;
+impl CfnPresetname {
+    pub fn att_name(&self) -> &'static str {
+        r#"Name"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPreset {

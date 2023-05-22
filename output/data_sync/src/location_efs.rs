@@ -107,6 +107,12 @@ pub struct CfnLocationEFS {
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<Tag>>,
+
+    #[serde(skip_serializing)]
+    pub att_location_arn: CfnLocationEFSlocationarn,
+
+    #[serde(skip_serializing)]
+    pub att_location_uri: CfnLocationEFSlocationuri,
 }
 
 #[derive(Clone, Debug, serde::Serialize)]
@@ -123,6 +129,22 @@ pub enum LocationEFSInTransitEncryptionEnum {
 impl Default for LocationEFSInTransitEncryptionEnum {
     fn default() -> Self {
         LocationEFSInTransitEncryptionEnum::None
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationEFSlocationarn;
+impl CfnLocationEFSlocationarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationArn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnLocationEFSlocationuri;
+impl CfnLocationEFSlocationuri {
+    pub fn att_name(&self) -> &'static str {
+        r#"LocationUri"#
     }
 }
 

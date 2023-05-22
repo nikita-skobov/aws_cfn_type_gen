@@ -68,6 +68,39 @@ pub struct CfnPrivateDnsNamespace {
     /// Update requires: Replacement
     #[serde(rename = "Vpc")]
     pub vpc: cfn_resources::StrVal,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnPrivateDnsNamespacearn,
+
+    #[serde(skip_serializing)]
+    pub att_hosted_zone_id: CfnPrivateDnsNamespacehostedzoneid,
+
+    #[serde(skip_serializing)]
+    pub att_id: CfnPrivateDnsNamespaceid,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPrivateDnsNamespacearn;
+impl CfnPrivateDnsNamespacearn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPrivateDnsNamespacehostedzoneid;
+impl CfnPrivateDnsNamespacehostedzoneid {
+    pub fn att_name(&self) -> &'static str {
+        r#"HostedZoneId"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnPrivateDnsNamespaceid;
+impl CfnPrivateDnsNamespaceid {
+    pub fn att_name(&self) -> &'static str {
+        r#"Id"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnPrivateDnsNamespace {

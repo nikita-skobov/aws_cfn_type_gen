@@ -250,6 +250,61 @@ pub struct CfnBucket {
     #[serde(rename = "WebsiteConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub website_configuration: Option<WebsiteConfiguration>,
+
+    #[serde(skip_serializing)]
+    pub att_arn: CfnBucketarn,
+
+    #[serde(skip_serializing)]
+    pub att_domain_name: CfnBucketdomainname,
+
+    #[serde(skip_serializing)]
+    pub att_dual_stack_domain_name: CfnBucketdualstackdomainname,
+
+    #[serde(skip_serializing)]
+    pub att_regional_domain_name: CfnBucketregionaldomainname,
+
+    #[serde(skip_serializing)]
+    pub att_website_url: CfnBucketwebsiteurl,
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBucketarn;
+impl CfnBucketarn {
+    pub fn att_name(&self) -> &'static str {
+        r#"Arn"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBucketdomainname;
+impl CfnBucketdomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBucketdualstackdomainname;
+impl CfnBucketdualstackdomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"DualStackDomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBucketregionaldomainname;
+impl CfnBucketregionaldomainname {
+    pub fn att_name(&self) -> &'static str {
+        r#"RegionalDomainName"#
+    }
+}
+
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct CfnBucketwebsiteurl;
+impl CfnBucketwebsiteurl {
+    pub fn att_name(&self) -> &'static str {
+        r#"WebsiteURL"#
+    }
 }
 
 impl cfn_resources::CfnResource for CfnBucket {
