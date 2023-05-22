@@ -43,6 +43,16 @@ impl ToOptStrVal for &str {
     }
 }
 
+pub fn get_att(logical_name: &str, att_name: &str) -> Option<StrVal> {
+    let mut map = serde_json::Map::new();
+    let v = vec![
+        serde_json::Value::String(logical_name.to_string()),
+        serde_json::Value::String(att_name.to_string()),
+    ];
+    map.insert("Fn::GetAtt".to_string(), serde_json::Value::Array(v));
+    Some(StrVal::Val(serde_json::Value::Object(map)))
+}
+
 pub trait CfnResource {
     /// returns a string like 'AWS::CloudFront::Distribution'
     fn type_string(&self) -> &'static str;
