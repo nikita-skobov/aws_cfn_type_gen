@@ -55,6 +55,7 @@ pub struct CfnStruct {
     /// the doc comment that goes above the struct's name
     pub documentation: String,
     pub fields: Vec<CfnField>,
+    pub attributes: Vec<String>,
 }
 
 pub struct CfnField {
@@ -390,6 +391,32 @@ pub fn emit_field_validation(is_custom_type: bool, f: &CfnField) -> String {
     out_str
 }
 
+pub fn emit_attribute(
+    owning_name: &str, attribute_str: &str,
+    attr_defs: &mut String,
+) -> String {
+    let safe_attr_str = attribute_str.replace(".", "");
+    let safe_name = safe_ident(&convert_snake_case(&safe_attr_str));
+
+    let struct_name = format!("{}{}", owning_name, safe_name);
+    let struct_name = struct_name.replace("_", "");
+    let out_struct = format!("
+#[derive(Clone, Debug, Default, serde::Serialize)]
+pub struct {};
+impl {} {{
+    pub fn att_name(&self) -> &'static str {{
+        r#\"{}\"#
+    }}
+}}
+", struct_name, struct_name, attribute_str);
+    attr_defs.push_str(&out_struct);
+
+    format!("
+    #[serde(skip_serializing)]
+    pub att_{}: {},
+", safe_name, struct_name)
+}
+
 pub fn emit_struct(validations: &mut String, use_map_tracker: &mut HashMap<String, Vec<String>>, use_name: &str, s: &CfnStruct) -> String {
     let mut fields = "".to_string();
     let mut field_enums = HashMap::new();
@@ -404,6 +431,11 @@ pub fn emit_struct(validations: &mut String, use_map_tracker: &mut HashMap<Strin
         }
         fields.push_str(&emit_field(&mut field_enums, use_map_tracker, &s.name, f));
     }
+    let mut attr_defs = "".to_string();
+    let mut attr_fields = "".to_string();
+    for a in s.attributes.iter() {
+        attr_fields.push_str(&emit_attribute(use_name, a, &mut attr_defs));
+    }
     let doc_comment = emit_doc_comments("", &s.documentation);
     let field_enums = emit_field_enums(field_enums);
 
@@ -412,9 +444,11 @@ format!("
 #[derive(Clone, Debug, Default, serde::Serialize)]
 pub struct {} {{
 {fields}
+{attr_fields}
 }}
 
 {field_enums}
+{attr_defs}
 ", use_name)
 }
 
@@ -667,7 +701,11 @@ pub fn prop_to_cfn_field<T: PropertyLike>(name: &str, prop: &T) -> CfnField {
     // Pattern:
 }
 
-pub fn resource_type_to_cfn_struct<T: PropertyLike>(name: &str, doc: &str, props: &HashMap<String, T>) -> CfnStruct {
+pub fn resource_type_to_cfn_struct<T: PropertyLike>(
+    name: &str, doc: &str, props: &HashMap<String, T>,
+    mut attributes: Vec<(&String, &parser::Attribute)>,
+) -> CfnStruct {
+    attributes.sort_by(|a, b| a.0.cmp(&b.0));
     let name = get_last_delimiter_part(name);
     let mut fields = vec![];
     for (prop_name, prop) in props.iter() {
@@ -675,10 +713,20 @@ pub fn resource_type_to_cfn_struct<T: PropertyLike>(name: &str, doc: &str, props
     }
     // make fields deterministic
     fields.sort_by(|a, b| a.name.cmp(&b.name));
+    // we only store attributes that are simple strings.
+    // if the user wants to use !GetAtt on a list, or something complex, they
+    // can form the GetAtt themselves using StrVal::Val(...)
+    let mut out_attributes = vec![];
+    for (name, att) in attributes {
+        if att.primitive_type == "String" {
+            out_attributes.push(name.to_string());
+        }
+    }
     CfnStruct {
         name,
         documentation: doc.to_string(),
-        fields
+        fields,
+        attributes: out_attributes,
     }
 }
 
@@ -710,10 +758,14 @@ pub fn spec_to_service(service_name: String, spec: CfnResourceSpecSchema) -> Ser
         panic!("Failed to extract resource name for {service_name} - {resource_name}");
     };
     let module_name = last_part;
-    let entrypoint_struct = resource_type_to_cfn_struct(last_part, &resource_type.documentation, &resource_type.properties);
+    let mut attributes: Vec<(&String, &parser::Attribute)> = vec![];
+    for (name, att) in resource_type.attributes.iter() {
+        attributes.push((name, att));
+    }
+    let entrypoint_struct = resource_type_to_cfn_struct(last_part, &resource_type.documentation, &resource_type.properties, attributes);
     let mut auxiliary_structs = vec![];
     for (name, prop) in spec.property_types.iter() {
-        auxiliary_structs.push(resource_type_to_cfn_struct(&name, &prop.documentation, &prop.properties));
+        auxiliary_structs.push(resource_type_to_cfn_struct(&name, &prop.documentation, &prop.properties, vec![]));
     }
     // make structs deterministic
     auxiliary_structs.sort_by(|a, b| a.name.cmp(&b.name));
