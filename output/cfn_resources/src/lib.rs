@@ -48,14 +48,34 @@ impl ToOptStrVal for String {
     }
 }
 
-pub fn get_att(logical_name: &str, att_name: &str) -> Option<StrVal> {
+pub fn get_att(logical_name: &str, att_name: &str) -> serde_json::Value {
     let mut map = serde_json::Map::new();
     let v = vec![
         serde_json::Value::String(logical_name.to_string()),
         serde_json::Value::String(att_name.to_string()),
     ];
     map.insert("Fn::GetAtt".to_string(), serde_json::Value::Array(v));
-    Some(StrVal::Val(serde_json::Value::Object(map)))
+    serde_json::Value::Object(map)
+}
+
+/// creates an object like:
+/// { "Fn::Select" : [ "2", { "Fn::Split": ["/", {...}] } ] }
+pub fn select_split(index: usize, delimiter: &str, stuff_to_split: serde_json::Value) -> serde_json::Value {
+    // form the split map
+    let mut split_map = serde_json::Map::new();
+    let split_map_v = vec![
+        serde_json::Value::String(delimiter.to_string()),
+        stuff_to_split,
+    ];
+    split_map.insert("Fn::Split".to_string(), serde_json::Value::Array(split_map_v));
+    // form the select map:
+    let mut map = serde_json::Map::new();
+    let v = vec![
+        serde_json::Value::String(index.to_string()),
+        serde_json::Value::Object(split_map),
+    ];
+    map.insert("Fn::Select".to_string(), serde_json::Value::Array(v));
+    serde_json::Value::Object(map)
 }
 
 pub trait CfnResource {
