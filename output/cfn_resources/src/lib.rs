@@ -42,6 +42,11 @@ impl ToOptStrVal for &str {
         Some(StrVal::String(self.to_string()))
     }
 }
+impl ToOptStrVal for String {
+    fn to_str_val(&self) -> Option<StrVal> {
+        Some(StrVal::String(self.to_string()))
+    }
+}
 
 pub fn get_att(logical_name: &str, att_name: &str) -> Option<StrVal> {
     let mut map = serde_json::Map::new();
