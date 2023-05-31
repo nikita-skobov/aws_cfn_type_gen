@@ -70,7 +70,7 @@ pub fn get_ref(logical_name: &str) -> serde_json::Value {
 /// - action
 /// - resource
 /// - principal (omitted if empty)
-pub fn create_policy_doc(statements: &[(String, String, String, String)]) -> serde_json::Value {
+pub fn create_policy_doc(statements: &[(String, String, StrVal, StrVal)]) -> serde_json::Value {
     let mut map = serde_json::Map::default();
     map.insert("Version".to_string(), serde_json::Value::String("2012-10-17".to_string()));
     let mut statements_out = vec![];
@@ -78,9 +78,23 @@ pub fn create_policy_doc(statements: &[(String, String, String, String)]) -> ser
         let mut statement_obj = serde_json::Map::default();
         statement_obj.insert("Effect".to_string(), serde_json::Value::String(effect.to_string()));
         statement_obj.insert("Action".to_string(), serde_json::Value::String(action.to_string()));
-        statement_obj.insert("Resource".to_string(), serde_json::Value::String(resource.to_string()));
-        if !principal.is_empty() {
-            statement_obj.insert("Principal".to_string(), serde_json::Value::String(principal.to_string()));
+        match resource {
+            StrVal::String(s) => {
+                statement_obj.insert("Resource".to_string(), serde_json::Value::String(s.to_string()));
+            }
+            StrVal::Val(v) => {
+                statement_obj.insert("Resource".to_string(), v.clone());
+            }
+        }
+        match principal {
+            StrVal::String(s) => {
+                if !s.is_empty() {
+                    statement_obj.insert("Principal".to_string(), serde_json::Value::String(s.to_string()));
+                }
+            }
+            StrVal::Val(v) => {
+                statement_obj.insert("Principal".to_string(), v.clone());
+            }
         }
         statements_out.push(serde_json::Value::Object(statement_obj));
     }
