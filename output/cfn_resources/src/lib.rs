@@ -58,6 +58,36 @@ pub fn get_att(logical_name: &str, att_name: &str) -> serde_json::Value {
     serde_json::Value::Object(map)
 }
 
+
+pub fn get_ref(logical_name: &str) -> serde_json::Value {
+    let mut map = serde_json::Map::new();
+    map.insert("Ref".to_string(), serde_json::Value::String(logical_name.to_string()));
+    serde_json::Value::Object(map)
+}
+
+/// statements are a tuple of:
+/// - effect (must be Allow or Deny)
+/// - action
+/// - resource
+/// - principal (omitted if empty)
+pub fn create_policy_doc(statements: &[(String, String, String, String)]) -> serde_json::Value {
+    let mut map = serde_json::Map::default();
+    map.insert("Version".to_string(), serde_json::Value::String("2012-10-17".to_string()));
+    let mut statements_out = vec![];
+    for (effect, action, resource, principal) in statements {
+        let mut statement_obj = serde_json::Map::default();
+        statement_obj.insert("Effect".to_string(), serde_json::Value::String(effect.to_string()));
+        statement_obj.insert("Action".to_string(), serde_json::Value::String(action.to_string()));
+        statement_obj.insert("Resource".to_string(), serde_json::Value::String(resource.to_string()));
+        if !principal.is_empty() {
+            statement_obj.insert("Principal".to_string(), serde_json::Value::String(principal.to_string()));
+        }
+        statements_out.push(serde_json::Value::Object(statement_obj));
+    }
+    map.insert("Statement".to_string(), serde_json::Value::Array(statements_out));
+    serde_json::Value::Object(map)
+}
+
 /// creates an object like:
 /// { "Fn::Select" : [ "2", { "Fn::Split": ["/", {...}] } ] }
 pub fn select_split(index: usize, delimiter: &str, stuff_to_split: serde_json::Value) -> serde_json::Value {
