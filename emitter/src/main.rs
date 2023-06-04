@@ -280,7 +280,7 @@ pub fn emit_field_enum(name: String, values: Vec<String>) -> String {
         variants.push_str(&code);
     }
     format!("
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub enum {name} {{
 {variants}
 }}
@@ -401,7 +401,7 @@ pub fn emit_attribute(
     let struct_name = format!("{}{}", owning_name, safe_name);
     let struct_name = struct_name.replace("_", "");
     let out_struct = format!("
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct {};
 impl {} {{
     pub fn att_name(&self) -> &'static str {{
@@ -441,7 +441,7 @@ pub fn emit_struct(validations: &mut String, use_map_tracker: &mut HashMap<Strin
 
 format!("
 {doc_comment}
-#[derive(Clone, Debug, Default, serde::Serialize)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
 pub struct {} {{
 {fields}
 {attr_fields}
