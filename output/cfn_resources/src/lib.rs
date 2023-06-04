@@ -1,6 +1,17 @@
 pub use serde;
 pub use serde_json;
 
+pub static mut FORCE_SERIALIZATION: bool = false;
+
+pub fn wants_serialization<T>(t: &Option<T>) -> bool {
+    unsafe {
+        if FORCE_SERIALIZATION {
+            return true;
+        }
+    }
+    t.is_none()
+}
+
 /// all strings (besides ones that can be represented as enums)
 /// should be represented by StrVal. This allows users to specify
 /// values as simple string values `"something".into()`
